@@ -23,7 +23,8 @@ function authHeaders() {
   if (process.env.STITCH_API_KEY) return { "X-Goog-Api-Key": process.env.STITCH_API_KEY };
   if (process.env.STITCH_ACCESS_TOKEN) {
     const h = { Authorization: `Bearer ${process.env.STITCH_ACCESS_TOKEN}` };
-    if (process.env.GOOGLE_CLOUD_PROJECT) h["X-Goog-User-Project"] = process.env.GOOGLE_CLOUD_PROJECT;
+    if (process.env.GOOGLE_CLOUD_PROJECT)
+      h["X-Goog-User-Project"] = process.env.GOOGLE_CLOUD_PROJECT;
     return h;
   }
   console.error(
@@ -50,9 +51,14 @@ async function callTool(name, args) {
   });
   const raw = await res.text();
   // The endpoint may answer with plain JSON or a single SSE "data:" frame.
-  const jsonText = raw.startsWith("event:") || raw.startsWith("data:")
-    ? raw.split("\n").filter((l) => l.startsWith("data:")).map((l) => l.slice(5)).join("")
-    : raw;
+  const jsonText =
+    raw.startsWith("event:") || raw.startsWith("data:")
+      ? raw
+          .split("\n")
+          .filter((l) => l.startsWith("data:"))
+          .map((l) => l.slice(5))
+          .join("")
+      : raw;
   const msg = JSON.parse(jsonText);
   if (msg.error) throw new Error(`${name}: ${JSON.stringify(msg.error)}`);
   const result = msg.result ?? {};
@@ -107,7 +113,10 @@ async function main() {
   let designSystems = null;
   try {
     designSystems = await callTool("list_design_systems", { projectId: PROJECT_ID });
-    await writeFile(path.join(OUT_DIR, "design-systems.json"), JSON.stringify(designSystems, null, 2));
+    await writeFile(
+      path.join(OUT_DIR, "design-systems.json"),
+      JSON.stringify(designSystems, null, 2),
+    );
   } catch (e) {
     console.warn(`! list_design_systems failed: ${e.message}`);
   }

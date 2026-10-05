@@ -1,0 +1,30 @@
+# Development services. Production stack: docker-compose.prod.yml (phase 7).
+#   docker compose up -d        → PostgreSQL on localhost:54329 + Mailpit (emails) on http://localhost:8025
+services:
+  db:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: iris
+      POSTGRES_PASSWORD: iris_dev_password
+      POSTGRES_DB: iris
+    ports:
+      - "127.0.0.1:54329:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./scripts/docker/init-test-db.sql:/docker-entrypoint-initdb.d/10-init-test-db.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U iris"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  mailpit:
+    image: axllent/mailpit:latest
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:8025:8025" # web UI
+      - "127.0.0.1:1025:1025" # SMTP (EMAIL_DRIVER=smtp, SMTP_HOST=localhost, SMTP_PORT=1025)
+
+volumes:
+  pgdata:

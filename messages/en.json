@@ -1,0 +1,55 @@
+{
+  "metadata": {
+    "defaultTitle": "Iris Store",
+    "description": "Shop easily and securely — fast delivery and cash on delivery."
+  },
+  "common": {
+    "close": "Close",
+    "cancel": "Cancel",
+    "save": "Save",
+    "saving": "Saving…",
+    "loading": "Loading…",
+    "retry": "Try again",
+    "back": "Back",
+    "next": "Next",
+    "continue": "Continue",
+    "confirm": "Confirm",
+    "delete": "Delete",
+    "edit": "Edit",
+    "add": "Add",
+    "search": "Search",
+    "optional": "optional",
+    "required": "required",
+    "yes": "Yes",
+    "no": "No",
+    "seeAll": "See all",
+    "language": "Language",
+    "switchLanguage": "العربية"
+  },
+  "nav": {
+    "home": "Home",
+    "categories": "Categories",
+    "search": "Search",
+    "cart": "Cart",
+    "account": "Account",
+    "menu": "Menu",
+    "skipToContent": "Skip to content"
+  },
+  "errors": {
+    "notFoundTitle": "Page not found",
+    "notFoundBody": "This page may have been moved or deleted.",
+    "goHome": "Back to home",
+    "genericTitle": "Something went wrong",
+    "genericBody": "Sorry about that. Please try again, and contact us if the problem persists.",
+    "rateLimited": "Too many attempts. Please wait a moment and try again.",
+    "network": "Connection failed. Check your internet and try again.",
+    "forbidden": "You don't have permission to do this.",
+    "unauthorized": "Please sign in to continue.",
+    "validation": "Please check the highlighted fields.",
+    "conflict": "This data was changed elsewhere. Refresh the page and try again."
+  },
+  "home": {
+    "comingSoon": "Store is being set up",
+    "comingSoonBody": "We're preparing an easy and secure shopping experience. Check back soon!"
+  }
+}

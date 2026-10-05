@@ -1,0 +1,275 @@
+@import "tailwindcss";
+
+/*
+ * Iris design tokens.
+ * Semantic CSS variables → Tailwind utilities (bg-primary, text-muted-foreground, ...).
+ * The store owner can override --primary from the admin (Branding); everything derived
+ * from it uses color-mix() so one value re-themes the whole store.
+ */
+:root {
+  --radius: 0.875rem;
+
+  --background: oklch(0.985 0.002 286);
+  --foreground: oklch(0.21 0.018 286);
+  --surface: oklch(1 0 0);
+  --surface-muted: oklch(0.965 0.004 286);
+  --muted-foreground: oklch(0.5 0.014 286);
+  --border: oklch(0.915 0.006 286);
+  --input: oklch(0.87 0.008 286);
+
+  --primary: oklch(0.5 0.19 292);
+  --primary-foreground: oklch(0.99 0 0);
+  --primary-soft: color-mix(in oklch, var(--primary) 10%, white);
+  --primary-strong: color-mix(in oklch, var(--primary) 82%, black);
+  --ring: color-mix(in oklch, var(--primary) 55%, transparent);
+
+  --accent: oklch(0.58 0.2 18);
+  --accent-foreground: oklch(0.99 0 0);
+  --success: oklch(0.56 0.13 155);
+  --success-soft: oklch(0.96 0.03 155);
+  --warning: oklch(0.72 0.15 70);
+  --warning-soft: oklch(0.97 0.04 85);
+  --danger: oklch(0.56 0.2 27);
+  --danger-soft: oklch(0.96 0.025 27);
+  --info: oklch(0.56 0.13 250);
+  --info-soft: oklch(0.96 0.02 250);
+
+  --shadow-card: 0 1px 2px oklch(0.2 0.02 286 / 0.04), 0 4px 18px oklch(0.2 0.02 286 / 0.05);
+  --shadow-float: 0 8px 30px oklch(0.2 0.02 286 / 0.12);
+
+  --header-height: 3.5rem;
+  --bottom-nav-height: 4rem;
+}
+
+@theme inline {
+  --font-sans:
+    var(--font-arabic), var(--font-latin), ui-sans-serif, system-ui, "Segoe UI", Tahoma, sans-serif;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-surface-muted: var(--surface-muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary-soft: var(--primary-soft);
+  --color-primary-strong: var(--primary-strong);
+  --color-ring: var(--ring);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-success: var(--success);
+  --color-success-soft: var(--success-soft);
+  --color-warning: var(--warning);
+  --color-warning-soft: var(--warning-soft);
+  --color-danger: var(--danger);
+  --color-danger-soft: var(--danger-soft);
+  --color-info: var(--info);
+  --color-info-soft: var(--info-soft);
+
+  --radius-sm: calc(var(--radius) - 0.375rem);
+  --radius-md: calc(var(--radius) - 0.25rem);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 0.25rem);
+  --radius-2xl: calc(var(--radius) + 0.625rem);
+
+  --shadow-card: var(--shadow-card);
+  --shadow-float: var(--shadow-float);
+
+  --animate-fade-in: fade-in 160ms ease-out;
+  --animate-fade-out: fade-out 140ms ease-in;
+  --animate-sheet-up: sheet-up 260ms cubic-bezier(0.32, 0.72, 0, 1);
+  --animate-sheet-down: sheet-down 200ms ease-in;
+  --animate-sheet-in-start: sheet-in-start 260ms cubic-bezier(0.32, 0.72, 0, 1);
+  --animate-sheet-out-start: sheet-out-start 200ms ease-in;
+  --animate-sheet-in-end: sheet-in-end 260ms cubic-bezier(0.32, 0.72, 0, 1);
+  --animate-sheet-out-end: sheet-out-end 200ms ease-in;
+  --animate-pop-in: pop-in 160ms ease-out;
+  --animate-shimmer: shimmer 1.4s linear infinite;
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  @keyframes fade-out {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+  @keyframes sheet-up {
+    from {
+      transform: translateY(100%);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+  @keyframes sheet-down {
+    from {
+      transform: translateY(0);
+    }
+    to {
+      transform: translateY(100%);
+    }
+  }
+  /* "start" = right edge in RTL, left edge in LTR (--dir-sign is set per [dir]). */
+  @keyframes sheet-in-start {
+    from {
+      transform: translateX(calc(var(--dir-sign) * -100%));
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
+  @keyframes sheet-out-start {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(calc(var(--dir-sign) * -100%));
+    }
+  }
+  @keyframes sheet-in-end {
+    from {
+      transform: translateX(calc(var(--dir-sign) * 100%));
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
+  @keyframes sheet-out-end {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(calc(var(--dir-sign) * 100%));
+    }
+  }
+  @keyframes pop-in {
+    from {
+      opacity: 0;
+      transform: scale(0.96);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  @keyframes shimmer {
+    from {
+      background-position: 200% 0;
+    }
+    to {
+      background-position: -200% 0;
+    }
+  }
+}
+
+@layer base {
+  [dir="ltr"] {
+    --dir-sign: 1;
+  }
+  [dir="rtl"] {
+    --dir-sign: -1;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    @apply bg-background font-sans text-foreground antialiased;
+    line-height: 1.65;
+    min-height: 100dvh;
+  }
+
+  *,
+  ::before,
+  ::after {
+    border-color: var(--border);
+  }
+
+  ::selection {
+    background: var(--primary-soft);
+    color: var(--foreground);
+  }
+
+  /* iOS Safari zooms into inputs whose font-size is below 16px. */
+  input,
+  select,
+  textarea {
+    font-size: max(16px, 1em);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]) {
+    cursor: pointer;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    ::before,
+    ::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@utility container-page {
+  margin-inline: auto;
+  width: 100%;
+  max-width: 80rem;
+  padding-inline: 1rem;
+  @media (width >= 48rem) {
+    padding-inline: 1.5rem;
+  }
+}
+
+/* Prices and quantities read better with tabular digits. */
+@utility tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+@utility pb-safe {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+@utility pt-safe {
+  padding-top: env(safe-area-inset-top);
+}
+
+@utility scrollbar-none {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@utility skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--surface-muted) 25%,
+    color-mix(in oklch, var(--surface-muted) 55%, white) 37%,
+    var(--surface-muted) 63%
+  );
+  background-size: 400% 100%;
+  animation: var(--animate-shimmer);
+}
