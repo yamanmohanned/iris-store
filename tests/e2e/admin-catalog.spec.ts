@@ -19,9 +19,7 @@ test.describe("admin: catalog", () => {
     await expect(page).toHaveURL(/\/admin\/products\/new$/);
 
     await page.getByLabel("اسم المنتج", { exact: true }).fill(name);
-    await page
-      .getByLabel(/^الوصف الكامل/)
-      .fill("قطن ناعم\n\n• غسيل يدوي\n• مقاسات مريحة");
+    await page.getByLabel(/^الوصف الكامل/).fill("قطن ناعم\n\n• غسيل يدوي\n• مقاسات مريحة");
     await page
       .locator('input[type="file"]')
       .first()

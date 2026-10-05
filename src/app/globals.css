@@ -302,6 +302,18 @@
 }
 
 /* Owner-authored rich text (product descriptions, pages). Markup is sanitized server-side. */
+/* Coupon "ticket": two notches cut at the perforation under the code (admin coupons). */
+@utility coupon-ticket {
+  --notch: 0.6rem;
+  --notch-y: 4.25rem;
+  border-radius: calc(var(--radius) * 1.15);
+  mask:
+    radial-gradient(circle var(--notch) at 0 var(--notch-y), #0000 97%, #000) 0 0 / 51% 100%
+      no-repeat,
+    radial-gradient(circle var(--notch) at 100% var(--notch-y), #0000 97%, #000) 100% 0 / 51% 100%
+      no-repeat;
+}
+
 @utility prose-store {
   line-height: 1.85;
   color: var(--foreground);

@@ -70,6 +70,11 @@ export function formatMoney(
   }).format(major);
 }
 
+/** The symbol shown next to amount inputs: "د.ع" in Arabic, the ISO code otherwise. */
+export function currencySymbol(currency: string, locale: string): string {
+  return locale === "ar" ? (AR_SYMBOLS[currency] ?? currency) : currency;
+}
+
 export function formatNumber(value: number, locale: string): string {
   return formatter(locale, {}).format(value);
 }

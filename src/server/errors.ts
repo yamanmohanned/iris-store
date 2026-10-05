@@ -28,3 +28,13 @@ export class AppError extends Error {
 }
 
 export const isAppError = (e: unknown): e is AppError => e instanceof AppError;
+
+/** Postgres unique-constraint violation (drizzle wraps the driver error in `cause`). */
+export function isUniqueViolation(error: unknown): boolean {
+  let e: unknown = error;
+  for (let depth = 0; e && depth < 4; depth++) {
+    if ((e as { code?: unknown }).code === "23505") return true;
+    e = (e as { cause?: unknown }).cause;
+  }
+  return false;
+}

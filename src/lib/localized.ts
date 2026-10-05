@@ -19,6 +19,16 @@ export function tl(value: LocalizedText | null | undefined, locale: string): str
   return "";
 }
 
+/** Drop blank languages: `{ ar: "x", en: " " }` → `{ ar: "x" }` (null when nothing is left). */
+export function compactText(value: LocalizedText | null | undefined): LocalizedText | null {
+  const out: LocalizedText = {};
+  for (const l of FALLBACK_ORDER) {
+    const v = value?.[l]?.trim();
+    if (v) out[l] = v;
+  }
+  return Object.keys(out).length ? out : null;
+}
+
 export function hasText(value: LocalizedText | null | undefined): boolean {
   return Boolean(value && Object.values(value).some((v) => typeof v === "string" && v.trim()));
 }
