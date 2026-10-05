@@ -1,0 +1,235 @@
+import type { LocalizedText } from "./localized";
+
+/**
+ * Country presets used by the setup wizard: picking a country fills in the currency, phone code,
+ * time zone and the list of delivery regions (governorates / provinces) automatically.
+ */
+export type CountryPreset = {
+  code: string;
+  name: LocalizedText;
+  currency: string;
+  /** Decimals used for prices in practice (IQD prices are whole dinars). */
+  currencyDecimals: number;
+  phoneCode: string;
+  timeZone: string;
+  /** Typical delivery fee in minor units for seeding shipping zones (owner edits later). */
+  defaultFee: { capital: number; other: number };
+  regions: LocalizedText[];
+};
+
+const r = (ar: string, en: string): LocalizedText => ({ ar, en });
+
+export const COUNTRY_PRESETS: CountryPreset[] = [
+  {
+    code: "IQ",
+    name: r("العراق", "Iraq"),
+    currency: "IQD",
+    currencyDecimals: 0,
+    phoneCode: "+964",
+    timeZone: "Asia/Baghdad",
+    defaultFee: { capital: 5000, other: 8000 },
+    regions: [
+      r("بغداد", "Baghdad"),
+      r("البصرة", "Basra"),
+      r("نينوى", "Nineveh"),
+      r("أربيل", "Erbil"),
+      r("السليمانية", "Sulaymaniyah"),
+      r("دهوك", "Duhok"),
+      r("كركوك", "Kirkuk"),
+      r("الأنبار", "Anbar"),
+      r("بابل", "Babil"),
+      r("كربلاء", "Karbala"),
+      r("النجف", "Najaf"),
+      r("ذي قار", "Dhi Qar"),
+      r("ميسان", "Maysan"),
+      r("واسط", "Wasit"),
+      r("القادسية (الديوانية)", "Al-Qadisiyyah (Diwaniyah)"),
+      r("المثنى", "Muthanna"),
+      r("صلاح الدين", "Salah al-Din"),
+      r("ديالى", "Diyala"),
+      r("حلبجة", "Halabja"),
+    ],
+  },
+  {
+    code: "SA",
+    name: r("المملكة العربية السعودية", "Saudi Arabia"),
+    currency: "SAR",
+    currencyDecimals: 2,
+    phoneCode: "+966",
+    timeZone: "Asia/Riyadh",
+    defaultFee: { capital: 2500, other: 3500 },
+    regions: [
+      r("الرياض", "Riyadh"),
+      r("مكة المكرمة", "Makkah"),
+      r("المدينة المنورة", "Madinah"),
+      r("المنطقة الشرقية", "Eastern Province"),
+      r("القصيم", "Qassim"),
+      r("عسير", "Asir"),
+      r("تبوك", "Tabuk"),
+      r("حائل", "Hail"),
+      r("الحدود الشمالية", "Northern Borders"),
+      r("جازان", "Jazan"),
+      r("نجران", "Najran"),
+      r("الباحة", "Al Bahah"),
+      r("الجوف", "Al Jawf"),
+    ],
+  },
+  {
+    code: "AE",
+    name: r("الإمارات العربية المتحدة", "United Arab Emirates"),
+    currency: "AED",
+    currencyDecimals: 2,
+    phoneCode: "+971",
+    timeZone: "Asia/Dubai",
+    defaultFee: { capital: 2000, other: 2500 },
+    regions: [
+      r("أبوظبي", "Abu Dhabi"),
+      r("دبي", "Dubai"),
+      r("الشارقة", "Sharjah"),
+      r("عجمان", "Ajman"),
+      r("أم القيوين", "Umm Al Quwain"),
+      r("رأس الخيمة", "Ras Al Khaimah"),
+      r("الفجيرة", "Fujairah"),
+    ],
+  },
+  {
+    code: "KW",
+    name: r("الكويت", "Kuwait"),
+    currency: "KWD",
+    currencyDecimals: 3,
+    phoneCode: "+965",
+    timeZone: "Asia/Kuwait",
+    defaultFee: { capital: 1500, other: 2000 },
+    regions: [
+      r("العاصمة", "Capital"),
+      r("حولي", "Hawalli"),
+      r("الفروانية", "Farwaniya"),
+      r("مبارك الكبير", "Mubarak Al-Kabeer"),
+      r("الأحمدي", "Ahmadi"),
+      r("الجهراء", "Jahra"),
+    ],
+  },
+  {
+    code: "QA",
+    name: r("قطر", "Qatar"),
+    currency: "QAR",
+    currencyDecimals: 2,
+    phoneCode: "+974",
+    timeZone: "Asia/Qatar",
+    defaultFee: { capital: 2000, other: 3000 },
+    regions: [
+      r("الدوحة", "Doha"),
+      r("الريان", "Al Rayyan"),
+      r("الوكرة", "Al Wakrah"),
+      r("الخور", "Al Khor"),
+      r("أم صلال", "Umm Salal"),
+      r("الضعاين", "Al Daayen"),
+      r("الشمال", "Al Shamal"),
+      r("الشحانية", "Al Shahaniya"),
+    ],
+  },
+  {
+    code: "BH",
+    name: r("البحرين", "Bahrain"),
+    currency: "BHD",
+    currencyDecimals: 3,
+    phoneCode: "+973",
+    timeZone: "Asia/Bahrain",
+    defaultFee: { capital: 1000, other: 1500 },
+    regions: [
+      r("العاصمة", "Capital"),
+      r("المحرق", "Muharraq"),
+      r("الشمالية", "Northern"),
+      r("الجنوبية", "Southern"),
+    ],
+  },
+  {
+    code: "OM",
+    name: r("سلطنة عُمان", "Oman"),
+    currency: "OMR",
+    currencyDecimals: 3,
+    phoneCode: "+968",
+    timeZone: "Asia/Muscat",
+    defaultFee: { capital: 1500, other: 2500 },
+    regions: [
+      r("مسقط", "Muscat"),
+      r("ظفار", "Dhofar"),
+      r("مسندم", "Musandam"),
+      r("البريمي", "Al Buraimi"),
+      r("الداخلية", "Ad Dakhiliyah"),
+      r("شمال الباطنة", "North Al Batinah"),
+      r("جنوب الباطنة", "South Al Batinah"),
+      r("جنوب الشرقية", "South Ash Sharqiyah"),
+      r("شمال الشرقية", "North Ash Sharqiyah"),
+      r("الظاهرة", "Ad Dhahirah"),
+      r("الوسطى", "Al Wusta"),
+    ],
+  },
+  {
+    code: "JO",
+    name: r("الأردن", "Jordan"),
+    currency: "JOD",
+    currencyDecimals: 3,
+    phoneCode: "+962",
+    timeZone: "Asia/Amman",
+    defaultFee: { capital: 2000, other: 3000 },
+    regions: [
+      r("عمّان", "Amman"),
+      r("إربد", "Irbid"),
+      r("الزرقاء", "Zarqa"),
+      r("البلقاء", "Balqa"),
+      r("المفرق", "Mafraq"),
+      r("الكرك", "Karak"),
+      r("جرش", "Jerash"),
+      r("عجلون", "Ajloun"),
+      r("مادبا", "Madaba"),
+      r("العقبة", "Aqaba"),
+      r("الطفيلة", "Tafilah"),
+      r("معان", "Ma'an"),
+    ],
+  },
+  {
+    code: "EG",
+    name: r("مصر", "Egypt"),
+    currency: "EGP",
+    currencyDecimals: 2,
+    phoneCode: "+20",
+    timeZone: "Africa/Cairo",
+    defaultFee: { capital: 6000, other: 8500 },
+    regions: [
+      r("القاهرة", "Cairo"),
+      r("الجيزة", "Giza"),
+      r("الإسكندرية", "Alexandria"),
+      r("القليوبية", "Qalyubia"),
+      r("الشرقية", "Sharqia"),
+      r("الدقهلية", "Dakahlia"),
+      r("الغربية", "Gharbia"),
+      r("المنوفية", "Monufia"),
+      r("البحيرة", "Beheira"),
+      r("كفر الشيخ", "Kafr El Sheikh"),
+      r("دمياط", "Damietta"),
+      r("بورسعيد", "Port Said"),
+      r("الإسماعيلية", "Ismailia"),
+      r("السويس", "Suez"),
+      r("الفيوم", "Faiyum"),
+      r("بني سويف", "Beni Suef"),
+      r("المنيا", "Minya"),
+      r("أسيوط", "Asyut"),
+      r("سوهاج", "Sohag"),
+      r("قنا", "Qena"),
+      r("الأقصر", "Luxor"),
+      r("أسوان", "Aswan"),
+      r("البحر الأحمر", "Red Sea"),
+      r("الوادي الجديد", "New Valley"),
+      r("مطروح", "Matrouh"),
+      r("شمال سيناء", "North Sinai"),
+      r("جنوب سيناء", "South Sinai"),
+    ],
+  },
+];
+
+export const DEFAULT_COUNTRY = "IQ";
+
+export function countryPreset(code: string): CountryPreset | undefined {
+  return COUNTRY_PRESETS.find((c) => c.code === code.toUpperCase());
+}
