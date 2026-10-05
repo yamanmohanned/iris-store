@@ -1,0 +1,34 @@
+# dependencies
+node_modules/
+.pnpm-store/
+
+# next.js
+.next/
+out/
+next-env.d.ts
+*.tsbuildinfo
+
+# production
+build/
+
+# env & secrets — never commit real secrets
+.env
+.env.*
+!.env.example
+
+# local data (database cluster, uploaded media, captured dev emails)
+.data/
+storage/
+
+# tests
+coverage/
+test-results/
+playwright-report/
+blob-report/
+playwright/.cache/
+
+# logs & os
+*.log
+npm-debug.log*
+.DS_Store
+*.pem

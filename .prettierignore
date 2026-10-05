@@ -1,0 +1,9 @@
+pnpm-lock.yaml
+drizzle/
+design/
+.next/
+.data/
+storage/
+coverage/
+playwright-report/
+test-results/
