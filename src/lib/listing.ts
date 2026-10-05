@@ -1,4 +1,7 @@
-import { z } from "zod";
+/**
+ * Listing helpers shared by server pages and the (client) toolbar. Keep this module free of zod:
+ * it ships to the browser, and the URL parser lives in `listing-params.ts` (server only).
+ */
 import { toMinor } from "./money";
 
 export const LISTING_PAGE_SIZE = 24;
@@ -14,36 +17,16 @@ export const SORTS = [
 export type ListingSort = (typeof SORTS)[number];
 
 /** URL search params shared by category, search and "all products" pages (and /api/products). */
-const paramsSchema = z.object({
-  q: z.string().trim().max(100).optional(),
-  sort: z.enum(SORTS).optional(),
-  min: z.coerce.number().min(0).max(1e9).optional(),
-  max: z.coerce.number().min(0).max(1e9).optional(),
-  stock: z.literal("1").optional(),
-  sale: z.literal("1").optional(),
-  featured: z.literal("1").optional(),
-  page: z.coerce.number().int().min(1).max(200).optional(),
-});
-
-export type ListingParams = z.infer<typeof paramsSchema>;
-
-/** Lenient parsing: invalid values are dropped instead of failing the page. */
-export function parseListingParams(
-  raw: Record<string, string | string[] | undefined>,
-): ListingParams {
-  const flat: Record<string, string> = {};
-  for (const [k, v] of Object.entries(raw)) {
-    const value = Array.isArray(v) ? v[0] : v;
-    if (typeof value === "string" && value !== "") flat[k] = value;
-  }
-  const result: ListingParams = {};
-  for (const key of Object.keys(paramsSchema.shape) as (keyof ListingParams)[]) {
-    if (!(key in flat)) continue;
-    const parsed = paramsSchema.shape[key].safeParse(flat[key]);
-    if (parsed.success) (result as Record<string, unknown>)[key] = parsed.data;
-  }
-  return result;
-}
+export type ListingParams = {
+  q?: string;
+  sort?: ListingSort;
+  min?: number;
+  max?: number;
+  stock?: "1";
+  sale?: "1";
+  featured?: "1";
+  page?: number;
+};
 
 /** Convert price filters typed in the store currency (major units) to stored minor units. */
 export function priceFilterMinor(params: ListingParams, decimals: number) {

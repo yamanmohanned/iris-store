@@ -52,6 +52,9 @@ tests/unit · tests/integration (real Postgres) · tests/e2e (Playwright)
 - Public identifiers for guest access are random tokens stored **hashed** (sha256), never sequential IDs.
 - Admin accounts must have 2FA; guard admin routes with `requireStaff()` in layouts **and** actions.
 - Write tests with every feature: unit for pure logic, integration for DB services, e2e for flows.
+- Keep server-only libraries (zod, drizzle, sharp…) out of client bundles: modules imported by
+  `"use client"` files must not import them (e.g. `lib/listing.ts` vs server-only `lib/listing-params.ts`).
+  The E2E CSP test catches zod's `Function()` probe if it slips back in.
 
 ## Workflow
 

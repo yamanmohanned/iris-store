@@ -238,6 +238,45 @@
       "revokeOthers": "Sign out other devices",
       "revokedOthers": "Signed out of {count} device(s).",
       "empty": "No other devices."
+    },
+    "hub": {
+      "hello": "Hello, {name}",
+      "orders": "My orders",
+      "ordersHint": "Follow your current and past orders",
+      "addresses": "My addresses",
+      "addressesHint": "Saved delivery addresses",
+      "wishlist": "Wishlist",
+      "wishlistHint": "Products you saved",
+      "security": "Security & sign-in",
+      "securityHint": "Password, two-step verification and devices",
+      "admin": "Dashboard",
+      "adminHint": "Manage the store"
+    },
+    "orders": {
+      "title": "My orders",
+      "empty": "No orders yet",
+      "emptyBody": "When you order from the store, your orders appear here so you can follow them.",
+      "shopNow": "Shop now",
+      "older": "Older orders",
+      "newer": "Newer orders",
+      "back": "All orders"
+    },
+    "addresses": {
+      "title": "My addresses",
+      "add": "Add address",
+      "edit": "Edit address",
+      "new": "New address",
+      "empty": "No saved addresses",
+      "emptyBody": "Save your address to check out faster next time.",
+      "default": "Default",
+      "makeDefault": "Make default",
+      "setAsDefault": "Use as my default address",
+      "label": "Address name",
+      "labelPlaceholder": "e.g. Home or Work",
+      "saved": "Address saved",
+      "deleted": "Address deleted",
+      "confirmDelete": "Delete this address?",
+      "limit": "You can save up to {max} addresses"
     }
   },
   "setup": {
@@ -517,5 +556,18 @@
     "notFound": "We couldn't find an order with these details. Check the order number and phone.",
     "signedInHint": "Your orders are also saved in your account.",
     "myOrders": "My orders"
+  },
+  "wishlist": {
+    "title": "Wishlist",
+    "empty": "Your wishlist is empty",
+    "emptyBody": "Tap the heart on any product page to save it here for later.",
+    "add": "Add to wishlist",
+    "remove": "Remove from wishlist",
+    "added": "Added to your wishlist",
+    "removed": "Removed from your wishlist",
+    "signIn": "Sign in to save products to your wishlist",
+    "signInAction": "Sign in",
+    "full": "Your wishlist is full",
+    "browse": "Browse products"
   }
 }

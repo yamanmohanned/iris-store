@@ -4,7 +4,7 @@ import { ProductListing } from "@/components/store/listing/product-listing";
 import { SearchBox } from "@/components/store/search-box";
 import { Link } from "@/i18n/navigation";
 import { assertLocale } from "@/i18n/locale";
-import { parseListingParams } from "@/lib/listing";
+import { parseListingParams } from "@/lib/listing-params";
 import { tl } from "@/lib/localized";
 import { getStoreContext } from "@/server/store-context";
 

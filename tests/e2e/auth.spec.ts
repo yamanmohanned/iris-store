@@ -1,16 +1,5 @@
-import { expect, test, type Page } from "@playwright/test";
-import { PASSWORD, SETUP_TOKEN, totp, uniqueEmail, waitForCode } from "./helpers";
-
-async function register(page: Page, email: string, name = "علي حسن") {
-  await page.goto("/register");
-  await page.getByLabel("الاسم الكامل").fill(name);
-  await page.getByLabel("البريد الإلكتروني").fill(email);
-  await page.getByLabel("كلمة المرور", { exact: true }).fill(PASSWORD);
-  await page.getByRole("button", { name: "إنشاء الحساب" }).click();
-  await expect(page).toHaveURL(/\/verify-email/);
-  await page.getByLabel("رمز التحقق").fill(await waitForCode(email)); // auto-submits at 6 digits
-  await expect(page).toHaveURL(/\/account$/);
-}
+import { expect, test } from "@playwright/test";
+import { PASSWORD, register, SETUP_TOKEN, totp, uniqueEmail, waitForCode } from "./helpers";
 
 test.describe("customer authentication", () => {
   test("registers, verifies by emailed code, signs out and signs back in", async ({ page }) => {

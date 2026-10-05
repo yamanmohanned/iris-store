@@ -1,3 +1,4 @@
+import { expect, type Page } from "@playwright/test";
 import { createHmac } from "node:crypto";
 import { readdir, readFile, rm } from "node:fs/promises";
 import path from "node:path";
@@ -79,4 +80,16 @@ export async function waitForMail(
     await new Promise((r) => setTimeout(r, 150));
   }
   throw new Error(`No email to ${to} matching ${subject}`);
+}
+
+/** Register through the real UI (emailed code) and land on /account signed in. */
+export async function register(page: Page, email: string, name = "علي حسن") {
+  await page.goto("/register");
+  await page.getByLabel("الاسم الكامل").fill(name);
+  await page.getByLabel("البريد الإلكتروني").fill(email);
+  await page.getByLabel("كلمة المرور", { exact: true }).fill(PASSWORD);
+  await page.getByRole("button", { name: "إنشاء الحساب" }).click();
+  await expect(page).toHaveURL(/\/verify-email/);
+  await page.getByLabel("رمز التحقق").fill(await waitForCode(email)); // auto-submits at 6 digits
+  await expect(page).toHaveURL(/\/account$/);
 }

@@ -20,7 +20,7 @@ export default async function StoreLayout({ children, params }: LayoutProps<"/[l
     getSession(),
     getFooterPages(),
     getTranslations("nav"),
-    pickClientMessages("store", "cart"),
+    pickClientMessages("store", "cart", "wishlist"),
     getRequestCartCount(),
   ]);
   const announcement = ctx.settings.branding.announcement;

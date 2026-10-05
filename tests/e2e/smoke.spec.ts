@@ -39,4 +39,33 @@ test.describe("smoke", () => {
     await page.waitForLoadState("networkidle");
     expect(errors).toEqual([]);
   });
+
+  test("no Content-Security-Policy violations on the main shopping pages", async ({ page }) => {
+    // Catches inline scripts without the nonce and libraries that probe eval() (e.g. zod's JIT
+    // check) — such code must stay out of the browser bundle.
+    await page.addInitScript(() => {
+      (window as unknown as { __csp: string[] }).__csp = [];
+      document.addEventListener("securitypolicyviolation", (e) => {
+        (window as unknown as { __csp: string[] }).__csp.push(
+          `${e.violatedDirective} ${e.blockedURI} ${e.sourceFile}:${e.lineNumber}`,
+        );
+      });
+    });
+    for (const path of [
+      "/",
+      "/c/women",
+      "/search?q=فستان",
+      "/categories",
+      "/cart",
+      "/track",
+      "/login",
+    ]) {
+      await page.goto(path);
+      await page.waitForLoadState("networkidle");
+      const violations = await page.evaluate(
+        () => (window as unknown as { __csp: string[] }).__csp,
+      );
+      expect(violations, path).toEqual([]);
+    }
+  });
 });

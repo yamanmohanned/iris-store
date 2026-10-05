@@ -6,12 +6,15 @@ import { BrandIcon } from "@/components/store/brand-icon";
 import { Breadcrumbs } from "@/components/store/breadcrumbs";
 import { ProductCard } from "@/components/store/product-card";
 import { ProductExperience } from "@/components/store/product/product-experience";
+import { toggleWishlistAction } from "../../account/actions";
 import { addToCartAction } from "../../cart/actions";
 import { ShareButton } from "@/components/store/product/share-button";
+import { WishlistButton } from "@/components/store/product/wishlist-button";
 import { ProductRail, SectionHeading } from "@/components/store/section";
 import { assertLocale } from "@/i18n/locale";
 import { tl } from "@/lib/localized";
 import { toMajor } from "@/lib/money";
+import { getSession } from "@/server/auth/session";
 import { env } from "@/server/env";
 import { sanitizeRichText, stripHtml } from "@/server/security/sanitize";
 import {
@@ -19,6 +22,7 @@ import {
   getProductBySlug,
   getRelatedProducts,
 } from "@/server/services/catalog";
+import { isInWishlist } from "@/server/services/wishlist";
 import { getStoreContext, whatsappNumber } from "@/server/store-context";
 
 async function load(rawSlug: string) {
@@ -65,11 +69,13 @@ export default async function ProductPage({ params }: PageProps<"/[locale]/p/[sl
   const product = await load(slug);
   if (!product) notFound();
 
-  const [ctx, categories, related, t] = await Promise.all([
+  const session = await getSession();
+  const [ctx, categories, related, t, saved] = await Promise.all([
     getStoreContext(locale),
     getActiveCategories(),
     getRelatedProducts(product),
     getTranslations("store"),
+    session ? isInWishlist(session.user.id, product.id) : Promise.resolve(false),
   ]);
   const name = tl(product.name, locale);
   // Sanitized on save already; re-sanitized on render as defense in depth.
@@ -179,7 +185,15 @@ export default async function ProductPage({ params }: PageProps<"/[locale]/p/[sl
                   {name}
                 </h1>
               </div>
-              <ShareButton title={name} />
+              <div className="flex shrink-0 gap-2">
+                <WishlistButton
+                  productId={product.id}
+                  initialSaved={saved}
+                  action={toggleWishlistAction}
+                  returnTo={`/p/${product.slug}`}
+                />
+                <ShareButton title={name} />
+              </div>
             </div>
             {shortDescription ? (
               <p className="mt-2 text-muted-foreground">{shortDescription}</p>

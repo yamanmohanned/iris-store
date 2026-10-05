@@ -1,5 +1,6 @@
 import { z } from "zod";
-import { LISTING_PAGE_SIZE, parseListingParams, priceFilterMinor } from "@/lib/listing";
+import { LISTING_PAGE_SIZE, priceFilterMinor } from "@/lib/listing";
+import { parseListingParams } from "@/lib/listing-params";
 import { clientIpFrom } from "@/server/security/client-ip";
 import { memoryRateLimit } from "@/server/security/memory-rate-limit";
 import { listProducts } from "@/server/services/catalog";

@@ -264,7 +264,8 @@ const listProductsCached = cached(
 
 /** Product listing with filters. Free-text searches skip the cache (unbounded keys). */
 export function listProducts(input: ListProductsInput) {
-  if (input.q) return listProductsImpl(input);
+  // Free-text searches and per-customer id lists (wishlists) are too varied to cache usefully.
+  if (input.q || input.ids) return listProductsImpl(input);
   return listProductsCached(JSON.stringify(input));
 }
 

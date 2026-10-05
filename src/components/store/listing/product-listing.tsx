@@ -4,12 +4,12 @@ import { buttonVariants } from "@/components/ui/button";
 import { Link } from "@/i18n/navigation";
 import {
   LISTING_PAGE_SIZE,
-  parseListingParams,
   priceFilterMinor,
   toQueryString,
   type ListingParams,
   type ListingSort,
 } from "@/lib/listing";
+import { parseListingParams } from "@/lib/listing-params";
 import type { CurrencyConfig } from "@/lib/money";
 import { listProducts } from "@/server/services/catalog";
 import { EmptyState } from "../empty-state";
