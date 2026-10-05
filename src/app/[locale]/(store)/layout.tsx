@@ -7,6 +7,7 @@ import { pickClientMessages } from "@/i18n/client-messages";
 import { assertLocale } from "@/i18n/locale";
 import { tl } from "@/lib/localized";
 import { getSession } from "@/server/auth/session";
+import { getRequestCartCount } from "@/server/cart-session";
 import { getFooterPages } from "@/server/services/content";
 import { getStoreContext } from "@/server/store-context";
 
@@ -14,12 +15,13 @@ import { getStoreContext } from "@/server/store-context";
 export default async function StoreLayout({ children, params }: LayoutProps<"/[locale]">) {
   const locale = assertLocale((await params).locale);
   setRequestLocale(locale);
-  const [ctx, session, footerPages, t, messages] = await Promise.all([
+  const [ctx, session, footerPages, t, messages, cartCount] = await Promise.all([
     getStoreContext(locale),
     getSession(),
     getFooterPages(),
     getTranslations("nav"),
-    pickClientMessages("store"),
+    pickClientMessages("store", "cart"),
+    getRequestCartCount(),
   ]);
   const announcement = ctx.settings.branding.announcement;
   const announcementText = announcement.enabled ? tl(announcement.text, locale) : "";
@@ -40,6 +42,7 @@ export default async function StoreLayout({ children, params }: LayoutProps<"/[l
         categories={ctx.categoryTree}
         locale={locale}
         signedIn={Boolean(session)}
+        cartCount={cartCount}
       />
       <main id="main" className="min-h-[60dvh]">
         {children}
@@ -51,7 +54,7 @@ export default async function StoreLayout({ children, params }: LayoutProps<"/[l
         pages={footerPages}
         locale={locale}
       />
-      <BottomNav />
+      <BottomNav cartCount={cartCount} />
     </NextIntlClientProvider>
   );
 }

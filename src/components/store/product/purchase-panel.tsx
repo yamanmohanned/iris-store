@@ -5,15 +5,14 @@ import { useTranslations } from "next-intl";
 import { useMemo, useState, useTransition, type ReactNode } from "react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
+import { useRouter } from "@/i18n/navigation";
 import { tl } from "@/lib/localized";
 import { discountPercent, formatMoney, type CurrencyConfig } from "@/lib/money";
 import { cn } from "@/lib/utils";
+import type { CartActionResult } from "@/server/services/cart";
 import type { ProductDetailDTO, VariantDTO } from "@/server/services/catalog";
 
-export type AddToCart = (
-  variantId: string,
-  quantity: number,
-) => Promise<{ ok: boolean; message?: string; cartCount?: number }>;
+export type AddToCart = (variantId: string, quantity: number) => Promise<CartActionResult>;
 
 /** Which values of option `index` can still lead to an available variant, given other choices. */
 function availableValues(
@@ -49,6 +48,8 @@ export function PurchasePanel({
 }) {
   const t = useTranslations("store.product");
   const tStore = useTranslations("store");
+  const tCart = useTranslations("cart");
+  const router = useRouter();
   // Options with a single value are chosen automatically; others need an explicit choice.
   const [selection, setSelection] = useState<(string | null)[]>(() =>
     product.options.map((o) => (o.values.length === 1 ? o.values[0]!.id : null)),
@@ -97,7 +98,9 @@ export function PurchasePanel({
       const result = await onAddToCart(variant.id, quantity);
       if (result.ok) {
         setAdded(true);
-        toast.success(t("added"));
+        toast.success(result.message ?? t("added"), {
+          action: { label: tCart("viewCart"), onClick: () => router.push("/cart") },
+        });
         window.setTimeout(() => setAdded(false), 2000);
       } else if (result.message) {
         toast.error(result.message);

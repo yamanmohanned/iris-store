@@ -6,6 +6,7 @@ import { BrandIcon } from "@/components/store/brand-icon";
 import { Breadcrumbs } from "@/components/store/breadcrumbs";
 import { ProductCard } from "@/components/store/product-card";
 import { ProductExperience } from "@/components/store/product/product-experience";
+import { addToCartAction } from "../../cart/actions";
 import { ShareButton } from "@/components/store/product/share-button";
 import { ProductRail, SectionHeading } from "@/components/store/section";
 import { assertLocale } from "@/i18n/locale";
@@ -155,6 +156,7 @@ export default async function ProductPage({ params }: PageProps<"/[locale]/p/[sl
         name={name}
         currency={ctx.currency}
         locale={locale}
+        onAddToCart={addToCartAction}
         header={
           <div>
             <div className="lg:hidden">
