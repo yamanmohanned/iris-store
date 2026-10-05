@@ -53,3 +53,30 @@ export function totp(base32Secret: string, now = Date.now()): string {
   const offset = hmac[hmac.length - 1]! & 0xf;
   return ((hmac.readUInt32BE(offset) & 0x7fffffff) % 1_000_000).toString().padStart(6, "0");
 }
+
+export type CapturedMail = { to: string; subject: string; html: string; text: string };
+
+/** Wait for an email captured by the console driver whose subject matches. */
+export async function waitForMail(
+  to: string,
+  subject: RegExp,
+  timeoutMs = 10_000,
+): Promise<CapturedMail> {
+  const started = Date.now();
+  const safe = to.replace(/[^a-z0-9@._-]/gi, "_");
+  while (Date.now() - started < timeoutMs) {
+    try {
+      for (const file of (await readdir(MAIL_DIR))
+        .filter((f) => f.includes(safe))
+        .sort()
+        .reverse()) {
+        const mail = JSON.parse(await readFile(path.join(MAIL_DIR, file), "utf8")) as CapturedMail;
+        if (subject.test(mail.subject)) return mail;
+      }
+    } catch {
+      // directory not created yet
+    }
+    await new Promise((r) => setTimeout(r, 150));
+  }
+  throw new Error(`No email to ${to} matching ${subject}`);
+}

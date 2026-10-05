@@ -36,8 +36,8 @@ const ITEMS = [
 export function BottomNav({ cartCount = 0 }: { cartCount?: number }) {
   const t = useTranslations("nav");
   const pathname = usePathname();
-  // Product pages show a purchase bar in this spot instead.
-  if (pathname.startsWith("/p/")) return null;
+  // Product pages and checkout show their own action bar in this spot instead.
+  if (pathname.startsWith("/p/") || pathname.startsWith("/checkout")) return null;
   return (
     <nav
       aria-label={t("bottomNav")}

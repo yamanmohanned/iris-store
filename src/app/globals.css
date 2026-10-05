@@ -212,6 +212,11 @@
     color: var(--foreground);
   }
 
+  /* Reem Kufi's word space is very narrow: open it up so Arabic headings never run together. */
+  .font-display:lang(ar) {
+    word-spacing: 0.16em;
+  }
+
   /* iOS Safari zooms into inputs whose font-size is below 16px. */
   input,
   select,

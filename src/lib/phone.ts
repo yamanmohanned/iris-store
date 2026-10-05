@@ -75,3 +75,19 @@ export function formatPhone(e164: string, storePhoneCode?: string): string {
       : [national.slice(0, national.length - 4), national.slice(-4)];
   return `+${cc} ${groups.filter(Boolean).join(" ")}`;
 }
+
+/** Example shown in phone fields, in the local format customers know. */
+export function phonePlaceholder(storePhoneCode: string): string {
+  const examples: Record<string, string> = {
+    "964": "0770 123 4567",
+    "966": "050 123 4567",
+    "971": "050 123 4567",
+    "965": "9 123 4567",
+    "974": "3312 3456",
+    "973": "3612 3456",
+    "968": "9212 3456",
+    "962": "079 123 4567",
+    "20": "010 1234 5678",
+  };
+  return examples[storePhoneCode.replace(/\D/g, "")] ?? `${storePhoneCode} …`;
+}
