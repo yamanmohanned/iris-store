@@ -4,6 +4,7 @@ import { LanguageSwitcher } from "@/components/language-switcher";
 import { Link } from "@/i18n/navigation";
 import { tl } from "@/lib/localized";
 import type { CategoryNode } from "@/server/services/catalog";
+import type { ImageDTO } from "@/server/services/media";
 
 /**
  * Sticky store header. Phones: brand + a search pill (cart/account live in the bottom bar).
@@ -11,12 +12,14 @@ import type { CategoryNode } from "@/server/services/catalog";
  */
 export async function StoreHeader({
   storeName,
+  logo = null,
   categories,
   locale,
   cartCount = 0,
   signedIn = false,
 }: {
   storeName: string;
+  logo?: ImageDTO | null;
   categories: CategoryNode[];
   locale: string;
   cartCount?: number;
@@ -31,7 +34,21 @@ export async function StoreHeader({
           href="/"
           className="shrink-0 font-display text-[1.35rem] leading-none font-bold text-primary lg:text-2xl"
         >
-          {storeName}
+          {logo ? (
+            // eslint-disable-next-line @next/next/no-img-element -- pre-generated variants; no blur backdrop behind a transparent logo
+            <img
+              src={logo.src}
+              srcSet={logo.srcSet}
+              sizes="160px"
+              width={logo.width}
+              height={logo.height}
+              alt={storeName}
+              fetchPriority="high"
+              className="h-8 w-auto max-w-40 object-contain lg:h-9"
+            />
+          ) : (
+            storeName
+          )}
         </Link>
 
         <nav aria-label={t("nav.mainMenu")} className="hidden min-w-0 flex-1 lg:block">

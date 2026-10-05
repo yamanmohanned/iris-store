@@ -1033,6 +1033,195 @@
         "limit": "Enter a number above zero, or leave it empty.",
         "used": "This coupon was used in orders, so it can't be deleted. Turn it off instead."
       }
+    },
+    "settings": {
+      "title": "Settings",
+      "intro": "Everything about your store in one place. Changes reach customers as soon as you save.",
+      "save": "Save changes",
+      "saved": "Settings saved",
+      "unsaved": "You have unsaved changes",
+      "fixErrors": "Check the highlighted fields and save again.",
+      "english": "English fields",
+      "englishHint": "Show them to set how these texts read in the English version of your store.",
+      "sections": {
+        "general": {
+          "title": "Store details",
+          "description": "Name, logo and the contact details customers see."
+        },
+        "branding": {
+          "title": "Brand & colors",
+          "description": "Your store color, corner style and the announcement bar."
+        },
+        "checkout": {
+          "title": "Payments & checkout",
+          "description": "Payment methods, minimum order, free delivery and tax."
+        },
+        "notifications": {
+          "title": "Notifications",
+          "description": "Who gets an email for new orders and low stock, and what customers receive."
+        },
+        "seo": {
+          "title": "Search & sharing",
+          "description": "How your store appears on Google and when its link is shared."
+        }
+      },
+      "summary": {
+        "cod": "Cash on delivery",
+        "bank": "Bank transfer",
+        "freeFrom": "Free delivery from {amount}",
+        "announcementOn": "Announcement bar on",
+        "announcementOff": "Announcement bar off",
+        "shippingTitle": "Delivery areas",
+        "shipping": "Areas and delivery fees",
+        "recipients": "{count, plural, one {# alert email} other {# alert emails}}",
+        "noRecipients": "No alert email yet",
+        "seoDefault": "Uses the store name and tagline"
+      },
+      "general": {
+        "identity": "Identity",
+        "storeName": "Store name",
+        "tagline": "Tagline",
+        "taglineHint": "One sentence about your store, shown in the footer and in search results.",
+        "logo": "Logo",
+        "logoHint": "Shown at the top of the store instead of the name. Best as a transparent PNG, 400px wide or more.",
+        "contact": "Contact",
+        "contactHint": "Shown in the footer, the contact page and order pages.",
+        "phone": "Phone",
+        "whatsapp": "WhatsApp",
+        "whatsappHint": "Include the country code so the chat button works.",
+        "email": "Email",
+        "address": "Address",
+        "hours": "Opening hours",
+        "hoursPlaceholder": "e.g. Daily, 10am to 10pm",
+        "social": "Social accounts",
+        "socialHint": "Enter the account name or the full link. Empty fields are hidden.",
+        "socialPlaceholder": "@yourstore",
+        "socials": {
+          "instagram": "Instagram",
+          "facebook": "Facebook",
+          "tiktok": "TikTok",
+          "x": "X (Twitter)",
+          "snapchat": "Snapchat",
+          "telegram": "Telegram",
+          "youtube": "YouTube"
+        },
+        "region": "Country & currency",
+        "regionHint": "Chosen when the store was first set up. They can't change later because prices and phone numbers are stored with them.",
+        "country": "Country",
+        "currency": "Currency",
+        "timeZone": "Time zone"
+      },
+      "branding": {
+        "color": "Main color",
+        "colorHint": "Used for buttons, prices and links. Pick a suggested color or your own.",
+        "presets": "Suggested colors",
+        "custom": "Custom color",
+        "tooLight": "This color is very light: prices and links in it will be hard to read on white. Pick a darker shade.",
+        "lowContrast": "Fine for buttons, but small text in this color is less clear. Darker shades read better.",
+        "corners": "Corners",
+        "radius": {
+          "sharp": "Sharp",
+          "soft": "Soft",
+          "round": "Round"
+        },
+        "preview": "Preview",
+        "sampleBadge": "New",
+        "sampleProduct": "Linen summer dress",
+        "samplePrice": "IQD 35,000",
+        "sampleChip": "In 4 colors",
+        "sampleButton": "Add to cart",
+        "announcement": "Announcement bar",
+        "announcementHint": "One line above every page for a sale or important news.",
+        "announcementOn": "Show the announcement bar",
+        "announcementText": "Announcement",
+        "announcementPlaceholder": "e.g. Free delivery on orders over 100,000",
+        "announcementLink": "Link when tapped",
+        "announcementLinkHint": "A page in your store starting with / (like /c/sale) or a full link starting with https://"
+      },
+      "checkout": {
+        "payments": "Payment methods",
+        "paymentsHint": "Turn on at least one. Customers choose from those available at checkout.",
+        "cod": "Cash on delivery",
+        "codHint": "The customer pays the courier in cash.",
+        "codNote": "Note for customers",
+        "codNotePlaceholder": "e.g. Please have the exact amount ready",
+        "bank": "Bank transfer or e-wallet",
+        "bankHint": "The customer transfers the amount, then you confirm the payment on the order page.",
+        "bankInstructions": "Transfer instructions",
+        "bankInstructionsHint": "Bank or wallet, account number and recipient name. Shown after ordering and in the confirmation email.",
+        "amounts": "Amounts",
+        "minOrder": "Minimum order",
+        "minOrderHint": "Orders below this amount can't be placed. Leave empty for no minimum.",
+        "freeShipping": "Free delivery on orders from",
+        "freeShippingHint": "Applies to every area unless an area has its own amount. Leave empty to turn off.",
+        "form": "Checkout form",
+        "guest": "Checkout without an account",
+        "guestHint": "Best kept on: most customers prefer ordering quickly with a name and phone number.",
+        "requireEmail": "Email required",
+        "requireEmailHint": "When off, email is optional and the confirmation goes to whoever enters one.",
+        "notes": "Order notes",
+        "notesHint": "Lets customers add a note, such as a convenient delivery time.",
+        "tax": "Tax",
+        "taxHint": "Leave it off if your prices are not taxed.",
+        "taxOn": "Add tax to orders",
+        "taxRate": "Tax rate",
+        "taxIncluded": "Prices include tax",
+        "taxIncludedHint": "When on, prices stay as they are and include the tax. When off, tax is added on top of the total."
+      },
+      "notifications": {
+        "notConfigured": "Email is not set up on the server yet, so messages aren't actually sent. Ask your developer to configure email (SMTP).",
+        "recipients": "Alert emails",
+        "recipientsHint": "Store alerts go to these addresses (up to 5).",
+        "emailLabel": "Alert email {n}",
+        "addEmail": "Add email",
+        "removeEmail": "Remove email",
+        "staff": "Alerts for you",
+        "newOrder": "New order",
+        "newOrderHint": "An email for every new order with the products, amount and customer details.",
+        "lowStock": "Running low",
+        "lowStockHint": "An email when a product's quantity drops to the limit below or less.",
+        "threshold": "Alert at",
+        "pieces": "pcs",
+        "thresholdHint": "Also used by the \"Low stock\" filter on the products page.",
+        "customers": "Customer emails",
+        "statusEmails": "Order status updates",
+        "statusEmailsHint": "Emails customers when their order is confirmed, shipped, delivered or cancelled.",
+        "alwaysSent": "Order confirmations and verification codes are always sent."
+      },
+      "seo": {
+        "search": "Search results",
+        "searchHint": "Google shows your home page title and description as set here. Leave them empty to use the store name and tagline.",
+        "title": "Home page title",
+        "descriptionLabel": "Store description",
+        "counter": "{n} of {max} characters",
+        "preview": "Approximate Google preview",
+        "share": "Share image",
+        "shareHint": "Shown when your store link is shared on WhatsApp, Facebook and others. Product pages use the product photo.",
+        "shareImage": "Image (1200×630 px)"
+      },
+      "cache": {
+        "title": "Refresh store data",
+        "hint": "Changes usually appear right away. Use this if an edit doesn't show in the store.",
+        "button": "Refresh now",
+        "done": "Store data refreshed"
+      },
+      "errors": {
+        "invalid": "Invalid value.",
+        "storeName": "Enter the store name.",
+        "email": "Enter a valid email address.",
+        "phone": "Enter a valid number with the country code.",
+        "social": "Enter the account name or a link starting with https://",
+        "color": "Enter a color as #RRGGBB, like #3d2c8d.",
+        "link": "Links start with / for a store page, or with https://",
+        "announcement": "Write the announcement or turn the bar off.",
+        "amount": "Enter a valid amount in numbers.",
+        "payments": "Turn on at least one payment method.",
+        "bankInstructions": "Add transfer instructions so customers know where to pay.",
+        "taxRate": "Enter a rate between 0.01 and 100.",
+        "threshold": "Enter a number from 0 to 1000.",
+        "image": "The image could not be found. Upload it again.",
+        "tooFast": "Too many attempts. Wait a moment and try again."
+      }
     }
   }
 }

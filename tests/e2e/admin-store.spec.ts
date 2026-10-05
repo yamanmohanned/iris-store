@@ -69,4 +69,41 @@ test.describe("admin: store setup", () => {
     await ticket.getByRole("button", { name: "إيقاف" }).click();
     await expect(ticket).toContainText("موقوف");
   });
+
+  test("brand color and announcement bar reach the storefront", async ({ page, browser }, info) => {
+    // Store-wide settings: one project is enough (and the two would race each other).
+    test.skip(info.project.name !== "mobile", "runs once");
+    await signInAsStaff(page);
+    await page.goto("/admin/settings");
+    await page.getByRole("link", { name: /الهوية والألوان/ }).click();
+    await expect(page).toHaveURL(/\/admin\/settings\/branding$/);
+
+    await page.getByRole("radio", { name: "#0f766e" }).click();
+    await page.getByRole("switch", { name: "إظهار شريط الإعلان" }).click();
+    // Turning the bar on without a text is caught before saving.
+    await page.getByRole("button", { name: "حفظ التغييرات" }).click();
+    await expect(page.getByText("اكتب نص الإعلان أو أوقف الشريط.")).toBeVisible();
+    await page.getByLabel("نص الإعلان", { exact: true }).fill("خصم الجمعة البيضاء");
+    await page.getByRole("button", { name: "حفظ التغييرات" }).click();
+    await expect(page.getByText("تم حفظ الإعدادات")).toBeVisible();
+    await expect(page.getByText("لديك تغييرات غير محفوظة")).toBeHidden();
+
+    const shopper = await (await browser.newContext()).newPage();
+    await shopper.goto("/");
+    await expect(shopper.getByText("خصم الجمعة البيضاء")).toBeVisible();
+    const primary = () =>
+      shopper.evaluate(() =>
+        getComputedStyle(document.documentElement).getPropertyValue("--primary").trim(),
+      );
+    expect(await primary()).toBe("#0f766e");
+
+    // Put things back for the other specs.
+    await page.getByRole("radio", { name: "#3d2c8d" }).click();
+    await page.getByRole("switch", { name: "إظهار شريط الإعلان" }).click();
+    await page.getByRole("button", { name: "حفظ التغييرات" }).click();
+    await expect(page.getByText("لديك تغييرات غير محفوظة")).toBeHidden();
+    await shopper.reload();
+    await expect(shopper.getByText("خصم الجمعة البيضاء")).toBeHidden();
+    expect(await primary()).toBe("#3d2c8d");
+  });
 });

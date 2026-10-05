@@ -8,6 +8,7 @@ import { assertLocale } from "@/i18n/locale";
 import { tl } from "@/lib/localized";
 import { getSession } from "@/server/auth/session";
 import { getRequestCartCount } from "@/server/cart-session";
+import { getBrandAssets } from "@/server/services/brand-assets";
 import { getFooterPages } from "@/server/services/content";
 import { getStoreContext } from "@/server/store-context";
 
@@ -15,8 +16,9 @@ import { getStoreContext } from "@/server/store-context";
 export default async function StoreLayout({ children, params }: LayoutProps<"/[locale]">) {
   const locale = assertLocale((await params).locale);
   setRequestLocale(locale);
-  const [ctx, session, footerPages, t, messages, cartCount] = await Promise.all([
+  const [ctx, brand, session, footerPages, t, messages, cartCount] = await Promise.all([
     getStoreContext(locale),
+    getBrandAssets(),
     getSession(),
     getFooterPages(),
     getTranslations("nav"),
@@ -39,6 +41,7 @@ export default async function StoreLayout({ children, params }: LayoutProps<"/[l
       ) : null}
       <StoreHeader
         storeName={ctx.storeName}
+        logo={brand.logo}
         categories={ctx.categoryTree}
         locale={locale}
         signedIn={Boolean(session)}

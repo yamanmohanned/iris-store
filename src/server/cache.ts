@@ -1,6 +1,6 @@
 import "server-only";
 import { createHash } from "node:crypto";
-import { revalidateTag, unstable_cache } from "next/cache";
+import { revalidatePath, revalidateTag, unstable_cache } from "next/cache";
 
 /**
  * Data-cache wrapper around Next's `unstable_cache` (we do not enable Cache Components because the
@@ -47,4 +47,10 @@ export function cached<A extends unknown[], R>(
 export function invalidate(...tags: string[]) {
   if (!inNextRuntime()) return;
   for (const tag of tags) revalidateTag(tag, { expire: 0 });
+}
+
+/** Re-render every page on its next request (layout-wide data such as branding changed). */
+export function invalidateAllPages() {
+  if (!inNextRuntime()) return;
+  revalidatePath("/", "layout");
 }
