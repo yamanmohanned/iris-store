@@ -38,4 +38,44 @@ export const fontLatin = localFont({
   ],
 });
 
-export const fontVariables = `${fontArabic.variable} ${fontLatin.variable}`;
+/**
+ * Display face for headings only (used with restraint): Reem Kufi, a geometric Kufi whose
+ * stretched horizontals give titles a calligraphic, fashion-like voice. ~32 KB for both scripts.
+ */
+export const fontDisplay = localFont({
+  src: [
+    {
+      path: "../../node_modules/@fontsource-variable/reem-kufi/files/reem-kufi-arabic-wght-normal.woff2",
+      weight: "400 700",
+      style: "normal",
+    },
+  ],
+  variable: "--font-display-ar",
+  display: "swap",
+  adjustFontFallback: false,
+  declarations: [
+    {
+      prop: "unicode-range",
+      value:
+        "U+0600-06FF,U+0750-077F,U+0870-088E,U+0890-0891,U+0897-08E1,U+08E3-08FF,U+200C-200E,U+2010-2011,U+204F,U+2E41,U+FB50-FDFF,U+FE70-FE74,U+FE76-FEFC",
+    },
+  ],
+});
+
+export const fontDisplayLatin = localFont({
+  src: "../../node_modules/@fontsource-variable/reem-kufi/files/reem-kufi-latin-wght-normal.woff2",
+  weight: "400 700",
+  style: "normal",
+  variable: "--font-display-latin",
+  display: "swap",
+  preload: false,
+  declarations: [
+    {
+      prop: "unicode-range",
+      value:
+        "U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122,U+2212",
+    },
+  ],
+});
+
+export const fontVariables = `${fontArabic.variable} ${fontLatin.variable} ${fontDisplay.variable} ${fontDisplayLatin.variable}`;

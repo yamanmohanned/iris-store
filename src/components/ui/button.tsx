@@ -4,7 +4,7 @@ import * as React from "react";
 import { cn } from "@/lib/utils";
 import { Spinner } from "./spinner";
 
-export const buttonVariants = cva(
+const buttonCva = cva(
   "relative inline-flex shrink-0 items-center justify-center gap-2 font-medium whitespace-nowrap transition-[background-color,color,box-shadow,transform,opacity] duration-150 select-none active:scale-[0.98] disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-[1.15em] [&_svg]:shrink-0",
   {
     variants: {
@@ -31,8 +31,16 @@ export const buttonVariants = cva(
   },
 );
 
+/**
+ * Class names for button-styled elements (links, etc.). Unlike raw `cva`, conflicting classes
+ * passed via `className` (e.g. a different background) correctly override the variant's.
+ */
+export function buttonVariants(props?: Parameters<typeof buttonCva>[0]) {
+  return cn(buttonCva(props));
+}
+
 export interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement>, VariantProps<typeof buttonVariants> {
+  extends React.ButtonHTMLAttributes<HTMLButtonElement>, VariantProps<typeof buttonCva> {
   asChild?: boolean;
   loading?: boolean;
 }
@@ -52,7 +60,7 @@ export function Button({
   const Comp = asChild ? Slot.Root : "button";
   return (
     <Comp
-      className={cn(buttonVariants({ variant, size, block }), className)}
+      className={cn(buttonCva({ variant, size, block }), className)}
       disabled={asChild ? undefined : disabled || loading}
       aria-busy={loading || undefined}
       type={asChild ? undefined : (type ?? "button")}

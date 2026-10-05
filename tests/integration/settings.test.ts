@@ -40,7 +40,7 @@ describe("settings service", () => {
   it("falls back to defaults when a stored section is corrupted", async () => {
     await db.insert(settings).values({ key: "branding", value: { primaryColor: 42 } });
     const s = await getSettings();
-    expect(s.branding.primaryColor).toBe("#6b3fd4");
+    expect(s.branding.primaryColor).toBe("#3d2c8d");
   });
 
   it("applies overrides only when creating missing sections", async () => {

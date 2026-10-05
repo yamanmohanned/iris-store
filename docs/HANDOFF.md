@@ -6,14 +6,15 @@
 
 | البند            | القيمة                                                            |
 | ---------------- | ----------------------------------------------------------------- |
-| آخر مرحلة مكتملة | **المرحلة 3** — المصادقة والتحقق والأمان                          |
-| المرحلة الجارية  | **المرحلة 4** — واجهة المتجر (Mobile-first)                       |
+| آخر مرحلة مكتملة | **المرحلة 4** — واجهة المتجر (Mobile-first)                       |
+| المرحلة الجارية  | **المرحلة 5** — السلة والدفع والطلبات وحساب الزبون                |
 | الفرع            | `claude/nifty-turing-csz4ep`                                      |
 | بانتظارك         | مفتاح `STITCH_API_KEY` (انظر `progress/00-discovery-and-plan.md`) |
 
 ## الخطوة التالية بالضبط
 
-1. إكمال المرحلة 4 (واجهة المتجر) حسب جدول المراحل في `docs/PLAN.md`.
+1. إكمال المرحلة 5 (السلة ← إتمام الطلب ← تأكيد/تتبع الطلب ← حساب الزبون) حسب `docs/PLAN.md`.
+   نقطة الربط: الخاصية `onAddToCart` في `src/components/store/product/product-experience.tsx`.
 2. عند توفر `STITCH_API_KEY` في البيئة: تشغيل `pnpm stitch:sync` ثم تنفيذ المرحلة 8 (التحليل والمطابقة).
 
 ## كيف أشغّل المشروع محلياً
@@ -43,3 +44,4 @@ pnpm test:e2e                                                        # على ج
 | 1       | [`progress/01-foundation.md`](./progress/01-foundation.md)                 |
 | 2       | [`progress/02-database.md`](./progress/02-database.md)                     |
 | 3       | [`progress/03-auth-security.md`](./progress/03-auth-security.md)           |
+| 4       | [`progress/04-storefront.md`](./progress/04-storefront.md)                 |

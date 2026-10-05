@@ -93,7 +93,7 @@ describe("misc helpers", () => {
   });
 
   it("picks readable text colors for brand colors", () => {
-    expect(readableForeground("#6b3fd4")).toBe("#ffffff");
+    expect(readableForeground("#3d2c8d")).toBe("#ffffff");
     expect(readableForeground("#ffd84d")).toBe("#17161d");
     expect(readableForeground("not-a-color")).toBe("#ffffff");
   });

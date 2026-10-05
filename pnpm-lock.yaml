@@ -11,6 +11,9 @@ importers:
       '@fontsource-variable/readex-pro':
         specifier: 5.3.0
         version: 5.3.0
+      '@fontsource-variable/reem-kufi':
+        specifier: 5.3.0
+        version: 5.3.0
       '@node-rs/argon2':
         specifier: 2.2.1
         version: 2.2.1
@@ -74,6 +77,9 @@ importers:
       sharp:
         specifier: 0.35.5
         version: 0.35.5(@types/node@22.20.5)
+      simple-icons:
+        specifier: 16.34.0
+        version: 16.34.0
       sonner:
         specifier: 2.0.8
         version: 2.0.8(@types/react@19.3.0)(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
@@ -845,6 +851,9 @@ packages:
 
   '@fontsource-variable/readex-pro@5.3.0':
     resolution: {integrity: sha512-ebrEcz8sjzQk92x6K3WtYzOgEKTIDe5D+iPqef0YYvPdqCfxzVkRgpsog5POX4sWa7e4wccCQ1IhmMuRka2hZg==}
+
+  '@fontsource-variable/reem-kufi@5.3.0':
+    resolution: {integrity: sha512-Q2MbKKWX2JVUIGbs0GTdFp2GTahGmink5mFCo7kKLPYfbY9S8xdvCFC+eMSDI33jj8Cvox5QpWrifTUQol07iw==}
 
   '@formatjs/fast-memoize@3.1.7':
     resolution: {integrity: sha512-zXfhLpvA6T7+efdt9JLbBwZ00tT7NsBMDVnDu8rpHeNNv8KfRZAMo2gkG0k9lK/Nzc//3kJ9pImsfuJxk3KhUA==}
@@ -4252,6 +4261,10 @@ packages:
     resolution: {integrity: sha512-6x6dK6zJdpTzF4sQeNYxwtvBzf6Eg4GtlesS94HOvTudUeyK2WXAaIfmDgsyslYrRBeFIlsi54AYsFGUuhmvrQ==}
     engines: {node: '>= 0.4'}
 
+  simple-icons@16.34.0:
+    resolution: {integrity: sha512-UTxKn0PVspk84B2hHF3Dqiqht1yDjJmDc/t4cO7PyCQxCMk6OjEu95pnpGjhLaGeQ4qBrGASbefTIe/+czrX7g==}
+    engines: {node: '>=0.12.18'}
+
   sonic-boom@4.2.1:
     resolution: {integrity: sha512-w6AxtubXa2wTXAUsZMMWERrsIRAdrK0Sc+FUytWvYAhBJLyuI4llrMIC1DtlNSdI99EI86KZum2MMq3EAZlF9Q==}
 
@@ -5131,6 +5144,8 @@ snapshots:
   '@floating-ui/utils@0.2.12': {}
 
   '@fontsource-variable/readex-pro@5.3.0': {}
+
+  '@fontsource-variable/reem-kufi@5.3.0': {}
 
   '@formatjs/fast-memoize@3.1.7': {}
 
@@ -8520,6 +8535,8 @@ snapshots:
       side-channel-list: 1.0.1
       side-channel-map: 1.0.1
       side-channel-weakmap: 1.0.2
+
+  simple-icons@16.34.0: {}
 
   sonic-boom@4.2.1:
     dependencies:

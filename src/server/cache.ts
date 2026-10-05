@@ -1,4 +1,5 @@
 import "server-only";
+import { createHash } from "node:crypto";
 import { revalidateTag, unstable_cache } from "next/cache";
 
 /**
@@ -19,14 +20,27 @@ export const CacheTags = {
 
 const inNextRuntime = () => Boolean(process.env.NEXT_RUNTIME);
 const ttl = () => Number(process.env.DATA_CACHE_TTL_SECONDS ?? 3600);
+/** DATA_CACHE=off bypasses caching (E2E runs, debugging). */
+const cacheDisabled = () => process.env.DATA_CACHE === "off";
+
+/**
+ * Entries are namespaced per database, so two servers sharing one build directory (e.g. dev and
+ * E2E) never read each other's cached data.
+ */
+function namespace(): string {
+  return createHash("sha256")
+    .update(process.env.DATABASE_URL ?? "")
+    .digest("hex")
+    .slice(0, 10);
+}
 
 export function cached<A extends unknown[], R>(
   fn: (...args: A) => Promise<R>,
   keyParts: string[],
   tags: string[],
 ): (...args: A) => Promise<R> {
-  if (!inNextRuntime()) return fn;
-  return unstable_cache(fn, keyParts, { tags, revalidate: ttl() });
+  if (!inNextRuntime() || cacheDisabled()) return fn;
+  return unstable_cache(fn, [namespace(), ...keyParts], { tags, revalidate: ttl() });
 }
 
 /** Expire tagged data immediately (next request recomputes). Safe in actions and route handlers. */

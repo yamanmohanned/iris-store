@@ -1,5 +1,5 @@
 import "server-only";
-import { asc, eq, inArray } from "drizzle-orm";
+import { and, asc, eq, inArray } from "drizzle-orm";
 import { z } from "zod";
 import { isValidSlug, slugify } from "@/lib/slug";
 import { linkHref, localizedText, requiredLocalizedText } from "@/lib/validation";
@@ -321,3 +321,30 @@ export async function pagesBySystemKey(keys: string[]) {
     .from(pages)
     .where(inArray(pages.systemKey, keys as never[]));
 }
+
+async function loadFooterPages() {
+  return db
+    .select({ slug: pages.slug, title: pages.title, systemKey: pages.systemKey })
+    .from(pages)
+    .where(and(eq(pages.isPublished, true), eq(pages.showInFooter, true)))
+    .orderBy(asc(pages.sortOrder));
+}
+
+export const getFooterPages = cached(
+  loadFooterPages,
+  ["content:footer-pages"],
+  [CacheTags.content],
+);
+
+async function loadPage(slug: string) {
+  const [page] = await db
+    .select()
+    .from(pages)
+    .where(and(eq(pages.slug, slug), eq(pages.isPublished, true)))
+    .limit(1);
+  return page
+    ? { ...page, createdAt: page.createdAt.toISOString(), updatedAt: page.updatedAt.toISOString() }
+    : null;
+}
+
+export const getPublishedPage = cached(loadPage, ["content:page"], [CacheTags.content]);

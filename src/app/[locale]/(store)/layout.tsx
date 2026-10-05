@@ -1,26 +1,57 @@
-import { setRequestLocale } from "next-intl/server";
-import { LanguageSwitcher } from "@/components/language-switcher";
-import { Link } from "@/i18n/navigation";
+import { NextIntlClientProvider } from "next-intl";
+import { getTranslations, setRequestLocale } from "next-intl/server";
+import { BottomNav } from "@/components/store/bottom-nav";
+import { AnnouncementBar, StoreHeader } from "@/components/store/header";
+import { StoreFooter } from "@/components/store/footer";
+import { pickClientMessages } from "@/i18n/client-messages";
 import { assertLocale } from "@/i18n/locale";
 import { tl } from "@/lib/localized";
-import { getSettings } from "@/server/services/settings";
+import { getSession } from "@/server/auth/session";
+import { getFooterPages } from "@/server/services/content";
+import { getStoreContext } from "@/server/store-context";
 
-// Temporary storefront chrome — replaced by the full mobile-first layout in phase 4.
+/** Storefront chrome: announcement, sticky header, content, footer and the phone tab bar. */
 export default async function StoreLayout({ children, params }: LayoutProps<"/[locale]">) {
   const locale = assertLocale((await params).locale);
   setRequestLocale(locale);
-  const settings = await getSettings();
+  const [ctx, session, footerPages, t, messages] = await Promise.all([
+    getStoreContext(locale),
+    getSession(),
+    getFooterPages(),
+    getTranslations("nav"),
+    pickClientMessages("store"),
+  ]);
+  const announcement = ctx.settings.branding.announcement;
+  const announcementText = announcement.enabled ? tl(announcement.text, locale) : "";
+
   return (
-    <div className="min-h-dvh">
-      <header className="border-b bg-surface">
-        <div className="container-page flex h-14 items-center justify-between">
-          <Link href="/" className="text-lg font-bold">
-            {tl(settings.general.storeName, locale)}
-          </Link>
-          <LanguageSwitcher />
-        </div>
-      </header>
-      <main id="main">{children}</main>
-    </div>
+    <NextIntlClientProvider messages={messages}>
+      <a
+        href="#main"
+        className="sr-only z-50 rounded-md bg-primary px-4 py-2 text-primary-foreground focus:not-sr-only focus:fixed focus:start-3 focus:top-3"
+      >
+        {t("skipToContent")}
+      </a>
+      {announcementText ? (
+        <AnnouncementBar text={announcementText} href={announcement.link || undefined} />
+      ) : null}
+      <StoreHeader
+        storeName={ctx.storeName}
+        categories={ctx.categoryTree}
+        locale={locale}
+        signedIn={Boolean(session)}
+      />
+      <main id="main" className="min-h-[60dvh]">
+        {children}
+      </main>
+      <StoreFooter
+        settings={ctx.settings}
+        storeName={ctx.storeName}
+        tagline={ctx.tagline}
+        pages={footerPages}
+        locale={locale}
+      />
+      <BottomNav />
+    </NextIntlClientProvider>
   );
 }

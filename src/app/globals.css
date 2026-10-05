@@ -7,35 +7,40 @@
  * from it uses color-mix() so one value re-themes the whole store.
  */
 :root {
+  /*
+   * "Iris" default identity, taken from the flower itself:
+   *   Iris Ink (petals) · Pollen (the yellow beard on each falls petal) · Stem green.
+   * Owners re-brand by changing --primary (and the radius) from the admin.
+   */
   --radius: 0.875rem;
 
-  --background: oklch(0.985 0.002 286);
-  --foreground: oklch(0.21 0.018 286);
-  --surface: oklch(1 0 0);
-  --surface-muted: oklch(0.965 0.004 286);
-  --muted-foreground: oklch(0.5 0.014 286);
-  --border: oklch(0.915 0.006 286);
-  --input: oklch(0.87 0.008 286);
+  --background: #fbfafd;
+  --foreground: #1d1a2e;
+  --surface: #ffffff;
+  --surface-muted: #f3f1f8;
+  --muted-foreground: #646078;
+  --border: #e7e4ef;
+  --input: #d6d2e2;
 
-  --primary: oklch(0.5 0.19 292);
-  --primary-foreground: oklch(0.99 0 0);
-  --primary-soft: color-mix(in oklch, var(--primary) 10%, white);
-  --primary-strong: color-mix(in oklch, var(--primary) 82%, black);
+  --primary: #3d2c8d;
+  --primary-foreground: #ffffff;
+  --primary-soft: color-mix(in oklch, var(--primary) 9%, white);
+  --primary-strong: color-mix(in oklch, var(--primary) 84%, black);
   --ring: color-mix(in oklch, var(--primary) 55%, transparent);
 
-  --accent: oklch(0.58 0.2 18);
-  --accent-foreground: oklch(0.99 0 0);
-  --success: oklch(0.56 0.13 155);
-  --success-soft: oklch(0.96 0.03 155);
-  --warning: oklch(0.72 0.15 70);
-  --warning-soft: oklch(0.97 0.04 85);
-  --danger: oklch(0.56 0.2 27);
-  --danger-soft: oklch(0.96 0.025 27);
-  --info: oklch(0.56 0.13 250);
-  --info-soft: oklch(0.96 0.02 250);
+  --accent: #f3c340;
+  --accent-foreground: #2b2100;
+  --success: #2e6b4f;
+  --success-soft: #e6f2eb;
+  --warning: #9a6512;
+  --warning-soft: #fdf3dc;
+  --danger: #c2362e;
+  --danger-soft: #fdeceb;
+  --info: #2f5f9e;
+  --info-soft: #e8f0fb;
 
-  --shadow-card: 0 1px 2px oklch(0.2 0.02 286 / 0.04), 0 4px 18px oklch(0.2 0.02 286 / 0.05);
-  --shadow-float: 0 8px 30px oklch(0.2 0.02 286 / 0.12);
+  --shadow-card: 0 1px 2px rgb(29 26 46 / 0.04), 0 6px 20px rgb(29 26 46 / 0.05);
+  --shadow-float: 0 10px 34px rgb(29 26 46 / 0.14);
 
   --header-height: 3.5rem;
   --bottom-nav-height: 4rem;
@@ -44,6 +49,9 @@
 @theme inline {
   --font-sans:
     var(--font-arabic), var(--font-latin), ui-sans-serif, system-ui, "Segoe UI", Tahoma, sans-serif;
+  --font-display:
+    var(--font-display-ar), var(--font-display-latin), var(--font-arabic), var(--font-latin),
+    ui-sans-serif, system-ui, sans-serif;
 
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -272,4 +280,91 @@
   );
   background-size: 400% 100%;
   animation: var(--animate-shimmer);
+}
+
+/*
+ * Signature shape: a petal — generous radius everywhere except one tighter corner at the
+ * block-end/inline-end side (mirrors automatically in RTL).
+ */
+@utility petal {
+  border-radius: calc(var(--radius) * 1.75);
+  border-end-end-radius: calc(var(--radius) * 0.4);
+}
+
+@utility petal-sm {
+  border-radius: calc(var(--radius) * 1.15);
+  border-end-end-radius: calc(var(--radius) * 0.3);
+}
+
+/* Owner-authored rich text (product descriptions, pages). Markup is sanitized server-side. */
+@utility prose-store {
+  line-height: 1.85;
+  color: var(--foreground);
+  & > * + * {
+    margin-top: 0.85em;
+  }
+  & h2 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-top: 1.4em;
+  }
+  & h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-top: 1.2em;
+  }
+  & ul,
+  & ol {
+    padding-inline-start: 1.25rem;
+  }
+  & ul {
+    list-style: disc;
+  }
+  & ol {
+    list-style: decimal;
+  }
+  & li + li {
+    margin-top: 0.3em;
+  }
+  & a {
+    color: var(--primary);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  & blockquote {
+    border-inline-start: 3px solid var(--primary-soft);
+    padding-inline-start: 1rem;
+    color: var(--muted-foreground);
+  }
+  & table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95em;
+  }
+  & th,
+  & td {
+    border: 1px solid var(--border);
+    padding: 0.5rem 0.75rem;
+    text-align: start;
+  }
+  & hr {
+    border: 0;
+    border-top: 1px solid var(--border);
+  }
+}
+
+/* Horizontal product rails: native momentum scrolling with snap points, no JS. */
+@utility rail {
+  display: grid;
+  grid-auto-flow: column;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  & > * {
+    scroll-snap-align: start;
+  }
 }

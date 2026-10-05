@@ -49,7 +49,7 @@ export const settingsSchemas = {
     setupCompletedAt: z.string().nullable().default(null),
   }),
   branding: z.object({
-    primaryColor: hexColor.default("#6b3fd4"),
+    primaryColor: hexColor.default("#3d2c8d"),
     radius: z.enum(["sharp", "soft", "round"]).default("soft"),
     announcement: z
       .object({
