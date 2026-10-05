@@ -1,1 +1,2 @@
 CREATE DATABASE iris_test OWNER iris;
+CREATE DATABASE iris_e2e OWNER iris;

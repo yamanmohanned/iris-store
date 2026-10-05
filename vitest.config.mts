@@ -4,6 +4,8 @@ import { defineConfig } from "vitest/config";
 const root = import.meta.dirname;
 
 const shared = {
+  // next-intl imports "next/navigation" without an extension; let Vite resolve it.
+  server: { deps: { inline: ["next-intl"] } },
   resolve: {
     alias: {
       "@": path.join(root, "src"),

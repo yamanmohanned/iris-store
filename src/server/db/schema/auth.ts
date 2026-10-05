@@ -1,6 +1,5 @@
 import { sql } from "drizzle-orm";
 import {
-  bigint,
   boolean,
   check,
   index,
@@ -22,7 +21,8 @@ export const USER_ROLES = [
 export type UserRole = (typeof USER_ROLES)[number];
 
 /**
- * Better Auth core tables (user/session/account/verification) + two-factor plugin + DB rate limiter.
+ * Better Auth core tables (user/session/account/verification) + two-factor plugin.
+ * (Better Auth's rate limiter uses our own `rate_limit_buckets` through `customStorage`.)
  * Field names follow Better Auth's model; columns are snake_case via Drizzle `casing`.
  */
 export const users = pgTable(
@@ -130,11 +130,3 @@ export const twoFactors = pgTable(
   },
   (t) => [index("two_factors_user_idx").on(t.userId), index("two_factors_secret_idx").on(t.secret)],
 );
-
-/** Better Auth's rate limiter storage (rateLimit.storage = "database"). */
-export const authRateLimits = pgTable("auth_rate_limits", {
-  id: uuid().primaryKey().defaultRandom(),
-  key: text().notNull().unique(),
-  count: integer().notNull(),
-  lastRequest: bigint({ mode: "number" }).notNull(),
-});

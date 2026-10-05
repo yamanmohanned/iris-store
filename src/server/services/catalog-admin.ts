@@ -328,16 +328,14 @@ export async function saveProduct(
 
     await tx.delete(productOptions).where(eq(productOptions.productId, id));
     if (input.options.length) {
-      await tx
-        .insert(productOptions)
-        .values(
-          input.options.map((o, position) => ({
-            productId: id,
-            name: o.name,
-            position,
-            values: o.values,
-          })),
-        );
+      await tx.insert(productOptions).values(
+        input.options.map((o, position) => ({
+          productId: id,
+          name: o.name,
+          position,
+          values: o.values,
+        })),
+      );
     }
 
     // Variants: update in place (keeps ids referenced by carts/orders), insert new, delete removed.

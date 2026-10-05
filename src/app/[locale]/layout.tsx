@@ -1,8 +1,9 @@
 import type { Metadata, Viewport } from "next";
 import { NextIntlClientProvider } from "next-intl";
-import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Providers } from "@/components/providers";
 import { Toaster } from "@/components/ui/toaster";
+import { pickClientMessages } from "@/i18n/client-messages";
 import { assertLocale } from "@/i18n/locale";
 import { dirOf } from "@/i18n/routing";
 import { fontVariables } from "../fonts";
@@ -26,16 +27,12 @@ export async function generateMetadata({ params }: LayoutProps<"/[locale]">): Pr
   };
 }
 
-/** Message namespaces needed by client components on every page (keeps the payload small). */
-const CLIENT_NAMESPACES = ["common", "nav", "errors"] as const;
-
 export default async function LocaleLayout({ children, params }: LayoutProps<"/[locale]">) {
   const locale = assertLocale((await params).locale);
   setRequestLocale(locale);
 
   const dir = dirOf(locale);
-  const messages = await getMessages();
-  const clientMessages = Object.fromEntries(CLIENT_NAMESPACES.map((ns) => [ns, messages[ns]]));
+  const clientMessages = await pickClientMessages();
 
   return (
     <html lang={locale} dir={dir} className={fontVariables} suppressHydrationWarning>

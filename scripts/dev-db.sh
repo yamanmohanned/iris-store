@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Local PostgreSQL for development/tests WITHOUT Docker (uses the system PostgreSQL binaries).
 # Usage: pnpm db:local [start|stop|status|reset|psql]
-# Creates databases "iris" (dev) and "iris_test" (integration tests) owned by role "iris".
+# Creates databases "iris" (dev), "iris_test" (integration tests) and "iris_e2e" (browser tests).
 set -euo pipefail
 
 cmd="${1:-start}"
@@ -43,7 +43,7 @@ start() {
   if [ "$(psql_admin -c "SELECT 1 FROM pg_roles WHERE rolname='${ROLE}'")" != "1" ]; then
     psql_admin -c "CREATE ROLE ${ROLE} LOGIN PASSWORD '${PASSWORD}'"
   fi
-  for db in iris iris_test; do
+  for db in iris iris_test iris_e2e; do
     if [ "$(psql_admin -c "SELECT 1 FROM pg_database WHERE datname='${db}'")" != "1" ]; then
       psql_admin -c "CREATE DATABASE ${db} OWNER ${ROLE}"
       echo "  created database ${db}"
@@ -51,6 +51,7 @@ start() {
   done
   echo "  DATABASE_URL=postgres://${ROLE}:${PASSWORD}@localhost:${PORT}/iris"
   echo "  DATABASE_URL_TEST=postgres://${ROLE}:${PASSWORD}@localhost:${PORT}/iris_test"
+  echo "  DATABASE_URL_E2E=postgres://${ROLE}:${PASSWORD}@localhost:${PORT}/iris_e2e"
 }
 
 case "${cmd}" in
