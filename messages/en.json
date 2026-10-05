@@ -106,7 +106,38 @@
       "openInAdmin": "Open in dashboard",
       "lowStockSubject": "Stock alert: {count} item(s) running low",
       "lowStockHeading": "Items running low",
-      "remaining": "{count} left"
+      "remaining": "{count} left",
+      "status": {
+        "confirmed": {
+          "subject": "Your order #{number} is confirmed",
+          "body": "We confirmed your order and started preparing it."
+        },
+        "processing": {
+          "subject": "Your order #{number} is being prepared",
+          "body": "We're getting your order ready to ship."
+        },
+        "shipped": {
+          "subject": "Your order #{number} is on its way",
+          "body": "Your order is with the courier, who will call you soon."
+        },
+        "delivered": {
+          "subject": "Your order #{number} was delivered",
+          "body": "We hope you love it. Thank you for shopping with us!"
+        },
+        "cancelled": {
+          "subject": "Your order #{number} was cancelled",
+          "body": "Your order was cancelled. If you have any questions, contact us."
+        },
+        "returned": {
+          "subject": "We received the return for order #{number}",
+          "body": "We received the returned items and will contact you about any refund."
+        },
+        "pending": {
+          "subject": "Your order #{number}",
+          "body": "Your order is awaiting confirmation."
+        },
+        "reason": "Reason: {reason}"
+      }
     }
   },
   "validation": {
@@ -569,5 +600,155 @@
     "signInAction": "Sign in",
     "full": "Your wishlist is full",
     "browse": "Browse products"
+  },
+  "admin": {
+    "title": "Dashboard",
+    "viewStore": "View store",
+    "menu": "Menu",
+    "signOut": "Sign out",
+    "denied": "You don't have permission to open that page.",
+    "nav": {
+      "dashboard": "Home",
+      "orders": "Orders",
+      "products": "Products",
+      "categories": "Categories",
+      "customers": "Customers",
+      "coupons": "Coupons",
+      "shipping": "Delivery",
+      "home": "Storefront",
+      "pages": "Pages",
+      "settings": "Settings",
+      "staff": "Staff",
+      "audit": "Audit log"
+    },
+    "navGroups": {
+      "sales": "Sales",
+      "catalog": "Catalog",
+      "store": "Store",
+      "team": "Team"
+    },
+    "roles": {
+      "owner": "Owner",
+      "admin": "Admin",
+      "catalog_manager": "Catalog manager",
+      "order_manager": "Order manager",
+      "customer": "Customer"
+    },
+    "dashboard": {
+      "hello": "Hello, {name}",
+      "subtitle": "Here's a quick look at your store today.",
+      "revenueToday": "Sales today",
+      "ordersToday": "{count, plural, =0 {no orders} one {# order} other {# orders}}",
+      "revenue7d": "Sales, last 7 days",
+      "pending": "Awaiting confirmation",
+      "toShip": "Waiting to ship",
+      "lowStock": "Low stock",
+      "needsAction": "Needs action",
+      "salesChart": "Daily sales — last 14 days",
+      "salesChartSummary": "Period total {total}, best day {best}",
+      "recentOrders": "Latest orders",
+      "topProducts": "Best sellers — 30 days",
+      "lowStockList": "Running low",
+      "viewAll": "View all",
+      "noOrders": "No orders yet. They will appear here when customers order.",
+      "noSales": "No sales in the last 30 days yet.",
+      "allGood": "Every product is well stocked.",
+      "units": "{count} units",
+      "left": "{count} left"
+    },
+    "orders": {
+      "title": "Orders",
+      "search": "Order number, phone or name",
+      "searchButton": "Search",
+      "clear": "Clear",
+      "tabs": {
+        "open": "In progress",
+        "all": "All"
+      },
+      "columns": {
+        "number": "Order",
+        "customer": "Customer",
+        "date": "Date",
+        "total": "Total",
+        "status": "Status",
+        "payment": "Payment",
+        "items": "Items",
+        "city": "City"
+      },
+      "empty": "No matching orders.",
+      "showing": "Showing {from}–{to} of {total}",
+      "prev": "Previous",
+      "next": "Next",
+      "detail": {
+        "back": "All orders",
+        "customer": "Customer",
+        "call": "Call",
+        "whatsapp": "WhatsApp",
+        "copyPhone": "Copy number",
+        "copied": "Copied",
+        "account": "Registered account",
+        "guest": "Guest order",
+        "address": "Delivery address",
+        "copyAddress": "Copy address",
+        "timeline": "Order history",
+        "internalNote": "Internal note",
+        "internalNoteHint": "Only your team sees this.",
+        "saveNote": "Save",
+        "noteSaved": "Note saved",
+        "addNote": "Add to history",
+        "notePlaceholder": "e.g. Called the customer, address confirmed",
+        "showToCustomer": "Show it to the customer on their order page",
+        "noteAdded": "Note added",
+        "print": "Print",
+        "payment": "Payment",
+        "paymentStatus": "Payment status",
+        "paymentActions": {
+          "paid": "Mark as paid",
+          "unpaid": "Mark as unpaid",
+          "refunded": "Mark as refunded",
+          "partially_refunded": "Partially refunded"
+        },
+        "actions": {
+          "confirmed": "Confirm order",
+          "processing": "Start preparing",
+          "shipped": "Mark shipped",
+          "delivered": "Mark delivered",
+          "cancelled": "Cancel order",
+          "returned": "Record return"
+        },
+        "nextStep": "Next step",
+        "cancelTitle": "Cancel order #{number}",
+        "cancelReason": "Reason",
+        "cancelReasonPlaceholder": "e.g. Customer asked to cancel",
+        "cancelHint": "Quantities go back to stock and any coupon use is released.",
+        "confirmCancel": "Cancel the order",
+        "returnTitle": "Record a return for order #{number}",
+        "returnHint": "Quantities go back to stock.",
+        "confirmReturn": "Record return",
+        "notify": "Email the customer about this update",
+        "noEmail": "No customer email — let them know by phone or WhatsApp.",
+        "updated": "Order updated",
+        "stale": "The order was changed elsewhere, so we refreshed the page. Review it and try again.",
+        "events": {
+          "placed": "Order placed",
+          "status_changed": "{from} → {to}",
+          "payment_status_changed": "Payment: {from} → {to}",
+          "note": "Note",
+          "notification_sent": "Notification"
+        },
+        "visibleToCustomer": "Visible to customer",
+        "by": "by {name}",
+        "customerAction": "Customer",
+        "ip": "IP address",
+        "placedAt": "Placed",
+        "subtotal": "Subtotal",
+        "discount": "Discount",
+        "shipping": "Delivery",
+        "total": "Total",
+        "sku": "SKU",
+        "packingSlip": "Packing slip",
+        "invoice": "Invoice"
+      }
+    }
   }
 }

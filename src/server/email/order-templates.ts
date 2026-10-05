@@ -162,3 +162,32 @@ export function adminLowStockEmail(opts: {
     text: `${subject}\n${opts.items.map((i) => `• ${i.name}: ${i.stock}`).join("\n")}\n${opts.adminUrl}`,
   };
 }
+
+/** Customer: order moved to a new status (confirmed, shipped, delivered, cancelled…). */
+export function orderStatusEmail(opts: {
+  to: string;
+  locale: EmailLocale;
+  brand: Brand;
+  order: OrderDTO;
+  status: OrderDTO["status"];
+  reason?: string | null;
+  orderUrl: string;
+}): EmailMessage {
+  const { order, locale, brand } = opts;
+  const t = emailT(locale);
+  const subject = t(`order.status.${opts.status}.subject`, { number: order.orderNumber });
+  const body = t(`order.status.${opts.status}.body`);
+  const reason = opts.reason ? t("order.status.reason", { reason: opts.reason }) : "";
+  const bodyHtml = `
+    <h1 style="margin:0 0 10px;font-size:20px;">${esc(subject)}</h1>
+    <p style="margin:0 0 ${reason ? "8" : "20"}px;">${esc(body)}</p>
+    ${reason ? `<p style="margin:0 0 20px;color:${MUTED};">${esc(reason)}</p>` : ""}
+    <p style="margin:0;">${button(opts.orderUrl, t("order.viewOrder"), brand.primaryColor)}</p>`;
+  return {
+    to: opts.to,
+    subject: `${subject} — ${brand.storeName}`,
+    category: `order:status:${opts.status}`,
+    html: layout({ locale, brand, preheader: body, bodyHtml }),
+    text: [subject, body, reason, opts.orderUrl].filter(Boolean).join("\n\n"),
+  };
+}

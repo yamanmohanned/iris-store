@@ -84,7 +84,8 @@ test.describe("store owner", () => {
     await expect(page.getByText("تم تفعيل التحقق بخطوتين بنجاح.")).toBeVisible();
 
     await page.getByRole("link", { name: "الذهاب إلى لوحة التحكم" }).click();
-    await expect(page.getByRole("heading", { name: "لوحة التحكم" })).toBeVisible();
+    await expect(page).toHaveURL(/\/admin$/);
+    await expect(page.getByRole("heading", { level: 1 })).toContainText("أهلاً");
 
     // A new sign-in now requires the second factor (use a one-time backup code).
     await page.goto("/account");

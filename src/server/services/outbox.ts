@@ -5,12 +5,20 @@ import { tl } from "@/lib/localized";
 import { emailBrand } from "@/server/auth/brand";
 import { runInBackground } from "@/server/background";
 import { db } from "@/server/db/client";
-import { outboxMessages, productOptions, products, productVariants } from "@/server/db/schema";
+import {
+  ORDER_STATUSES,
+  orders,
+  outboxMessages,
+  productOptions,
+  products,
+  productVariants,
+} from "@/server/db/schema";
 import { sendEmail, type EmailMessage } from "@/server/email";
 import {
   adminLowStockEmail,
   adminNewOrderEmail,
   orderPlacedEmail,
+  orderStatusEmail,
 } from "@/server/email/order-templates";
 import type { EmailLocale } from "@/server/email/templates";
 import { env } from "@/server/env";
@@ -34,6 +42,7 @@ type Claimed = {
 };
 
 const orderPayload = z.object({ orderId: z.uuid() });
+const statusPayload = z.object({ orderId: z.uuid(), status: z.enum(ORDER_STATUSES) });
 const lowStockPayload = z.object({
   orderId: z.uuid().optional(),
   variants: z.array(z.object({ variantId: z.uuid(), stock: z.number().int() })).max(100),
@@ -63,6 +72,31 @@ async function render(m: Claimed): Promise<EmailMessage | null> {
         orderUrl: url,
         bankInstructions:
           order.paymentMethod === "bank_transfer" && instructions ? instructions : undefined,
+      });
+    }
+    case "order_status": {
+      const { orderId, status } = statusPayload.parse(m.payload);
+      const [order, url] = await Promise.all([getOrderById(orderId), orderLink(orderId)]);
+      if (!order || !url) return null;
+      const locale: EmailLocale = order.locale === "en" ? "en" : "ar";
+      const reason =
+        status === "cancelled"
+          ? ((
+              await db
+                .select({ reason: orders.cancelReason })
+                .from(orders)
+                .where(eq(orders.id, orderId))
+                .limit(1)
+            )[0]?.reason ?? null)
+          : null;
+      return orderStatusEmail({
+        to: m.recipient,
+        locale,
+        brand: await emailBrand(locale),
+        order,
+        status,
+        reason,
+        orderUrl: url,
       });
     }
     case "admin_new_order": {

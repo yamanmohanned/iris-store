@@ -1,6 +1,6 @@
 import { expect, type Page } from "@playwright/test";
 import { createHmac } from "node:crypto";
-import { readdir, readFile, rm } from "node:fs/promises";
+import { readdir, readFile, rm, writeFile } from "node:fs/promises";
 import path from "node:path";
 
 export const MAIL_DIR = path.resolve(".data/mail-e2e");
@@ -92,4 +92,67 @@ export async function register(page: Page, email: string, name = "علي حسن"
   await expect(page).toHaveURL(/\/verify-email/);
   await page.getByLabel("رمز التحقق").fill(await waitForCode(email)); // auto-submits at 6 digits
   await expect(page).toHaveURL(/\/account$/);
+}
+
+/** Staff account created by global-setup (role: admin). */
+export const STAFF_EMAIL = "e2e.staff@example.com";
+export const STAFF_TOTP_FILE = path.resolve(".data/e2e-staff-totp.txt");
+
+/**
+ * Sign in as staff. The first time, the admin forces two-step setup: we enable it through the UI
+ * and keep the secret for later sign-ins (which then answer the TOTP challenge).
+ */
+export async function signInAsStaff(page: Page) {
+  await page.goto("/login");
+  await page.getByLabel("البريد الإلكتروني").fill(STAFF_EMAIL);
+  await page.getByLabel("كلمة المرور", { exact: true }).fill(PASSWORD);
+  await page.getByRole("button", { name: "تسجيل الدخول", exact: true }).click();
+  await page.waitForURL(/\/(account|admin|two-factor)/);
+  if (page.url().includes("two-factor")) {
+    const secret = (await readFile(STAFF_TOTP_FILE, "utf8")).trim();
+    await page.getByLabel("رمز التحقق").fill(totp(secret));
+    await expect(page).toHaveURL(/\/admin/);
+    return;
+  }
+  await page.goto("/admin");
+  if (page.url().includes("setup2fa")) {
+    await page.getByLabel("كلمة المرور الحالية").first().fill(PASSWORD);
+    await page.getByRole("button", { name: "تفعيل التحقق بخطوتين" }).click();
+    const secret = (await page.locator("code").first().textContent())!.trim();
+    await writeFile(STAFF_TOTP_FILE, secret);
+    await page.getByLabel("رمز التحقق").fill(totp(secret));
+    await page.getByRole("button", { name: "تأكيد وتفعيل" }).click();
+    await expect(page.getByText("تم تفعيل التحقق بخطوتين بنجاح.")).toBeVisible();
+    await page.goto("/admin");
+  }
+  await expect(page).toHaveURL(/\/admin$/);
+}
+
+/** Place a cash-on-delivery order as a guest (one wristwatch) and return its number. */
+export async function placeGuestOrder(page: Page): Promise<string> {
+  await page.goto("/c/accessories");
+  await page
+    .getByRole("link", { name: /ساعة يد كلاسيكية/ })
+    .first()
+    .click();
+  await page
+    .locator("button")
+    .filter({ hasText: "أضف إلى السلة" })
+    .filter({ visible: true })
+    .click();
+  await expect(page.getByText("أُضيف إلى السلة").first()).toBeVisible();
+  await page.goto("/checkout");
+  await page.getByLabel("الاسم الكامل").fill("زبون الاختبار");
+  await page.getByLabel("رقم الهاتف").fill(`0775${String(Date.now()).slice(-7)}`);
+  await page.getByLabel("المحافظة").selectOption({ index: 1 });
+  await page.getByLabel("المدينة / القضاء").fill("الأعظمية");
+  await page
+    .getByRole("button", { name: /تأكيد الطلب/ })
+    .filter({ visible: true })
+    .click();
+  await expect(page).toHaveURL(/\/order\//);
+  return (await page
+    .getByText(/^#\d+$/)
+    .first()
+    .textContent())!.slice(1);
 }

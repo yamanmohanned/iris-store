@@ -106,7 +106,38 @@
       "openInAdmin": "فتح في لوحة التحكم",
       "lowStockSubject": "تنبيه مخزون: {count} منتج قارب على النفاد",
       "lowStockHeading": "منتجات قاربت على النفاد",
-      "remaining": "المتبقي {count}"
+      "remaining": "المتبقي {count}",
+      "status": {
+        "confirmed": {
+          "subject": "تم تأكيد طلبك #{number}",
+          "body": "أكّدنا طلبك وبدأنا تجهيزه."
+        },
+        "processing": {
+          "subject": "طلبك #{number} قيد التجهيز",
+          "body": "نجهّز طلبك الآن للشحن."
+        },
+        "shipped": {
+          "subject": "طلبك #{number} في الطريق إليك",
+          "body": "سلّمنا طلبك لمندوب التوصيل وسيتصل بك قريباً."
+        },
+        "delivered": {
+          "subject": "تم توصيل طلبك #{number}",
+          "body": "نتمنى أن تنال المنتجات إعجابك. شكراً لتسوقك معنا!"
+        },
+        "cancelled": {
+          "subject": "تم إلغاء طلبك #{number}",
+          "body": "تم إلغاء طلبك. إن كان لديك أي سؤال فتواصل معنا."
+        },
+        "returned": {
+          "subject": "استلمنا المرتجع للطلب #{number}",
+          "body": "استلمنا المنتجات المرتجعة وسنتواصل معك بخصوص المبلغ إن لزم."
+        },
+        "pending": {
+          "subject": "طلبك #{number}",
+          "body": "طلبك بانتظار التأكيد."
+        },
+        "reason": "السبب: {reason}"
+      }
     }
   },
   "validation": {
@@ -569,5 +600,155 @@
     "signInAction": "تسجيل الدخول",
     "full": "وصلت المفضلة إلى الحد الأقصى",
     "browse": "تصفّح المنتجات"
+  },
+  "admin": {
+    "title": "لوحة التحكم",
+    "viewStore": "عرض المتجر",
+    "menu": "القائمة",
+    "signOut": "تسجيل الخروج",
+    "denied": "ليست لديك صلاحية لفتح تلك الصفحة.",
+    "nav": {
+      "dashboard": "الرئيسية",
+      "orders": "الطلبات",
+      "products": "المنتجات",
+      "categories": "الأقسام",
+      "customers": "الزبائن",
+      "coupons": "الكوبونات",
+      "shipping": "التوصيل",
+      "home": "واجهة المتجر",
+      "pages": "الصفحات",
+      "settings": "الإعدادات",
+      "staff": "الموظفون",
+      "audit": "سجل التدقيق"
+    },
+    "navGroups": {
+      "sales": "المبيعات",
+      "catalog": "الكتالوج",
+      "store": "المتجر",
+      "team": "الفريق"
+    },
+    "roles": {
+      "owner": "المالك",
+      "admin": "مدير",
+      "catalog_manager": "مدير المنتجات",
+      "order_manager": "مدير الطلبات",
+      "customer": "زبون"
+    },
+    "dashboard": {
+      "hello": "أهلاً {name}",
+      "subtitle": "هذه نظرة سريعة على متجرك اليوم.",
+      "revenueToday": "مبيعات اليوم",
+      "ordersToday": "{count, plural, =0 {لا طلبات} one {طلب واحد} two {طلبان} few {# طلبات} many {# طلباً} other {# طلب}}",
+      "revenue7d": "مبيعات آخر 7 أيام",
+      "pending": "بانتظار التأكيد",
+      "toShip": "بانتظار الشحن",
+      "lowStock": "مخزون منخفض",
+      "needsAction": "يحتاج إجراء",
+      "salesChart": "المبيعات اليومية — آخر 14 يوماً",
+      "salesChartSummary": "مجموع الفترة {total}، أعلى يوم {best}",
+      "recentOrders": "أحدث الطلبات",
+      "topProducts": "الأكثر مبيعاً — 30 يوماً",
+      "lowStockList": "قاربت على النفاد",
+      "viewAll": "عرض الكل",
+      "noOrders": "لا توجد طلبات بعد. عندما يطلب زبون ستظهر هنا.",
+      "noSales": "لا مبيعات في آخر 30 يوماً بعد.",
+      "allGood": "كل المنتجات متوفرة بكميات جيدة.",
+      "units": "{count} قطعة",
+      "left": "متبقي {count}"
+    },
+    "orders": {
+      "title": "الطلبات",
+      "search": "رقم الطلب أو الهاتف أو الاسم",
+      "searchButton": "بحث",
+      "clear": "مسح",
+      "tabs": {
+        "open": "قيد العمل",
+        "all": "الكل"
+      },
+      "columns": {
+        "number": "الطلب",
+        "customer": "الزبون",
+        "date": "التاريخ",
+        "total": "الإجمالي",
+        "status": "الحالة",
+        "payment": "الدفع",
+        "items": "القطع",
+        "city": "المدينة"
+      },
+      "empty": "لا توجد طلبات مطابقة.",
+      "showing": "عرض {from}–{to} من {total}",
+      "prev": "السابق",
+      "next": "التالي",
+      "detail": {
+        "back": "كل الطلبات",
+        "customer": "الزبون",
+        "call": "اتصال",
+        "whatsapp": "واتساب",
+        "copyPhone": "نسخ الرقم",
+        "copied": "تم النسخ",
+        "account": "حساب مسجّل",
+        "guest": "طلب كزائر",
+        "address": "عنوان التوصيل",
+        "copyAddress": "نسخ العنوان",
+        "timeline": "سجل الطلب",
+        "internalNote": "ملاحظة داخلية",
+        "internalNoteHint": "يراها فريقك فقط.",
+        "saveNote": "حفظ",
+        "noteSaved": "تم حفظ الملاحظة",
+        "addNote": "إضافة إلى السجل",
+        "notePlaceholder": "مثلاً: اتصلنا بالزبون وأكّد العنوان",
+        "showToCustomer": "إظهارها للزبون في صفحة طلبه",
+        "noteAdded": "أُضيفت الملاحظة",
+        "print": "طباعة",
+        "payment": "الدفع",
+        "paymentStatus": "حالة الدفع",
+        "paymentActions": {
+          "paid": "تسجيل كمدفوع",
+          "unpaid": "تسجيل كغير مدفوع",
+          "refunded": "تسجيل كمسترد",
+          "partially_refunded": "مسترد جزئياً"
+        },
+        "actions": {
+          "confirmed": "تأكيد الطلب",
+          "processing": "بدء التجهيز",
+          "shipped": "تم الشحن",
+          "delivered": "تم التوصيل",
+          "cancelled": "إلغاء الطلب",
+          "returned": "تسجيل مرتجع"
+        },
+        "nextStep": "الخطوة التالية",
+        "cancelTitle": "إلغاء الطلب #{number}",
+        "cancelReason": "سبب الإلغاء",
+        "cancelReasonPlaceholder": "مثلاً: طلب الزبون الإلغاء",
+        "cancelHint": "تُعاد الكميات إلى المخزون ويُحرَّر كود الخصم إن وُجد.",
+        "confirmCancel": "تأكيد الإلغاء",
+        "returnTitle": "تسجيل مرتجع للطلب #{number}",
+        "returnHint": "تُعاد الكميات إلى المخزون.",
+        "confirmReturn": "تأكيد المرتجع",
+        "notify": "إرسال بريد للزبون بالتحديث",
+        "noEmail": "لا يوجد بريد للزبون — أبلغه بالهاتف أو واتساب.",
+        "updated": "تم تحديث الطلب",
+        "stale": "تغيّرت حالة الطلب من مكان آخر، فحدّثنا الصفحة. راجعها ثم أعد المحاولة.",
+        "events": {
+          "placed": "تم إنشاء الطلب",
+          "status_changed": "{from} ← {to}",
+          "payment_status_changed": "الدفع: {from} ← {to}",
+          "note": "ملاحظة",
+          "notification_sent": "إشعار"
+        },
+        "visibleToCustomer": "ظاهرة للزبون",
+        "by": "بواسطة {name}",
+        "customerAction": "الزبون",
+        "ip": "عنوان IP",
+        "placedAt": "وقت الطلب",
+        "subtotal": "المجموع الفرعي",
+        "discount": "الخصم",
+        "shipping": "التوصيل",
+        "total": "الإجمالي",
+        "sku": "رمز المنتج",
+        "packingSlip": "قائمة التجهيز",
+        "invoice": "فاتورة"
+      }
+    }
   }
 }

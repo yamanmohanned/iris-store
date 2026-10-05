@@ -1,5 +1,6 @@
 import { execSync } from "node:child_process";
-import { clearMail } from "./helpers";
+import { rm } from "node:fs/promises";
+import { clearMail, PASSWORD, STAFF_EMAIL, STAFF_TOTP_FILE } from "./helpers";
 
 /**
  * Fresh database for every E2E run: wipe, migrate, seed the demo store.
@@ -18,5 +19,10 @@ export default async function globalSetup() {
   );
   execSync("node scripts/migrate.mjs", { stdio: "inherit", env });
   execSync("pnpm -s db:seed:demo", { stdio: "inherit", env });
+  execSync(
+    `pnpm -s tsx --conditions=react-server tests/e2e/fixtures/create-staff.mts ${STAFF_EMAIL} ${PASSWORD} admin`,
+    { stdio: "inherit", env },
+  );
+  await rm(STAFF_TOTP_FILE, { force: true });
   await clearMail();
 }
