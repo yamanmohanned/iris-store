@@ -149,15 +149,13 @@ describe("order workflow (admin)", () => {
 
   it("cancelling restocks the items, undoes sales counters and frees the coupon", async () => {
     const f = await setup();
-    await db
-      .insert(coupons)
-      .values({
-        code: "ONCE",
-        type: "fixed_amount",
-        value: 5_000,
-        usageLimit: 1,
-        usageLimitPerCustomer: 1,
-      });
+    await db.insert(coupons).values({
+      code: "ONCE",
+      type: "fixed_amount",
+      value: 5_000,
+      usageLimit: 1,
+      usageLimitPerCustomer: 1,
+    });
     const placed = await order(f, { qty: 5, coupon: "ONCE", total: 100_000 });
     expect(await stock(f.variant.id)).toBe(0);
     expect(

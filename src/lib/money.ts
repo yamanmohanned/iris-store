@@ -82,3 +82,23 @@ export function discountPercent(
   if (!compareAt || compareAt <= price || compareAt <= 0) return null;
   return Math.floor(((compareAt - price) / compareAt) * 100);
 }
+
+/** "25,000" / "٢٥٠٠٠" / "25.5" typed in the store currency → minor units; null when invalid. */
+export function parseMoneyInput(text: string, decimals: number): number | null {
+  const normalized = text
+    .replace(/[٠-٩]/g, (d) => String(d.charCodeAt(0) - 0x0660))
+    .replace(/[۰-۹]/g, (d) => String(d.charCodeAt(0) - 0x06f0))
+    .replace(/[٫]/g, ".")
+    .replace(/[\s,٬]/g, "");
+  if (!/^\d+(\.\d+)?$/.test(normalized)) return null;
+  const [, fraction = ""] = normalized.split(".");
+  if (fraction.length > decimals) return null;
+  const value = Math.round(Number(normalized) * 10 ** decimals);
+  return Number.isSafeInteger(value) ? value : null;
+}
+
+/** Minor units → the plain number shown in an input (no grouping, no symbol). */
+export function moneyInputValue(minor: number | null | undefined, decimals: number): string {
+  if (minor == null) return "";
+  return decimals ? (minor / 10 ** decimals).toFixed(decimals) : String(minor);
+}

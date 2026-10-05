@@ -153,3 +153,30 @@ describe("computeTotals", () => {
     });
   });
 });
+
+describe("admin editing helpers", async () => {
+  const { editableToHtml, htmlToEditable } = await import("@/lib/rich-text");
+  const { moneyInputValue, parseMoneyInput } = await import("@/lib/money");
+
+  it("round-trips descriptions between stored HTML and editable text", () => {
+    const html =
+      "<p>قطن ناعم<br>مريح جداً</p><ul><li>غسيل يدوي</li><li>لا يُكوى</li></ul><p>A &amp; B</p>";
+    const text = htmlToEditable(html);
+    expect(text).toBe("قطن ناعم\nمريح جداً\n\n• غسيل يدوي\n• لا يُكوى\n\nA & B");
+    expect(editableToHtml(text)).toBe(html);
+    expect(editableToHtml("<script>x</script>")).toBe("<p>&lt;script&gt;x&lt;/script&gt;</p>");
+    expect(editableToHtml("   ")).toBe("");
+  });
+
+  it("parses prices typed with Arabic digits, separators and decimals", () => {
+    expect(parseMoneyInput("25,000", 0)).toBe(25_000);
+    expect(parseMoneyInput("٢٥٠٠٠", 0)).toBe(25_000);
+    expect(parseMoneyInput("12.5", 2)).toBe(1_250);
+    expect(parseMoneyInput("12.555", 2)).toBeNull();
+    expect(parseMoneyInput("12.5", 0)).toBeNull();
+    expect(parseMoneyInput("abc", 0)).toBeNull();
+    expect(parseMoneyInput("-5", 0)).toBeNull();
+    expect(moneyInputValue(1_250, 2)).toBe("12.50");
+    expect(moneyInputValue(25_000, 0)).toBe("25000");
+  });
+});
