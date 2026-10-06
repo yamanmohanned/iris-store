@@ -193,7 +193,10 @@ export default async function AdminAuditPage({
                     {href ? (
                       <>
                         {" · "}
-                        <Link href={href} className="text-primary hover:underline">
+                        <Link
+                          href={href}
+                          className="text-primary underline decoration-primary/40 underline-offset-2 hover:decoration-primary"
+                        >
                           {row.entityType === "order" ? `#${row.entityId}` : t("open")}
                         </Link>
                       </>

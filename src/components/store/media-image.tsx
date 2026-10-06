@@ -12,6 +12,7 @@ export function MediaImage({
   alt,
   locale,
   priority = false,
+  eager = false,
   className,
   fit = "cover",
 }: {
@@ -19,7 +20,10 @@ export function MediaImage({
   sizes: string;
   alt?: string;
   locale: string;
+  /** The page's main image: loaded right away, ahead of other images. */
   priority?: boolean;
+  /** Visible when the page opens: loaded right away, at normal priority. */
+  eager?: boolean;
   className?: string;
   fit?: "cover" | "contain";
 }) {
@@ -43,7 +47,7 @@ export function MediaImage({
       width={image.width}
       height={image.height}
       alt={alt ?? tl(image.alt, locale)}
-      loading={priority ? "eager" : "lazy"}
+      loading={priority || eager ? "eager" : "lazy"}
       fetchPriority={priority ? "high" : "auto"}
       decoding="async"
       className={cn(fit === "cover" ? "object-cover" : "object-contain", className)}

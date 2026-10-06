@@ -62,7 +62,7 @@ export default async function WishlistPage({ params }: PageProps<"/[locale]/acco
         <ProductGrid className="mt-5">
           {items.map((p) => (
             <div key={p.id} className="relative">
-              <ProductCard product={p} currency={ctx.currency} locale={locale} />
+              <ProductCard product={p} currency={ctx.currency} locale={locale} headingLevel={2} />
               <WishlistButton
                 productId={p.id}
                 initialSaved

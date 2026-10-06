@@ -48,7 +48,7 @@ export function LoadMore({
   return (
     <>
       {items.map((p) => (
-        <ProductCard key={p.id} product={p} currency={currency} locale={locale} />
+        <ProductCard key={p.id} product={p} currency={currency} locale={locale} headingLevel={2} />
       ))}
       {shown < total ? (
         <div className="col-span-full flex flex-col items-center gap-2 pt-4">

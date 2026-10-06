@@ -66,3 +66,28 @@ test.describe("admin: orders", () => {
     await expect(page).toHaveURL(/\/login\?next=%2Fadmin/);
   });
 });
+
+test.describe("admin: dashboard", () => {
+  test("the sales chart reads out each day by keyboard and pointer", async ({ page }) => {
+    await signInAsStaff(page);
+    const chart = page.getByRole("slider", { name: "المبيعات اليومية — آخر 14 يوماً" });
+    await chart.focus();
+    await page.keyboard.press("End");
+    await expect(chart).toHaveAttribute("aria-valuenow", "13");
+    await expect(chart).toHaveAttribute("aria-valuetext", /^.+: .+ · .+$/);
+    // Arabic reads right to left: the right arrow goes back a day, the left arrow forward.
+    await page.keyboard.press("ArrowRight");
+    await expect(chart).toHaveAttribute("aria-valuenow", "12");
+    await page.keyboard.press("Home");
+    await expect(chart).toHaveAttribute("aria-valuenow", "0");
+    await page.keyboard.press("ArrowLeft");
+    await expect(chart).toHaveAttribute("aria-valuenow", "1");
+
+    // Pointing anywhere over a day's slot selects it: the first day is at the right edge.
+    const box = (await chart.boundingBox())!;
+    await page.mouse.move(box.x + box.width - 2, box.y + box.height / 2);
+    await expect(chart).toHaveAttribute("aria-valuenow", "0");
+    await page.mouse.move(box.x + 2, box.y + box.height / 2);
+    await expect(chart).toHaveAttribute("aria-valuenow", "13");
+  });
+});

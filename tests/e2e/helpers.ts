@@ -171,14 +171,20 @@ export async function signInAsOwner(page: Page): Promise<boolean> {
   return true;
 }
 
-/** Place a cash-on-delivery order as a guest (one wristwatch) and return its number. */
-export async function placeGuestOrder(page: Page): Promise<string> {
+/**
+ * Place a cash-on-delivery order as a guest (one item, a wristwatch unless told otherwise) and
+ * return its number. Demo stock is limited: specs that only need *an* order pass another product.
+ */
+export async function placeGuestOrder(
+  page: Page,
+  product: { category: string; name: RegExp } = {
+    category: "/c/accessories",
+    name: /ساعة يد كلاسيكية/,
+  },
+): Promise<string> {
   await resetRateLimits();
-  await page.goto("/c/accessories");
-  await page
-    .getByRole("link", { name: /ساعة يد كلاسيكية/ })
-    .first()
-    .click();
+  await page.goto(product.category);
+  await page.getByRole("link", { name: product.name }).first().click();
   await page
     .locator("button")
     .filter({ hasText: "أضف إلى السلة" })

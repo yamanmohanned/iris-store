@@ -17,6 +17,8 @@ export function ProductCard({
   currency,
   locale,
   priority = false,
+  eager = false,
+  headingLevel = 3,
   sizes = "(min-width: 1024px) 22vw, (min-width: 640px) 31vw, 46vw",
   className,
 }: {
@@ -24,11 +26,15 @@ export function ProductCard({
   currency: CurrencyConfig;
   locale: string;
   priority?: boolean;
+  eager?: boolean;
+  /** 2 where the cards come right under the page title, 3 inside a titled section. */
+  headingLevel?: 2 | 3;
   sizes?: string;
   className?: string;
 }) {
   const t = useTranslations("store");
   const name = tl(product.name, locale);
+  const Heading = headingLevel === 2 ? "h2" : "h3";
   return (
     <article className={cn("group relative min-w-0", className)}>
       <Link href={`/p/${product.slug}`} className="block rounded-[inherit] outline-offset-4">
@@ -39,6 +45,7 @@ export function ProductCard({
             alt={name}
             locale={locale}
             priority={priority}
+            eager={eager}
             className={cn(
               "absolute inset-0 size-full transition duration-500 group-hover:scale-[1.03]",
               !product.inStock && "opacity-60 grayscale-[35%]",
@@ -72,9 +79,9 @@ export function ProductCard({
           ) : null}
         </div>
         <div className="px-0.5 pt-2.5">
-          <h3 className="line-clamp-2 min-h-[2.6em] text-sm leading-[1.3] font-medium text-foreground">
+          <Heading className="line-clamp-2 min-h-[2.6em] text-sm leading-[1.3] font-medium text-foreground">
             {name}
-          </h3>
+          </Heading>
           <Price
             className="mt-1"
             amount={product.price}

@@ -1,7 +1,7 @@
 "use client";
 
 import { useLocale, useTranslations } from "next-intl";
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState, type KeyboardEvent, type PointerEvent } from "react";
 import { formatMoney, type CurrencyConfig } from "@/lib/money";
 import { cn } from "@/lib/utils";
 
@@ -14,9 +14,10 @@ function niceStep(max: number, ticks = 3) {
 
 /**
  * Daily sales columns — one series, so no legend (the title names it). Columns are ≤24px with a
- * 4px rounded data end on a single baseline, hairline gridlines with clean ticks, the best day
- * shown by default, and a readout per column on hover and keyboard focus. Screen readers get the
- * same numbers as a table.
+ * 4px rounded data end on a single baseline, hairline gridlines with clean ticks, and the best day
+ * shown by default. The whole plot is one target: pointing at or dragging across it shows a day's
+ * readout (thin columns would be too small to tap one by one), and the arrow keys step through the
+ * days as a slider. Screen readers also get the numbers as a table.
  */
 export function SalesChart({
   points,
@@ -59,6 +60,38 @@ export function SalesChart({
   const toMajor = (minor: number) => minor / 10 ** currency.decimals;
   const shown = active ?? best;
   const point = shown >= 0 ? points[shown] : undefined;
+  const readout = (p: (typeof points)[number]) =>
+    `${labelOf(p.day)}: ${money(p.revenue)} · ${t("ordersToday", { count: p.orders })}`;
+
+  const plot = useRef<HTMLDivElement>(null);
+  const isRtl = () => plot.current?.closest("[dir]")?.getAttribute("dir") === "rtl";
+  const clamp = (i: number) => Math.min(points.length - 1, Math.max(0, i));
+
+  function pointAt(event: PointerEvent<HTMLDivElement>) {
+    const rect = event.currentTarget.getBoundingClientRect();
+    const fromStart = isRtl() ? rect.right - event.clientX : event.clientX - rect.left;
+    setActive(clamp(Math.floor((fromStart / rect.width) * points.length)));
+  }
+
+  function onKeyDown(event: KeyboardEvent<HTMLDivElement>) {
+    const current = active ?? Math.max(best, 0);
+    // Later days sit at the inline end: left of the screen in Arabic, right in English.
+    const later = isRtl() ? "ArrowLeft" : "ArrowRight";
+    const earlier = isRtl() ? "ArrowRight" : "ArrowLeft";
+    const next =
+      event.key === later || event.key === "ArrowUp"
+        ? current + 1
+        : event.key === earlier || event.key === "ArrowDown"
+          ? current - 1
+          : event.key === "Home"
+            ? 0
+            : event.key === "End"
+              ? points.length - 1
+              : null;
+    if (next === null) return;
+    event.preventDefault();
+    setActive(clamp(next));
+  }
 
   return (
     <figure className="rounded-2xl border bg-surface p-4 shadow-card sm:p-5">
@@ -80,32 +113,44 @@ export function SalesChart({
           ))}
         </div>
 
-        <div className="relative flex h-40 items-end gap-0.5 pe-12">
-          {points.map((p, i) => (
-            <button
-              key={p.day}
-              type="button"
-              onPointerEnter={() => setActive(i)}
-              onPointerLeave={() => setActive(null)}
-              onFocus={() => setActive(i)}
-              onBlur={() => setActive(null)}
-              className="group relative flex h-full flex-1 cursor-default items-end justify-center rounded-sm outline-none focus-visible:bg-primary-soft/60"
-              aria-label={`${labelOf(p.day)}: ${money(p.revenue)} · ${t("ordersToday", { count: p.orders })}`}
-            >
-              <span
-                className={cn(
-                  "block w-full max-w-6 transition-opacity",
-                  p.revenue > 0 ? "rounded-t-[4px] bg-primary" : "h-px bg-border",
-                  active !== null && active !== i && "opacity-40",
-                )}
-                style={
-                  p.revenue > 0
-                    ? { height: `${Math.max((p.revenue / top) * 100, 1.5)}%` }
-                    : undefined
-                }
-              />
-            </button>
-          ))}
+        <div className="pe-12">
+          <div
+            ref={plot}
+            role="slider"
+            tabIndex={points.length ? 0 : -1}
+            aria-label={title}
+            aria-orientation="horizontal"
+            aria-valuemin={0}
+            aria-valuemax={Math.max(points.length - 1, 0)}
+            aria-valuenow={Math.max(shown, 0)}
+            aria-valuetext={point ? readout(point) : t("noSales")}
+            onPointerMove={pointAt}
+            onPointerDown={pointAt}
+            onPointerLeave={(event) => {
+              // A tap keeps its readout; a mouse leaving the chart returns to the best day.
+              if (event.pointerType === "mouse") setActive(null);
+            }}
+            onKeyDown={onKeyDown}
+            onBlur={() => setActive(null)}
+            className="relative flex h-40 touch-pan-y items-end gap-0.5 rounded-sm outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
+          >
+            {points.map((p, i) => (
+              <span key={p.day} className="flex h-full flex-1 items-end justify-center">
+                <span
+                  className={cn(
+                    "block w-full max-w-6 transition-opacity",
+                    p.revenue > 0 ? "rounded-t-[4px] bg-primary" : "h-px bg-border",
+                    active !== null && active !== i && "opacity-40",
+                  )}
+                  style={
+                    p.revenue > 0
+                      ? { height: `${Math.max((p.revenue / top) * 100, 1.5)}%` }
+                      : undefined
+                  }
+                />
+              </span>
+            ))}
+          </div>
         </div>
 
         <div
@@ -117,9 +162,10 @@ export function SalesChart({
         </div>
       </div>
 
+      {/* The slider already announces each day to screen readers. */}
       <div
         className="mt-3 flex min-h-11 items-center gap-3 rounded-xl bg-surface-muted px-3 py-2 text-sm"
-        aria-live="polite"
+        aria-hidden="true"
       >
         {point ? (
           <>

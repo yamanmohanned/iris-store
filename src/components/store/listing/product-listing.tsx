@@ -65,7 +65,10 @@ export async function ProductListing({
               product={p}
               currency={currency}
               locale={locale}
+              headingLevel={2}
+              // On screen when the page opens: the first two rows on phones, the first row on desktop.
               priority={i < 2}
+              eager={i < 4}
             />
           ))}
           <LoadMore

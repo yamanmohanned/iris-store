@@ -95,7 +95,7 @@ curl https://shop.example.com/api/health               # يجب أن يظهر {"
 docker compose -f docker-compose.prod.yml --env-file .env.production up -d
 ```
 
-بعدها ادخل إلى `/admin` وابدأ بالإعدادات. الخطوات المقترحة في [`progress/06-admin.md`](./progress/06-admin.md).
+بعدها ادخل إلى `/admin` واتبع "اليوم الأول" في [دليل المالك](./OWNER-GUIDE.md).
 
 > تنبيه: الدولة والعملة لا يمكن تغييرهما بعد الإعداد، لأن الأسعار وأرقام الهواتف تُحفظ على أساسهما.
 
