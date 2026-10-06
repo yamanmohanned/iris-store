@@ -9,6 +9,8 @@
  * Auth (one of):
  *   STITCH_API_KEY                       -> header X-Goog-Api-Key
  *   STITCH_ACCESS_TOKEN (+ GOOGLE_CLOUD_PROJECT) -> OAuth bearer token
+ *   neither: Claude's cloud environment can hold the key as an "API credential" for
+ *   stitch.googleapis.com (header X-Goog-Api-Key); its network proxy adds it to each request.
  *
  * The key is read from the environment only; it is never written to disk.
  */
@@ -27,11 +29,12 @@ function authHeaders() {
       h["X-Goog-User-Project"] = process.env.GOOGLE_CLOUD_PROJECT;
     return h;
   }
-  console.error(
-    "✖ Missing credentials. Set STITCH_API_KEY (Stitch → Settings → API keys) in the environment.",
-  );
-  process.exit(1);
+  return {};
 }
+
+const MISSING_CREDENTIALS =
+  "Stitch needs a key: set STITCH_API_KEY (Stitch → Settings → API keys), or in Claude's cloud " +
+  "environment add it as an API credential for stitch.googleapis.com with the header X-Goog-Api-Key.";
 
 let rpcId = 0;
 async function callTool(name, args) {
@@ -63,7 +66,10 @@ async function callTool(name, args) {
   if (msg.error) throw new Error(`${name}: ${JSON.stringify(msg.error)}`);
   const result = msg.result ?? {};
   if (result.isError) {
-    throw new Error(`${name}: ${result.content?.map((c) => c.text).join(" ") ?? "unknown error"}`);
+    const text = result.content?.map((c) => c.text).join(" ") ?? "unknown error";
+    throw new Error(
+      res.status === 401 ? `${name}: ${text}\n  ${MISSING_CREDENTIALS}` : `${name}: ${text}`,
+    );
   }
   if (result.structuredContent) return result.structuredContent;
   const text = result.content?.find((c) => c.type === "text")?.text;
@@ -77,12 +83,16 @@ async function callTool(name, args) {
 function slugify(s, fallback) {
   const slug = String(s ?? "")
     .toLowerCase()
-    .normalize("NFKD")
-    .replace(/[^\p{L}\p{N}]+/gu, "-")
+    // NFC keeps Arabic letters such as "ئ" whole (NFKD would split off the hamza).
+    .normalize("NFC")
+    .replace(/[^\p{L}\p{M}\p{N}]+/gu, "-")
     .replace(/^-+|-+$/g, "")
     .slice(0, 60);
   return slug || fallback;
 }
+
+/** Download failures by host, e.g. "HTTP 403" when a sandbox's network policy blocks the host. */
+const failedHosts = new Map();
 
 async function download(url, file) {
   const candidates = [url];
@@ -90,21 +100,55 @@ async function download(url, file) {
   if (/googleusercontent\.com/.test(url) && !/=[a-z]\d/i.test(url.split("/").pop() ?? "")) {
     candidates.unshift(`${url}=s0`);
   }
+  let failure = "";
   for (const u of candidates) {
     try {
       const res = await fetch(u);
-      if (!res.ok) continue;
+      if (!res.ok) {
+        failure = `HTTP ${res.status}`;
+        continue;
+      }
       await writeFile(file, Buffer.from(await res.arrayBuffer()));
       return true;
-    } catch {
-      /* try next candidate */
+    } catch (e) {
+      failure = e.cause?.code ?? e.message;
     }
   }
+  failedHosts.set(new URL(url).host, failure);
   return false;
+}
+
+/** Readable summary of the project's design theme (colors, fonts, shape) and its DESIGN.md. */
+function themeMarkdown(project, designSystems) {
+  const lines = [`# Stitch design theme — project ${PROJECT_ID}`, ""];
+  const describe = (theme, heading) => {
+    if (!theme || typeof theme !== "object") return;
+    lines.push(`## ${heading}`, "");
+    for (const [key, value] of Object.entries(theme)) {
+      if (key === "designMd" || value === null || value === "") continue;
+      lines.push(
+        typeof value === "object"
+          ? `- **${key}**:\n\n  \`\`\`json\n  ${JSON.stringify(value, null, 2).replace(/\n/g, "\n  ")}\n  \`\`\``
+          : `- **${key}**: \`${value}\``,
+      );
+    }
+    lines.push("");
+    if (theme.designMd) lines.push(`### DESIGN.md`, "", theme.designMd, "");
+  };
+  describe(project.designTheme, "Project theme");
+  for (const [i, ds] of (designSystems?.designSystems ?? []).entries()) {
+    describe(
+      ds.designTheme ?? ds,
+      `Design system ${i + 1}${ds.displayName ? ` — ${ds.displayName}` : ""}`,
+    );
+  }
+  return lines.join("\n");
 }
 
 async function main() {
   await mkdir(path.join(OUT_DIR, "screens"), { recursive: true });
+  if (!Object.keys(authHeaders()).length)
+    console.log("→ No key in the environment: relying on an API credential added by the network");
   console.log(`→ Fetching Stitch project ${PROJECT_ID}`);
 
   const project = await callTool("get_project", { name: `projects/${PROJECT_ID}` });
@@ -161,7 +205,16 @@ async function main() {
     "",
   ].join("\n");
   await writeFile(path.join(OUT_DIR, "INDEX.md"), index);
-  console.log(`✓ Saved to ${path.relative(process.cwd(), OUT_DIR)}/ (see INDEX.md)`);
+  await writeFile(path.join(OUT_DIR, "THEME.md"), themeMarkdown(project, designSystems));
+  console.log(`✓ Saved to ${path.relative(process.cwd(), OUT_DIR)}/ (see INDEX.md and THEME.md)`);
+  if (failedHosts.size) {
+    const hosts = [...failedHosts].map(([host, why]) => `${host} (${why})`).join(", ");
+    console.warn(
+      `! Some screen files could not be downloaded from ${hosts}. In Claude's cloud environment, ` +
+        "allow these hosts under Network access in the environment settings, then run again.",
+    );
+    process.exitCode = 2;
+  }
 }
 
 main().catch((e) => {
