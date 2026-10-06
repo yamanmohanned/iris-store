@@ -1,5 +1,4 @@
 import "server-only";
-import { createHash, timingSafeEqual } from "node:crypto";
 import { eq, sql } from "drizzle-orm";
 import { z } from "zod";
 import { COUNTRY_PRESETS } from "@/lib/countries";
@@ -14,6 +13,7 @@ import {
   PASSWORD_MIN_LENGTH,
 } from "@/server/security/password";
 import { enforceRateLimit } from "@/server/security/rate-limit";
+import { secretMatches } from "@/server/security/secrets";
 import { seedBase } from "@/server/seed";
 import { audit } from "./audit";
 import { getSetting, updateSetting } from "./settings";
@@ -47,12 +47,7 @@ export async function setupAvailable(): Promise<boolean> {
 }
 
 function tokenMatches(provided: string): boolean {
-  const expected = env().SETUP_TOKEN;
-  if (!expected) return false;
-  // Compare fixed-length digests in constant time.
-  const a = createHash("sha256").update(provided).digest();
-  const b = createHash("sha256").update(expected).digest();
-  return timingSafeEqual(a, b);
+  return secretMatches(provided, env().SETUP_TOKEN);
 }
 
 /**

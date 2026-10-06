@@ -6,6 +6,7 @@ import pg from "pg";
 
 export const MAIL_DIR = path.resolve(".data/mail-e2e");
 export const SETUP_TOKEN = "e2e-setup-token-0123456789abcdef";
+export const CRON_SECRET = "e2e-cron-secret-0123456789abcdef";
 export const PASSWORD = "Calm-River-Stone-2026";
 
 export async function clearMail() {

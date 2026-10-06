@@ -44,6 +44,7 @@ export default defineConfig({
           EMAIL_DRIVER: "console",
           MAIL_CAPTURE_DIR: ".data/mail-e2e",
           SETUP_TOKEN: "e2e-setup-token-0123456789abcdef",
+          CRON_SECRET: "e2e-cron-secret-0123456789abcdef",
           LOG_LEVEL: "warn",
           // The E2E database is wiped every run; never serve data cached by a previous run.
           DATA_CACHE: "off",
