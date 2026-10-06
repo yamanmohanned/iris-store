@@ -20,3 +20,14 @@ test.describe("scheduled jobs endpoint", () => {
     expect(await outbox.json()).toMatchObject({ ok: true, job: "outbox" });
   });
 });
+
+test.describe("health check", () => {
+  test.skip(({ isMobile }) => !isMobile, "server-only: runs once");
+
+  test("reports ok without caching", async ({ request }) => {
+    const res = await request.get("/api/health");
+    expect(res.status()).toBe(200);
+    expect(res.headers()["cache-control"]).toContain("no-store");
+    expect(await res.json()).toEqual({ ok: true });
+  });
+});

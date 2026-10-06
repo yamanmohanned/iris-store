@@ -1,0 +1,21 @@
+# Caddy serves the store over HTTPS and renews the certificate automatically.
+# DOMAIN comes from .env.production; point its DNS (A/AAAA record) at this server first.
+{
+	servers {
+		# Proxies allowed to report the visitor's address in X-Forwarded-For. Empty (the default):
+		# none, Caddy is the edge and forged headers are dropped. Behind Cloudflare's proxy:
+		# Cloudflare's address ranges (see "خلف Cloudflare" in docs/DEPLOYMENT.md).
+		trusted_proxies static {$CADDY_TRUSTED_PROXIES}
+	}
+}
+
+{$DOMAIN} {
+	encode zstd gzip
+	# The store listens on this server's loopback interface only (docker-compose.prod.yml).
+	reverse_proxy 127.0.0.1:3000
+}
+
+# Uncomment to send www. visitors to the main address (needs a DNS record for www too):
+# www.{$DOMAIN} {
+# 	redir https://{$DOMAIN}{uri} permanent
+# }

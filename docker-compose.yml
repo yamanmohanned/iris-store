@@ -1,4 +1,4 @@
-# Development services. Production stack: docker-compose.prod.yml (phase 7).
+# Development services. Production stack: docker-compose.prod.yml (docs/DEPLOYMENT.md).
 #   docker compose up -d        → PostgreSQL on localhost:54329 + Mailpit (emails) on http://localhost:8025
 services:
   db:

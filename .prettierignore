@@ -7,3 +7,5 @@ storage/
 coverage/
 playwright-report/
 test-results/
+dist/
+backups/

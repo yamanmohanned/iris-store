@@ -15,6 +15,7 @@ build/
 .env
 .env.*
 !.env.example
+!.env.production.example
 
 # local data (database cluster, uploaded media, captured dev emails)
 .data/
@@ -32,3 +33,9 @@ playwright/.cache/
 npm-debug.log*
 .DS_Store
 *.pem
+
+# Build artifacts (Docker image helpers)
+/dist
+
+# Production backups written by docker-compose.prod.yml
+/backups

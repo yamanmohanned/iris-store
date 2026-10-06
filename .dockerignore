@@ -1,0 +1,20 @@
+# Never send secrets, local data or build output into the image build.
+.env
+.env.*
+!.env.example
+!.env.production.example
+.git
+.github
+.next
+.data
+node_modules
+storage
+backups
+dist
+test-results
+playwright-report
+coverage
+tsconfig.tsbuildinfo
+*.log
+docs
+tests

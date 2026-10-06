@@ -1,0 +1,102 @@
+# Production stack on one server: PostgreSQL, the store, Caddy (automatic HTTPS), scheduled jobs
+# and daily backups. Full walkthrough (in Arabic): docs/DEPLOYMENT.md
+#
+#   cp .env.production.example .env.production      # then fill it in
+#   docker compose -f docker-compose.prod.yml --env-file .env.production up -d --build
+name: iris
+
+services:
+  db:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: iris
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD in .env.production}
+      POSTGRES_DB: iris
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U iris -d iris"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+    # No published port: only the store reaches the database, on the internal network.
+
+  app:
+    build:
+      context: .
+      args:
+        NODE_IMAGE: ${NODE_IMAGE:-node:22-bookworm-slim}
+    image: iris-store:latest
+    restart: unless-stopped
+    env_file: .env.production
+    environment:
+      DATABASE_URL: postgres://iris:${POSTGRES_PASSWORD}@db:5432/iris
+      STORAGE_LOCAL_DIR: /app/storage
+      # Caddy sets X-Forwarded-For to the visitor's address (2 behind Cloudflare: see the guide).
+      CLIENT_IP_HEADER: x-forwarded-for
+      TRUSTED_PROXY_COUNT: ${TRUSTED_PROXY_COUNT:-1}
+    # Reachable from this server only: visitors come in through Caddy.
+    ports:
+      - "127.0.0.1:3000:3000"
+    volumes:
+      - media:/app/storage
+    depends_on:
+      db:
+        condition: service_healthy
+
+  caddy:
+    image: caddy:2-alpine
+    restart: unless-stopped
+    # Listens on ports 80 and 443 of the server directly, so it sees each visitor's real address
+    # (IPv4 and IPv6) for the rate limits. Docker's port forwarding can hide IPv6 visitors behind
+    # one internal address.
+    network_mode: host
+    environment:
+      DOMAIN: ${DOMAIN:?set DOMAIN in .env.production}
+      CADDY_TRUSTED_PROXIES: ${CADDY_TRUSTED_PROXIES:-}
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on:
+      app:
+        condition: service_healthy
+
+  # Email delivery every minute and cleanup once a day (see scripts/docker/cron.sh).
+  cron:
+    image: curlimages/curl:8.11.1
+    restart: unless-stopped
+    environment:
+      CRON_SECRET: ${CRON_SECRET:?set CRON_SECRET in .env.production}
+    entrypoint: ["/bin/sh", "/jobs.sh"]
+    volumes:
+      - ./scripts/docker/cron.sh:/jobs.sh:ro
+    depends_on:
+      app:
+        condition: service_healthy
+
+  # Daily database dump + weekly media archive into ./backups (see scripts/docker/backup.sh).
+  backup:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      PGHOST: db
+      PGUSER: iris
+      PGPASSWORD: ${POSTGRES_PASSWORD}
+      PGDATABASE: iris
+      BACKUP_KEEP_DAYS: ${BACKUP_KEEP_DAYS:-14}
+    entrypoint: ["/bin/sh", "/backup.sh"]
+    volumes:
+      - ./scripts/docker/backup.sh:/backup.sh:ro
+      - ./backups:/backups
+      - media:/media:ro
+    depends_on:
+      db:
+        condition: service_healthy
+
+volumes:
+  pgdata:
+  media:
+  caddy_data:
+  caddy_config:
