@@ -1,4 +1,4 @@
-import { ChevronLeft, Plus, Search } from "lucide-react";
+import { ArrowUpDown, ChevronLeft, Plus, Search } from "lucide-react";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { MediaImage } from "@/components/store/media-image";
 import { buttonVariants } from "@/components/ui/button";
@@ -76,13 +76,19 @@ export default async function AdminProductsPage({
 
   return (
     <div className="space-y-4">
-      <div className="flex items-center justify-between gap-3">
+      <div className="flex flex-wrap items-center justify-between gap-3">
         <h1 className="font-display text-[1.8rem] leading-tight font-bold">{t("title")}</h1>
         {canWrite ? (
-          <Link href="/admin/products/new" className={buttonVariants({})}>
-            <Plus />
-            {t("new")}
-          </Link>
+          <div className="flex gap-2">
+            <Link href="/admin/products/import" className={buttonVariants({ variant: "outline" })}>
+              <ArrowUpDown aria-hidden="true" />
+              {t("importExport")}
+            </Link>
+            <Link href="/admin/products/new" className={buttonVariants({})}>
+              <Plus />
+              {t("new")}
+            </Link>
+          </div>
         ) : null}
       </div>
 

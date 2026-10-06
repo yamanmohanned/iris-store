@@ -23,8 +23,9 @@
 2. بعد السحب:
    - اكتب `docs/STITCH-ANALYSIS.md`: مقارنة الشاشات بالواجهة الحالية.
    - طابق الألوان والخطوط والمكونات، مع إبقاء `a11y.spec.ts` وكل الاختبارات ناجحة.
-3. لا تطلب من المستخدم لصق المفتاح في المحادثة أبداً. أثناء الانتظار يمكن العمل على القيود المعروفة في نهاية
-   `progress/06-admin.md` و`progress/07-qa-deploy.md`: دعوة الموظفين بالبريد، واستيراد المنتجات وتصديرها بـ CSV.
+3. لا تطلب من المستخدم لصق المفتاح في المحادثة أبداً. أثناء الانتظار:
+   - تمت إضافة استيراد المنتجات وتصديرها (`progress/07b-product-import.md`).
+   - المتبقي من القيود المعروفة: دعوة الموظفين بالبريد.
 
 ### خريطة التشغيل والنشر (المرحلة 7)
 
@@ -45,6 +46,8 @@
 - الخدمات: `admin-orders.ts` (سير الطلب)، `admin-catalog.ts` + `catalog-admin.ts` (المنتجات والأقسام)،
   `shipping-admin.ts`، `coupons-admin.ts`، `settings-admin.ts` (+ `brand-assets.ts`)، `content.ts` (الرئيسية والصفحات)،
   `people-admin.ts` (الزبائن والموظفون)، `audit-admin.ts`، `reports.ts`.
+- استيراد المنتجات وتصديرها: `product-csv.ts` + `lib/csv.ts`، والصفحة `admin/products/import`، والتنزيل
+  `/api/admin/products/export`. الاستيراد يحفظ كل المنتجات بـ `saveProductTx` في معاملة واحدة.
 - مكونات مشتركة: `components/admin/kit.tsx` (أزرار وحقول)، `settings/shell.tsx` (`EditorShell` للنماذج وأخطاء الحقول)،
   `pager.tsx`، `image-uploader.tsx` (يرفع إلى `/api/admin/media`)، `product-picker.tsx`.
 - اختبارات المتصفح تعيد عدّادات تحديد المعدل قبل التسجيل والدخول (`resetRateLimits` في `tests/e2e/helpers.ts`)،
@@ -84,3 +87,4 @@ pnpm test:e2e                                                        # على ج
 | 5       | [`progress/05-cart-checkout-account.md`](./progress/05-cart-checkout-account.md) |
 | 6       | [`progress/06-admin.md`](./progress/06-admin.md)                                 |
 | 7       | [`progress/07-qa-deploy.md`](./progress/07-qa-deploy.md)                         |
+| 7+      | [`progress/07b-product-import.md`](./progress/07b-product-import.md)             |

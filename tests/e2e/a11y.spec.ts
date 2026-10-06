@@ -100,6 +100,7 @@ test.describe("accessibility", () => {
       ["/admin/orders", "admin orders"],
       ["/admin/products", "admin products"],
       ["/admin/products/new", "admin product editor"],
+      ["/admin/products/import", "admin product import"],
       ["/admin/categories", "admin categories"],
       ["/admin/coupons", "admin coupons"],
       ["/admin/shipping", "admin shipping"],

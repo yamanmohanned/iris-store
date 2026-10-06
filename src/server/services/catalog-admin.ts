@@ -240,6 +240,21 @@ export async function saveProduct(
   actor: Actor | null,
   productId?: string,
 ): Promise<{ id: string; slug: string }> {
+  const result = await db.transaction((tx) => saveProductTx(tx, rawInput, actor, productId));
+  invalidate(CacheTags.catalog, CacheTags.product(result.id));
+  return result;
+}
+
+/**
+ * `saveProduct` inside a transaction the caller owns (the CSV import saves many products in one).
+ * The caller invalidates the catalog cache after commit.
+ */
+export async function saveProductTx(
+  tx: Transaction,
+  rawInput: ProductInput,
+  actor: Actor | null,
+  productId?: string,
+): Promise<{ id: string; slug: string }> {
   const input = productInputSchema.parse(rawInput);
   const categoryIds = [
     ...new Set([
@@ -248,186 +263,176 @@ export async function saveProduct(
     ]),
   ];
 
-  const result = await db.transaction(async (tx) => {
-    let existing: typeof products.$inferSelect | undefined;
-    if (productId) {
-      [existing] = await tx.select().from(products).where(eq(products.id, productId)).for("update");
-      if (!existing) throw new AppError("NOT_FOUND", "product not found");
-      if (input.expectedUpdatedAt && existing.updatedAt.toISOString() !== input.expectedUpdatedAt) {
-        throw new AppError("CONFLICT", "product changed since it was loaded");
-      }
+  let existing: typeof products.$inferSelect | undefined;
+  if (productId) {
+    [existing] = await tx.select().from(products).where(eq(products.id, productId)).for("update");
+    if (!existing) throw new AppError("NOT_FOUND", "product not found");
+    if (input.expectedUpdatedAt && existing.updatedAt.toISOString() !== input.expectedUpdatedAt) {
+      throw new AppError("CONFLICT", "product changed since it was loaded");
     }
+  }
 
-    if (categoryIds.length) {
-      const found = await tx
-        .select({ id: categories.id })
-        .from(categories)
-        .where(inArray(categories.id, categoryIds));
-      if (found.length !== categoryIds.length)
-        throw new AppError("VALIDATION", "unknown category", { field: "categoryIds" });
-    }
-    const imageIds = [...new Set(input.imageIds)];
-    const variantImageIds = input.variants
-      .map((v) => v.imageId)
-      .filter((x): x is string => Boolean(x));
-    const allMediaIds = [...new Set([...imageIds, ...variantImageIds])];
-    if (allMediaIds.length) {
-      const found = await tx
-        .select({ id: media.id })
-        .from(media)
-        .where(inArray(media.id, allMediaIds));
-      if (found.length !== allMediaIds.length)
-        throw new AppError("VALIDATION", "unknown image", { field: "imageIds" });
-    }
+  if (categoryIds.length) {
+    const found = await tx
+      .select({ id: categories.id })
+      .from(categories)
+      .where(inArray(categories.id, categoryIds));
+    if (found.length !== categoryIds.length)
+      throw new AppError("VALIDATION", "unknown category", { field: "categoryIds" });
+  }
+  const imageIds = [...new Set(input.imageIds)];
+  const variantImageIds = input.variants
+    .map((v) => v.imageId)
+    .filter((x): x is string => Boolean(x));
+  const allMediaIds = [...new Set([...imageIds, ...variantImageIds])];
+  if (allMediaIds.length) {
+    const found = await tx
+      .select({ id: media.id })
+      .from(media)
+      .where(inArray(media.id, allMediaIds));
+    if (found.length !== allMediaIds.length)
+      throw new AppError("VALIDATION", "unknown image", { field: "imageIds" });
+  }
 
-    const slug = await resolveSlug(tx, products, input.slug, input.name, productId);
-    const skus = input.variants.map((v) => v.sku?.trim()).filter((s): s is string => Boolean(s));
-    const searchText = await buildSearchText(
-      tx,
-      { ...input, brand: input.brand ?? null },
-      skus,
-      categoryIds,
-    );
-    const values = {
-      slug,
-      name: input.name,
-      shortDescription: input.shortDescription ?? null,
-      description: sanitizeLocalizedHtml(input.description),
-      status: input.status,
-      primaryCategoryId: input.primaryCategoryId ?? categoryIds[0] ?? null,
-      brand: input.brand ?? null,
-      tags: input.tags,
-      isFeatured: input.isFeatured,
-      hasVariants: input.options.length > 0,
-      searchText,
-      seo: input.seo ?? null,
-      publishedAt:
-        input.status === "active"
-          ? (existing?.publishedAt ?? new Date())
-          : (existing?.publishedAt ?? null),
-    };
+  const slug = await resolveSlug(tx, products, input.slug, input.name, productId);
+  const skus = input.variants.map((v) => v.sku?.trim()).filter((s): s is string => Boolean(s));
+  const searchText = await buildSearchText(
+    tx,
+    { ...input, brand: input.brand ?? null },
+    skus,
+    categoryIds,
+  );
+  const values = {
+    slug,
+    name: input.name,
+    shortDescription: input.shortDescription ?? null,
+    description: sanitizeLocalizedHtml(input.description),
+    status: input.status,
+    primaryCategoryId: input.primaryCategoryId ?? categoryIds[0] ?? null,
+    brand: input.brand ?? null,
+    tags: input.tags,
+    isFeatured: input.isFeatured,
+    hasVariants: input.options.length > 0,
+    searchText,
+    seo: input.seo ?? null,
+    publishedAt:
+      input.status === "active"
+        ? (existing?.publishedAt ?? new Date())
+        : (existing?.publishedAt ?? null),
+  };
 
-    const [row] = existing
-      ? await tx.update(products).set(values).where(eq(products.id, existing.id)).returning()
-      : await tx.insert(products).values(values).returning();
-    const id = row!.id;
+  const [row] = existing
+    ? await tx.update(products).set(values).where(eq(products.id, existing.id)).returning()
+    : await tx.insert(products).values(values).returning();
+  const id = row!.id;
 
-    await tx.delete(productCategories).where(eq(productCategories.productId, id));
-    if (categoryIds.length) {
-      await tx
-        .insert(productCategories)
-        .values(categoryIds.map((categoryId) => ({ productId: id, categoryId })));
-    }
+  await tx.delete(productCategories).where(eq(productCategories.productId, id));
+  if (categoryIds.length) {
+    await tx
+      .insert(productCategories)
+      .values(categoryIds.map((categoryId) => ({ productId: id, categoryId })));
+  }
 
-    await tx.delete(productImages).where(eq(productImages.productId, id));
-    if (imageIds.length) {
-      await tx
-        .insert(productImages)
-        .values(imageIds.map((mediaId, position) => ({ productId: id, mediaId, position })));
-    }
+  await tx.delete(productImages).where(eq(productImages.productId, id));
+  if (imageIds.length) {
+    await tx
+      .insert(productImages)
+      .values(imageIds.map((mediaId, position) => ({ productId: id, mediaId, position })));
+  }
 
-    await tx.delete(productOptions).where(eq(productOptions.productId, id));
-    if (input.options.length) {
-      await tx.insert(productOptions).values(
-        input.options.map((o, position) => ({
-          productId: id,
-          name: o.name,
-          position,
-          values: o.values,
-        })),
-      );
-    }
-
-    // Variants: update in place (keeps ids referenced by carts/orders), insert new, delete removed.
-    const current = existing
-      ? await tx
-          .select()
-          .from(productVariants)
-          .where(eq(productVariants.productId, id))
-          .for("update")
-      : [];
-    const currentById = new Map(current.map((v) => [v.id, v]));
-    const keep = new Set<string>();
-    const movements: (typeof inventoryMovements.$inferInsert)[] = [];
-
-    for (const [position, v] of input.variants.entries()) {
-      const fields = {
-        optionValueIds: v.optionValueIds,
-        sku: v.sku?.trim() || null,
-        price: v.price,
-        compareAtPrice: v.compareAtPrice ?? null,
-        costPrice: v.costPrice ?? null,
-        trackInventory: v.trackInventory,
-        imageId: v.imageId ?? null,
-        isActive: v.isActive,
+  await tx.delete(productOptions).where(eq(productOptions.productId, id));
+  if (input.options.length) {
+    await tx.insert(productOptions).values(
+      input.options.map((o, position) => ({
+        productId: id,
+        name: o.name,
         position,
-      };
-      const before = v.id ? currentById.get(v.id) : undefined;
-      if (v.id && !before)
-        throw new AppError("VALIDATION", "variant does not belong to product", {
-          field: "variants",
-        });
+        values: o.values,
+      })),
+    );
+  }
 
-      if (before) {
-        keep.add(before.id);
-        // Apply stock edits as a delta against what the editor saw, so concurrent sales are not lost.
-        const delta =
-          v.stockBaseline !== undefined
-            ? v.stockQuantity - v.stockBaseline
-            : v.stockQuantity - before.stockQuantity;
-        const [updated] = await tx
-          .update(productVariants)
-          .set({ ...fields, stockQuantity: sql`${productVariants.stockQuantity} + ${delta}` })
-          .where(eq(productVariants.id, before.id))
-          .returning({ stock: productVariants.stockQuantity });
-        if (delta !== 0) {
-          movements.push({
-            variantId: before.id,
-            delta,
-            stockAfter: updated!.stock,
-            reason: "manual_adjustment",
-            actorId: actor?.id ?? null,
-          });
-        }
-      } else {
-        const [inserted] = await tx
-          .insert(productVariants)
-          .values({ ...fields, productId: id, stockQuantity: v.stockQuantity })
-          .returning({ id: productVariants.id });
-        keep.add(inserted!.id);
-        if (v.stockQuantity > 0) {
-          movements.push({
-            variantId: inserted!.id,
-            delta: v.stockQuantity,
-            stockAfter: v.stockQuantity,
-            reason: "initial",
-            actorId: actor?.id ?? null,
-          });
-        }
+  // Variants: update in place (keeps ids referenced by carts/orders), insert new, delete removed.
+  const current = existing
+    ? await tx.select().from(productVariants).where(eq(productVariants.productId, id)).for("update")
+    : [];
+  const currentById = new Map(current.map((v) => [v.id, v]));
+  const keep = new Set<string>();
+  const movements: (typeof inventoryMovements.$inferInsert)[] = [];
+
+  for (const [position, v] of input.variants.entries()) {
+    const fields = {
+      optionValueIds: v.optionValueIds,
+      sku: v.sku?.trim() || null,
+      price: v.price,
+      compareAtPrice: v.compareAtPrice ?? null,
+      costPrice: v.costPrice ?? null,
+      trackInventory: v.trackInventory,
+      imageId: v.imageId ?? null,
+      isActive: v.isActive,
+      position,
+    };
+    const before = v.id ? currentById.get(v.id) : undefined;
+    if (v.id && !before)
+      throw new AppError("VALIDATION", "variant does not belong to product", {
+        field: "variants",
+      });
+
+    if (before) {
+      keep.add(before.id);
+      // Apply stock edits as a delta against what the editor saw, so concurrent sales are not lost.
+      const delta =
+        v.stockBaseline !== undefined
+          ? v.stockQuantity - v.stockBaseline
+          : v.stockQuantity - before.stockQuantity;
+      const [updated] = await tx
+        .update(productVariants)
+        .set({ ...fields, stockQuantity: sql`${productVariants.stockQuantity} + ${delta}` })
+        .where(eq(productVariants.id, before.id))
+        .returning({ stock: productVariants.stockQuantity });
+      if (delta !== 0) {
+        movements.push({
+          variantId: before.id,
+          delta,
+          stockAfter: updated!.stock,
+          reason: "manual_adjustment",
+          actorId: actor?.id ?? null,
+        });
+      }
+    } else {
+      const [inserted] = await tx
+        .insert(productVariants)
+        .values({ ...fields, productId: id, stockQuantity: v.stockQuantity })
+        .returning({ id: productVariants.id });
+      keep.add(inserted!.id);
+      if (v.stockQuantity > 0) {
+        movements.push({
+          variantId: inserted!.id,
+          delta: v.stockQuantity,
+          stockAfter: v.stockQuantity,
+          reason: "initial",
+          actorId: actor?.id ?? null,
+        });
       }
     }
-    const removed = current.filter((v) => !keep.has(v.id)).map((v) => v.id);
-    if (removed.length)
-      await tx.delete(productVariants).where(inArray(productVariants.id, removed));
-    if (movements.length) await tx.insert(inventoryMovements).values(movements);
+  }
+  const removed = current.filter((v) => !keep.has(v.id)).map((v) => v.id);
+  if (removed.length) await tx.delete(productVariants).where(inArray(productVariants.id, removed));
+  if (movements.length) await tx.insert(inventoryMovements).values(movements);
 
-    await refreshProductAggregates(tx, [id]);
-    await audit(
-      {
-        action: existing ? "product.update" : "product.create",
-        actorId: actor?.id,
-        actorLabel: actor?.label,
-        entityType: "product",
-        entityId: id,
-        metadata: { slug, status: input.status, variants: input.variants.length },
-      },
-      tx,
-    );
-    return { id, slug };
-  });
-
-  invalidate(CacheTags.catalog, CacheTags.product(result.id));
-  return result;
+  await refreshProductAggregates(tx, [id]);
+  await audit(
+    {
+      action: existing ? "product.update" : "product.create",
+      actorId: actor?.id,
+      actorLabel: actor?.label,
+      entityType: "product",
+      entityId: id,
+      metadata: { slug, status: input.status, variants: input.variants.length },
+    },
+    tx,
+  );
+  return { id, slug };
 }
 
 /** Products referenced by orders are archived instead of deleted to keep order history intact. */

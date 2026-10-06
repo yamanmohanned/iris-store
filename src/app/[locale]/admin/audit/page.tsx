@@ -73,6 +73,9 @@ const SHOWN_KEYS = [
   "direction",
   "sessions",
   "via",
+  "rows",
+  "created",
+  "updated",
 ];
 
 export default async function AdminAuditPage({
