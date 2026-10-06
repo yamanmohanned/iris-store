@@ -1470,6 +1470,230 @@
         "system": "Essential pages can't be deleted. Unpublish it to hide it.",
         "gone": "This page no longer exists. Refresh the page."
       }
+    },
+    "pager": {
+      "label": "Pages",
+      "showing": "{from}–{to} of {total}",
+      "previous": "Previous",
+      "next": "Next"
+    },
+    "customers": {
+      "title": "Customers",
+      "intro": "Customers who created an account in your store, and what they bought.",
+      "search": "Search by name, email or phone",
+      "searchButton": "Search",
+      "filters": "Filter customers",
+      "tabs": {
+        "all": "All",
+        "suspended": "Suspended"
+      },
+      "empty": "No registered customers yet.",
+      "noMatch": "No customer matches your search.",
+      "suspended": "Suspended",
+      "ordersCount": "{count, plural, =0 {No orders} one {# order} other {# orders}}",
+      "joined": "Joined {date}",
+      "columns": {
+        "customer": "Customer",
+        "contact": "Contact",
+        "orders": "Orders",
+        "spent": "Spent",
+        "lastOrder": "Last order",
+        "joined": "Joined"
+      },
+      "guestsHint": "Customers who ordered without an account appear on the orders page, where you can search them by phone.",
+      "verified": "Verified email",
+      "whatsapp": "Message on WhatsApp",
+      "stats": {
+        "orders": "Orders",
+        "spent": "Total spent",
+        "average": "Average order"
+      },
+      "recentOrders": "Recent orders",
+      "noOrders": "This customer hasn't ordered yet.",
+      "account": "Account",
+      "isSuspended": "Account suspended: the customer can't sign in.",
+      "reason": "Reason: {reason}",
+      "sessions": "{count, plural, =0 {Not signed in right now} one {Signed in on # device} other {Signed in on # devices}}",
+      "signOutAll": "Sign out of all devices",
+      "suspend": "Suspend account",
+      "reactivate": "Reactivate account",
+      "suspendExplain": "The customer is signed out right away and can't sign in or order with this account. Past orders stay as they are.",
+      "suspendReason": "Reason",
+      "suspendReasonHint": "For your records. The customer doesn't see it.",
+      "confirmSuspend": "Suspend",
+      "suspendedDone": "Account suspended",
+      "reactivatedDone": "Account reactivated",
+      "signedOut": "Signed out of all devices",
+      "details": "Details",
+      "lastLogin": "Last sign-in: {date}",
+      "neverLoggedIn": "Hasn't signed in yet",
+      "marketingYes": "Accepts promotional emails",
+      "marketingNo": "Doesn't accept promotional emails",
+      "addresses": "Saved addresses",
+      "default": "Default",
+      "noAddresses": "No saved addresses.",
+      "gone": "This account no longer exists."
+    },
+    "staff": {
+      "title": "Staff & roles",
+      "intro": "Who works in your store and what each person can do. Every staff member signs in with a password and two-step verification.",
+      "add": "Add staff",
+      "addHint": "Ask the person to create an account in the store and confirm their email first, then add them here. They'll be asked to set up two-step verification at their first sign-in.",
+      "email": "Staff email",
+      "role": "Role",
+      "addButton": "Add",
+      "team": "Team ({count})",
+      "you": "You",
+      "twoFactorOn": "Two-step verification on",
+      "twoFactorPending": "Two-step verification not set up",
+      "lastLogin": "Last sign-in: {date}",
+      "neverLoggedIn": "Hasn't signed in yet",
+      "roleOf": "Role of {name}",
+      "signOut": "Sign out of all devices",
+      "remove": "Remove from team",
+      "confirmRemove": "Tap again to remove",
+      "rolesTitle": "What each role can do",
+      "roleHints": {
+        "owner": "Everything, including managing staff.",
+        "admin": "Everything except managing staff.",
+        "order_manager": "Orders and their status, and viewing customers and products.",
+        "catalog_manager": "Products, categories, stock, the storefront and pages, and viewing orders."
+      },
+      "saved": "Role updated. The person will be asked to sign in again.",
+      "removed": "Removed from the team",
+      "unchanged": "Nothing changed",
+      "signedOut": "Signed out of all devices",
+      "errors": {
+        "email": "Enter a valid email address.",
+        "noAccount": "There's no account with this email. Ask the person to create an account in the store first.",
+        "unverified": "The account owner hasn't confirmed their email yet.",
+        "self": "You can't change your own role.",
+        "owner": "The owner's role can't be changed.",
+        "suspended": "This account is suspended. Reactivate it first."
+      }
+    },
+    "audit": {
+      "title": "Audit log",
+      "intro": "Every important change in the store: what happened, who did it and when. The log can't be edited or deleted.",
+      "search": "Search by staff email, order number or code",
+      "searchButton": "Search",
+      "filters": "Filter the log",
+      "categories": {
+        "all": "All",
+        "orders": "Orders",
+        "catalog": "Products",
+        "store": "Store",
+        "people": "People",
+        "security": "Security"
+      },
+      "empty": "No matching events.",
+      "open": "Open",
+      "system": "System",
+      "keys": {
+        "from": "From",
+        "to": "To",
+        "reason": "Reason",
+        "email": "Email",
+        "code": "Code",
+        "slug": "URL",
+        "type": "Type",
+        "fields": "Fields",
+        "name": "Name",
+        "direction": "Direction",
+        "sessions": "Devices",
+        "via": "Via"
+      },
+      "actions": {
+        "auth": {
+          "sign_up": "New account",
+          "sign_in": {
+            "failed": "Failed sign-in"
+          },
+          "session": {
+            "created": "Signed in",
+            "revoked": "Session ended",
+            "revoked_others": "Signed out other devices"
+          },
+          "password_reset": "Password reset",
+          "password_changed": "Password changed",
+          "email_verified": "Email confirmed",
+          "2fa": {
+            "enabled": "Two-step verification on",
+            "disabled": "Two-step verification off",
+            "backup_codes_regenerated": "New backup codes"
+          }
+        },
+        "setup": {
+          "owner_created": "Owner account created"
+        },
+        "settings": {
+          "update": "Settings changed"
+        },
+        "cache": {
+          "clear": "Store data refreshed"
+        },
+        "product": {
+          "create": "Product added",
+          "update": "Product edited",
+          "delete": "Product deleted"
+        },
+        "category": {
+          "create": "Category added",
+          "update": "Category edited",
+          "delete": "Category deleted",
+          "reorder": "Categories reordered"
+        },
+        "order": {
+          "status_change": "Order status changed",
+          "payment_change": "Payment status changed",
+          "internal_note": "Internal note on an order"
+        },
+        "coupon": {
+          "create": "Coupon created",
+          "update": "Coupon edited",
+          "delete": "Coupon deleted",
+          "activate": "Coupon turned on",
+          "deactivate": "Coupon turned off"
+        },
+        "shipping_zone": {
+          "create": "Delivery area added",
+          "update": "Delivery area edited",
+          "delete": "Delivery area deleted",
+          "reorder": "Delivery areas reordered"
+        },
+        "home_section": {
+          "create": "Home section added",
+          "update": "Home section edited",
+          "delete": "Home section deleted",
+          "reorder": "Home page reordered",
+          "show": "Home section shown",
+          "hide": "Home section hidden"
+        },
+        "page": {
+          "create": "Page created",
+          "update": "Page edited",
+          "delete": "Page deleted",
+          "reorder": "Pages reordered"
+        },
+        "customer": {
+          "suspended": "Customer suspended",
+          "reactivated": "Customer reactivated"
+        },
+        "staff": {
+          "role_changed": "Staff role changed",
+          "removed": "Staff removed"
+        },
+        "user": {
+          "sessions_revoked": "Signed out of all devices"
+        }
+      },
+      "via": {
+        "password": "Password",
+        "totp": "Two-step verification",
+        "backupCode": "Backup code",
+        "emailCode": "Email code",
+        "google": "Google"
+      }
     }
   }
 }

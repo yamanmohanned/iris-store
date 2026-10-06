@@ -1,5 +1,14 @@
+import { writeFile } from "node:fs/promises";
 import { expect, test } from "@playwright/test";
-import { PASSWORD, register, SETUP_TOKEN, totp, uniqueEmail, waitForCode } from "./helpers";
+import {
+  OWNER_FILE,
+  PASSWORD,
+  register,
+  SETUP_TOKEN,
+  totp,
+  uniqueEmail,
+  waitForCode,
+} from "./helpers";
 
 test.describe("customer authentication", () => {
   test("registers, verifies by emailed code, signs out and signs back in", async ({ page }) => {
@@ -82,6 +91,8 @@ test.describe("store owner", () => {
     await page.getByLabel("رمز التحقق").fill(totp(secret));
     await page.getByRole("button", { name: "تأكيد وتفعيل" }).click();
     await expect(page.getByText("تم تفعيل التحقق بخطوتين بنجاح.")).toBeVisible();
+    // Later specs (people.spec) sign in as this owner.
+    await writeFile(OWNER_FILE, JSON.stringify({ email, secret }));
 
     await page.getByRole("link", { name: "الذهاب إلى لوحة التحكم" }).click();
     await expect(page).toHaveURL(/\/admin$/);

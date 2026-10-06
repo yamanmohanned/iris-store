@@ -46,8 +46,8 @@
 | 3   | المصادقة والتحقق والصلاحيات والأمان                         | ✅ مكتملة          | `progress/03-auth-security.md`         |
 | 4   | واجهة المتجر (Mobile-first)                                 | ✅ مكتملة          | `progress/04-storefront.md`            |
 | 5   | السلة والدفع والطلبات وحساب الزبون                          | ✅ مكتملة          | `progress/05-cart-checkout-account.md` |
-| 6   | لوحة تحكم المالك                                            | ⏳ قيد التنفيذ     | `progress/06-admin.md`                 |
-| 7   | الإشعارات + الاختبارات الشاملة + النشر + دليل المالك        | ⬜                 | `progress/07-qa-deploy.md`             |
+| 6   | لوحة تحكم المالك                                            | ✅ مكتملة          | `progress/06-admin.md`                 |
+| 7   | الإشعارات + الاختبارات الشاملة + النشر + دليل المالك        | ⏳ قيد التنفيذ     | `progress/07-qa-deploy.md`             |
 | 8   | تحليل تصميم Stitch ومطابقة الواجهة (يحتاج `STITCH_API_KEY`) | ⛔ بانتظار المفتاح | `progress/08-stitch-alignment.md`      |
 
 > كل مرحلة تنتهي بـ: اختبارات ناجحة → ملف ملخص في `docs/progress/` → تحديث `HANDOFF.md` → commit + push.

@@ -86,27 +86,24 @@ const GROUPS: { key: "sales" | "catalog" | "store" | "team"; items: Item[] }[] =
 
 /**
  * Sidebar navigation, filtered by the staff member's permissions (the server enforces them again
- * on every page and action). `available` lists the sections that exist in this build.
+ * on every page and action).
  */
 export function AdminNav({
   permissions,
-  available,
   badges = {},
   onNavigate,
 }: {
   permissions: string[];
-  available: string[];
   badges?: Partial<Record<string, number>>;
   onNavigate?: () => void;
 }) {
   const t = useTranslations("admin");
   const pathname = usePathname();
   const allowed = new Set(permissions);
-  const exists = new Set(available);
   return (
     <nav aria-label={t("menu")} className="space-y-5">
       {GROUPS.map((group) => {
-        const items = group.items.filter((i) => allowed.has(i.permission) && exists.has(i.key));
+        const items = group.items.filter((i) => allowed.has(i.permission));
         if (items.length === 0) return null;
         return (
           <div key={group.key}>

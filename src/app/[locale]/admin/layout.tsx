@@ -14,19 +14,6 @@ import { signOutAction } from "../(auth)/actions";
 
 export const metadata: Metadata = { robots: { index: false, follow: false } };
 
-/** Sections that exist so far (the navigation never links to a page that is not built yet). */
-const AVAILABLE_SECTIONS = [
-  "dashboard",
-  "orders",
-  "coupons",
-  "products",
-  "categories",
-  "home",
-  "pages",
-  "shipping",
-  "settings",
-];
-
 /** Every admin page is behind staff auth + 2FA + session age checks (re-checked in each action). */
 export default async function AdminLayout({ children, params }: LayoutProps<"/[locale]/admin">) {
   const locale = assertLocale((await params).locale);
@@ -40,7 +27,6 @@ export default async function AdminLayout({ children, params }: LayoutProps<"/[l
   ]);
   const nav = {
     permissions: [...permissionsOf(actor.role)],
-    available: AVAILABLE_SECTIONS,
     badges: { orders: pending },
   };
 

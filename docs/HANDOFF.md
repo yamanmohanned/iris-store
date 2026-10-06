@@ -6,18 +6,31 @@
 
 | البند            | القيمة                                                            |
 | ---------------- | ----------------------------------------------------------------- |
-| آخر مرحلة مكتملة | **المرحلة 5** — السلة والدفع والطلبات وحساب الزبون                |
-| المرحلة الجارية  | **المرحلة 6** — لوحة تحكم المالك                                  |
+| آخر مرحلة مكتملة | **المرحلة 6** — لوحة تحكم المالك                                  |
+| المرحلة الجارية  | **المرحلة 7** — الجودة والنشر ودليل المالك                        |
 | الفرع            | `claude/nifty-turing-csz4ep`                                      |
 | بانتظارك         | مفتاح `STITCH_API_KEY` (انظر `progress/00-discovery-and-plan.md`) |
 
 ## الخطوة التالية بالضبط
 
-1. إكمال المرحلة 6 (لوحة التحكم) حسب `docs/PLAN.md`. نقاط البداية: الصلاحيات في
-   `src/server/auth/permissions.ts`، الحارس `requireStaffPage`/`assertStaff`، وخدمات الإدارة الجاهزة
-   (`catalog-admin.ts`, `content.ts`, `settings.ts`). الطلبات تحتاج خدمة تغيير الحالة + الإلغاء مع إرجاع المخزون
-   والكوبون (انظر `placeOrder` في `orders.ts` للعكس). أضف مهمة cron لـ `processOutbox` و`deleteExpiredCarts` (المرحلة 7).
+1. المرحلة 7 حسب `docs/PLAN.md`:
+   - مسار cron محمي بسر (`/api/cron/*`) يشغّل `processOutbox` (`src/server/services/outbox.ts`)
+     و`deleteExpiredCarts` (`cart.ts`) وتنظيف `rate_limit_buckets`.
+   - مراجعة إمكانية الوصول والأداء على الهاتف (Lighthouse)، واختبارات إضافية.
+   - `Dockerfile` للإنتاج، و`docker-compose` مع Caddy (HTTPS تلقائي) وPostgreSQL، ودليل النشر.
+   - دليل المالك بالعربية (`docs/OWNER-GUIDE.md`) يشرح أقسام لوحة التحكم (انطلق من `progress/06-admin.md`).
 2. عند توفر `STITCH_API_KEY` في البيئة: تشغيل `pnpm stitch:sync` ثم تنفيذ المرحلة 8 (التحليل والمطابقة).
+
+### خريطة سريعة للوحة التحكم (المرحلة 6)
+
+- الصفحات: `src/app/[locale]/admin/*`. كل صفحة تبدأ بـ `requireStaffPage(locale, permission)`، وكل action بـ `assertStaff(permission)`.
+- الخدمات: `admin-orders.ts` (سير الطلب)، `admin-catalog.ts` + `catalog-admin.ts` (المنتجات والأقسام)،
+  `shipping-admin.ts`، `coupons-admin.ts`، `settings-admin.ts` (+ `brand-assets.ts`)، `content.ts` (الرئيسية والصفحات)،
+  `people-admin.ts` (الزبائن والموظفون)، `audit-admin.ts`، `reports.ts`.
+- مكونات مشتركة: `components/admin/kit.tsx` (أزرار وحقول)، `settings/shell.tsx` (`EditorShell` للنماذج وأخطاء الحقول)،
+  `pager.tsx`، `image-uploader.tsx` (يرفع إلى `/api/admin/media`)، `product-picker.tsx`.
+- اختبارات المتصفح تعيد عدّادات تحديد المعدل قبل التسجيل والدخول (`resetRateLimits` في `tests/e2e/helpers.ts`)،
+  و`people.spec.ts` يدخل كمالك أنشأه اختبار الإعداد في `auth.spec.ts`.
 
 ## كيف أشغّل المشروع محلياً
 
@@ -48,3 +61,4 @@ pnpm test:e2e                                                        # على ج
 | 3       | [`progress/03-auth-security.md`](./progress/03-auth-security.md)                 |
 | 4       | [`progress/04-storefront.md`](./progress/04-storefront.md)                       |
 | 5       | [`progress/05-cart-checkout-account.md`](./progress/05-cart-checkout-account.md) |
+| 6       | [`progress/06-admin.md`](./progress/06-admin.md)                                 |

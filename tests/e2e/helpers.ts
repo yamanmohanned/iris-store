@@ -2,6 +2,7 @@ import { expect, type Page } from "@playwright/test";
 import { createHmac } from "node:crypto";
 import { readdir, readFile, rm, writeFile } from "node:fs/promises";
 import path from "node:path";
+import pg from "pg";
 
 export const MAIL_DIR = path.resolve(".data/mail-e2e");
 export const SETUP_TOKEN = "e2e-setup-token-0123456789abcdef";
@@ -83,7 +84,22 @@ export async function waitForMail(
 }
 
 /** Register through the real UI (emailed code) and land on /account signed in. */
+let pool: pg.Pool | undefined;
+
+/**
+ * Every E2E request comes from 127.0.0.1, so the per-IP limits (10 sign-ups an hour…) would trip
+ * as the suite grows. Flows that sign up or sign in start from empty counters instead; the limits
+ * themselves are covered by integration tests.
+ */
+export async function resetRateLimits() {
+  const url = process.env.DATABASE_URL_E2E ?? process.env.DATABASE_URL_TEST;
+  if (!url || !/(e2e|test)/i.test(new URL(url).pathname)) return;
+  pool ??= new pg.Pool({ connectionString: url, max: 1, allowExitOnIdle: true });
+  await pool.query("delete from rate_limit_buckets");
+}
+
 export async function register(page: Page, email: string, name = "علي حسن") {
+  await resetRateLimits();
   await page.goto("/register");
   await page.getByLabel("الاسم الكامل").fill(name);
   await page.getByLabel("البريد الإلكتروني").fill(email);
@@ -103,6 +119,7 @@ export const STAFF_TOTP_FILE = path.resolve(".data/e2e-staff-totp.txt");
  * and keep the secret for later sign-ins (which then answer the TOTP challenge).
  */
 export async function signInAsStaff(page: Page) {
+  await resetRateLimits();
   await page.goto("/login");
   await page.getByLabel("البريد الإلكتروني").fill(STAFF_EMAIL);
   await page.getByLabel("كلمة المرور", { exact: true }).fill(PASSWORD);
@@ -128,8 +145,34 @@ export async function signInAsStaff(page: Page) {
   await expect(page).toHaveURL(/\/admin$/);
 }
 
+/** The owner created by the setup-wizard test (auth.spec) saves how to sign in here. */
+export const OWNER_FILE = path.resolve(".data/e2e-owner.json");
+
+/**
+ * Sign in as the store owner. Returns false when no owner exists yet (the setup test runs earlier
+ * in the same run; running a single spec on its own has no owner).
+ */
+export async function signInAsOwner(page: Page): Promise<boolean> {
+  let owner: { email: string; secret: string };
+  try {
+    owner = JSON.parse(await readFile(OWNER_FILE, "utf8"));
+  } catch {
+    return false;
+  }
+  await resetRateLimits();
+  await page.goto("/login");
+  await page.getByLabel("البريد الإلكتروني").fill(owner.email);
+  await page.getByLabel("كلمة المرور", { exact: true }).fill(PASSWORD);
+  await page.getByRole("button", { name: "تسجيل الدخول", exact: true }).click();
+  await expect(page).toHaveURL(/\/two-factor/);
+  await page.getByLabel("رمز التحقق").fill(totp(owner.secret));
+  await expect(page).toHaveURL(/\/admin/);
+  return true;
+}
+
 /** Place a cash-on-delivery order as a guest (one wristwatch) and return its number. */
 export async function placeGuestOrder(page: Page): Promise<string> {
+  await resetRateLimits();
   await page.goto("/c/accessories");
   await page
     .getByRole("link", { name: /ساعة يد كلاسيكية/ })

@@ -1,6 +1,6 @@
 import { execSync } from "node:child_process";
 import { rm } from "node:fs/promises";
-import { clearMail, PASSWORD, STAFF_EMAIL, STAFF_TOTP_FILE } from "./helpers";
+import { clearMail, OWNER_FILE, PASSWORD, STAFF_EMAIL, STAFF_TOTP_FILE } from "./helpers";
 
 /**
  * Fresh database for every E2E run: wipe, migrate, seed the demo store.
@@ -24,5 +24,6 @@ export default async function globalSetup() {
     { stdio: "inherit", env },
   );
   await rm(STAFF_TOTP_FILE, { force: true });
+  await rm(OWNER_FILE, { force: true });
   await clearMail();
 }
