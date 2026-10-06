@@ -42,6 +42,8 @@ export type AdminProductRow = {
 
 export type AdminProductFilter = {
   q?: string;
+  /** Exactly these products (pickers showing what is already chosen). */
+  ids?: string[];
   status?: ProductStatus | "all";
   stock?: "low" | "out";
   page?: number;
@@ -54,6 +56,7 @@ export async function listProductsAdmin(filter: AdminProductFilter) {
   const { notifications } = await getSettings();
   const where: SQL[] = [];
   if (filter.status && filter.status !== "all") where.push(eq(products.status, filter.status));
+  if (filter.ids) where.push(filter.ids.length ? inArray(products.id, filter.ids) : sql`false`);
   if (filter.stock === "out") where.push(eq(products.inStock, false));
   if (filter.stock === "low")
     where.push(sql`exists (select 1 from product_variants v where v.product_id = ${products.id}

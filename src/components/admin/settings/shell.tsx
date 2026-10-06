@@ -14,7 +14,8 @@ import type { LocalizedText } from "@/lib/localized";
 import { MoneyField } from "../kit";
 
 export type SettingsResult =
-  { ok: true; message: string } | { ok: false; message: string; fields?: Record<string, string> };
+  | { ok: true; message: string; id?: string }
+  | { ok: false; message: string; fields?: Record<string, string> };
 
 export type SaveSection = (
   section: string,
@@ -29,29 +30,40 @@ export function useFieldError(path: string): string | undefined {
   return useContext(ShellContext).errors[path];
 }
 
+type Collect = () => { value: Record<string, unknown> } | { errors: Record<string, string> };
+
 /**
- * One settings section: title, optional English fields, the section's cards and a save bar that
- * stays in reach on phones. `collect` returns the section value to save, or a map of field errors.
+ * A dashboard form page: back link, title, optional English fields, the form's cards and a save
+ * bar that stays in reach on phones. `collect` returns the value to save, or field errors.
  */
-export function SettingsShell({
-  section,
+export function EditorShell({
+  backHref,
+  backLabel,
   title,
   description,
+  actions,
   save,
+  onSaved,
   collect,
   dirty,
   hasEnglish,
   bilingual = true,
+  saveLabel,
   children,
 }: {
-  section: string;
+  backHref: string;
+  backLabel: string;
   title: string;
   description?: string;
-  save: SaveSection;
-  collect: () => { value: Record<string, unknown> } | { errors: Record<string, string> };
+  /** Extra controls next to the title (preview link, delete…). */
+  actions?: React.ReactNode;
+  save: (value: Record<string, unknown>) => Promise<SettingsResult>;
+  onSaved?: (result: Extract<SettingsResult, { ok: true }>) => void;
+  collect: Collect;
   dirty: boolean;
   hasEnglish: boolean;
   bilingual?: boolean;
+  saveLabel?: string;
   children: React.ReactNode;
 }) {
   const t = useTranslations("admin.settings");
@@ -70,11 +82,12 @@ export function SettingsShell({
       return;
     }
     start(async () => {
-      const result = await save(section, collected.value);
+      const result = await save(collected.value);
       if (result.ok) {
         setErrors({});
         setBanner(null);
         toast.success(result.message);
+        onSaved?.(result);
       } else {
         setErrors(result.fields ?? {});
         setBanner(result.message);
@@ -86,13 +99,16 @@ export function SettingsShell({
   return (
     <form onSubmit={submit} noValidate className="mx-auto max-w-3xl">
       <Link
-        href="/admin/settings"
+        href={backHref}
         className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground"
       >
         <ChevronRight className="size-4 ltr:rotate-180" aria-hidden="true" />
-        {t("title")}
+        {backLabel}
       </Link>
-      <h1 className="mt-1 font-display text-[1.8rem] leading-tight font-bold">{title}</h1>
+      <div className="mt-1 flex flex-wrap items-start justify-between gap-3">
+        <h1 className="min-w-0 font-display text-[1.8rem] leading-tight font-bold">{title}</h1>
+        {actions ? <div className="flex items-center gap-2">{actions}</div> : null}
+      </div>
       {description ? <p className="mt-1 text-sm text-muted-foreground">{description}</p> : null}
 
       <div className="mt-5 space-y-5">
@@ -120,10 +136,30 @@ export function SettingsShell({
           </span>
         ) : null}
         <Button type="submit" size="lg" loading={pending} className="max-sm:flex-1">
-          {t("save")}
+          {saveLabel ?? t("save")}
         </Button>
       </div>
     </form>
+  );
+}
+
+/** One settings section (saved under its key). */
+export function SettingsShell({
+  section,
+  save,
+  ...props
+}: Omit<React.ComponentProps<typeof EditorShell>, "backHref" | "backLabel" | "save"> & {
+  section: string;
+  save: SaveSection;
+}) {
+  const t = useTranslations("admin.settings");
+  return (
+    <EditorShell
+      {...props}
+      backHref="/admin/settings"
+      backLabel={t("title")}
+      save={(value) => save(section, value)}
+    />
   );
 }
 

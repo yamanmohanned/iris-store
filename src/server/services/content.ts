@@ -1,5 +1,5 @@
 import "server-only";
-import { and, asc, eq, inArray } from "drizzle-orm";
+import { and, asc, eq, inArray, sql } from "drizzle-orm";
 import { z } from "zod";
 import { isValidSlug, slugify } from "@/lib/slug";
 import { linkHref, localizedText, requiredLocalizedText } from "@/lib/validation";
@@ -348,3 +348,135 @@ async function loadPage(slug: string) {
 }
 
 export const getPublishedPage = cached(loadPage, ["content:page"], [CacheTags.content]);
+
+// ── Dashboard helpers ────────────────────────────────────────────────────────
+
+export async function getHomeSection(sectionId: string): Promise<HomeSectionDTO | null> {
+  return (await loadHomeSections(false)).find((s) => s.id === sectionId) ?? null;
+}
+
+export async function setHomeSectionActive(
+  sectionId: string,
+  isActive: boolean,
+  actor: Actor | null,
+) {
+  await db.transaction(async (tx) => {
+    const [row] = await tx
+      .update(homeSections)
+      .set({ isActive })
+      .where(eq(homeSections.id, sectionId))
+      .returning({ type: homeSections.type });
+    if (!row) throw new AppError("NOT_FOUND", "section not found");
+    await audit(
+      {
+        action: isActive ? "home_section.show" : "home_section.hide",
+        actorId: actor?.id,
+        actorLabel: actor?.label,
+        entityType: "home_section",
+        entityId: sectionId,
+        metadata: { type: row.type },
+      },
+      tx,
+    );
+  });
+  invalidate(CacheTags.content);
+}
+
+/** Swap a section with its neighbour (up = earlier on the page). */
+export async function moveHomeSection(
+  sectionId: string,
+  direction: "up" | "down",
+  actor: Actor | null,
+) {
+  const ids = (
+    await db.select({ id: homeSections.id }).from(homeSections).orderBy(asc(homeSections.position))
+  ).map((r) => r.id);
+  const index = ids.indexOf(sectionId);
+  if (index < 0) throw new AppError("NOT_FOUND", "section not found");
+  const swap = direction === "up" ? index - 1 : index + 1;
+  if (swap < 0 || swap >= ids.length) return;
+  [ids[index], ids[swap]] = [ids[swap]!, ids[index]!];
+  await reorderHomeSections(ids, actor);
+}
+
+export type AdminPageRow = {
+  id: string;
+  slug: string;
+  title: { ar?: string; en?: string };
+  systemKey: string | null;
+  isPublished: boolean;
+  showInFooter: boolean;
+  updatedAt: string;
+};
+
+/** Every page (drafts included) in footer order. */
+export async function listPagesAdmin(): Promise<AdminPageRow[]> {
+  const rows = await db
+    .select({
+      id: pages.id,
+      slug: pages.slug,
+      title: pages.title,
+      systemKey: pages.systemKey,
+      isPublished: pages.isPublished,
+      showInFooter: pages.showInFooter,
+      updatedAt: pages.updatedAt,
+    })
+    .from(pages)
+    .orderBy(asc(pages.sortOrder), asc(pages.createdAt));
+  return rows.map((r) => ({ ...r, updatedAt: r.updatedAt.toISOString() }));
+}
+
+export async function getPageForEdit(pageId: string) {
+  const [page] = await db.select().from(pages).where(eq(pages.id, pageId)).limit(1);
+  return page
+    ? {
+        id: page.id,
+        slug: page.slug,
+        systemKey: page.systemKey,
+        title: page.title,
+        content: page.content,
+        isPublished: page.isPublished,
+        showInFooter: page.showInFooter,
+        sortOrder: page.sortOrder,
+        seo: page.seo ?? null,
+      }
+    : null;
+}
+export type PageEditDTO = NonNullable<Awaited<ReturnType<typeof getPageForEdit>>>;
+
+export async function nextPageSortOrder(): Promise<number> {
+  const [row] = await db
+    .select({ next: sql<number>`coalesce(max(${pages.sortOrder}), -1)::int + 1` })
+    .from(pages);
+  return row?.next ?? 0;
+}
+
+/** Swap a page with its neighbour in the footer order. */
+export async function movePage(pageId: string, direction: "up" | "down", actor: Actor | null) {
+  await db.transaction(async (tx) => {
+    const all = await tx
+      .select({ id: pages.id })
+      .from(pages)
+      .orderBy(asc(pages.sortOrder), asc(pages.createdAt))
+      .for("update");
+    const index = all.findIndex((p) => p.id === pageId);
+    if (index < 0) throw new AppError("NOT_FOUND", "page not found");
+    const swap = direction === "up" ? index - 1 : index + 1;
+    if (swap < 0 || swap >= all.length) return;
+    [all[index], all[swap]] = [all[swap]!, all[index]!];
+    for (const [position, p] of all.entries())
+      await tx.update(pages).set({ sortOrder: position }).where(eq(pages.id, p.id));
+    await audit(
+      {
+        action: "page.reorder",
+        actorId: actor?.id,
+        actorLabel: actor?.label,
+        entityType: "page",
+        entityId: pageId,
+        metadata: { direction },
+      },
+      tx,
+    );
+  });
+  invalidate(CacheTags.content);
+}

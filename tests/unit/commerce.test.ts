@@ -168,6 +168,34 @@ describe("admin editing helpers", async () => {
     expect(editableToHtml("   ")).toBe("");
   });
 
+  it("supports headings, numbered lists and bold for pages", () => {
+    const html =
+      "<p>مرحباً بك في <strong>{{storeName}}</strong>.</p><h2>لماذا نحن؟</h2>" +
+      "<ul><li>توصيل سريع</li><li><strong>دفع</strong> عند الاستلام</li></ul>" +
+      "<h3>خطوات الإرجاع</h3><ol><li>تواصل معنا</li><li>أرسل المنتج</li></ol><p>شكراً لك</p>";
+    const text = htmlToEditable(html);
+    expect(text).toBe(
+      "مرحباً بك في **{{storeName}}**.\n\n## لماذا نحن؟\n\n• توصيل سريع\n• **دفع** عند الاستلام\n\n" +
+        "### خطوات الإرجاع\n\n1. تواصل معنا\n2. أرسل المنتج\n\nشكراً لك",
+    );
+    expect(editableToHtml(text)).toBe(html);
+    // Seeded HTML has newlines between tags: they must not split lists.
+    const seeded =
+      "<p>مرحباً</p>\n<ul>\n  <li>أ</li>\n  <li>ب</li>\n</ul>\n<p>شكراً <strong>لك</strong> جداً</p>";
+    expect(htmlToEditable(seeded)).toBe("مرحباً\n\n• أ\n• ب\n\nشكراً **لك** جداً");
+    expect(editableToHtml(htmlToEditable(seeded))).toBe(
+      "<p>مرحباً</p><ul><li>أ</li><li>ب</li></ul><p>شكراً <strong>لك</strong> جداً</p>",
+    );
+    // A paragraph line followed by bullets in the same block becomes a paragraph and a list.
+    expect(editableToHtml("المميزات:\n- خفيف\n- متين")).toBe(
+      "<p>المميزات:</p><ul><li>خفيف</li><li>متين</li></ul>",
+    );
+    // "**" never becomes a bullet, and stray markup stays text.
+    expect(editableToHtml("**مهم** <b>x</b>")).toBe(
+      "<p><strong>مهم</strong> &lt;b&gt;x&lt;/b&gt;</p>",
+    );
+  });
+
   it("parses prices typed with Arabic digits, separators and decimals", () => {
     expect(parseMoneyInput("25,000", 0)).toBe(25_000);
     expect(parseMoneyInput("٢٥٠٠٠", 0)).toBe(25_000);

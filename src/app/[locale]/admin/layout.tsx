@@ -21,6 +21,8 @@ const AVAILABLE_SECTIONS = [
   "coupons",
   "products",
   "categories",
+  "home",
+  "pages",
   "shipping",
   "settings",
 ];

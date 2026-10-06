@@ -106,4 +106,70 @@ test.describe("admin: store setup", () => {
     await expect(shopper.getByText("خصم الجمعة البيضاء")).toBeHidden();
     expect(await primary()).toBe("#3d2c8d");
   });
+
+  test("a new home section and a new page reach the storefront", async ({
+    page,
+    browser,
+  }, info) => {
+    test.skip(info.project.name !== "mobile", "store-wide content: runs once");
+    const suffix = Date.now() % 100000;
+    const heading = `قصتنا ${suffix}`;
+    const body = `صناعة يدوية بحب منذ ${suffix}`;
+    await signInAsStaff(page);
+    const shopper = await (await browser.newContext()).newPage();
+
+    // Home: add a text block, see it, hide it, delete it.
+    await page.goto("/admin/storefront");
+    await page.getByRole("button", { name: "قسم جديد" }).click();
+    await page.getByRole("dialog").getByRole("link", { name: /^نص/ }).click();
+    await expect(page).toHaveURL(/\/admin\/storefront\/new\?type=text$/);
+    // The body is required.
+    await page.getByRole("button", { name: "إضافة القسم" }).click();
+    await expect(page.getByText("هذا الحقل مطلوب.")).toBeVisible();
+    await page.getByLabel(/^عنوان القسم/).fill(heading);
+    await page.getByLabel("النص", { exact: true }).fill(body);
+    await page.getByRole("button", { name: "إضافة القسم" }).click();
+    await expect(page).toHaveURL(/\/admin\/storefront$/);
+    const row = page.getByRole("listitem").filter({ hasText: heading });
+    await expect(row).toBeVisible();
+
+    await shopper.goto("/");
+    await expect(shopper.getByText(body)).toBeVisible();
+
+    await row.getByRole("switch", { name: new RegExp(heading) }).click();
+    await expect(row).toContainText("مخفي");
+    await shopper.reload();
+    await expect(shopper.getByText(body)).toBeHidden();
+    await row.getByRole("button", { name: "حذف" }).click();
+    await row.getByRole("button", { name: "اضغط مرة أخرى للحذف" }).click();
+    await expect(page.getByRole("listitem").filter({ hasText: heading })).toHaveCount(0);
+
+    // Pages: write with headings and bullets, publish, view, delete.
+    const title = `الشحن الدولي ${suffix}`;
+    await page.goto("/admin/pages");
+    await page.getByRole("link", { name: "صفحة جديدة" }).click();
+    await page.getByLabel("عنوان الصفحة").fill(title);
+    await page
+      .getByLabel("المحتوى")
+      .fill("## مدة التوصيل\n\n• من 7 إلى 14 يوماً\n• تتبع كامل للشحنة");
+    await page.getByRole("button", { name: "حفظ التغييرات" }).click();
+    await expect(page).toHaveURL(/\/admin\/pages\/[0-9a-f-]{36}$/);
+    const href = await page.getByRole("link", { name: "عرض الصفحة" }).getAttribute("href");
+    expect(href).toBeTruthy();
+
+    await shopper.goto(href!);
+    await expect(shopper.getByRole("heading", { level: 1, name: title })).toBeVisible();
+    await expect(shopper.getByRole("heading", { level: 2, name: "مدة التوصيل" })).toBeVisible();
+    await expect(
+      shopper.getByRole("listitem").filter({ hasText: "تتبع كامل للشحنة" }),
+    ).toBeVisible();
+    await expect(shopper.getByRole("contentinfo").getByRole("link", { name: title })).toBeVisible();
+
+    await page.getByRole("button", { name: "حذف الصفحة" }).click();
+    await page.getByRole("button", { name: "اضغط مرة أخرى للحذف" }).click();
+    await expect(page).toHaveURL(/\/admin\/pages$/);
+    await expect(page.getByText(title)).toHaveCount(0);
+    await shopper.reload();
+    await expect(shopper.getByRole("heading", { level: 1, name: title })).toBeHidden();
+  });
 });

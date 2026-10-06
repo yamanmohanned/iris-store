@@ -1222,6 +1222,254 @@
         "image": "The image could not be found. Upload it again.",
         "tooFast": "Too many attempts. Wait a moment and try again."
       }
+    },
+    "picker": {
+      "chosen": "Chosen products",
+      "none": "No products chosen yet. Search for a product to add it.",
+      "search": "Search products",
+      "placeholder": "Type a product name or SKU",
+      "add": "Add",
+      "added": "Added",
+      "remove": "Remove",
+      "moveUp": "Move up",
+      "moveDown": "Move down",
+      "noResults": "No published products match.",
+      "max": "You've reached the limit ({max} products)."
+    },
+    "home": {
+      "title": "Storefront",
+      "intro": "Your home page sections, in the order customers see them. Add, hide and arrange them as you like.",
+      "preview": "Preview store",
+      "new": "New section",
+      "choose": "Choose a section type",
+      "empty": "The home page is empty. Add a first section, such as slides or products.",
+      "order": "Home page sections in order",
+      "hidden": "Hidden",
+      "show": "Show",
+      "hide": "Hide",
+      "visible": "Show “{name}” on the home page",
+      "shown": "Section is now visible",
+      "hiddenNow": "Section is now hidden",
+      "moveUp": "Move up",
+      "moveDown": "Move down",
+      "removeItem": "Remove",
+      "delete": "Delete section",
+      "confirmDelete": "Tap again to delete",
+      "deleted": "Section deleted",
+      "saved": "Section saved",
+      "added": "Section added",
+      "add": "Add section",
+      "types": {
+        "hero": {
+          "name": "Slideshow",
+          "description": "Large rotating images at the top with a title and a button."
+        },
+        "categories": {
+          "name": "Categories",
+          "description": "Circles or cards that lead customers to your categories."
+        },
+        "products": {
+          "name": "Products",
+          "description": "A row or grid of products: newest, best sellers, on sale or hand-picked."
+        },
+        "banner": {
+          "name": "Banner",
+          "description": "A wide image with a title and a button for a sale or new collection."
+        },
+        "features": {
+          "name": "Store highlights",
+          "description": "Short icons such as fast delivery and cash on delivery."
+        },
+        "text": {
+          "name": "Text",
+          "description": "A short paragraph about your store or an important note."
+        }
+      },
+      "summary": {
+        "slides": "{count, plural, one {# slide} other {# slides}}",
+        "allCategories": "All main categories",
+        "someCategories": "{count, plural, one {# chosen category} other {# chosen categories}}",
+        "picked": "{count, plural, one {# chosen product} other {# chosen products}}",
+        "upTo": "up to {count} products",
+        "features": "{count, plural, one {# highlight} other {# highlights}}"
+      },
+      "sources": {
+        "newest": "Newest",
+        "featured": "Featured",
+        "best_sellers": "Best sellers",
+        "on_sale": "On sale",
+        "category": "From a category",
+        "manual": "Hand-picked"
+      },
+      "sourceHints": {
+        "newest": "The products you added most recently.",
+        "featured": "Products marked as “Featured”.",
+        "best_sellers": "By number of items sold.",
+        "on_sale": "Products with a compare-at price.",
+        "category": "Products from one category you choose.",
+        "manual": "You choose the products and their order."
+      },
+      "sectionTitle": "Section title",
+      "sectionTitleHint": "Shown above the section on the home page.",
+      "visibleOnHome": "Visible on the home page",
+      "visibleOnHomeHint": "Hide the section for now without deleting it.",
+      "image": "Image",
+      "headline": "Title",
+      "subtitle": "Short text",
+      "ctaLabel": "Button text",
+      "ctaPlaceholder": "e.g. Shop now",
+      "ctaHref": "Button link",
+      "ctaHrefHint": "A store page starting with / or a full link starting with https://",
+      "hero": {
+        "slide": "Slide {n}",
+        "addSlide": "Add slide",
+        "imageHint": "A wide image, at least 1600px. Phones show its center.",
+        "autoplay": "Rotate slides automatically",
+        "autoplayHint": "Rotation pauses when customers touch the slides or prefer reduced motion."
+      },
+      "categories": {
+        "which": "Categories shown",
+        "all": "All main categories",
+        "allHint": "Updates automatically when you add a category.",
+        "pick": "Categories I choose",
+        "pickHint": "Shown in the order of your categories page.",
+        "orderHint": "Choose the categories to show.",
+        "style": "Style",
+        "circles": "Circles",
+        "cards": "Cards"
+      },
+      "products": {
+        "which": "Products shown",
+        "category": "Category",
+        "chooseCategory": "Choose a category",
+        "picked": "Products",
+        "limit": "Number of products",
+        "limitHint": "From 2 to 24. Only products in stock are shown.",
+        "layout": "Layout",
+        "carousel": "Swipe row",
+        "carouselHint": "One row customers swipe through.",
+        "grid": "Grid",
+        "gridHint": "Two products per row on phones."
+      },
+      "banner": {
+        "imageHint": "A wide image, ideally 1600×700px.",
+        "tone": "Text color",
+        "dark": "Light text",
+        "darkHint": "For dark images.",
+        "light": "Dark text",
+        "lightHint": "For light images."
+      },
+      "features": {
+        "item": "Highlight {n}",
+        "add": "Add highlight",
+        "icon": "Icon",
+        "title": "Title",
+        "text": "Short description"
+      },
+      "icons": {
+        "truck": "Delivery",
+        "banknote": "Cash payment",
+        "refresh": "Exchange",
+        "shield": "Guarantee",
+        "gift": "Gift",
+        "headset": "Support",
+        "clock": "Speed",
+        "star": "Quality"
+      },
+      "defaults": {
+        "truck": {
+          "title": "Nationwide delivery",
+          "text": "Your order reaches you wherever you are."
+        },
+        "banknote": {
+          "title": "Cash on delivery",
+          "text": "Pay in cash when your order arrives."
+        },
+        "refresh": {
+          "title": "Easy exchange",
+          "text": "We exchange items that don't suit you."
+        }
+      },
+      "text": {
+        "body": "Text",
+        "align": "Alignment",
+        "center": "Centered",
+        "start": "To the side"
+      },
+      "errors": {
+        "check": "Check the highlighted fields and save again.",
+        "invalid": "Invalid value.",
+        "required": "This field is required.",
+        "link": "Links start with / for a store page, or with https://",
+        "ctaHref": "Add a link for the button, or remove the button text.",
+        "slides": "Add at least one slide.",
+        "categories": "Choose at least one category.",
+        "category": "Choose the category.",
+        "products": "Choose at least one product.",
+        "limit": "Enter a number from 2 to 24.",
+        "features": "Add at least one highlight.",
+        "gone": "This section no longer exists. Refresh the page."
+      }
+    },
+    "pages": {
+      "title": "Pages",
+      "intro": "Static pages such as About us, exchange policy and privacy. Their order here is their order in the store footer.",
+      "new": "New page",
+      "edit": "Edit page",
+      "empty": "No pages yet.",
+      "draft": "Draft",
+      "notInFooter": "Not in footer",
+      "system": "Essential",
+      "moveUp": "Move up",
+      "moveDown": "Move down",
+      "view": "View page",
+      "delete": "Delete page",
+      "confirmDelete": "Tap again to delete",
+      "deleted": "Page deleted",
+      "saved": "Page saved",
+      "created": "Page created",
+      "systemHint": "An essential page the store links to (from checkout and sign-up, for example). You can edit or unpublish it, but not delete it.",
+      "pageTitle": "Page title",
+      "content": "Content",
+      "publishing": "Publishing",
+      "published": "Published",
+      "publishedHint": "Customers can't see unpublished pages.",
+      "inFooter": "Link in the store footer",
+      "inFooterHint": "Shows a link to this page at the bottom of every page.",
+      "slug": "Page URL",
+      "slugHint": "Created from the title if left empty.",
+      "seo": "Search results",
+      "seoHint": "Optional. The title and the start of the content are used when empty.",
+      "seoTitle": "Search result title",
+      "seoDescription": "Search result description",
+      "format": {
+        "heading": {
+          "syntax": "## Heading",
+          "result": "heading (### for a smaller one)"
+        },
+        "list": {
+          "syntax": "• item",
+          "result": "bullet list (or - at the line start)"
+        },
+        "numbered": {
+          "syntax": "1. step",
+          "result": "numbered list"
+        },
+        "bold": {
+          "syntax": "**word**",
+          "result": "bold"
+        },
+        "paragraph": "Leave an empty line to start a new paragraph."
+      },
+      "errors": {
+        "check": "Check the highlighted fields and save again.",
+        "invalid": "Invalid value.",
+        "title": "Enter the page title.",
+        "slug": "Use letters and numbers separated by hyphens (-), without spaces or symbols.",
+        "slugTaken": "Another page already uses this URL.",
+        "system": "Essential pages can't be deleted. Unpublish it to hide it.",
+        "gone": "This page no longer exists. Refresh the page."
+      }
     }
   }
 }
