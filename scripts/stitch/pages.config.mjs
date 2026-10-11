@@ -1,0 +1,118 @@
+/**
+ * Registry of every exported Stitch screen → where it lives in src/pages and how its shell is treated.
+ *
+ * shell:
+ *   store        desktop storefront: header / footer / chat FAB / progress bar are provided by <StoreLayout>
+ *   mobile       mobile frame (390px) kept verbatim inside <MobileFrame>
+ *   mobile-tabs  like mobile, but the page's own bottom <nav> is replaced by <MobileTabBar active=…>
+ *   admin        back-office: the sidebar is provided by <AdminLayout>
+ *   bare         full-bleed screens (auth, splash, maintenance, focused flows) kept verbatim
+ *   skip         interaction "frames" / alternates that were folded into shared components
+ */
+import * as orderSuccess from './bindings/order-success.mjs';
+
+export const pages = [
+  // ───────────────── Storefront · desktop ─────────────────
+  { id: '5f1b5f', out: 'store/home/HomeHero', shell: 'store', contentOf: 'main > div' },
+  { id: '5b652e', out: 'store/home/HomeMiddle', shell: 'store', contentOf: 'main > div' },
+  { id: 'c8769d', out: 'store/home/HomeBottom', shell: 'store', contentOf: 'main > div', strip: ['main footer', '#sticky-bar', 'main div.fixed'] },
+  { id: 'c44246', out: 'store/collection/CollectionDesktop', shell: 'store' },
+  { id: '7259a8', out: 'store/product/ProductDesktop', shell: 'store' },
+  { id: '5e85a1', out: 'store/cart/CartDesktop', shell: 'store' },
+  { id: 'b6360e', out: 'store/cart/CartEmptyDesktop', shell: 'store' },
+  { id: '6adf31', out: 'store/order/OrderSuccessDesktop', shell: 'store', ...orderSuccess.desktop },
+  { id: '6bc8f4', out: 'store/order/TrackOrderDesktop', shell: 'store' },
+  { id: '343a4f', out: 'store/account/AccountDesktop', shell: 'store' },
+  { id: '0837ea', out: 'store/auth/LoginDesktop', shell: 'store' },
+  { id: '2e208f', out: 'store/content/AboutPage', shell: 'store' },
+  { id: '0813f4', out: 'store/content/ContactPage', shell: 'store' },
+  { id: '21ced7', out: 'store/content/FaqPage', shell: 'store' },
+  { id: 'c9b417', out: 'store/system/NotFoundPage', shell: 'store' },
+  { id: '28f996', out: 'store/system/MaintenancePage', shell: 'bare' },
+  { id: 'e27c41', out: 'store/returns/ReturnRequestDesktop', shell: 'bare' },
+
+  // interaction frames → folded into shared components (StoreHeader scroll morph, ProductCard hover,
+  // MiniCartDrawer, SearchOverlay, ChatWidget, sticky buy bar) and the alternate returns layout
+  { id: '135f64', out: '_frames/ScrolledHeader', shell: 'skip' },
+  { id: '03d133', out: '_frames/ProductCardHover', shell: 'skip' },
+  { id: '70409c', out: '_frames/MiniCartDrawer', shell: 'skip' },
+  { id: 'dc2c44', out: '_frames/SearchOverlay', shell: 'skip' },
+  { id: 'af9fa8', out: '_frames/LiveChatWidget', shell: 'skip' },
+  { id: '049cfe', out: '_frames/StickyBuyBar', shell: 'skip' },
+  { id: '2dc8b3', out: '_frames/ReturnRequestAlt', shell: 'skip' },
+
+  // ───────────────── Storefront · mobile ─────────────────
+  { id: '02d9de', out: 'mobile/onboarding/SplashScreen', shell: 'bare' },
+  { id: '37e315', out: 'mobile/onboarding/Onboarding1', shell: 'bare' },
+  { id: '04f784', out: 'mobile/onboarding/Onboarding2', shell: 'bare' },
+  { id: 'b83f40', out: 'mobile/onboarding/Onboarding3', shell: 'bare' },
+  { id: '508175', out: 'mobile/home/HomeTab', shell: 'mobile-tabs', tab: 'home' },
+  { id: '47908d', out: 'mobile/home/HomeScrolled', shell: 'mobile', contentOf: 'main > div', strip: ['body > nav'] },
+  { id: '47b5a7', out: 'mobile/categories/CategoriesTab', shell: 'mobile-tabs', tab: 'categories' },
+  { id: 'f4d07a', out: 'mobile/collection/CollectionMobile', shell: 'mobile-tabs', tab: 'categories' },
+  { id: 'c963c6', out: 'mobile/collection/FilterSheet', shell: 'mobile' },
+  { id: '4d8a85', out: 'mobile/collection/SortSheet', shell: 'mobile' },
+  { id: 'cf7867', out: 'mobile/product/ProductMobile', shell: 'bare' },
+  { id: 'ee5142', out: 'mobile/product/VariantSheet', shell: 'bare' },
+  { id: '388dd4', out: 'mobile/search/SearchStart', shell: 'bare' },
+  { id: '55072e', out: 'mobile/search/SearchResults', shell: 'bare' },
+  { id: '913ca2', out: 'mobile/cart/CartMobile', shell: 'mobile-tabs', tab: 'cart' },
+  { id: '0713e3', out: 'mobile/cart/CartEmptyMobile', shell: 'mobile-tabs', tab: 'cart' },
+  { id: '7966c5', out: 'mobile/checkout/CheckoutContact', shell: 'mobile' },
+  { id: 'b050d8', out: 'mobile/checkout/CheckoutDelivery', shell: 'mobile' },
+  { id: '8e0fe8', out: 'mobile/checkout/CheckoutReview', shell: 'mobile' },
+  { id: '11405c', out: 'mobile/order/OrderSuccessMobile', shell: 'bare', ...orderSuccess.mobile },
+  { id: '5a05ad', out: 'mobile/order/TrackOrderMobile', shell: 'mobile' },
+  { id: '7036a8', out: 'mobile/order/MyOrdersMobile', shell: 'mobile-tabs', tab: 'account' },
+  { id: '5be606', out: 'mobile/account/AccountGuest', shell: 'mobile-tabs', tab: 'account' },
+  { id: '8eb6ca', out: 'mobile/account/AccountProfile', shell: 'mobile-tabs', tab: 'account' },
+  { id: 'a53831', out: 'mobile/auth/OtpVerify', shell: 'bare' },
+  { id: '797aa4', out: 'mobile/inbox/NotificationsInbox', shell: 'mobile' },
+  { id: '1231af', out: 'mobile/chat/InAppChat', shell: 'mobile' },
+  { id: 'd4e71c', out: 'mobile/contact/ContactHub', shell: 'mobile-tabs', tab: 'contact' },
+  { id: 'f764ec', out: 'mobile/returns/ReturnItems', shell: 'mobile' },
+  { id: '5515b4', out: 'mobile/returns/ReturnOptions', shell: 'mobile' },
+  { id: '536c3e', out: 'mobile/system/SystemUpdates', shell: 'bare' },
+  { id: 'e58238', out: 'mobile/system/NoConnection', shell: 'bare' },
+
+  // ───────────────── Admin ─────────────────
+  { id: '46f076', out: 'admin/auth/AdminLogin', shell: 'bare' },
+  { id: '943e44', out: 'admin/auth/AdminTwoFactor', shell: 'bare' },
+  { id: '7b1762', out: 'admin/auth/AdminPasswordReset', shell: 'bare' },
+  { id: '643bbc', out: 'admin/dashboard/OwnerDashboard', shell: 'admin' },
+  { id: '2626db', out: 'admin/dashboard/EmployeeDashboard', shell: 'admin' },
+  { id: 'a1d4ac', out: 'admin/orders/OrdersList', shell: 'admin' },
+  { id: 'e151d0', out: 'admin/orders/NewOrder', shell: 'admin' },
+  { id: 'c113ee', out: 'admin/orders/OrderDetails', shell: 'admin' },
+  { id: 'b0d88e', out: 'admin/orders/ReturnProcessing', shell: 'admin' },
+  { id: 'ac18e2', out: 'admin/catalog/ProductsList', shell: 'admin' },
+  { id: '0ebf15', out: 'admin/catalog/AddProduct', shell: 'admin' },
+  { id: '1e3d58', out: 'admin/catalog/CategoriesManagement', shell: 'admin' },
+  { id: '5371b3', out: 'admin/inventory/InventoryOverview', shell: 'admin' },
+  { id: '78b6a7', out: 'admin/inventory/StockMovements', shell: 'admin' },
+  { id: 'ca767d', out: 'admin/inventory/StockAdjustment', shell: 'admin' },
+  { id: 'd604b8', out: 'admin/inventory/StockCount', shell: 'bare' },
+  { id: '83ac46', out: 'admin/purchasing/PurchasingBatches', shell: 'admin' },
+  { id: 'd0a516', out: 'admin/purchasing/NewPurchase', shell: 'admin' },
+  { id: '5b5323', out: 'admin/suppliers/SuppliersList', shell: 'admin' },
+  { id: '8bd4b9', out: 'admin/suppliers/SupplierProfile', shell: 'admin' },
+  { id: 'ff4dcc', out: 'admin/customers/CustomersList', shell: 'admin' },
+  { id: '572420', out: 'admin/customers/CustomerProfile', shell: 'admin' },
+  { id: 'f4c00b', out: 'admin/inbox/UnifiedInbox', shell: 'admin' },
+  { id: '52df11', out: 'admin/finance/PaymentsBalances', shell: 'admin' },
+  { id: '12c68c', out: 'admin/finance/Expenses', shell: 'admin' },
+  { id: 'f9ce0e', out: 'admin/finance/AccountingPnl', shell: 'admin' },
+  { id: '32fb6d', out: 'admin/finance/AccountingSettings', shell: 'admin' },
+  { id: '764a28', out: 'admin/marketing/Coupons', shell: 'admin' },
+  { id: 'f4b8e3', out: 'admin/storefront/StorefrontContent', shell: 'admin' },
+  { id: '8c1b02', out: 'admin/reports/ReportsHub', shell: 'admin' },
+  { id: '2ae5d9', out: 'admin/reports/SalesByChannel', shell: 'admin' },
+  { id: '8c9b50', out: 'admin/staff/StaffManagement', shell: 'admin' },
+  { id: '844813', out: 'admin/staff/PermissionsMatrix', shell: 'admin' },
+  { id: '443019', out: 'admin/system/AuditLog', shell: 'admin' },
+  { id: '67d13f', out: 'admin/system/SystemHealth', shell: 'admin' },
+  { id: '5dcaa1', out: 'admin/system/MasterArchive', shell: 'admin' },
+  { id: 'a31466', out: 'admin/system/NotificationCenter', shell: 'admin' },
+  { id: '31e185', out: 'admin/settings/SocialChannels', shell: 'admin' },
+  { id: 'e99901', out: 'admin/settings/CurrencyOrders', shell: 'admin' },
+];

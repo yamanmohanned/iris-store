@@ -1,0 +1,43 @@
+{
+  "name": "iris-store",
+  "private": true,
+  "version": "0.1.0",
+  "description": "دار آيريس للمجوهرات — متجر إلكتروني فاخر ولوحة إدارة (RTL / عربي) مبني من تصاميم Stitch",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "npm run check && vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit",
+    "check": "tsc --noEmit && node scripts/fonts/build-icon-font.mjs --check && node scripts/qa/dead-classes.mjs",
+    "icons": "node scripts/fonts/build-icon-font.mjs",
+    "package": "npm run build && node scripts/deploy/package.mjs",
+    "build:demo": "npm run check && vite build --mode demo",
+    "build:netlify": "npm run check && vite build --mode netlify && node scripts/deploy/netlify.mjs"
+  },
+  "dependencies": {
+    "@netlify/blobs": "^11.1.0",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "react-router": "^8.4.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/container-queries": "^0.1.1",
+    "@tailwindcss/forms": "^0.5.11",
+    "@types/node": "^24.0.0",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.1.2",
+    "autoprefixer": "^10.6.1",
+    "cheerio": "^1.2.0",
+    "domhandler": "^6.0.1",
+    "pixelmatch": "^8.0.0",
+    "playwright-core": "^1.64.0",
+    "pngjs": "^7.0.0",
+    "postcss": "^8.5.29",
+    "prettier": "^3.9.9",
+    "tailwindcss": "^3.4.19",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.4"
+  }
+}

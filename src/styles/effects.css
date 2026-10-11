@@ -1,0 +1,305 @@
+/*
+ * مؤثرات الواجهة الفاخرة — مستخرجة من كتل <style> في تصاميم Stitch (موحّدة).
+ * تُستورد قبل Tailwind فتكون أقل أولوية من الـ utilities (نفس سلوك التصاميم الأصلية).
+ */
+
+/* ---- أيقونات Material Symbols ----
+ * خط مستضاف محلياً ومُقتطع لأيقونات المتجر فقط (40KB بدل 4MB من Google).
+ * لإضافة أيقونة جديدة: npm run icons (يعيد توليد public/fonts/material-symbols-outlined.woff2).
+ */
+@font-face {
+  font-family: 'Material Symbols Outlined';
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+  src: url('/fonts/material-symbols-outlined.woff2') format('woff2');
+}
+.material-symbols-outlined {
+  font-family: 'Material Symbols Outlined';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: 'liga';
+  font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+  /* مربع ثابت بحجم الأيقونة: اسم الأيقونة لا يدفع العناصر المجاورة قبل تحميل الخط */
+  width: 1em;
+  min-width: 1em;
+  height: 1em;
+  overflow: clip;
+  flex-shrink: 0;
+  user-select: none;
+}
+/* حتى يجهز خط الأيقونات لا تُعرض أسماؤها كنص (shopping_bag، search…) — انظر main.tsx */
+html:not(.icons-ready) .material-symbols-outlined {
+  color: transparent !important;
+}
+.material-symbols-outlined.fill-icon {
+  font-variation-settings: 'FILL' 1;
+}
+
+/* ---- خطوط مساعدة ---- */
+.font-serif-luxury,
+.font-serif-brand {
+  font-family: 'Instrument Serif', Georgia, serif;
+}
+.font-messiri {
+  font-family: 'El Messiri', 'IBM Plex Sans Arabic', serif;
+}
+.font-num {
+  font-family: 'IBM Plex Sans Arabic', 'Segoe UI', Tahoma, sans-serif;
+  font-variant-numeric: tabular-nums;
+}
+.font-tabular,
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---- شريط تمرير مخصّص ---- */
+.custom-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #f8f3ec;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #dcc0c1;
+  border-radius: 9999px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #897173;
+}
+
+/* ---- ظل فاخر ---- */
+.shadow-luxury {
+  box-shadow: 0 12px 32px -6px rgba(42, 3, 13, 0.06), 0 4px 12px -2px rgba(42, 3, 13, 0.03);
+}
+
+/* ---- شريط تقدّم المراحل (ذهبي) ---- */
+.stepper-progress-fill {
+  background: linear-gradient(270deg, #c9a24b 0%, #e9d49c 60%, #8a6620 100%);
+}
+
+/* ---- نبضة ذهبية ---- */
+@keyframes pulse-gold {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+    box-shadow: 0 0 0 0 rgba(201, 162, 75, 0.6);
+  }
+  50% {
+    transform: scale(1.15);
+    opacity: 0.9;
+    box-shadow: 0 0 0 8px rgba(201, 162, 75, 0);
+  }
+}
+@keyframes subtlePulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.15);
+  }
+}
+.pulse-dot {
+  animation: pulse-gold 2.2s infinite ease-in-out;
+}
+
+/* ---- لمعان ذهبي دائم ---- */
+@keyframes goldShimmer {
+  0% {
+    transform: translateX(140%) skewX(-20deg);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.65;
+  }
+  30% {
+    transform: translateX(-140%) skewX(-20deg);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(-140%) skewX(-20deg);
+    opacity: 0;
+  }
+}
+.shimmer-active {
+  position: relative;
+  overflow: hidden;
+}
+.shimmer-active::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -100%;
+  right: -100%;
+  background: linear-gradient(90deg, transparent 0%, rgba(201, 162, 75, 0.45) 50%, rgba(233, 212, 156, 0.6) 60%, transparent 100%);
+  animation: goldShimmer 6s infinite cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+}
+
+/* ---- زخرفة السوسن العائمة ---- */
+@keyframes irisFloat {
+  0%,
+  100% {
+    transform: translate(-50%, 0px) rotate(0deg);
+  }
+  50% {
+    transform: translate(-50%, -6px) rotate(1deg);
+  }
+}
+.floating-iris-ornament {
+  animation: irisFloat 8s ease-in-out infinite;
+}
+
+/* ---- شريط إعلانات متحرك ---- */
+@keyframes marqueeScroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(50%);
+  }
+}
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marqueeScroll 40s linear infinite;
+}
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* ---- جسيم طائر (إضافة إلى السلة) ---- */
+.flying-particle {
+  position: fixed;
+  z-index: 10000;
+  pointer-events: none;
+  border-radius: 9999px;
+  box-shadow: 0 8px 24px rgba(78, 24, 37, 0.35);
+  transition: all 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ---- كشف الأسطر والعناصر عند التمرير ---- */
+.line-reveal {
+  transform: translateY(115%);
+  opacity: 0;
+  transition: transform 0.85s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.7s ease;
+}
+.line-reveal.revealed {
+  transform: translateY(0%);
+  opacity: 1;
+}
+
+.twin-line-left,
+.twin-line-right {
+  transform: scaleX(0);
+  transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.twin-line-left {
+  transform-origin: right center;
+}
+.twin-line-right {
+  transform-origin: left center;
+}
+.twin-divider.revealed .twin-line-left,
+.twin-divider.revealed .twin-line-right {
+  transform: scaleX(1);
+}
+.diamond-center {
+  transform: scale(0) rotate(0deg);
+  transition: transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) 0.25s;
+}
+.twin-divider.revealed .diamond-center {
+  transform: scale(1) rotate(45deg);
+}
+
+.fade-up-item {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1), transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.fade-up-item.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ---- لمعة الزر + ستارة الصورة ---- */
+.btn-sweep {
+  position: relative;
+  overflow: hidden;
+}
+.btn-sweep::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  bottom: -50%;
+  left: -60%;
+  width: 40%;
+  background: linear-gradient(90deg, transparent, rgba(233, 212, 156, 0.45), transparent);
+  transform: rotate(25deg);
+  opacity: 0;
+  pointer-events: none;
+}
+.btn-sweep:hover::after {
+  opacity: 1;
+  left: 140%;
+  transition: left 0.75s ease-out, opacity 0.2s;
+}
+
+.curtain-reveal {
+  position: relative;
+  overflow: hidden;
+}
+.curtain-reveal::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: #fbf6ef;
+  z-index: 15;
+  transform: scaleY(1);
+  transform-origin: top;
+  transition: transform 0.9s cubic-bezier(0.77, 0, 0.175, 1);
+}
+.curtain-reveal.revealed::before {
+  transform: scaleY(0);
+}
+
+/* ---- تقليل الحركة ---- */
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee,
+  .shimmer-active::after,
+  .floating-iris-ornament,
+  .pulse-dot {
+    animation: none;
+  }
+  .fade-up-item,
+  .line-reveal,
+  .twin-line-left,
+  .twin-line-right,
+  .diamond-center {
+    transition: none;
+    opacity: 1;
+    transform: none;
+  }
+  .curtain-reveal::before {
+    display: none;
+  }
+}

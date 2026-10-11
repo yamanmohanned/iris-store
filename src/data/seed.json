@@ -1,0 +1,1026 @@
+{
+  "categories": [
+    {
+      "slug": "necklaces",
+      "name": "القلائد",
+      "title": "القلائد",
+      "description": "تشكيلات منتقاة من الذهب عيار 18 والأحجار الكريمة النادرة، صيغت بأيدي أمهر الصاغة لتخليد لحظاتكِ الاستثنائية بلمسة من الرقي الخالد وأناقة التفاصيل الملكية.",
+      "unit": "قطعة فريدة",
+      "image": "/images/stitch/079.jpg"
+    },
+    {
+      "slug": "rings",
+      "name": "الخواتم",
+      "title": "الخواتم",
+      "description": "خواتم السوليتير والألماس والأحجار الملونة، مصوغة بدقة لتبقى رفيقة العمر ورمزاً للمناسبات الأجمل.",
+      "unit": "قطعة مصوغة",
+      "image": "/images/ring-solitaire-arch.jpg"
+    },
+    {
+      "slug": "bracelets",
+      "name": "الأساور",
+      "title": "الأساور",
+      "description": "أساور ذهب خالص بحبكات إيطالية وتصاميم ناعمة تلائم اليوميات والمناسبات على حدّ سواء.",
+      "unit": "قطعة أنيقة",
+      "image": "/images/stitch/154.jpg"
+    },
+    {
+      "slug": "earrings",
+      "name": "الأقراط",
+      "title": "الأقراط",
+      "description": "أقراط لؤلؤ طبيعي وألماس وذهب، بتصاميم متناسقة تُكمل إطلالتكِ بنعومة ملكية.",
+      "unit": "قطعة براقة",
+      "image": "/images/earrings-pearl-marble.jpg"
+    },
+    {
+      "slug": "gifts",
+      "name": "مجموعات الهدايا",
+      "title": "مجموعات الهدايا",
+      "description": "أطقم وصناديق إهداء مغلّفة بالمخمل العنابي وشريط حريري، جاهزة لتكون هدية لا تُنسى.",
+      "unit": "مجموعة مكتملة",
+      "image": "/images/gift-box-opening.jpg"
+    }
+  ],
+  "products": [
+    {
+      "id": "nk-102",
+      "slug": "gold-necklace-102",
+      "sku": "NK-102",
+      "name": "قلادة ذهبية رقم 102 — ذهب أصفر عيار 18 مرصعة بياقوت أزرق وسوليتير",
+      "shortName": "قلادة ذهبية رقم 102",
+      "category": "necklaces",
+      "summary": "حجر زفير كشميري مقطوع بحرفية قطرة الندى",
+      "metal": "ذهب أصفر عيار 18",
+      "price": 18000,
+      "oldPrice": 25000,
+      "badge": "new",
+      "stock": 3,
+      "image": "/images/stitch/089.jpg",
+      "gallery": [
+        "/images/stitch/142.jpg",
+        "/images/stitch/139.jpg",
+        "/images/stitch/140.jpg",
+        "/images/stitch/141.jpg",
+        "/images/gift-box-opening.jpg"
+      ],
+      "swatches": [
+        "white",
+        "gold"
+      ],
+      "sizes": [
+        {
+          "label": "40 سم",
+          "note": "طول قياسي ضيق"
+        },
+        {
+          "label": "45 سم",
+          "note": "المقاس الأكثر طلباً"
+        },
+        {
+          "label": "50 سم",
+          "note": "نفد من الخزانة",
+          "soldOut": true
+        }
+      ],
+      "tags": [
+        "ياقوت",
+        "سوليتير",
+        "ذهب أصفر"
+      ],
+      "content": {
+        "description": [
+          "تنفرد هذه القطعة بمزيج ساحر بين الذهب الأصفر عيار 18 قيراطاً ذي البريق الدافئ، وحجر الياقوت الأزرق الملكي الكمثري بوزن 1.25 قيراط. تحيط بالحجر المركزي هالة مصوغة بحرفية يدوية تضم 16 حجراً من ألماس السوليتير النقي المستخرج بمسؤولية وأخلاقيات معتمدة.",
+          "السلسلة المرفقة مسبوكة بأسلوب الحلقات الإيطالية المتشابكة مع قفل أمان محكم يحمل نقش خاتم دار آيريس الرفيع، لضمان أعلى درجات الثبات والراحة عند الارتداء اليومي أو في المناسبات الكبرى."
+        ],
+        "story": {
+          "eyebrow": "فلسفة الصياغة",
+          "title": "قصة الياقوت الأزرق الملكي وسحر الشرق",
+          "body": "تم استلهام قلادة رقم 102 من تفاصيل القصور الأندلسية العريقة وزرقة سماء بغداد عند الغسق. يخضع كل حجر ياقوت كمثري لفرز دقيق واختيار يدوي يضمن درجة نقاء نادرة وعمقاً لونياً مخملياً يتلألأ تحت أضواء الشموع وأشعة الشمس الذهبية.",
+          "hallmarkTitle": "مختومة بكود الصائغ الرسمي",
+          "hallmarkNumber": "#IQ-IRIS-750-102"
+        },
+        "certificate": {
+          "title": "شهادة الألماس المرفقة",
+          "note": "درجة النقاء VVS1 · قطع بريليانت مثالي",
+          "badge": "معتمدة دولياً"
+        },
+        "specs": [
+          {
+            "label": "نوع المعدن والعيار",
+            "value": "ذهب أصفر خالص عيار 18 (750‰)"
+          },
+          {
+            "label": "الوزن التقريبي الإجمالي",
+            "value": "4.85 غرام تقريباً"
+          },
+          {
+            "label": "الحجر المركزي",
+            "value": "ياقوت أزرق ملكي كولومبي طبيعي (1.25 ct)"
+          },
+          {
+            "label": "الأحجار المحيطة",
+            "value": "16 حجر ألماس طبيعي بقصة بريليانت (0.32 ct)"
+          },
+          {
+            "label": "درجة نقاء الألماس واللون",
+            "value": "درجة VVS1 - لون استثنائي F-G"
+          },
+          {
+            "label": "أبعاد الدلاية (التعليقة)",
+            "value": "14 ملم طول × 9 ملم عرض"
+          }
+        ]
+      }
+    },
+    {
+      "id": "nk-diamond-drop",
+      "slug": "diamond-solitaire-drop-necklace",
+      "sku": "NK-210",
+      "name": "قلادة قطرة الألماس السوليتير",
+      "shortName": "قلادة قطرة الألماس",
+      "category": "necklaces",
+      "summary": "ألماسة نقية بدرجة نقاء VVS1 بوزن 0.7 قيراط",
+      "metal": "ذهب أبيض عيار 18",
+      "price": 24000,
+      "oldPrice": 32000,
+      "badge": "sale",
+      "stock": 2,
+      "image": "/images/stitch/090.jpg",
+      "gallery": [
+        "/images/stitch/090.jpg"
+      ],
+      "swatches": [
+        "rose",
+        "gold",
+        "white"
+      ],
+      "sizes": [
+        {
+          "label": "40 سم",
+          "note": "طول قياسي ضيق"
+        },
+        {
+          "label": "45 سم",
+          "note": "المقاس الأكثر طلباً"
+        },
+        {
+          "label": "50 سم",
+          "note": "نفد من الخزانة",
+          "soldOut": true
+        }
+      ]
+    },
+    {
+      "id": "nk-baroque-pearl",
+      "slug": "baroque-pearl-necklace",
+      "sku": "NK-318",
+      "name": "قلادة لؤلؤ الباروك الطبيعي",
+      "shortName": "قلادة لؤلؤ الباروك",
+      "category": "necklaces",
+      "summary": "لؤلؤ طبيعي مائي مع حلقة من الذهب المطروق",
+      "metal": "ذهب أصفر عيار 18 ولؤلؤ طبيعي",
+      "price": 22000,
+      "badge": "limited",
+      "stock": 4,
+      "image": "/images/stitch/159.jpg",
+      "gallery": [
+        "/images/stitch/159.jpg",
+        "/images/stitch/150.jpg"
+      ],
+      "swatches": [
+        "gold"
+      ],
+      "sizes": [
+        {
+          "label": "40 سم",
+          "note": "طول قياسي ضيق"
+        },
+        {
+          "label": "45 سم",
+          "note": "المقاس الأكثر طلباً"
+        },
+        {
+          "label": "50 سم",
+          "note": "نفد من الخزانة",
+          "soldOut": true
+        }
+      ]
+    },
+    {
+      "id": "nk-emerald-choker",
+      "slug": "colombian-emerald-choker",
+      "sku": "NK-402",
+      "name": "طوق شوكر الزمرّد الكولومبي",
+      "shortName": "طوق الزمرّد الكولومبي",
+      "category": "necklaces",
+      "summary": "حجر زمرد أخضر ملكي موثّق بشهادة منشأ",
+      "metal": "ذهب أصفر عيار 18",
+      "price": 48000,
+      "badge": "exclusive",
+      "stock": 1,
+      "image": "/images/stitch/092.jpg",
+      "gallery": [
+        "/images/stitch/092.jpg"
+      ],
+      "swatches": [
+        "gold"
+      ],
+      "sizes": [
+        {
+          "label": "40 سم",
+          "note": "طول قياسي ضيق"
+        },
+        {
+          "label": "45 سم",
+          "note": "المقاس الأكثر طلباً"
+        },
+        {
+          "label": "50 سم",
+          "note": "نفد من الخزانة",
+          "soldOut": true
+        }
+      ]
+    },
+    {
+      "id": "nk-sun-engraved",
+      "slug": "engraved-golden-sun-necklace",
+      "sku": "NK-155",
+      "name": "قلادة الشمس الذهبية المنقوشة",
+      "shortName": "قلادة الشمس الذهبية",
+      "category": "necklaces",
+      "summary": "نقوش شمسية دقيقة مستوحاة من العمارة الأندلسية",
+      "metal": "ذهب أصفر عيار 21",
+      "price": 16500,
+      "stock": 6,
+      "image": "/images/stitch/184.jpg",
+      "gallery": [
+        "/images/stitch/184.jpg",
+        "/images/stitch/152.jpg"
+      ],
+      "swatches": [
+        "rose",
+        "silver",
+        "gold"
+      ],
+      "sizes": [
+        {
+          "label": "40 سم",
+          "note": "طول قياسي ضيق"
+        },
+        {
+          "label": "45 سم",
+          "note": "المقاس الأكثر طلباً"
+        },
+        {
+          "label": "50 سم",
+          "note": "نفد من الخزانة",
+          "soldOut": true
+        }
+      ]
+    },
+    {
+      "id": "nk-italian-braid",
+      "slug": "italian-braided-gold-chain",
+      "sku": "NK-077",
+      "name": "سلسلة الذهب الإيطالي المجدول",
+      "shortName": "سلسلة الذهب الإيطالي",
+      "category": "necklaces",
+      "summary": "حبكات مجدولة يدوياً بانسيابية حريرية ساحرة",
+      "metal": "ذهب أصفر عيار 18",
+      "price": 19000,
+      "badge": "bestseller",
+      "stock": 9,
+      "image": "/images/stitch/093.jpg",
+      "gallery": [
+        "/images/stitch/093.jpg"
+      ],
+      "swatches": [
+        "gold"
+      ],
+      "sizes": [
+        {
+          "label": "40 سم",
+          "note": "طول قياسي ضيق"
+        },
+        {
+          "label": "45 سم",
+          "note": "المقاس الأكثر طلباً"
+        },
+        {
+          "label": "50 سم",
+          "note": "نفد من الخزانة",
+          "soldOut": true
+        }
+      ]
+    },
+    {
+      "id": "nk-antique-key",
+      "slug": "antique-key-pendant",
+      "sku": "NK-263",
+      "name": "قلادة المفتاح العتيق المرصع",
+      "shortName": "قلادة المفتاح العتيق",
+      "category": "necklaces",
+      "summary": "ترصيع دقيق بألماسات مستديرة عيار 18",
+      "metal": "ذهب أصفر عيار 18",
+      "price": 26000,
+      "stock": 5,
+      "image": "/images/stitch/095.jpg",
+      "gallery": [
+        "/images/stitch/095.jpg"
+      ],
+      "swatches": [
+        "silver",
+        "gold"
+      ],
+      "sizes": [
+        {
+          "label": "40 سم",
+          "note": "طول قياسي ضيق"
+        },
+        {
+          "label": "45 سم",
+          "note": "المقاس الأكثر طلباً"
+        },
+        {
+          "label": "50 سم",
+          "note": "نفد من الخزانة",
+          "soldOut": true
+        }
+      ]
+    },
+    {
+      "id": "nk-crescent-pearl",
+      "slug": "crescent-pearl-royal-necklace",
+      "sku": "NK-340",
+      "name": "عقد الهلال واللؤلؤ الملكي",
+      "shortName": "عقد الهلال واللؤلؤ",
+      "category": "necklaces",
+      "summary": "توليفة ساحرة تجمع لؤلؤ الخليج بصياغة ذهبية",
+      "metal": "ذهب أصفر عيار 18 ولؤلؤ الخليج",
+      "price": 31000,
+      "badge": "new",
+      "stock": 2,
+      "image": "/images/stitch/096.jpg",
+      "gallery": [
+        "/images/stitch/096.jpg"
+      ],
+      "swatches": [
+        "silver",
+        "gold"
+      ],
+      "sizes": [
+        {
+          "label": "40 سم",
+          "note": "طول قياسي ضيق"
+        },
+        {
+          "label": "45 سم",
+          "note": "المقاس الأكثر طلباً"
+        },
+        {
+          "label": "50 سم",
+          "note": "نفد من الخزانة",
+          "soldOut": true
+        }
+      ]
+    },
+    {
+      "id": "nk-royal-medal",
+      "slug": "engraved-royal-medal-necklace",
+      "sku": "NK-188",
+      "name": "قلادة الميدالية الملكية المنقوشة",
+      "shortName": "قلادة الميدالية الملكية",
+      "category": "necklaces",
+      "summary": "ذهب خالص بتفاصيل نقوش تاج ملكي",
+      "metal": "ذهب خالص عيار 21",
+      "price": 15000,
+      "badge": "soldout",
+      "stock": 0,
+      "image": "/images/stitch/097.jpg",
+      "gallery": [
+        "/images/stitch/097.jpg"
+      ],
+      "sizes": [
+        {
+          "label": "40 سم",
+          "note": "طول قياسي ضيق"
+        },
+        {
+          "label": "45 سم",
+          "note": "المقاس الأكثر طلباً"
+        },
+        {
+          "label": "50 سم",
+          "note": "نفد من الخزانة",
+          "soldOut": true
+        }
+      ]
+    },
+    {
+      "id": "nk-crimson-ruby",
+      "slug": "crimson-ruby-necklace-18k",
+      "sku": "NK-505",
+      "name": "قلادة الياقوت القرمزي عيار 18",
+      "shortName": "قلادة الياقوت القرمزي",
+      "category": "necklaces",
+      "summary": "ياقوت أحمر بورمي نادر مع هالة ماسية متألقة",
+      "metal": "ذهب أصفر عيار 18",
+      "price": 38000,
+      "oldPrice": 52000,
+      "badge": "sale",
+      "stock": 2,
+      "image": "/images/stitch/098.jpg",
+      "gallery": [
+        "/images/stitch/098.jpg"
+      ],
+      "swatches": [
+        "gold"
+      ],
+      "sizes": [
+        {
+          "label": "40 سم",
+          "note": "طول قياسي ضيق"
+        },
+        {
+          "label": "45 سم",
+          "note": "المقاس الأكثر طلباً"
+        },
+        {
+          "label": "50 سم",
+          "note": "نفد من الخزانة",
+          "soldOut": true
+        }
+      ]
+    },
+    {
+      "id": "nk-venetian",
+      "slug": "classic-venetian-chain",
+      "sku": "NK-021",
+      "name": "سلسلة فينيسية كلاسيكية ناعمة",
+      "shortName": "سلسلة فينيسية ناعمة",
+      "category": "necklaces",
+      "summary": "تصميم فينيسي خالد عيار 18 مناسب للمناسبات واليوميات",
+      "metal": "ذهب أصفر عيار 18",
+      "price": 14000,
+      "stock": 12,
+      "image": "/images/stitch/099.jpg",
+      "gallery": [
+        "/images/stitch/099.jpg"
+      ],
+      "swatches": [
+        "silver",
+        "gold"
+      ],
+      "sizes": [
+        {
+          "label": "40 سم",
+          "note": "طول قياسي ضيق"
+        },
+        {
+          "label": "45 سم",
+          "note": "المقاس الأكثر طلباً"
+        },
+        {
+          "label": "50 سم",
+          "note": "نفد من الخزانة",
+          "soldOut": true
+        }
+      ]
+    },
+    {
+      "id": "nk-black-onyx",
+      "slug": "black-onyx-zodiac-necklace",
+      "sku": "NK-612",
+      "name": "قلادة الحجر الأسود الفلكية",
+      "shortName": "قلادة الحجر الأسود",
+      "category": "necklaces",
+      "summary": "حجر العقيق الأسود اللامع محاط بخرائط الأبراج",
+      "metal": "ذهب أصفر عيار 18",
+      "price": 21000,
+      "badge": "limited",
+      "stock": 3,
+      "image": "/images/stitch/100.jpg",
+      "gallery": [
+        "/images/stitch/100.jpg"
+      ],
+      "swatches": [
+        "gold"
+      ],
+      "sizes": [
+        {
+          "label": "40 سم",
+          "note": "طول قياسي ضيق"
+        },
+        {
+          "label": "45 سم",
+          "note": "المقاس الأكثر طلباً"
+        },
+        {
+          "label": "50 سم",
+          "note": "نفد من الخزانة",
+          "soldOut": true
+        }
+      ]
+    },
+    {
+      "id": "nk-55",
+      "slug": "heart-necklace-55",
+      "sku": "NK-055",
+      "name": "قلادة قلب رقم 55 — ذهب وردي وألماس",
+      "shortName": "قلادة قلب رقم 55",
+      "category": "necklaces",
+      "summary": "قلب منحوت من الذهب الوردي مرصّع بالألماس",
+      "metal": "ذهب وردي وألماس",
+      "price": 26000,
+      "badge": "new",
+      "stock": 5,
+      "image": "/images/stitch/156.jpg",
+      "gallery": [
+        "/images/stitch/156.jpg"
+      ],
+      "swatches": [
+        "rose",
+        "gold"
+      ],
+      "sizes": [
+        {
+          "label": "40 سم",
+          "note": "طول قياسي ضيق"
+        },
+        {
+          "label": "45 سم",
+          "note": "المقاس الأكثر طلباً"
+        },
+        {
+          "label": "50 سم",
+          "note": "نفد من الخزانة",
+          "soldOut": true
+        }
+      ]
+    },
+    {
+      "id": "rg-31",
+      "slug": "royal-solitaire-ring-31",
+      "sku": "RG-031",
+      "name": "خاتم السوليتير الملكي رقم 31 — ماس وياقوت",
+      "shortName": "خاتم السوليتير رقم 31",
+      "category": "rings",
+      "summary": "ذهب أبيض وألماس",
+      "metal": "ذهب أبيض وألماس",
+      "price": 24000,
+      "badge": "new",
+      "stock": 4,
+      "image": "/images/ring-solitaire-arch.jpg",
+      "gallery": [
+        "/images/ring-solitaire-arch.jpg",
+        "/images/ring-gemstone-velvet.jpg",
+        "/images/stitch/158.jpg"
+      ],
+      "swatches": [
+        "white",
+        "gold"
+      ],
+      "sizes": [
+        {
+          "label": "12"
+        },
+        {
+          "label": "13"
+        },
+        {
+          "label": "14",
+          "note": "الأكثر طلباً"
+        },
+        {
+          "label": "15"
+        },
+        {
+          "label": "16"
+        }
+      ]
+    },
+    {
+      "id": "rg-gemstone",
+      "slug": "gemstone-velvet-ring",
+      "sku": "RG-118",
+      "name": "خاتم الحجر الكريم على المخمل",
+      "shortName": "خاتم الحجر الكريم",
+      "category": "rings",
+      "summary": "حجر كريم متألق بتفاصيل صياغة دقيقة",
+      "metal": "ذهب أصفر عيار 18",
+      "price": 27000,
+      "stock": 3,
+      "image": "/images/ring-gemstone-velvet.jpg",
+      "gallery": [
+        "/images/ring-gemstone-velvet.jpg"
+      ],
+      "swatches": [
+        "gold"
+      ],
+      "sizes": [
+        {
+          "label": "12"
+        },
+        {
+          "label": "13"
+        },
+        {
+          "label": "14"
+        },
+        {
+          "label": "15"
+        }
+      ]
+    },
+    {
+      "id": "br-08",
+      "slug": "delicate-bracelet-08",
+      "sku": "BR-008",
+      "name": "سوار ناعم رقم 08 — ذهب خالص عيار 21",
+      "shortName": "سوار ناعم رقم 08",
+      "category": "bracelets",
+      "summary": "ذهب خالص عيار 21",
+      "metal": "ذهب خالص عيار 21",
+      "price": 15000,
+      "badge": "new",
+      "stock": 8,
+      "image": "/images/stitch/154.jpg",
+      "gallery": [
+        "/images/stitch/154.jpg"
+      ],
+      "swatches": [
+        "gold"
+      ],
+      "sizes": [
+        {
+          "label": "16 سم"
+        },
+        {
+          "label": "17 سم",
+          "note": "الأكثر طلباً"
+        },
+        {
+          "label": "18 سم"
+        }
+      ]
+    },
+    {
+      "id": "er-17",
+      "slug": "pearl-earrings-17",
+      "sku": "ER-017",
+      "name": "أقراط لؤلؤ رقم 17 — لؤلؤ طبيعي وذهب",
+      "shortName": "أقراط لؤلؤ رقم 17",
+      "category": "earrings",
+      "summary": "لؤلؤ طبيعي وذهب",
+      "metal": "ذهب عيار 18 ولؤلؤ طبيعي",
+      "price": 22000,
+      "badge": "new",
+      "stock": 6,
+      "image": "/images/earrings-pearl-marble.jpg",
+      "gallery": [
+        "/images/earrings-pearl-marble.jpg",
+        "/images/stitch/159.jpg"
+      ],
+      "swatches": [
+        "gold"
+      ]
+    },
+    {
+      "id": "er-baroque",
+      "slug": "baroque-pearl-earrings",
+      "sku": "ER-102",
+      "name": "أقراط لؤلؤ الباروك الطبيعي",
+      "shortName": "أقراط الباروك الطبيعي",
+      "category": "earrings",
+      "summary": "ذهب عيار 18 ولؤلؤ طبيعي",
+      "metal": "ذهب عيار 18 ولؤلؤ طبيعي",
+      "price": 15000,
+      "badge": "soldout",
+      "stock": 0,
+      "image": "/images/stitch/190.jpg",
+      "gallery": [
+        "/images/stitch/190.jpg",
+        "/images/stitch/186.jpg"
+      ],
+      "swatches": [
+        "gold"
+      ]
+    },
+    {
+      "id": "gf-ambassador-set",
+      "slug": "royal-ambassador-set",
+      "sku": "GF-102",
+      "name": "طقم السفير الملكي الفاخر 102",
+      "shortName": "طقم السفير الملكي",
+      "category": "gifts",
+      "summary": "قلادة وأقراط في صندوق مخملي عنابي مع شريط حريري",
+      "metal": "ذهب أصفر عيار 18",
+      "price": 42000,
+      "badge": "exclusive",
+      "stock": 2,
+      "image": "/images/gift-box-opening.jpg",
+      "gallery": [
+        "/images/gift-box-opening.jpg",
+        "/images/gift-courier-delivery.jpg"
+      ]
+    },
+    {
+      "id": "gf-royal-box",
+      "slug": "royal-velvet-gift-box",
+      "sku": "GF-020",
+      "name": "صندوق الإهداء المخملي العنابي الملكي",
+      "shortName": "صندوق الإهداء الملكي",
+      "category": "gifts",
+      "summary": "تغليف فاخر مخملي مع شريط حريري وبطاقة إهداء",
+      "metal": "—",
+      "price": 9500,
+      "stock": 20,
+      "image": "/images/gift-courier-delivery.jpg",
+      "gallery": [
+        "/images/gift-courier-delivery.jpg"
+      ]
+    },
+    {
+      "id": "gf-princess-set",
+      "slug": "princess-diamond-bridal-set",
+      "sku": "GF-401",
+      "name": "طقم الأميرة الماسي الكامل",
+      "shortName": "طقم الأميرة الماسي",
+      "category": "gifts",
+      "summary": "مجموعة متكاملة مرصعة بالأحجار الكريمة الخالصة",
+      "metal": "ذهب أبيض عيار 18 وألماس",
+      "price": 38000,
+      "badge": "bestseller",
+      "stock": 2,
+      "image": "/images/stitch/068.jpg",
+      "gallery": [
+        "/images/stitch/068.jpg"
+      ]
+    },
+    {
+      "id": "rg-pave",
+      "slug": "luxury-pave-diamond-ring",
+      "sku": "RG-210",
+      "name": "خاتم فخم مرصّع بالألماس",
+      "shortName": "خاتم فخم مرصّع بالألماس",
+      "category": "rings",
+      "summary": "ذهب أبيض عيار 18 مع ألماس بصاوي",
+      "metal": "ذهب أبيض عيار 18",
+      "price": 24000,
+      "oldPrice": 30000,
+      "badge": "sale",
+      "stock": 5,
+      "image": "/images/stitch/069.jpg",
+      "gallery": [
+        "/images/stitch/069.jpg"
+      ],
+      "swatches": [
+        "white",
+        "gold"
+      ],
+      "sizes": [
+        {
+          "label": "12"
+        },
+        {
+          "label": "13"
+        },
+        {
+          "label": "14"
+        },
+        {
+          "label": "15"
+        }
+      ]
+    },
+    {
+      "id": "er-soft-pearl",
+      "slug": "soft-pearl-earrings",
+      "sku": "ER-064",
+      "name": "أقراط لؤلؤ ناعمة",
+      "shortName": "أقراط لؤلؤ ناعمة",
+      "category": "earrings",
+      "summary": "حبات لؤلؤ راقي مع سلاسل ذهبية رقيقة",
+      "metal": "ذهب عيار 18 ولؤلؤ طبيعي",
+      "price": 21000,
+      "oldPrice": 28000,
+      "badge": "sale",
+      "stock": 7,
+      "image": "/images/stitch/070.jpg",
+      "gallery": [
+        "/images/stitch/070.jpg"
+      ],
+      "swatches": [
+        "gold"
+      ]
+    },
+    {
+      "id": "nk-classic-royal",
+      "slug": "classic-royal-necklace",
+      "sku": "NK-330",
+      "name": "قلادة كلاسيكية ملكية",
+      "shortName": "قلادة كلاسيكية ملكية",
+      "category": "necklaces",
+      "summary": "حجر أزرق ملكي بقطع الإضاءة الرفيعة",
+      "metal": "ذهب أبيض عيار 18",
+      "price": 20000,
+      "oldPrice": 25000,
+      "badge": "sale",
+      "stock": 4,
+      "image": "/images/stitch/071.jpg",
+      "gallery": [
+        "/images/stitch/071.jpg"
+      ],
+      "swatches": [
+        "white",
+        "gold"
+      ],
+      "sizes": [
+        {
+          "label": "40 سم",
+          "note": "طول قياسي ضيق"
+        },
+        {
+          "label": "45 سم",
+          "note": "المقاس الأكثر طلباً"
+        },
+        {
+          "label": "50 سم",
+          "note": "نفد من الخزانة",
+          "soldOut": true
+        }
+      ]
+    },
+    {
+      "id": "br-tulip",
+      "slug": "golden-tulip-bracelet",
+      "sku": "BR-044",
+      "name": "سوار التوليب الذهبي",
+      "shortName": "سوار التوليب الذهبي",
+      "category": "bracelets",
+      "summary": "زخارف التوليب بالذهب الأصفر عيار 18",
+      "metal": "ذهب أصفر عيار 18",
+      "price": 18700,
+      "oldPrice": 22000,
+      "badge": "sale",
+      "stock": 6,
+      "image": "/images/stitch/072.jpg",
+      "gallery": [
+        "/images/stitch/072.jpg"
+      ],
+      "swatches": [
+        "gold"
+      ],
+      "sizes": [
+        {
+          "label": "16 سم"
+        },
+        {
+          "label": "17 سم"
+        },
+        {
+          "label": "18 سم"
+        }
+      ]
+    },
+    {
+      "id": "gf-engagement",
+      "slug": "engagement-happiness-set",
+      "sku": "GF-120",
+      "name": "طقم الخطوبة والسعادة",
+      "shortName": "طقم الخطوبة والسعادة",
+      "category": "gifts",
+      "summary": "بين قلادة السفير وخاتم الألماس في صندوق مخملي فاخر",
+      "metal": "ذهب أبيض عيار 18 وألماس",
+      "price": 45000,
+      "badge": "exclusive",
+      "stock": 3,
+      "image": "/images/stitch/073.jpg",
+      "gallery": [
+        "/images/stitch/073.jpg"
+      ]
+    },
+    {
+      "id": "gf-mothers",
+      "slug": "royal-mothers-gift",
+      "sku": "GF-130",
+      "name": "هدية الأمهات الملكية",
+      "shortName": "هدية الأمهات الملكية",
+      "category": "gifts",
+      "summary": "مجموعة منتقاة من اللؤلؤ والذهب الخالص معلّفة بعناية",
+      "metal": "ذهب عيار 18 ولؤلؤ طبيعي",
+      "price": 52000,
+      "badge": "limited",
+      "stock": 2,
+      "image": "/images/stitch/074.jpg",
+      "gallery": [
+        "/images/stitch/074.jpg"
+      ]
+    },
+    {
+      "id": "nk-rare-dew",
+      "slug": "rare-dewdrop-necklace",
+      "sku": "NK-901",
+      "name": "قلادة قطرة الندى النادرة",
+      "shortName": "قلادة قطرة الندى النادرة",
+      "category": "necklaces",
+      "summary": "حجر سفير مع ترصيع ماسي بإصدار محدود",
+      "metal": "ذهب أبيض عيار 18",
+      "price": 64000,
+      "badge": "limited",
+      "stock": 1,
+      "image": "/images/stitch/075.jpg",
+      "gallery": [
+        "/images/stitch/075.jpg"
+      ],
+      "swatches": [
+        "white"
+      ],
+      "sizes": [
+        {
+          "label": "40 سم",
+          "note": "طول قياسي ضيق"
+        },
+        {
+          "label": "45 سم",
+          "note": "المقاس الأكثر طلباً"
+        },
+        {
+          "label": "50 سم",
+          "note": "نفد من الخزانة",
+          "soldOut": true
+        }
+      ]
+    },
+    {
+      "id": "rg-imperial",
+      "slug": "imperial-solitaire-ring",
+      "sku": "RG-902",
+      "name": "خاتم السوليتير الإمبراطوري",
+      "shortName": "خاتم السوليتير الإمبراطوري",
+      "category": "rings",
+      "summary": "ألماس بيضاوي القطع على إطار ذهبي",
+      "metal": "ذهب أصفر عيار 18 وألماس",
+      "price": 58000,
+      "badge": "limited",
+      "stock": 1,
+      "image": "/images/stitch/076.jpg",
+      "gallery": [
+        "/images/stitch/076.jpg"
+      ],
+      "swatches": [
+        "gold",
+        "white"
+      ],
+      "sizes": [
+        {
+          "label": "12"
+        },
+        {
+          "label": "13"
+        },
+        {
+          "label": "14"
+        },
+        {
+          "label": "15"
+        }
+      ]
+    },
+    {
+      "id": "er-greek-pearl",
+      "slug": "greek-pearl-earrings",
+      "sku": "ER-903",
+      "name": "أقراط اللؤلؤ الإغريقي",
+      "shortName": "أقراط اللؤلؤ الإغريقي",
+      "category": "earrings",
+      "summary": "لؤلؤ طبيعي مستحضر على أسلاك ذهبية",
+      "metal": "ذهب عيار 21 ولؤلؤ طبيعي",
+      "price": 36000,
+      "badge": "limited",
+      "stock": 2,
+      "image": "/images/stitch/077.jpg",
+      "gallery": [
+        "/images/stitch/077.jpg"
+      ],
+      "swatches": [
+        "gold"
+      ]
+    }
+  ],
+  "settings": {
+    "shippingFee": 5000,
+    "freeShippingThreshold": 50000,
+    "coupons": {
+      "SPRING10": {
+        "percent": 10,
+        "label": "خصم قسيمة الترحيب"
+      },
+      "IRIS15": {
+        "percent": 15,
+        "label": "خصم عملاء الدار"
+      }
+    },
+    "whatsapp": ""
+  }
+}

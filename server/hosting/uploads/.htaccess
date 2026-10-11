@@ -1,0 +1,15 @@
+# صور يرفعها المالك: تُعرض كصور فقط، ولا يُسمح بأي سكربت هنا
+Options -Indexes
+<FilesMatch "\.(?i:php\d?|phtml|phar|pl|py|cgi|sh|html?|svg|js)$">
+  <IfModule mod_authz_core.c>
+    Require all denied
+  </IfModule>
+  <IfModule !mod_authz_core.c>
+    Order allow,deny
+    Deny from all
+  </IfModule>
+</FilesMatch>
+<IfModule mod_headers.c>
+  Header set X-Content-Type-Options "nosniff"
+  Header set Cache-Control "public, max-age=31536000, immutable"
+</IfModule>

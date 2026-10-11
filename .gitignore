@@ -1,0 +1,30 @@
+# dependencies
+node_modules/
+
+# build output
+dist/
+release/
+*.tsbuildinfo
+
+# local env / editor / OS
+.env
+.env.*
+!.env.example
+!.env.demo
+!.env.netlify
+.DS_Store
+Thumbs.db
+.vscode/*
+!.vscode/extensions.json
+.idea/
+
+# logs
+*.log
+npm-debug.log*
+
+# Claude Code local config (machine-specific launch paths)
+.claude/
+
+# local dev API data (server/dev-api.ts) and owner uploads in dev
+.dev-data/
+public/uploads/

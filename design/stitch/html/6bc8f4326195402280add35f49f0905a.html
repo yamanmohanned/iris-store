@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+
+<html dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>IRIS | تتبع مسار طلبك الملكي</title>
+<!-- Google Fonts: El Messiri for Headings, IBM Plex Sans Arabic for Luxury Body -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@400;500;600;700&amp;family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&amp;family=Public+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS with Forms and Container Queries -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "on-secondary-fixed": "#261a00",
+            "parchment": "#F3EADB",
+            "rose-mist": "#EED9DB",
+            "blush-surface": "#F7ECEC",
+            "primary-fixed-dim": "#ffb2b9",
+            "semantic-success-bg": "#E2F2EA",
+            "background": "#fef9f2",
+            "surface-container-low": "#f8f3ec",
+            "semantic-warning-bg": "#FCEBD0",
+            "imperial-burgundy": "#721328",
+            "semantic-success": "#1F6B4A",
+            "inverse-surface": "#32302c",
+            "on-tertiary-fixed-variant": "#6f343f",
+            "semantic-error-bg": "#FDE7E4",
+            "surface-variant": "#e6e2db",
+            "on-surface-variant": "#564243",
+            "semantic-info-bg": "#E4EDF8",
+            "semantic-error": "#B42318",
+            "surface-tint": "#a3394a",
+            "deep-oxblood": "#3A0A16",
+            "on-background": "#1d1c18",
+            "on-error-container": "#93000a",
+            "muted-rosewood": "#6D585B",
+            "inverse-primary": "#ffb2b9",
+            "antique-gold": "#8A6620",
+            "secondary-fixed-dim": "#ebc166",
+            "semantic-info": "#2F5A8A",
+            "secondary-fixed": "#ffdf9e",
+            "tertiary": "#45131e",
+            "warm-ink": "#2A1215",
+            "semantic-warning": "#8A4B08",
+            "tertiary-container": "#602833",
+            "on-tertiary-fixed": "#390915",
+            "surface-container-high": "#ece7e1",
+            "outline-variant": "#dcc0c1",
+            "on-tertiary-container": "#dc8f9a",
+            "primary-container": "#721328",
+            "on-secondary-fixed-variant": "#5b4300",
+            "secondary": "#795902",
+            "primary": "#510015",
+            "error-container": "#ffdad6",
+            "outline": "#897173",
+            "wine-night": "#1E070D",
+            "tertiary-fixed-dim": "#ffb2bd",
+            "on-secondary": "#ffffff",
+            "on-error": "#ffffff",
+            "on-secondary-container": "#775800",
+            "champagne-gold": "#E9D49C",
+            "surface-bright": "#fef9f2",
+            "on-primary-container": "#fb7c8c",
+            "on-surface": "#1d1c18",
+            "royal-gold": "#C9A24B",
+            "primary-fixed": "#ffdadc",
+            "burgundy-600": "#8A1B34",
+            "burgundy-800": "#5A0F22",
+            "ivory-canvas": "#FBF6EF",
+            "on-primary-fixed": "#40000f",
+            "inverse-on-surface": "#f5f0e9",
+            "on-primary-fixed-variant": "#842134",
+            "surface-container-highest": "#e6e2db",
+            "error": "#ba1a1a",
+            "surface-dim": "#ded9d3",
+            "tertiary-fixed": "#ffd9dd",
+            "hairline-burgundy": "rgba(114, 19, 40, 0.14)",
+            "surface": "#fef9f2",
+            "secondary-container": "#fdd275",
+            "hairline-gold": "rgba(201, 162, 75, 0.45)",
+            "surface-container": "#f2ede6",
+            "on-tertiary": "#ffffff",
+            "on-primary": "#ffffff",
+            "surface-container-lowest": "#ffffff"
+          },
+          fontFamily: {
+            headline: ["El Messiri", "serif"],
+            body: ["IBM Plex Sans Arabic", "sans-serif"],
+            public: ["Public Sans", "Noto Sans", "sans-serif"]
+          },
+          boxShadow: {
+            'royal': '0 12px 40px -8px rgba(58, 10, 22, 0.08), 0 2px 8px -2px rgba(58, 10, 22, 0.04)',
+            'gold-glow': '0 0 16px rgba(201, 162, 75, 0.35)',
+            'subtle': '0 4px 20px -2px rgba(114, 19, 40, 0.05)'
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .stepper-progress-fill {
+      background: linear-gradient(270deg, #C9A24B 0%, #E9D49C 60%, #8A6620 100%);
+    }
+    @keyframes pulse-gold {
+      0%, 100% { transform: scale(1); opacity: 1; box-shadow: 0 0 0 0 rgba(201, 162, 75, 0.6); }
+      50% { transform: scale(1.15); opacity: 0.9; box-shadow: 0 0 0 8px rgba(201, 162, 75, 0); }
+    }
+    .pulse-dot {
+      animation: pulse-gold 2.2s infinite ease-in-out;
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface font-body antialiased selection:bg-rose-mist selection:text-imperial-burgundy min-h-screen flex flex-col">
+<!-- ================= TOP NAVIGATION BAR (Exact Shared Component Logic) ================= -->
+<header class="w-full bg-[#fbf8f9] border-b border-[#f2e8ea] sticky top-0 z-50 transition-all">
+<div class="max-w-[1440px] mx-auto px-6 lg:px-12 py-3 flex items-center justify-between whitespace-nowrap">
+<!-- Brand & Search -->
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-3 text-warm-ink">
+<div class="size-6 text-imperial-burgundy">
+<svg fill="currentColor" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path clip-rule="evenodd" d="M39.475 21.6262C40.358 21.4363 40.6863 21.5589 40.7581 21.5934C40.7876 21.655 40.8547 21.857 40.8082 22.3336C40.7408 23.0255 40.4502 24.0046 39.8572 25.2301C38.6799 27.6631 36.5085 30.6631 33.5858 33.5858C30.6631 36.5085 27.6632 38.6799 25.2301 39.8572C24.0046 40.4502 23.0255 40.7407 22.3336 40.8082C21.8571 40.8547 21.6551 40.7875 21.5934 40.7581C21.5589 40.6863 21.4363 40.358 21.6262 39.475C21.8562 38.4054 22.4689 36.9657 23.5038 35.2817C24.7575 33.2417 26.5497 30.9744 28.7621 28.762C30.9744 26.5497 33.2417 24.7574 35.2817 23.5037C36.9657 22.4689 38.4054 21.8562 39.475 21.6262ZM4.41189 29.2403L18.7597 43.5881C19.8813 44.7097 21.4027 44.9179 22.7217 44.7893C24.0585 44.659 25.5148 44.1631 26.9723 43.4579C29.9052 42.0387 33.2618 39.5667 36.4142 36.4142C39.5667 33.2618 42.0387 29.9052 43.4579 26.9723C44.1631 25.5148 44.659 24.0585 44.7893 22.7217C44.9179 21.4027 44.7097 19.8813 43.5881 18.7597L29.2403 4.41187C27.8527 3.02428 25.8765 3.02573 24.2861 3.36776C22.6081 3.72863 20.7334 4.58419 18.8396 5.74801C16.4978 7.18716 13.9881 9.18353 11.5858 11.5858C9.18354 13.988 7.18717 16.4978 5.74802 18.8396C4.58421 20.7334 3.72865 22.6081 3.36778 24.2861C3.02574 25.8765 3.02429 27.8527 4.41189 29.2403Z" fill-rule="evenodd"></path>
+</svg>
+</div>
+<h2 class="font-headline text-xl font-bold tracking-tight text-warm-ink">IRIS | آيريس</h2>
+</div>
+<label class="flex items-center min-w-44 h-10 max-w-72 bg-[#f2e8ea] rounded-lg px-3">
+<span class="material-symbols-outlined text-[#945160] text-xl ml-2">search</span>
+<input class="w-full bg-transparent border-none text-warm-ink placeholder:text-[#945160] text-sm focus:ring-0 p-0" placeholder="البحث في المجموعات..." value=""/>
+</label>
+</div>
+<!-- Navigation Links & Profile -->
+<div class="flex items-center gap-8">
+<nav class="hidden lg:flex items-center gap-8">
+<a class="text-warm-ink text-sm font-medium hover:text-imperial-burgundy transition-colors" href="#">الرئيسية</a>
+<a class="text-warm-ink text-sm font-medium hover:text-imperial-burgundy transition-colors" href="#">المجموعات الملكية</a>
+<a class="text-warm-ink text-sm font-medium hover:text-imperial-burgundy transition-colors" href="#">المجوهرات الراقية</a>
+<a class="text-warm-ink text-sm font-medium hover:text-imperial-burgundy transition-colors" href="#">الساعات الفاخرة</a>
+<a class="text-imperial-burgundy font-semibold text-sm relative after:content-[''] after:absolute after:-bottom-1 after:right-0 after:w-full after:h-0.5 after:bg-imperial-burgundy" href="#">حسابي</a>
+</nav>
+<div class="flex items-center gap-3">
+<button class="flex items-center justify-center rounded-lg h-10 px-4 bg-imperial-burgundy text-parchment text-xs font-bold tracking-wide shadow-sm hover:bg-burgundy-800 transition-colors">
+<span>المساعد الملكي</span>
+</button>
+<button class="size-10 flex items-center justify-center rounded-lg bg-[#f2e8ea] text-warm-ink hover:bg-rose-mist transition-colors" title="المقتنيات المفضلة">
+<span class="material-symbols-outlined text-lg">favorite</span>
+</button>
+<button class="size-10 flex items-center justify-center rounded-lg bg-[#f2e8ea] text-warm-ink hover:bg-rose-mist transition-colors" title="الإشعارات الملكية">
+<span class="material-symbols-outlined text-lg">notifications</span>
+</button>
+<div class="size-10 rounded-full border border-champagne-gold/60 overflow-hidden bg-cover bg-center mr-1" data-alt="Close up portrait of a sophisticated Middle Eastern royal client wearing discreet diamond earrings, elegant and composed against a softly lit studio backdrop." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBSq7KetA8abAhli60AILvAQWUrDppRJxFumxiQxmK9F_ADRwG6ZbuLpgPg3r6pKXeZLnPi0WcKbzoExuHEDzbmcXO7lVQojbBJ_lemZAhXJ6OnRC9hpRTvOu2wSzfZUPHaJHY7TWielyxdpHMs3T4Pk5KHzUw79Z4q2_Ez9KQM1ZUMtxkXIuCuw2klRuM6G0dhi0EN9vSnmKFc1RbEfXVoXbXAfQEQFUvbfi7B2BQuLXChVLArqhwV');"></div>
+</div>
+</div>
+</div>
+</header>
+<!-- ================= TOP BAND (Parchment Background & Search Hero) ================= -->
+<section class="bg-parchment border-b border-hairline-burgundy pt-8 pb-12 relative overflow-hidden">
+<!-- Atmospheric background light ornament -->
+<div class="absolute -top-32 right-1/4 w-96 h-96 rounded-full bg-champagne-gold/20 blur-3xl pointer-events-none"></div>
+<div class="absolute top-1/2 left-10 w-72 h-72 rounded-full bg-rose-mist/30 blur-2xl pointer-events-none"></div>
+<div class="max-w-[1240px] mx-auto px-6 relative z-10">
+<!-- Breadcrumb -->
+<nav class="flex items-center gap-2 text-xs font-medium text-muted-rosewood mb-5">
+<a class="hover:text-imperial-burgundy transition-colors" href="#">الرئيسية</a>
+<span class="text-antique-gold/70 text-[10px]">›</span>
+<a class="hover:text-imperial-burgundy transition-colors" href="#">حسابي</a>
+<span class="text-antique-gold/70 text-[10px]">›</span>
+<span class="text-imperial-burgundy font-semibold">تتبع الطلب</span>
+</nav>
+<!-- Headline & Subtitle -->
+<div class="text-center max-w-3xl mx-auto mb-8">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface-container-lowest/80 border border-hairline-gold text-antique-gold text-xs font-semibold mb-3">
+<span class="material-symbols-outlined text-sm">shield</span>
+          خدمة التسليم الدبلوماسي الحصري
+        </div>
+<h1 class="font-headline text-3xl md:text-4xl lg:text-5xl font-bold text-wine-night tracking-tight mb-3">
+          تتبع مسار طلبك الملكي
+        </h1>
+<p class="text-muted-rosewood text-sm md:text-base leading-relaxed">
+          أدخل رقم الشحنة أو الطلب ورقم الهاتف للاطلاع المباشر على مراحل تجهيز مجوهراتك وتسليمها المؤمن.
+        </p>
+</div>
+<!-- Compact Luxury Search Bar (White card, radius 16px, hairline border, soft shadow) -->
+<div class="max-w-3xl mx-auto bg-surface-container-lowest rounded-2xl p-3 border border-hairline-burgundy shadow-royal">
+<form class="flex flex-col md:flex-row items-center gap-3" onsubmit="event.preventDefault();">
+<!-- Field 1: Order ID -->
+<div class="w-full md:w-5/12 relative">
+<span class="text-[11px] font-semibold text-muted-rosewood absolute top-1.5 right-3.5 pointer-events-none">رقم الطلب</span>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined text-antique-gold absolute right-3 top-5 text-lg">tag</span>
+<input class="w-full h-14 pt-4 pr-10 pl-4 rounded-xl border border-hairline-gold/50 bg-background/50 text-wine-night font-bold tracking-wider font-mono text-base focus:border-imperial-burgundy focus:ring-1 focus:ring-imperial-burgundy transition-all" type="text" value="#1054"/>
+</div>
+</div>
+<!-- Field 2: Phone Number -->
+<div class="w-full md:w-5/12 relative">
+<span class="text-[11px] font-semibold text-muted-rosewood absolute top-1.5 right-3.5 pointer-events-none">رقم الهاتف</span>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined text-antique-gold absolute right-3 top-5 text-lg">call</span>
+<input class="w-full h-14 pt-4 pr-4 pl-16 rounded-xl border border-hairline-gold/50 bg-background/50 text-wine-night font-medium tracking-wide text-sm md:text-base focus:border-imperial-burgundy focus:ring-1 focus:ring-imperial-burgundy transition-all text-left" dir="ltr" type="text" value="0770 123 4567"/>
+<span class="absolute left-3 top-5 text-xs font-semibold px-2 py-0.5 rounded bg-parchment text-antique-gold border border-champagne-gold/60">
+                +964
+              </span>
+</div>
+</div>
+<!-- Submit Button -->
+<div class="w-full md:w-2/12 h-14">
+<button class="w-full h-full rounded-xl bg-imperial-burgundy hover:bg-burgundy-800 text-parchment font-bold text-sm flex items-center justify-center gap-2 shadow-md transition-all relative overflow-hidden group" type="submit">
+<div class="absolute inset-0 border border-royal-gold/40 rounded-xl pointer-events-none"></div>
+<span class="material-symbols-outlined text-lg group-hover:scale-110 transition-transform">search</span>
+<span>تتبّع الطلب</span>
+</button>
+</div>
+</form>
+</div>
+<!-- Ornamental Divider (Two parallel gold lines drawing outward with central rotating diamond) -->
+<div class="flex items-center justify-center mt-10 gap-3">
+<div class="h-[1px] w-24 sm:w-44 bg-gradient-to-r from-transparent via-royal-gold/60 to-royal-gold"></div>
+<div class="size-2.5 bg-royal-gold rotate-45 border border-champagne-gold shadow-gold-glow"></div>
+<div class="h-[1px] w-24 sm:w-44 bg-gradient-to-l from-transparent via-royal-gold/60 to-royal-gold"></div>
+</div>
+</div>
+</section>
+<!-- ================= MAIN CONTENT AREA: ORDER RESULT ================= -->
+<main class="flex-grow max-w-[1240px] w-full mx-auto px-6 -mt-6 mb-16 z-20">
+<!-- Big Order Result Card -->
+<div class="bg-surface-container-lowest rounded-3xl border border-hairline-burgundy shadow-royal p-6 md:p-10 relative">
+<!-- 1. Header Row -->
+<div class="flex flex-col lg:flex-row lg:items-center justify-between pb-8 border-b border-hairline-burgundy/60 gap-4">
+<!-- Right: Headline & Metadata -->
+<div>
+<div class="flex items-center gap-3 mb-1.5">
+<h2 class="font-headline text-2xl md:text-3xl font-bold text-wine-night tracking-tight">طلب #1054</h2>
+<button class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-surface-container-low hover:bg-parchment text-muted-rosewood hover:text-imperial-burgundy text-xs font-medium border border-hairline-gold/40 transition-colors" title="نسخ رقم الطلب">
+<span class="material-symbols-outlined text-sm">content_copy</span>
+<span>نسخ</span>
+</button>
+</div>
+<div class="flex flex-wrap items-center gap-y-1 gap-x-3 text-xs md:text-sm text-muted-rosewood">
+<span>تاريخ الطلب: <strong class="text-warm-ink font-medium">24 أكتوبر 2025</strong></span>
+<span class="text-hairline-gold">•</span>
+<span>الناقل: <strong class="text-imperial-burgundy font-medium">أسطول آيريس المصفح VIP</strong></span>
+<span class="text-hairline-gold">•</span>
+<span>رقم التتبع: <span class="font-mono text-antique-gold font-semibold tracking-wider">IR-TRK-8842</span></span>
+</div>
+</div>
+<!-- Left: Status Pill & Estimated Delivery -->
+<div class="flex flex-col sm:flex-row sm:items-center gap-3">
+<div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-semantic-info-bg text-semantic-info border border-royal-gold/40 text-xs font-semibold shadow-sm">
+<span class="material-symbols-outlined text-base">local_shipping</span>
+<span>تم الشحن وفي المسار</span>
+</div>
+<div class="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-parchment/60 border border-hairline-gold/60 text-xs text-warm-ink font-medium">
+<span class="material-symbols-outlined text-royal-gold text-base">schedule</span>
+<span>الموعد المتوقع: <strong class="text-imperial-burgundy">غداً بين 2:00 م - 6:00 م</strong> (بغداد)</span>
+</div>
+</div>
+</div>
+<!-- 2. Horizontal 5-Step Stepper (Right-to-Left Arabic RTL Flow) -->
+<div class="py-10 border-b border-hairline-burgundy/60">
+<div class="relative">
+<!-- Background Track Line -->
+<div class="absolute top-5 right-6 left-6 h-1 bg-surface-container-high -translate-y-1/2 z-0 rounded-full"></div>
+<!-- Filled Progress Line (80% for step 4 of 5) -->
+<div class="absolute top-5 right-6 h-1.5 stepper-progress-fill -translate-y-1/2 z-0 rounded-full shadow-gold-glow transition-all duration-700" style="width: calc(75% - 12px);"></div>
+<!-- Step Nodes Container -->
+<div class="relative z-10 grid grid-cols-5 text-center">
+<!-- Step 1: تم الاستلام (Done) -->
+<div class="flex flex-col items-center">
+<div class="size-10 rounded-full bg-royal-gold text-surface-container-lowest flex items-center justify-center shadow-md ring-4 ring-surface-container-lowest">
+<span class="material-symbols-outlined text-xl font-bold">check</span>
+</div>
+<h4 class="text-xs md:text-sm font-bold text-wine-night mt-3">تم الاستلام</h4>
+<p class="text-[11px] text-muted-rosewood mt-0.5 font-medium">23 أكتوبر - 09:30 ص</p>
+</div>
+<!-- Step 2: تم التأكيد (Done) -->
+<div class="flex flex-col items-center">
+<div class="size-10 rounded-full bg-royal-gold text-surface-container-lowest flex items-center justify-center shadow-md ring-4 ring-surface-container-lowest">
+<span class="material-symbols-outlined text-xl font-bold">check</span>
+</div>
+<h4 class="text-xs md:text-sm font-bold text-wine-night mt-3">تم التأكيد</h4>
+<p class="text-[11px] text-muted-rosewood mt-0.5 font-medium">23 أكتوبر - 10:05 ص</p>
+</div>
+<!-- Step 3: قيد التجهيز والصياغة (Done) -->
+<div class="flex flex-col items-center">
+<div class="size-10 rounded-full bg-royal-gold text-surface-container-lowest flex items-center justify-center shadow-md ring-4 ring-surface-container-lowest">
+<span class="material-symbols-outlined text-xl font-bold">check</span>
+</div>
+<h4 class="text-xs md:text-sm font-bold text-wine-night mt-3">قيد التجهيز والصياغة</h4>
+<p class="text-[11px] text-muted-rosewood mt-0.5 font-medium">24 أكتوبر - 11:30 ص</p>
+</div>
+<!-- Step 4: تم الشحن (CURRENT ACTIVE) -->
+<div class="flex flex-col items-center">
+<div class="size-11 rounded-full bg-surface-container-lowest border-2 border-royal-gold flex items-center justify-center shadow-royal ring-4 ring-parchment relative">
+<div class="size-4 rounded-full bg-royal-gold pulse-dot"></div>
+</div>
+<h4 class="text-xs md:text-sm font-bold text-imperial-burgundy mt-2.5 flex items-center gap-1">
+<span>تم الشحن</span>
+<span class="inline-block size-1.5 rounded-full bg-imperial-burgundy animate-ping"></span>
+</h4>
+<p class="text-[11px] font-semibold text-antique-gold mt-0.5">اليوم - 3:20 م</p>
+</div>
+<!-- Step 5: تم التسليم (Upcoming) -->
+<div class="flex flex-col items-center opacity-70">
+<div class="size-10 rounded-full bg-surface-container-lowest border-2 border-dashed border-outline-variant flex items-center justify-center ring-4 ring-surface-container-lowest">
+<span class="material-symbols-outlined text-muted-rosewood text-lg">home_pin</span>
+</div>
+<h4 class="text-xs md:text-sm font-medium text-muted-rosewood mt-3">تم التسليم</h4>
+<p class="text-[11px] text-muted-rosewood/80 mt-0.5">بانتظار وصول المندوب</p>
+</div>
+</div>
+</div>
+</div>
+<!-- 3. Two-Column Detailed Content -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-10 pt-10">
+<!-- ================= RIGHT COLUMN (55% -> 7 Cols): Vertical Tracking Timeline ================= -->
+<div class="lg:col-span-7 flex flex-col">
+<div class="flex items-center justify-between mb-6">
+<h3 class="font-headline text-xl font-bold text-wine-night flex items-center gap-2">
+<span class="material-symbols-outlined text-royal-gold">route</span>
+<span>آخر تحديثات المسار الملكي</span>
+</h3>
+<span class="text-xs text-muted-rosewood bg-parchment/70 px-3 py-1 rounded-full border border-hairline-gold/50">تحديث فوري عبر GPS المصفح</span>
+</div>
+<!-- Vertical Timeline Container -->
+<div class="relative pr-6 border-r-2 border-hairline-gold/60 space-y-8 flex-1 mr-2">
+<!-- Node 1: Latest / Active -->
+<div class="relative group">
+<!-- Pin on track -->
+<div class="absolute -right-[31px] top-1 size-5 rounded-full bg-imperial-burgundy border-4 border-surface-container-lowest shadow-md flex items-center justify-center">
+<span class="size-1.5 rounded-full bg-parchment"></span>
+</div>
+<div class="bg-blush-surface/70 border border-rose-mist rounded-2xl p-4.5 hover:shadow-subtle transition-all">
+<div class="flex items-center justify-between gap-2 mb-1.5">
+<h5 class="text-sm md:text-base font-bold text-imperial-burgundy flex items-center gap-2">
+<span class="material-symbols-outlined text-base">local_shipping</span>
+<span>تم شحن طلبك مع المندوب الخاص</span>
+</h5>
+<span class="text-xs font-semibold px-2 py-0.5 rounded bg-imperial-burgundy/10 text-imperial-burgundy">اليوم 3:20 م</span>
+</div>
+<p class="text-xs md:text-sm text-warm-ink leading-relaxed">
+                  خرجت الشحنة من خزينة الصياغة الرئيسية (بغداد، المنصور) باتجاه عنوان التسليم مع حراسة مؤمنة وشاحنة مصفحة مبرمجة برمز التحقق السري.
+                </p>
+<div class="mt-3 flex items-center gap-4 text-xs text-muted-rosewood border-t border-rose-mist/60 pt-2.5">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm text-antique-gold">lock</span> صندوق أمان مرمز</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm text-antique-gold">verified_user</span> العهدة الدبلوماسية</span>
+</div>
+</div>
+</div>
+<!-- Node 2: Processing Complete -->
+<div class="relative group">
+<!-- Pin on track -->
+<div class="absolute -right-[30px] top-1 size-4 rounded-full bg-royal-gold border-2 border-surface-container-lowest shadow-sm"></div>
+<div class="bg-surface-container-lowest border border-hairline-burgundy/60 rounded-2xl p-4.5 hover:bg-parchment/30 transition-all">
+<div class="flex items-center justify-between gap-2 mb-1.5">
+<h5 class="text-sm md:text-base font-bold text-wine-night">اكتمال التجهيز والفحص اليدوي المجهري</h5>
+<span class="text-xs text-muted-rosewood">اليوم 11:30 ص</span>
+</div>
+<p class="text-xs md:text-sm text-muted-rosewood leading-relaxed">
+                  تم فحص نقاوة الذهب عيار 18 والأحجار الكريمة وفق أعلى معايير الجودة السويسرية، وإصدار شهادة المنشأ الرسمية ووضع الختم الشمعي الملكي على العلبة المخملية.
+                </p>
+</div>
+</div>
+<!-- Node 3: Confirmed -->
+<div class="relative group">
+<!-- Pin on track -->
+<div class="absolute -right-[30px] top-1 size-4 rounded-full bg-royal-gold border-2 border-surface-container-lowest shadow-sm"></div>
+<div class="bg-surface-container-lowest border border-hairline-burgundy/60 rounded-2xl p-4.5 hover:bg-parchment/30 transition-all">
+<div class="flex items-center justify-between gap-2 mb-1.5">
+<h5 class="text-sm md:text-base font-bold text-wine-night">تم تأكيد طلبك رسمياً</h5>
+<span class="text-xs text-muted-rosewood">أمس 10:05 ص</span>
+</div>
+<p class="text-xs md:text-sm text-muted-rosewood leading-relaxed">
+                  تواصل مستشار المقتنيات الخاصة هاتفياً وتم اعتماد تفاصيل المقاس والتغليف الملكي ومطابقة جدول التسليم الخاص مع سمو العميل.
+                </p>
+</div>
+</div>
+<!-- Node 4: Received -->
+<div class="relative group">
+<!-- Pin on track -->
+<div class="absolute -right-[30px] top-1 size-4 rounded-full bg-royal-gold border-2 border-surface-container-lowest shadow-sm"></div>
+<div class="bg-surface-container-lowest border border-hairline-burgundy/60 rounded-2xl p-4.5 hover:bg-parchment/30 transition-all">
+<div class="flex items-center justify-between gap-2 mb-1.5">
+<h5 class="text-sm md:text-base font-bold text-wine-night">تم استلام الطلب وتسجيله في النظام</h5>
+<span class="text-xs text-muted-rosewood">أمس 09:30 ص</span>
+</div>
+<p class="text-xs md:text-sm text-muted-rosewood leading-relaxed">
+                  تم حجز القطع الحصرية في سجلات الدار المعتمدة وإسنادها إلى كبير صاغة دار آيريس لإعدادها.
+                </p>
+</div>
+</div>
+</div>
+</div>
+<!-- ================= LEFT COLUMN (45% -> 5 Cols): Items, Summary & Address ================= -->
+<div class="lg:col-span-5 space-y-6">
+<!-- 1. Order Items Card -->
+<div class="bg-surface-container-low/60 rounded-2xl border border-hairline-burgundy/70 p-5">
+<h4 class="font-headline text-lg font-bold text-wine-night mb-4 flex items-center justify-between">
+<span>المقتنيات في الشحنة (2)</span>
+<span class="text-xs font-body font-normal text-muted-rosewood">خزينة دار آيريس</span>
+</h4>
+<div class="space-y-4">
+<!-- Item 1 -->
+<div class="flex items-center gap-3.5 pb-3.5 border-b border-hairline-gold/40">
+<img class="size-16 rounded-xl object-cover border border-champagne-gold/60 shadow-sm flex-shrink-0" data-alt="A luxurious 18k solid yellow gold necklace featuring an exquisite artisan pendant displayed on a burgundy velvet bust. Soft golden ambient luxury lighting with warm reflections highlighting the craftsmanship and fine polish of high jewelry." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBYAQssbX1fyvA7aX6raKR32uU9tXboTs9HT6lsbLsAvBp66oEkqruk7OO2QlDhufVjXHPxk_RCbZWqjgvTKcejoIJZRIfqk9DBdCxtydU34wdJa6MgOYAbCS-P1irXqRSqy_vxPoHRR_i1HZXvdXoC25Uj5SKRf9nm97sydz2V4qz50zlD6HfzME8WaX3cXhHQM_tShOAb8UFlqFizYXRkcH-g08tN-Eeugl7Rfm7Rbk45DVW7LXt-"/>
+<div class="flex-1 min-w-0">
+<h5 class="text-sm font-bold text-wine-night truncate">قلادة ذهبية رقم 102 — ذهب عيار 18</h5>
+<div class="flex items-center gap-2 text-xs text-muted-rosewood mt-0.5">
+<span class="font-mono">SKU: NK-102</span>
+<span>•</span>
+<span>مقاس: 45 سم</span>
+<span>•</span>
+<span>الكمية: 1</span>
+</div>
+<div class="text-sm font-bold text-imperial-burgundy mt-1 font-mono">18,000 د.ع</div>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="flex items-center gap-3.5 pb-3.5 border-b border-hairline-gold/40">
+<img class="size-16 rounded-xl object-cover border border-champagne-gold/60 shadow-sm flex-shrink-0" data-alt="A breathtaking brilliant cut solitaire diamond ring crafted in pure platinum and 18k yellow gold resting atop an antique silk surface. Prismatic fire reflections and macro depth of field typical of royal jewelry catalog photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDGvXoKcbCyvGcO4L_SGghozwdpWLzdruDmr3857JvxnKNFyGm6F-f-Q3U1-77Llrej-TWAzyHBrrWhjqp4hk1OjJZPaPZ2N-_aq_KLE9Ocj38dJPkqP6cVhtATXROTGWbgUvUmx050AqQWpicLz-Ij225pTMjxl1AxA2IWNd_7GlhSNr9RLIqErMOGTJ7PpINvQtltdkw3WGn02O5plpW9AgdqZ6Eu_NJ0uuRiqw1UjOG8GhY0x_GL"/>
+<div class="flex-1 min-w-0">
+<h5 class="text-sm font-bold text-wine-night truncate">خاتم السوليتير الماسي 102</h5>
+<div class="flex items-center gap-2 text-xs text-muted-rosewood mt-0.5">
+<span class="font-mono">SKU: RG-102</span>
+<span>•</span>
+<span>مقاس: 14</span>
+<span>•</span>
+<span>الكمية: 1</span>
+</div>
+<div class="text-sm font-bold text-imperial-burgundy mt-1 font-mono">25,000 د.ع</div>
+</div>
+</div>
+<!-- Gift Packaging Badge -->
+<div class="flex items-center gap-2.5 p-2.5 rounded-xl bg-parchment border border-hairline-gold text-xs text-warm-ink">
+<span class="material-symbols-outlined text-royal-gold text-lg">featured_seasonal_and_gifts</span>
+<span class="font-medium">تغليف الهدايا الملكي المخملي مع بطاقة إهداء مذهبة (مجاناً)</span>
+</div>
+</div>
+</div>
+<!-- 2. Financial Summary Card -->
+<div class="bg-surface-container-lowest rounded-2xl border border-hairline-burgundy/70 p-5 shadow-sm">
+<h4 class="text-sm font-bold text-wine-night mb-3 pb-2 border-b border-hairline-burgundy/40">الملخص المالي للطلب</h4>
+<div class="space-y-2 text-xs md:text-sm">
+<div class="flex justify-between items-center text-muted-rosewood">
+<span>المجموع الفرعي</span>
+<span class="font-mono font-medium text-warm-ink">43,000 د.ع</span>
+</div>
+<div class="flex justify-between items-center text-muted-rosewood">
+<span class="flex items-center gap-1">
+                  الشحن المؤمّن VIP
+                  <span class="text-[10px] px-1.5 py-0.2 rounded bg-semantic-success-bg text-semantic-success">مشمول بالكامل</span>
+</span>
+<span class="font-mono font-medium text-warm-ink">700 د.ع</span>
+</div>
+<div class="flex justify-between items-center text-muted-rosewood">
+<span>المبلغ المدفوع مسبقاً</span>
+<span class="font-mono font-medium text-warm-ink">0 د.ع</span>
+</div>
+<!-- Total To Pay -->
+<div class="pt-3 mt-1 border-t border-hairline-burgundy/60 flex justify-between items-center">
+<div>
+<span class="text-xs text-muted-rosewood block">المتبقي للدفع عند الاستلام</span>
+<span class="text-[11px] text-antique-gold font-medium">نقداً أو ببطاقة VIP فور الفحص</span>
+</div>
+<div class="text-right">
+<span class="font-headline text-xl md:text-2xl font-bold text-imperial-burgundy font-mono tracking-tight">43,700 د.ع</span>
+</div>
+</div>
+</div>
+</div>
+<!-- 3. Delivery Address & Recipient Card -->
+<div class="bg-surface-container-low/60 rounded-2xl border border-hairline-burgundy/70 p-5">
+<div class="flex items-center gap-2 mb-3">
+<span class="material-symbols-outlined text-royal-gold text-lg">pin_drop</span>
+<h4 class="text-sm font-bold text-wine-night">عنوان الاستلام المعتمد</h4>
+</div>
+<p class="text-xs md:text-sm text-warm-ink leading-relaxed mb-3">
+              بغداد — الكرادة — محلة 903، شارع الأميرات، مجمع الفخامة السكني، فيلا 12.
+            </p>
+<div class="flex items-center justify-between text-xs text-muted-rosewood pt-2 border-t border-hairline-gold/40">
+<span class="flex items-center gap-1 font-medium text-warm-ink">
+<span class="material-symbols-outlined text-sm text-antique-gold">person</span>
+                سمو السيدة سارة آل رحيم
+              </span>
+<span class="font-mono dir-ltr text-antique-gold font-semibold">0770 123 4567</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- ================= BOTTOM ACTION BAR & SUPPORT ================= -->
+<div class="mt-8 flex flex-col md:flex-row items-center justify-between gap-4 p-5 rounded-2xl bg-surface-container-lowest border border-hairline-burgundy/60 shadow-subtle">
+<!-- Right: Action Buttons -->
+<div class="flex flex-wrap items-center gap-3 w-full md:w-auto">
+<!-- Outline Modify/Cancel Button -->
+<button class="px-5 py-2.5 rounded-xl border border-imperial-burgundy text-imperial-burgundy hover:bg-imperial-burgundy hover:text-parchment text-xs md:text-sm font-semibold transition-all flex items-center gap-2">
+<span class="material-symbols-outlined text-base">edit_note</span>
+<span>طلب تعديل أو إلغاء</span>
+</button>
+<!-- Tooltip Disabled Return Button -->
+<div class="relative group">
+<button class="px-5 py-2.5 rounded-xl bg-surface-container-high text-muted-rosewood/70 text-xs md:text-sm font-medium flex items-center gap-2 cursor-not-allowed border border-outline-variant/40" disabled="">
+<span class="material-symbols-outlined text-sm">lock</span>
+<span>طلب إرجاع</span>
+</button>
+<!-- Tooltip Popup -->
+<div class="absolute bottom-full mb-2 right-0 hidden group-hover:block w-64 p-2.5 bg-wine-night text-parchment text-[11px] rounded-lg shadow-xl z-30 pointer-events-none transition-opacity">
+            متاح فور اكتمال التسليم ولمدة 7 أيام وفق سياسة الاستبدال الملكية الخاصة بدار آيريس.
+            <div class="w-2 h-2 bg-wine-night rotate-45 absolute -bottom-1 right-6"></div>
+</div>
+</div>
+</div>
+<!-- Left: WhatsApp Luxury Concierge Button -->
+<div class="w-full md:w-auto flex items-center">
+<a class="w-full md:w-auto px-5 py-2.5 rounded-xl bg-[#1f6b4a] hover:bg-[#185339] text-surface-container-lowest text-xs md:text-sm font-bold flex items-center justify-center gap-2.5 shadow-sm transition-all" href="https://wa.me/9647701234567" rel="noopener noreferrer" target="_blank">
+<svg class="size-4 fill-current" viewbox="0 0 24 24">
+<path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.694.062-2.18-.553-1.614-.668-2.658-2.316-2.738-2.424-.08-.108-.65-8.65-.65-1.648 0-.783.411-1.168.556-1.328.145-.16.317-.2.423-.2.106 0 .212.001.305.006.098.005.231-.037.36.273.134.321.458 1.116.498 1.197.04.08.067.174.013.281-.053.107-.08.174-.16.268-.08.093-.169.208-.242.279-.08.08-.163.167-.07.327.094.16.417.689.897 1.116.618.55 1.139.72 1.3.8.16.08.254.067.348-.04.093-.108.4-.467.507-.628.107-.16.213-.134.36-.08.146.053.931.439 1.091.519.16.08.267.12.307.187.04.067.04.387-.104.792z"></path>
+</svg>
+<span>اسأل المستشار عن طلبك عبر واتساب</span>
+<span class="text-[10px] bg-white/20 px-2 py-0.5 rounded-full font-normal">متوسط الرد: أقل من 3 دقائق</span>
+</a>
+</div>
+</div>
+<!-- Security & Trust Footer Banner -->
+<div class="mt-6 py-4 px-6 rounded-xl bg-parchment/60 border border-hairline-gold/40 flex flex-wrap items-center justify-center gap-x-8 gap-y-2 text-xs text-muted-rosewood">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-antique-gold text-base">verified</span>
+<span>شحن مصفح ومؤمن بنسبة 100% ضد المخاطر</span>
+</div>
+<div class="hidden md:block text-hairline-gold">•</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-antique-gold text-base">search_check</span>
+<span>معاينة وفحص القطع مع الخبير قبل إتمام الدفع</span>
+</div>
+<div class="hidden md:block text-hairline-gold">•</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-antique-gold text-base">workspace_premium</span>
+<span>شهادة الضمان الملكية المعتمدة مرفقة داخل الصندوق</span>
+</div>
+</div>
+</main>
+<!-- ================= SUBTLE LUXURY FOOTER ================= -->
+<footer class="bg-wine-night text-parchment mt-auto py-8 border-t border-hairline-gold/30">
+<div class="max-w-[1240px] mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-parchment/70">
+<div class="flex items-center gap-3">
+<span class="font-headline font-bold text-sm tracking-wider text-royal-gold">IRIS | دار آيريس للمجوهرات الراقية</span>
+<span>— بغداد · دبي · جنيف</span>
+</div>
+<div>
+        جميع الحقوق محفوظة ومسجلة لدار آيريس الملكية © 2025
+      </div>
+</div>
+</footer>
+</body></html>

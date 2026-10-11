@@ -1,0 +1,68 @@
+# ═══════════════════════════════════════════════════════════════
+#  متجر آيريس — إعدادات الخادم (Apache / LiteSpeed على cPanel)
+#  يوضع هذا الملف في جذر الموقع (public_html) بجانب index.html
+# ═══════════════════════════════════════════════════════════════
+
+Options -Indexes
+DirectoryIndex index.html
+AddDefaultCharset utf-8
+
+<IfModule mod_mime.c>
+  AddType application/manifest+json .webmanifest
+  AddType image/webp .webp
+</IfModule>
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # ── تحويل كل الزيارات إلى HTTPS ──
+  # فعّل السطرين التاليين (احذف # من بدايتهما) بعد تفعيل شهادة SSL من لوحة الاستضافة
+  # RewriteCond %{HTTPS} !=on
+  # RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+  # ── تطبيق الصفحة الواحدة: أي رابط ليس ملفاً أو مجلداً يفتح index.html ──
+  RewriteRule ^index\.html$ - [L]
+  RewriteCond %{REQUEST_URI} !^/(api|uploads|assets|brand|images)/
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule . /index.html [L]
+</IfModule>
+
+# بديل إن لم يتوفر mod_rewrite: الروابط المباشرة تعرض التطبيق بدل صفحة 404
+<IfModule !mod_rewrite.c>
+  ErrorDocument 404 /index.html
+</IfModule>
+
+# ── ترويسات الأمان ──
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+
+  # الصفحة نفسها تُفحص دائماً حتى يصل كل تحديث فوراً
+  <FilesMatch "^(index\.html|site\.webmanifest)$">
+    Header set Cache-Control "no-cache"
+  </FilesMatch>
+  # الصور والخطوط والأيقونات
+  <FilesMatch "\.(jpg|jpeg|png|webp|gif|svg|ico|woff2?)$">
+    Header set Cache-Control "public, max-age=2592000"
+  </FilesMatch>
+</IfModule>
+
+# ── ضغط الملفات النصية ──
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/plain application/javascript application/json image/svg+xml application/manifest+json
+</IfModule>
+
+# منع الوصول لملفات مخفية أو احتياطية
+<FilesMatch "(^\.|\.(bak|log|sql|sh|md|tmp)$)">
+  <IfModule mod_authz_core.c>
+    Require all denied
+  </IfModule>
+  <IfModule !mod_authz_core.c>
+    Order allow,deny
+    Deny from all
+  </IfModule>
+</FilesMatch>
