@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+
+<html dir="rtl" lang="ar"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@400;500;600;700&amp;family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"colors":{"warm-ink":"#2A1215","wine-night":"#1E070D","surface-container-low":"#f8f3ec","primary-fixed":"#ffdadc","on-error-container":"#93000a","outline-variant":"#dcc0c1","semantic-success-bg":"#E2F2EA","on-background":"#1d1c18","deep-oxblood":"#3A0A16","on-secondary-fixed-variant":"#5b4300","on-primary-fixed-variant":"#842134","secondary-container":"#fdd275","inverse-on-surface":"#f5f0e9","surface-container":"#f2ede6","primary-fixed-dim":"#ffb2b9","surface-variant":"#e6e2db","on-primary":"#ffffff","burgundy-800":"#5A0F22","inverse-surface":"#32302c","on-surface":"#1d1c18","imperial-burgundy":"#721328","champagne-gold":"#E9D49C","surface-container-lowest":"#ffffff","semantic-info":"#2F5A8A","semantic-info-bg":"#E4EDF8","semantic-error-bg":"#FDE7E4","royal-gold":"#C9A24B","error":"#ba1a1a","secondary-fixed-dim":"#ebc166","surface-container-high":"#ece7e1","on-primary-container":"#fb7c8c","on-tertiary-fixed":"#390915","rose-mist":"#EED9DB","error-container":"#ffdad6","primary":"#510015","semantic-error":"#B42318","hairline-burgundy":"rgba(114, 19, 40, 0.14)","tertiary":"#45131e","primary-container":"#721328","surface-dim":"#ded9d3","on-tertiary":"#ffffff","semantic-warning-bg":"#FCEBD0","muted-rosewood":"#6D585B","on-secondary-container":"#775800","surface":"#fef9f2","on-secondary-fixed":"#261a00","burgundy-600":"#8A1B34","hairline-gold":"rgba(201, 162, 75, 0.45)","surface-container-highest":"#e6e2db","tertiary-fixed":"#ffd9dd","on-tertiary-fixed-variant":"#6f343f","tertiary-container":"#602833","on-primary-fixed":"#40000f","on-secondary":"#ffffff","blush-surface":"#F7ECEC","surface-bright":"#fef9f2","on-tertiary-container":"#dc8f9a","outline":"#897173","on-error":"#ffffff","surface-tint":"#a3394a","parchment":"#F3EADB","semantic-warning":"#8A4B08","on-surface-variant":"#564243","tertiary-fixed-dim":"#ffb2bd","ivory-canvas":"#FBF6EF","antique-gold":"#8A6620","inverse-primary":"#ffb2b9","secondary":"#795902","secondary-fixed":"#ffdf9e","semantic-success":"#1F6B4A","background":"#fef9f2"},"borderRadius":{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},"spacing":{"space-lg":"1.5rem","margin":"2.5rem","margin-mobile":"1rem","space-sm":"0.5rem","gutter":"1.5rem","space-2xl":"4rem","space-md":"1rem","space-xs":"0.25rem","space-xl":"2.5rem","space-3xl":"6rem","gutter-mobile":"1rem"},"fontFamily":{"headline-lg":["El Messiri"],"body-xl":["IBM Plex Sans Arabic"],"display-lg-mobile":["El Messiri"],"headline-md":["El Messiri"],"label-lg":["IBM Plex Sans Arabic"],"headline-xl-mobile":["El Messiri"],"display-lg":["El Messiri"],"label-sm":["IBM Plex Sans Arabic"],"headline-sm":["El Messiri"],"body-lg":["IBM Plex Sans Arabic"],"body-md":["IBM Plex Sans Arabic"],"label-md":["IBM Plex Sans Arabic"],"body-sm":["IBM Plex Sans Arabic"],"headline-xl":["El Messiri"]},"fontSize":{"headline-lg":["2rem",{"lineHeight":"1.35","fontWeight":"600"}],"body-xl":["1.25rem",{"lineHeight":"1.7","fontWeight":"400"}],"display-lg-mobile":["2.25rem",{"lineHeight":"1.3","fontWeight":"700"}],"headline-md":["1.5rem",{"lineHeight":"1.4","fontWeight":"600"}],"label-lg":["0.9375rem",{"lineHeight":"1.4","fontWeight":"600"}],"headline-xl-mobile":["1.75rem",{"lineHeight":"1.35","fontWeight":"600"}],"display-lg":["3.5rem",{"lineHeight":"1.25","fontWeight":"700"}],"label-sm":["0.6875rem",{"lineHeight":"1.4","fontWeight":"500"}],"headline-sm":["1.25rem",{"lineHeight":"1.45","fontWeight":"500"}],"body-lg":["1.125rem",{"lineHeight":"1.7","fontWeight":"400"}],"body-md":["1rem",{"lineHeight":"1.7","fontWeight":"400"}],"label-md":["0.8125rem",{"lineHeight":"1.4","fontWeight":"500"}],"body-sm":["0.875rem",{"lineHeight":"1.6","fontWeight":"400"}],"headline-xl":["2.5rem",{"lineHeight":"1.3","fontWeight":"600"}]}}}}</script></head><body class="bg-ivory-canvas font-body-md text-on-surface min-h-screen"><aside class="fixed right-0 top-0 h-full w-72 bg-wine-night z-50 flex flex-col justify-between shadow-[0_24px_64px_rgba(30,7,13,0.35)]"><div class="flex flex-col flex-1 overflow-y-auto"><div class="p-space-lg flex flex-col items-center justify-center border-b border-royal-gold/20"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-royal-gold text-[28px]">diamond</span><span class="font-headline-md text-headline-md tracking-wider text-champagne-gold">IRIS</span></div><span class="font-label-sm text-label-sm text-champagne-gold/70 mt-space-xs tracking-widest uppercase">Haute Joaillerie • الإدارة المالية</span></div><nav class="flex-1 py-space-md px-space-sm space-y-1" data-active-classes="bg-deep-oxblood text-champagne-gold font-bold border-r-4 border-royal-gold shadow-inner"><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-rose-mist/80 hover:bg-tertiary-container hover:text-champagne-gold transition-colors font-label-md text-label-md" data-path="dashboard" href="#"><span class="material-symbols-outlined text-[20px]">dashboard</span><span>لوحة التحكم</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-rose-mist/80 hover:bg-tertiary-container hover:text-champagne-gold transition-colors font-label-md text-label-md" data-path="orders" href="#"><span class="material-symbols-outlined text-[20px]">shopping_bag</span><span>الطلبات</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-rose-mist/80 hover:bg-tertiary-container hover:text-champagne-gold transition-colors font-label-md text-label-md" data-path="products" href="#"><span class="material-symbols-outlined text-[20px]">save_as</span><span>المنتجات</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-rose-mist/80 hover:bg-tertiary-container hover:text-champagne-gold transition-colors font-label-md text-label-md" data-path="categories" href="#"><span class="material-symbols-outlined text-[20px]">category</span><span>التصنيفات</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-rose-mist/80 hover:bg-tertiary-container hover:text-champagne-gold transition-colors font-label-md text-label-md" data-path="inventory" href="#"><span class="material-symbols-outlined text-[20px]">inventory_2</span><span>المخزون</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-rose-mist/80 hover:bg-tertiary-container hover:text-champagne-gold transition-colors font-label-md text-label-md" data-path="purchases" href="#"><span class="material-symbols-outlined text-[20px]">receipt_long</span><span>المشتريات</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-rose-mist/80 hover:bg-tertiary-container hover:text-champagne-gold transition-colors font-label-md text-label-md" data-path="suppliers" href="#"><span class="material-symbols-outlined text-[20px]">handshake</span><span>الموردون</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-rose-mist/80 hover:bg-tertiary-container hover:text-champagne-gold transition-colors font-label-md text-label-md" data-path="customers" href="#"><span class="material-symbols-outlined text-[20px]">group</span><span>العملاء</span></a><a aria-current="page" class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg transition-colors bg-deep-oxblood text-champagne-gold font-bold border-r-4 border-royal-gold shadow-inner" data-path="expenses" href="#"><span class="material-symbols-outlined text-[20px]">payments</span><span>المصاريف</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-rose-mist/80 hover:bg-tertiary-container hover:text-champagne-gold transition-colors font-label-md text-label-md" data-path="reports-and-finance" href="#"><span class="material-symbols-outlined text-[20px]">account_balance</span><span>التقارير والمالية</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-rose-mist/80 hover:bg-tertiary-container hover:text-champagne-gold transition-colors font-label-md text-label-md" data-path="settings" href="#"><span class="material-symbols-outlined text-[20px]">settings</span><span>الإعدادات</span></a></nav></div><div class="p-space-md border-t border-royal-gold/15 bg-wine-night/60"><div class="flex items-center justify-between text-champagne-gold/80 font-label-sm text-label-sm"><span>حالة الخزينة: مؤمنة</span><span class="w-2.5 h-2.5 rounded-full bg-semantic-success"></span></div></div></aside><div class="pr-72"><header class="fixed top-0 right-72 left-0 h-16 bg-ivory-canvas/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(58,10,22,0.06)] z-40 flex items-center justify-between px-space-lg"><div class="flex items-center gap-space-md flex-1 max-w-md"><div class="relative w-full flex items-center"><span class="material-symbols-outlined absolute right-3 text-muted-rosewood text-[20px]">search</span><input class="w-full bg-surface-container-low text-warm-ink placeholder-muted-rosewood pr-10 pl-4 py-2 rounded-xl border border-hairline-burgundy focus:outline-none focus:ring-1 focus:ring-imperial-burgundy font-body-sm text-body-sm" placeholder="بحث في السجلات، الدفاتر، أرقام السندات..." type="search"/></div></div><div class="flex items-center gap-space-lg"><div class="hidden md:flex items-center gap-space-xs px-space-md py-1.5 rounded-full bg-surface-container border border-hairline-gold/40 text-antique-gold font-label-sm text-label-sm"><span class="material-symbols-outlined text-[16px] text-royal-gold">account_balance</span><span>خزينة بغداد الرئيسية - المقر الرفيع</span></div><button aria-label="الإشعارات" class="relative p-2 rounded-full hover:bg-surface-container text-warm-ink transition-colors"><span class="material-symbols-outlined text-[22px]">notifications</span><span class="absolute top-2 right-2 w-2 h-2 rounded-full bg-semantic-error"></span></button><div class="flex items-center gap-space-sm pl-2"><div class="text-left rtl:text-right hidden sm:block"><div class="font-label-md text-label-md text-warm-ink leading-tight">سارة آل رحيم</div><div class="font-label-sm text-label-sm text-muted-rosewood">المدير المالي والخزينة</div></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="relative pt-16 bg-ivory-canvas min-h-screen px-space-lg py-space-xl"><div class="flex flex-col w-full text-warm-ink relative pb-space-3xl">
+<!-- Ambient Luxury Background Accent -->
+<div class="absolute -top-12 -left-20 w-96 h-96 rounded-full bg-champagne-gold/10 blur-3xl pointer-events-none -z-10"></div>
+<div class="absolute top-80 right-1/4 w-80 h-80 rounded-full bg-rose-mist/15 blur-2xl pointer-events-none -z-10"></div>
+<!-- Page Header & Action Ribbon -->
+<section class="flex flex-col gap-space-md mb-space-xl">
+<!-- Breadcrumb & Top Indicator -->
+<div class="flex items-center justify-between">
+<nav class="flex items-center gap-space-xs text-muted-rosewood font-label-md text-label-md">
+<span class="hover:text-imperial-burgundy transition-colors cursor-pointer">لوحة الإدارة</span>
+<span class="material-symbols-outlined text-[14px] text-muted-rosewood/60 rtl:rotate-180">chevron_left</span>
+<span class="hover:text-imperial-burgundy transition-colors cursor-pointer">المالية والمصاريف</span>
+<span class="material-symbols-outlined text-[14px] text-muted-rosewood/60 rtl:rotate-180">chevron_left</span>
+<span class="text-imperial-burgundy font-semibold">سجل المصاريف والنفقات</span>
+</nav>
+<div class="hidden lg:flex items-center gap-2 text-antique-gold font-label-sm text-label-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-royal-gold"></span>
+<span>السنة المالية: 2026/2027</span>
+<span class="text-muted-rosewood/40">/</span>
+<span>الدفتر المحاسبي العام رقم #GL-884</span>
+</div>
+</div>
+<!-- Editorial Header Title Row -->
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-space-lg">
+<div class="space-y-1">
+<h1 class="font-headline-xl text-headline-xl text-wine-night tracking-tight flex items-center gap-3">
+<span>إدارة المصاريف والنفقات التشغيلية</span>
+<span class="text-[12px] font-label-sm text-antique-gold bg-champagne-gold/20 px-2.5 py-0.5 rounded-full border border-hairline-gold/50">خزينة بغداد</span>
+</h1>
+<p class="font-body-md text-body-md text-muted-rosewood max-w-3xl">
+          توثيق القيود اليومية، تصنيف النفقات التشغيلية والتسويقية، ومطابقة الصندوق والخزينة المركزية لدار آيريس.
+        </p>
+</div>
+<!-- Action Buttons -->
+<div class="flex items-center gap-space-sm flex-wrap">
+<button class="group relative flex items-center gap-2 px-space-lg py-2.5 rounded-xl bg-imperial-burgundy text-ivory-canvas font-label-lg text-label-lg shadow-md hover:bg-burgundy-600 transition-all duration-200 active:translate-y-px" id="open-drawer-btn" type="button">
+<span class="absolute inset-0 rounded-xl border border-hairline-gold pointer-events-none"></span>
+<span class="material-symbols-outlined text-[20px] text-champagne-gold group-hover:rotate-90 transition-transform duration-300">add</span>
+<span>مصروف جديد</span>
+</button>
+<button class="flex items-center gap-2 px-space-md py-2.5 rounded-xl bg-surface-container-low text-warm-ink hover:bg-surface-container font-label-md text-label-md transition-all border border-hairline-burgundy/60 shadow-sm active:translate-y-px" type="button">
+<span class="material-symbols-outlined text-[18px] text-antique-gold">file_download</span>
+<span>تصدير الكشف (Excel/PDF)</span>
+</button>
+</div>
+</div>
+<!-- Date Range Filter Chips & Signature Divider -->
+<div class="pt-space-xs flex flex-col gap-space-sm">
+<div class="flex items-center justify-between flex-wrap gap-space-sm">
+<div class="flex items-center gap-2 overflow-x-auto py-1">
+<button class="px-3.5 py-1.5 rounded-full font-label-md text-label-md bg-surface-container-low hover:bg-surface-container text-muted-rosewood border border-hairline-burgundy/40 transition-colors" type="button">اليوم</button>
+<button class="px-3.5 py-1.5 rounded-full font-label-md text-label-md bg-surface-container-low hover:bg-surface-container text-muted-rosewood border border-hairline-burgundy/40 transition-colors" type="button">هذا الأسبوع</button>
+<button class="px-4 py-1.5 rounded-full font-label-md text-label-md bg-imperial-burgundy text-champagne-gold shadow-sm border border-royal-gold/60 flex items-center gap-1.5" type="button">
+<span class="w-1.5 h-1.5 rounded-full bg-champagne-gold"></span>
+<span>هذا الشهر (أكتوبر 2026)</span>
+</button>
+<button class="px-3.5 py-1.5 rounded-full font-label-md text-label-md bg-surface-container-low hover:bg-surface-container text-muted-rosewood border border-hairline-burgundy/40 transition-colors" type="button">الربع الحالي</button>
+<button class="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full font-label-md text-label-md bg-surface-container-low hover:bg-surface-container text-muted-rosewood border border-hairline-burgundy/40 transition-colors" type="button">
+<span class="material-symbols-outlined text-[16px] text-antique-gold">calendar_today</span>
+<span>تخصيص التاريخ</span>
+</button>
+</div>
+<div class="text-label-sm font-label-sm text-muted-rosewood flex items-center gap-2">
+<span>آخر مزامنة محاسبية: اليوم 05:40 م</span>
+<span class="material-symbols-outlined text-[14px] text-semantic-success">sync</span>
+</div>
+</div>
+<!-- Hairline Double Divider with Gold Rhombus -->
+<div class="relative py-2 flex items-center justify-center">
+<div class="w-full flex flex-col gap-[3px]">
+<div class="w-full h-px bg-hairline-burgundy"></div>
+<div class="w-full h-px bg-hairline-gold/40"></div>
+</div>
+<div class="absolute bg-ivory-canvas px-3 text-royal-gold text-[10px] tracking-widest">◆</div>
+</div>
+</div>
+</section>
+<!-- Top KPI Metrics Bar (4 Cards) -->
+<section class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-space-md mb-space-xl">
+<!-- Card 1 -->
+<div class="relative p-space-md bg-surface-container-lowest rounded-2xl border border-hairline-burgundy/60 shadow-[0_8px_24px_rgba(58,10,22,0.04)] hover:shadow-md transition-shadow">
+<div class="flex items-start justify-between">
+<div class="flex flex-col gap-1">
+<span class="font-label-sm text-label-sm text-muted-rosewood uppercase tracking-wide">إجمالي المصاريف (الشهر الحالي)</span>
+<div class="flex items-baseline gap-2 mt-1">
+<span class="font-headline-lg text-headline-lg text-wine-night tracking-tight font-bold font-['IBM_Plex_Sans_Arabic']">210,000</span>
+<span class="font-label-md text-label-md text-antique-gold font-semibold">د.ع</span>
+</div>
+</div>
+<div class="p-2.5 rounded-xl bg-blush-surface text-imperial-burgundy border border-hairline-burgundy/30">
+<span class="material-symbols-outlined text-[22px]">payments</span>
+</div>
+</div>
+<div class="mt-space-sm pt-2 border-t border-hairline-burgundy/30 flex items-center gap-1.5 font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px] text-semantic-success">trending_down</span>
+<span class="text-semantic-success font-medium">-4.2%</span>
+<span class="text-muted-rosewood">مقارنة بالشهر الماضي (تحسن في الترشيد)</span>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="relative p-space-md bg-surface-container-lowest rounded-2xl border border-hairline-burgundy/60 shadow-[0_8px_24px_rgba(58,10,22,0.04)] hover:shadow-md transition-shadow">
+<div class="flex items-start justify-between">
+<div class="flex flex-col gap-1">
+<span class="font-label-sm text-label-sm text-muted-rosewood uppercase tracking-wide">أعلى تصنيف نفقات</span>
+<div class="flex items-baseline gap-2 mt-1">
+<span class="font-headline-lg text-headline-lg text-imperial-burgundy tracking-tight font-bold font-['IBM_Plex_Sans_Arabic']">65,000</span>
+<span class="font-label-md text-label-md text-antique-gold font-semibold">د.ع</span>
+</div>
+</div>
+<div class="p-2.5 rounded-xl bg-champagne-gold/25 text-antique-gold border border-hairline-gold/50">
+<span class="material-symbols-outlined text-[22px]">campaign</span>
+</div>
+</div>
+<div class="mt-space-sm pt-2 border-t border-hairline-burgundy/30 flex items-center justify-between font-label-sm text-label-sm">
+<span class="text-warm-ink font-medium">حملات التسويق والإعلانات</span>
+<span class="px-2 py-0.5 rounded-full bg-imperial-burgundy/10 text-imperial-burgundy font-semibold">31% من الإجمالي</span>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="relative p-space-md bg-surface-container-lowest rounded-2xl border border-hairline-burgundy/60 shadow-[0_8px_24px_rgba(58,10,22,0.04)] hover:shadow-md transition-shadow">
+<div class="flex items-start justify-between">
+<div class="flex flex-col gap-1">
+<span class="font-label-sm text-label-sm text-muted-rosewood uppercase tracking-wide">المدفوع نقداً من الخزينة</span>
+<div class="flex items-baseline gap-2 mt-1">
+<span class="font-headline-lg text-headline-lg text-wine-night tracking-tight font-bold font-['IBM_Plex_Sans_Arabic']">135,000</span>
+<span class="font-label-md text-label-md text-antique-gold font-semibold">د.ع</span>
+</div>
+</div>
+<div class="p-2.5 rounded-xl bg-semantic-success-bg text-semantic-success border border-semantic-success/20">
+<span class="material-symbols-outlined text-[22px]">point_of_sale</span>
+</div>
+</div>
+<div class="mt-space-sm pt-2 border-t border-hairline-burgundy/30 flex items-center justify-between font-label-sm text-label-sm">
+<span class="text-muted-rosewood">السيولة المتبقية بالصندوق:</span>
+<span class="text-warm-ink font-semibold">1,420,000 د.ع</span>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="relative p-space-md bg-surface-container-lowest rounded-2xl border border-hairline-burgundy/60 shadow-[0_8px_24px_rgba(58,10,22,0.04)] hover:shadow-md transition-shadow">
+<div class="flex items-start justify-between">
+<div class="flex flex-col gap-1">
+<span class="font-label-sm text-label-sm text-muted-rosewood uppercase tracking-wide">المدفوع عبر المصارف والقنوات</span>
+<div class="flex items-baseline gap-2 mt-1">
+<span class="font-headline-lg text-headline-lg text-wine-night tracking-tight font-bold font-['IBM_Plex_Sans_Arabic']">75,000</span>
+<span class="font-label-md text-label-md text-antique-gold font-semibold">د.ع</span>
+</div>
+</div>
+<div class="p-2.5 rounded-xl bg-semantic-info-bg text-semantic-info border border-semantic-info/20">
+<span class="material-symbols-outlined text-[22px]">account_balance_wallet</span>
+</div>
+</div>
+<div class="mt-space-sm pt-2 border-t border-hairline-burgundy/30 flex items-center gap-2 font-label-sm text-label-sm text-muted-rosewood">
+<span>حوالات زين كاش وبطاقات مصرف التنمية</span>
+</div>
+</div>
+</section>
+<!-- Main Grid: Left Column Category Breakdown, Right/Center Expenses Table -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-start">
+<!-- Section 1: "المصاريف حسب التصنيف" (Left Column, col-span-4 in 12-col) -->
+<div class="lg:col-span-4 flex flex-col gap-space-md">
+<div class="bg-surface-container-lowest rounded-2xl p-space-lg border border-hairline-burgundy/60 shadow-[0_8px_24px_rgba(58,10,22,0.04)]">
+<!-- Header -->
+<div class="flex items-center justify-between pb-space-md border-b border-hairline-burgundy/40 mb-space-md">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-imperial-burgundy text-[20px]">pie_chart</span>
+<h2 class="font-headline-md text-headline-md text-wine-night">المصاريف حسب التصنيف</h2>
+</div>
+<span class="px-2.5 py-1 rounded-full bg-parchment text-antique-gold font-label-sm text-label-sm border border-hairline-gold/40">
+            الإجمالي: 210,000 د.ع
+          </span>
+</div>
+<!-- Horizontal Bar Category Breakdown (9 categories) -->
+<div class="flex flex-col gap-3.5">
+<!-- 1. التسويق -->
+<div class="space-y-1">
+<div class="flex items-center justify-between font-label-md text-label-md">
+<span class="text-warm-ink flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-imperial-burgundy"></span>
+<span>إعلانات وحملات رقمية</span>
+</span>
+<div class="flex items-center gap-2">
+<span class="text-imperial-burgundy font-bold">65,000 د.ع</span>
+<span class="text-muted-rosewood text-[11px] font-label-sm">(31%)</span>
+</div>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container overflow-hidden">
+<div class="h-full bg-imperial-burgundy rounded-full transition-all duration-500" style="width: 31%;"></div>
+</div>
+</div>
+<!-- 2. الشحن والنقل -->
+<div class="space-y-1">
+<div class="flex items-center justify-between font-label-md text-label-md">
+<span class="text-warm-ink flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-royal-gold"></span>
+<span>شحن ونقل مصفح للطلبات</span>
+</span>
+<div class="flex items-center gap-2">
+<span class="text-warm-ink font-bold">40,000 د.ع</span>
+<span class="text-muted-rosewood text-[11px] font-label-sm">(19%)</span>
+</div>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container overflow-hidden">
+<div class="h-full bg-royal-gold rounded-full transition-all duration-500" style="width: 19%;"></div>
+</div>
+</div>
+<!-- 3. التغليف والعلب -->
+<div class="space-y-1">
+<div class="flex items-center justify-between font-label-md text-label-md">
+<span class="text-warm-ink flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-muted-rosewood"></span>
+<span>تغليف ملكي وعلب مخملية</span>
+</span>
+<div class="flex items-center gap-2">
+<span class="text-warm-ink font-bold">30,000 د.ع</span>
+<span class="text-muted-rosewood text-[11px] font-label-sm">(14%)</span>
+</div>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container overflow-hidden">
+<div class="h-full bg-muted-rosewood rounded-full transition-all duration-500" style="width: 14%;"></div>
+</div>
+</div>
+<!-- 4. رواتب ومكافآت -->
+<div class="space-y-1">
+<div class="flex items-center justify-between font-label-md text-label-md">
+<span class="text-warm-ink flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-deep-oxblood"></span>
+<span>رواتب ومكافآت الموظفين</span>
+</span>
+<div class="flex items-center gap-2">
+<span class="text-warm-ink font-bold">25,000 د.ع</span>
+<span class="text-muted-rosewood text-[11px] font-label-sm">(12%)</span>
+</div>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container overflow-hidden">
+<div class="h-full bg-deep-oxblood rounded-full transition-all duration-500" style="width: 12%;"></div>
+</div>
+</div>
+<!-- 5. إيجار المعرض -->
+<div class="space-y-1">
+<div class="flex items-center justify-between font-label-md text-label-md">
+<span class="text-warm-ink flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-wine-night"></span>
+<span>إيجار المعرض والمقر الرفيع</span>
+</span>
+<div class="flex items-center gap-2">
+<span class="text-warm-ink font-bold">20,000 د.ع</span>
+<span class="text-muted-rosewood text-[11px] font-label-sm">(10%)</span>
+</div>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container overflow-hidden">
+<div class="h-full bg-wine-night rounded-full transition-all duration-500" style="width: 10%;"></div>
+</div>
+</div>
+<!-- 6. خدمات وضيافة -->
+<div class="space-y-1">
+<div class="flex items-center justify-between font-label-md text-label-md">
+<span class="text-warm-ink flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-antique-gold"></span>
+<span>خدمات وضيافة راقية</span>
+</span>
+<div class="flex items-center gap-2">
+<span class="text-warm-ink font-bold">10,000 د.ع</span>
+<span class="text-muted-rosewood text-[11px] font-label-sm">(5%)</span>
+</div>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container overflow-hidden">
+<div class="h-full bg-antique-gold rounded-full transition-all duration-500" style="width: 5%;"></div>
+</div>
+</div>
+<!-- 7. اشتراكات سحابية -->
+<div class="space-y-1">
+<div class="flex items-center justify-between font-label-md text-label-md">
+<span class="text-warm-ink flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-burgundy-600"></span>
+<span>اشتراكات سحابية وأنظمة</span>
+</span>
+<div class="flex items-center gap-2">
+<span class="text-warm-ink font-bold">8,000 د.ع</span>
+<span class="text-muted-rosewood text-[11px] font-label-sm">(4%)</span>
+</div>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container overflow-hidden">
+<div class="h-full bg-burgundy-600 rounded-full transition-all duration-500" style="width: 4%;"></div>
+</div>
+</div>
+<!-- 8. صيانة أجهزة الصياغة -->
+<div class="space-y-1">
+<div class="flex items-center justify-between font-label-md text-label-md">
+<span class="text-warm-ink flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-outline"></span>
+<span>صيانة وفحص أجهزة الصياغة</span>
+</span>
+<div class="flex items-center gap-2">
+<span class="text-warm-ink font-bold">7,000 د.ع</span>
+<span class="text-muted-rosewood text-[11px] font-label-sm">(3%)</span>
+</div>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container overflow-hidden">
+<div class="h-full bg-outline rounded-full transition-all duration-500" style="width: 3%;"></div>
+</div>
+</div>
+<!-- 9. مصاريف نثرية -->
+<div class="space-y-1">
+<div class="flex items-center justify-between font-label-md text-label-md">
+<span class="text-warm-ink flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-rose-mist"></span>
+<span>مصاريف نثرية ومشتريات طارئة</span>
+</span>
+<div class="flex items-center gap-2">
+<span class="text-warm-ink font-bold">5,000 د.ع</span>
+<span class="text-muted-rosewood text-[11px] font-label-sm">(2%)</span>
+</div>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container overflow-hidden">
+<div class="h-full bg-rose-mist rounded-full transition-all duration-500" style="width: 2%;"></div>
+</div>
+</div>
+</div>
+<!-- Visual Mini Donut / Treasury Snapshot -->
+<div class="mt-space-lg p-space-md bg-parchment/60 rounded-xl border border-hairline-burgundy/40 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="relative w-12 h-12 flex-shrink-0">
+<svg class="w-12 h-12 transform -rotate-90" viewbox="0 0 36 36">
+<circle cx="18" cy="18" fill="none" r="14" stroke="#e6e2db" stroke-width="4"></circle>
+<circle cx="18" cy="18" fill="none" r="14" stroke="#721328" stroke-dasharray="31 69" stroke-dashoffset="0" stroke-width="4"></circle>
+<circle cx="18" cy="18" fill="none" r="14" stroke="#C9A24B" stroke-dasharray="19 81" stroke-dashoffset="-31" stroke-width="4"></circle>
+<circle cx="18" cy="18" fill="none" r="14" stroke="#6D585B" stroke-dasharray="14 86" stroke-dashoffset="-50" stroke-width="4"></circle>
+</svg>
+</div>
+<div>
+<div class="font-label-md text-label-md text-warm-ink font-semibold">معدل الانضباط المالي</div>
+<div class="font-label-sm text-label-sm text-semantic-success flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>
+<span>ضمن حدود الميزانية المعتمدة</span>
+</div>
+</div>
+</div>
+<span class="font-headline-sm text-headline-sm text-imperial-burgundy font-bold font-['IBM_Plex_Sans_Arabic']">92%</span>
+</div>
+<div class="mt-space-md text-[11px] font-label-sm text-muted-rosewood text-center">
+          يتم تحديث نسب التوزيع تلقائياً فور اعتماد كل سند صرف بالخزينة.
+        </div>
+</div>
+<!-- Quick Treasury Note Card -->
+<div class="p-space-md bg-wine-night rounded-2xl text-champagne-gold border border-royal-gold/30 shadow-[0_12px_32px_rgba(30,7,13,0.25)] relative overflow-hidden">
+<div class="absolute -right-8 -bottom-8 opacity-10 text-champagne-gold">
+<span class="material-symbols-outlined text-[120px]">account_balance</span>
+</div>
+<div class="relative z-10 flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-champagne-gold/70 tracking-widest uppercase">سياسة النفقات والمشتريات</span>
+<span class="px-2 py-0.5 rounded-full bg-champagne-gold/15 text-champagne-gold text-[10px]">محدث 2026</span>
+</div>
+<p class="font-body-sm text-body-sm text-rose-mist/90 leading-relaxed">
+            يتطلب كل سند صرف يتجاوز مبلغ <strong class="text-champagne-gold">25,000 د.ع</strong> اعتماداً مزدوجاً من الإدارة العامة، مع إرفاق الإيصال الضريبي الأصلي أو الفاتورة الرسمية.
+          </p>
+</div>
+</div>
+</div>
+<!-- Section 2: "سجل العمليات والمصروفات" (Right/Center Table, col-span-8 in 12-col) -->
+<div class="lg:col-span-8 flex flex-col gap-space-md">
+<div class="bg-surface-container-lowest rounded-2xl p-space-lg border border-hairline-burgundy/60 shadow-[0_8px_24px_rgba(58,10,22,0.04)]">
+<!-- Table Top Control Bar -->
+<div class="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-space-md pb-space-md border-b border-hairline-burgundy/40">
+<div class="relative flex-1 max-w-sm">
+<span class="material-symbols-outlined absolute right-3 top-2.5 text-muted-rosewood text-[20px]">search</span>
+<input class="w-full bg-surface-container-low text-warm-ink placeholder-muted-rosewood/70 pr-10 pl-3 py-2 rounded-xl border border-hairline-burgundy/60 focus:outline-none focus:border-imperial-burgundy font-body-sm text-body-sm transition-colors" placeholder="ابحث بالوصف، المستفيد، أو رقم السند..." type="search"/>
+</div>
+<div class="flex items-center gap-space-xs flex-wrap">
+<!-- Filter Dropdown 1 -->
+<div class="relative">
+<select class="appearance-none bg-surface-container-low text-warm-ink pr-8 pl-8 py-2 rounded-xl border border-hairline-burgundy/60 font-label-md text-label-md focus:outline-none focus:border-imperial-burgundy cursor-pointer">
+<option>كافة التصنيفات (9)</option>
+<option>إعلانات وحملات رقمية</option>
+<option>شحن ونقل مصفح</option>
+<option>تغليف ملكي وعلب</option>
+<option>رواتب ومكافآت</option>
+<option>إيجار المقر الرفيع</option>
+</select>
+<span class="material-symbols-outlined absolute right-2.5 top-2.5 text-muted-rosewood text-[18px] pointer-events-none">category</span>
+<span class="material-symbols-outlined absolute left-2.5 top-2.5 text-muted-rosewood text-[18px] pointer-events-none">expand_more</span>
+</div>
+<!-- Filter Dropdown 2 -->
+<div class="relative">
+<select class="appearance-none bg-surface-container-low text-warm-ink pr-8 pl-8 py-2 rounded-xl border border-hairline-burgundy/60 font-label-md text-label-md focus:outline-none focus:border-imperial-burgundy cursor-pointer">
+<option>طريقة الدفع (الكل)</option>
+<option>نقد الخزينة</option>
+<option>حوالة مصرفية VIP</option>
+<option>زين كاش</option>
+<option>بطاقة الصرف</option>
+</select>
+<span class="material-symbols-outlined absolute right-2.5 top-2.5 text-muted-rosewood text-[18px] pointer-events-none">credit_card</span>
+<span class="material-symbols-outlined absolute left-2.5 top-2.5 text-muted-rosewood text-[18px] pointer-events-none">expand_more</span>
+</div>
+<span class="text-muted-rosewood font-label-sm text-label-sm mr-auto lg:mr-0 pl-1">
+              عرض 8 من أصل 46 عملية
+            </span>
+</div>
+</div>
+<!-- Expenses Data Table -->
+<div class="overflow-x-auto mt-space-sm">
+<table class="w-full text-right border-collapse">
+<thead>
+<tr class="border-b border-hairline-burgundy/60 text-muted-rosewood font-label-sm text-label-sm">
+<th class="py-3 px-3 font-semibold">رقم السند</th>
+<th class="py-3 px-3 font-semibold">التاريخ والوقت</th>
+<th class="py-3 px-3 font-semibold">التصنيف</th>
+<th class="py-3 px-3 font-semibold">البيان / الوصف</th>
+<th class="py-3 px-3 font-semibold">المبلغ</th>
+<th class="py-3 px-3 font-semibold">طريقة الدفع</th>
+<th class="py-3 px-3 font-semibold">المسؤول</th>
+<th class="py-3 px-2 font-semibold text-center">المرفق</th>
+<th class="py-3 px-3 font-semibold">الحالة</th>
+<th class="py-3 px-2 text-center font-semibold">إجراء</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-hairline-burgundy/30 font-body-sm text-body-sm">
+<!-- Row 1 -->
+<tr class="hover:bg-blush-surface/40 transition-colors group">
+<td class="py-3.5 px-3 font-mono text-imperial-burgundy font-semibold">EXP-1082</td>
+<td class="py-3.5 px-3 text-muted-rosewood whitespace-nowrap">
+<div>24/10/2026</div>
+<div class="text-[11px] text-muted-rosewood/70">02:15 م</div>
+</td>
+<td class="py-3.5 px-3 whitespace-nowrap">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-medium bg-imperial-burgundy/10 text-imperial-burgundy">
+<span class="w-1.5 h-1.5 rounded-full bg-imperial-burgundy"></span>
+                    إعلانات
+                  </span>
+</td>
+<td class="py-3.5 px-3 max-w-[210px] text-warm-ink font-medium leading-snug">
+                  تمويل حملة سناب شات لمجموعة القلائد الملكية الشتوية
+                </td>
+<td class="py-3.5 px-3 whitespace-nowrap font-bold text-wine-night font-['IBM_Plex_Sans_Arabic']">
+                  18,000 د.ع
+                </td>
+<td class="py-3.5 px-3 whitespace-nowrap">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-surface-container text-warm-ink text-xs font-label-sm border border-hairline-burgundy/30">
+<span class="material-symbols-outlined text-[14px] text-antique-gold">payments</span>
+                    نقد الخزينة
+                  </span>
+</td>
+<td class="py-3.5 px-3 whitespace-nowrap">
+<div class="flex items-center gap-1.5">
+<div class="w-6 h-6 rounded-full bg-primary/20 text-primary text-[10px] font-bold flex items-center justify-center">س ر</div>
+<span class="text-xs text-warm-ink">سارة آل رحيم</span>
+</div>
+</td>
+<td class="py-3.5 px-2 text-center">
+<button class="p-1 rounded hover:bg-surface-container text-muted-rosewood hover:text-imperial-burgundy transition-colors" title="فاتورة_معتمدة.pdf" type="button">
+<span class="material-symbols-outlined text-[18px]">attachment</span>
+</button>
+</td>
+<td class="py-3.5 px-3 whitespace-nowrap">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-semantic-success-bg text-semantic-success text-[11px] font-medium border border-semantic-success/20">
+<span class="w-1 h-1 rounded-full bg-semantic-success"></span>
+                    معتمد ومرحل
+                  </span>
+</td>
+<td class="py-3.5 px-2 text-center">
+<button class="p-1 rounded hover:bg-surface-container text-muted-rosewood hover:text-warm-ink transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-blush-surface/40 transition-colors group">
+<td class="py-3.5 px-3 font-mono text-imperial-burgundy font-semibold">EXP-1081</td>
+<td class="py-3.5 px-3 text-muted-rosewood whitespace-nowrap">
+<div>24/10/2026</div>
+<div class="text-[11px] text-muted-rosewood/70">11:30 ص</div>
+</td>
+<td class="py-3.5 px-3 whitespace-nowrap">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-medium bg-secondary-container/30 text-antique-gold">
+<span class="w-1.5 h-1.5 rounded-full bg-royal-gold"></span>
+                    شحن مصفح
+                  </span>
+</td>
+<td class="py-3.5 px-3 max-w-[210px] text-warm-ink font-medium leading-snug">
+                  أجور الناقل المصفح لشحنات كبار العملاء في أربيل والبصرة
+                </td>
+<td class="py-3.5 px-3 whitespace-nowrap font-bold text-wine-night font-['IBM_Plex_Sans_Arabic']">
+                  15,000 د.ع
+                </td>
+<td class="py-3.5 px-3 whitespace-nowrap">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-surface-container text-warm-ink text-xs font-label-sm border border-hairline-burgundy/30">
+<span class="material-symbols-outlined text-[14px] text-semantic-info">account_balance</span>
+                    حوالة مصرفية VIP
+                  </span>
+</td>
+<td class="py-3.5 px-3 whitespace-nowrap">
+<div class="flex items-center gap-1.5">
+<div class="w-6 h-6 rounded-full bg-antique-gold/20 text-antique-gold text-[10px] font-bold flex items-center justify-center">أ م</div>
+<span class="text-xs text-warm-ink">أحمد الموسوي</span>
+</div>
+</td>
+<td class="py-3.5 px-2 text-center">
+<button class="p-1 rounded hover:bg-surface-container text-muted-rosewood hover:text-imperial-burgundy transition-colors" title="إيصال_أربيل.pdf" type="button">
+<span class="material-symbols-outlined text-[18px]">attachment</span>
+</button>
+</td>
+<td class="py-3.5 px-3 whitespace-nowrap">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-semantic-success-bg text-semantic-success text-[11px] font-medium border border-semantic-success/20">
+<span class="w-1 h-1 rounded-full bg-semantic-success"></span>
+                    معتمد ومرحل
+                  </span>
+</td>
+<td class="py-3.5 px-2 text-center">
+<button class="p-1 rounded hover:bg-surface-container text-muted-rosewood hover:text-warm-ink transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-blush-surface/40 transition-colors group">
+<td class="py-3.5 px-3 font-mono text-imperial-burgundy font-semibold">EXP-1080</td>
+<td class="py-3.5 px-3 text-muted-rosewood whitespace-nowrap">
+<div>23/10/2026</div>
+<div class="text-[11px] text-muted-rosewood/70">04:45 م</div>
+</td>
+<td class="py-3.5 px-3 whitespace-nowrap">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-medium bg-muted-rosewood/15 text-muted-rosewood">
+<span class="w-1.5 h-1.5 rounded-full bg-muted-rosewood"></span>
+                    تغليف ملكي
+                  </span>
+</td>
+<td class="py-3.5 px-3 max-w-[210px] text-warm-ink font-medium leading-snug">
+                  شراء علب مخملية مذهبة مع بطاقات إهداء حريرية مطرزة
+                </td>
+<td class="py-3.5 px-3 whitespace-nowrap font-bold text-wine-night font-['IBM_Plex_Sans_Arabic']">
+                  30,000 د.ع
+                </td>
+<td class="py-3.5 px-3 whitespace-nowrap">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-surface-container text-warm-ink text-xs font-label-sm border border-hairline-burgundy/30">
+<span class="material-symbols-outlined text-[14px] text-antique-gold">payments</span>
+                    نقد الخزينة
+                  </span>
+</td>
+<td class="py-3.5 px-3 whitespace-nowrap">
+<div class="flex items-center gap-1.5">
+<div class="w-6 h-6 rounded-full bg-primary/20 text-primary text-[10px] font-bold flex items-center justify-center">س ر</div>
+<span class="text-xs text-warm-ink">سارة آل رحيم</span>
+</div>
+</td>
+<td class="py-3.5 px-2 text-center">
+<button class="p-1 rounded hover:bg-surface-container text-muted-rosewood hover:text-imperial-burgundy transition-colors" title="فاتورة_دار_المخمل.pdf" type="button">
+<span class="material-symbols-outlined text-[18px]">attachment</span>
+</button>
+</td>
+<td class="py-3.5 px-3 whitespace-nowrap">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-semantic-success-bg text-semantic-success text-[11px] font-medium border border-semantic-success/20">
+<span class="w-1 h-1 rounded-full bg-semantic-success"></span>
+                    معتمد ومرحل
+                  </span>
+</td>
+<td class="py-3.5 px-2 text-center">
+<button class="p-1 rounded hover:bg-surface-container text-muted-rosewood hover:text-warm-ink transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-blush-surface/40 transition-colors group">
+<td class="py-3.5 px-3 font-mono text-imperial-burgundy font-semibold">EXP-1079</td>
+<td class="py-3.5 px-3 text-muted-rosewood whitespace-nowrap">
+<div>22/10/2026</div>
+<div class="text-[11px] text-muted-rosewood/70">01:10 م</div>
+</td>
+<td class="py-3.5 px-3 whitespace-nowrap">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-medium bg-semantic-info-bg text-semantic-info">
+<span class="w-1.5 h-1.5 rounded-full bg-semantic-info"></span>
+                    اشتراكات
+                  </span>
+</td>
+<td class="py-3.5 px-3 max-w-[210px] text-warm-ink font-medium leading-snug">
+                  اشتراك بوابة الدفع الإلكتروني والرسائل النصية التوثيقية OTP
+                </td>
+<td class="py-3.5 px-3 whitespace-nowrap font-bold text-wine-night font-['IBM_Plex_Sans_Arabic']">
+                  8,000 د.ع
+                </td>
+<td class="py-3.5 px-3 whitespace-nowrap">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-surface-container text-warm-ink text-xs font-label-sm border border-hairline-burgundy/30">
+<span class="material-symbols-outlined text-[14px] text-semantic-info">credit_card</span>
+                    زين كاش
+                  </span>
+</td>
+<td class="py-3.5 px-3 whitespace-nowrap">
+<div class="flex items-center gap-1.5">
+<div class="w-6 h-6 rounded-full bg-burgundy-600/20 text-burgundy-600 text-[10px] font-bold flex items-center justify-center">ل ك</div>
+<span class="text-xs text-warm-ink">ليلى كمال</span>
+</div>
+</td>
+<td class="py-3.5 px-2 text-center">
+<button class="p-1 rounded hover:bg-surface-container text-muted-rosewood hover:text-imperial-burgundy transition-colors" title="إيصال_الدفع.png" type="button">
+<span class="material-symbols-outlined text-[18px]">attachment</span>
+</button>
+</td>
+<td class="py-3.5 px-3 whitespace-nowrap">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-semantic-success-bg text-semantic-success text-[11px] font-medium border border-semantic-success/20">
+<span class="w-1 h-1 rounded-full bg-semantic-success"></span>
+                    معتمد ومرحل
+                  </span>
+</td>
+<td class="py-3.5 px-2 text-center">
+<button class="p-1 rounded hover:bg-surface-container text-muted-rosewood hover:text-warm-ink transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 5 -->
+<tr class="hover:bg-blush-surface/40 transition-colors group">
+<td class="py-3.5 px-3 font-mono text-imperial-burgundy font-semibold">EXP-1078</td>
+<td class="py-3.5 px-3 text-muted-rosewood whitespace-nowrap">
+<div>21/10/2026</div>
+<div class="text-[11px] text-muted-rosewood/70">10:00 ص</div>
+</td>
+<td class="py-3.5 px-3 whitespace-nowrap">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-medium bg-parchment text-antique-gold">
+<span class="w-1.5 h-1.5 rounded-full bg-antique-gold"></span>
+                    ضيافة وخدمات
+                  </span>
+</td>
+<td class="py-3.5 px-3 max-w-[210px] text-warm-ink font-medium leading-snug">
+                  ضيافة كبار المقتنين وزهور المعرض الطبيعية للأسبوع الثالث
+                </td>
+<td class="py-3.5 px-3 whitespace-nowrap font-bold text-wine-night font-['IBM_Plex_Sans_Arabic']">
+                  6,500 د.ع
+                </td>
+<td class="py-3.5 px-3 whitespace-nowrap">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-surface-container text-warm-ink text-xs font-label-sm border border-hairline-burgundy/30">
+<span class="material-symbols-outlined text-[14px] text-antique-gold">payments</span>
+                    نقد الخزينة
+                  </span>
+</td>
+<td class="py-3.5 px-3 whitespace-nowrap">
+<div class="flex items-center gap-1.5">
+<div class="w-6 h-6 rounded-full bg-antique-gold/20 text-antique-gold text-[10px] font-bold flex items-center justify-center">أ م</div>
+<span class="text-xs text-warm-ink">أحمد الموسوي</span>
+</div>
+</td>
+<td class="py-3.5 px-2 text-center">
+<button class="p-1 rounded hover:bg-surface-container text-muted-rosewood hover:text-imperial-burgundy transition-colors" title="إيصال_الزهور.pdf" type="button">
+<span class="material-symbols-outlined text-[18px]">attachment</span>
+</button>
+</td>
+<td class="py-3.5 px-3 whitespace-nowrap">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-semantic-success-bg text-semantic-success text-[11px] font-medium border border-semantic-success/20">
+<span class="w-1 h-1 rounded-full bg-semantic-success"></span>
+                    معتمد ومرحل
+                  </span>
+</td>
+<td class="py-3.5 px-2 text-center">
+<button class="p-1 rounded hover:bg-surface-container text-muted-rosewood hover:text-warm-ink transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 6 -->
+<tr class="hover:bg-blush-surface/40 transition-colors group">
+<td class="py-3.5 px-3 font-mono text-imperial-burgundy font-semibold">EXP-1077</td>
+<td class="py-3.5 px-3 text-muted-rosewood whitespace-nowrap">
+<div>20/10/2026</div>
+<div class="text-[11px] text-muted-rosewood/70">03:30 م</div>
+</td>
+<td class="py-3.5 px-3 whitespace-nowrap">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-medium bg-semantic-warning-bg text-semantic-warning">
+<span class="w-1.5 h-1.5 rounded-full bg-semantic-warning"></span>
+                    صيانة وفحص
+                  </span>
+</td>
+<td class="py-3.5 px-3 max-w-[210px] text-warm-ink font-medium leading-snug">
+                  معايرة أجهزة فحص الألماس والميزان الرقمي السويسري
+                </td>
+<td class="py-3.5 px-3 whitespace-nowrap font-bold text-wine-night font-['IBM_Plex_Sans_Arabic']">
+                  7,000 د.ع
+                </td>
+<td class="py-3.5 px-3 whitespace-nowrap">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-surface-container text-warm-ink text-xs font-label-sm border border-hairline-burgundy/30">
+<span class="material-symbols-outlined text-[14px] text-antique-gold">payments</span>
+                    نقد الخزينة
+                  </span>
+</td>
+<td class="py-3.5 px-3 whitespace-nowrap">
+<div class="flex items-center gap-1.5">
+<div class="w-6 h-6 rounded-full bg-burgundy-600/20 text-burgundy-600 text-[10px] font-bold flex items-center justify-center">ل ك</div>
+<span class="text-xs text-warm-ink">ليلى كمال</span>
+</div>
+</td>
+<td class="py-3.5 px-2 text-center">
+<button class="p-1 rounded hover:bg-surface-container text-muted-rosewood hover:text-imperial-burgundy transition-colors" title="تقرير_الفحص.pdf" type="button">
+<span class="material-symbols-outlined text-[18px]">attachment</span>
+</button>
+</td>
+<td class="py-3.5 px-3 whitespace-nowrap">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-semantic-success-bg text-semantic-success text-[11px] font-medium border border-semantic-success/20">
+<span class="w-1 h-1 rounded-full bg-semantic-success"></span>
+                    معتمد ومرحل
+                  </span>
+</td>
+<td class="py-3.5 px-2 text-center">
+<button class="p-1 rounded hover:bg-surface-container text-muted-rosewood hover:text-warm-ink transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 7 -->
+<tr class="hover:bg-blush-surface/40 transition-colors group">
+<td class="py-3.5 px-3 font-mono text-imperial-burgundy font-semibold">EXP-1076</td>
+<td class="py-3.5 px-3 text-muted-rosewood whitespace-nowrap">
+<div>19/10/2026</div>
+<div class="text-[11px] text-muted-rosewood/70">12:00 م</div>
+</td>
+<td class="py-3.5 px-3 whitespace-nowrap">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-medium bg-imperial-burgundy/10 text-imperial-burgundy">
+<span class="w-1.5 h-1.5 rounded-full bg-imperial-burgundy"></span>
+                    إعلانات
+                  </span>
+</td>
+<td class="py-3.5 px-3 max-w-[210px] text-warm-ink font-medium leading-snug">
+                  حملة تيك توك وإنستغرام الممولة مع مؤثرات الأناقة
+                </td>
+<td class="py-3.5 px-3 whitespace-nowrap font-bold text-wine-night font-['IBM_Plex_Sans_Arabic']">
+                  25,000 د.ع
+                </td>
+<td class="py-3.5 px-3 whitespace-nowrap">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-surface-container text-warm-ink text-xs font-label-sm border border-hairline-burgundy/30">
+<span class="material-symbols-outlined text-[14px] text-semantic-info">credit_card</span>
+                    بطاقة الصرف
+                  </span>
+</td>
+<td class="py-3.5 px-3 whitespace-nowrap">
+<div class="flex items-center gap-1.5">
+<div class="w-6 h-6 rounded-full bg-primary/20 text-primary text-[10px] font-bold flex items-center justify-center">س ر</div>
+<span class="text-xs text-warm-ink">سارة آل رحيم</span>
+</div>
+</td>
+<td class="py-3.5 px-2 text-center">
+<button class="p-1 rounded hover:bg-surface-container text-muted-rosewood hover:text-imperial-burgundy transition-colors" title="عقد_المؤثرين.pdf" type="button">
+<span class="material-symbols-outlined text-[18px]">attachment</span>
+</button>
+</td>
+<td class="py-3.5 px-3 whitespace-nowrap">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-semantic-success-bg text-semantic-success text-[11px] font-medium border border-semantic-success/20">
+<span class="w-1 h-1 rounded-full bg-semantic-success"></span>
+                    معتمد ومرحل
+                  </span>
+</td>
+<td class="py-3.5 px-2 text-center">
+<button class="p-1 rounded hover:bg-surface-container text-muted-rosewood hover:text-warm-ink transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 8 (Pending Review) -->
+<tr class="hover:bg-blush-surface/40 transition-colors group bg-parchment/20">
+<td class="py-3.5 px-3 font-mono text-imperial-burgundy font-semibold">EXP-1075</td>
+<td class="py-3.5 px-3 text-muted-rosewood whitespace-nowrap">
+<div>18/10/2026</div>
+<div class="text-[11px] text-muted-rosewood/70">05:20 م</div>
+</td>
+<td class="py-3.5 px-3 whitespace-nowrap">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-medium bg-rose-mist/30 text-warm-ink">
+<span class="w-1.5 h-1.5 rounded-full bg-rose-mist"></span>
+                    نثريات
+                  </span>
+</td>
+<td class="py-3.5 px-3 max-w-[210px] text-warm-ink font-medium leading-snug">
+                  شراء مستلزمات مكتبية وختامات شمعية حمراء لرسائل التوثيق
+                </td>
+<td class="py-3.5 px-3 whitespace-nowrap font-bold text-wine-night font-['IBM_Plex_Sans_Arabic']">
+                  2,500 د.ع
+                </td>
+<td class="py-3.5 px-3 whitespace-nowrap">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-surface-container text-warm-ink text-xs font-label-sm border border-hairline-burgundy/30">
+<span class="material-symbols-outlined text-[14px] text-antique-gold">payments</span>
+                    نقد الخزينة
+                  </span>
+</td>
+<td class="py-3.5 px-3 whitespace-nowrap">
+<div class="flex items-center gap-1.5">
+<div class="w-6 h-6 rounded-full bg-antique-gold/20 text-antique-gold text-[10px] font-bold flex items-center justify-center">أ م</div>
+<span class="text-xs text-warm-ink">أحمد الموسوي</span>
+</div>
+</td>
+<td class="py-3.5 px-2 text-center">
+<button class="p-1 rounded hover:bg-surface-container text-muted-rosewood hover:text-imperial-burgundy transition-colors" title="إيصال_شمع.jpg" type="button">
+<span class="material-symbols-outlined text-[18px]">attachment</span>
+</button>
+</td>
+<td class="py-3.5 px-3 whitespace-nowrap">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-semantic-warning-bg text-semantic-warning text-[11px] font-medium border border-semantic-warning/20">
+<span class="w-1 h-1 rounded-full bg-semantic-warning"></span>
+                    قيد المراجعة
+                  </span>
+</td>
+<td class="py-3.5 px-2 text-center">
+<button class="p-1 rounded hover:bg-surface-container text-muted-rosewood hover:text-warm-ink transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Bottom Pagination Bar -->
+<div class="pt-space-md mt-space-md border-t border-hairline-burgundy/40 flex flex-col sm:flex-row items-center justify-between gap-space-sm font-label-md text-label-md text-muted-rosewood">
+<div class="flex items-center gap-2">
+<span>إظهار</span>
+<select class="bg-surface-container-low px-2 py-1 rounded-lg border border-hairline-burgundy/60 text-warm-ink focus:outline-none focus:border-imperial-burgundy">
+<option>8</option>
+<option>15</option>
+<option>30</option>
+</select>
+<span>سندات لكل صفحة</span>
+</div>
+<div class="flex items-center gap-1">
+<button class="p-1.5 rounded-lg border border-hairline-burgundy/40 hover:bg-surface-container text-muted-rosewood disabled:opacity-40" disabled="" type="button">
+<span class="material-symbols-outlined text-[18px] rtl:rotate-180">chevron_right</span>
+</button>
+<button class="w-8 h-8 rounded-lg bg-imperial-burgundy text-champagne-gold font-bold flex items-center justify-center" type="button">1</button>
+<button class="w-8 h-8 rounded-lg hover:bg-surface-container text-warm-ink flex items-center justify-center" type="button">2</button>
+<button class="w-8 h-8 rounded-lg hover:bg-surface-container text-warm-ink flex items-center justify-center" type="button">3</button>
+<span class="px-1 text-muted-rosewood">...</span>
+<button class="w-8 h-8 rounded-lg hover:bg-surface-container text-warm-ink flex items-center justify-center" type="button">6</button>
+<button class="p-1.5 rounded-lg border border-hairline-burgundy/40 hover:bg-surface-container text-muted-rosewood" type="button">
+<span class="material-symbols-outlined text-[18px] rtl:rotate-180">chevron_left</span>
+</button>
+</div>
+<div class="text-label-sm font-label-sm">
+            الصفحة 1 من 6 (إجمالي السجلات: 46)
+          </div>
+</div>
+</div>
+</div>
+</div>
+<!-- Section 3: Open Side Drawer / Flyout "إضافة مصروف جديد" -->
+<div class="fixed inset-0 bg-wine-night/45 backdrop-blur-[2px] z-50 flex justify-end transition-opacity duration-300" id="drawer-backdrop">
+<!-- Drawer Panel: docked right-hand, width 480px, exquisite tactile design -->
+<div class="w-full max-w-lg bg-ivory-canvas h-full shadow-[0_24px_64px_rgba(30,7,13,0.35)] flex flex-col border-r border-hairline-gold/60 z-50 overflow-hidden transform translate-x-0 transition-transform duration-300" id="drawer-panel">
+<!-- Drawer Header -->
+<div class="p-space-lg bg-surface-container-lowest border-b border-hairline-burgundy/40 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-imperial-burgundy text-champagne-gold flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-[22px]">post_add</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-wine-night">إضافة سند مصروف جديد</h3>
+<p class="font-label-sm text-label-sm text-muted-rosewood">تسجيل قيد مالي مباشر بالخزينة المركزية</p>
+</div>
+</div>
+<button class="w-9 h-9 rounded-full bg-surface-container-low hover:bg-surface-container text-muted-rosewood hover:text-imperial-burgundy flex items-center justify-center transition-colors" id="close-drawer-btn" type="button">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<!-- Drawer Form Body (Scrollable) -->
+<form class="flex-1 overflow-y-auto p-space-lg space-y-space-md" onsubmit="event.preventDefault();">
+<!-- Field 1 & 2: Date & Category in 2 Cols -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-space-md">
+<!-- Date -->
+<div class="space-y-1.5">
+<label class="block font-label-md text-label-md text-warm-ink font-semibold">تاريخ السند</label>
+<div class="relative">
+<input class="w-full bg-surface-container-lowest px-3 py-2.5 rounded-xl border border-hairline-burgundy/70 text-warm-ink font-mono text-body-sm focus:outline-none focus:border-imperial-burgundy" type="text" value="24/10/2026"/>
+<span class="material-symbols-outlined absolute left-3 top-2.5 text-muted-rosewood text-[18px]">calendar_today</span>
+</div>
+</div>
+<!-- Category -->
+<div class="space-y-1.5">
+<div class="flex items-center justify-between">
+<label class="block font-label-md text-label-md text-warm-ink font-semibold">التصنيف</label>
+<button class="text-[11px] font-label-sm text-imperial-burgundy hover:underline" type="button">+ إدارة</button>
+</div>
+<div class="relative">
+<select class="appearance-none w-full bg-surface-container-lowest px-3 py-2.5 rounded-xl border border-hairline-burgundy/70 text-warm-ink font-body-sm focus:outline-none focus:border-imperial-burgundy cursor-pointer">
+<option selected="">إعلانات وحملات رقمية</option>
+<option>شحن ونقل مصفح للطلبات</option>
+<option>تغليف ملكي وعلب مخملية</option>
+<option>رواتب ومكافآت الموظفين</option>
+<option>إيجار المعرض والمقر الرفيع</option>
+<option>خدمات وضيافة راقية</option>
+<option>اشتراكات سحابية وأنظمة</option>
+<option>صيانة أجهزة الصياغة</option>
+<option>مصاريف نثرية</option>
+</select>
+<span class="material-symbols-outlined absolute left-3 top-2.5 text-muted-rosewood text-[18px] pointer-events-none">expand_more</span>
+</div>
+</div>
+</div>
+<!-- Field 3: البيان / الوصف -->
+<div class="space-y-1.5">
+<label class="block font-label-md text-label-md text-warm-ink font-semibold">البيان / الوصف التفصيلي</label>
+<input class="w-full bg-surface-container-lowest px-3.5 py-2.5 rounded-xl border border-hairline-burgundy/70 text-warm-ink font-body-sm focus:outline-none focus:border-imperial-burgundy" placeholder="مثال: دفعة إعلانات تيك توك وسناب شات..." type="text" value="دفعة إعلانات تيك توك وسناب شات لمجموعة القلائد الملكية"/>
+</div>
+<!-- Field 4: المبلغ بالدينار العراقي -->
+<div class="space-y-1.5">
+<label class="block font-label-md text-label-md text-warm-ink font-semibold">المبلغ المصروف</label>
+<div class="relative flex items-center">
+<input class="w-full bg-surface-container-lowest pr-3.5 pl-16 py-2.5 rounded-xl border border-hairline-burgundy/70 text-wine-night font-bold text-headline-sm font-['IBM_Plex_Sans_Arabic'] focus:outline-none focus:border-imperial-burgundy" type="text" value="15,000"/>
+<span class="absolute left-3.5 font-label-md text-label-md text-antique-gold font-bold pointer-events-none">د.ع</span>
+</div>
+<p class="text-[11px] font-label-sm text-muted-rosewood">فقط خمسة عشر ألف دينار عراقي لا غير.</p>
+</div>
+<!-- Field 5: طريقة الدفع (Segmented Cards) -->
+<div class="space-y-1.5">
+<label class="block font-label-md text-label-md text-warm-ink font-semibold">طريقة الدفع ومصدر الصرف</label>
+<div class="grid grid-cols-2 gap-2">
+<!-- Option 1 (Active) -->
+<label class="relative flex flex-col p-2.5 rounded-xl border-2 border-imperial-burgundy bg-blush-surface cursor-pointer">
+<input checked="" class="sr-only" name="payment_method" type="radio"/>
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-wine-night font-bold">نقد الخزينة</span>
+<span class="w-3.5 h-3.5 rounded-full bg-imperial-burgundy flex items-center justify-center">
+<span class="w-1.5 h-1.5 rounded-full bg-champagne-gold"></span>
+</span>
+</div>
+<span class="text-[10px] text-muted-rosewood mt-0.5">الرصيد: 1,420,000 د.ع</span>
+</label>
+<!-- Option 2 -->
+<label class="relative flex flex-col p-2.5 rounded-xl border border-hairline-burgundy/60 bg-surface-container-lowest hover:bg-surface-container-low cursor-pointer">
+<input class="sr-only" name="payment_method" type="radio"/>
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-warm-ink font-medium">حوالة بنكية VIP</span>
+<span class="w-3.5 h-3.5 rounded-full border border-hairline-burgundy"></span>
+</div>
+<span class="text-[10px] text-muted-rosewood mt-0.5">مصرف التنمية الدولي</span>
+</label>
+<!-- Option 3 -->
+<label class="relative flex flex-col p-2.5 rounded-xl border border-hairline-burgundy/60 bg-surface-container-lowest hover:bg-surface-container-low cursor-pointer">
+<input class="sr-only" name="payment_method" type="radio"/>
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-warm-ink font-medium">زين كاش</span>
+<span class="w-3.5 h-3.5 rounded-full border border-hairline-burgundy"></span>
+</div>
+<span class="text-[10px] text-muted-rosewood mt-0.5">محفظة الشركة المعتمدة</span>
+</label>
+<!-- Option 4 -->
+<label class="relative flex flex-col p-2.5 rounded-xl border border-hairline-burgundy/60 bg-surface-container-lowest hover:bg-surface-container-low cursor-pointer">
+<input class="sr-only" name="payment_method" type="radio"/>
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-warm-ink font-medium">بطاقة الصرف</span>
+<span class="w-3.5 h-3.5 rounded-full border border-hairline-burgundy"></span>
+</div>
+<span class="text-[10px] text-muted-rosewood mt-0.5">فيزا كارد الإدارة</span>
+</label>
+</div>
+</div>
+<!-- Field 6: المورد / الجهة المستفيدة -->
+<div class="space-y-1.5">
+<label class="block font-label-md text-label-md text-warm-ink font-semibold">المورد / الجهة المستفيدة <span class="text-muted-rosewood font-normal text-xs">(اختياري)</span></label>
+<input class="w-full bg-surface-container-lowest px-3.5 py-2.5 rounded-xl border border-hairline-burgundy/70 text-warm-ink font-body-sm focus:outline-none focus:border-imperial-burgundy" placeholder="مثال: شركة النقل السريع..." type="text" value="وكالة رنين للتسويق الرقمي - بغداد"/>
+</div>
+<!-- Field 7: المرفقات (Dropzone with uploaded chip) -->
+<div class="space-y-1.5">
+<label class="block font-label-md text-label-md text-warm-ink font-semibold">مرفق الفاتورة أو الإيصال</label>
+<div class="p-space-md border-2 border-dashed border-imperial-burgundy/30 hover:border-imperial-burgundy/60 rounded-xl bg-surface-container-lowest text-center flex flex-col items-center justify-center cursor-pointer transition-colors">
+<span class="material-symbols-outlined text-[32px] text-imperial-burgundy mb-1">cloud_upload</span>
+<div class="font-label-md text-label-md text-warm-ink font-semibold">اسحب الفاتورة أو صورة الإيصال هنا</div>
+<div class="text-[11px] text-muted-rosewood mt-0.5">أو اضغط للاختيار (JPG, PNG, PDF بحد أقصى 10MB)</div>
+</div>
+<!-- Uploaded file chip -->
+<div class="flex items-center justify-between p-2 rounded-xl bg-parchment/70 border border-hairline-gold/50 mt-2 font-label-sm text-label-sm">
+<div class="flex items-center gap-2 overflow-hidden">
+<span class="material-symbols-outlined text-imperial-burgundy text-[18px]">description</span>
+<span class="text-warm-ink truncate max-w-[240px]">فاتورة_حملة_سناب_أكتوبر.pdf</span>
+<span class="text-muted-rosewood text-[10px]">(1.2 MB)</span>
+</div>
+<button class="text-muted-rosewood hover:text-semantic-error p-1" type="button">
+<span class="material-symbols-outlined text-[16px]">close</span>
+</button>
+</div>
+</div>
+<!-- Field 8: ملاحظات داخلية -->
+<div class="space-y-1.5">
+<label class="block font-label-md text-label-md text-warm-ink font-semibold">ملاحظات محاسبية داخلية</label>
+<textarea class="w-full bg-surface-container-lowest p-3 rounded-xl border border-hairline-burgundy/70 text-warm-ink font-body-sm focus:outline-none focus:border-imperial-burgundy resize-none" placeholder="ملاحظات إضافية أو مبرر الصرف..." rows="3">حملة مكثفة بالتزامن مع إطلاق تشكيلة لؤلؤ البصرة.</textarea>
+</div>
+</form>
+<!-- Drawer Footer -->
+<div class="p-space-md bg-surface-container-lowest border-t border-hairline-burgundy/40 flex items-center justify-between gap-space-sm">
+<button class="flex-1 py-2.5 rounded-xl border border-imperial-burgundy text-imperial-burgundy font-label-md text-label-md hover:bg-blush-surface transition-colors active:translate-y-px text-center" type="button">
+          حفظ وإضافة آخر
+        </button>
+<button class="flex-1 py-2.5 rounded-xl bg-imperial-burgundy text-champagne-gold font-label-md text-label-md shadow-md hover:bg-burgundy-600 transition-all border border-royal-gold/60 flex items-center justify-center gap-2 active:translate-y-px" type="button">
+<span class="material-symbols-outlined text-[18px] text-champagne-gold">lock</span>
+<span>حفظ واعتماد الصرف</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Micro-Interactions Script for Drawer & State -->
+<script>
+  (function() {
+    const backdrop = document.getElementById('drawer-backdrop');
+    const panel = document.getElementById('drawer-panel');
+    const openBtn = document.getElementById('open-drawer-btn');
+    const closeBtn = document.getElementById('close-drawer-btn');
+
+    function closeDrawer() {
+      if (!backdrop || !panel) return;
+      panel.classList.add('translate-x-full');
+      backdrop.classList.add('opacity-0');
+      setTimeout(() => {
+        backdrop.classList.add('hidden');
+      }, 300);
+    }
+
+    function openDrawer() {
+      if (!backdrop || !panel) return;
+      backdrop.classList.remove('hidden');
+      setTimeout(() => {
+        backdrop.classList.remove('opacity-0');
+        panel.classList.remove('translate-x-full');
+      }, 10);
+    }
+
+    if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
+    if (openBtn) openBtn.addEventListener('click', openDrawer);
+
+    if (backdrop) {
+      backdrop.addEventListener('click', function(e) {
+        if (e.target === backdrop) {
+          closeDrawer();
+        }
+      });
+    }
+
+    // Escape key closes drawer
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && backdrop && !backdrop.classList.contains('hidden')) {
+        closeDrawer();
+      }
+    });
+  })();
+</script></main></div></body></html>

@@ -1,0 +1,1313 @@
+<!DOCTYPE html>
+
+<html dir="rtl" lang="ar" style=""><head><meta content="web_standard" name="shell-type"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/></head><body class="bg-ivory-canvas font-body-md text-on-surface antialiased selection:bg-champagne-gold selection:text-wine-night relative"><svg aria-hidden="true" class="inline-defs-container" style="position:absolute;width:0;height:0;overflow:hidden"></svg><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><title>آيريس | IRIS Haute Joaillerie</title><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@400;500;600;700&amp;family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&amp;family=Instrument+Serif:ital@0;1&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><style>
+@layer base {
+  html, body { margin: 0; padding: 0; }
+  body { overscroll-behavior: none; }
+  main > :first-child { margin-top: 0 !important; }
+  main > :last-child { margin-bottom: 0 !important; }
+}
+::-webkit-scrollbar { display: none; }
+
+/* Perpetual Shimmer Sweep Keyframes */
+@keyframes goldShimmer {
+  0% { transform: translateX(140%) skewX(-20deg); opacity: 0; }
+  15% { opacity: 0.65; }
+  30% { transform: translateX(-140%) skewX(-20deg); opacity: 0; }
+  100% { transform: translateX(-140%) skewX(-20deg); opacity: 0; }
+}
+.shimmer-active {
+  position: relative;
+  overflow: hidden;
+}
+.shimmer-active::after {
+  content: '';
+  position: absolute;
+  top: 0; bottom: 0; left: -100%; right: -100%;
+  background: linear-gradient(90deg, transparent 0%, rgba(201, 162, 75, 0.45) 50%, rgba(233, 212, 156, 0.6) 60%, transparent 100%);
+  animation: goldShimmer 6s infinite cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+}
+
+/* Drifting Iris Line-Art Ornament (8s loop, 6px) */
+@keyframes irisFloat {
+  0%, 100% { transform: translate(-50%, 0px) rotate(0deg); }
+  50% { transform: translate(-50%, -6px) rotate(1deg); }
+}
+.floating-iris-ornament {
+  animation: irisFloat 8s ease-in-out infinite;
+}
+
+/* Continuous Marquee Animation */
+@keyframes marqueeScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(50%); }
+}
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marqueeScroll 40s linear infinite;
+}
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Flying element animation */
+.flying-particle {
+  position: fixed;
+  z-index: 10000;
+  pointer-events: none;
+  border-radius: 9999px;
+  box-shadow: 0 8px 24px rgba(114, 19, 40, 0.35);
+  transition: all 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Masked Line Reveals */
+.line-reveal {
+  transform: translateY(115%);
+  opacity: 0;
+  transition: transform 0.85s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.7s ease;
+}
+.line-reveal.revealed {
+  transform: translateY(0%);
+  opacity: 1;
+}
+
+/* Ornamental twin-line divider animation (draws outward 900ms) */
+.twin-line-left, .twin-line-right {
+  transform: scaleX(0);
+  transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.twin-line-left { transform-origin: right center; }
+.twin-line-right { transform-origin: left center; }
+.twin-divider.revealed .twin-line-left,
+.twin-divider.revealed .twin-line-right {
+  transform: scaleX(1);
+}
+.diamond-center {
+  transform: scale(0) rotate(0deg);
+  transition: transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) 0.25s;
+}
+.twin-divider.revealed .diamond-center {
+  transform: scale(1) rotate(45deg);
+}
+
+/* Fade up items */
+.fade-up-item {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1), transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.fade-up-item.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Button light sweep & tactile press */
+.btn-sweep {
+  position: relative;
+  overflow: hidden;
+}
+.btn-sweep::after {
+  content: '';
+  position: absolute;
+  top: -50%; bottom: -50%; left: -60%; width: 40%;
+  background: linear-gradient(90deg, transparent, rgba(233, 212, 156, 0.45), transparent);
+  transform: rotate(25deg);
+  opacity: 0;
+  pointer-events: none;
+}
+.btn-sweep:hover::after {
+  opacity: 1;
+  left: 140%;
+  transition: left 0.75s ease-out, opacity 0.2s;
+}
+
+/* Image Curtain Reveal Effect */
+.curtain-reveal {
+  position: relative;
+  overflow: hidden;
+}
+.curtain-reveal::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: #FBF6EF;
+  z-index: 15;
+  transform: scaleY(1);
+  transform-origin: top;
+  transition: transform 0.9s cubic-bezier(0.77, 0, 0.175, 1);
+}
+.curtain-reveal.revealed::before {
+  transform: scaleY(0);
+}
+</style><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script><script id="tailwind-config">tailwind.config={"darkMode":"class","theme":{"extend":{"colors":{"tertiary-container":"#602833","tertiary-fixed-dim":"#ffb2bd","secondary-fixed-dim":"#ebc166","antique-gold":"#8A6620","on-primary-fixed-variant":"#842134","imperial-burgundy":"#721328","on-secondary-fixed-variant":"#5b4300","semantic-error-bg":"#FDE7E4","secondary":"#795902","champagne-gold":"#E9D49C","background":"#fef9f2","on-primary-container":"#fb7c8c","on-surface-variant":"#564243","muted-rosewood":"#6D585B","primary-container":"#721328","ivory-canvas":"#FBF6EF","primary-fixed-dim":"#ffb2b9","semantic-success-bg":"#E2F2EA","on-primary-fixed":"#40000f","parchment":"#F3EADB","semantic-warning":"#8A4B08","surface-bright":"#fef9f2","on-background":"#1d1c18","royal-gold":"#C9A24B","outline-variant":"#dcc0c1","on-tertiary":"#ffffff","inverse-primary":"#ffb2b9","semantic-warning-bg":"#FCEBD0","surface-container":"#f2ede6","secondary-fixed":"#ffdf9e","on-secondary":"#ffffff","surface-dim":"#ded9d3","blush-surface":"#F7ECEC","warm-ink":"#2A1215","hairline-burgundy":"rgba(114, 19, 40, 0.14)","on-error":"#ffffff","error-container":"#ffdad6","surface-container-high":"#ece7e1","primary":"#510015","on-tertiary-fixed-variant":"#6f343f","outline":"#897173","on-secondary-container":"#775800","semantic-info":"#2F5A8A","hairline-gold":"rgba(201, 162, 75, 0.45)","on-secondary-fixed":"#261a00","surface-tint":"#a3394a","inverse-surface":"#32302c","burgundy-600":"#8A1B34","on-primary":"#ffffff","surface-variant":"#e6e2db","semantic-info-bg":"#E4EDF8","on-tertiary-fixed":"#390915","on-error-container":"#93000a","secondary-container":"#fdd275","primary-fixed":"#ffdadc","inverse-on-surface":"#f5f0e9","tertiary-fixed":"#ffd9dd","on-surface":"#1d1c18","error":"#ba1a1a","deep-oxblood":"#3A0A16","rose-mist":"#EED9DB","surface":"#fef9f2","on-tertiary-container":"#dc8f9a","surface-container-lowest":"#ffffff","surface-container-highest":"#e6e2db","burgundy-800":"#5A0F22","wine-night":"#1E070D","semantic-error":"#B42318","surface-container-low":"#f8f3ec","semantic-success":"#1F6B4A","tertiary":"#45131e"},"borderRadius":{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},"spacing":{"space-3xl":"6rem","space-2xl":"4rem","space-sm":"0.5rem","margin":"2.5rem","margin-mobile":"1rem","space-md":"1rem","gutter":"1.5rem","space-xs":"0.25rem","gutter-mobile":"1rem","space-lg":"1.5rem","space-xl":"2.5rem"},"fontFamily":{"body-sm":["IBM Plex Sans Arabic"],"display-lg":["El Messiri"],"label-md":["IBM Plex Sans Arabic"],"body-md":["IBM Plex Sans Arabic"],"display-lg-mobile":["El Messiri"],"body-xl":["IBM Plex Sans Arabic"],"headline-md":["El Messiri"],"body-lg":["IBM Plex Sans Arabic"],"label-sm":["IBM Plex Sans Arabic"],"label-lg":["IBM Plex Sans Arabic"],"headline-sm":["El Messiri"],"headline-lg":["El Messiri"],"headline-xl-mobile":["El Messiri"],"headline-xl":["El Messiri"],"instrument-serif":["Instrument Serif","Georgia","serif"]},"fontSize":{"body-sm":["0.875rem",{"lineHeight":"1.6","fontWeight":"400"}],"display-lg":["3.5rem",{"lineHeight":"1.25","fontWeight":"700"}],"label-md":["0.8125rem",{"lineHeight":"1.4","fontWeight":"500"}],"body-md":["1rem",{"lineHeight":"1.7","fontWeight":"400"}],"display-lg-mobile":["2.25rem",{"lineHeight":"1.3","fontWeight":"700"}],"body-xl":["1.25rem",{"lineHeight":"1.7","fontWeight":"400"}],"headline-md":["1.5rem",{"lineHeight":"1.4","fontWeight":"600"}],"body-lg":["1.125rem",{"lineHeight":"1.7","fontWeight":"400"}],"label-sm":["0.6875rem",{"lineHeight":"1.4","fontWeight":"500"}],"label-lg":["0.9375rem",{"lineHeight":"1.4","fontWeight":"600"}],"headline-sm":["1.25rem",{"lineHeight":"1.45","fontWeight":"500"}],"headline-lg":["2rem",{"lineHeight":"1.35","fontWeight":"600"}],"headline-xl-mobile":["1.75rem",{"lineHeight":"1.35","fontWeight":"600"}],"headline-xl":["2.5rem",{"lineHeight":"1.3","fontWeight":"600"}]}}}};</script>
+<!-- 1. TOP SCROLL PROGRESS BAR (RTL: right to left, metallic royal-gold gradient, 70% opacity, no glow) -->
+<div class="fixed top-0 right-0 h-[2px] z-[9999] pointer-events-none transition-[width] duration-75 ease-out opacity-70" id="scroll-progress-bar" style="width: 0%; background: linear-gradient(to left, #8A6620, #C9A24B, #E9D49C);"></div>
+<!-- 1. ANNOUNCEMENT BAR (Slim Deep Oxblood #3A0A16 strip, champagne-gold text, gold diamonds, 1px gold hairline at bottom) -->
+<div class="fixed top-0 inset-x-0 z-50 bg-[#3A0A16] border-b border-[#C9A24B]/45 text-champagne-gold transition-all duration-300 overflow-hidden" id="header-announcement">
+<div class="max-w-7xl mx-auto px-6 h-9 flex items-center justify-center">
+<p class="font-label-sm text-label-sm tracking-wide text-center flex items-center justify-center gap-3">
+<span>توصيل لجميع المحافظات</span>
+<span class="text-[8px] text-royal-gold">◆</span>
+<span>الدفع عند الاستلام</span>
+<span class="text-[8px] text-royal-gold">◆</span>
+<span>استبدال خلال 7 أيام</span>
+</p>
+</div>
+</div>
+<!-- 2. HEADER: 88px tall, transparent over hero, morphs after 80px scroll to solid deep-oxblood rgba(58,10,22,0.88), 14px blur, 64px height, wordmark 86% -->
+<header class="fixed top-9 inset-x-0 z-40 transition-all duration-350 ease-[cubic-bezier(0.22,1,0.36,1)] bg-transparent border-b border-transparent" id="main-header">
+<div class="h-[88px] max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between gap-6 transition-all duration-350" id="header-inner">
+<!-- Right: IRIS wordmark in Instrument Serif with "آيريس" in small El Messiri beneath it -->
+<div class="flex items-center gap-3 shrink-0">
+<a class="group flex flex-col items-start leading-none transition-transform duration-300 origin-right" data-path="home" href="#" id="brand-logo-container">
+<span class="font-instrument-serif text-2xl lg:text-[28px] tracking-[0.22em] text-imperial-burgundy uppercase font-normal transition-colors" id="brand-latin">IRIS</span>
+<span class="font-headline-sm text-xs font-semibold tracking-wider text-antique-gold transition-colors mt-0.5" id="brand-arabic">آيريس</span>
+</a>
+</div>
+<!-- Center: Navigation Links with Sliding Gold Underline -->
+<nav class="hidden xl:flex items-center justify-center gap-7 lg:gap-8 relative" id="desktop-nav">
+<a class="nav-item font-label-lg text-label-lg transition-colors py-1.5 text-on-surface-variant hover:text-imperial-burgundy relative" data-nav="0" data-path="home" href="#">الرئيسية</a>
+<a class="nav-item font-label-lg text-label-lg transition-colors py-1.5 text-on-surface-variant hover:text-imperial-burgundy relative" data-nav="1" data-path="necklaces" href="#">القلائد</a>
+<a class="nav-item font-label-lg text-label-lg transition-colors py-1.5 text-on-surface-variant hover:text-imperial-burgundy relative" data-nav="2" data-path="rings" href="#">الخواتم</a>
+<a class="nav-item font-label-lg text-label-lg transition-colors py-1.5 text-on-surface-variant hover:text-imperial-burgundy relative" data-nav="3" data-path="bracelets" href="#">الأساور</a>
+<a class="nav-item font-label-lg text-label-lg transition-colors py-1.5 text-on-surface-variant hover:text-imperial-burgundy relative" data-nav="4" data-path="earrings" href="#">الأقراط</a>
+<a class="nav-item font-label-lg text-label-lg transition-colors py-1.5 text-on-surface-variant hover:text-imperial-burgundy relative" data-nav="5" data-path="gifts" href="#">الهدايا</a>
+<a class="nav-item font-label-lg text-label-lg transition-colors py-1.5 text-on-surface-variant hover:text-imperial-burgundy relative" data-nav="6" data-path="offers" href="#">العروض</a>
+<!-- Sliding Gold Underline Indicator -->
+<span class="absolute bottom-0 h-[2px] bg-royal-gold rounded-full transition-all duration-350 ease-[cubic-bezier(0.22,1,0.36,1)] pointer-events-none" id="nav-indicator" style="width: 47px; left: 432px;"></span>
+</nav>
+<!-- Left: Search, Account, Shopping Bag with gold count dot (stroke 1.5px) -->
+<div class="flex items-center justify-end gap-3 lg:gap-4 shrink-0" id="header-actions">
+<button aria-label="بحث" class="p-2 text-on-surface-variant hover:text-imperial-burgundy hover:bg-blush-surface/70 rounded-full transition-all" id="btn-search" type="button">
+<span class="material-symbols-outlined text-[22px]" style="font-weight: 300;">search</span>
+</button>
+<a aria-label="الحساب الشخصي" class="p-2 text-on-surface-variant hover:text-imperial-burgundy hover:bg-blush-surface/70 rounded-full transition-all" data-path="account" href="#" id="btn-account">
+<span class="material-symbols-outlined text-[22px]" style="font-weight: 300;">person</span>
+</a>
+<button aria-label="حقيبة التسوق" class="relative p-2 text-on-surface-variant hover:text-imperial-burgundy hover:bg-blush-surface/70 rounded-full transition-all cursor-pointer" id="cart-icon-btn" type="button">
+<span class="material-symbols-outlined text-[22px] transition-transform duration-300" id="cart-bag-icon" style="font-weight: 300;">shopping_bag</span>
+<!-- Gold Count Dot with 1.5px ring -->
+<span class="absolute top-1.5 left-1.5 min-w-[16px] h-[16px] px-1 bg-royal-gold text-deep-oxblood font-label-sm text-[10px] font-bold rounded-full ring-[1.5px] ring-ivory-canvas flex items-center justify-center transition-transform scale-100" id="header-cart-badge">1</span>
+</button>
+</div>
+</div>
+<div class="h-[1px] bg-gradient-to-r from-transparent via-royal-gold/45 to-transparent w-full opacity-0 transition-opacity" id="header-hairline"></div>
+</header>
+<!-- MAIN CONTENT -->
+<main class="w-full pt-[124px] bg-ivory-canvas min-h-screen overflow-hidden"><div class="flex flex-col w-full">
+<!-- =========================================================================
+       SECTION 1: BEST SELLERS ("الأكثر طلباً")
+       Surface: Parchment (#F3EADB) with subtle Islamic lattice watermark & twin gold rule
+       ========================================================================= -->
+<section class="relative w-full bg-parchment py-space-3xl overflow-hidden" id="section-bestsellers">
+<!-- Ambient Lattice Watermark SVG (4% opacity) -->
+<div class="absolute inset-0 pointer-events-none opacity-[0.035] text-imperial-burgundy">
+<svg class="w-full h-full" fill="none" height="80" viewbox="0 0 80 80" width="80" xmlns="http://www.w3.org/2000/svg">
+<path d="M40 0L80 40L40 80L0 40Z M40 10L70 40L40 70L10 40Z M40 22L58 40L40 58L22 40Z" fill="none" stroke="currentColor" stroke-width="1"></path>
+</svg>
+</div>
+<div class="relative max-w-7xl mx-auto px-6 lg:px-12">
+<!-- Section Header -->
+<div class="text-center max-w-2xl mx-auto mb-16 fade-up-item">
+<span class="font-label-sm text-label-sm text-antique-gold font-semibold tracking-widest uppercase block mb-2">مختارات النخبة</span>
+<div class="overflow-hidden">
+<h2 class="font-headline-xl text-headline-xl text-warm-ink font-bold line-reveal">الأكثر طلباً</h2>
+</div>
+<p class="font-body-md text-body-md text-muted-rosewood mt-3">مختارات حازت على إعجاب سيدات الأناقة وخبراء الذوق الرفيع</p>
+<!-- Twin Royal-Gold Hairline Rule with Center Rotating Diamond -->
+<div class="twin-divider flex items-center justify-center gap-3 mt-6">
+<div class="twin-line-left flex flex-col gap-[3px] w-24 sm:w-36">
+<span class="h-[1px] w-full bg-royal-gold/60"></span>
+<span class="h-[1px] w-full bg-royal-gold/30"></span>
+</div>
+<span class="diamond-center text-[10px] text-royal-gold inline-block">◆</span>
+<div class="twin-line-right flex flex-col gap-[3px] w-24 sm:w-36">
+<span class="h-[1px] w-full bg-royal-gold/60"></span>
+<span class="h-[1px] w-full bg-royal-gold/30"></span>
+</div>
+</div>
+</div>
+<!-- Asymmetric Editorial 40 / 60 Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+<!-- Right Column (Sticky 40% in RTL): Tall Arch-Topped Feature Portal -->
+<div class="lg:col-span-5 lg:sticky lg:top-28">
+<div class="relative p-3 rounded-t-[140px] rounded-b-2xl bg-surface-container/60 shadow-[0_12px_36px_rgba(58,10,22,0.08)]">
+<!-- Arched Specimen Window -->
+<div class="relative w-full aspect-[4/5] rounded-t-[132px] rounded-b-xl overflow-hidden curtain-reveal bg-deep-oxblood">
+<img class="w-full h-full object-cover transition-transform duration-700 ease-out hover:scale-105" data-alt="A luxurious pear-cut royal blue sapphire pendant necklace with a fine diamond halo on a yellow gold chain, resting gracefully on deep burgundy imperial velvet folds with warm cinematic lighting and golden specular reflections" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDYmGuBh0VUhfEr8XrAijLboROUV5JKjO7iGhVrMEW8C6tqJJiP3oSzBHsmojifwR6Z6Telydk782WjdizlPyCNHWFU15wilZFXvu6PTpEdCO1U9hxpzmo42a4_FUv2Mb6WnyAokhcDIZg3N5EaAUR4R_uy3x6u-sDEpfF2Jp73QzJfcJSxuZRaeNsXMnyLfA9oCmiChZqosQMCdyARMoGKdQQhkeArw3R_LVpow_4wqSWj3h0V5FeJ"/>
+<!-- Subtle Inner Border & Gold Corner Accents -->
+<div class="absolute inset-2.5 rounded-t-[124px] rounded-b-lg border border-royal-gold/40 pointer-events-none"></div>
+<div class="absolute top-4 right-4 text-champagne-gold/70 text-xs pointer-events-none">✦</div>
+<div class="absolute top-4 left-4 text-champagne-gold/70 text-xs pointer-events-none">✦</div>
+<!-- Floating Luxury Pill -->
+<div class="absolute top-6 inset-x-0 flex justify-center">
+<span class="shimmer-active px-3.5 py-1 rounded-full bg-deep-oxblood/85 backdrop-blur-sm text-champagne-gold font-label-sm text-label-sm border border-royal-gold/50 shadow-md">
+                  القطعة الأولى تميزاً
+                </span>
+</div>
+</div>
+<!-- Sleek Caption Chip Below -->
+<div class="mt-4 p-4 rounded-xl bg-ivory-canvas/90 border border-hairline-burgundy flex items-center justify-between">
+<div>
+<h4 class="font-headline-sm text-headline-sm text-warm-ink font-bold">قلادة السفير الملكية</h4>
+<p class="font-label-sm text-label-sm text-antique-gold mt-0.5">الأكثر اقتناءً لهذا الموسم · عيار 18</p>
+</div>
+<span class="font-headline-sm text-headline-sm text-imperial-burgundy font-bold">18,000 د.ع</span>
+</div>
+</div>
+</div>
+<!-- Left Column (60% in RTL): Numbered Editorial 01-05 Rows -->
+<div class="lg:col-span-7 flex flex-col divide-y divide-hairline-burgundy">
+<!-- Row 01 -->
+<div class="py-5 first:pt-0 last:pb-0 flex items-center justify-between gap-4 group transition-colors duration-300 hover:bg-blush-surface/30 px-3 rounded-xl fade-up-item">
+<div class="flex items-center gap-4 sm:gap-6 min-w-0">
+<span class="font-display-lg text-3xl sm:text-4xl text-royal-gold/70 font-semibold tracking-tight shrink-0 select-none group-hover:text-imperial-burgundy transition-colors">01</span>
+<div class="w-16 h-16 sm:w-20 sm:h-20 rounded-xl overflow-hidden border border-royal-gold/30 shrink-0 bg-surface-container">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Close up photograph of a teardrop royal sapphire pendant necklace mounted with brilliant round diamonds on a solid yellow gold chain over burgundy fabric" src="https://lh3.googleusercontent.com/aida-public/AB6AXuALVmpxJ7bpYn5FLKmbzQRhFwEE0X_K-HRiEZuW5p7sVL-AmSoliYtBqVcnrJbOHecKzyvff3bI0vcM4Ybv44v6CPVoXPPRPFO_HvcFupmpS9MvnYQ_PF2HHnaG2M-Mqt_Ps8KeJVrHNpAFMwUqBu1f_l1wpluFRhVhql5BOgt0ew4-aCgG6qWf5l3_fBfO-dns5HsdX5S1Qh6fpQWbI94-dfV68pbN51CjY0jsJCADaQBZiG2l-sYg"/>
+</div>
+<div class="min-w-0">
+<h3 class="font-headline-sm text-headline-sm text-warm-ink font-bold truncate group-hover:text-imperial-burgundy transition-colors">قلادة السفير الملكي رقم 102</h3>
+<p class="font-body-sm text-body-sm text-muted-rosewood mt-0.5 truncate">ذهب أصفر عيار 18 مطلي بدقة مع حجر سفير ملكي</p>
+<span class="inline-block sm:hidden font-label-md text-label-md text-imperial-burgundy font-bold mt-1">18,000 د.ع</span>
+</div>
+</div>
+<div class="flex items-center gap-4 sm:gap-6 shrink-0 text-left">
+<span class="hidden sm:inline-block font-label-lg text-label-lg text-imperial-burgundy font-bold">18,000 د.ع</span>
+<a class="inline-flex items-center gap-1 font-label-sm text-label-sm text-antique-gold hover:text-imperial-burgundy transition-colors py-2 px-3 rounded-lg group-hover:bg-blush-surface" href="#">
+<span>التفاصيل</span>
+<span class="material-symbols-outlined text-[16px] transition-transform group-hover:-translate-x-1">arrow_back</span>
+</a>
+</div>
+</div>
+<!-- Row 02 -->
+<div class="py-5 flex items-center justify-between gap-4 group transition-colors duration-300 hover:bg-blush-surface/30 px-3 rounded-xl fade-up-item">
+<div class="flex items-center gap-4 sm:gap-6 min-w-0">
+<span class="font-display-lg text-3xl sm:text-4xl text-royal-gold/70 font-semibold tracking-tight shrink-0 select-none group-hover:text-imperial-burgundy transition-colors">02</span>
+<div class="w-16 h-16 sm:w-20 sm:h-20 rounded-xl overflow-hidden border border-royal-gold/30 shrink-0 bg-surface-container">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Solitaire engagement ring with an oval brilliant cut diamond resting on an imperial deep burgundy velvet ring box with golden prongs and ornate milgrain detailing" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCnBsBgGHI4nazSVSqLYlRpIedZ8uGo4AMeIRZn6R2kZSh3re7lYPQiNpSPracidFNZJehNd49tR6T1av284Un_OHnPKOXNJB2jnoNgi2nBzdZVNr--wyrJG1Tzp4g8m1vHprK319mpyKVpZCjbMQxd--vU_S7hFnw9MGmArzCXYZj0m7idT2qKz2ct2Roa1ZFI51Br3mRZ7wAVBO-5AfIrl9Jp_OK1lDv6mCSF5eIW1jq2HSQwPNi4"/>
+</div>
+<div class="min-w-0">
+<h3 class="font-headline-sm text-headline-sm text-warm-ink font-bold truncate group-hover:text-imperial-burgundy transition-colors">خاتم سوليتير الألماس رقم 31</h3>
+<p class="font-body-sm text-body-sm text-muted-rosewood mt-0.5 truncate">ألماس نقي بقطع بيضاوي وحجر سفير طبيعي داخلي</p>
+<span class="inline-block sm:hidden font-label-md text-label-md text-imperial-burgundy font-bold mt-1">24,000 د.ع</span>
+</div>
+</div>
+<div class="flex items-center gap-4 sm:gap-6 shrink-0 text-left">
+<span class="hidden sm:inline-block font-label-lg text-label-lg text-imperial-burgundy font-bold">24,000 د.ع</span>
+<a class="inline-flex items-center gap-1 font-label-sm text-label-sm text-antique-gold hover:text-imperial-burgundy transition-colors py-2 px-3 rounded-lg group-hover:bg-blush-surface" href="#">
+<span>التفاصيل</span>
+<span class="material-symbols-outlined text-[16px] transition-transform group-hover:-translate-x-1">arrow_back</span>
+</a>
+</div>
+</div>
+<!-- Row 03 -->
+<div class="py-5 flex items-center justify-between gap-4 group transition-colors duration-300 hover:bg-blush-surface/30 px-3 rounded-xl fade-up-item">
+<div class="flex items-center gap-4 sm:gap-6 min-w-0">
+<span class="font-display-lg text-3xl sm:text-4xl text-royal-gold/70 font-semibold tracking-tight shrink-0 select-none group-hover:text-imperial-burgundy transition-colors">03</span>
+<div class="w-16 h-16 sm:w-20 sm:h-20 rounded-xl overflow-hidden border border-royal-gold/30 shrink-0 bg-surface-container">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Exquisite 21-karat handcrafted yellow gold bangle bracelet with delicate arabesque filigree engraving on cream silk fabric" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDFLguWkWQmFm-PHJu5abg85qbx75-p3j7_xOqYhvmU5Wkaka4nuEYP0Vdj0o6Z8zdkVXv0d4jnp47IES-82pjMagexw_6-Sj5sNJRYOBwC-RjhrSPVUPWMkPMgIzQ5cpAuvLp0nrxul0GErNYclVQqjlGasy5_7giTuRgiXiIpFPkrI8zjPH7zW_WRA6mBHdzpbtK7LdyWCiEL_Eaf3Kql8gkRdrMM539gN15jvZFnNwoJ4d9-CU_X"/>
+</div>
+<div class="min-w-0">
+<h3 class="font-headline-sm text-headline-sm text-warm-ink font-bold truncate group-hover:text-imperial-burgundy transition-colors">سوار الذهب الخالص رقم 08</h3>
+<p class="font-body-sm text-body-sm text-muted-rosewood mt-0.5 truncate">ذهب خالص عيار 21 مصقول يدوياً بتقنية التخريم</p>
+<span class="inline-block sm:hidden font-label-md text-label-md text-imperial-burgundy font-bold mt-1">15,000 د.ع</span>
+</div>
+</div>
+<div class="flex items-center gap-4 sm:gap-6 shrink-0 text-left">
+<span class="hidden sm:inline-block font-label-lg text-label-lg text-imperial-burgundy font-bold">15,000 د.ع</span>
+<a class="inline-flex items-center gap-1 font-label-sm text-label-sm text-antique-gold hover:text-imperial-burgundy transition-colors py-2 px-3 rounded-lg group-hover:bg-blush-surface" href="#">
+<span>التفاصيل</span>
+<span class="material-symbols-outlined text-[16px] transition-transform group-hover:-translate-x-1">arrow_back</span>
+</a>
+</div>
+</div>
+<!-- Row 04 -->
+<div class="py-5 flex items-center justify-between gap-4 group transition-colors duration-300 hover:bg-blush-surface/30 px-3 rounded-xl fade-up-item">
+<div class="flex items-center gap-4 sm:gap-6 min-w-0">
+<span class="font-display-lg text-3xl sm:text-4xl text-royal-gold/70 font-semibold tracking-tight shrink-0 select-none group-hover:text-imperial-burgundy transition-colors">04</span>
+<div class="w-16 h-16 sm:w-20 sm:h-20 rounded-xl overflow-hidden border border-royal-gold/30 shrink-0 bg-surface-container">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Pair of graceful natural pearl drop earrings with yellow gold delicate chains and diamond studs on Italian warm marble" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBlQGe2Y7RJvUAUhYBzmAIm4VIhHCpnWQVGsSY_o5GhS1T8-bKAM_EQD5iJovnAmbBZ8DhNW2Kx7Ka0QRoL3j-rq4plY0fBEoKGbWgeG76EdIzWe3pov08UFo7dS7n9i7CCA2xykb4s5Tx6DuBrV3QnhvAvUMFdPNuckiLX-khawBCT4JAMkJWO-q9zkrMlqLxxxJGllMfvSGhNd7QBk6f7Yz67XnJNwKeRGswsQLinTyN3lE2CTtwU"/>
+</div>
+<div class="min-w-0">
+<h3 class="font-headline-sm text-headline-sm text-warm-ink font-bold truncate group-hover:text-imperial-burgundy transition-colors">أقراط اللؤلؤ الطبيعي رقم 17</h3>
+<p class="font-body-sm text-body-sm text-muted-rosewood mt-0.5 truncate">لؤلؤ زراعي نادر مع سلاسل ناعمة من الذهب عيار 18</p>
+<span class="inline-block sm:hidden font-label-md text-label-md text-imperial-burgundy font-bold mt-1">22,000 د.ع</span>
+</div>
+</div>
+<div class="flex items-center gap-4 sm:gap-6 shrink-0 text-left">
+<span class="hidden sm:inline-block font-label-lg text-label-lg text-imperial-burgundy font-bold">22,000 د.ع</span>
+<a class="inline-flex items-center gap-1 font-label-sm text-label-sm text-antique-gold hover:text-imperial-burgundy transition-colors py-2 px-3 rounded-lg group-hover:bg-blush-surface" href="#">
+<span>التفاصيل</span>
+<span class="material-symbols-outlined text-[16px] transition-transform group-hover:-translate-x-1">arrow_back</span>
+</a>
+</div>
+</div>
+<!-- Row 05 -->
+<div class="py-5 flex items-center justify-between gap-4 group transition-colors duration-300 hover:bg-blush-surface/30 px-3 rounded-xl fade-up-item">
+<div class="flex items-center gap-4 sm:gap-6 min-w-0">
+<span class="font-display-lg text-3xl sm:text-4xl text-royal-gold/70 font-semibold tracking-tight shrink-0 select-none group-hover:text-imperial-burgundy transition-colors">05</span>
+<div class="w-16 h-16 sm:w-20 sm:h-20 rounded-xl overflow-hidden border border-royal-gold/30 shrink-0 bg-surface-container">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Complete bridal jewelry suite including diamond necklace, matching earrings, and solitaire ring displayed on velvet jewelers cushion" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCzX34QIk5Ia6N8358Ry3irbIJzEi0JqgRxQyh73hn-Qr1JbMFXyujITtjFBFxeB96m78ts6ctAVpZ9GRmAJAci2WAEvksMDViB8y4FZeKqY5brFlhrDiHv6eiSfQwSpVSMrmrzVq3KDcdP4-l6MgvedoSPm6fHFsoQHZAB61F-oBcVYHS6Lc3TYJGWcZJJwY7y6UxX2Y_wSw6puAO7nsr1N7XXE2HpYarzeHJgT-Kqx5Pd4bwrMXNe"/>
+</div>
+<div class="min-w-0">
+<h3 class="font-headline-sm text-headline-sm text-warm-ink font-bold truncate group-hover:text-imperial-burgundy transition-colors">طقم الأميرة الماسي الكامل</h3>
+<p class="font-body-sm text-body-sm text-muted-rosewood mt-0.5 truncate">مجموعة متكاملة مرصعة بالأحجار الكريمة الخالصة</p>
+<span class="inline-block sm:hidden font-label-md text-label-md text-imperial-burgundy font-bold mt-1">38,000 د.ع</span>
+</div>
+</div>
+<div class="flex items-center gap-4 sm:gap-6 shrink-0 text-left">
+<span class="hidden sm:inline-block font-label-lg text-label-lg text-imperial-burgundy font-bold">38,000 د.ع</span>
+<a class="inline-flex items-center gap-1 font-label-sm text-label-sm text-antique-gold hover:text-imperial-burgundy transition-colors py-2 px-3 rounded-lg group-hover:bg-blush-surface" href="#">
+<span>التفاصيل</span>
+<span class="material-symbols-outlined text-[16px] transition-transform group-hover:-translate-x-1">arrow_back</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- =========================================================================
+       SECTION 2: ORNAMENTAL ARCHED SECTION TRANSITION (Parchment -> Burgundy 800)
+       ========================================================================= -->
+<div class="relative w-full overflow-hidden leading-none bg-parchment text-burgundy-800 pointer-events-none -my-1">
+<svg class="w-full h-12 sm:h-20 lg:h-24 block" fill="currentColor" preserveaspectratio="none" viewbox="0 0 1440 80">
+<path d="M0,0 C360,65 1080,65 1440,0 L1440,80 L0,80 Z"></path>
+</svg>
+<div class="absolute inset-x-0 bottom-0 h-[1px] bg-gradient-to-r from-transparent via-royal-gold/45 to-transparent"></div>
+</div>
+<!-- =========================================================================
+       SECTION 3: OFFERS & FLASH SALE ("العروض الحصرية")
+       Surface: Deep Burgundy 800 (#5A0F22)
+       ========================================================================= -->
+<section class="relative w-full bg-burgundy-800 text-ivory-canvas py-space-3xl overflow-hidden" id="section-flash-sale">
+<!-- Ambient Gold Radial Glow -->
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-radial from-royal-gold/10 via-transparent to-transparent rounded-full pointer-events-none blur-3xl"></div>
+<div class="relative max-w-7xl mx-auto px-6 lg:px-12">
+<!-- Section Heading & Countdown Header -->
+<div class="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-16 pb-8 border-b border-royal-gold/25">
+<div class="fade-up-item">
+<span class="font-label-sm text-label-sm text-champagne-gold font-semibold tracking-widest uppercase block mb-2">عروض لفترة محدودة</span>
+<div class="overflow-hidden">
+<h2 class="font-headline-xl text-headline-xl text-ivory-canvas font-bold line-reveal">فرص واقتناء استثنائي</h2>
+</div>
+<p class="font-body-md text-body-md text-rose-mist/80 mt-2">قطع مختارة بعناية بتخفيضات موسمية خاصة تحتفظ بقيمتها الرفيعة</p>
+</div>
+<!-- Luxury Countdown Flip Clock -->
+<div class="flex flex-col items-start lg:items-end gap-2 shrink-0 fade-up-item">
+<span class="font-label-sm text-label-sm text-champagne-gold flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-royal-gold">hourglass_top</span>
+            ينتهي العرض خلال
+          </span>
+<div class="flex items-center gap-2.5" dir="ltr" id="flip-countdown">
+<!-- Seconds -->
+<div class="flex flex-col items-center">
+<div class="w-14 h-14 rounded-xl bg-wine-night border border-royal-gold/40 flex items-center justify-center shadow-[0_4px_16px_rgba(0,0,0,0.3)]">
+<span class="font-instrument-serif text-2xl text-champagne-gold font-bold" id="cd-seconds">48</span>
+</div>
+<span class="font-label-sm text-[10px] text-rose-mist/70 mt-1">ثانية</span>
+</div>
+<span class="text-royal-gold text-lg font-bold pb-4">:</span>
+<!-- Minutes -->
+<div class="flex flex-col items-center">
+<div class="w-14 h-14 rounded-xl bg-wine-night border border-royal-gold/40 flex items-center justify-center shadow-[0_4px_16px_rgba(0,0,0,0.3)]">
+<span class="font-instrument-serif text-2xl text-champagne-gold font-bold" id="cd-minutes">15</span>
+</div>
+<span class="font-label-sm text-[10px] text-rose-mist/70 mt-1">دقيقة</span>
+</div>
+<span class="text-royal-gold text-lg font-bold pb-4">:</span>
+<!-- Hours -->
+<div class="flex flex-col items-center">
+<div class="w-14 h-14 rounded-xl bg-wine-night border border-royal-gold/40 flex items-center justify-center shadow-[0_4px_16px_rgba(0,0,0,0.3)]">
+<span class="font-instrument-serif text-2xl text-champagne-gold font-bold" id="cd-hours">09</span>
+</div>
+<span class="font-label-sm text-[10px] text-rose-mist/70 mt-1">ساعة</span>
+</div>
+<span class="text-royal-gold text-lg font-bold pb-4">:</span>
+<!-- Days -->
+<div class="flex flex-col items-center">
+<div class="w-14 h-14 rounded-xl bg-wine-night border border-royal-gold/40 flex items-center justify-center shadow-[0_4px_16px_rgba(0,0,0,0.3)]">
+<span class="font-instrument-serif text-2xl text-champagne-gold font-bold" id="cd-days">02</span>
+</div>
+<span class="font-label-sm text-[10px] text-rose-mist/70 mt-1">أيام</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Horizontal Rail of 4 Flash Offer Cards -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Card 1 -->
+<div class="group relative rounded-2xl bg-wine-night border border-royal-gold/30 p-4 flex flex-col justify-between transition-all duration-300 hover:border-royal-gold/70 hover:shadow-[0_16px_40px_rgba(30,7,13,0.4)] fade-up-item">
+<div>
+<div class="relative w-full aspect-[4/5] rounded-t-xl rounded-b-lg overflow-hidden bg-deep-oxblood">
+<img class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" data-alt="Oval diamond engagement ring with fine micro pave diamond band resting on lush imperial red velvet in soft romantic light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBLuO08oF4LuqniMW4cZw0rErFYdc3kBvIqNmDnK4Q5Z-I6gkpvwOwcenixMN8r5O8810kjzwafuZzxUB8ggeZ6lr8iBEfRVM1z7VZJPf8ca7TktxjgPD-sGR9VpwjoXoLJD9kVxrpgTITd6HKbMRHNnGAByRJZW6IXJ8K_oupOoOw5P-lz48O7bXMbwpc5u2gjAMftK523SRBX9I5HPVe9wfkFo6_ARuxU-G8E7r4bUUugNp78kxF1"/>
+<div class="absolute inset-0 bg-gradient-to-t from-wine-night/70 via-transparent to-transparent pointer-events-none"></div>
+<!-- Shimmer Discount Pill -->
+<div class="absolute top-3 right-3">
+<span class="shimmer-active inline-block px-2.5 py-1 rounded-full bg-imperial-burgundy text-champagne-gold font-label-sm text-xs font-bold border border-royal-gold/50 shadow-sm">
+                  -20%
+                </span>
+</div>
+<!-- Wishlist Heart -->
+<button aria-label="أضف إلى المفضلة" class="absolute top-3 left-3 w-8 h-8 rounded-full bg-wine-night/60 backdrop-blur-sm border border-royal-gold/30 text-rose-mist hover:text-champagne-gold flex items-center justify-center transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">favorite</span>
+</button>
+</div>
+<div class="mt-4">
+<h3 class="font-headline-sm text-headline-sm text-ivory-canvas font-semibold group-hover:text-champagne-gold transition-colors">خاتم فخم مرصّع بالألماس</h3>
+<p class="font-body-sm text-body-sm text-rose-mist/70 mt-1">ذهب أصفر عيار 18 مع ألماس بيضاوي</p>
+</div>
+</div>
+<div class="mt-5 pt-3 border-t border-royal-gold/20 flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-label-sm text-xs line-through text-outline-variant">30,000 د.ع</span>
+<span class="font-label-lg text-label-lg text-champagne-gold font-bold">24,000 د.ع</span>
+</div>
+<button class="add-to-cart-trigger btn-sweep px-3.5 py-2 rounded-xl bg-imperial-burgundy hover:bg-burgundy-600 active:scale-95 border border-royal-gold/40 text-ivory-canvas font-label-sm text-xs flex items-center gap-1.5 transition-all" data-img="placeholder" data-name="خاتم فخم مرصّع بالألماس" data-price="24,000" type="button">
+<span class="material-symbols-outlined text-[16px]">add_shopping_cart</span>
+<span>اقتناء</span>
+</button>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="group relative rounded-2xl bg-wine-night border border-royal-gold/30 p-4 flex flex-col justify-between transition-all duration-300 hover:border-royal-gold/70 hover:shadow-[0_16px_40px_rgba(30,7,13,0.4)] fade-up-item">
+<div>
+<div class="relative w-full aspect-[4/5] rounded-t-xl rounded-b-lg overflow-hidden bg-deep-oxblood">
+<img class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" data-alt="Dainty pair of genuine pearl earrings with gold chain detail lying on polished cream marble in natural sunbeam" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDjdcZV1wa8aqcdpn-J6w-yh4mxUPDpEfCGvT8JWui--bI8D2X90W1vLTsjwzvAxvltMKn7wj0v-bgAGH60UBUnESAfGlLRBbidjEU-I-FlzBo0ZJThzX7L6DbJm0otMmqlLeojxnlRTgqE8M193hBWIJmnBeJoEBfKfHZXgHqAaN8lj3XXxqOB-l6Iw1kWEDu2ZoYX2voqLWXqidFb6EryJ0xKVCA0acguSZtIpWpoWtA57z9Kny4u"/>
+<div class="absolute inset-0 bg-gradient-to-t from-wine-night/70 via-transparent to-transparent pointer-events-none"></div>
+<!-- Shimmer Discount Pill -->
+<div class="absolute top-3 right-3">
+<span class="shimmer-active inline-block px-2.5 py-1 rounded-full bg-imperial-burgundy text-champagne-gold font-label-sm text-xs font-bold border border-royal-gold/50 shadow-sm">
+                  -25%
+                </span>
+</div>
+<!-- Wishlist Heart -->
+<button aria-label="أضف إلى المفضلة" class="absolute top-3 left-3 w-8 h-8 rounded-full bg-wine-night/60 backdrop-blur-sm border border-royal-gold/30 text-rose-mist hover:text-champagne-gold flex items-center justify-center transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">favorite</span>
+</button>
+</div>
+<div class="mt-4">
+<h3 class="font-headline-sm text-headline-sm text-ivory-canvas font-semibold group-hover:text-champagne-gold transition-colors">أقراط لؤلؤ ناعمة</h3>
+<p class="font-body-sm text-body-sm text-rose-mist/70 mt-1">حبات لؤلؤ زراعي نقي مع سلاسل ذهبية</p>
+</div>
+</div>
+<div class="mt-5 pt-3 border-t border-royal-gold/20 flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-label-sm text-xs line-through text-outline-variant">28,000 د.ع</span>
+<span class="font-label-lg text-label-lg text-champagne-gold font-bold">21,000 د.ع</span>
+</div>
+<button class="add-to-cart-trigger btn-sweep px-3.5 py-2 rounded-xl bg-imperial-burgundy hover:bg-burgundy-600 active:scale-95 border border-royal-gold/40 text-ivory-canvas font-label-sm text-xs flex items-center gap-1.5 transition-all" data-img="placeholder" data-name="أقراط لؤلؤ ناعمة" data-price="21,000" type="button">
+<span class="material-symbols-outlined text-[16px]">add_shopping_cart</span>
+<span>اقتناء</span>
+</button>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="group relative rounded-2xl bg-wine-night border border-royal-gold/30 p-4 flex flex-col justify-between transition-all duration-300 hover:border-royal-gold/70 hover:shadow-[0_16px_40px_rgba(30,7,13,0.4)] fade-up-item">
+<div>
+<div class="relative w-full aspect-[4/5] rounded-t-xl rounded-b-lg overflow-hidden bg-deep-oxblood">
+<img class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" data-alt="Teardrop faceted blue sapphire necklace pendant with halo diamonds resting in deep red velvet fabric folds" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDH3I6BjQ-g9Pf8XMqibs_r7kFb-6va5dQUQJSqwMuLonAeVCxaGX2mMOQnODmx0SHNIKN79l0p6L7Zu9UOKRqvW_wmDuKirkIk_SSWszbCeOHHKzEEwLTE33SMjvaBnbcPi9-fiM57e8zNvLK3DM7bCOknb_i2key64dXsS2aeYstTuxU_tFghxSHs5aPSIDeNs7ir-fernLDOtBcagADTIzUOy8PCrmqq3fq8S27ICv1_mhA-PXCc"/>
+<div class="absolute inset-0 bg-gradient-to-t from-wine-night/70 via-transparent to-transparent pointer-events-none"></div>
+<!-- Shimmer Discount Pill -->
+<div class="absolute top-3 right-3">
+<span class="shimmer-active inline-block px-2.5 py-1 rounded-full bg-imperial-burgundy text-champagne-gold font-label-sm text-xs font-bold border border-royal-gold/50 shadow-sm">
+                  -20%
+                </span>
+</div>
+<!-- Wishlist Heart -->
+<button aria-label="أضف إلى المفضلة" class="absolute top-3 left-3 w-8 h-8 rounded-full bg-wine-night/60 backdrop-blur-sm border border-royal-gold/30 text-rose-mist hover:text-champagne-gold flex items-center justify-center transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">favorite</span>
+</button>
+</div>
+<div class="mt-4">
+<h3 class="font-headline-sm text-headline-sm text-ivory-canvas font-semibold group-hover:text-champagne-gold transition-colors">قلادة كلاسيكية ملكية</h3>
+<p class="font-body-sm text-body-sm text-rose-mist/70 mt-1">حجر أزرق كحلي بقطع الإجاصة الرفيع</p>
+</div>
+</div>
+<div class="mt-5 pt-3 border-t border-royal-gold/20 flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-label-sm text-xs line-through text-outline-variant">25,000 د.ع</span>
+<span class="font-label-lg text-label-lg text-champagne-gold font-bold">20,000 د.ع</span>
+</div>
+<button class="add-to-cart-trigger btn-sweep px-3.5 py-2 rounded-xl bg-imperial-burgundy hover:bg-burgundy-600 active:scale-95 border border-royal-gold/40 text-ivory-canvas font-label-sm text-xs flex items-center gap-1.5 transition-all" data-img="placeholder" data-name="قلادة كلاسيكية ملكية" data-price="20,000" type="button">
+<span class="material-symbols-outlined text-[16px]">add_shopping_cart</span>
+<span>اقتناء</span>
+</button>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="group relative rounded-2xl bg-wine-night border border-royal-gold/30 p-4 flex flex-col justify-between transition-all duration-300 hover:border-royal-gold/70 hover:shadow-[0_16px_40px_rgba(30,7,13,0.4)] fade-up-item">
+<div>
+<div class="relative w-full aspect-[4/5] rounded-t-xl rounded-b-lg overflow-hidden bg-deep-oxblood">
+<img class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" data-alt="Delicate tulip blossom-motif yellow gold charm bracelet resting on beige textured luxury linen with gentle morning shadows" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCEBaBl33Cp24RsHX0HiU6RTggTHWxMsvzxjxQqgrI5WQnPc2Z1blyUfN9tvk-vBB3apM0y82MeXUDF0hWI0SOAvHFMS0gvSWz8-w-pG3gSONCAStptI9HkzuPmJZgupWqBUDJR0VZxTJSUSwBeKq0AE6Qb_eXzMmvEdRS-tD4zaVpGog-95uVWvKk5lCgMiHUwbmwEdugNX62MgMsfwlQ8gHeqVEl__Y3ZXdYEu8hRUifpsdS1ooj7"/>
+<div class="absolute inset-0 bg-gradient-to-t from-wine-night/70 via-transparent to-transparent pointer-events-none"></div>
+<!-- Shimmer Discount Pill -->
+<div class="absolute top-3 right-3">
+<span class="shimmer-active inline-block px-2.5 py-1 rounded-full bg-imperial-burgundy text-champagne-gold font-label-sm text-xs font-bold border border-royal-gold/50 shadow-sm">
+                  -15%
+                </span>
+</div>
+<!-- Wishlist Heart -->
+<button aria-label="أضف إلى المفضلة" class="absolute top-3 left-3 w-8 h-8 rounded-full bg-wine-night/60 backdrop-blur-sm border border-royal-gold/30 text-rose-mist hover:text-champagne-gold flex items-center justify-center transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">favorite</span>
+</button>
+</div>
+<div class="mt-4">
+<h3 class="font-headline-sm text-headline-sm text-ivory-canvas font-semibold group-hover:text-champagne-gold transition-colors">سوار التوليب الذهبي</h3>
+<p class="font-body-sm text-body-sm text-rose-mist/70 mt-1">زخارف التوليب الملكية بالذهب الأصفر 18</p>
+</div>
+</div>
+<div class="mt-5 pt-3 border-t border-royal-gold/20 flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-label-sm text-xs line-through text-outline-variant">22,000 د.ع</span>
+<span class="font-label-lg text-label-lg text-champagne-gold font-bold">18,700 د.ع</span>
+</div>
+<button class="add-to-cart-trigger btn-sweep px-3.5 py-2 rounded-xl bg-imperial-burgundy hover:bg-burgundy-600 active:scale-95 border border-royal-gold/40 text-ivory-canvas font-label-sm text-xs flex items-center gap-1.5 transition-all" data-img="placeholder" data-name="سوار التوليب الذهبي" data-price="18,700" type="button">
+<span class="material-symbols-outlined text-[16px]">add_shopping_cart</span>
+<span>اقتناء</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- =========================================================================
+       SECTION 4: CENTERED GOLD DIAMOND & TWIN HAIRLINE DIVIDER (Transition to Ivory)
+       ========================================================================= -->
+<div class="w-full bg-ivory-canvas py-12 flex items-center justify-center">
+<div class="twin-divider flex items-center justify-center gap-4 max-w-lg w-full px-6">
+<div class="twin-line-left flex flex-col gap-[3px] flex-1">
+<span class="h-[1px] w-full bg-royal-gold/50"></span>
+<span class="h-[1px] w-full bg-royal-gold/25"></span>
+</div>
+<div class="diamond-center flex items-center gap-1 text-royal-gold text-[11px]">
+<span>◆</span>
+</div>
+<div class="twin-line-right flex flex-col gap-[3px] flex-1">
+<span class="h-[1px] w-full bg-royal-gold/50"></span>
+<span class="h-[1px] w-full bg-royal-gold/25"></span>
+</div>
+</div>
+</div>
+<!-- =========================================================================
+       SECTION 5: GIFT SETS ("مجموعات الهدايا")
+       Surface: Ivory Canvas (#FBF6EF), Two Editorial Zig-Zag Alternating Rows
+       ========================================================================= -->
+<section class="relative w-full bg-ivory-canvas pb-space-3xl overflow-hidden" id="section-gift-sets">
+<div class="max-w-7xl mx-auto px-6 lg:px-12">
+<!-- Section Header -->
+<div class="text-center max-w-2xl mx-auto mb-20 fade-up-item">
+<span class="font-label-sm text-label-sm text-antique-gold font-semibold tracking-widest uppercase block mb-2">طقوس الإهداء الفاخر</span>
+<div class="overflow-hidden">
+<h2 class="font-headline-xl text-headline-xl text-warm-ink font-bold line-reveal">مجموعات الهدايا الفاخرة</h2>
+</div>
+<p class="font-body-md text-body-md text-muted-rosewood mt-3">تغليف ملكي مخملي جاهز للإهداء في أبهى صورة مع رسائل محفورة وبطاقة إهداء مذهبة</p>
+</div>
+<!-- Zig-Zag Row 1: Image Right, Text Left -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center mb-24 fade-up-item">
+<!-- Image Right (in RTL: col 1 to 6) -->
+<div class="lg:col-span-6 relative">
+<div class="relative p-3 rounded-t-[120px] rounded-b-2xl bg-parchment border border-hairline-burgundy shadow-[0_12px_36px_rgba(58,10,22,0.06)]">
+<div class="w-full aspect-[4/3] sm:aspect-[16/11] rounded-t-[112px] rounded-b-xl overflow-hidden curtain-reveal bg-surface-container">
+<img class="w-full h-full object-cover transition-transform duration-700 hover:scale-105" data-alt="A lavish dark burgundy velvet jewelry presentation box tied with a champagne silk ribbon, open slightly showing a glittering diamond and sapphire pendant set, resting on burgundy tissue paper with gold leaf accents" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDHfLUL2lLysb81i02TBdvCoJlLbLUtMXAQ9XGlWPJgX0oA8A0CrATVvi8shjjUN3HASLvWphLVt1U-JgnNnLRVlBa_VzVMy7OjIzd282hAKYV8GSxhuc_n3S8hub3J_14YdOaqXBHcgkknj_b9xS2IS6EOU-YNlQ1YFScILrsoTcPrHPzqcoNpvco28ewl_6bY6KYNNZoBkD7JRzdcmrRUauLiMVr8AiDp3gcLqaEN2szPbJW4Nfrp"/>
+</div>
+<!-- Filigree Corner Markers -->
+<div class="absolute bottom-6 right-6 text-antique-gold/60 text-xs pointer-events-none">◆</div>
+<div class="absolute bottom-6 left-6 text-antique-gold/60 text-xs pointer-events-none">◆</div>
+</div>
+</div>
+<!-- Text Left (in RTL: col 7 to 12) -->
+<div class="lg:col-span-6 flex flex-col items-start space-y-5">
+<span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-champagne-gold/25 border border-royal-gold/40 text-antique-gold font-label-sm text-xs font-semibold">
+<span class="text-[8px] text-royal-gold">◆</span>
+            هدية مغلّفة ومختومة بالشمع الملكي
+          </span>
+<h3 class="font-headline-lg text-headline-lg text-warm-ink font-bold">طقم الخطوبة والسعادة</h3>
+<p class="font-body-lg text-body-lg text-muted-rosewood leading-relaxed">
+            تناغم استثنائي بين قلادة السفير وخاتم الألماس في صندوق مخملي فاخر صُنع يدوياً، مع كارت إهداء مذهب ومخصص يعبر عن أسمى معاني الارتباط والخلود.
+          </p>
+<div class="flex items-baseline gap-2 pt-2">
+<span class="font-body-sm text-body-sm text-muted-rosewood">تبدأ الباقة من:</span>
+<span class="font-headline-md text-headline-md text-imperial-burgundy font-bold">45,000 د.ع</span>
+</div>
+<div class="pt-2">
+<a class="btn-sweep inline-flex items-center gap-3 px-8 py-4 rounded-xl bg-imperial-burgundy hover:bg-burgundy-600 text-ivory-canvas font-label-lg text-label-lg font-medium shadow-[0_8px_24px_rgba(114,19,40,0.22)] border border-royal-gold/40 transition-all" href="#">
+<span>اكتشف تفاصيل الباقة</span>
+<span class="material-symbols-outlined text-[18px]">arrow_back</span>
+</a>
+</div>
+</div>
+</div>
+<!-- Zig-Zag Row 2: Text Right, Image Left -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center fade-up-item">
+<!-- Text Right (in RTL: order-2 on mobile, col 1 to 6 on desktop) -->
+<div class="lg:col-span-6 flex flex-col items-start space-y-5 order-2 lg:order-1">
+<span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-champagne-gold/25 border border-royal-gold/40 text-antique-gold font-label-sm text-xs font-semibold">
+<span class="text-[8px] text-royal-gold">◆</span>
+            لمسة امتنان لا تُنسى
+          </span>
+<h3 class="font-headline-lg text-headline-lg text-warm-ink font-bold">هدية الأمهات الملكية</h3>
+<p class="font-body-lg text-body-lg text-muted-rosewood leading-relaxed">
+            مجموعة منتقاة من اللؤلؤ الطبيعي وسوار الذهب عيار 18 مصممة بعناية فائقة لتعكس الوفاء والحب الخالص، مغلفة بأجود أنواع المخمل العنابي ومجهزة للشحن الفوري.
+          </p>
+<div class="flex items-baseline gap-2 pt-2">
+<span class="font-body-sm text-body-sm text-muted-rosewood">تبدأ الباقة من:</span>
+<span class="font-headline-md text-headline-md text-imperial-burgundy font-bold">52,000 د.ع</span>
+</div>
+<div class="pt-2">
+<a class="btn-sweep inline-flex items-center gap-3 px-8 py-4 rounded-xl bg-imperial-burgundy hover:bg-burgundy-600 text-ivory-canvas font-label-lg text-label-lg font-medium shadow-[0_8px_24px_rgba(114,19,40,0.22)] border border-royal-gold/40 transition-all" href="#">
+<span>اكتشف تفاصيل الباقة</span>
+<span class="material-symbols-outlined text-[18px]">arrow_back</span>
+</a>
+</div>
+</div>
+<!-- Image Left (in RTL: order-1 on mobile, col 7 to 12 on desktop) -->
+<div class="lg:col-span-6 relative order-1 lg:order-2">
+<div class="relative p-3 rounded-t-[120px] rounded-b-2xl bg-parchment border border-hairline-burgundy shadow-[0_12px_36px_rgba(58,10,22,0.06)]">
+<div class="w-full aspect-[4/3] sm:aspect-[16/11] rounded-t-[112px] rounded-b-xl overflow-hidden curtain-reveal bg-surface-container">
+<img class="w-full h-full object-cover transition-transform duration-700 hover:scale-105" data-alt="Luxury mother's jewelry gift box adorned with dried ivory florals and fine gold wax seal stamp, containing luminous natural pearl drop earrings and a slender golden bracelet" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDmBJ0jNM2UMiLAt55Bx7PgYX3KSLBcNAK5rpEFw1XPyGdd7s7ItQJXcz5fVPvi9smZB-eS5K0skzPDtCkR8RtsOyeaPTtHTh6L6vGN8Hneiw3YzNJ3kPlCh7iXugiFXf-nqLA3YrCjaoTpnzKqCkH4GTpnKjBDiiu8uhwRaB9sZE8n1fg0SfhKqs8Yi-wLui_afWIfG-JM7URRRbzmA_EVz_NvqMtLy76MPpMEsgfpCih_9MtMIvSl"/>
+</div>
+<!-- Filigree Corner Markers -->
+<div class="absolute bottom-6 right-6 text-antique-gold/60 text-xs pointer-events-none">◆</div>
+<div class="absolute bottom-6 left-6 text-antique-gold/60 text-xs pointer-events-none">◆</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- =========================================================================
+       SECTION 6: LIMITED PIECES ("قطع محدودة الإصدار")
+       Surface: Wine Night (#1E070D)
+       ========================================================================= -->
+<section class="relative w-full bg-wine-night text-ivory-canvas py-space-3xl border-t border-b border-royal-gold/30 overflow-hidden" id="section-limited-pieces">
+<!-- Ambient Subtle Geometric Lattice Pattern in Gold Tint -->
+<div class="absolute inset-0 pointer-events-none opacity-[0.025] text-royal-gold">
+<svg class="w-full h-full" fill="none" height="90" viewbox="0 0 90 90" width="90" xmlns="http://www.w3.org/2000/svg">
+<rect fill="none" height="70" stroke="currentColor" stroke-width="1" width="70" x="10" y="10"></rect>
+<circle cx="45" cy="45" fill="none" r="30" stroke="currentColor" stroke-width="1"></circle>
+<path d="M45 0L90 45L45 90L0 45Z" fill="none" stroke="currentColor" stroke-width="1"></path>
+</svg>
+</div>
+<div class="relative max-w-7xl mx-auto px-6 lg:px-12">
+<!-- Asymmetric 35% / 65% Two-Column Architecture -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+<!-- Right Column (35% in RTL): Narrative & Certificate Badge -->
+<div class="lg:col-span-4 flex flex-col items-start space-y-6 fade-up-item">
+<div class="inline-flex items-center gap-2 text-royal-gold font-label-sm text-label-sm">
+<span class="text-xs">◆</span>
+<span>إصدارات نادرة وحصرية</span>
+</div>
+<div class="overflow-hidden">
+<h2 class="font-headline-xl text-headline-xl text-ivory-canvas font-bold line-reveal leading-snug">
+              قطعٌ نادرة ومحدودة الإصدار
+            </h2>
+</div>
+<p class="font-body-md text-body-md text-rose-mist/80 leading-relaxed">
+            كميات محدودة جداً من كل تصميم تُصاغ بحرفية يدوية متناهية لمرة واحدة فقط دون إعادة تصنيع، مخصصة لمن يقدّرون الفرادة التامة.
+          </p>
+<!-- Authenticity Guarantee Badge -->
+<div class="p-4 rounded-xl bg-deep-oxblood/80 border border-royal-gold/35 flex items-center gap-3.5 w-full">
+<div class="w-10 h-10 rounded-full bg-champagne-gold/20 flex items-center justify-center text-royal-gold shrink-0">
+<span class="material-symbols-outlined text-[22px]">workspace_premium</span>
+</div>
+<div>
+<h4 class="font-headline-sm text-sm font-semibold text-champagne-gold">شهادة أصالة معتمدة</h4>
+<p class="font-label-sm text-xs text-rose-mist/70 mt-0.5">تُرفق مع كل قطعة تتضمن تفاصيل العيار والأحجار</p>
+</div>
+</div>
+<a class="inline-flex items-center gap-2 font-label-md text-label-md text-champagne-gold hover:text-royal-gold transition-colors pt-2" href="#">
+<span>استعراض أرشيف القطع الملكية</span>
+<span class="material-symbols-outlined text-[17px]">arrow_back</span>
+</a>
+</div>
+<!-- Left Column (65% in RTL): Row of Three Tall Limited Tiles -->
+<div class="lg:col-span-8 grid grid-cols-1 sm:grid-cols-3 gap-6">
+<!-- Tile 1 -->
+<div class="group relative rounded-2xl bg-deep-oxblood/90 border border-royal-gold/35 p-4 flex flex-col justify-between transition-all duration-300 hover:border-royal-gold/80 hover:-translate-y-1 fade-up-item">
+<div>
+<div class="relative w-full aspect-[3/4] rounded-t-xl rounded-b-lg overflow-hidden bg-wine-night">
+<img class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" data-alt="Rare pear-shaped sapphire and round brilliant diamond pendant necklace softly illuminated on dark wine velvet surface" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBdwIrGmbWDKMjjRsnXL0rQ9h0ELbzyiedW2ozRUG-qOzhEOCpHfb12GsF9N_ka4Z_pDnL_l655NPvC9wiMwUjjDfdtxlfPWpMMGgddE5yQ5mgfsengyuXskeu1bgQ9aYL3dhEEw8GZiu6D3xUGm_XTutm8or8y4EvEoJTHMTb53fSlsHUI4v7SeN5UQvQIReNy0F_Ya3zvTwGu1U4nxLtXq07k75_DVUa73aiUwdp_8hADHJQMoPyN"/>
+<!-- Pill Badge "آخر قطعة" -->
+<div class="absolute top-3 right-3">
+<span class="shimmer-active inline-block px-2.5 py-1 rounded-full bg-parchment text-antique-gold font-label-sm text-xs font-bold border border-royal-gold/50 shadow-sm">
+                    آخر قطعة
+                  </span>
+</div>
+</div>
+<div class="mt-4">
+<h3 class="font-headline-sm text-headline-sm text-ivory-canvas font-semibold group-hover:text-champagne-gold transition-colors">قلادة قطرة الندى النادرة</h3>
+<p class="font-label-sm text-xs text-rose-mist/70 mt-1">حجر سفير حر مع ترصيع يدوي</p>
+</div>
+</div>
+<div class="mt-5 pt-3 border-t border-royal-gold/20 flex items-center justify-between">
+<span class="font-label-lg text-label-lg text-champagne-gold font-bold">64,000 د.ع</span>
+<button aria-label="اقتناء القطعة" class="add-to-cart-trigger text-antique-gold hover:text-champagne-gold p-1.5 transition-colors" data-img="placeholder" data-name="قلادة قطرة الندى النادرة" data-price="64,000" type="button">
+<span class="material-symbols-outlined text-[20px]">shopping_bag</span>
+</button>
+</div>
+</div>
+<!-- Tile 2 -->
+<div class="group relative rounded-2xl bg-deep-oxblood/90 border border-royal-gold/35 p-4 flex flex-col justify-between transition-all duration-300 hover:border-royal-gold/80 hover:-translate-y-1 fade-up-item">
+<div>
+<div class="relative w-full aspect-[3/4] rounded-t-xl rounded-b-lg overflow-hidden bg-wine-night">
+<img class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" data-alt="Imperial oval-cut diamond solitaire ring displayed prominently in a wine red velvet box with subtle warm candlelight reflections" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDvt3YTkT3cY_xybptAmGPEnWM6gL8oSAcRbazAOB6B0A1qxz_PUqAkb1Kmgsdf2Y-nf3IfNZ16HLYNRHFs20WX_RU2WNC5zOW0jIgOeOo0I3uK1DLlw16TPskipNql6Bjj0rrfgef-3EtgEYq5tsC824cQYOpxEm3PDNmIRv_3yN5aAd1rYTmu78gBXs0NXgKJkw2HAqQak2qWRVn0hKGOlie05U9__qsih60a0QJCtPcakiWMBUE7"/>
+<!-- Pill Badge "متبقي قطعتان" -->
+<div class="absolute top-3 right-3">
+<span class="shimmer-active inline-block px-2.5 py-1 rounded-full bg-parchment text-antique-gold font-label-sm text-xs font-bold border border-royal-gold/50 shadow-sm">
+                    متبقي قطعتان
+                  </span>
+</div>
+</div>
+<div class="mt-4">
+<h3 class="font-headline-sm text-headline-sm text-ivory-canvas font-semibold group-hover:text-champagne-gold transition-colors">خاتم السوليتير الإمبراطوري</h3>
+<p class="font-label-sm text-xs text-rose-mist/70 mt-1">ألماس طبيعي نقي عيار 18</p>
+</div>
+</div>
+<div class="mt-5 pt-3 border-t border-royal-gold/20 flex items-center justify-between">
+<span class="font-label-lg text-label-lg text-champagne-gold font-bold">58,000 د.ع</span>
+<button aria-label="اقتناء القطعة" class="add-to-cart-trigger text-antique-gold hover:text-champagne-gold p-1.5 transition-colors" data-img="placeholder" data-name="خاتم السوليتير الإمبراطوري" data-price="58,000" type="button">
+<span class="material-symbols-outlined text-[20px]">shopping_bag</span>
+</button>
+</div>
+</div>
+<!-- Tile 3 -->
+<div class="group relative rounded-2xl bg-deep-oxblood/90 border border-royal-gold/35 p-4 flex flex-col justify-between transition-all duration-300 hover:border-royal-gold/80 hover:-translate-y-1 fade-up-item">
+<div>
+<div class="relative w-full aspect-[3/4] rounded-t-xl rounded-b-lg overflow-hidden bg-wine-night">
+<img class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" data-alt="Graceful dangling natural pearls on gold wire links lying on a luminous marble vanity table with warm specular rim lights" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBYS7r2Pn-rSTEyW8SjgJ50XH-C1ofTVtdx8jJE1TlyhtAkFLJbfe4WkIkIH0Jab8b33XMa6iC-plbAlGqBvDoG2v2-gH2mPNTI9dBuQIssCrRef2vNj3mbbIHqg3lRFNnVJlgXOwTVL19sZoh8Ea-dcH0KnbWKM-_jqGwJ0yjZZ_jIKRmcYv2wZulBtU3YXINB4k9Xg6gAl5YQCfTB8L8Ow72FQGzzGYKrSFNdFjwTh3_gA7TYw318"/>
+<!-- Pill Badge "متبقي 3 قطع" -->
+<div class="absolute top-3 right-3">
+<span class="shimmer-active inline-block px-2.5 py-1 rounded-full bg-parchment text-antique-gold font-label-sm text-xs font-bold border border-royal-gold/50 shadow-sm">
+                    متبقي 3 قطع
+                  </span>
+</div>
+</div>
+<div class="mt-4">
+<h3 class="font-headline-sm text-headline-sm text-ivory-canvas font-semibold group-hover:text-champagne-gold transition-colors">أقراط اللؤلؤ الإغريقي</h3>
+<p class="font-label-sm text-xs text-rose-mist/70 mt-1">لؤلؤ مستخرج طبيعياً مع ذهب 21</p>
+</div>
+</div>
+<div class="mt-5 pt-3 border-t border-royal-gold/20 flex items-center justify-between">
+<span class="font-label-lg text-label-lg text-champagne-gold font-bold">36,000 د.ع</span>
+<button aria-label="اقتناء القطعة" class="add-to-cart-trigger text-antique-gold hover:text-champagne-gold p-1.5 transition-colors" data-img="placeholder" data-name="أقراط اللؤلؤ الإغريقي" data-price="36,000" type="button">
+<span class="material-symbols-outlined text-[20px]">shopping_bag</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+<script>
+  (function initMiddleSection() {
+    // 1. Live Countdown Timer (Simulated remaining offer time)
+    let totalSeconds = (2 * 24 * 3600) + (9 * 3600) + (15 * 60) + 48;
+    const elDays = document.getElementById('cd-days');
+    const elHours = document.getElementById('cd-hours');
+    const elMinutes = document.getElementById('cd-minutes');
+    const elSeconds = document.getElementById('cd-seconds');
+
+    function updateTimer() {
+      if (totalSeconds <= 0) return;
+      totalSeconds--;
+
+      const d = Math.floor(totalSeconds / (3600 * 24));
+      const h = Math.floor((totalSeconds % (3600 * 24)) / 3600);
+      const m = Math.floor((totalSeconds % 3600) / 60);
+      const s = totalSeconds % 60;
+
+      if (elDays) elDays.textContent = String(d).padStart(2, '0');
+      if (elHours) elHours.textContent = String(h).padStart(2, '0');
+      if (elMinutes) elMinutes.textContent = String(m).padStart(2, '0');
+      if (elSeconds) elSeconds.textContent = String(s).padStart(2, '0');
+    }
+
+    setInterval(updateTimer, 1000);
+
+    // 2. Intersection Observer for newly rendered elements
+    const newRevealItems = document.querySelectorAll('#section-bestsellers .fade-up-item, #section-bestsellers .line-reveal, #section-bestsellers .curtain-reveal, #section-flash-sale .fade-up-item, #section-gift-sets .fade-up-item, #section-gift-sets .curtain-reveal, #section-limited-pieces .fade-up-item');
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach((entry, idx) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.classList.add('revealed');
+          }, idx * 60);
+          obs.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.1,
+      rootMargin: '0px 0px -40px 0px'
+    });
+
+    newRevealItems.forEach(el => observer.observe(el));
+  })();
+</script></main>
+<!-- LUXURY CART DRAWER (Slides in from Left in RTL layout) -->
+<div aria-modal="true" class="fixed inset-0 z-[1000] pointer-events-none" id="cart-drawer-container" role="dialog">
+<div class="absolute inset-0 bg-[#1E070D]/55 opacity-0 backdrop-blur-sm transition-opacity duration-400 ease-out" id="cart-drawer-backdrop"></div>
+<div class="absolute top-0 bottom-0 left-0 w-full max-w-[420px] bg-ivory-canvas shadow-[-20px_0_50px_rgba(30,7,13,0.25)] border-r border-royal-gold/30 flex flex-col transform -translate-x-full transition-transform duration-400 ease-[cubic-bezier(0.22,1,0.36,1)] pointer-events-auto" id="cart-drawer-panel">
+<div class="h-[80px] px-6 border-b border-royal-gold/30 flex items-center justify-between bg-parchment/60">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-imperial-burgundy text-[22px]">shopping_bag</span>
+<h3 class="font-headline-sm text-headline-sm font-bold text-warm-ink">حقيبة المقتنيات</h3>
+<span class="text-xs px-2 py-0.5 rounded-full bg-champagne-gold/30 text-antique-gold font-bold" id="drawer-item-count">1</span>
+</div>
+<button aria-label="إغلاق حقيبة التسوق" class="w-9 h-9 rounded-full bg-surface-container flex items-center justify-center text-warm-ink hover:text-imperial-burgundy hover:bg-blush-surface transition-colors cursor-pointer" id="btn-close-cart" type="button">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<div class="px-6 py-2.5 bg-champagne-gold/25 border-b border-royal-gold/20 flex items-center justify-between font-label-sm text-label-sm text-antique-gold">
+<span class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-royal-gold">local_shipping</span>
+        مؤهل للشحن الملكي المجاني
+      </span>
+<span class="font-semibold text-imperial-burgundy">100% مجاناً</span>
+</div>
+<div class="flex-1 overflow-y-auto p-6 space-y-4" id="cart-items-list">
+<div class="p-3.5 rounded-xl bg-surface-container/70 border border-royal-gold/20 flex gap-4 transition-all duration-300 hover:border-royal-gold/50">
+<img alt="قلادة ذهبية" class="w-20 h-20 rounded-lg object-cover border border-royal-gold/30 shrink-0" src="https://lh3.googleusercontent.com/aida/AEtjO1W7ydHNBDleYaqW1SZRvPPrXnLLej3puZje9fLxRWzBMHkVUO2apjif5gxWmHU-3ZZNU0qIYusfT0atJVzMvcpi5F74IOe2z8I0yiTZ5IzU8bVp3AECnBzkbxSv3eq2sRQzsDddkzYGWLVMIQbLU55GOC8QWuUDhlU-pTR9DXWDBDjuqselEue4EWwRlgFKUEx7ggHQP1BSt2givwAVQ81rwX5bPa52Us3tuWDcReOFHWs7v64LdfvswOM"/>
+<div class="flex-1 flex flex-col justify-between">
+<div class="flex items-start justify-between gap-2">
+<div>
+<h4 class="font-headline-sm text-sm font-semibold text-warm-ink leading-snug">قلادة ذهبية رقم 102</h4>
+<p class="font-label-sm text-muted-rosewood text-xs mt-0.5">ذهب أصفر عيار 18 قيراط</p>
+</div>
+<button aria-label="حذف" class="text-muted-rosewood hover:text-imperial-burgundy p-1 transition-colors" type="button">
+<span class="material-symbols-outlined text-[17px]">delete</span>
+</button>
+</div>
+<div class="flex items-center justify-between mt-2">
+<span class="font-label-md text-sm font-bold text-imperial-burgundy">18,000 د.ع</span>
+<div class="flex items-center border border-royal-gold/30 rounded-lg bg-ivory-canvas overflow-hidden">
+<button class="w-6 h-6 flex items-center justify-center hover:bg-blush-surface text-xs">-</button>
+<span class="w-6 text-center text-xs font-semibold">1</span>
+<button class="w-6 h-6 flex items-center justify-center hover:bg-blush-surface text-xs">+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="p-6 border-t border-royal-gold/30 bg-parchment/40 space-y-3.5">
+<div class="flex items-center justify-between font-label-md text-label-md text-muted-rosewood">
+<span>المجموع الفرعي:</span>
+<span class="font-bold text-warm-ink" id="cart-drawer-subtotal">18,000 د.ع</span>
+</div>
+<div class="flex items-center justify-between font-label-md text-label-md text-muted-rosewood">
+<span>الشحن والتوصيل:</span>
+<span class="font-semibold text-emerald-800">مجاني لجميع المحافظات</span>
+</div>
+<div class="h-[1px] bg-royal-gold/25 my-1"></div>
+<div class="flex items-baseline justify-between">
+<span class="font-headline-sm text-base font-bold text-warm-ink">الإجمالي:</span>
+<span class="font-headline-sm text-xl font-bold text-imperial-burgundy tracking-tight" id="cart-drawer-total">18,000 د.ع</span>
+</div>
+<button class="btn-sweep w-full py-3.5 px-6 rounded-xl bg-imperial-burgundy hover:bg-burgundy-600 active:scale-[0.98] text-ivory-canvas font-label-lg text-label-lg font-medium shadow-[0_8px_24px_rgba(114,19,40,0.25)] flex items-center justify-center gap-2 transition-all border border-royal-gold/40 cursor-pointer" type="button">
+<span>إتمام الطلب الملكي</span>
+<span class="material-symbols-outlined text-[19px]">lock</span>
+</button>
+<p class="font-label-sm text-[11px] text-center text-muted-rosewood pt-1">
+        الدفع عند الاستلام متاح · ضمان استبدال مجدول خلال 7 أيام
+      </p>
+</div>
+</div>
+</div>
+<!-- FOOTER -->
+<footer class="w-full bg-wine-night text-parchment pt-space-2xl pb-space-xl border-t border-royal-gold/30">
+<div class="max-w-7xl mx-auto px-6 lg:px-12">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-space-xl mb-space-2xl">
+<div class="md:col-span-1">
+<div class="font-instrument-serif text-3xl text-champagne-gold mb-1 tracking-wider uppercase">IRIS</div>
+<div class="font-headline-sm text-xs text-antique-gold mb-space-sm font-semibold">دار آيريس للمجوهرات الراقية</div>
+<p class="font-body-sm text-body-sm text-outline-variant leading-relaxed mb-space-md">دار المجوهرات الراقية، صُنعت بشغف لتعكس فخامة الأصالة والإبداع الكلاسيكي المعاصر.</p>
+<div class="flex items-center gap-2 text-royal-gold font-label-sm text-label-sm">
+<span>◆</span>
+<span>ملاذ الرفاهية والفرادة</span>
+<span>◆</span>
+</div>
+</div>
+<div>
+<div class="font-label-lg text-label-lg text-champagne-gold mb-space-md font-semibold">المجموعات الفاخرة</div>
+<ul class="space-y-space-sm font-body-sm text-body-sm text-outline-variant">
+<li><a class="hover:text-champagne-gold transition-colors" data-path="necklaces" href="#">سلاسل وقلائد التراث</a></li>
+<li><a class="hover:text-champagne-gold transition-colors" data-path="rings" href="#">خواتم السوليتير والألماس</a></li>
+<li><a class="hover:text-champagne-gold transition-colors" data-path="bracelets" href="#">أساور الذهب الخالص</a></li>
+<li><a class="hover:text-champagne-gold transition-colors" data-path="earrings" href="#">أقراط ملكية</a></li>
+</ul>
+</div>
+<div>
+<div class="font-label-lg text-label-lg text-champagne-gold mb-space-md font-semibold">خدمة العملاء</div>
+<ul class="space-y-space-sm font-body-sm text-body-sm text-outline-variant">
+<li><a class="hover:text-champagne-gold transition-colors" data-path="delivery-policy" href="#">سياسة التوصيل والشحن</a></li>
+<li><a class="hover:text-champagne-gold transition-colors" data-path="exchange-returns" href="#">الاستبدال والاسترجاع (7 أيام)</a></li>
+<li><a class="hover:text-champagne-gold transition-colors" data-path="ring-size-guide" href="#">دليل مقاسات المجوهرات</a></li>
+<li><a class="hover:text-champagne-gold transition-colors" data-path="contact-concierge" href="#">خدمة المساعد الشخصي</a></li>
+</ul>
+</div>
+<div>
+<div class="font-label-lg text-label-lg text-champagne-gold mb-space-md font-semibold">الضيافة والاستفسارات</div>
+<p class="font-body-sm text-body-sm text-outline-variant mb-space-sm">يسعد مستشارونا باستقبالكم عبر المراسلة المباشرة على مدار الأسبوع.</p>
+<div class="inline-flex items-center gap-2 px-space-md py-space-xs rounded-full bg-deep-oxblood text-champagne-gold border border-royal-gold/45 font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px]">verified</span>
+          ضمان أصالة المعادن والأحجار
+        </div>
+</div>
+</div>
+<div class="border-t border-hairline-gold pt-space-lg flex flex-col md:flex-row items-center justify-between gap-space-md font-label-sm text-label-sm text-outline-variant">
+<div>جميع الحقوق محفوظة لدار آيريس للمجوهرات © 2025</div>
+<div class="flex items-center gap-space-lg">
+<a class="hover:text-champagne-gold transition-colors" data-path="privacy-policy" href="#">سياسة الخصوصية</a>
+<a class="hover:text-champagne-gold transition-colors" data-path="terms-conditions" href="#">الشروط والأحكام</a>
+<a class="hover:text-champagne-gold transition-colors" data-path="authenticity-certificate" href="#">شهادة الجودة</a>
+</div>
+</div>
+</div>
+</footer>
+<!-- SCRIPT LOGIC -->
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  /* 1. Ken-Burns Settle on Load (1.08 to 1.0) */
+  const kenBurnsImg = document.getElementById('hero-kenburns-img');
+  if (kenBurnsImg) {
+    requestAnimationFrame(() => {
+      kenBurnsImg.style.transform = 'scale(1.0)';
+    });
+  }
+
+  /* 2. Top Scroll Progress Bar (RTL right-to-left) */
+  const progressBar = document.getElementById('scroll-progress-bar');
+  function updateScrollProgress() {
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const scrollPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    if (progressBar) {
+      progressBar.style.width = scrollPercent + '%';
+    }
+  }
+
+  /* 3. Header Morph, Direction Sensitivity */
+  const mainHeader = document.getElementById('main-header');
+  const headerInner = document.getElementById('header-inner');
+  const headerHairline = document.getElementById('header-hairline');
+  const brandLogoContainer = document.getElementById('brand-logo-container');
+  const brandLatin = document.getElementById('brand-latin');
+  const brandArabic = document.getElementById('brand-arabic');
+  const navLinks = document.querySelectorAll('.nav-item');
+  const headerActions = document.getElementById('header-actions');
+  const parallaxLattice = document.getElementById('parallax-lattice');
+  const heroImageZone = document.getElementById('hero-image-zone');
+  const heroTextZone = document.getElementById('hero-text-zone');
+
+  let lastScrollY = window.pageYOffset || 0;
+  let isHeaderHidden = false;
+
+  function handleScroll() {
+    const currentScrollY = window.pageYOffset || document.documentElement.scrollTop;
+    updateScrollProgress();
+
+    // Parallax depth (photo 0.4x, text 0.8x, lattice 0.2x)
+    if (currentScrollY < 1200) {
+      if (parallaxLattice) {
+        parallaxLattice.style.transform = `translateY(${currentScrollY * 0.2}px)`;
+      }
+      if (heroImageZone && window.innerWidth >= 1024) {
+        heroImageZone.style.transform = `translateY(${currentScrollY * -0.12}px)`;
+      }
+      if (heroTextZone && window.innerWidth >= 1024) {
+        heroTextZone.style.transform = `translateY(${currentScrollY * -0.04}px)`;
+      }
+    }
+
+    // Header Morph: after 80px scroll
+    if (currentScrollY > 80) {
+      mainHeader.style.background = 'rgba(58, 10, 22, 0.88)';
+      mainHeader.style.backdropFilter = 'blur(14px)';
+      mainHeader.style.top = '0px';
+      if (headerHairline) headerHairline.style.opacity = '1';
+      headerInner.style.height = '64px';
+      brandLogoContainer.style.transform = 'scale(0.86)';
+      brandLatin.classList.remove('text-imperial-burgundy');
+      brandLatin.classList.add('text-champagne-gold');
+      brandArabic.classList.remove('text-antique-gold');
+      brandArabic.classList.add('text-royal-gold');
+
+      navLinks.forEach(link => {
+        if (link.getAttribute('aria-current') === 'page') {
+          link.classList.remove('text-imperial-burgundy');
+          link.classList.add('text-champagne-gold', 'font-semibold');
+        } else {
+          link.classList.remove('text-on-surface-variant');
+          link.classList.add('text-champagne-gold/80', 'hover:text-champagne-gold');
+        }
+      });
+
+      if (headerActions) {
+        headerActions.querySelectorAll('button, a').forEach(el => {
+          el.classList.add('text-champagne-gold');
+          el.classList.remove('text-on-surface-variant');
+        });
+      }
+    } else {
+      // Revert to Transparent Header over Hero
+      mainHeader.style.background = 'transparent';
+      mainHeader.style.backdropFilter = 'none';
+      mainHeader.style.top = '36px';
+      if (headerHairline) headerHairline.style.opacity = '0';
+      headerInner.style.height = '88px';
+      brandLogoContainer.style.transform = 'scale(1)';
+      brandLatin.classList.add('text-imperial-burgundy');
+      brandLatin.classList.remove('text-champagne-gold');
+      brandArabic.classList.add('text-antique-gold');
+      brandArabic.classList.remove('text-royal-gold');
+
+      navLinks.forEach(link => {
+        if (link.getAttribute('aria-current') === 'page') {
+          link.classList.add('text-imperial-burgundy');
+          link.classList.remove('text-champagne-gold');
+        } else {
+          link.classList.add('text-on-surface-variant');
+          link.classList.remove('text-champagne-gold/80', 'hover:text-champagne-gold');
+        }
+      });
+
+      if (headerActions) {
+        headerActions.querySelectorAll('button, a').forEach(el => {
+          el.classList.remove('text-champagne-gold');
+          el.classList.add('text-on-surface-variant');
+        });
+      }
+    }
+
+    // Scroll Direction Sensitivity (slides up out of view on fast scroll down past 400px; slides back instantly on scroll up)
+    if (currentScrollY > 400 && currentScrollY > lastScrollY && !isHeaderHidden) {
+      mainHeader.style.transform = 'translateY(-120%)';
+      isHeaderHidden = true;
+    } else if (currentScrollY < lastScrollY && isHeaderHidden) {
+      mainHeader.style.transform = 'translateY(0)';
+      isHeaderHidden = false;
+    }
+
+    lastScrollY = currentScrollY <= 0 ? 0 : currentScrollY;
+  }
+
+  window.addEventListener('scroll', handleScroll, { passive: true });
+
+  /* 4. Sliding Gold Underline Indicator */
+  const navIndicator = document.getElementById('nav-indicator');
+  const desktopNav = document.getElementById('desktop-nav');
+
+  function updateNavIndicator(targetElement) {
+    if (!navIndicator || !desktopNav || !targetElement) return;
+    const navRect = desktopNav.getBoundingClientRect();
+    const itemRect = targetElement.getBoundingClientRect();
+    const leftOffset = itemRect.left - navRect.left;
+    navIndicator.style.width = `${itemRect.width}px`;
+    navIndicator.style.left = `${leftOffset}px`;
+  }
+
+  const activeNav = document.querySelector('.nav-item[aria-current="page"]');
+  if (activeNav) {
+    setTimeout(() => updateNavIndicator(activeNav), 80);
+  }
+
+  navLinks.forEach(link => {
+    link.addEventListener('mouseenter', function () {
+      updateNavIndicator(this);
+    });
+  });
+
+  if (desktopNav) {
+    desktopNav.addEventListener('mouseleave', function () {
+      if (activeNav) updateNavIndicator(activeNav);
+    });
+  }
+
+  /* 5. IntersectionObserver for Reveal Animations & Curtains */
+  const revealElements = document.querySelectorAll('.line-reveal, .twin-divider, .fade-up-item, .curtain-reveal');
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('revealed');
+        obs.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.12,
+    rootMargin: '0px 0px -30px 0px'
+  });
+
+  revealElements.forEach(el => observer.observe(el));
+
+  /* 6. Product Rail: Navigation, Dragging & Synchronized Hairline Progress */
+  const rail = document.getElementById('product-rail');
+  const btnLeft = document.getElementById('scroll-left');
+  const btnRight = document.getElementById('scroll-right');
+  const railProgress = document.getElementById('rail-progress-indicator');
+
+  function updateRailProgress() {
+    if (!rail || !railProgress) return;
+    const maxScroll = rail.scrollWidth - rail.clientWidth;
+    if (maxScroll <= 0) return;
+    const current = Math.abs(rail.scrollLeft);
+    const pct = Math.min(100, Math.max(12, (current / maxScroll) * 100));
+    railProgress.style.width = pct + '%';
+  }
+
+  if (rail) {
+    rail.addEventListener('scroll', updateRailProgress, { passive: true });
+
+    if (btnLeft) {
+      btnLeft.addEventListener('click', () => {
+        rail.scrollBy({ left: -310, behavior: 'smooth' });
+      });
+    }
+    if (btnRight) {
+      btnRight.addEventListener('click', () => {
+        rail.scrollBy({ left: 310, behavior: 'smooth' });
+      });
+    }
+
+    let isDown = false;
+    let startX = 0;
+    let scrollStart = 0;
+
+    rail.addEventListener('mousedown', (e) => {
+      isDown = true;
+      startX = e.pageX - rail.offsetLeft;
+      scrollStart = rail.scrollLeft;
+    });
+    rail.addEventListener('mouseleave', () => { isDown = false; });
+    rail.addEventListener('mouseup', () => { isDown = false; });
+    rail.addEventListener('mousemove', (e) => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - rail.offsetLeft;
+      const walk = (x - startX) * 1.5;
+      rail.scrollLeft = scrollStart - walk;
+    });
+  }
+
+  /* 7. Cart Drawer & Add-to-Cart Action */
+  let cartTotalCount = 1;
+  const cartIconBtn = document.getElementById('cart-icon-btn');
+  const cartBagIcon = document.getElementById('cart-bag-icon');
+  const headerCartBadge = document.getElementById('header-cart-badge');
+  const cartDrawerContainer = document.getElementById('cart-drawer-container');
+  const cartDrawerBackdrop = document.getElementById('cart-drawer-backdrop');
+  const cartDrawerPanel = document.getElementById('cart-drawer-panel');
+  const btnCloseCart = document.getElementById('btn-close-cart');
+  const drawerItemCount = document.getElementById('drawer-item-count');
+  const cartItemsList = document.getElementById('cart-items-list');
+
+  function openCartDrawer() {
+    if (!cartDrawerContainer || !cartDrawerPanel || !cartDrawerBackdrop) return;
+    cartDrawerContainer.classList.remove('pointer-events-none');
+    cartDrawerBackdrop.classList.remove('opacity-0');
+    cartDrawerBackdrop.classList.add('opacity-100');
+    cartDrawerPanel.style.transform = 'translateX(0)';
+  }
+
+  function closeCartDrawer() {
+    if (!cartDrawerContainer || !cartDrawerPanel || !cartDrawerBackdrop) return;
+    cartDrawerBackdrop.classList.remove('opacity-100');
+    cartDrawerBackdrop.classList.add('opacity-0');
+    cartDrawerPanel.style.transform = 'translateX(-100%)';
+    setTimeout(() => {
+      cartDrawerContainer.classList.add('pointer-events-none');
+    }, 400);
+  }
+
+  if (cartIconBtn) cartIconBtn.addEventListener('click', openCartDrawer);
+  if (btnCloseCart) btnCloseCart.addEventListener('click', closeCartDrawer);
+  if (cartDrawerBackdrop) cartDrawerBackdrop.addEventListener('click', closeCartDrawer);
+
+  const addButtons = document.querySelectorAll('.add-to-cart-trigger');
+  addButtons.forEach(btn => {
+    btn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      const pName = this.getAttribute('data-name') || 'قطعة حِرفية';
+      const pPrice = this.getAttribute('data-price') || '18,000';
+      const pImg = this.getAttribute('data-img') || '';
+
+      const btnRect = this.getBoundingClientRect();
+      const cartRect = cartIconBtn ? cartIconBtn.getBoundingClientRect() : { left: 40, top: 40, width: 24, height: 24 };
+
+      const flyer = document.createElement('div');
+      flyer.className = 'flying-particle';
+      flyer.style.width = '44px';
+      flyer.style.height = '44px';
+      flyer.style.left = `${btnRect.left + btnRect.width / 2 - 22}px`;
+      flyer.style.top = `${btnRect.top + btnRect.height / 2 - 22}px`;
+      flyer.style.backgroundImage = `url(${pImg})`;
+      flyer.style.backgroundSize = 'cover';
+      flyer.style.backgroundPosition = 'center';
+      flyer.style.border = '2px solid #C9A24B';
+      flyer.style.opacity = '1';
+      document.body.appendChild(flyer);
+
+      requestAnimationFrame(() => {
+        flyer.style.left = `${cartRect.left + cartRect.width / 2 - 14}px`;
+        flyer.style.top = `${cartRect.top + cartRect.height / 2 - 14}px`;
+        flyer.style.transform = 'scale(0.3) rotate(360deg)';
+        flyer.style.opacity = '0.7';
+      });
+
+      setTimeout(() => {
+        flyer.remove();
+
+        if (cartBagIcon) {
+          cartBagIcon.style.transform = 'scale(1.3) rotate(-8deg)';
+          setTimeout(() => {
+            cartBagIcon.style.transform = 'scale(1) rotate(0deg)';
+          }, 300);
+        }
+
+        cartTotalCount++;
+        if (headerCartBadge) {
+          headerCartBadge.textContent = cartTotalCount;
+          headerCartBadge.style.transform = 'scale(1.35)';
+          setTimeout(() => { headerCartBadge.style.transform = 'scale(1)'; }, 200);
+        }
+        if (drawerItemCount) {
+          drawerItemCount.textContent = cartTotalCount;
+        }
+
+        if (cartItemsList) {
+          const newItem = document.createElement('div');
+          newItem.className = 'p-3.5 rounded-xl bg-surface-container/70 border border-royal-gold/30 flex gap-4 transition-all duration-300 hover:border-royal-gold/60';
+          newItem.innerHTML = `
+            <img class="w-20 h-20 rounded-lg object-cover border border-royal-gold/30 shrink-0" src="${pImg}" alt="${pName}">
+            <div class="flex-1 flex flex-col justify-between">
+              <div class="flex items-start justify-between gap-2">
+                <div>
+                  <h4 class="font-headline-sm text-sm font-semibold text-warm-ink leading-snug">${pName}</h4>
+                  <p class="font-label-sm text-muted-rosewood text-xs mt-0.5">مجوهرات راقية مصوغة</p>
+                </div>
+                <button type="button" class="text-muted-rosewood hover:text-imperial-burgundy p-1 transition-colors" aria-label="حذف">
+                  <span class="material-symbols-outlined text-[17px]">delete</span>
+                </button>
+              </div>
+              <div class="flex items-center justify-between mt-2">
+                <span class="font-label-md text-sm font-bold text-imperial-burgundy">${pPrice} د.ع</span>
+                <div class="flex items-center border border-royal-gold/30 rounded-lg bg-ivory-canvas overflow-hidden">
+                  <button class="w-6 h-6 flex items-center justify-center hover:bg-blush-surface text-xs">-</button>
+                  <span class="w-6 text-center text-xs font-semibold">1</span>
+                  <button class="w-6 h-6 flex items-center justify-center hover:bg-blush-surface text-xs">+</button>
+                </div>
+              </div>
+            </div>
+          `;
+          cartItemsList.prepend(newItem);
+        }
+
+        openCartDrawer();
+      }, 750);
+    });
+  });
+});
+</script>
+</body></html>

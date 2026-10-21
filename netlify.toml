@@ -1,0 +1,13 @@
+# نسخة العرض التجريبية على Netlify — دليل النشر: NETLIFY.md
+#  - الواجهة: dist (التوجيه والترويسات في dist/_redirects و dist/_headers يكتبهما scripts/deploy/netlify.mjs)
+#  - الخادم: netlify/functions/api.mts على /api/index.php و /uploads/* (البيانات في Netlify Blobs)
+[build]
+  command = "npm run build:netlify"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"

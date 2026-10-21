@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+
+<html dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>مركز الإشعارات والتحذيرات | دار آيريس للمجوهرات</title>
+<!-- Material Symbols Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Arabic Brand Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@400;500;600;700&amp;family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration Token Injection -->
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "on-surface": "#1d1c18",
+            "inverse-surface": "#32302c",
+            "primary-container": "#721328",
+            "secondary-fixed-dim": "#ebc166",
+            "secondary": "#795902",
+            "surface": "#fef9f2",
+            "tertiary-fixed": "#ffd9dd",
+            "burgundy-600": "#8A1B34",
+            "hairline-gold": "rgba(201, 162, 75, 0.45)",
+            "on-tertiary-fixed-variant": "#6f343f",
+            "parchment": "#F3EADB",
+            "semantic-info-bg": "#E4EDF8",
+            "on-surface-variant": "#564243",
+            "surface-tint": "#a3394a",
+            "on-secondary-fixed-variant": "#5b4300",
+            "semantic-info": "#2F5A8A",
+            "inverse-primary": "#ffb2b9",
+            "blush-surface": "#F7ECEC",
+            "deep-oxblood": "#3A0A16",
+            "on-primary-fixed": "#40000f",
+            "semantic-success-bg": "#E2F2EA",
+            "burgundy-800": "#5A0F22",
+            "semantic-error-bg": "#FDE7E4",
+            "ivory-canvas": "#FBF6EF",
+            "surface-container": "#f2ede6",
+            "error": "#ba1a1a",
+            "surface-container-highest": "#e6e2db",
+            "tertiary": "#45131e",
+            "semantic-warning-bg": "#FCEBD0",
+            "on-secondary-container": "#775800",
+            "primary-fixed": "#ffdadc",
+            "rose-mist": "#EED9DB",
+            "warm-ink": "#2A1215",
+            "outline-variant": "#dcc0c1",
+            "surface-container-lowest": "#ffffff",
+            "muted-rosewood": "#6D585B",
+            "on-tertiary-fixed": "#390915",
+            "on-background": "#1d1c18",
+            "on-primary-fixed-variant": "#842134",
+            "tertiary-container": "#602833",
+            "royal-gold": "#C9A24B",
+            "outline": "#897173",
+            "tertiary-fixed-dim": "#ffb2bd",
+            "wine-night": "#1E070D",
+            "error-container": "#ffdad6",
+            "on-secondary": "#ffffff",
+            "surface-container-low": "#f8f3ec",
+            "semantic-warning": "#8A4B08",
+            "background": "#fef9f2",
+            "on-tertiary": "#ffffff",
+            "on-error-container": "#93000a",
+            "primary": "#510015",
+            "surface-container-high": "#ece7e1",
+            "on-primary": "#ffffff",
+            "surface-dim": "#ded9d3",
+            "antique-gold": "#8A6620",
+            "secondary-container": "#fdd275",
+            "primary-fixed-dim": "#ffb2b9",
+            "imperial-burgundy": "#721328",
+            "on-error": "#ffffff",
+            "on-primary-container": "#fb7c8c",
+            "surface-bright": "#fef9f2",
+            "on-secondary-fixed": "#261a00",
+            "hairline-burgundy": "rgba(114, 19, 40, 0.14)",
+            "on-tertiary-container": "#dc8f9a",
+            "secondary-fixed": "#ffdf9e",
+            "surface-variant": "#e6e2db",
+            "champagne-gold": "#E9D49C",
+            "semantic-error": "#B42318",
+            "semantic-success": "#1F6B4A",
+            "inverse-on-surface": "#f5f0e9"
+          },
+          fontFamily: {
+            "headline": ["El Messiri", "serif"],
+            "body": ["IBM Plex Sans Arabic", "sans-serif"],
+            "mono": ["IBM Plex Mono", "monospace"]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    body {
+      font-family: 'IBM Plex Sans Arabic', sans-serif;
+      background-color: #FBF6EF;
+      color: #2A1215;
+    }
+    .material-symbols-outlined {
+      font-family: 'Material Symbols Outlined';
+      font-weight: normal;
+      font-style: normal;
+      font-size: 20px;
+      line-height: 1;
+      letter-spacing: normal;
+      text-transform: none;
+      display: inline-block;
+      white-space: nowrap;
+      word-wrap: normal;
+      direction: ltr;
+      -webkit-font-feature-settings: 'liga';
+      -webkit-font-smoothing: antialiased;
+    }
+    .font-num {
+      font-family: 'IBM Plex Mono', 'IBM Plex Sans Arabic', monospace;
+      font-feature-settings: "tnum";
+    }
+    @keyframes subtlePulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.6; transform: scale(1.15); }
+    }
+    .pulse-dot {
+      animation: subtlePulse 2.2s infinite ease-in-out;
+    }
+  </style>
+</head>
+<body class="bg-ivory-canvas min-h-screen text-warm-ink antialiased selection:bg-rose-mist selection:text-deep-oxblood">
+<!-- Main Application Wrapper -->
+<div class="flex min-h-screen w-full">
+<!-- Primary Sidebar Navigation -->
+<aside class="w-72 shrink-0 border-l border-hairline-burgundy bg-surface-container-lowest flex flex-col justify-between p-5 hidden lg:flex">
+<div class="flex flex-col gap-6">
+<!-- Brand Header in Sidebar -->
+<div class="flex items-center gap-3.5 px-2 pb-5 border-b border-hairline-burgundy">
+<div class="size-11 rounded-xl bg-imperial-burgundy text-champagne-gold flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-[26px]">diamond</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline font-bold text-lg text-imperial-burgundy tracking-tight">دار آيريس IRIS</span>
+<span class="text-xs text-muted-rosewood font-medium">إدارة المجوهرات والنفائس</span>
+</div>
+</div>
+<!-- Navigation Links -->
+<nav aria-label="شريط التنقل الرئيسي" class="flex flex-col gap-1.5">
+<a class="flex items-center gap-3.5 px-3.5 py-2.5 rounded-lg text-warm-ink hover:bg-blush-surface/60 transition-colors text-sm font-medium" href="#">
+<span class="material-symbols-outlined text-muted-rosewood">dashboard</span>
+<span>لوحة الإدارة</span>
+</a>
+<a class="flex items-center gap-3.5 px-3.5 py-2.5 rounded-lg text-warm-ink hover:bg-blush-surface/60 transition-colors text-sm font-medium" href="#">
+<span class="material-symbols-outlined text-muted-rosewood">inventory_2</span>
+<span>المخزون والخزائن</span>
+</a>
+<a class="flex items-center gap-3.5 px-3.5 py-2.5 rounded-lg text-warm-ink hover:bg-blush-surface/60 transition-colors text-sm font-medium" href="#">
+<span class="material-symbols-outlined text-muted-rosewood">shopping_bag</span>
+<span>الطلبات والمبيعات</span>
+</a>
+<a class="flex items-center gap-3.5 px-3.5 py-2.5 rounded-lg text-warm-ink hover:bg-blush-surface/60 transition-colors text-sm font-medium" href="#">
+<span class="material-symbols-outlined text-muted-rosewood">group</span>
+<span>العملاء والمصوغات</span>
+</a>
+<!-- Active Route: Notifications -->
+<a class="relative flex items-center gap-3.5 px-3.5 py-2.5 rounded-lg bg-blush-surface text-imperial-burgundy font-semibold text-sm transition-colors border-r-[3px] border-royal-gold" href="#">
+<span class="material-symbols-outlined text-imperial-burgundy" style="font-variation-settings: 'FILL' 1;">notifications_active</span>
+<span class="flex-1">مركز التنبيهات</span>
+<span class="bg-imperial-burgundy text-champagne-gold text-xs px-2 py-0.5 rounded-full font-num font-semibold">4</span>
+</a>
+<a class="flex items-center gap-3.5 px-3.5 py-2.5 rounded-lg text-warm-ink hover:bg-blush-surface/60 transition-colors text-sm font-medium" href="#">
+<span class="material-symbols-outlined text-muted-rosewood">tune</span>
+<span>إعدادات النظام</span>
+</a>
+</nav>
+<!-- Quick Status Widget inside Sidebar -->
+<div class="mt-4 p-4 rounded-xl bg-parchment/60 border border-hairline-burgundy flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<span class="text-xs font-semibold text-imperial-burgundy flex items-center gap-1.5">
+<span class="material-symbols-outlined text-sm text-royal-gold">cell_tower</span>
+              قنوات الإشعارات الفورية
+            </span>
+<span class="size-2 rounded-full bg-semantic-success pulse-dot"></span>
+</div>
+<div class="space-y-2 text-xs text-muted-rosewood">
+<div class="flex items-center justify-between">
+<span class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-xs text-semantic-info">send</span>
+                بوت تلغرام الإداري
+              </span>
+<span class="font-medium text-semantic-success font-num">متصل</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-xs text-semantic-success">chat</span>
+                واتساب للأعمال API
+              </span>
+<span class="font-medium text-semantic-success font-num">متصل</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-xs text-antique-gold">sms</span>
+                بوابة SMS
+              </span>
+<span class="font-mono text-[11px] text-warm-ink bg-surface-container-highest px-1.5 py-0.5 rounded">840 رسالة</span>
+</div>
+</div>
+</div>
+</div>
+<!-- User Session Footer -->
+<div class="pt-4 border-t border-hairline-burgundy flex flex-col gap-2">
+<a class="flex items-center gap-3 px-3 py-2 text-sm text-muted-rosewood hover:text-imperial-burgundy rounded-lg hover:bg-blush-surface/40 transition-colors" href="#">
+<span class="material-symbols-outlined text-lg">support_agent</span>
+<span>الدعم الفني والامتثال</span>
+</a>
+<div class="flex items-center justify-between px-3 py-2 rounded-lg bg-surface-container-low border border-hairline-burgundy">
+<div class="flex items-center gap-2.5">
+<div class="size-8 rounded-full bg-imperial-burgundy text-champagne-gold flex items-center justify-center text-xs font-bold font-headline">
+              آي
+            </div>
+<div class="flex flex-col">
+<span class="text-xs font-bold text-warm-ink">مدير الخزينة المركزية</span>
+<span class="text-[10px] text-muted-rosewood font-num">admin@iris-jewels.iq</span>
+</div>
+</div>
+<button class="text-muted-rosewood hover:text-error transition-colors p-1" title="تسجيل الخروج">
+<span class="material-symbols-outlined text-lg">logout</span>
+</button>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col min-w-0 overflow-y-auto">
+<!-- Top Application Header Bar -->
+<header class="h-16 px-6 lg:px-10 border-b border-hairline-burgundy bg-surface-container-lowest/90 backdrop-blur sticky top-0 z-30 flex items-center justify-between">
+<!-- Search In Navigation -->
+<div class="flex items-center gap-4 flex-1 max-w-md">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-muted-rosewood text-lg">search</span>
+<input class="w-full pl-4 pr-10 py-1.5 text-xs bg-surface-container-low border border-hairline-burgundy rounded-lg focus:outline-none focus:ring-1 focus:ring-imperial-burgundy placeholder:text-muted-rosewood text-warm-ink" placeholder="البحث في سجل الإشعارات، الرموز، أرقام الفواتير والطلبات..." type="text"/>
+</div>
+</div>
+<!-- Top Right Actions -->
+<div class="flex items-center gap-3">
+<button class="relative p-2 text-warm-ink hover:bg-blush-surface rounded-lg transition-colors border border-hairline-burgundy" title="مركز التنبيهات السريع">
+<span class="material-symbols-outlined text-xl text-imperial-burgundy">notifications</span>
+<span class="absolute top-1.5 right-1.5 size-2 bg-imperial-burgundy rounded-full"></span>
+</button>
+<button class="p-2 text-warm-ink hover:bg-blush-surface rounded-lg transition-colors border border-hairline-burgundy" title="إعدادات المنظومة">
+<span class="material-symbols-outlined text-xl text-muted-rosewood">settings</span>
+</button>
+<div class="h-6 w-px bg-hairline-burgundy mx-1"></div>
+<div class="flex items-center gap-2 pr-1">
+<span class="text-xs font-medium text-warm-ink hidden sm:inline">فرع بغداد — الكرادة</span>
+<span class="px-2 py-0.5 rounded text-[11px] font-semibold bg-champagne-gold/40 text-antique-gold border border-hairline-gold">متزامن</span>
+</div>
+</div>
+</header>
+<!-- Page Container -->
+<div class="p-6 lg:p-10 max-w-7xl mx-auto w-full space-y-7">
+<!-- Breadcrumb Navigation -->
+<nav aria-label="مسار التنقل" class="flex items-center gap-2 text-xs text-muted-rosewood">
+<a class="hover:text-imperial-burgundy transition-colors" href="#">لوحة الإدارة</a>
+<span class="material-symbols-outlined text-sm">chevron_left</span>
+<a class="hover:text-imperial-burgundy transition-colors" href="#">مركز التنبيهات</a>
+<span class="material-symbols-outlined text-sm">chevron_left</span>
+<span class="text-imperial-burgundy font-semibold">الإشعارات والتحذيرات اللحظية</span>
+</nav>
+<!-- Page Header & Action Bar -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-5 pb-5 border-b border-hairline-burgundy">
+<div class="space-y-2">
+<div class="flex items-center gap-3">
+<h1 class="font-headline font-bold text-2xl lg:text-3xl text-imperial-burgundy tracking-tight">
+                مركز الإشعارات والتحذيرات
+              </h1>
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-semantic-error-bg text-semantic-error text-xs font-semibold border border-semantic-error/20">
+<span class="size-2 rounded-full bg-semantic-error pulse-dot"></span>
+<span class="font-num">4 غير مقروءة من إجمالي 28 إشعار</span>
+</span>
+</div>
+<p class="text-sm text-muted-rosewood max-w-2xl leading-relaxed">
+              متابعة حركة الطلبات، مستويات المخزون الحرجة، استحقاقات الخزينة، وتنبيهات الربط التقني لدار آيريس.
+            </p>
+</div>
+<!-- Top Action Buttons -->
+<div class="flex items-center gap-2.5 flex-wrap">
+<button class="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg border border-imperial-burgundy text-imperial-burgundy bg-surface-container-lowest hover:bg-blush-surface text-xs font-bold transition-all shadow-sm">
+<span class="material-symbols-outlined text-sm">check_circle</span>
+<span>تعليم الكل كمقروء</span>
+</button>
+<button class="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg bg-imperial-burgundy text-champagne-gold hover:bg-burgundy-800 text-xs font-bold transition-all shadow-sm">
+<span class="material-symbols-outlined text-sm text-champagne-gold">notifications_paused</span>
+<span>إعدادات قنوات التنبيه</span>
+</button>
+</div>
+</div>
+<!-- Filter Chips Bar & Search Line -->
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+<!-- Filter Tabs / Pills -->
+<div class="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none" role="tablist">
+<button class="px-3.5 py-1.5 rounded-lg text-xs font-medium bg-surface-container-lowest text-muted-rosewood hover:text-imperial-burgundy border border-hairline-burgundy transition-colors whitespace-nowrap">
+              الكل <span class="font-num mr-1 text-[11px]">(28)</span>
+</button>
+<button class="px-3.5 py-1.5 rounded-lg text-xs font-bold bg-imperial-burgundy text-champagne-gold shadow-sm whitespace-nowrap flex items-center gap-1.5">
+<span>غير مقروءة</span>
+<span class="font-num text-[11px] px-1.5 py-0.2 rounded-full bg-deep-oxblood/50 text-champagne-gold">(4)</span>
+</button>
+<button class="px-3.5 py-1.5 rounded-lg text-xs font-medium bg-surface-container-lowest text-muted-rosewood hover:text-imperial-burgundy border border-hairline-burgundy transition-colors whitespace-nowrap">
+              طلبات ومبيعات <span class="font-num mr-1 text-[11px]">(12)</span>
+</button>
+<button class="px-3.5 py-1.5 rounded-lg text-xs font-medium bg-surface-container-lowest text-muted-rosewood hover:text-imperial-burgundy border border-hairline-burgundy transition-colors whitespace-nowrap">
+              المخزون والقطع <span class="font-num mr-1 text-[11px]">(6)</span>
+</button>
+<button class="px-3.5 py-1.5 rounded-lg text-xs font-medium bg-surface-container-lowest text-muted-rosewood hover:text-imperial-burgundy border border-hairline-burgundy transition-colors whitespace-nowrap">
+              مدفوعات وخزينة <span class="font-num mr-1 text-[11px]">(4)</span>
+</button>
+<button class="px-3.5 py-1.5 rounded-lg text-xs font-medium bg-surface-container-lowest text-muted-rosewood hover:text-imperial-burgundy border border-hairline-burgundy transition-colors whitespace-nowrap">
+              تكاملات وقنوات الربط <span class="font-num mr-1 text-[11px]">(2)</span>
+</button>
+</div>
+<!-- Secondary Filter Trigger / Clear Filter -->
+<div class="flex items-center gap-3 text-xs self-end lg:self-auto">
+<span class="text-muted-rosewood">التصفية النشطة: <strong class="text-imperial-burgundy">غير مقروءة</strong></span>
+<button class="text-imperial-burgundy hover:underline flex items-center gap-1 font-medium">
+<span class="material-symbols-outlined text-sm">filter_alt_off</span>
+<span>مسح التصفية</span>
+</button>
+</div>
+</div>
+<!-- Notification Feed Stack -->
+<div class="space-y-6">
+<!-- ================= GROUP 1: TODAY ================= -->
+<section aria-label="تنبيهات اليوم" class="space-y-3">
+<!-- Group Header -->
+<div class="flex items-center gap-3">
+<div class="size-2 rotate-45 bg-royal-gold"></div>
+<h2 class="font-headline font-bold text-sm text-imperial-burgundy">اليوم — الأربعاء 24 تشرين الأول 2026</h2>
+<div class="h-px bg-hairline-burgundy flex-1"></div>
+<span class="text-xs text-muted-rosewood font-num">4 تنبيهات جديدة</span>
+</div>
+<div class="space-y-2.5">
+<!-- Item 1: Orders (Unread) -->
+<article class="relative p-4 rounded-xl bg-surface-container-lowest border border-hairline-burgundy hover:border-royal-gold/60 transition-all shadow-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+<div class="flex items-start gap-3.5 flex-1 min-w-0">
+<!-- Category Icon -->
+<div class="size-10 rounded-xl bg-semantic-info-bg text-semantic-info flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]">shopping_bag</span>
+</div>
+<!-- Text Block -->
+<div class="space-y-1">
+<div class="flex items-center gap-2 flex-wrap">
+<span class="px-2 py-0.5 rounded text-[11px] font-semibold bg-semantic-info-bg text-semantic-info">طلب ومبيعات</span>
+<span class="text-xs text-muted-rosewood font-num">منذ 15 دقيقة • 02:45 م</span>
+<!-- Unread Indicator Dot -->
+<span class="size-2 rounded-full bg-imperial-burgundy" title="إشعار غير مقروء"></span>
+</div>
+<p class="text-sm font-medium text-warm-ink leading-relaxed">
+                      طلب جديد <span class="font-num text-imperial-burgundy font-semibold">#1054</span> من الموقع الإلكتروني — قلادة ذهبية عيار 18 وخاتم سوليتير (المبلغ: <span class="font-num font-bold text-warm-ink">43,700 د.ع</span>) باسم سارة آل رحيم.
+                    </p>
+</div>
+</div>
+<!-- Action Links & Options -->
+<div class="flex items-center gap-3 shrink-0 self-end md:self-center pr-12 md:pr-0">
+<a class="inline-flex items-center gap-1 text-xs font-bold text-imperial-burgundy hover:text-royal-gold transition-colors" href="#">
+<span>معاينة الطلب والتجهيز</span>
+<span class="material-symbols-outlined text-sm">arrow_left</span>
+</a>
+<button class="p-1 text-muted-rosewood hover:text-warm-ink rounded hover:bg-surface-container" title="خيارات إضافية">
+<span class="material-symbols-outlined text-lg">more_vert</span>
+</button>
+</div>
+</article>
+<!-- Item 2: Inventory (Unread) -->
+<article class="relative p-4 rounded-xl bg-surface-container-lowest border border-hairline-burgundy hover:border-royal-gold/60 transition-all shadow-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+<div class="flex items-start gap-3.5 flex-1 min-w-0">
+<!-- Category Icon -->
+<div class="size-10 rounded-xl bg-semantic-warning-bg text-semantic-warning flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]">warning</span>
+</div>
+<!-- Text Block -->
+<div class="space-y-1">
+<div class="flex items-center gap-2 flex-wrap">
+<span class="px-2 py-0.5 rounded text-[11px] font-semibold bg-semantic-warning-bg text-semantic-warning">تنبيه مخزون حرج</span>
+<span class="text-xs text-muted-rosewood font-num">منذ 40 دقيقة • 02:20 م</span>
+<span class="size-2 rounded-full bg-imperial-burgundy" title="إشعار غير مقروء"></span>
+</div>
+<p class="text-sm font-medium text-warm-ink leading-relaxed">
+                      مخزون منخفض: <span class="font-mono text-imperial-burgundy font-semibold">Ring-31</span> (خاتم فضي عيار 925 مرصع بالزيركون) — متبقي <span class="font-num font-bold text-semantic-warning">2 قطع فقط</span> في خزينة بغداد الرئيسية.
+                    </p>
+</div>
+</div>
+<!-- Action Links & Options -->
+<div class="flex items-center gap-3 shrink-0 self-end md:self-center pr-12 md:pr-0">
+<a class="inline-flex items-center gap-1 text-xs font-bold text-imperial-burgundy hover:text-royal-gold transition-colors" href="#">
+<span>تسجيل شراء / توريد جديد</span>
+<span class="material-symbols-outlined text-sm">arrow_left</span>
+</a>
+<button class="text-xs text-muted-rosewood hover:text-imperial-burgundy underline">تعديل الحد الأدنى</button>
+<button class="p-1 text-muted-rosewood hover:text-warm-ink rounded hover:bg-surface-container" title="خيارات إضافية">
+<span class="material-symbols-outlined text-lg">more_vert</span>
+</button>
+</div>
+</article>
+<!-- Item 3: Finance/Treasury (Unread) -->
+<article class="relative p-4 rounded-xl bg-surface-container-lowest border border-hairline-burgundy hover:border-royal-gold/60 transition-all shadow-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+<div class="flex items-start gap-3.5 flex-1 min-w-0">
+<!-- Category Icon -->
+<div class="size-10 rounded-xl bg-semantic-success-bg text-semantic-success flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]">payments</span>
+</div>
+<!-- Text Block -->
+<div class="space-y-1">
+<div class="flex items-center gap-2 flex-wrap">
+<span class="px-2 py-0.5 rounded text-[11px] font-semibold bg-semantic-success-bg text-semantic-success">الخزينة والموردين</span>
+<span class="text-xs text-muted-rosewood font-num">منذ ساعتين • 12:50 م</span>
+<span class="size-2 rounded-full bg-imperial-burgundy" title="إشعار غير مقروء"></span>
+</div>
+<p class="text-sm font-medium text-warm-ink leading-relaxed">
+                      دفعة مستحقة للمورد بعد يومين — فاتورة سبائك الشرق المحدودة بقيمة <span class="font-num font-bold text-warm-ink">1,400,000 د.ع</span> تستحق في <span class="font-num text-muted-rosewood">26/10/2026</span>.
+                    </p>
+</div>
+</div>
+<!-- Action Links & Options -->
+<div class="flex items-center gap-3 shrink-0 self-end md:self-center pr-12 md:pr-0">
+<a class="inline-flex items-center gap-1 text-xs font-bold text-imperial-burgundy hover:text-royal-gold transition-colors" href="#">
+<span>جدولة سند الصرف</span>
+<span class="material-symbols-outlined text-sm">arrow_left</span>
+</a>
+<button class="text-xs text-muted-rosewood hover:text-imperial-burgundy underline">عرض سجل المورد</button>
+<button class="p-1 text-muted-rosewood hover:text-warm-ink rounded hover:bg-surface-container" title="خيارات إضافية">
+<span class="material-symbols-outlined text-lg">more_vert</span>
+</button>
+</div>
+</article>
+<!-- Item 4: Integration Error (Unread & Critical Alert) -->
+<article class="relative p-4 rounded-xl bg-semantic-error-bg border border-semantic-error/40 hover:border-semantic-error transition-all shadow-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+<div class="flex items-start gap-3.5 flex-1 min-w-0">
+<!-- Category Icon (White Bg + Error Red Text) -->
+<div class="size-10 rounded-xl bg-surface-container-lowest text-semantic-error border border-semantic-error/30 flex items-center justify-center shrink-0 shadow-sm">
+<span class="material-symbols-outlined text-[20px]">sync_problem</span>
+</div>
+<!-- Text Block -->
+<div class="space-y-1">
+<div class="flex items-center gap-2 flex-wrap">
+<span class="px-2 py-0.5 rounded text-[11px] font-bold bg-semantic-error text-surface-container-lowest">خطأ تزامن فوري</span>
+<span class="text-xs text-semantic-error/80 font-num font-medium">منذ 3 ساعات • 11:30 ص</span>
+<span class="size-2 rounded-full bg-semantic-error pulse-dot" title="خطأ نشط يتطلب تدخلاً"></span>
+</div>
+<p class="text-sm font-semibold text-deep-oxblood leading-relaxed">
+                      فشل في ربط مزامنة متجر إنستغرام Direct — تعذر تحديث أسعار الصرف وحالة توفر قطع الذهب المطلي تلقائياً.
+                    </p>
+</div>
+</div>
+<!-- Action Links & Actions -->
+<div class="flex items-center gap-2.5 shrink-0 self-end md:self-center pr-12 md:pr-0">
+<button class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-imperial-burgundy hover:bg-burgundy-800 text-champagne-gold text-xs font-bold transition-all shadow-sm">
+<span class="material-symbols-outlined text-xs">build</span>
+<span>إصلاح الربط التقني الآن</span>
+</button>
+<button class="text-xs text-semantic-error font-medium hover:underline px-2">عرض تقرير الخطأ</button>
+<button class="p-1 text-semantic-error hover:text-deep-oxblood rounded" title="خيارات إضافية">
+<span class="material-symbols-outlined text-lg">more_vert</span>
+</button>
+</div>
+</article>
+</div>
+</section>
+<!-- ================= GROUP 2: YESTERDAY ================= -->
+<section aria-label="تنبيهات الأمس" class="space-y-3 pt-4">
+<!-- Group Header -->
+<div class="flex items-center gap-3">
+<div class="size-2 rotate-45 bg-muted-rosewood"></div>
+<h2 class="font-headline font-bold text-sm text-muted-rosewood">أمس — الثلاثاء 23 تشرين الأول 2026</h2>
+<div class="h-px bg-hairline-burgundy flex-1"></div>
+<span class="text-xs text-muted-rosewood font-num">3 إشعارات مؤرشفة</span>
+</div>
+<div class="space-y-2.5 opacity-90 hover:opacity-100 transition-opacity">
+<!-- Item 5: Orders (Read) -->
+<article class="relative p-4 rounded-xl bg-surface-container-lowest/80 border border-hairline-burgundy transition-all flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+<div class="flex items-start gap-3.5 flex-1 min-w-0">
+<div class="size-10 rounded-xl bg-semantic-success-bg/60 text-semantic-success flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]">check_circle</span>
+</div>
+<div class="space-y-1">
+<div class="flex items-center gap-2 flex-wrap">
+<span class="px-2 py-0.5 rounded text-[11px] font-medium bg-surface-container-high text-muted-rosewood">الطلبات المسلّمة</span>
+<span class="text-xs text-muted-rosewood font-num">أمس 04:15 م</span>
+</div>
+<p class="text-sm text-warm-ink leading-relaxed">
+                      تم تسليم الطلب <span class="font-num text-imperial-burgundy font-semibold">#1050</span> بنجاح عبر الناقل المصفح في أربيل — تم تحصيل <span class="font-num font-semibold">45,000 د.ع</span> نقداً وترحيل السند إلى الخزينة.
+                    </p>
+</div>
+</div>
+<div class="flex items-center gap-3 shrink-0 self-end md:self-center pr-12 md:pr-0">
+<a class="inline-flex items-center gap-1 text-xs font-semibold text-muted-rosewood hover:text-imperial-burgundy transition-colors" href="#">
+<span>عرض سند القبض <span class="font-mono">RC-8812</span></span>
+<span class="material-symbols-outlined text-sm">arrow_left</span>
+</a>
+<button class="p-1 text-muted-rosewood hover:text-warm-ink rounded" title="خيارات إضافية">
+<span class="material-symbols-outlined text-lg">more_vert</span>
+</button>
+</div>
+</article>
+<!-- Item 6: Returns (Read) -->
+<article class="relative p-4 rounded-xl bg-surface-container-lowest/80 border border-hairline-burgundy transition-all flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+<div class="flex items-start gap-3.5 flex-1 min-w-0">
+<div class="size-10 rounded-xl bg-rose-mist/40 text-muted-rosewood flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]">assignment_return</span>
+</div>
+<div class="space-y-1">
+<div class="flex items-center gap-2 flex-wrap">
+<span class="px-2 py-0.5 rounded text-[11px] font-medium bg-surface-container-high text-muted-rosewood">المرتجعات والمختبر</span>
+<span class="text-xs text-muted-rosewood font-num">أمس 01:20 م</span>
+</div>
+<p class="text-sm text-warm-ink leading-relaxed">
+                      طلب إرجاع جديد <span class="font-mono text-imperial-burgundy font-semibold">R-0031</span> بانتظار المعاينة المخبرية — خاتم فضي رقم <span class="font-num">31</span> للطلب <span class="font-num">#1054</span>.
+                    </p>
+</div>
+</div>
+<div class="flex items-center gap-3 shrink-0 self-end md:self-center pr-12 md:pr-0">
+<a class="inline-flex items-center gap-1 text-xs font-semibold text-muted-rosewood hover:text-imperial-burgundy transition-colors" href="#">
+<span>فتح بطاقة الإرجاع</span>
+<span class="material-symbols-outlined text-sm">arrow_left</span>
+</a>
+<button class="p-1 text-muted-rosewood hover:text-warm-ink rounded" title="خيارات إضافية">
+<span class="material-symbols-outlined text-lg">more_vert</span>
+</button>
+</div>
+</article>
+<!-- Item 7: System Audit (Read) -->
+<article class="relative p-4 rounded-xl bg-surface-container-lowest/80 border border-hairline-burgundy transition-all flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+<div class="flex items-start gap-3.5 flex-1 min-w-0">
+<div class="size-10 rounded-xl bg-champagne-gold/30 text-antique-gold flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]">verified_user</span>
+</div>
+<div class="space-y-1">
+<div class="flex items-center gap-2 flex-wrap">
+<span class="px-2 py-0.5 rounded text-[11px] font-medium bg-surface-container-high text-muted-rosewood">التدقيق الأمني</span>
+<span class="text-xs text-muted-rosewood font-num">أمس 06:00 م</span>
+</div>
+<p class="text-sm text-warm-ink leading-relaxed">
+                      اكتمال جلسة المطابقة المالية والأمنية اليومية للخزينة الرئيسية بنجاح ودون أي فروقات.
+                    </p>
+</div>
+</div>
+<div class="flex items-center gap-3 shrink-0 self-end md:self-center pr-12 md:pr-0">
+<a class="inline-flex items-center gap-1.5 text-xs font-semibold text-muted-rosewood hover:text-imperial-burgundy transition-colors" href="#">
+<span class="material-symbols-outlined text-sm">picture_as_pdf</span>
+<span>تحميل محضر المطابقة <span class="font-mono">PDF</span></span>
+</a>
+<button class="p-1 text-muted-rosewood hover:text-warm-ink rounded" title="خيارات إضافية">
+<span class="material-symbols-outlined text-lg">more_vert</span>
+</button>
+</div>
+</article>
+</div>
+</section>
+</div>
+<!-- Pagination & Footer Stats Card -->
+<div class="pt-6 border-t border-hairline-burgundy flex flex-col sm:flex-row items-center justify-between gap-4">
+<span class="text-xs text-muted-rosewood font-medium">
+            عرض <strong class="text-imperial-burgundy font-num">7</strong> من أصل <strong class="text-imperial-burgundy font-num">28</strong> إشعار
+          </span>
+<!-- Pagination Controls -->
+<div aria-label="ترقيم الصفحات" class="flex items-center gap-1.5">
+<button class="size-8 rounded-lg border border-hairline-burgundy text-muted-rosewood/40 flex items-center justify-center cursor-not-allowed" disabled="">
+<span class="material-symbols-outlined text-base">chevron_right</span>
+</button>
+<button class="size-8 rounded-lg bg-imperial-burgundy text-champagne-gold font-num font-bold text-xs flex items-center justify-center shadow-sm">
+              1
+            </button>
+<button class="size-8 rounded-lg border border-hairline-burgundy text-warm-ink hover:bg-blush-surface font-num font-medium text-xs flex items-center justify-center transition-colors">
+              2
+            </button>
+<button class="size-8 rounded-lg border border-hairline-burgundy text-warm-ink hover:bg-blush-surface font-num font-medium text-xs flex items-center justify-center transition-colors">
+              3
+            </button>
+<button class="size-8 rounded-lg border border-hairline-burgundy text-warm-ink hover:bg-blush-surface font-num font-medium text-xs flex items-center justify-center transition-colors">
+              4
+            </button>
+<button class="size-8 rounded-lg border border-hairline-burgundy text-warm-ink hover:bg-blush-surface flex items-center justify-center transition-colors">
+<span class="material-symbols-outlined text-base">chevron_left</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

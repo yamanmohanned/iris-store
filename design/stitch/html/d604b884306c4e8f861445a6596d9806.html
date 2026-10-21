@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+
+<html dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>جلسة جرد المخزون — دار آيريس للمجوهرات الفاخرة</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS with Forms and Container Queries -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "inverse-surface": "#32302c",
+            "error": "#ba1a1a",
+            "primary-fixed-dim": "#ffb2b9",
+            "antique-gold": "#8A6620",
+            "background": "#fef9f2",
+            "tertiary-container": "#602833",
+            "tertiary-fixed-dim": "#ffb2bd",
+            "primary-container": "#721328",
+            "surface-container-lowest": "#ffffff",
+            "hairline-burgundy": "rgba(114, 19, 40, 0.14)",
+            "on-tertiary-container": "#dc8f9a",
+            "secondary-fixed": "#ffdf9e",
+            "champagne-gold": "#E9D49C",
+            "on-error-container": "#93000a",
+            "hairline-gold": "rgba(201, 162, 75, 0.45)",
+            "on-surface-variant": "#564243",
+            "imperial-burgundy": "#721328",
+            "semantic-success": "#1F6B4A",
+            "warm-ink": "#2A1215",
+            "wine-night": "#1E070D",
+            "inverse-on-surface": "#f5f0e9",
+            "on-surface": "#1d1c18",
+            "surface-tint": "#a3394a",
+            "burgundy-600": "#8A1B34",
+            "burgundy-800": "#5A0F22",
+            "outline-variant": "#dcc0c1",
+            "on-secondary": "#ffffff",
+            "surface-variant": "#e6e2db",
+            "primary": "#510015",
+            "inverse-primary": "#ffb2b9",
+            "royal-gold": "#C9A24B",
+            "on-tertiary-fixed": "#390915",
+            "on-primary-container": "#fb7c8c",
+            "on-tertiary-fixed-variant": "#6f343f",
+            "primary-fixed": "#ffdadc",
+            "error-container": "#ffdad6",
+            "surface-container-highest": "#e6e2db",
+            "muted-rosewood": "#6D585B",
+            "on-tertiary": "#ffffff",
+            "secondary-container": "#fdd275",
+            "semantic-error": "#B42318",
+            "semantic-info": "#2F5A8A",
+            "blush-surface": "#F7ECEC",
+            "on-error": "#ffffff",
+            "surface-dim": "#ded9d3",
+            "on-secondary-fixed": "#261a00",
+            "secondary": "#795902",
+            "ivory-canvas": "#FBF6EF",
+            "surface-container-low": "#f8f3ec",
+            "on-secondary-fixed-variant": "#5b4300",
+            "tertiary-fixed": "#ffd9dd",
+            "semantic-warning-bg": "#FCEBD0",
+            "surface-container-high": "#ece7e1",
+            "surface-container": "#f2ede6",
+            "outline": "#897173",
+            "on-primary-fixed-variant": "#842134",
+            "semantic-success-bg": "#E2F2EA",
+            "on-secondary-container": "#775800",
+            "surface": "#fef9f2",
+            "semantic-info-bg": "#E4EDF8",
+            "deep-oxblood": "#3A0A16",
+            "semantic-error-bg": "#FDE7E4",
+            "parchment": "#F3EADB",
+            "secondary-fixed-dim": "#ebc166",
+            "tertiary": "#45131e",
+            "on-primary": "#ffffff",
+            "rose-mist": "#EED9DB",
+            "on-background": "#1d1c18",
+            "surface-bright": "#fef9f2",
+            "on-primary-fixed": "#40000f",
+            "semantic-warning": "#8A4B08"
+          },
+          "fontFamily": {
+            "sans": ["IBM Plex Sans Arabic", "sans-serif"],
+            "mono": ["IBM Plex Mono", "monospace"],
+            "serif": ["El Messiri", "serif"],
+            "headline-xl": ["El Messiri", "serif"],
+            "headline-lg": ["El Messiri", "serif"],
+            "headline-md": ["El Messiri", "serif"],
+            "headline-sm": ["El Messiri", "serif"],
+            "body-xl": ["IBM Plex Sans Arabic", "sans-serif"],
+            "body-lg": ["IBM Plex Sans Arabic", "sans-serif"],
+            "body-md": ["IBM Plex Sans Arabic", "sans-serif"],
+            "body-sm": ["IBM Plex Sans Arabic", "sans-serif"],
+            "label-lg": ["IBM Plex Sans Arabic", "sans-serif"],
+            "label-md": ["IBM Plex Sans Arabic", "sans-serif"],
+            "label-sm": ["IBM Plex Sans Arabic", "sans-serif"]
+          },
+          "boxShadow": {
+            "luxury": "0 2px 14px -3px rgba(42, 18, 21, 0.05), 0 1px 3px rgba(42, 18, 21, 0.03)",
+            "luxury-hover": "0 8px 24px -4px rgba(114, 19, 40, 0.08), 0 2px 6px rgba(42, 18, 21, 0.04)"
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .tabular-nums {
+      font-variant-numeric: tabular-nums;
+    }
+    input[type=number]::-webkit-inner-spin-button, 
+    input[type=number]::-webkit-outer-spin-button { 
+      -webkit-appearance: none; 
+      margin: 0; 
+    }
+    input[type=number] {
+      -moz-appearance: textfield;
+    }
+  </style>
+</head>
+<body class="bg-ivory-canvas text-warm-ink font-body-md antialiased min-h-screen selection:bg-champagne-gold selection:text-wine-night">
+<!-- Main Application Wrapper -->
+<div class="flex flex-col min-h-screen w-full">
+<!-- Top Persistent Luxury Bar -->
+<header class="sticky top-0 z-40 bg-surface-container-lowest/90 backdrop-blur-md border-b border-hairline-burgundy transition-all duration-200">
+<div class="max-w-[1440px] mx-auto px-6 h-18 flex items-center justify-between">
+<!-- Brand & Context -->
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-3.5 pl-6 border-l border-hairline-burgundy">
+<div class="size-9 rounded-lg bg-primary-container text-surface-bright flex items-center justify-center shadow-sm">
+<svg class="w-5 h-5 text-champagne-gold" fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M36.7273 44C33.9891 44 31.6043 39.8386 30.3636 33.69C29.123 39.8386 26.7382 44 24 44C21.2618 44 18.877 39.8386 17.6364 33.69C16.3957 39.8386 14.0109 44 11.2727 44C7.25611 44 4 35.0457 4 24C4 12.9543 7.25611 4 11.2727 4C14.0109 4 16.3957 8.16144 17.6364 14.31C18.877 8.16144 21.2618 4 24 4C26.7382 4 29.123 8.16144 30.3636 14.31C31.6043 8.16144 33.9891 4 36.7273 4C40.7439 4 44 12.9543 44 24C44 35.0457 40.7439 44 36.7273 44Z" fill="currentColor"></path>
+</svg>
+</div>
+<div>
+<h1 class="text-warm-ink font-serif text-lg font-bold tracking-tight">دار آيريس للمجوهرات الفاخرة</h1>
+<p class="text-xs text-muted-rosewood font-sans">نظام إدارة الخزائن والمخزون النفيس</p>
+</div>
+</div>
+<nav class="hidden xl:flex items-center gap-6 text-sm font-medium">
+<a class="text-muted-rosewood hover:text-warm-ink transition-colors" href="#">الرئيسية</a>
+<a class="text-muted-rosewood hover:text-warm-ink transition-colors" href="#">المخزون والقطع</a>
+<a class="text-primary-container font-semibold relative after:content-[''] after:absolute after:-bottom-5 after:right-0 after:left-0 after:h-0.5 after:bg-royal-gold" href="#">جلسات الجرد</a>
+<a class="text-muted-rosewood hover:text-warm-ink transition-colors" href="#">التقارير المالية</a>
+<a class="text-muted-rosewood hover:text-warm-ink transition-colors" href="#">إعدادات الخزينة</a>
+</nav>
+</div>
+<!-- Top Right Actions & User -->
+<div class="flex items-center gap-3">
+<div class="flex items-center gap-2 border-l border-hairline-burgundy pl-4 ml-1">
+<button class="h-9 px-3.5 rounded-lg border border-hairline-burgundy bg-surface-container-low text-warm-ink text-xs font-semibold hover:bg-parchment transition-colors flex items-center gap-1.5 shadow-sm">
+<span class="material-symbols-outlined text-[17px] text-muted-rosewood" data-icon="save">save</span>
+<span>حفظ مؤقت</span>
+</button>
+<button class="h-9 px-3.5 rounded-lg border border-hairline-burgundy bg-surface-container-lowest text-warm-ink text-xs font-semibold hover:bg-parchment transition-colors flex items-center gap-1.5 shadow-sm">
+<span class="material-symbols-outlined text-[17px] text-muted-rosewood" data-icon="picture_as_pdf">picture_as_pdf</span>
+<span>تصدير ورقة الجرد PDF</span>
+</button>
+<button class="h-9 px-4 rounded-lg bg-imperial-burgundy hover:bg-burgundy-800 text-surface-bright text-xs font-semibold transition-all duration-150 flex items-center gap-2 shadow-sm border border-champagne-gold/30">
+<span class="material-symbols-outlined text-[17px] text-champagne-gold" data-icon="lock">lock</span>
+<span>اعتماد وإغلاق الجرد</span>
+</button>
+</div>
+<!-- User Profile -->
+<div class="flex items-center gap-2.5 pr-2">
+<div class="text-left hidden sm:block">
+<div class="text-xs font-semibold text-warm-ink">سارة آل رحيم</div>
+<div class="text-[10px] text-muted-rosewood font-mono tracking-tight">كبير مدققي الخزينة</div>
+</div>
+<div class="size-9 rounded-full ring-2 ring-hairline-gold overflow-hidden bg-parchment">
+<div class="w-full h-full bg-cover bg-center" data-alt="Portrait photo of a professional Arab woman auditor wearing elegant boutique attire in a brightly lit, high-end luxury jewelry office setting. Soft warm neutral background with gold accents and high-key ambient light." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuABfIG754X5d32LSwI5kez9t-J7-pVefYBac-v7sYNp7jsT0FS0aIHT3YoODkqQG2j1OPup1sh5q1L7geI6O94Y2BpN_QCBsudIITGIUInepFcElVOgpQ3HKmMzFoKn9pMoclSAhsI4FAlSZKFRgYEf9nKZRD-Fg5Wtdx67IRN_oFhL7nDLiwZUhVWL6bKxg9CNfDufVjPaN7ilfylYLn1lbvfjf37H_7aYzi2l7zU7YMwBn7uFMv8Z')"></div>
+</div>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Workspace Container -->
+<main class="max-w-[1440px] w-full mx-auto px-6 py-6 flex-1 flex flex-col gap-6">
+<!-- Breadcrumbs and Session Title Header -->
+<section class="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-surface-container-lowest p-5 rounded-xl border border-hairline-burgundy shadow-luxury">
+<div class="space-y-1.5">
+<nav class="flex items-center gap-2 text-xs text-muted-rosewood font-sans">
+<a class="hover:text-warm-ink transition-colors" href="#">المخزون</a>
+<span class="text-hairline-burgundy font-mono">/</span>
+<a class="hover:text-warm-ink transition-colors" href="#">جلسات الجرد</a>
+<span class="text-hairline-burgundy font-mono">/</span>
+<span class="text-warm-ink font-medium">جرد دوري — الربع الرابع (01/10/2026)</span>
+</nav>
+<div class="flex flex-wrap items-center gap-3">
+<h2 class="text-2xl font-serif font-bold text-wine-night tracking-tight">جلسة جرد المخزون — 01/10/2026</h2>
+<div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-semantic-warning-bg text-semantic-warning border border-champagne-gold/60">
+<span class="size-2 rounded-full bg-semantic-warning animate-pulse"></span>
+<span>قيد الجرد الحصري</span>
+</div>
+</div>
+<div class="flex items-center gap-2 text-xs text-muted-rosewood">
+<span class="material-symbols-outlined text-[16px] text-royal-gold" data-icon="location_on">location_on</span>
+<span>خزينة بغداد الرئيسية — قسم المصوغات الذهبية والفضية</span>
+<span class="inline-block size-1 rounded-full bg-muted-rosewood/40"></span>
+<span class="material-symbols-outlined text-[15px]" data-icon="schedule">schedule</span>
+<span>آخر حفظ تلقائي منذ دقيقتين (11:42 ص)</span>
+</div>
+</div>
+<!-- Secondary Meta badges -->
+<div class="flex items-center gap-3">
+<div class="bg-surface-container-low px-3.5 py-2 rounded-lg border border-hairline-burgundy text-right">
+<div class="text-[11px] text-muted-rosewood">المشرف المعتمد</div>
+<div class="text-xs font-bold text-warm-ink">د. عادل كاشف الغطاء</div>
+</div>
+<div class="bg-surface-container-low px-3.5 py-2 rounded-lg border border-hairline-burgundy text-right">
+<div class="text-[11px] text-muted-rosewood">المعيار والرقابة</div>
+<div class="text-xs font-mono font-bold text-royal-gold">ISO-9001:JEWEL</div>
+</div>
+</div>
+</section>
+<!-- KPI Dashboard & Progress Strip -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-4">
+<!-- Card 1: Progress meter (4 Cols) -->
+<div class="lg:col-span-4 bg-surface-container-lowest rounded-xl p-5 border border-hairline-burgundy shadow-luxury flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between text-xs text-muted-rosewood mb-2">
+<span class="font-medium text-warm-ink flex items-center gap-1.5">
+<span class="material-symbols-outlined text-royal-gold text-[18px]" data-icon="donut_large">donut_large</span>
+                اكتمال عملية التحقق
+              </span>
+<span class="font-mono text-xs font-semibold text-primary-container">28% مكتمل</span>
+</div>
+<div class="text-xl font-serif font-bold text-wine-night mb-3">
+              تم فحص <span class="tabular-nums font-mono text-royal-gold text-2xl">34</span> من أصل <span class="tabular-nums font-mono">120</span> صنفاً
+            </div>
+<!-- Progress Bar with Royal Gold Gradient -->
+<div class="w-full bg-parchment h-2.5 rounded-full overflow-hidden p-0.5 border border-hairline-gold/40">
+<div class="h-full bg-gradient-to-l from-royal-gold via-champagne-gold to-imperial-burgundy rounded-full transition-all duration-500 shadow-sm" style="width: 28.33%;"></div>
+</div>
+</div>
+<div class="pt-4 mt-2 border-t border-hairline-burgundy flex items-center justify-between text-xs text-muted-rosewood">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-muted-rosewood" data-icon="hourglass_top">hourglass_top</span>
+              المتبقي المتوقع للجلسة:
+            </span>
+<span class="font-semibold text-warm-ink">45 دقيقة تقريباً</span>
+</div>
+</div>
+<!-- Card 2: Summary Metrics (8 Cols) -->
+<div class="lg:col-span-8 bg-surface-container-lowest rounded-xl p-5 border border-hairline-burgundy shadow-luxury flex flex-col justify-between">
+<div class="flex items-center justify-between pb-3 border-b border-hairline-burgundy">
+<h3 class="text-xs font-semibold text-muted-rosewood uppercase tracking-wider flex items-center gap-1.5">
+<span class="material-symbols-outlined text-royal-gold text-[16px]" data-icon="analytics">analytics</span>
+              مؤشرات الفوارق الحالية
+            </h3>
+<span class="text-[11px] text-muted-rosewood">تحديث لحظي لكل عملية مسح</span>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-3 pt-3">
+<!-- Metric 1: Matched -->
+<div class="bg-surface-container-low rounded-lg p-3 border border-hairline-burgundy flex flex-col justify-between">
+<div class="flex items-center justify-between mb-1">
+<span class="text-xs text-muted-rosewood">الأصناف المطابقة</span>
+<span class="material-symbols-outlined text-semantic-success text-[16px]" data-icon="check_circle">check_circle</span>
+</div>
+<div class="text-xl font-bold font-mono text-warm-ink tabular-nums">29 <span class="text-xs font-sans font-normal text-muted-rosewood">صنفاً</span></div>
+<div class="text-[11px] font-medium text-semantic-success mt-1">نسبة تطابق 85.3%</div>
+</div>
+<!-- Metric 2: Discrepancy Items -->
+<div class="bg-blush-surface rounded-lg p-3 border border-rose-mist flex flex-col justify-between">
+<div class="flex items-center justify-between mb-1">
+<span class="text-xs text-primary-container font-medium">أصناف بها فروقات</span>
+<span class="material-symbols-outlined text-burgundy-600 text-[16px]" data-icon="warning">warning</span>
+</div>
+<div class="text-xl font-bold font-mono text-imperial-burgundy tabular-nums">5 <span class="text-xs font-sans font-normal text-primary-container">أصناف</span></div>
+<div class="text-[11px] font-medium text-burgundy-600 mt-1">تتطلب تدقيقاً وإقراراً</div>
+</div>
+<!-- Metric 3: Total Deficit -->
+<div class="bg-semantic-error-bg/60 rounded-lg p-3 border border-error-container flex flex-col justify-between">
+<div class="flex items-center justify-between mb-1">
+<span class="text-xs text-semantic-error font-medium">إجمالي العجز (النقص)</span>
+<span class="material-symbols-outlined text-semantic-error text-[16px]" data-icon="trending_down">trending_down</span>
+</div>
+<div class="text-xl font-bold font-mono text-semantic-error tabular-nums">−7 <span class="text-xs font-sans font-normal text-warm-ink">قطع</span></div>
+<div class="text-[11px] font-mono text-semantic-error font-medium mt-1">−185,000 د.ع تقريباً</div>
+</div>
+<!-- Metric 4: Total Surplus -->
+<div class="bg-semantic-success-bg/60 rounded-lg p-3 border border-emerald-200/40 flex flex-col justify-between">
+<div class="flex items-center justify-between mb-1">
+<span class="text-xs text-semantic-success font-medium">إجمالي الفائض (الزيادة)</span>
+<span class="material-symbols-outlined text-semantic-success text-[16px]" data-icon="trending_up">trending_up</span>
+</div>
+<div class="text-xl font-bold font-mono text-semantic-success tabular-nums">+2 <span class="text-xs font-sans font-normal text-warm-ink">قطعتان</span></div>
+<div class="text-[11px] font-mono text-semantic-success font-medium mt-1">+42,000 د.ع تقريباً</div>
+</div>
+</div>
+<div class="mt-3 pt-2 text-xs flex items-center justify-between border-t border-hairline-burgundy/60 text-muted-rosewood">
+<span class="flex items-center gap-1 font-medium">
+              صافي الفارق الإجمالي للقطع:
+              <strong class="font-mono text-semantic-error text-sm">−5 قطع</strong>
+</span>
+<span class="text-[11px]">صافي القيمة التقديرية: <span class="font-mono text-semantic-error font-semibold">−143,000 د.ع</span></span>
+</div>
+</div>
+</section>
+<!-- Barcode Quick Input Toolbar & Filters -->
+<section class="bg-surface-container-lowest rounded-xl border border-hairline-burgundy p-4 shadow-luxury space-y-4">
+<!-- Search and Barcode row -->
+<div class="flex flex-col lg:flex-row items-center justify-between gap-4">
+<!-- Barcode optical focus input -->
+<div class="relative w-full lg:max-w-2xl">
+<div class="absolute inset-y-0 right-0 pr-3.5 flex items-center pointer-events-none text-royal-gold">
+<span class="material-symbols-outlined text-2xl" data-icon="barcode_scanner">barcode_scanner</span>
+</div>
+<input class="w-full pl-28 pr-12 py-3 rounded-lg border-2 border-champagne-gold/70 bg-ivory-canvas/60 text-warm-ink text-sm font-sans focus:outline-none focus:border-royal-gold focus:ring-2 focus:ring-champagne-gold/40 placeholder:text-muted-rosewood/70 transition-all shadow-inner" placeholder="امسح الباركود أو اكتب كود الصنف (SKU) واضغط Enter لإضافة قطعة..." type="text" value=""/>
+<div class="absolute inset-y-0 left-0 pl-2.5 flex items-center gap-1">
+<span class="bg-surface-container-high text-muted-rosewood font-mono text-[11px] px-2 py-1 rounded border border-hairline-burgundy flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px]" data-icon="keyboard_return">keyboard_return</span>
+                Enter
+              </span>
+</div>
+</div>
+<!-- Audio/Haptic Confirmation Toggle & Fast Action -->
+<div class="flex items-center justify-between w-full lg:w-auto gap-4">
+<label class="flex items-center gap-2 cursor-pointer select-none">
+<input checked="" class="rounded border-hairline-burgundy text-imperial-burgundy focus:ring-champagne-gold size-4" type="checkbox"/>
+<span class="text-xs text-muted-rosewood font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-royal-gold" data-icon="volume_up">volume_up</span>
+                رنين صوتي عند المسح
+              </span>
+</label>
+<button class="h-10 px-4 rounded-lg bg-surface-container-low hover:bg-parchment text-warm-ink text-xs font-semibold border border-hairline-burgundy flex items-center gap-1.5 transition-colors">
+<span class="material-symbols-outlined text-[17px] text-royal-gold" data-icon="add_circle">add_circle</span>
+<span>إدخال صنف يدوي غير مسجل</span>
+</button>
+</div>
+</div>
+<!-- Filter tabs & selectors -->
+<div class="flex flex-wrap items-center justify-between gap-3 pt-3 border-t border-hairline-burgundy">
+<!-- Category Tabs -->
+<div class="flex items-center gap-1.5 overflow-x-auto pb-1 max-w-full">
+<button class="px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-imperial-burgundy text-surface-bright shadow-sm flex items-center gap-1.5">
+<span>كل الأصناف</span>
+<span class="bg-wine-night/40 text-champagne-gold font-mono px-1.5 py-0.2 rounded-full text-[10px]">120</span>
+</button>
+<button class="px-3.5 py-1.5 rounded-lg text-xs font-medium text-muted-rosewood hover:text-warm-ink hover:bg-parchment transition-colors flex items-center gap-1.5 border border-hairline-burgundy bg-surface-container-lowest">
+<span>تم حصرها</span>
+<span class="bg-surface-container-high text-muted-rosewood font-mono px-1.5 py-0.2 rounded-full text-[10px]">34</span>
+</button>
+<button class="px-3.5 py-1.5 rounded-lg text-xs font-medium text-muted-rosewood hover:text-warm-ink hover:bg-parchment transition-colors flex items-center gap-1.5 border border-hairline-burgundy bg-surface-container-lowest">
+<span>متبقية للجرد</span>
+<span class="bg-surface-container-high text-muted-rosewood font-mono px-1.5 py-0.2 rounded-full text-[10px]">86</span>
+</button>
+<button class="px-3.5 py-1.5 rounded-lg text-xs font-semibold text-semantic-error hover:bg-semantic-error-bg/70 transition-colors flex items-center gap-1.5 border border-error-container bg-semantic-error-bg/30">
+<span class="material-symbols-outlined text-[15px]" data-icon="error_outline">error_outline</span>
+<span>تحتوي فروقات</span>
+<span class="bg-semantic-error text-surface-bright font-mono px-1.5 py-0.2 rounded-full text-[10px]">5</span>
+</button>
+</div>
+<!-- Secondary Filters -->
+<div class="flex items-center gap-3">
+<div class="flex items-center gap-2">
+<label class="text-xs text-muted-rosewood" for="category-select">التصنيف:</label>
+<select class="text-xs bg-surface-container-lowest border border-hairline-burgundy rounded-lg py-1.5 pr-3 pl-8 text-warm-ink focus:ring-1 focus:ring-royal-gold focus:border-royal-gold" id="category-select">
+<option>جميع المصوغات</option>
+<option>قلائد وسلاسل</option>
+<option>خواتم وسوليتير</option>
+<option>أساور ومباريم</option>
+<option>أقراط ولآلئ</option>
+<option>أطقم كاملة</option>
+</select>
+</div>
+<label class="inline-flex items-center gap-2 cursor-pointer bg-surface-container-low px-3 py-1.5 rounded-lg border border-hairline-burgundy">
+<input class="rounded border-hairline-burgundy text-imperial-burgundy focus:ring-champagne-gold size-3.5" type="checkbox"/>
+<span class="text-xs text-warm-ink font-medium">إظهار غير المتطابق فقط</span>
+</label>
+</div>
+</div>
+</section>
+<!-- Interactive Stock Count Table -->
+<section class="bg-surface-container-lowest rounded-xl border border-hairline-burgundy shadow-luxury overflow-hidden">
+<div class="overflow-x-auto">
+<table class="w-full text-right border-collapse">
+<thead>
+<tr class="bg-surface-container-low text-muted-rosewood text-[11px] font-semibold tracking-wider border-b border-hairline-burgundy select-none">
+<th class="py-3 px-4 w-12 text-center font-mono">#</th>
+<th class="py-3 px-4 font-mono">كود الصنف (SKU)</th>
+<th class="py-3 px-4 min-w-[260px]">المنتج / المتغير النفيس</th>
+<th class="py-3 px-4">الموقع بالخزينة</th>
+<th class="py-3 px-4 text-center">كمية النظام</th>
+<th class="py-3 px-4 text-center min-w-[140px]">الكمية الفعلية (العد)</th>
+<th class="py-3 px-4 text-center min-w-[130px]">الفارق</th>
+<th class="py-3 px-4 min-w-[280px]">سبب الفارق والملاحظة التوثيقية</th>
+<th class="py-3 px-4 text-center">المحقق والتوقيت</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-hairline-burgundy/60 text-xs">
+<!-- ROW 1: Deficit -3 (NK-102-G18) -->
+<tr class="bg-semantic-error-bg/30 hover:bg-semantic-error-bg/50 transition-colors border-r-4 border-r-semantic-error">
+<td class="py-3 px-4 text-center font-mono text-muted-rosewood">01</td>
+<td class="py-3 px-4">
+<div class="font-mono font-semibold text-imperial-burgundy text-xs bg-rose-mist/60 px-2 py-0.5 rounded inline-block">
+                    NK-102-G18
+                  </div>
+</td>
+<td class="py-3 px-4">
+<div class="flex items-center gap-3">
+<div class="size-11 rounded-lg border border-hairline-burgundy overflow-hidden bg-parchment flex-shrink-0">
+<div class="w-full h-full bg-cover bg-center" data-alt="Close up detailed photo of an exquisite 18k solid gold luxury pendant necklace laying gracefully on ivory velvet fabric under soft warm boutique lighting." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBw1xeePLYUpLqBm8bw7zHbsf_GOjt2k5SgiM1Odaov0bQ5Q-I9x72ZO0SUmgd0CLOEIjPVfhruHdXD0YoLUVg4xirwy1kkel-qE-qdco-6h7sB7R2KMoNsLymljcfYWVa8EC7LriHDlwzcJDj76PnXaDKwcCe-6oEIdxEqSJPxsja6-rTtLHXBUvnvFJhkHFY7C69c9IyxU58tqOForf6rbbKRxJ4ILYmyDJZ8VNpgtpRf-t3E6ER2')"></div>
+</div>
+<div>
+<div class="font-semibold text-wine-night text-sm">قلادة ذهبية رقم 102</div>
+<div class="text-[11px] text-muted-rosewood">ذهب عيار 18 — وزن تقريبي 14.2 غرام</div>
+</div>
+</div>
+</td>
+<td class="py-3 px-4 text-muted-rosewood">
+<span class="inline-flex items-center gap-1 font-mono text-xs bg-surface-container-high px-2 py-0.5 rounded border border-hairline-burgundy">
+<span class="material-symbols-outlined text-[13px] text-royal-gold" data-icon="drawer">diagnosis</span>
+                    القلائد — درج A4
+                  </span>
+</td>
+<td class="py-3 px-4 text-center font-mono tabular-nums text-sm font-semibold text-warm-ink">68</td>
+<td class="py-3 px-4">
+<div class="flex items-center justify-center gap-1">
+<button class="size-7 rounded bg-surface-container-lowest border border-hairline-burgundy hover:bg-parchment text-warm-ink flex items-center justify-center font-mono font-bold text-sm shadow-sm">-</button>
+<input class="w-14 h-7 text-center font-mono font-bold text-sm text-semantic-error bg-surface-container-lowest border border-semantic-error/40 rounded focus:border-semantic-error focus:ring-1 focus:ring-semantic-error" type="number" value="65"/>
+<button class="size-7 rounded bg-surface-container-lowest border border-hairline-burgundy hover:bg-parchment text-warm-ink flex items-center justify-center font-mono font-bold text-sm shadow-sm">+</button>
+</div>
+</td>
+<td class="py-3 px-4 text-center">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-mono font-bold bg-semantic-error-bg text-semantic-error border border-error-container">
+<span class="material-symbols-outlined text-[14px]" data-icon="arrow_downward">arrow_downward</span>
+                    −3 عجز
+                  </span>
+</td>
+<td class="py-3 px-4">
+<div class="relative">
+<input class="w-full text-xs py-1.5 px-2.5 rounded bg-surface-container-lowest border border-semantic-error/30 text-warm-ink focus:border-semantic-error focus:ring-1 focus:ring-semantic-error" type="text" value="عجز غير مبرر بانتظار مراجعة الكاميرات"/>
+</div>
+</td>
+<td class="py-3 px-4 text-center">
+<div class="text-[11px] font-semibold text-warm-ink">سارة آل رحيم</div>
+<div class="text-[10px] font-mono text-muted-rosewood">11:34 ص</div>
+</td>
+</tr>
+<!-- ROW 2: Surplus +1 (RG-031-S92) -->
+<tr class="bg-semantic-success-bg/30 hover:bg-semantic-success-bg/50 transition-colors border-r-4 border-r-semantic-success">
+<td class="py-3 px-4 text-center font-mono text-muted-rosewood">02</td>
+<td class="py-3 px-4">
+<div class="font-mono font-semibold text-warm-ink text-xs bg-surface-container-high px-2 py-0.5 rounded inline-block">
+                    RG-031-S92
+                  </div>
+</td>
+<td class="py-3 px-4">
+<div class="flex items-center gap-3">
+<div class="size-11 rounded-lg border border-hairline-burgundy overflow-hidden bg-parchment flex-shrink-0">
+<div class="w-full h-full bg-cover bg-center" data-alt="High precision studio macro photograph of a sparkling sterling silver ring stamped 925 paved with small zircon gems resting on natural limestone." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDM06DxdBh_EUENVxOIw33y3EXALJ0GJMzy-5_ko_Q02uHORyMwc_6mY3brtYr2S7oEsM1e9Gb33v9czT2zVmJLoWhoofdTrQHc2hJEZrWvsIQiYGvwOPqrgkuNyTlbrCfA-S_SOnxw3NTXePaxULUl133NWmYKoE_7VjrJufo-Nvzjsqfi6lld_YE68rcKFOhEIa8DGgDxlAEqlQ-VN3TlyxcYjpG8_7kz0QmERq_yxPA69XuYZH4r')"></div>
+</div>
+<div>
+<div class="font-semibold text-wine-night text-sm">خاتم فضي رقم 31</div>
+<div class="text-[11px] text-muted-rosewood">عيار 925 مرصع زركون نمساوي</div>
+</div>
+</div>
+</td>
+<td class="py-3 px-4 text-muted-rosewood">
+<span class="inline-flex items-center gap-1 font-mono text-xs bg-surface-container-high px-2 py-0.5 rounded border border-hairline-burgundy">
+<span class="material-symbols-outlined text-[13px] text-royal-gold" data-icon="drawer">diagnosis</span>
+                    الخواتم — درج C2
+                  </span>
+</td>
+<td class="py-3 px-4 text-center font-mono tabular-nums text-sm font-semibold text-warm-ink">14</td>
+<td class="py-3 px-4">
+<div class="flex items-center justify-center gap-1">
+<button class="size-7 rounded bg-surface-container-lowest border border-hairline-burgundy hover:bg-parchment text-warm-ink flex items-center justify-center font-mono font-bold text-sm shadow-sm">-</button>
+<input class="w-14 h-7 text-center font-mono font-bold text-sm text-semantic-success bg-surface-container-lowest border border-semantic-success/40 rounded focus:border-semantic-success focus:ring-1 focus:ring-semantic-success" type="number" value="15"/>
+<button class="size-7 rounded bg-surface-container-lowest border border-hairline-burgundy hover:bg-parchment text-warm-ink flex items-center justify-center font-mono font-bold text-sm shadow-sm">+</button>
+</div>
+</td>
+<td class="py-3 px-4 text-center">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-mono font-bold bg-semantic-success-bg text-semantic-success border border-emerald-300/40">
+<span class="material-symbols-outlined text-[14px]" data-icon="arrow_upward">arrow_upward</span>
+                    +1 فائض
+                  </span>
+</td>
+<td class="py-3 px-4">
+<div class="relative">
+<input class="w-full text-xs py-1.5 px-2.5 rounded bg-surface-container-lowest border border-hairline-burgundy text-warm-ink focus:border-royal-gold focus:ring-1 focus:ring-royal-gold" type="text" value="تم العثور على قطعة إضافية في علبة العرض 2"/>
+</div>
+</td>
+<td class="py-3 px-4 text-center">
+<div class="text-[11px] font-semibold text-warm-ink">سارة آل رحيم</div>
+<div class="text-[10px] font-mono text-muted-rosewood">11:38 ص</div>
+</td>
+</tr>
+<!-- ROW 3: Exact Match (BR-008-G18) -->
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="py-3 px-4 text-center font-mono text-muted-rosewood">03</td>
+<td class="py-3 px-4">
+<div class="font-mono font-semibold text-warm-ink text-xs bg-surface-container-high px-2 py-0.5 rounded inline-block">
+                    BR-008-G18
+                  </div>
+</td>
+<td class="py-3 px-4">
+<div class="flex items-center gap-3">
+<div class="size-11 rounded-lg border border-hairline-burgundy overflow-hidden bg-parchment flex-shrink-0">
+<div class="w-full h-full bg-cover bg-center" data-alt="Refined jewelry photograph of a delicate 18-karat minimalist yellow gold bracelet with subtle engraved details lying on a warm neutral linen background." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAK-R0G_nrtvXaSMb_izLv7ZPEZPanbYOjA7xwm1xbAlBIIf3qbvGi8t7TAQUoSbCqDH2hmPgUdMr9m7KlFifhnUDzox4cw_Fl7pdaG0e-GrKeIfubJGDvo_PPfyYmeDCo5lg603etJhx6Qg2nQJCxe2VKOKdmDNbZRPqmZiIuDQbqSyffFGubLwsNPMi0srtVumV-gwmC_H29Tgvs0GHOKYXpdH4j4AgK7qYC4dMNeCAP-x3qOC9Ke')"></div>
+</div>
+<div>
+<div class="font-semibold text-wine-night text-sm">سوار ذهبي ناعم رقم 08</div>
+<div class="text-[11px] text-muted-rosewood">مقاس 17 سم — تصميم إيطالي خفيف</div>
+</div>
+</div>
+</td>
+<td class="py-3 px-4 text-muted-rosewood">
+<span class="inline-flex items-center gap-1 font-mono text-xs bg-surface-container-high px-2 py-0.5 rounded border border-hairline-burgundy">
+<span class="material-symbols-outlined text-[13px] text-royal-gold" data-icon="drawer">diagnosis</span>
+                    الأساور — صندوق B1
+                  </span>
+</td>
+<td class="py-3 px-4 text-center font-mono tabular-nums text-sm font-semibold text-warm-ink">22</td>
+<td class="py-3 px-4">
+<div class="flex items-center justify-center gap-1">
+<button class="size-7 rounded bg-surface-container-lowest border border-hairline-burgundy hover:bg-parchment text-warm-ink flex items-center justify-center font-mono font-bold text-sm shadow-sm">-</button>
+<input class="w-14 h-7 text-center font-mono font-bold text-sm text-warm-ink bg-surface-container-lowest border border-hairline-burgundy rounded focus:border-royal-gold focus:ring-1 focus:ring-royal-gold" type="number" value="22"/>
+<button class="size-7 rounded bg-surface-container-lowest border border-hairline-burgundy hover:bg-parchment text-warm-ink flex items-center justify-center font-mono font-bold text-sm shadow-sm">+</button>
+</div>
+</td>
+<td class="py-3 px-4 text-center">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold bg-surface-container-high text-muted-rosewood border border-hairline-burgundy">
+<span class="material-symbols-outlined text-[14px] text-semantic-success" data-icon="check">check</span>
+                    مطابق
+                  </span>
+</td>
+<td class="py-3 px-4">
+<input class="w-full text-xs py-1.5 px-2.5 rounded bg-surface-container-low/50 border border-transparent text-muted-rosewood focus:border-hairline-burgundy focus:bg-surface-container-lowest" type="text" value="مطابق تماماً مع رصيد الخزينة"/>
+</td>
+<td class="py-3 px-4 text-center">
+<div class="text-[11px] font-semibold text-warm-ink">سارة آل رحيم</div>
+<div class="text-[10px] font-mono text-muted-rosewood">11:29 ص</div>
+</td>
+</tr>
+<!-- ROW 4: Deficit -2 (ER-017-PRL) -->
+<tr class="bg-semantic-error-bg/30 hover:bg-semantic-error-bg/50 transition-colors border-r-4 border-r-semantic-error">
+<td class="py-3 px-4 text-center font-mono text-muted-rosewood">04</td>
+<td class="py-3 px-4">
+<div class="font-mono font-semibold text-imperial-burgundy text-xs bg-rose-mist/60 px-2 py-0.5 rounded inline-block">
+                    ER-017-PRL
+                  </div>
+</td>
+<td class="py-3 px-4">
+<div class="flex items-center gap-3">
+<div class="size-11 rounded-lg border border-hairline-burgundy overflow-hidden bg-parchment flex-shrink-0">
+<div class="w-full h-full bg-cover bg-center" data-alt="Luxury commercial jewelry still life of elegant freshwater pearl drop earrings with diamond cluster caps resting upon soft ivory raw silk fabric." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAvtmHNbAlCgDyzjAU5BomSQQ0Gw36LqMP6oHkRAEL8se8a-RJ005Cg_kNdTq-Zhlros-cM6pUGnQv1Ah-yrmHhX0nlJJ_Sr_2as2ZIjExvgD6ZJgfPxwD4ddUCKQ0VomqX62CI3RErI7AYDtgsezFrIGk6q1PNuElTRYWaoKhbihiV33FNdTQBJamj_sESBgOsYi7zJGnoi8IPvlmtfPN0wn1DVTUwbEPSMlSWca7DiSKu6tGb069b')"></div>
+</div>
+<div>
+<div class="font-semibold text-wine-night text-sm">أقراط لؤلؤ زراعي رقم 17</div>
+<div class="text-[11px] text-muted-rosewood">لؤلؤ طبيعي بحري مع قفل ذهب أبيض</div>
+</div>
+</div>
+</td>
+<td class="py-3 px-4 text-muted-rosewood">
+<span class="inline-flex items-center gap-1 font-mono text-xs bg-surface-container-high px-2 py-0.5 rounded border border-hairline-burgundy">
+<span class="material-symbols-outlined text-[13px] text-royal-gold" data-icon="drawer">diagnosis</span>
+                    الأقراط — صينية E1
+                  </span>
+</td>
+<td class="py-3 px-4 text-center font-mono tabular-nums text-sm font-semibold text-warm-ink">9</td>
+<td class="py-3 px-4">
+<div class="flex items-center justify-center gap-1">
+<button class="size-7 rounded bg-surface-container-lowest border border-hairline-burgundy hover:bg-parchment text-warm-ink flex items-center justify-center font-mono font-bold text-sm shadow-sm">-</button>
+<input class="w-14 h-7 text-center font-mono font-bold text-sm text-semantic-error bg-surface-container-lowest border border-semantic-error/40 rounded focus:border-semantic-error focus:ring-1 focus:ring-semantic-error" type="number" value="7"/>
+<button class="size-7 rounded bg-surface-container-lowest border border-hairline-burgundy hover:bg-parchment text-warm-ink flex items-center justify-center font-mono font-bold text-sm shadow-sm">+</button>
+</div>
+</td>
+<td class="py-3 px-4 text-center">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-mono font-bold bg-semantic-error-bg text-semantic-error border border-error-container">
+<span class="material-symbols-outlined text-[14px]" data-icon="arrow_downward">arrow_downward</span>
+                    −2 عجز
+                  </span>
+</td>
+<td class="py-3 px-4">
+<input class="w-full text-xs py-1.5 px-2.5 rounded bg-surface-container-lowest border border-semantic-error/30 text-warm-ink focus:border-semantic-error focus:ring-1 focus:ring-semantic-error" type="text" value="تم كسر قفل قطعتين وإحالتهما لورشة الصيانة الداخلية"/>
+</td>
+<td class="py-3 px-4 text-center">
+<div class="text-[11px] font-semibold text-warm-ink">سارة آل رحيم</div>
+<div class="text-[10px] font-mono text-muted-rosewood">11:15 ص</div>
+</td>
+</tr>
+<!-- ROW 5: Exact Match (NK-055-HRT) -->
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="py-3 px-4 text-center font-mono text-muted-rosewood">05</td>
+<td class="py-3 px-4">
+<div class="font-mono font-semibold text-warm-ink text-xs bg-surface-container-high px-2 py-0.5 rounded inline-block">
+                    NK-055-HRT
+                  </div>
+</td>
+<td class="py-3 px-4">
+<div class="flex items-center gap-3">
+<div class="size-11 rounded-lg border border-hairline-burgundy overflow-hidden bg-parchment flex-shrink-0">
+<div class="w-full h-full bg-cover bg-center" data-alt="High jewelry macro close up of a heart-shaped brilliant cut diamond pendant with platinum chain sparkling under warm diffuse boutique spotlighting." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBfQsegdcQVoV9I9HuyTmvwI5pmZ5TV4QFc8G215Vf5WZSFjki1VJAQnNRYCH4xZzvx0QN2iRSaJelZwxq_MOY04VaZaVjvPMHIGNmS18BF81d4VpdpIOumWu2LfKTPCZv2ozknotkcWQc16_U_Zf91n9RDei8Y_HfnrJUbOVDQA3xavkd9NTSjmb8kzn6pXJr-eHfcJF4E8BXTU0UYAPnB8XPNJLZcDwPVIqJqeh4QUzSjQuhwcyax')"></div>
+</div>
+<div>
+<div class="font-semibold text-wine-night text-sm">قلادة قلب ألماس رقم 55</div>
+<div class="text-[11px] text-muted-rosewood">ألماس حر نقي 0.75 قيراط — ذهب أبيض</div>
+</div>
+</div>
+</td>
+<td class="py-3 px-4 text-muted-rosewood">
+<span class="inline-flex items-center gap-1 font-mono text-xs bg-surface-container-high px-2 py-0.5 rounded border border-hairline-burgundy">
+<span class="material-symbols-outlined text-[13px] text-royal-gold" data-icon="drawer">diagnosis</span>
+                    الخزينة المحصنة — خانة D1
+                  </span>
+</td>
+<td class="py-3 px-4 text-center font-mono tabular-nums text-sm font-semibold text-warm-ink">5</td>
+<td class="py-3 px-4">
+<div class="flex items-center justify-center gap-1">
+<button class="size-7 rounded bg-surface-container-lowest border border-hairline-burgundy hover:bg-parchment text-warm-ink flex items-center justify-center font-mono font-bold text-sm shadow-sm">-</button>
+<input class="w-14 h-7 text-center font-mono font-bold text-sm text-warm-ink bg-surface-container-lowest border border-hairline-burgundy rounded focus:border-royal-gold focus:ring-1 focus:ring-royal-gold" type="number" value="5"/>
+<button class="size-7 rounded bg-surface-container-lowest border border-hairline-burgundy hover:bg-parchment text-warm-ink flex items-center justify-center font-mono font-bold text-sm shadow-sm">+</button>
+</div>
+</td>
+<td class="py-3 px-4 text-center">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold bg-surface-container-high text-muted-rosewood border border-hairline-burgundy">
+<span class="material-symbols-outlined text-[14px] text-semantic-success" data-icon="check">check</span>
+                    مطابق
+                  </span>
+</td>
+<td class="py-3 px-4">
+<input class="w-full text-xs py-1.5 px-2.5 rounded bg-surface-container-low/50 border border-transparent text-muted-rosewood focus:border-hairline-burgundy focus:bg-surface-container-lowest" type="text" value="مطابق مع فحص الشهادات المرفقة"/>
+</td>
+<td class="py-3 px-4 text-center">
+<div class="text-[11px] font-semibold text-warm-ink">سارة آل رحيم</div>
+<div class="text-[10px] font-mono text-muted-rosewood">11:02 ص</div>
+</td>
+</tr>
+<!-- ROW 6: Deficit -1 (RG-102-SOL) -->
+<tr class="bg-semantic-error-bg/30 hover:bg-semantic-error-bg/50 transition-colors border-r-4 border-r-semantic-error">
+<td class="py-3 px-4 text-center font-mono text-muted-rosewood">06</td>
+<td class="py-3 px-4">
+<div class="font-mono font-semibold text-imperial-burgundy text-xs bg-rose-mist/60 px-2 py-0.5 rounded inline-block">
+                    RG-102-SOL
+                  </div>
+</td>
+<td class="py-3 px-4">
+<div class="flex items-center gap-3">
+<div class="size-11 rounded-lg border border-hairline-burgundy overflow-hidden bg-parchment flex-shrink-0">
+<div class="w-full h-full bg-cover bg-center" data-alt="Exquisite luxury solitary diamond ring held in a six-prong platinum crown setting sitting atop deep burgundy velvet box in high end jewelry store ambient lighting." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDDkr3gJyjTv8heB772na_ebzIE_EHFbRvrEcW0c9Pq9J-pFRy0ScE2Uqh69Xy11zog_56FYqiDGZt3e2a79goie-Ju1QWeQ73U9NZzPLJeDf4_CVEUc4orzwl-or_J1h52XeVWOdC-hnM5OjgaUU_UbOgEAGa4fl-qB9R8EdphSCNmGo0FVtFEgVeR_kaBK72PvduEYyr64FBBIYnMJ6lGzcxIUzdS1nmK7X9qmf1NSFI_MzxA1xNM')"></div>
+</div>
+<div>
+<div class="font-semibold text-wine-night text-sm">خاتم السوليتير الملكي</div>
+<div class="text-[11px] text-muted-rosewood">ذهب أصفر عيار 18 مرصع بحجر مركزي 1.2 قيراط</div>
+</div>
+</div>
+</td>
+<td class="py-3 px-4 text-muted-rosewood">
+<span class="inline-flex items-center gap-1 font-mono text-xs bg-surface-container-high px-2 py-0.5 rounded border border-hairline-burgundy">
+<span class="material-symbols-outlined text-[13px] text-royal-gold" data-icon="drawer">diagnosis</span>
+                    الخواتم — علبة العرض 1
+                  </span>
+</td>
+<td class="py-3 px-4 text-center font-mono tabular-nums text-sm font-semibold text-warm-ink">12</td>
+<td class="py-3 px-4">
+<div class="flex items-center justify-center gap-1">
+<button class="size-7 rounded bg-surface-container-lowest border border-hairline-burgundy hover:bg-parchment text-warm-ink flex items-center justify-center font-mono font-bold text-sm shadow-sm">-</button>
+<input class="w-14 h-7 text-center font-mono font-bold text-sm text-semantic-error bg-surface-container-lowest border border-semantic-error/40 rounded focus:border-semantic-error focus:ring-1 focus:ring-semantic-error" type="number" value="11"/>
+<button class="size-7 rounded bg-surface-container-lowest border border-hairline-burgundy hover:bg-parchment text-warm-ink flex items-center justify-center font-mono font-bold text-sm shadow-sm">+</button>
+</div>
+</td>
+<td class="py-3 px-4 text-center">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-mono font-bold bg-semantic-error-bg text-semantic-error border border-error-container">
+<span class="material-symbols-outlined text-[14px]" data-icon="arrow_downward">arrow_downward</span>
+                    −1 عجز
+                  </span>
+</td>
+<td class="py-3 px-4">
+<input class="w-full text-xs py-1.5 px-2.5 rounded bg-surface-container-lowest border border-semantic-error/30 text-warm-ink focus:border-semantic-error focus:ring-1 focus:ring-semantic-error" type="text" value="محجوز للعميل #1054 في غرفة التغليف الفاخر"/>
+</td>
+<td class="py-3 px-4 text-center">
+<div class="text-[11px] font-semibold text-warm-ink">سارة آل رحيم</div>
+<div class="text-[10px] font-mono text-muted-rosewood">10:48 ص</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Pagination and Bottom Quick Stats -->
+<div class="p-4 bg-surface-container-low border-t border-hairline-burgundy flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-muted-rosewood">
+<div>
+            عرض <span class="font-mono font-semibold text-warm-ink">1 - 6</span> من أصل <span class="font-mono font-semibold text-warm-ink">34</span> صنفاً تم حصرها في هذه الجلسة
+          </div>
+<div class="flex items-center gap-2">
+<button class="size-8 rounded border border-hairline-burgundy bg-surface-container-lowest hover:bg-parchment flex items-center justify-center disabled:opacity-40" disabled="">
+<span class="material-symbols-outlined text-[16px]" data-icon="chevron_right">chevron_right</span>
+</button>
+<span class="px-3 py-1 font-mono font-semibold bg-primary-container text-surface-bright rounded text-xs">1</span>
+<button class="size-8 rounded border border-hairline-burgundy bg-surface-container-lowest hover:bg-parchment flex items-center justify-center text-warm-ink">2</button>
+<button class="size-8 rounded border border-hairline-burgundy bg-surface-container-lowest hover:bg-parchment flex items-center justify-center text-warm-ink">3</button>
+<button class="size-8 rounded border border-hairline-burgundy bg-surface-container-lowest hover:bg-parchment flex items-center justify-center text-warm-ink">
+<span class="material-symbols-outlined text-[16px]" data-icon="chevron_left">chevron_left</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Audit Commitment & Confirmation Banner -->
+<section class="bg-gradient-to-l from-surface-container-lowest via-ivory-canvas to-blush-surface/80 rounded-xl p-5 border-2 border-hairline-gold/70 shadow-luxury">
+<div class="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-5">
+<!-- Legal / Audit text -->
+<div class="flex items-start gap-4">
+<div class="size-11 rounded-full bg-imperial-burgundy/10 border border-hairline-burgundy flex items-center justify-center flex-shrink-0 text-imperial-burgundy mt-1">
+<span class="material-symbols-outlined text-2xl" data-icon="policy">policy</span>
+</div>
+<div class="space-y-1">
+<div class="flex items-center gap-2">
+<h4 class="font-serif font-bold text-wine-night text-sm">تنويه الاعتماد والرقابة المحاسبية الصارم</h4>
+<span class="px-2 py-0.5 rounded text-[10px] font-mono bg-champagne-gold/40 text-antique-gold font-semibold border border-hairline-gold">إشعار نظام الخزينة الموحد</span>
+</div>
+<p class="text-xs text-muted-rosewood leading-relaxed max-w-4xl">
+                عند الضغط على <strong class="text-imperial-burgundy font-semibold">«اعتماد وإغلاق الجرد»</strong>، سيقوم النظام تلقائياً بإنشاء حركات تسوية مخزنية غير قابلة للحذف لجميع الأصناف ذات الفروقات بالسبب الموثق <strong class="text-warm-ink">«جرد فعلي دوري — جلسة 01/10/2026»</strong> موثقة برقم هوية القائم بالجرد الخاص بكِ (<span class="font-semibold text-warm-ink">سارة آل رحيم</span>)، وترحيل قيود العجز والأرباح المفقودة إلى سجل الخسائر التشغيلية في النظام المالي المركزي.
+              </p>
+</div>
+</div>
+<!-- Action buttons for audit -->
+<div class="flex items-center gap-2.5 w-full lg:w-auto justify-end flex-shrink-0 pt-2 lg:pt-0">
+<button class="px-4 py-2.5 rounded-lg border border-hairline-burgundy bg-surface-container-lowest text-warm-ink text-xs font-semibold hover:bg-parchment transition-colors flex items-center gap-1.5 shadow-sm">
+<span class="material-symbols-outlined text-[16px] text-muted-rosewood" data-icon="print">print</span>
+<span>طباعة محضر الجرد الأولي</span>
+</button>
+<button class="px-4 py-2.5 rounded-lg bg-surface-container-high hover:bg-parchment text-imperial-burgundy text-xs font-semibold border border-hairline-burgundy flex items-center gap-1.5 shadow-sm transition-colors">
+<span class="material-symbols-outlined text-[16px] text-imperial-burgundy" data-icon="rule">rule</span>
+<span>معاينة قيود التسوية (5 حركات)</span>
+</button>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer of the Application -->
+<footer class="mt-8 border-t border-hairline-burgundy bg-surface-container-lowest py-4 px-6">
+<div class="max-w-[1440px] mx-auto flex flex-col md:flex-row items-center justify-between text-xs text-muted-rosewood gap-2">
+<div class="flex items-center gap-4">
+<span class="font-serif font-semibold text-warm-ink">دار آيريس للمجوهرات الفاخرة © 2026</span>
+<span class="text-hairline-burgundy">|</span>
+<span>ترخيص الرقابة النوعية والوسم الحكومي رقم: IR-BAG-9941</span>
+</div>
+<div class="flex items-center gap-4 font-mono text-[11px]">
+<span>الجلسة النشطة: SEC-SESSION-4882</span>
+<span>زمن الخادم: 11:44:02 GMT+3</span>
+</div>
+</div>
+</footer>
+</div>
+</body></html>

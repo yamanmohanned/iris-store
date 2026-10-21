@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#2A030D" />
+    <meta name="description" content="آيريس ستور — إكسسوارات بطلاء ثابت: قلائد وتطقيمات كبلز وهدايا، توصيل لجميع محافظات العراق والدفع عند الاستلام." />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <title>آيريس ستور | إكسسوارات — التفاصيل تصنع الفرق</title>
+
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="ar_IQ" />
+    <meta property="og:site_name" content="آيريس ستور" />
+    <meta property="og:title" content="آيريس ستور | إكسسوارات — التفاصيل تصنع الفرق" />
+    <meta property="og:description" content="آيريس ستور — إكسسوارات بطلاء ثابت: قلائد وتطقيمات كبلز وهدايا، توصيل لجميع محافظات العراق والدفع عند الاستلام." />
+    <meta property="og:image" content="/brand/og-image.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- الخطوط مستضافة محلياً (src/styles/fonts.css): نحمّل الأهم مبكراً قبل تشغيل الواجهة -->
+    <link rel="preload" href="/fonts/material-symbols-outlined.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/ibm-plex-sans-arabic-400-arabic.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/el-messiri-arabic.woff2" as="font" type="font/woff2" crossorigin />
+
+    <!-- أول رسم للصفحة: خلفية المتجر وشعاره بدل صفحة بيضاء حتى تجهز الواجهة -->
+    <style>
+      html {
+        background: #f4ede2;
+      }
+      body {
+        margin: 0;
+      }
+      .boot {
+        min-height: 100vh;
+        min-height: 100dvh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .boot-mark {
+        height: 56px;
+        aspect-ratio: 430 / 706;
+        background: #4e1825;
+        -webkit-mask: url('/brand/iris-mark.png') center / contain no-repeat;
+        mask: url('/brand/iris-mark.png') center / contain no-repeat;
+        animation: boot-pulse 1.6s ease-in-out infinite;
+      }
+      @keyframes boot-pulse {
+        50% {
+          opacity: 0.45;
+        }
+      }
+      /* شعار مرفوع من «الهوية» (تضبطه الأسطر التالية من آخر زيارة) */
+      html[data-boot-logo] .boot-mark {
+        width: 168px;
+        aspect-ratio: auto;
+      }
+      html[data-boot-logo='img'] .boot-mark {
+        -webkit-mask: none;
+        mask: none;
+        background: var(--boot-logo) center / contain no-repeat;
+      }
+      html[data-boot-logo='tint'] .boot-mark {
+        -webkit-mask-image: var(--boot-logo);
+        mask-image: var(--boot-logo);
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .boot-mark {
+          animation: none;
+        }
+      }
+    </style>
+    <script>
+      // هوية المتجر (الشعار والخطوط) من آخر زيارة — يكتبها BrandingRuntime — حتى لا يظهر الافتراضي لحظة
+      try {
+        var brand = JSON.parse(localStorage.getItem('iris.branding.boot') || 'null');
+        if (brand) {
+          if (brand.css) {
+            var style = document.createElement('style');
+            style.id = 'iris-branding';
+            style.textContent = brand.css;
+            document.head.appendChild(style);
+          }
+          if (brand.logo) {
+            document.documentElement.style.setProperty('--boot-logo', 'url("' + String(brand.logo).replace(/["\\\n]/g, '') + '")');
+            document.documentElement.setAttribute('data-boot-logo', brand.tint ? 'tint' : 'img');
+          }
+        }
+      } catch (e) {}
+    </script>
+  </head>
+  <body class="font-body-md text-on-surface antialiased">
+    <div id="root">
+      <div class="boot" role="status" aria-label="جارٍ التحميل"><span class="boot-mark"></span></div>
+    </div>
+    <noscript>يرجى تفعيل JavaScript لعرض آيريس ستور.</noscript>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

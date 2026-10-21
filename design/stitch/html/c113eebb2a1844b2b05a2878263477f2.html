@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+
+<html dir="rtl" lang="ar"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@400..700&amp;family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"colors":{"background":"#fef9f2","warm-ink":"#2A1215","semantic-info-bg":"#E4EDF8","primary-fixed-dim":"#ffb2b9","champagne-gold":"#E9D49C","primary":"#510015","on-surface-variant":"#564243","on-error-container":"#93000a","inverse-surface":"#32302c","on-primary-container":"#fb7c8c","inverse-on-surface":"#f5f0e9","hairline-burgundy":"rgba(114, 19, 40, 0.14)","on-background":"#1d1c18","on-primary-fixed":"#40000f","semantic-warning":"#8A4B08","ivory-canvas":"#FBF6EF","primary-container":"#721328","surface-container-highest":"#e6e2db","imperial-burgundy":"#721328","on-primary-fixed-variant":"#842134","wine-night":"#1E070D","tertiary-fixed-dim":"#ffb2bd","primary-fixed":"#ffdadc","on-surface":"#1d1c18","on-secondary-fixed-variant":"#5b4300","deep-oxblood":"#3A0A16","outline-variant":"#dcc0c1","surface-variant":"#e6e2db","on-tertiary-fixed-variant":"#6f343f","inverse-primary":"#ffb2b9","blush-surface":"#F7ECEC","semantic-info":"#2F5A8A","secondary-fixed":"#ffdf9e","on-tertiary-container":"#dc8f9a","royal-gold":"#C9A24B","tertiary-container":"#602833","semantic-success":"#1F6B4A","hairline-gold":"rgba(201, 162, 75, 0.45)","on-tertiary":"#ffffff","surface":"#fef9f2","on-tertiary-fixed":"#390915","antique-gold":"#8A6620","on-secondary-container":"#775800","secondary":"#795902","outline":"#897173","semantic-success-bg":"#E2F2EA","surface-bright":"#fef9f2","secondary-fixed-dim":"#ebc166","surface-container-lowest":"#ffffff","error":"#ba1a1a","error-container":"#ffdad6","surface-dim":"#ded9d3","tertiary":"#45131e","on-secondary-fixed":"#261a00","surface-container":"#f2ede6","parchment":"#F3EADB","semantic-error-bg":"#FDE7E4","secondary-container":"#fdd275","rose-mist":"#EED9DB","tertiary-fixed":"#ffd9dd","burgundy-600":"#8A1B34","burgundy-800":"#5A0F22","surface-container-low":"#f8f3ec","surface-tint":"#a3394a","muted-rosewood":"#6D585B","on-primary":"#ffffff","surface-container-high":"#ece7e1","semantic-warning-bg":"#FCEBD0","on-secondary":"#ffffff","on-error":"#ffffff","semantic-error":"#B42318"},"borderRadius":{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},"spacing":{"space-xs":"0.25rem","gutter":"1.5rem","space-lg":"1.5rem","space-3xl":"6rem","margin-mobile":"1rem","gutter-mobile":"1rem","space-2xl":"4rem","space-sm":"0.5rem","space-xl":"2.5rem","margin":"2.5rem","space-md":"1rem"},"fontFamily":{"body-xl":["IBM Plex Sans Arabic"],"body-sm":["IBM Plex Sans Arabic"],"headline-xl":["El Messiri"],"headline-sm":["El Messiri"],"label-sm":["IBM Plex Sans Arabic"],"display-lg":["El Messiri"],"headline-md":["El Messiri"],"headline-xl-mobile":["El Messiri"],"display-lg-mobile":["El Messiri"],"label-md":["IBM Plex Sans Arabic"],"body-md":["IBM Plex Sans Arabic"],"body-lg":["IBM Plex Sans Arabic"],"headline-lg":["El Messiri"],"label-lg":["IBM Plex Sans Arabic"]},"fontSize":{"body-xl":["1.25rem",{"lineHeight":"1.7","fontWeight":"400"}],"body-sm":["0.875rem",{"lineHeight":"1.6","fontWeight":"400"}],"headline-xl":["2.5rem",{"lineHeight":"1.3","fontWeight":"600"}],"headline-sm":["1.25rem",{"lineHeight":"1.45","fontWeight":"500"}],"label-sm":["0.6875rem",{"lineHeight":"1.4","fontWeight":"500"}],"display-lg":["3.5rem",{"lineHeight":"1.25","fontWeight":"700"}],"headline-md":["1.5rem",{"lineHeight":"1.4","fontWeight":"600"}],"headline-xl-mobile":["1.75rem",{"lineHeight":"1.35","fontWeight":"600"}],"display-lg-mobile":["2.25rem",{"lineHeight":"1.3","fontWeight":"700"}],"label-md":["0.8125rem",{"lineHeight":"1.4","fontWeight":"500"}],"body-md":["1rem",{"lineHeight":"1.7","fontWeight":"400"}],"body-lg":["1.125rem",{"lineHeight":"1.7","fontWeight":"400"}],"headline-lg":["2rem",{"lineHeight":"1.35","fontWeight":"600"}],"label-lg":["0.9375rem",{"lineHeight":"1.4","fontWeight":"600"}]}}}};</script></head><body class="bg-ivory-canvas font-body-md text-on-surface antialiased selection:bg-rose-mist selection:text-wine-night"><aside class="fixed right-0 top-0 h-full w-[264px] bg-wine-night z-50 flex flex-col justify-between shadow-[0_8px_30px_rgba(58,10,22,0.18)]"><div class="flex flex-col h-full overflow-hidden"><div class="h-20 px-6 flex items-center gap-3 border-b border-royal-gold/20 flex-shrink-0"><div class="w-10 h-10 rounded-lg bg-deep-oxblood flex items-center justify-center border border-royal-gold/40 shadow-inner"><span class="material-symbols-outlined text-champagne-gold text-[22px]">diamond</span></div><div class="flex flex-col"><span class="font-headline-sm text-headline-sm text-champagne-gold tracking-wide leading-none">آيريس</span><span class="font-label-sm text-label-sm text-rose-mist/80 tracking-tight mt-1">دار آيريس للمجوهرات</span></div></div><div class="flex-1 overflow-y-auto px-3 py-4 space-y-1"><nav class="space-y-1" data-active-classes="bg-primary-container text-rose-mist font-semibold border-r-2 border-royal-gold"><a class="flex items-center justify-between px-3 py-2 rounded text-rose-mist/80 hover:bg-deep-oxblood hover:text-champagne-gold transition-colors font-body-sm text-body-sm" data-path="dashboard" href="#"><div class="flex items-center gap-3"><span class="material-symbols-outlined text-[20px] text-royal-gold/80">dashboard</span><span>لوحة المعلومات</span></div></a><a class="flex items-center justify-between px-3 py-2 rounded bg-primary-container text-rose-mist font-semibold border-r-2 border-royal-gold transition-colors font-body-sm text-body-sm" data-path="orders" href="#"><div class="flex items-center gap-3"><span class="material-symbols-outlined text-[20px] text-champagne-gold">receipt_long</span><span>الطلبات</span></div><span class="font-label-sm text-label-sm px-2 py-0.5 rounded-full bg-champagne-gold/20 text-champagne-gold border border-royal-gold/40">12</span></a><a class="flex items-center justify-between px-3 py-2 rounded text-rose-mist/80 hover:bg-deep-oxblood hover:text-champagne-gold transition-colors font-body-sm text-body-sm" data-path="products" href="#"><div class="flex items-center gap-3"><span class="material-symbols-outlined text-[20px] text-royal-gold/80">save_as</span><span>المنتجات</span></div></a><a class="flex items-center justify-between px-3 py-2 rounded text-rose-mist/80 hover:bg-deep-oxblood hover:text-champagne-gold transition-colors font-body-sm text-body-sm" data-path="categories" href="#"><div class="flex items-center gap-3"><span class="material-symbols-outlined text-[20px] text-royal-gold/80">category</span><span>التصنيفات</span></div></a><a class="flex items-center justify-between px-3 py-2 rounded text-rose-mist/80 hover:bg-deep-oxblood hover:text-champagne-gold transition-colors font-body-sm text-body-sm" data-path="inventory" href="#"><div class="flex items-center gap-3"><span class="material-symbols-outlined text-[20px] text-royal-gold/80">inventory_2</span><span>المخزون</span></div><span class="font-label-sm text-label-sm px-2 py-0.5 rounded-full bg-semantic-warning-bg text-semantic-warning">5</span></a><a class="flex items-center justify-between px-3 py-2 rounded text-rose-mist/80 hover:bg-deep-oxblood hover:text-champagne-gold transition-colors font-body-sm text-body-sm" data-path="purchases" href="#"><div class="flex items-center gap-3"><span class="material-symbols-outlined text-[20px] text-royal-gold/80">shopping_bag</span><span>المشتريات</span></div></a><a class="flex items-center justify-between px-3 py-2 rounded text-rose-mist/80 hover:bg-deep-oxblood hover:text-champagne-gold transition-colors font-body-sm text-body-sm" data-path="suppliers" href="#"><div class="flex items-center gap-3"><span class="material-symbols-outlined text-[20px] text-royal-gold/80">store</span><span>الموردون</span></div></a><a class="flex items-center justify-between px-3 py-2 rounded text-rose-mist/80 hover:bg-deep-oxblood hover:text-champagne-gold transition-colors font-body-sm text-body-sm" data-path="customers" href="#"><div class="flex items-center gap-3"><span class="material-symbols-outlined text-[20px] text-royal-gold/80">group</span><span>العملاء</span></div></a><a class="flex items-center justify-between px-3 py-2 rounded text-rose-mist/80 hover:bg-deep-oxblood hover:text-champagne-gold transition-colors font-body-sm text-body-sm" data-path="inbox" href="#"><div class="flex items-center gap-3"><span class="material-symbols-outlined text-[20px] text-royal-gold/80">mail</span><span>صندوق الوارد</span></div><span class="font-label-sm text-label-sm px-2 py-0.5 rounded-full bg-champagne-gold/20 text-champagne-gold border border-royal-gold/30">3</span></a><a class="flex items-center justify-between px-3 py-2 rounded text-rose-mist/80 hover:bg-deep-oxblood hover:text-champagne-gold transition-colors font-body-sm text-body-sm" data-path="payments" href="#"><div class="flex items-center gap-3"><span class="material-symbols-outlined text-[20px] text-royal-gold/80">payments</span><span>المدفوعات</span></div></a><a class="flex items-center justify-between px-3 py-2 rounded text-rose-mist/80 hover:bg-deep-oxblood hover:text-champagne-gold transition-colors font-body-sm text-body-sm" data-path="expenses" href="#"><div class="flex items-center gap-3"><span class="material-symbols-outlined text-[20px] text-royal-gold/80">receipt</span><span>المصاريف</span></div></a><a class="flex items-center justify-between px-3 py-2 rounded text-rose-mist/80 hover:bg-deep-oxblood hover:text-champagne-gold transition-colors font-body-sm text-body-sm" data-path="accounting" href="#"><div class="flex items-center gap-3"><span class="material-symbols-outlined text-[20px] text-royal-gold/80">account_balance</span><span>المحاسبة</span></div></a><a class="flex items-center justify-between px-3 py-2 rounded text-rose-mist/80 hover:bg-deep-oxblood hover:text-champagne-gold transition-colors font-body-sm text-body-sm" data-path="reports" href="#"><div class="flex items-center gap-3"><span class="material-symbols-outlined text-[20px] text-royal-gold/80">bar_chart</span><span>التقارير</span></div></a><a class="flex items-center justify-between px-3 py-2 rounded text-rose-mist/80 hover:bg-deep-oxblood hover:text-champagne-gold transition-colors font-body-sm text-body-sm" data-path="employees" href="#"><div class="flex items-center gap-3"><span class="material-symbols-outlined text-[20px] text-royal-gold/80">badge</span><span>الموظفون</span></div></a><a class="flex items-center justify-between px-3 py-2 rounded text-rose-mist/80 hover:bg-deep-oxblood hover:text-champagne-gold transition-colors font-body-sm text-body-sm" data-path="notifications" href="#"><div class="flex items-center gap-3"><span class="material-symbols-outlined text-[20px] text-royal-gold/80">notifications</span><span>الإشعارات</span></div><span class="font-label-sm text-label-sm px-2 py-0.5 rounded-full bg-semantic-error-bg text-semantic-error">7</span></a><a class="flex items-center justify-between px-3 py-2 rounded text-rose-mist/80 hover:bg-deep-oxblood hover:text-champagne-gold transition-colors font-body-sm text-body-sm" data-path="archive" href="#"><div class="flex items-center gap-3"><span class="material-symbols-outlined text-[20px] text-royal-gold/80">archive</span><span>الأرشيف</span></div></a><a class="flex items-center justify-between px-3 py-2 rounded text-rose-mist/80 hover:bg-deep-oxblood hover:text-champagne-gold transition-colors font-body-sm text-body-sm" data-path="audit-log" href="#"><div class="flex items-center gap-3"><span class="material-symbols-outlined text-[20px] text-royal-gold/80">history</span><span>سجل التدقيق</span></div></a><a class="flex items-center justify-between px-3 py-2 rounded text-rose-mist/80 hover:bg-deep-oxblood hover:text-champagne-gold transition-colors font-body-sm text-body-sm" data-path="settings" href="#"><div class="flex items-center gap-3"><span class="material-symbols-outlined text-[20px] text-royal-gold/80">settings</span><span>الإعدادات</span></div></a></nav></div><div class="p-4 border-t border-royal-gold/20 bg-wine-night flex-shrink-0"><div class="flex items-center justify-between"><div class="flex items-center gap-3"><div class="relative"><div class="w-9 h-9 rounded-full bg-deep-oxblood border border-royal-gold/50 flex items-center justify-center"><span class="material-symbols-outlined text-champagne-gold text-[18px]">person</span></div><span class="absolute bottom-0 left-0 w-2.5 h-2.5 rounded-full bg-semantic-success border border-wine-night"></span></div><div class="flex flex-col text-right"><span class="font-label-md text-label-md text-champagne-gold font-medium">سارة آل رحيم</span><span class="font-label-sm text-label-sm text-rose-mist/70">مشرفة المبيعات</span></div></div><button class="text-rose-mist/70 hover:text-champagne-gold transition-colors p-1.5 rounded hover:bg-deep-oxblood" title="تسجيل الخروج" type="button"><span class="material-symbols-outlined text-[20px]">logout</span></button></div></div></div></aside><div class="pr-[264px] min-h-screen flex flex-col bg-ivory-canvas"><header class="fixed top-0 left-0 right-[264px] h-20 bg-ivory-canvas/90 backdrop-blur-md border-b border-hairline-burgundy z-40"><div class="h-20 w-full px-8 flex items-center justify-between gap-6"><div class="flex items-center gap-3 text-warm-ink font-body-sm text-body-sm"><span class="text-muted-rosewood">لوحة الإدارة</span><span class="material-symbols-outlined text-[14px] text-royal-gold">arrow_back_ios</span><span class="text-muted-rosewood">الطلبات</span><span class="material-symbols-outlined text-[14px] text-royal-gold">arrow_back_ios</span><span class="font-semibold text-primary font-mono tracking-tight">طلب #1054</span></div><div class="flex-1 max-w-lg mx-auto"><div class="relative flex items-center"><span class="material-symbols-outlined absolute right-3 text-muted-rosewood text-[20px] pointer-events-none">search</span><input class="w-full h-11 pr-10 pl-16 rounded-xl bg-surface-container-lowest border border-outline-variant/60 focus:border-primary focus:ring-1 focus:ring-rose-mist font-body-sm text-body-sm text-warm-ink placeholder:text-muted-rosewood/70 transition-all outline-none" placeholder="بحث في كل شيء (Ctrl+K)..." type="text"/><kbd class="absolute left-3 px-2 py-0.5 text-[11px] rounded bg-surface-container font-mono text-muted-rosewood border border-outline-variant/40">Ctrl+K</kbd></div></div><div class="flex items-center gap-4"><button class="h-10 px-4 rounded-xl bg-imperial-burgundy hover:bg-burgundy-600 text-on-primary font-label-md text-label-md flex items-center gap-2 shadow-[0_2px_8px_rgba(58,10,22,0.12)] transition-colors" type="button"><span class="material-symbols-outlined text-[18px]">add</span><span>إجراء سريع</span></button><div class="relative"><button class="w-10 h-10 rounded-xl bg-surface-container-lowest border border-outline-variant/50 flex items-center justify-center text-warm-ink hover:bg-blush-surface transition-colors" type="button"><span class="material-symbols-outlined text-[20px]">notifications</span></button><span class="absolute -top-1 -right-1 min-w-[18px] h-[18px] px-1 rounded-full bg-imperial-burgundy text-on-primary text-[10px] flex items-center justify-center font-bold">7</span></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center ring-2 ring-champagne-gold/30"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="relative pt-20 bg-ivory-canvas flex-1 w-full px-8 pb-12"><div class="flex flex-col w-full">
+<!-- PAGE HEADER & ACTION CONTROLS -->
+<section class="flex flex-col gap-6 mb-8">
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-5 pb-6 border-b border-hairline-burgundy">
+<!-- Right: Identity, Title, Badges & Timestamp -->
+<div class="flex flex-col gap-3">
+<div class="flex items-center gap-2">
+<a class="inline-flex items-center gap-1.5 text-muted-rosewood hover:text-primary transition-colors font-body-sm text-body-sm py-1 px-2.5 rounded-lg hover:bg-blush-surface" href="#">
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+<span>العودة للطلبات</span>
+</a>
+<span class="text-hairline-gold">|</span>
+<span class="text-muted-rosewood font-body-sm text-body-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-antique-gold">schedule</span>
+            أمس 10:02 ص — منذ 24 ساعة
+          </span>
+</div>
+<div class="flex flex-wrap items-center gap-3">
+<h1 class="font-headline-lg text-headline-lg text-warm-ink flex items-center gap-2 tracking-tight">
+<span>طلب</span>
+<span class="font-mono text-primary font-bold tracking-normal bg-blush-surface px-2.5 py-0.5 rounded-lg border border-hairline-burgundy text-[1.75rem]">#1054</span>
+</h1>
+<div class="flex items-center gap-2 flex-wrap">
+<!-- Confirmed Status Badge -->
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-semantic-info-bg text-semantic-info font-label-md text-label-md border border-semantic-info/20 shadow-sm">
+<span class="material-symbols-outlined text-[16px]">verified</span>
+<span>مؤكَّد</span>
+</span>
+<!-- Unpaid Status Badge -->
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-semantic-error-bg text-semantic-error font-label-md text-label-md border border-semantic-error/20 shadow-sm">
+<span class="material-symbols-outlined text-[16px]">credit_card_off</span>
+<span>غير مدفوع</span>
+</span>
+<!-- Origin Channel Badge -->
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-tertiary/10 text-primary font-label-md text-label-md border border-primary/20">
+<span class="material-symbols-outlined text-[16px] text-primary">photo_camera</span>
+<span>إنستغرام</span>
+</span>
+</div>
+</div>
+</div>
+<!-- Left: Primary & Operational Action Buttons -->
+<div class="flex items-center gap-3 self-start lg:self-center">
+<!-- Dropdown Menu Wrapper -->
+<div class="relative" id="orderActionsDropdown">
+<button class="w-11 h-11 rounded-xl bg-surface-container-lowest border border-outline-variant/60 flex items-center justify-center text-warm-ink hover:bg-blush-surface hover:border-primary/40 transition-all shadow-sm focus:outline-none" id="actionsMenuBtn" title="خيارات إضافية" type="button">
+<span class="material-symbols-outlined text-[22px]">more_horiz</span>
+</button>
+<!-- Subtle Menu Panel (Toggled via JS) -->
+<div class="hidden absolute left-0 mt-2 w-56 rounded-xl bg-surface-container-lowest border border-hairline-burgundy shadow-[0_16px_40px_rgba(58,10,22,0.12)] py-2 z-30" id="actionsDropdownPanel">
+<a class="flex items-center gap-2.5 px-4 py-2.5 text-warm-ink hover:bg-blush-surface text-body-sm transition-colors" href="#">
+<span class="material-symbols-outlined text-[18px] text-muted-rosewood">edit_note</span>
+<span>تعديل بيانات الطلب</span>
+</a>
+<a class="flex items-center gap-2.5 px-4 py-2.5 text-warm-ink hover:bg-blush-surface text-body-sm transition-colors" href="#">
+<span class="material-symbols-outlined text-[18px] text-royal-gold">print</span>
+<span>طباعة الفاتورة الملكية</span>
+</a>
+<a class="flex items-center gap-2.5 px-4 py-2.5 text-warm-ink hover:bg-blush-surface text-body-sm transition-colors" href="#">
+<span class="material-symbols-outlined text-[18px] text-muted-rosewood">inventory</span>
+<span>ورقة التجهيز والتغليف</span>
+</a>
+<div class="my-1.5 border-t border-hairline-burgundy"></div>
+<a class="flex items-center gap-2.5 px-4 py-2.5 text-warm-ink hover:bg-blush-surface text-body-sm transition-colors" href="#">
+<span class="material-symbols-outlined text-[18px] text-semantic-warning">assignment_return</span>
+<span>إنشاء طلب إرجاع</span>
+</a>
+<a class="flex items-center gap-2.5 px-4 py-2.5 text-semantic-error hover:bg-semantic-error-bg text-body-sm transition-colors" href="#">
+<span class="material-symbols-outlined text-[18px]">cancel</span>
+<span>إلغاء الطلب</span>
+</a>
+</div>
+</div>
+<!-- Secondary Button: Add Payment -->
+<button class="h-11 px-4 rounded-xl border border-imperial-burgundy text-imperial-burgundy hover:bg-blush-surface font-label-md text-label-md flex items-center gap-2 transition-all" type="button">
+<span class="material-symbols-outlined text-[18px]">payments</span>
+<span>إضافة دفعة</span>
+</button>
+<!-- Primary Button: Begin Preparation -->
+<button class="h-11 px-5 rounded-xl bg-imperial-burgundy hover:bg-burgundy-600 text-on-primary font-label-md text-label-md flex items-center gap-2.5 shadow-[0_4px_16px_rgba(114,19,40,0.22)] transition-all ring-1 ring-inset ring-champagne-gold/40 active:translate-y-[1px]" type="button">
+<span class="material-symbols-outlined text-[20px] text-champagne-gold">inventory_2</span>
+<span class="tracking-wide">بدء التجهيز</span>
+</button>
+</div>
+</div>
+<!-- HORIZONTAL STATUS STEPPER -->
+<div class="w-full bg-surface-container-lowest rounded-2xl p-6 border border-hairline-burgundy shadow-[0_4px_20px_rgba(58,10,22,0.03)]">
+<div class="relative">
+<!-- Connecting Progress Rail -->
+<div class="absolute top-4 right-6 left-6 h-[2px] bg-outline-variant/30 -z-0"></div>
+<div class="absolute top-4 right-6 w-1/5 h-[2px] bg-royal-gold -z-0"></div>
+<!-- Steps Grid -->
+<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4 relative z-10">
+<!-- Step 1: Completed -->
+<div class="flex flex-col items-center text-center group cursor-default">
+<div class="w-8 h-8 rounded-full bg-semantic-success-bg border-2 border-semantic-success flex items-center justify-center text-semantic-success shadow-sm transition-transform">
+<span class="material-symbols-outlined text-[18px] font-bold">check</span>
+</div>
+<span class="font-label-md text-label-md text-warm-ink mt-2.5 font-semibold">بانتظار التأكيد</span>
+<span class="font-label-sm text-label-sm text-muted-rosewood mt-0.5 font-mono">24 أكتوبر 10:02 ص</span>
+</div>
+<!-- Step 2: Active Current -->
+<div class="flex flex-col items-center text-center group cursor-default">
+<div class="w-8 h-8 rounded-full bg-wine-night border-2 border-royal-gold flex items-center justify-center shadow-[0_0_0_4px_rgba(201,162,75,0.2)]">
+<span class="w-2.5 h-2.5 rounded-full bg-champagne-gold animate-pulse"></span>
+</div>
+<span class="font-label-md text-label-md text-primary font-bold mt-2.5 flex items-center gap-1">
+<span>مؤكَّد</span>
+<span class="w-1.5 h-1.5 rounded-full bg-royal-gold"></span>
+</span>
+<span class="font-label-sm text-label-sm text-antique-gold mt-0.5 font-mono">24 أكتوبر 10:05 ص</span>
+</div>
+<!-- Step 3: Upcoming -->
+<div class="flex flex-col items-center text-center opacity-65 group cursor-default">
+<div class="w-8 h-8 rounded-full bg-surface-container-lowest border-2 border-outline-variant flex items-center justify-center text-muted-rosewood">
+<span class="font-mono text-[12px] font-semibold text-muted-rosewood">3</span>
+</div>
+<span class="font-label-md text-label-md text-muted-rosewood mt-2.5 font-normal">قيد التجهيز</span>
+<span class="font-label-sm text-label-sm text-muted-rosewood/60 mt-0.5">المرحلة القادمة</span>
+</div>
+<!-- Step 4: Upcoming -->
+<div class="flex flex-col items-center text-center opacity-40 group cursor-default">
+<div class="w-8 h-8 rounded-full bg-surface-container-lowest border-2 border-outline-variant flex items-center justify-center text-muted-rosewood">
+<span class="font-mono text-[12px] font-semibold text-muted-rosewood">4</span>
+</div>
+<span class="font-label-md text-label-md text-muted-rosewood mt-2.5">جاهز للشحن</span>
+<span class="font-label-sm text-label-sm text-muted-rosewood/60 mt-0.5">—</span>
+</div>
+<!-- Step 5: Upcoming -->
+<div class="flex flex-col items-center text-center opacity-40 group cursor-default">
+<div class="w-8 h-8 rounded-full bg-surface-container-lowest border-2 border-outline-variant flex items-center justify-center text-muted-rosewood">
+<span class="font-mono text-[12px] font-semibold text-muted-rosewood">5</span>
+</div>
+<span class="font-label-md text-label-md text-muted-rosewood mt-2.5">تم الشحن</span>
+<span class="font-label-sm text-label-sm text-muted-rosewood/60 mt-0.5">—</span>
+</div>
+<!-- Step 6: Upcoming Final -->
+<div class="flex flex-col items-center text-center opacity-40 group cursor-default">
+<div class="w-8 h-8 rounded-full bg-surface-container-lowest border-2 border-outline-variant flex items-center justify-center text-muted-rosewood">
+<span class="material-symbols-outlined text-[16px] text-muted-rosewood">done_all</span>
+</div>
+<span class="font-label-md text-label-md text-muted-rosewood mt-2.5">تم التسليم</span>
+<span class="font-label-sm text-label-sm text-muted-rosewood/60 mt-0.5">—</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- MAIN WORKSPACE: 2-COLUMN LUXURY SPLIT (68% / 32%) -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+<!-- RIGHT / CENTER WORKSPACE (8 Columns ~ 68%) -->
+<div class="lg:col-span-8 flex flex-col gap-6">
+<!-- 1. CUSTOMER & SOURCE SPECIFICATION CARD -->
+<div class="bg-surface-container-lowest rounded-2xl p-6 border border-hairline-burgundy shadow-[0_4px_24px_rgba(58,10,22,0.04)]">
+<div class="flex items-center justify-between pb-5 border-b border-hairline-burgundy">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-blush-surface border border-hairline-burgundy flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[20px]">person_pin</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-warm-ink">بيانات العميل والمصدر</span>
+<span class="font-label-sm text-label-sm text-muted-rosewood">سجل التواصل ومسار الشحن المباشر</span>
+</div>
+</div>
+<!-- VIP Badge -->
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-champagne-gold/20 text-antique-gold font-label-md text-label-md border border-royal-gold/40">
+<span class="material-symbols-outlined text-[15px] text-royal-gold">stars</span>
+<span>عميل مميز (VIP)</span>
+</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-5">
+<!-- Col 1: Customer Contact & Direct Touchpoints -->
+<div class="flex flex-col gap-4">
+<div>
+<span class="font-label-sm text-label-sm text-muted-rosewood block mb-1">اسم العميل الكريم</span>
+<h2 class="font-headline-sm text-headline-sm text-warm-ink font-semibold">أحمد علي التميمي</h2>
+</div>
+<div>
+<span class="font-label-sm text-label-sm text-muted-rosewood block mb-1">رقم الهاتف المسجل</span>
+<div class="flex items-center gap-2">
+<span class="font-mono text-warm-ink font-semibold text-body-md tracking-wider dir-ltr inline-block bg-surface-container px-2.5 py-1 rounded-lg border border-outline-variant/40">
+                  +964 0770 123 4567
+                </span>
+<button class="p-2 rounded-lg border border-hairline-burgundy text-primary hover:bg-blush-surface transition-colors" title="اتصال هاتفي" type="button">
+<span class="material-symbols-outlined text-[18px]">call</span>
+</button>
+<button class="p-2 rounded-lg border border-semantic-success/30 text-semantic-success hover:bg-semantic-success-bg transition-colors" title="مراسلة واتساب" type="button">
+<span class="material-symbols-outlined text-[18px]">chat</span>
+</button>
+</div>
+</div>
+<div class="pt-1">
+<span class="font-label-sm text-label-sm text-muted-rosewood block mb-1">الموظفة المسندة للمتابعة</span>
+<div class="flex items-center gap-2">
+<span class="w-6 h-6 rounded-full bg-primary text-on-primary flex items-center justify-center text-[11px] font-bold">س</span>
+<span class="font-body-sm text-body-sm text-warm-ink font-medium">سارة آل رحيم (مشرفة المبيعات)</span>
+</div>
+</div>
+</div>
+<!-- Col 2: Shipping Destination & Social Reference -->
+<div class="flex flex-col gap-4 bg-ivory-canvas/60 p-4 rounded-xl border border-hairline-burgundy/60">
+<div>
+<div class="flex items-center justify-between mb-1.5">
+<span class="font-label-sm text-label-sm text-muted-rosewood flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-royal-gold">location_on</span>
+                  عنوان التسليم المعتمد
+                </span>
+<span class="font-label-sm text-label-sm text-semantic-success font-medium">شحن خاص ومؤمن</span>
+</div>
+<p class="font-body-sm text-body-sm text-warm-ink leading-relaxed">
+                بغداد — الكرادة، محلة 903، شارع الأميرات، مجمع الفخامة السكني، فيلا 12
+              </p>
+</div>
+<div class="pt-2 border-t border-hairline-burgundy/60 flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-muted-rosewood">حساب المراسلة عبر الإنستغرام</span>
+<span class="font-mono text-body-sm text-primary font-medium">@ahmed_iraq</span>
+</div>
+<button class="w-full h-9 rounded-lg border border-hairline-burgundy bg-surface-container-lowest hover:bg-blush-surface text-primary font-label-sm text-label-sm flex items-center justify-center gap-2 transition-colors" type="button">
+<span class="material-symbols-outlined text-[16px]">open_in_new</span>
+<span>فتح المحادثة في إنستغرام</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- 2. NAVIGATION TABS (Segmented Luxury Viewers) -->
+<div class="border-b border-hairline-burgundy flex items-center gap-2 overflow-x-auto">
+<button class="px-4 py-3 font-body-sm text-body-sm text-muted-rosewood hover:text-warm-ink transition-colors whitespace-nowrap" type="button">
+          نظرة عامة
+        </button>
+<button class="px-4 py-3 font-body-sm text-body-sm text-primary font-semibold border-b-2 border-royal-gold flex items-center gap-2 whitespace-nowrap" type="button">
+<span>العناصر المشتراة</span>
+<span class="px-2 py-0.5 rounded-full bg-imperial-burgundy text-on-primary text-[11px] font-mono">2</span>
+</button>
+<button class="px-4 py-3 font-body-sm text-body-sm text-muted-rosewood hover:text-warm-ink transition-colors flex items-center gap-2 whitespace-nowrap" type="button">
+<span>الدفعات والسندات</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container text-muted-rosewood text-[11px] font-mono">0</span>
+</button>
+<button class="px-4 py-3 font-body-sm text-body-sm text-muted-rosewood hover:text-warm-ink transition-colors whitespace-nowrap" type="button">
+          الشحن والتوصيل
+        </button>
+<button class="px-4 py-3 font-body-sm text-body-sm text-muted-rosewood hover:text-warm-ink transition-colors whitespace-nowrap" type="button">
+          الإرجاع والاستبدال
+        </button>
+<button class="px-4 py-3 font-body-sm text-body-sm text-muted-rosewood hover:text-warm-ink transition-colors flex items-center gap-2 whitespace-nowrap" type="button">
+<span>الملاحظات</span>
+<span class="px-2 py-0.5 rounded-full bg-champagne-gold/30 text-antique-gold text-[11px] font-mono font-bold">2</span>
+</button>
+<button class="px-4 py-3 font-body-sm text-body-sm text-muted-rosewood hover:text-warm-ink transition-colors whitespace-nowrap" type="button">
+          سجل التدقيق
+        </button>
+</div>
+<!-- 3. ITEMS TABLE CARD -->
+<div class="bg-surface-container-lowest rounded-2xl border border-hairline-burgundy shadow-[0_4px_24px_rgba(58,10,22,0.04)] overflow-hidden">
+<div class="p-5 flex items-center justify-between border-b border-hairline-burgundy">
+<div class="flex items-center gap-2">
+<span class="font-headline-sm text-headline-sm text-warm-ink">قائمة المجوهرات المعتمدة</span>
+<span class="font-label-sm text-label-sm text-muted-rosewood font-mono">(2 عناصر)</span>
+</div>
+<!-- Admin Cost & Margin Toggle -->
+<button class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-container hover:bg-blush-surface text-muted-rosewood hover:text-primary transition-colors text-label-sm font-label-sm border border-outline-variant/40" id="toggleFinancialMeta" type="button">
+<span class="material-symbols-outlined text-[16px]" id="toggleFinancialIcon">visibility</span>
+<span id="toggleFinancialText">إظهار هوامش التكلفة (للإدارة)</span>
+</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-right border-collapse">
+<thead>
+<tr class="bg-surface-container/60 border-b border-hairline-burgundy text-muted-rosewood font-label-md text-label-md">
+<th class="py-3 px-4 w-10 text-center">
+<input class="w-4 h-4 rounded text-primary focus:ring-0 cursor-pointer accent-primary" type="checkbox"/>
+</th>
+<th class="py-3 px-4">القطعة والمواصفات</th>
+<th class="py-3 px-3 text-center">الكمية</th>
+<th class="py-3 px-4 text-left">سعر الوحدة</th>
+<th class="py-3 px-3 text-left">الخصم</th>
+<th class="py-3 px-4 text-left">الإجمالي</th>
+<th class="py-3 px-4 text-left financial-meta hidden">تكلفة الوحدة</th>
+<th class="py-3 px-4 text-left financial-meta hidden">هامش الربح</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-hairline-burgundy/60 font-body-sm text-body-sm">
+<!-- Item 1: Gold Necklace -->
+<tr class="hover:bg-blush-surface/60 transition-colors group">
+<td class="py-4 px-4 text-center">
+<input class="w-4 h-4 rounded text-primary focus:ring-0 cursor-pointer accent-primary" type="checkbox"/>
+</td>
+<td class="py-4 px-4">
+<div class="flex items-center gap-3.5">
+<img class="w-14 h-14 rounded-xl object-cover border border-hairline-burgundy shadow-sm flex-shrink-0" data-alt="High luxury handcrafted 18k yellow gold necklace on cream silk pedestal, warm dramatic jewelry boutique lighting with deep burgundy velvet shadows" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZkglIaZrFAkEIeZDhM1qRug5AUv0M37n9xxotphIbauacU68PwsNwM_9lPFIOcGqnVW81ybhO1wzKEhtuRLxo-koAftOFUAySGzbhQyp74See23CiRAPs5rhXs7BisYo6H98yqZgmfBqtsEp7ujPUkjha6jMWSmqjfr489jXVXYEnuzhdjJCAIkb7IOhsyKheYb5zx2vQKiGWbcaUnPZ05J2bTQhlMVVIkDWqYEQo7L00pvd_e0Z_"/>
+<div class="flex flex-col">
+<span class="font-body-md text-body-md text-warm-ink font-semibold group-hover:text-primary transition-colors">قلادة ذهبية عيار 18 — طول 45 سم</span>
+<div class="flex items-center gap-2 mt-1">
+<span class="font-mono text-label-sm text-label-sm text-muted-rosewood bg-surface-container px-2 py-0.5 rounded border border-outline-variant/30">SKU: NK-102</span>
+<span class="text-hairline-gold">•</span>
+<span class="font-label-sm text-label-sm text-semantic-success">مخصص ومصاغ يدوياً</span>
+</div>
+</div>
+</div>
+</td>
+<td class="py-4 px-3 text-center font-mono font-medium text-warm-ink">
+<span class="inline-block px-3 py-1 bg-surface-container rounded-lg border border-outline-variant/30">1</span>
+</td>
+<td class="py-4 px-4 text-left font-mono">
+<div class="flex flex-col items-end">
+<span class="text-warm-ink font-semibold">18,000 د.ع</span>
+<span class="inline-flex items-center gap-1 font-label-sm text-[11px] text-antique-gold bg-champagne-gold/15 px-1.5 py-0.5 rounded border border-royal-gold/30 mt-1" title="السعر الحالي في المتجر 25,000 د.ع — السعر ثابت ومقفل لهذا الطلب">
+<span class="material-symbols-outlined text-[13px]">lock</span>
+<span>سعر مقفل (حالي 25,000)</span>
+</span>
+</div>
+</td>
+<td class="py-4 px-3 text-left font-mono text-muted-rosewood">0 د.ع</td>
+<td class="py-4 px-4 text-left font-mono font-bold text-warm-ink">18,000 د.ع</td>
+<td class="py-4 px-4 text-left font-mono text-muted-rosewood financial-meta hidden">11,200 د.ع</td>
+<td class="py-4 px-4 text-left font-mono text-semantic-success font-medium financial-meta hidden">37.7% (6,800 د.ع)</td>
+</tr>
+<!-- Item 2: Solitaire Diamond Ring -->
+<tr class="hover:bg-blush-surface/60 transition-colors group">
+<td class="py-4 px-4 text-center">
+<input class="w-4 h-4 rounded text-primary focus:ring-0 cursor-pointer accent-primary" type="checkbox"/>
+</td>
+<td class="py-4 px-4">
+<div class="flex items-center gap-3.5">
+<img class="w-14 h-14 rounded-xl object-cover border border-hairline-burgundy shadow-sm flex-shrink-0" data-alt="Solitaire brilliant cut diamond ring on dark oxblood leather base with soft warm gold reflective reflections luxury fine jewelry Arab world bespoke" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBz84cEm5d5nmKQZ9eNbc1v6L8puu1Srf2VLeZDUZkPqpM9_CzGOw7qSaMEBqmMBYm4Z7yQR5K_Lja9e7IY18sE8JG7uog7K64eU9C5axhgFByiJci3OHJrVzA6tMob-be_aIYfMov5QvmMTlj1XLhErZTNAdNY3fw2EFXwZ-Jec48RpYG_-gCaCHmM9sDU8kfuoDrei2OSt9FWKOjUaFs4V5BTLAbpUJCE9PbAy8KH9Nz6mXEhAukC"/>
+<div class="flex flex-col">
+<span class="font-body-md text-body-md text-warm-ink font-semibold group-hover:text-primary transition-colors">خاتم السوليتير الماسي — مقاس 14</span>
+<div class="flex items-center gap-2 mt-1">
+<span class="font-mono text-label-sm text-label-sm text-muted-rosewood bg-surface-container px-2 py-0.5 rounded border border-outline-variant/30">SKU: RG-102</span>
+<span class="text-hairline-gold">•</span>
+<span class="font-label-sm text-label-sm text-antique-gold">شهادة نقاء أصلية GIA</span>
+</div>
+</div>
+</div>
+</td>
+<td class="py-4 px-3 text-center font-mono font-medium text-warm-ink">
+<span class="inline-block px-3 py-1 bg-surface-container rounded-lg border border-outline-variant/30">1</span>
+</td>
+<td class="py-4 px-4 text-left font-mono">
+<span class="text-warm-ink font-semibold">25,000 د.ع</span>
+</td>
+<td class="py-4 px-3 text-left font-mono text-muted-rosewood">0 د.ع</td>
+<td class="py-4 px-4 text-left font-mono font-bold text-warm-ink">25,000 د.ع</td>
+<td class="py-4 px-4 text-left font-mono text-muted-rosewood financial-meta hidden">16,500 د.ع</td>
+<td class="py-4 px-4 text-left font-mono text-semantic-success font-medium financial-meta hidden">34.0% (8,500 د.ع)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="p-4 bg-surface-container/30 border-t border-hairline-burgundy flex items-center justify-between text-muted-rosewood font-body-sm text-body-sm">
+<span>القطع المختارة للشحن: 2 من أصل 2</span>
+<div class="flex items-center gap-3">
+<button class="text-primary hover:text-burgundy-600 font-label-md text-label-md flex items-center gap-1" type="button">
+<span class="material-symbols-outlined text-[16px]">qr_code_scanner</span>
+<span>مسح باركود التحقق عند التغليف</span>
+</button>
+</div>
+</div>
+</div>
+<!-- 4. INVENTORY IMPACT CARD -->
+<div class="bg-surface-container-lowest rounded-2xl p-6 border border-hairline-burgundy shadow-[0_4px_24px_rgba(58,10,22,0.04)]">
+<div class="flex items-center justify-between pb-4 border-b border-hairline-burgundy">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-xl bg-semantic-warning-bg/60 border border-semantic-warning/30 flex items-center justify-center text-semantic-warning">
+<span class="material-symbols-outlined text-[20px]">inventory</span>
+</div>
+<div>
+<h2 class="font-headline-sm text-headline-sm text-warm-ink">الأثر على المخزون المركزي</h2>
+<span class="font-label-sm text-label-sm text-muted-rosewood">قيود دفتر الأستاذ الفوري لخصم وحجز المجوهرات</span>
+</div>
+</div>
+<span class="px-2.5 py-1 rounded-full bg-semantic-success-bg text-semantic-success text-label-sm font-label-sm font-medium border border-semantic-success/20">
+            تم التنفيذ فورياً
+          </span>
+</div>
+<div class="flex flex-col gap-3 pt-4">
+<!-- Impact Item 1 -->
+<div class="p-3.5 rounded-xl bg-ivory-canvas/60 border border-hairline-burgundy/60 flex flex-col md:flex-row md:items-center justify-between gap-3">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-[20px] text-semantic-error mt-0.5">remove_circle</span>
+<div class="flex flex-col">
+<span class="font-body-sm text-body-sm text-warm-ink font-semibold">قلادة ذهبية رقم 102 (SKU: NK-102)</span>
+<span class="font-label-sm text-label-sm text-muted-rosewood">المتبقي في الخزينة الرئيسية: <strong class="text-warm-ink font-mono font-bold">3 قطع</strong></span>
+</div>
+</div>
+<div class="flex items-center gap-2 self-end md:self-center">
+<span class="font-mono text-label-sm text-label-sm text-muted-rosewood bg-surface-container px-2 py-1 rounded border border-outline-variant/40">سند مخزني #8841</span>
+</div>
+</div>
+<!-- Impact Item 2 -->
+<div class="p-3.5 rounded-xl bg-semantic-error-bg/30 border border-semantic-error/30 flex flex-col md:flex-row md:items-center justify-between gap-3">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-[20px] text-semantic-error mt-0.5">remove_circle</span>
+<div class="flex flex-col">
+<span class="font-body-sm text-body-sm text-warm-ink font-semibold">خاتم السوليتير الماسي (SKU: RG-102)</span>
+<span class="font-label-sm text-label-sm text-semantic-error font-medium">المتبقي في الخزينة: <strong class="font-mono font-bold">0 قطع (نفد المخزون بالكامل)</strong></span>
+</div>
+</div>
+<div class="flex items-center gap-2 self-end md:self-center">
+<span class="font-mono text-label-sm text-label-sm text-muted-rosewood bg-surface-container px-2 py-1 rounded border border-outline-variant/40">سند مخزني #8842</span>
+</div>
+</div>
+</div>
+<div class="mt-4 pt-3 border-t border-hairline-burgundy/60 flex items-center gap-2 text-muted-rosewood font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px] text-royal-gold">verified_user</span>
+<span>تم حجز وخصم القطع من المخزون المركزي فور التثبيت بواسطة المشرفة <strong>سارة آل رحيم</strong>.</span>
+</div>
+</div>
+</div>
+<!-- LEFT COLUMN WORKSPACE: FINANCIALS & AUDIT TIMELINE (4 Columns ~ 32%) -->
+<div class="lg:col-span-4 flex flex-col gap-6">
+<!-- 1. FINANCIAL SUMMARY & TOTALS CARD -->
+<div class="bg-surface-container-lowest rounded-2xl p-6 border border-hairline-burgundy shadow-[0_8px_30px_rgba(58,10,22,0.06)] relative overflow-hidden">
+<!-- Subtle luxury decorative corner line -->
+<div class="absolute top-0 left-0 w-24 h-24 bg-gradient-to-br from-champagne-gold/20 via-transparent to-transparent pointer-events-none"></div>
+<div class="flex items-center justify-between pb-4 border-b border-hairline-burgundy">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-royal-gold text-[22px]">account_balance_wallet</span>
+<h2 class="font-headline-sm text-headline-sm text-warm-ink">الملخص المالي ومستحقات الطلب</h2>
+</div>
+<span class="w-2.5 h-2.5 rounded-full bg-semantic-error" title="لم يتم استلام الدفع بعد"></span>
+</div>
+<!-- Breakdown Rows -->
+<div class="flex flex-col gap-3 py-5 border-b border-hairline-burgundy font-body-sm text-body-sm">
+<div class="flex justify-between items-center text-muted-rosewood">
+<span>المجموع الفرعي (2 قطعة)</span>
+<span class="font-mono text-warm-ink font-semibold">43,000 د.ع</span>
+</div>
+<div class="flex justify-between items-center text-muted-rosewood">
+<span>الخصم الترويجي</span>
+<span class="font-mono text-muted-rosewood">0 د.ع</span>
+</div>
+<div class="flex justify-between items-center text-muted-rosewood">
+<div class="flex items-center gap-1.5">
+<span>شحن مصفح ومؤمن VIP</span>
+<span class="material-symbols-outlined text-[15px] text-royal-gold" title="حماية مدرعة مع تغليف حراري مختوم">security</span>
+</div>
+<span class="font-mono text-warm-ink font-semibold">700 د.ع</span>
+</div>
+</div>
+<!-- Grand Total Highlight -->
+<div class="py-5 border-b border-hairline-burgundy flex flex-col gap-2">
+<div class="flex justify-between items-baseline">
+<span class="font-headline-sm text-headline-sm text-warm-ink font-bold">الإجمالي النهائي</span>
+<div class="text-left font-mono">
+<span class="font-headline-xl text-headline-xl text-primary font-bold tracking-tight">43,700</span>
+<span class="text-body-sm font-semibold text-primary mr-1">د.ع</span>
+</div>
+</div>
+<div class="flex justify-between items-center text-label-md text-label-md pt-2 text-muted-rosewood">
+<span>المبلغ المدفوع مسبقاً:</span>
+<span class="font-mono font-semibold text-warm-ink">0 د.ع</span>
+</div>
+<div class="flex justify-between items-center text-body-md text-body-md font-semibold text-semantic-error bg-semantic-error-bg/40 px-3 py-2 rounded-xl border border-semantic-error/20">
+<span>المبلغ المستحق عند التسليم:</span>
+<span class="font-mono font-bold">43,700 د.ع</span>
+</div>
+</div>
+<!-- Payment Progress & Mode -->
+<div class="pt-5 flex flex-col gap-3">
+<div class="flex justify-between items-center font-label-sm text-label-sm text-muted-rosewood">
+<span>نسبة التحصيل الفعلي:</span>
+<span class="font-mono font-bold text-semantic-error">0%</span>
+</div>
+<!-- Progress Bar -->
+<div class="w-full h-2 rounded-full bg-surface-container overflow-hidden">
+<div class="w-0 h-full bg-semantic-success transition-all duration-500"></div>
+</div>
+<p class="font-label-sm text-label-sm text-muted-rosewood leading-relaxed">
+            طريقة الدفع المعتمدة: <strong class="text-warm-ink">نقداً عند الاستلام</strong> بعد المعاينة المباشرة والفحص المجهري بواسطة خبير التسليم.
+          </p>
+<!-- Quick Action: Register Payment -->
+<button class="w-full mt-2 h-11 rounded-xl bg-surface-container hover:bg-blush-surface border border-hairline-burgundy text-primary font-label-md text-label-md flex items-center justify-center gap-2 transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">add_circle</span>
+<span>تسجيل دفعة نقدية / تحويل بنكي</span>
+</button>
+</div>
+</div>
+<!-- 2. ACTIVITY & AUDIT TIMELINE CARD -->
+<div class="bg-surface-container-lowest rounded-2xl p-6 border border-hairline-burgundy shadow-[0_4px_24px_rgba(58,10,22,0.04)] flex flex-col gap-5">
+<div class="flex items-center justify-between pb-4 border-b border-hairline-burgundy">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-[20px] text-primary">history_toggle_off</span>
+<h2 class="font-headline-sm text-headline-sm text-warm-ink">المخطط الزمني للنشاطات</h2>
+</div>
+<span class="material-symbols-outlined text-[16px] text-muted-rosewood" title="السجل مقفل للقراءة فقط وفق معايير الحوكمة">lock</span>
+</div>
+<!-- Timeline Nodes -->
+<div class="relative pr-6 border-r border-hairline-gold/50 flex flex-col gap-6 my-1">
+<!-- Node 1: Latest -->
+<div class="relative group">
+<div class="absolute -right-[31px] top-1.5 w-3.5 h-3.5 rounded-full bg-imperial-burgundy border-2 border-surface-container-lowest ring-2 ring-primary/20"></div>
+<div class="flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-warm-ink font-semibold">تحديث مرحلي</span>
+<span class="font-mono text-label-sm text-muted-rosewood">11:30 ص</span>
+</div>
+<p class="font-body-sm text-body-sm text-muted-rosewood leading-relaxed">
+                قيد المراجعة للتحضير للصياغة والتغليف الفاخر بواسطة النظام المركزي.
+              </p>
+</div>
+</div>
+<!-- Node 2: Staff Note Added -->
+<div class="relative group">
+<div class="absolute -right-[31px] top-1.5 w-3.5 h-3.5 rounded-full bg-royal-gold border-2 border-surface-container-lowest"></div>
+<div class="flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-warm-ink font-semibold">ملاحظة داخلية من الموظفة</span>
+<span class="font-mono text-label-sm text-muted-rosewood">10:07 ص</span>
+</div>
+<div class="p-3 rounded-xl bg-champagne-gold/15 border border-royal-gold/30 mt-1">
+<p class="font-body-sm text-body-sm text-warm-ink leading-relaxed">
+                  "طلب العميل إرفاق بطاقة إهداء مخملية مذهبة باسم الدكتورة مريم مع شريط حريري عنابي."
+                </p>
+<span class="font-label-sm text-label-sm text-antique-gold mt-1 block">— سارة آل رحيم</span>
+</div>
+</div>
+</div>
+<!-- Node 3: Order Confirmed & Deducted -->
+<div class="relative group">
+<div class="absolute -right-[31px] top-1.5 w-3.5 h-3.5 rounded-full bg-semantic-success border-2 border-surface-container-lowest"></div>
+<div class="flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-warm-ink font-semibold">تثبيت الطلب هاتفياً</span>
+<span class="font-mono text-label-sm text-muted-rosewood">10:05 ص</span>
+</div>
+<p class="font-body-sm text-body-sm text-muted-rosewood leading-relaxed">
+                تم التواصل مع العميل وتأكيد الحجز. خصم المخزون الآلي (−1 قلادة، −1 خاتم، سند #8841).
+              </p>
+</div>
+</div>
+<!-- Node 4: Initial Placement -->
+<div class="relative group">
+<div class="absolute -right-[31px] top-1.5 w-3.5 h-3.5 rounded-full bg-outline-variant border-2 border-surface-container-lowest"></div>
+<div class="flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-warm-ink font-semibold">إنشاء الطلب التلقائي</span>
+<span class="font-mono text-label-sm text-muted-rosewood">10:02 ص</span>
+</div>
+<p class="font-body-sm text-body-sm text-muted-rosewood leading-relaxed">
+                تم استيراد الطلب ومزامنة بيانات السلة عبر منصة الإنستغرام @ahmed_iraq.
+              </p>
+</div>
+</div>
+</div>
+<!-- Add Staff Note Form -->
+<div class="pt-4 border-t border-hairline-burgundy">
+<label class="block font-label-sm text-label-sm text-muted-rosewood mb-2">إضافة ملاحظة فريق العمل (سرية ومحمية)</label>
+<div class="flex flex-col gap-2">
+<textarea class="w-full p-3 rounded-xl bg-ivory-canvas/60 border border-outline-variant/60 focus:border-primary focus:bg-surface-container-lowest font-body-sm text-body-sm text-warm-ink placeholder:text-muted-rosewood/50 transition-all outline-none resize-none" id="staffNoteInput" placeholder="اكتب تعليمات خاصة بالتغليف أو الشحن..." rows="2"></textarea>
+<button class="self-end px-4 py-2 rounded-lg bg-surface-container hover:bg-blush-surface text-primary border border-hairline-burgundy text-label-sm font-label-sm font-semibold flex items-center gap-1.5 transition-colors" id="saveNoteBtn" type="button">
+<span class="material-symbols-outlined text-[16px]">send</span>
+<span>حفظ الملاحظة</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>
+  (function() {
+    // Actions Dropdown Toggle
+    const actionsBtn = document.getElementById('actionsMenuBtn');
+    const dropdownPanel = document.getElementById('actionsDropdownPanel');
+
+    if (actionsBtn && dropdownPanel) {
+      actionsBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        dropdownPanel.classList.toggle('hidden');
+      });
+
+      document.addEventListener('click', function(e) {
+        if (!dropdownPanel.contains(e.target) && e.target !== actionsBtn) {
+          dropdownPanel.classList.add('hidden');
+        }
+      });
+    }
+
+    // Toggle Financial Margins & Unit Cost Visibility
+    const toggleFinancialMetaBtn = document.getElementById('toggleFinancialMeta');
+    const financialColumns = document.querySelectorAll('.financial-meta');
+    const toggleFinancialText = document.getElementById('toggleFinancialText');
+    const toggleFinancialIcon = document.getElementById('toggleFinancialIcon');
+    let isFinancialVisible = false;
+
+    if (toggleFinancialMetaBtn) {
+      toggleFinancialMetaBtn.addEventListener('click', function() {
+        isFinancialVisible = !isFinancialVisible;
+        financialColumns.forEach(function(el) {
+          if (isFinancialVisible) {
+            el.classList.remove('hidden');
+          } else {
+            el.classList.add('hidden');
+          }
+        });
+        if (isFinancialVisible) {
+          toggleFinancialText.textContent = 'إخفاء هوامش التكلفة';
+          toggleFinancialIcon.textContent = 'visibility_off';
+          toggleFinancialMetaBtn.classList.add('bg-blush-surface', 'text-primary');
+        } else {
+          toggleFinancialText.textContent = 'إظهار هوامش التكلفة (للإدارة)';
+          toggleFinancialIcon.textContent = 'visibility';
+          toggleFinancialMetaBtn.classList.remove('bg-blush-surface', 'text-primary');
+        }
+      });
+    }
+
+    // Quick Staff Note Feedback
+    const saveNoteBtn = document.getElementById('saveNoteBtn');
+    const staffNoteInput = document.getElementById('staffNoteInput');
+    if (saveNoteBtn && staffNoteInput) {
+      saveNoteBtn.addEventListener('click', function() {
+        if (staffNoteInput.value.trim() !== '') {
+          const originalText = saveNoteBtn.innerHTML;
+          saveNoteBtn.innerHTML = '<span class="material-symbols-outlined text-[16px]">done</span><span>تم الحفظ</span>';
+          saveNoteBtn.classList.add('text-semantic-success');
+          setTimeout(function() {
+            staffNoteInput.value = '';
+            saveNoteBtn.innerHTML = originalText;
+            saveNoteBtn.classList.remove('text-semantic-success');
+          }, 1800);
+        }
+      });
+    }
+  })();
+</script></main></div></body></html>
