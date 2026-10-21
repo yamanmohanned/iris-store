@@ -13,6 +13,7 @@ import { execFileSync } from 'node:child_process';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { HSTS, pageHeaders } from './csp.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
 const dist = path.join(root, 'dist');
@@ -26,13 +27,16 @@ fs.rmSync(path.join(dist, 'uploads'), { recursive: true, force: true });
 
 fs.writeFileSync(path.join(dist, '_redirects'), '/*  /index.html  200\n');
 
+// ترويسات الأمان من csp.mjs (نفس ما يُكتب في .htaccess للاستضافة) + HSTS لأن Netlify يعمل على HTTPS دائماً
+const security = Object.entries({ ...pageHeaders(fs.readFileSync(path.join(dist, 'index.html'), 'utf8')), 'Strict-Transport-Security': HSTS })
+  .map(([k, v]) => `  ${k}: ${v}`)
+  .join('\n');
+
 fs.writeFileSync(
   path.join(dist, '_headers'),
   `/*
   X-Robots-Tag: noindex, nofollow
-  X-Content-Type-Options: nosniff
-  X-Frame-Options: SAMEORIGIN
-  Referrer-Policy: strict-origin-when-cross-origin
+${security}
 
 /assets/*
   Cache-Control: public, max-age=31536000, immutable

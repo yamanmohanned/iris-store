@@ -5,7 +5,7 @@ import { Icon } from '@/components/common/Icon';
 import type { Product } from '@/data/types';
 import { cn } from '@/lib/cn';
 import { formatNumber } from '@/lib/format';
-import { defaultSizeFor, metalOptionsFor } from '@/pages/store/product/productOptions';
+import { defaultSizeFor, metalOptionsFor, swatchStyle } from '@/pages/store/product/productOptions';
 import { MAX_QTY, useCart } from '@/state/cart';
 import { useToast } from '@/state/toast';
 
@@ -94,7 +94,7 @@ function Sheet({ product: p, onClose }: { product: Product; onClose: () => void 
                     )}
                   >
                     <input type="radio" name="metal" className="sr-only" checked={metal === m.label} onChange={() => setMetal(m.label)} />
-                    <span className={cn('h-5 w-5 rounded-full bg-gradient-to-br ring-1 ring-black/10', m.gradient)} />
+                    <span className={cn('h-5 w-5 rounded-full bg-gradient-to-br ring-1 ring-black/10', m.gradient)} style={swatchStyle(m)} />
                     <span className="flex-1 font-body-sm text-body-sm text-warm-ink">{m.label}</span>
                     {metal === m.label && <Icon name="check_circle" fill className="text-[20px] text-imperial-burgundy" />}
                   </label>

@@ -17,7 +17,7 @@ export function StoreLayout() {
 
   const overlay = pathname === '/';
   return (
-    <div className="flex min-h-screen flex-col bg-surface font-body-md text-body-md text-on-surface antialiased selection:bg-rose-mist selection:text-imperial-burgundy">
+    <div className="flex min-h-screen flex-col font-body-md text-body-md text-on-surface antialiased selection:bg-rose-mist selection:text-imperial-burgundy">
       <ScrollProgress />
       <StoreHeader />
       <div aria-hidden className="shrink-0" style={{ height: overlay ? HEADER_HEIGHT.overlay : HEADER_HEIGHT.solid }} />

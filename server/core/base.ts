@@ -48,16 +48,19 @@ export function fail(message: string, status = 400): never {
 
 export const sha = (s: string) => createHash('sha256').update(s).digest('hex');
 
+/** ترويسات كل استجابة JSON: لا تخزين، لا تخمين للنوع، ولا عرض داخل صفحة أخرى (مثل iris_bootstrap في PHP). */
+export const API_HEADERS: Record<string, string> = {
+  'Content-Type': 'application/json; charset=utf-8',
+  'Cache-Control': 'no-store',
+  'X-Content-Type-Options': 'nosniff',
+  'X-Frame-Options': 'DENY',
+  'Content-Security-Policy': "default-src 'none'; frame-ancestors 'none'",
+  'Cross-Origin-Resource-Policy': 'same-origin',
+  'Referrer-Policy': 'same-origin',
+};
+
 export function json(status: number, data: Json, headers: Record<string, string> = {}): Response {
-  return new Response(JSON.stringify(data), {
-    status,
-    headers: {
-      'Content-Type': 'application/json; charset=utf-8',
-      'Cache-Control': 'no-store',
-      'X-Content-Type-Options': 'nosniff',
-      ...headers,
-    },
-  });
+  return new Response(JSON.stringify(data), { status, headers: { ...API_HEADERS, ...headers } });
 }
 
 export const ok = (data: Json = {}, headers?: Record<string, string>) => json(200, { ok: true, ...data }, headers);
@@ -76,7 +79,10 @@ export function sessionToken(req: Request): string | null {
   return /(?:^|;\s*)IRISADMIN=([a-f0-9]{48})/.exec(req.headers.get('cookie') ?? '')?.[1] ?? null;
 }
 
-/** حد بسيط للمحاولات لكل عنوان IP (مثل iris_rate_limit في PHP). يعيد true عند تجاوز الحد. */
+/**
+ * حد بسيط للمحاولات (مثل iris_rate_limit في PHP). يعيد true عند تجاوز الحد.
+ * ip هو صاحب العدّاد: عنوان IP عادةً، أو `user:<اسم>` لعدّاد حساب واحد.
+ */
 export async function rateLimited(kv: Kv, bucket: string, ip: string, max: number, windowSec: number, hit: boolean): Promise<boolean> {
   const key = `rate/${bucket}/${sha(ip || 'unknown').slice(0, 24)}`;
   const now = Math.floor(Date.now() / 1000);

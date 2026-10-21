@@ -272,7 +272,7 @@ html:not(.icons-ready) .material-symbols-outlined {
   content: '';
   position: absolute;
   inset: 0;
-  background: #fbf6ef;
+  background: var(--page-bg, #f4ede2);
   z-index: 15;
   transform: scaleY(1);
   transform-origin: top;
@@ -301,5 +301,82 @@ html:not(.icons-ready) .material-symbols-outlined {
   }
   .curtain-reveal::before {
     display: none;
+  }
+}
+
+/* ═══ الخلفية الحيّة للمساحات الواسعة (AmbientBackdrop) ═══
+   نقش شبكي خفيف ينساب ببطء + توهجان دافئان + علامة مائية كبيرة للشعار.
+   كلها تحريك transform فقط (رخيص على المعالج الرسومي) وتتوقف مع «تقليل الحركة». */
+.ambient-lattice {
+  position: absolute;
+  inset: -64px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'%3E%3Cpath d='M32 2 L62 32 L32 62 L2 32 Z' fill='none' stroke='%234e1825' stroke-width='1'/%3E%3Cpath d='M32 14 L50 32 L32 50 L14 32 Z' fill='none' stroke='%23c9a24b' stroke-width='0.6'/%3E%3Ccircle cx='32' cy='32' r='1.6' fill='%23c9a24b'/%3E%3C/svg%3E");
+  background-size: 64px 64px;
+  opacity: 0.055;
+  -webkit-mask-image: radial-gradient(ellipse at 50% 35%, #000 25%, transparent 80%);
+  mask-image: radial-gradient(ellipse at 50% 35%, #000 25%, transparent 80%);
+  animation: ambient-drift 40s linear infinite;
+  will-change: transform;
+}
+@keyframes ambient-drift {
+  to {
+    transform: translate3d(64px, 64px, 0);
+  }
+}
+.ambient-glow-a,
+.ambient-glow-b {
+  position: absolute;
+  border-radius: 9999px;
+  will-change: transform;
+}
+.ambient-glow-a {
+  top: -10vh;
+  right: -15vw;
+  width: 70vmax;
+  height: 70vmax;
+  background: radial-gradient(circle at center, rgba(201, 162, 75, 0.16), rgba(201, 162, 75, 0) 62%);
+  animation: ambient-float-a 30s ease-in-out infinite alternate;
+}
+.ambient-glow-b {
+  bottom: -25vh;
+  left: -20vw;
+  width: 75vmax;
+  height: 75vmax;
+  background: radial-gradient(circle at center, rgba(78, 24, 37, 0.1), rgba(78, 24, 37, 0) 62%);
+  animation: ambient-float-b 38s ease-in-out infinite alternate;
+}
+@keyframes ambient-float-a {
+  to {
+    transform: translate3d(-10vw, 14vh, 0) scale(1.15);
+  }
+}
+@keyframes ambient-float-b {
+  to {
+    transform: translate3d(12vw, -10vh, 0) scale(0.92);
+  }
+}
+.ambient-mark {
+  position: absolute;
+  left: -4vw;
+  bottom: -10vh;
+  opacity: 0.05;
+  transform-origin: 30% 85%;
+  animation: ambient-sway 48s ease-in-out infinite alternate;
+  will-change: transform;
+}
+@keyframes ambient-sway {
+  from {
+    transform: translate3d(0, 0, 0) rotate(-7deg);
+  }
+  to {
+    transform: translate3d(4vw, -6vh, 0) rotate(5deg);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ambient-lattice,
+  .ambient-glow-a,
+  .ambient-glow-b,
+  .ambient-mark {
+    animation: none;
   }
 }

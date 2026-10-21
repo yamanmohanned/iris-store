@@ -49,6 +49,11 @@ function iris_bootstrap()
     header('X-Content-Type-Options: nosniff');
     header('Referrer-Policy: same-origin');
     header('Cache-Control: no-store, max-age=0');
+    // استجابات الواجهة بيانات فقط: لا تُعرض داخل صفحة أخرى ولا تُقرأ من موقع آخر
+    header('X-Frame-Options: DENY');
+    header("Content-Security-Policy: default-src 'none'; frame-ancestors 'none'");
+    header('Cross-Origin-Resource-Policy: same-origin');
+    header_remove('X-Powered-By');
     set_exception_handler(function ($e) {
         error_log('[iris-api] ' . $e->getMessage() . ' @ ' . $e->getFile() . ':' . $e->getLine());
         iris_fail('حدث خطأ غير متوقع في الخادم.', 500);
@@ -255,15 +260,15 @@ function iris_client_ip()
 }
 
 /**
- * حد بسيط للمحاولات لكل عنوان IP (ملف واحد، يُنظف تلقائياً).
- * يعيد false عند تجاوز الحد.
+ * حد بسيط للمحاولات (ملف واحد، يُنظف تلقائياً). يعيد false عند تجاوز الحد.
+ * $subject صاحب العدّاد: عنوان IP افتراضياً، أو مثل 'u:<اسم>' لعدّاد حساب واحد.
  */
-function iris_rate_limit($bucket, $max, $windowSeconds, $count = true)
+function iris_rate_limit($bucket, $max, $windowSeconds, $count = true, $subject = null)
 {
-    return iris_locked(function () use ($bucket, $max, $windowSeconds, $count) {
+    return iris_locked(function () use ($bucket, $max, $windowSeconds, $count, $subject) {
         $now = time();
         $all = iris_read('ratelimit', array());
-        $key = $bucket . ':' . hash('sha256', iris_client_ip());
+        $key = $bucket . ':' . hash('sha256', $subject === null ? iris_client_ip() : $subject);
         $hits = isset($all[$key]) ? $all[$key] : array();
         $hits = array_values(array_filter($hits, function ($t) use ($now, $windowSeconds) {
             return $t > $now - $windowSeconds;
@@ -286,11 +291,11 @@ function iris_rate_limit($bucket, $max, $windowSeconds, $count = true)
     });
 }
 
-function iris_rate_reset($bucket)
+function iris_rate_reset($bucket, $subject = null)
 {
-    iris_locked(function () use ($bucket) {
+    iris_locked(function () use ($bucket, $subject) {
         $all = iris_read('ratelimit', array());
-        unset($all[$bucket . ':' . hash('sha256', iris_client_ip())]);
+        unset($all[$bucket . ':' . hash('sha256', $subject === null ? iris_client_ip() : $subject)]);
         iris_write('ratelimit', $all);
     });
 }
@@ -337,7 +342,8 @@ function iris_image($value, $label = 'رابط الصورة')
     if ($url === '') {
         return '';
     }
-    if (strpos($url, '..') !== false) {
+    // «/\evil.com» يعامله المتصفح كـ //evil.com، فلا شرطة مائلة عكسية إطلاقاً
+    if (strpos($url, '..') !== false || strpos($url, '\\') !== false) {
         iris_fail($label . ': الرابط غير صالح.');
     }
     if ($url[0] === '/' && (strlen($url) === 1 || $url[1] !== '/')) {

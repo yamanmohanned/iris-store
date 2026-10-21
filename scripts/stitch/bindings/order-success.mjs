@@ -5,7 +5,7 @@ const common = {
     "import { useRouteOrder } from '@/hooks/useRouteOrder';",
     "import { formatNumber } from '@/lib/format';",
     "import NotFoundPage from '@/pages/store/system/NotFoundPage';",
-    "import { orderStatusLabels, paymentLabels } from '@/state/orders';",
+    "import { customerStatusLabels, paymentLabels } from '@/state/orders';",
   ],
   hooks: `  const order = useRouteOrder();
   const pieces = order ? order.lines.reduce((n, l) => n + l.qty, 0) : 0;`,
@@ -20,7 +20,7 @@ export const desktop = {
     { sel: '#order-number-val', text: '#⟦order.id⟧' },
     { sel: '#copy-btn', attr: { 'data-legacy-onclick': "navigator.clipboard.writeText('⟦order.id⟧')" } },
     { sel: '#copy-feedback', remove: true },
-    { sel: 'span.text-semantic-warning.font-semibold', text: '⟦orderStatusLabels[order.status]⟧' },
+    { sel: 'span.text-semantic-warning.font-semibold', text: '⟦customerStatusLabels[order.status]⟧' },
     { sel: 'span.font-mono.text-label-sm', first: true, swap: [['2 قطعة مختارة', '⟦pieces⟧ قطعة مختارة']] },
 
     // order lines (right card)
@@ -66,7 +66,7 @@ export const mobile = {
   bind: [
     { sel: '#orderNumber', text: '#⟦order.id⟧' },
     { sel: '#copyBtn', attr: { 'data-legacy-onclick': "navigator.clipboard.writeText('⟦order.id⟧')" } },
-    { sel: 'div.inline-flex.border-semantic-warning\\/30 span.font-medium', text: '⟦orderStatusLabels[order.status]⟧' },
+    { sel: 'div.inline-flex.border-semantic-warning\\/30 span.font-medium', text: '⟦customerStatusLabels[order.status]⟧' },
     { sel: 'section.rounded-\\[20px\\] span.font-label-sm.text-antique-gold', first: true, text: '⟦pieces⟧ قطع مختارة' },
 
     // lines

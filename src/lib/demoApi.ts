@@ -4,7 +4,7 @@
  * (رفع الخطوط والفيديو والاستيراد من إنستغرام تحتاج الخادم الحقيقي.)
  */
 import seed from '@/data/seed.json';
-import { allows, cleanPermissions, FULL_ACCESS, USERNAME_PATTERN, type AdminProfile, type Section } from './permissions';
+import { allows, cleanPermissions, FULL_ACCESS, passwordProblem, USERNAME_PATTERN, type AdminProfile, type Section } from './permissions';
 import { RESET_PHRASE } from './reset';
 
 type Json = Record<string, any>; // eslint-disable-line @typescript-eslint/no-explicit-any
@@ -141,7 +141,8 @@ export async function demoApi(route: string, method: string, body: Json | undefi
       return { ok: true, admin: user };
     case 'POST auth/password': {
       const u = need(user);
-      if (String(body?.next ?? '').length < 8) fail('كلمة المرور الجديدة يجب أن تكون 8 أحرف على الأقل.');
+      const problem = passwordProblem(String(body?.next ?? ''), u.username);
+      if (problem) fail(problem);
       if (u.role === 'owner') {
         if (body?.current !== read('password', DEMO_PASSWORD)) fail('كلمة المرور الحالية غير صحيحة.');
         write('password', body!.next);
@@ -260,9 +261,9 @@ export async function demoApi(route: string, method: string, body: Json | undefi
       write('orders', store);
       return { ok: true, order };
     }
-    case 'GET orders/track': {
+    case 'POST orders/track': {
       const order = read<Json>('orders', { orders: [] }).orders.find(
-        (o: Json) => o.id === Number(String(query.id).replace(/\D/g, '')) && o.customer.phone === phone(query.phone),
+        (o: Json) => o.id === Number(String(body?.id ?? '').replace(/\D/g, '')) && o.customer.phone === phone(body?.phone),
       );
       if (!order) fail('لم نجد طلباً بهذا الرقم وهذا الهاتف.', 404);
       return { ok: true, order };

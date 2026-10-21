@@ -29,7 +29,7 @@ export function MobilePage({
   className?: string;
 }) {
   return (
-    <div className="flex min-h-screen flex-col bg-ivory-canvas text-warm-ink">
+    <div className="flex min-h-screen flex-col text-warm-ink">
       <MobileTopBar title={title} back={back} end={end} />
       <main className={cn('flex-1 px-gutter-mobile', MOBILE_TOP_OFFSET, tab === false ? 'pb-10' : 'pb-32', className)}>
         <div className="pt-4">{children}</div>

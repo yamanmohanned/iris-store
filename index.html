@@ -26,10 +26,11 @@
 
     <!-- أول رسم للصفحة: خلفية المتجر وشعاره بدل صفحة بيضاء حتى تجهز الواجهة -->
     <style>
-      html,
+      html {
+        background: #f4ede2;
+      }
       body {
         margin: 0;
-        background: #fbf6ef;
       }
       .boot {
         min-height: 100vh;
@@ -90,7 +91,7 @@
       } catch (e) {}
     </script>
   </head>
-  <body class="bg-ivory-canvas font-body-md text-on-surface antialiased">
+  <body class="font-body-md text-on-surface antialiased">
     <div id="root">
       <div class="boot" role="status" aria-label="جارٍ التحميل"><span class="boot-mark"></span></div>
     </div>

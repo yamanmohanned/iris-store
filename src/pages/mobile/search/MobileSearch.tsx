@@ -24,7 +24,7 @@ export default function MobileSearch() {
   };
 
   return (
-    <div className="flex min-h-screen flex-col bg-ivory-canvas">
+    <div className="flex min-h-screen flex-col">
       <header className="pt-safe fixed inset-x-0 top-0 z-50 bg-ivory-canvas/95 shadow-[0_4px_20px_rgba(42,3,13,0.06)] backdrop-blur-xl">
         <div className="flex h-16 items-center gap-2 px-3">
           <Link to="/" aria-label="رجوع" className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-warm-ink">

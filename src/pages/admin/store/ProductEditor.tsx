@@ -12,7 +12,9 @@ import { useAdminAuth } from '@/state/adminAuth';
 import { newId, slugify, uniqueSlug, useCatalogEditor } from './useCatalogEditor';
 
 type Swatch = NonNullable<Product['swatches']>[number];
+type CustomColor = NonNullable<Product['customColors']>[number];
 const SWATCHES = Object.keys(METAL_STYLES) as Swatch[];
+const MAX_CUSTOM_COLORS = 12;
 
 interface Form {
   name: string;
@@ -29,6 +31,7 @@ interface Form {
   videos: string[];
   badge: ProductBadge | '';
   swatches: Swatch[];
+  customColors: CustomColor[];
   sizes: Array<{ label: string; soldOut: boolean; note?: string }>;
   description: string;
   specs: string;
@@ -51,6 +54,7 @@ function toForm(p: Product | undefined, category: string): Form {
     videos: p?.videos ?? [],
     badge: p?.badge ?? '',
     swatches: p?.swatches ?? [],
+    customColors: p?.customColors ?? [],
     sizes: (p?.sizes ?? []).map((s) => ({ label: s.label, soldOut: !!s.soldOut, note: s.note })),
     description: (p?.content?.description ?? []).join('\n\n'),
     specs: (p?.content?.specs ?? []).map((s) => `${s.label}: ${s.value}`).join('\n'),
@@ -152,6 +156,7 @@ function EditorForm({ existing, initialCategory }: { existing?: Product; initial
           ...(f.videos.length ? { videos: f.videos } : {}),
           ...(existing?.source ? { source: existing.source, ...(existing.sourceUrl ? { sourceUrl: existing.sourceUrl } : {}) } : {}),
           ...(f.swatches.length ? { swatches: f.swatches } : {}),
+          ...(f.customColors.length ? { customColors: f.customColors } : {}),
           ...(sizes.length ? { sizes } : {}),
           ...(existing?.tags ? { tags: existing.tags } : {}),
           ...(f.hidden ? { hidden: true } : {}),
@@ -276,7 +281,8 @@ function EditorForm({ existing, initialCategory }: { existing?: Product; initial
           <Card className="flex flex-col gap-4">
             <h2 className="font-headline-sm text-headline-sm font-semibold text-deep-oxblood">الخيارات</h2>
             <div>
-              <p className="mb-2 font-label-lg text-label-lg text-warm-ink">ألوان المعدن المتاحة</p>
+              <p className="font-label-lg text-label-lg text-warm-ink">الألوان المتاحة</p>
+              <p className="mb-2 font-label-sm text-label-sm text-muted-rosewood">اختر من الألوان الجاهزة، أو أضف لوناً جديداً باسمه ودرجته.</p>
               <div className="flex flex-wrap gap-2">
                 {SWATCHES.map((k) => {
                   const on = f.swatches.includes(k);
@@ -295,7 +301,35 @@ function EditorForm({ existing, initialCategory }: { existing?: Product; initial
                     </button>
                   );
                 })}
+                {f.customColors.map((c) => (
+                  <span
+                    key={c.name}
+                    className="flex items-center gap-2 rounded-full bg-imperial-burgundy py-1 pe-1 ps-3 font-label-md text-label-md text-ivory-canvas"
+                  >
+                    <span className="h-4 w-4 rounded-full ring-1 ring-white/40" style={{ background: c.hex }} />
+                    {c.name}
+                    <button
+                      type="button"
+                      aria-label={`حذف اللون ${c.name}`}
+                      onClick={() =>
+                        set(
+                          'customColors',
+                          f.customColors.filter((x) => x.name !== c.name),
+                        )
+                      }
+                      className="flex h-7 w-7 items-center justify-center rounded-full hover:bg-white/15"
+                    >
+                      <Icon name="close" className="text-[16px]" />
+                    </button>
+                  </span>
+                ))}
               </div>
+              {f.customColors.length < MAX_CUSTOM_COLORS && (
+                <CustomColorAdd
+                  taken={[...SWATCHES.map((k) => METAL_STYLES[k].label), ...f.customColors.map((c) => c.name)]}
+                  onAdd={(c) => set('customColors', [...f.customColors, c])}
+                />
+              )}
             </div>
             <div>
               <p className="mb-2 font-label-lg text-label-lg text-warm-ink">المقاسات / الأطوال</p>
@@ -421,6 +455,60 @@ function EditorForm({ existing, initialCategory }: { existing?: Product; initial
         </div>
       </fieldset>
     </AdminPage>
+  );
+}
+
+/** لون جديد غير الجاهزة: اسم يظهر للزبون + درجة من منتقي الألوان. */
+function CustomColorAdd({ taken, onAdd }: { taken: string[]; onAdd: (c: CustomColor) => void }) {
+  const [name, setName] = useState('');
+  const [hex, setHex] = useState('#1f3a93');
+  const [error, setError] = useState('');
+  const add = () => {
+    const n = name.trim();
+    if (!n) return setError('اكتب اسم اللون كما سيظهر للزبون.');
+    if (taken.includes(n)) return setError('هذا اللون مضاف مسبقاً.');
+    onAdd({ name: n, hex: hex.toLowerCase() });
+    setName('');
+    setError('');
+  };
+  return (
+    <div className="mt-3 flex flex-col gap-1">
+      <div className="flex flex-wrap items-center gap-2">
+        <label
+          className="relative h-10 w-10 shrink-0 cursor-pointer overflow-hidden rounded-full shadow-sm ring-1 ring-black/15"
+          style={{ background: hex }}
+          title="اختر درجة اللون"
+        >
+          <input
+            type="color"
+            value={hex}
+            onChange={(e) => setHex(e.target.value)}
+            aria-label="درجة اللون الجديد"
+            className="absolute inset-0 h-full w-full cursor-pointer opacity-0"
+          />
+        </label>
+        <div className="min-w-[160px] flex-1">
+          <input
+            className={cn(inputClass, 'py-2')}
+            value={name}
+            maxLength={30}
+            placeholder="اسم اللون، مثل: أزرق ملكي"
+            aria-label="اسم اللون الجديد"
+            onChange={(e) => setName(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter') {
+                e.preventDefault();
+                add();
+              }
+            }}
+          />
+        </div>
+        <Button variant="secondary" icon="add" onClick={add}>
+          إضافة لون
+        </Button>
+      </div>
+      {error && <p className="font-label-sm text-label-sm text-semantic-error">{error}</p>}
+    </div>
   );
 }
 

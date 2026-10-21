@@ -6,14 +6,14 @@ import { MobileTopBar } from '@/components/mobile/MobileTopBar';
 import { useIsMobile } from '@/hooks/useMediaQuery';
 import { cn } from '@/lib/cn';
 import { formatDate, formatNumber } from '@/lib/format';
-import { orderStatusLabels, paymentLabels, useOrders, type Order, type OrderStatus } from '@/state/orders';
+import { customerStatusLabels, paymentLabels, useOrders, type Order, type OrderStatus } from '@/state/orders';
 
-const STEPS: Array<{ id: OrderStatus; label: string; icon: string }> = [
-  { id: 'pending', label: 'استلمنا طلبك', icon: 'receipt_long' },
-  { id: 'confirmed', label: 'تم تأكيد الطلب', icon: 'verified' },
-  { id: 'preparing', label: 'قيد التجهيز والتغليف', icon: 'redeem' },
-  { id: 'shipped', label: 'مع مندوب التوصيل', icon: 'local_shipping' },
-  { id: 'delivered', label: 'تم التسليم', icon: 'task_alt' },
+/** مراحل الزبون: الطلب المرسل مؤكَّد من البداية، وموافقة المسؤول تنقله إلى التجهيز (customerStatusLabels). */
+const STEPS: Array<{ ids: OrderStatus[]; label: string; icon: string }> = [
+  { ids: ['pending'], label: 'تم تأكيد الطلب', icon: 'verified' },
+  { ids: ['confirmed', 'preparing'], label: 'قيد التجهيز والتغليف', icon: 'redeem' },
+  { ids: ['shipped'], label: 'مع مندوب التوصيل', icon: 'local_shipping' },
+  { ids: ['delivered'], label: 'تم التسليم', icon: 'task_alt' },
 ];
 
 /**
@@ -136,7 +136,7 @@ export default function TrackOrderPage() {
 
   if (mobile) {
     return (
-      <div className="flex min-h-screen flex-col bg-ivory-canvas">
+      <div className="flex min-h-screen flex-col">
         <MobileTopBar title="تتبع طلبك" back="/" />
         <main className="flex-1 px-gutter-mobile pb-32 pt-[calc(5rem+env(safe-area-inset-top,0px))]">{body}</main>
         <MobileTabBar active="account" />
@@ -156,7 +156,7 @@ export default function TrackOrderPage() {
 
 function OrderStatusCard({ order }: { order: Order }) {
   const stopped = order.status === 'cancelled' || order.status === 'returned';
-  const current = STEPS.findIndex((s) => s.id === order.status);
+  const current = STEPS.findIndex((s) => s.ids.includes(order.status));
 
   return (
     <div className="rounded-3xl bg-surface-container-lowest p-5 shadow-royal md:p-8">
@@ -172,7 +172,7 @@ function OrderStatusCard({ order }: { order: Order }) {
             stopped ? 'bg-surface-container-high text-muted-rosewood' : 'bg-blush-surface text-imperial-burgundy',
           )}
         >
-          {orderStatusLabels[order.status]}
+          {customerStatusLabels[order.status]}
         </span>
       </div>
 
@@ -181,7 +181,7 @@ function OrderStatusCard({ order }: { order: Order }) {
           {STEPS.map((s, i) => {
             const done = i <= current;
             return (
-              <li key={s.id} className="flex flex-1 items-center gap-3 md:flex-col md:text-center">
+              <li key={s.label} className="flex flex-1 items-center gap-3 md:flex-col md:text-center">
                 <span
                   className={cn(
                     'flex h-10 w-10 shrink-0 items-center justify-center rounded-full',

@@ -37,7 +37,7 @@ const FACTS = [
 function AboutDesktop() {
   const contact = useContactLinks();
   return (
-    <main className="w-full bg-ivory-canvas">
+    <main className="w-full">
       <section className="mx-auto grid max-w-[1200px] grid-cols-12 items-center gap-12 px-gutter py-space-3xl">
         <div className="col-span-6">
           <p className="mb-3 flex items-center gap-2 font-label-md text-label-md text-antique-gold">

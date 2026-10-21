@@ -17,6 +17,7 @@ import { execFileSync } from 'node:child_process';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { HSTS, pageHeaders } from './csp.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
 const dist = path.join(root, 'dist');
@@ -37,8 +38,21 @@ const copy = (from, to) => fs.cpSync(from, to, { recursive: true, filter: (src) 
 copy(dist, out);
 fs.rmSync(path.join(out, 'uploads'), { recursive: true, force: true });
 
-// 2) إعدادات الخادم + مجلد الصور
+// 2) إعدادات الخادم + مجلد الصور، وترويسات الأمان (CSP ببصمة سكربت الإقلاع في index.html المبني)
 copy(path.join(root, 'server/hosting'), out);
+const htaccess = path.join(out, '.htaccess');
+const MARKER = '  # @iris-security-headers';
+const headerLines = [
+  ...Object.entries(pageHeaders(fs.readFileSync(path.join(dist, 'index.html'), 'utf8'))).map(([k, v]) => `  Header always set ${k} "${v}"`),
+  '  # HSTS: المتصفح يلتزم بـ HTTPS سنة كاملة — يُرسل فقط حين يصل الطلب نفسه عبر HTTPS',
+  `  Header always set Strict-Transport-Security "${HSTS}" env=HTTPS`,
+];
+const template = fs.readFileSync(htaccess, 'utf8');
+if (!template.includes(MARKER)) {
+  console.error('✗ server/hosting/.htaccess لا يحتوي السطر «# @iris-security-headers»');
+  process.exit(1);
+}
+fs.writeFileSync(htaccess, template.replace(MARKER, headerLines.join('\n')));
 
 // 3) واجهة PHP + الكتالوج الأولي
 copy(path.join(root, 'server/api'), path.join(out, 'api'));

@@ -2,6 +2,7 @@ import { Link } from 'react-router';
 import { BrandMark, BrandWordmark } from '@/components/common/BrandLogo';
 import { Icon } from '@/components/common/Icon';
 import { CategoryGrid } from '@/components/mobile/CategoryGrid';
+import { AmbientBackdrop } from '@/components/store/AmbientBackdrop';
 import { StoreComingSoon } from '@/components/store/StoreComingSoon';
 import { MobileTabBar } from '@/components/mobile/MobileTabBar';
 import { MobileTopBar } from '@/components/mobile/MobileTopBar';
@@ -30,7 +31,7 @@ export default function MobileHome() {
   const offers = visibleProducts.filter((p) => p.oldPrice && p.oldPrice > p.price).length;
 
   return (
-    <div className="flex min-h-screen flex-col bg-ivory-canvas text-warm-ink">
+    <div className="flex min-h-screen flex-col text-warm-ink">
       <MobileTopBar overlay threshold={260} />
 
       {/* الغلاف */}
@@ -50,7 +51,8 @@ export default function MobileHome() {
         </div>
       </section>
 
-      <main className="relative z-10 -mt-5 flex-1 rounded-t-[28px] bg-ivory-canvas px-gutter-mobile pb-32 pt-5">
+      <main className="relative z-10 -mt-5 flex-1 overflow-hidden rounded-t-[28px] bg-ivory-canvas px-gutter-mobile pb-32 pt-5">
+        <AmbientBackdrop contained />
         {/* مزايا الشراء */}
         <ul className="mb-6 grid grid-cols-3 gap-2">
           {FEATURES.map((f) => (

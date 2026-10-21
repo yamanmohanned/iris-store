@@ -117,7 +117,9 @@ check((await cp.locator(`text=${prod.shortName}`).count()) > 0, 'product is in t
 
 await cp.goto(base + '/checkout', { waitUntil: 'networkidle' });
 await cp.fill('#full-name', 'زبون تجريبي');
-await cp.fill('#phone-number', '07701234567');
+// رقم مختلف في كل تشغيل: الخادم يقبل 3 طلبات جديدة فقط لنفس الهاتف قبل أن يجهّزها المتجر
+const customerPhone = `0770${String(Math.floor(Math.random() * 1e7)).padStart(7, '0')}`;
+await cp.fill('#phone-number', customerPhone);
 await cp.getByRole('button', { name: 'متابعة إلى التوصيل' }).click();
 await cp.waitForURL(base + '/checkout/delivery');
 await cp.fill('#district-field', 'الكرادة');
@@ -132,6 +134,8 @@ await cp.getByRole('button', { name: /تأكيد الطلب/ }).click();
 await cp.waitForURL(/\/order-success\/\d+/, { timeout: 15000 });
 const orderId = Number(cp.url().split('/').pop());
 check(orderId >= 1055, `order placed → /order-success/${orderId}`);
+await cp.waitForSelector('text=تم تأكيد الطلب');
+check((await cp.locator('text=قيد المراجعة').count()) === 0, 'customer sees «تم تأكيد الطلب», never «قيد المراجعة»');
 
 /* ───────── المالك يرى الطلب ───────── */
 const orders = await (await op.request.get(base + '/api/index.php?r=orders', { headers: { 'X-Requested-With': 'iris' } })).json();
@@ -150,8 +154,8 @@ check(orders2.orders.find((o) => o.id === orderId)?.status === 'confirmed', 'own
 
 /* ───────── الزبون يتتبع ───────── */
 await cp.goto(base + `/track-order?order=${orderId}`, { waitUntil: 'networkidle' });
-await cp.waitForSelector('text=تم تأكيد الطلب');
-check((await cp.locator('span:has-text("مؤكد")').count()) > 0, 'customer tracking shows the confirmed status');
+await cp.waitForSelector('span.rounded-full:has-text("قيد التجهيز")');
+check((await cp.locator('text=قيد المراجعة').count()) === 0, 'after the owner approves, customer tracking moves to «قيد التجهيز»');
 
 /* ───────── التحقق من رفض التلاعب ───────── */
 const anon = await browser.newContext();

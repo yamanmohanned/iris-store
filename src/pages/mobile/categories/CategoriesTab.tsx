@@ -15,7 +15,7 @@ export default function CategoriesTab() {
   }));
 
   return (
-    <div className="flex min-h-screen flex-col bg-ivory-canvas">
+    <div className="flex min-h-screen flex-col">
       <MobileTopBar title="الأقسام" />
       <main className="flex-1 px-gutter-mobile pb-32 pt-[calc(5rem+env(safe-area-inset-top,0px))]">
         <p className="mb-5 text-center font-label-md text-label-md text-antique-gold">اختاري القسم لعرض قطعه</p>

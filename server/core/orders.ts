@@ -2,11 +2,18 @@
  * الطلبات: الأسعار تُحسب هنا من الكتالوج (لا يُوثق بالسعر القادم من المتصفح)، والكمية تُحجز من المخزون.
  * نفس منطق route_order_create و route_order_status في PHP.
  */
-import { loadCatalog } from './catalog.ts';
+import { int, loadCatalog, str } from './catalog.ts';
 import { fail, type Json, type Kv } from './base.ts';
 
 const STATUSES = ['pending', 'confirmed', 'preparing', 'shipped', 'delivered', 'cancelled', 'returned'];
 const RELEASED = ['cancelled', 'returned'];
+const PAYMENTS = ['cod', 'zaincash', 'card'];
+/** طلبات جديدة لم يؤكدها المتجر بعد لنفس الهاتف خلال يوم — يمنع حجز المخزون بطلبات وهمية. */
+export const MAX_OPEN_PER_PHONE = 3;
+/** مجموع القطع في الطلب الواحد. */
+export const MAX_PIECES = 50;
+const DAY_MS = 24 * 60 * 60 * 1000;
+const EMAIL = /^[^\s@<>"]+@[^\s@<>"]+\.[^\s@<>"]+$/;
 
 export const phone = (v: unknown) => {
   let d = String(v ?? '').replace(/\D+/g, '');
@@ -19,42 +26,80 @@ export const phone = (v: unknown) => {
 export function createOrders(kv: Kv) {
   const store = async (): Promise<Json> => (await kv.getJSON('orders')) ?? { next: 1055, orders: [] };
 
+  /** نفس قواعد route_order_create في PHP: كل حقل بنوعه وطوله، ولا يُخزَّن شيء كما وصل. */
   async function create(b: Json): Promise<Json> {
-    const tel = phone(b.customer?.phone);
-    if (!b.customer?.name || String(b.customer.name).trim().length < 2) fail('يرجى إدخال الاسم الكامل للمستلم.');
+    const c: Json = b.customer && typeof b.customer === 'object' ? b.customer : {};
+    const d: Json = b.delivery && typeof b.delivery === 'object' ? b.delivery : {};
+    const name = str(c.name, 80, true, 'اسم المستلم');
+    if ([...name].length < 2) fail('يرجى إدخال الاسم الكامل للمستلم.');
+    const tel = phone(c.phone);
     if (!tel) fail('رقم الهاتف غير صحيح (مثال: 07701234567).');
-    if (!b.delivery?.governorate || !b.delivery?.district || !b.delivery?.landmark) fail('عنوان التوصيل ناقص.');
+    const email = str(c.email, 120);
+    if (email && !EMAIL.test(email)) fail('صيغة البريد الإلكتروني غير صحيحة.');
+    const delivery: Json = {
+      governorate: str(d.governorate, 40, true, 'المحافظة'),
+      district: str(d.district, 80, true, 'المدينة أو القضاء'),
+      neighborhood: str(d.neighborhood, 120, false, 'الحي'),
+      landmark: str(d.landmark, 200, true, 'أقرب نقطة دالة'),
+    };
+    for (const [k, max] of [['details', 300], ['notes', 500]] as const) {
+      const v = str(d[k], max);
+      if (v) delivery[k] = v;
+    }
+    const payment = b.payment == null || b.payment === '' ? 'cod' : String(b.payment);
+    if (!PAYMENTS.includes(payment)) fail('طريقة الدفع غير مدعومة.');
+    const rawLines = Array.isArray(b.lines) ? b.lines : [];
+    if (!rawLines.length || rawLines.length > 30) fail('السلة فارغة أو تحتوي قطعاً أكثر من المسموح.');
+    const code = str(b.couponCode, 24).toUpperCase();
+
+    const all = await store();
+    const since = Date.now() - DAY_MS;
+    const open = all.orders.filter((o: Json) => o.customer?.phone === tel && o.status === 'pending' && Date.parse(o.createdAt) > since).length;
+    if (open >= MAX_OPEN_PER_PHONE)
+      fail('لديكِ طلبات سابقة بهذا الرقم لم نجهّزها بعد. سنتواصل معكِ قريباً، أو راسلينا لإضافة القطع إلى طلبكِ.', 429);
+
     const cat = await loadCatalog(kv);
-    const shown = new Set(cat.categories.filter((c: Json) => !c.hidden).map((c: Json) => c.slug));
+    const shown = new Set(cat.categories.filter((x: Json) => !x.hidden).map((x: Json) => x.slug));
     const lines: Json[] = [];
-    for (const l of Array.isArray(b.lines) ? b.lines.slice(0, 30) : []) {
-      const p = cat.products.find((x: Json) => x.id === l?.productId);
-      if (!p || p.hidden || !shown.has(p.category)) fail('إحدى القطع لم تعد متوفرة في المتجر. حدّث السلة وحاول مجدداً.', 409);
-      const qty = Math.max(1, Math.min(10, Math.round(Number(l.qty) || 1)));
+    let pieces = 0;
+    for (const l of rawLines) {
+      if (!l || typeof l !== 'object') fail('بيانات السلة غير صالحة.');
+      const p = cat.products.find((x: Json) => x.id === String(l.productId ?? ''));
+      if (!p) fail('إحدى القطع لم تعد متوفرة في المتجر. حدّث السلة وحاول مجدداً.', 409);
+      if (p.hidden || !shown.has(p.category)) fail(`القطعة «${p.shortName}» لم تعد معروضة للبيع.`, 409);
+      const qty = int(l.qty ?? 1, 1, 10, 'الكمية');
+      pieces += qty;
+      if (pieces > MAX_PIECES) fail(`الطلب الواحد حتى ${MAX_PIECES} قطعة. للطلبات الأكبر تواصلي معنا مباشرة.`);
       if (qty > p.stock) fail(`الكمية المطلوبة من «${p.shortName}» غير متوفرة حالياً (المتوفر: ${p.stock}).`, 409);
-      lines.push({ productId: p.id, name: p.shortName, sku: p.sku, image: p.image, qty, price: p.price, ...(l.options ? { options: l.options } : {}) });
+      const options: Json = {};
+      for (const k of ['metal', 'size']) {
+        const v = str(l.options && typeof l.options === 'object' ? l.options[k] : '', 80);
+        if (v) options[k] = v;
+      }
+      lines.push({
+        productId: p.id,
+        name: p.shortName,
+        sku: p.sku ?? '',
+        image: p.image,
+        qty,
+        price: Number(p.price),
+        ...(Object.keys(options).length ? { options } : {}),
+      });
       p.stock -= qty;
     }
-    if (!lines.length) fail('السلة فارغة أو تحتوي قطعاً أكثر من المسموح.');
     const s = cat.settings ?? {};
     const subtotal = lines.reduce((n, l) => n + l.price * l.qty, 0);
-    const code = String(b.couponCode ?? '').toUpperCase();
     if (code && !s.coupons?.[code]) fail(`القسيمة ${code} لم تعد صالحة. أزلها من السلة وحاول مجدداً.`, 409);
     const discount = code ? Math.round((subtotal * s.coupons[code].percent) / 100) : 0;
     const after = subtotal - discount;
     const shipping = s.freeShippingThreshold > 0 && after >= s.freeShippingThreshold ? 0 : s.shippingFee;
-    const all = await store();
     const order = {
       id: all.next,
       createdAt: new Date().toISOString(),
       status: 'pending',
-      customer: {
-        name: String(b.customer.name).trim().slice(0, 120),
-        phone: tel,
-        ...(b.customer.email ? { email: String(b.customer.email).slice(0, 160) } : {}),
-      },
-      delivery: b.delivery,
-      payment: b.payment === 'cod' || !b.payment ? 'cod' : String(b.payment),
+      customer: { name, phone: tel, ...(email ? { email } : {}) },
+      delivery,
+      payment,
       lines,
       subtotal,
       discount,
@@ -89,7 +134,7 @@ export function createOrders(kv: Kv) {
     return order;
   }
 
-  async function track(rawId: string | null, rawPhone: string | null): Promise<Json> {
+  async function track(rawId: unknown, rawPhone: unknown): Promise<Json> {
     const id = Number(String(rawId ?? '').replace(/\D/g, ''));
     const tel = phone(rawPhone);
     if (!id || !tel) fail('يرجى إدخال رقم الطلب ورقم الهاتف المستخدم فيه.');

@@ -13,7 +13,7 @@
  *   POST ?r=orders               إرسال طلب من المتجر — عام (الأسعار تُحسب هنا من الكتالوج)
  *   GET  ?r=orders               كل الطلبات — صلاحية عرض الطلبات
  *   POST ?r=orders/status        تغيير حالة طلب — صلاحية تعديل الطلبات
- *   GET  ?r=orders/track         تتبع طلب برقمه ورقم الهاتف — عام
+ *   POST ?r=orders/track         تتبع طلب برقمه ورقم الهاتف — عام
  *   GET|POST ?r=users…           فريق العمل — المالك فقط (inc/users.php)
  *   ?r=instagram/…               الاستيراد من إنستغرام (inc/instagram.php)
  *   POST ?r=system/reset         إعادة ضبط المتجر — المالك فقط بكلمة المرور (inc/reset.php)
@@ -43,7 +43,7 @@ $routes = array(
     'POST orders' => 'route_order_create',
     'GET orders' => 'route_orders_list',
     'POST orders/status' => 'route_order_status',
-    'GET orders/track' => 'route_order_track',
+    'POST orders/track' => 'route_order_track',
     'GET users' => 'route_users_list',
     'POST users/save' => 'route_users_save',
     'POST users/delete' => 'route_users_delete',
@@ -236,6 +236,26 @@ function iris_clean_catalog(array $in)
             $sw = array_values(array_unique(array_intersect($p['swatches'], $swatchKeys)));
             if ($sw) {
                 $out['swatches'] = $sw;
+            }
+        }
+        if (isset($p['customColors']) && is_array($p['customColors'])) {
+            $colors = array();
+            foreach (array_slice($p['customColors'], 0, 12) as $c) {
+                if (!is_array($c)) {
+                    continue;
+                }
+                $name = iris_str(isset($c['name']) ? $c['name'] : '', 30, true, 'اسم لون ' . $label);
+                $hex = isset($c['hex']) && is_string($c['hex']) ? strtolower($c['hex']) : '';
+                if (!preg_match('/^#[0-9a-f]{6}$/', $hex)) {
+                    iris_fail('درجة اللون «' . $name . '» في ' . $label . ' غير صالحة.');
+                }
+                $colors[$name] = $hex;
+            }
+            if ($colors) {
+                $out['customColors'] = array();
+                foreach ($colors as $name => $hex) {
+                    $out['customColors'][] = array('name' => (string) $name, 'hex' => $hex);
+                }
             }
         }
         if (isset($p['sizes']) && is_array($p['sizes'])) {
@@ -491,13 +511,19 @@ function route_login()
     }
     $body = iris_body();
     $username = strtolower(iris_str(isset($body['username']) ? $body['username'] : '', 120, true, 'اسم المستخدم'));
-    $password = isset($body['password']) && is_string($body['password']) ? $body['password'] : '';
+    $password = isset($body['password']) && is_string($body['password']) ? substr($body['password'], 0, 1024) : '';
+    // تخمين موزّع من أجهزة كثيرة على حساب واحد يتوقف عند هذا الحد مهما تغيّر العنوان
+    $account = 'u:' . $username;
+    if (!iris_rate_limit('login-user', 20, 15 * 60, false, $account)) {
+        iris_fail('محاولات خاطئة كثيرة على هذا الحساب. حاول بعد 15 دقيقة.', 429);
+    }
     $owner = iris_owner_profile();
     $profile = null;
     $ver = 0;
     if (hash_equals($owner['username'], $username)) {
         if (iris_password_matches($password)) {
             $profile = $owner;
+            $ver = iris_owner_ver();
         }
     } else {
         $profile = iris_locked(function () use ($username, $password, &$ver) {
@@ -524,10 +550,12 @@ function route_login()
     }
     if (!$profile) {
         iris_rate_limit('login', 8, 15 * 60, true);
+        iris_rate_limit('login-user', 20, 15 * 60, true, $account);
         usleep(400000);
         iris_fail('اسم المستخدم أو كلمة المرور غير صحيحة.', 401);
     }
     iris_rate_reset('login');
+    iris_rate_reset('login-user', $account);
     iris_session_start();
     session_regenerate_id(true);
     $_SESSION = array('uid' => $profile['id'], 'ver' => $ver, 'since' => time());
@@ -558,16 +586,24 @@ function route_password()
     $body = iris_body();
     $current = isset($body['current']) && is_string($body['current']) ? $body['current'] : '';
     $next = isset($body['next']) && is_string($body['next']) ? $body['next'] : '';
-    if (iris_mb_len($next) < 8) {
-        iris_fail('كلمة المرور الجديدة يجب أن تكون 8 أحرف على الأقل.');
+    $problem = iris_password_problem($next, $user['username']);
+    if ($problem !== null) {
+        iris_fail($problem);
+    }
+    if ($next === $current) {
+        iris_fail('اختر كلمة مرور جديدة مختلفة عن الحالية.');
     }
     if ($user['role'] === 'owner') {
         if (!iris_password_matches($current)) {
             iris_fail('كلمة المرور الحالية غير صحيحة.', 400);
         }
-        iris_locked(function () use ($next) {
-            iris_write('auth', array('hash' => password_hash($next, PASSWORD_DEFAULT), 'changedAt' => gmdate('c')));
+        // الجلسات الأخرى للمالك تنتهي (إن سُرقت كلمة المرور القديمة)، والجلسة الحالية تبقى
+        $ver = iris_locked(function () use ($next) {
+            $ver = iris_owner_ver() + 1;
+            iris_write('auth', array('hash' => password_hash($next, PASSWORD_DEFAULT), 'changedAt' => gmdate('c'), 'ver' => $ver));
+            return $ver;
         });
+        $_SESSION['ver'] = $ver;
         iris_ok();
     }
     $ver = iris_locked(function () use ($user, $current, $next) {
@@ -666,8 +702,21 @@ function route_order_create()
             }
         }
 
+        // طلبات جديدة لم يؤكدها المتجر بعد لنفس الهاتف خلال يوم — يمنع حجز المخزون بطلبات وهمية
+        $store = iris_read('orders', array('next' => 1055, 'orders' => array()));
+        $open = 0;
+        foreach ($store['orders'] as $o) {
+            if ($o['customer']['phone'] === $customer['phone'] && $o['status'] === 'pending' && strtotime($o['createdAt']) > time() - 86400) {
+                $open++;
+            }
+        }
+        if ($open >= 3) {
+            iris_fail('لديكِ طلبات سابقة بهذا الرقم لم نجهّزها بعد. سنتواصل معكِ قريباً، أو راسلينا لإضافة القطع إلى طلبكِ.', 429);
+        }
+
         $outLines = array();
         $wanted = array();
+        $pieces = 0;
         foreach ($lines as $line) {
             if (!is_array($line)) {
                 iris_fail('بيانات السلة غير صالحة.');
@@ -681,6 +730,10 @@ function route_order_create()
                 iris_fail('القطعة «' . $p['shortName'] . '» لم تعد معروضة للبيع.', 409);
             }
             $qty = iris_int(isset($line['qty']) ? $line['qty'] : 1, 1, 10, 'الكمية');
+            $pieces += $qty;
+            if ($pieces > 50) {
+                iris_fail('الطلب الواحد حتى 50 قطعة. للطلبات الأكبر تواصلي معنا مباشرة.');
+            }
             $wanted[$pid] = (isset($wanted[$pid]) ? $wanted[$pid] : 0) + $qty;
             if ($wanted[$pid] > (int) $p['stock']) {
                 iris_fail('الكمية المطلوبة من «' . $p['shortName'] . '» غير متوفرة حالياً (المتوفر: ' . (int) $p['stock'] . ').', 409);
@@ -728,7 +781,6 @@ function route_order_create()
         $after = $subtotal - $discount;
         $shipping = ($threshold > 0 && $after >= $threshold) ? 0 : $fee;
 
-        $store = iris_read('orders', array('next' => 1055, 'orders' => array()));
         $id = (int) $store['next'];
         $order = array(
             'id' => $id,
@@ -841,13 +893,16 @@ function iris_adjust_stock(array $lines, $sign)
     iris_write('catalog', $catalog);
 }
 
+/** POST لا GET: رقم الهاتف لا يظهر في الرابط ولا في سجلات الخادم. */
 function route_order_track()
 {
+    iris_require_same_origin();
     if (!iris_rate_limit('track', 40, 600)) {
         iris_fail('محاولات كثيرة. حاول بعد قليل.', 429);
     }
-    $id = isset($_GET['id']) ? (int) preg_replace('/\D+/', '', (string) $_GET['id']) : 0;
-    $phone = iris_phone(isset($_GET['phone']) ? $_GET['phone'] : '');
+    $body = iris_body();
+    $id = isset($body['id']) && (is_string($body['id']) || is_int($body['id'])) ? (int) substr(preg_replace('/\D+/', '', (string) $body['id']), 0, 12) : 0;
+    $phone = iris_phone(isset($body['phone']) && is_string($body['phone']) ? $body['phone'] : '');
     if (!$id || !$phone) {
         iris_fail('يرجى إدخال رقم الطلب ورقم الهاتف المستخدم فيه.');
     }

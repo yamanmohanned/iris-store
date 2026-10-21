@@ -28,7 +28,7 @@ export default function ContactPage() {
   const hasChannels = Boolean(wa || contact.instagram);
 
   return (
-    <main className="w-full min-h-screen bg-ivory-canvas">
+    <main className="w-full min-h-screen">
       <section className="relative w-full overflow-hidden py-space-2xl md:py-space-3xl">
         <div className="pointer-events-none absolute -top-40 right-[-10%] h-[520px] w-[520px] rounded-full bg-rose-mist/35 blur-[120px]" />
         <div className="pointer-events-none absolute top-1/2 left-[-15%] h-[600px] w-[600px] rounded-full bg-champagne-gold/20 blur-[140px]" />

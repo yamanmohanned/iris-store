@@ -8,7 +8,7 @@ import { formatDate } from '@/lib/format';
 import {
   ACCESS_LABELS,
   ACCESS_LEVELS,
-  MIN_PASSWORD,
+  passwordProblem,
   PERMISSION_PRESETS,
   presetOf,
   SECTION_LABELS,
@@ -222,7 +222,10 @@ function StaffEditor({ initial, onClose, onSaved }: { initial: StaffInput; onClo
     const next: typeof errors = {};
     if (f.name.trim().length < 2) next.name = 'اكتب اسم الموظف.';
     if (!USERNAME_PATTERN.test(f.username.trim().toLowerCase())) next.username = 'من 3 إلى 32 حرفاً إنجليزياً صغيراً أو رقماً أو (. _ -).';
-    if ((!editing || f.password) && f.password.length < MIN_PASSWORD) next.password = 'كلمة المرور 8 أحرف على الأقل.';
+    if (!editing || f.password) {
+      const problem = passwordProblem(f.password, f.username);
+      if (problem) next.password = problem;
+    }
     setErrors(next);
     if (Object.keys(next).length) return;
     setBusy(true);

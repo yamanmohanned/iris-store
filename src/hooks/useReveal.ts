@@ -25,8 +25,31 @@ export function useRevealOnScroll(): void {
           }
         }
       },
-      { threshold: 0.12, rootMargin: '0px 0px -30px 0px' },
+      { threshold: 0, rootMargin: '0px 0px -24px 0px' },
     );
+
+    // احتياط: المراقب قد لا يُبلّغ (نافذة مخفية ثم ظاهرة، تغيّر الحجم، تمرير سريع جداً)، فتبقى الصورة
+    // تحت «الستارة» وكأنها لم تُحمَّل. نكشف كل عنصر وصل إلى الشاشة أو صار فوقها عند التمرير وتغيّر الحجم.
+    let pending = 0;
+    const sweep = () => {
+      pending = 0;
+      const h = window.innerHeight;
+      if (!h) return;
+      document.querySelectorAll<HTMLElement>(SELECTOR).forEach((el) => {
+        if (el.classList.contains('revealed')) return;
+        if (el.getBoundingClientRect().top < h) {
+          el.classList.add('revealed');
+          io.unobserve(el);
+        }
+      });
+    };
+    const schedule = () => {
+      if (!pending) pending = window.setTimeout(sweep, 120);
+    };
+    window.addEventListener('scroll', schedule, { passive: true });
+    window.addEventListener('resize', schedule);
+    document.addEventListener('visibilitychange', schedule);
+    const late = window.setTimeout(sweep, 1200);
 
     const watched = new WeakSet<Element>();
     const scan = () => {
@@ -47,6 +70,11 @@ export function useRevealOnScroll(): void {
 
     return () => {
       cancelAnimationFrame(raf);
+      window.clearTimeout(pending);
+      window.clearTimeout(late);
+      window.removeEventListener('scroll', schedule);
+      window.removeEventListener('resize', schedule);
+      document.removeEventListener('visibilitychange', schedule);
       mo.disconnect();
       io.disconnect();
     };

@@ -1,8 +1,8 @@
 import { Link } from 'react-router';
 import { useRouteOrder } from '@/hooks/useRouteOrder';
-import { formatNumber } from '@/lib/format';
+import { formatDate, formatNumber } from '@/lib/format';
 import NotFoundPage from '@/pages/store/system/NotFoundPage';
-import { orderStatusLabels, paymentLabels } from '@/state/orders';
+import { customerStatusLabels, paymentLabels } from '@/state/orders';
 import { WhatsAppLink } from '@/components/common/WhatsAppLink';
 
 /**
@@ -16,7 +16,7 @@ export default function OrderSuccessDesktop() {
   if (!order) return <NotFoundPage />;
   return (
     <>
-      <main className="w-full bg-surface min-h-screen">
+      <main className="w-full min-h-screen">
         <div className="flex flex-col w-full selection:bg-rose-mist selection:text-primary">
           <div className="relative w-full overflow-hidden">
             <div className="pointer-events-none absolute -top-40 right-1/4 w-96 h-96 rounded-full bg-champagne-gold/15 blur-3xl -z-10" />
@@ -67,7 +67,7 @@ export default function OrderSuccessDesktop() {
                         <span className="font-label-md text-label-md text-antique-gold tracking-widest block">تم الاستلام بنجاح</span>
                         <h1 className="font-headline-xl text-headline-xl text-primary leading-tight">استلمنا طلبكِ الفاخر</h1>
                         <p className="font-body-md text-body-md text-on-surface-variant">
-                          شكراً لثقتكِ بآيريس ستور؛ نتواصل معكِ قريباً لتأكيد الطلب وموعد التوصيل.
+                          شكراً لثقتكِ بآيريس ستور؛ تم تأكيد طلبكِ ونتواصل معكِ قريباً لتحديد موعد التوصيل.
                         </p>
                       </div>
                     </div>
@@ -98,17 +98,17 @@ export default function OrderSuccessDesktop() {
                             </button>
                           </div>
                         </div>
-                        <div className="flex items-center gap-2 px-space-md py-1.5 rounded-full bg-semantic-warning-bg border border-royal-gold/50 shadow-sm">
-                          <span className="w-2 h-2 rounded-full bg-semantic-warning animate-pulse" />{' '}
-                          <span className="font-label-md text-label-md text-semantic-warning font-semibold">
-                            {orderStatusLabels[order.status]}
+                        <div className="flex items-center gap-2 px-space-md py-1.5 rounded-full bg-semantic-success-bg border border-royal-gold/50 shadow-sm">
+                          <span className="w-2 h-2 rounded-full bg-semantic-success" />{' '}
+                          <span className="font-label-md text-label-md text-semantic-success font-semibold">
+                            {customerStatusLabels[order.status]}
                           </span>
                         </div>
                       </div>
                       <div className="flex items-start gap-space-sm pt-space-xs text-on-surface-variant font-body-sm text-body-sm bg-parchment/40 p-space-sm rounded-md">
                         <span className="material-symbols-outlined text-royal-gold text-lg flex-shrink-0 mt-0.5">concierge</span>
                         <p>
-                          سنتصل بكِ هاتفياً أو عبر واتساب لتأكيد الطلب وتحديد موعد التوصيل.
+                          سنتصل بكِ هاتفياً أو عبر واتساب لتحديد موعد التوصيل، وتتابعين كل مرحلة من صفحة التتبع.
                         </p>
                       </div>
                     </div>
@@ -127,22 +127,22 @@ export default function OrderSuccessDesktop() {
                           <div className="w-9 h-9 rounded-full bg-royal-gold text-wine-night flex items-center justify-center shadow-md font-bold">
                             <span className="material-symbols-outlined text-lg">check</span>
                           </div>
-                          <div className="font-label-md text-label-md text-warm-ink font-semibold">تم الاستلام</div>
-                          <span className="font-label-sm text-label-sm text-antique-gold">اليوم، ٠٨:٣٠ م</span>
+                          <div className="font-label-md text-label-md text-warm-ink font-semibold">تم تأكيد الطلب</div>
+                          <span className="font-label-sm text-label-sm text-antique-gold">{formatDate(order.createdAt)}</span>
                         </div>
                         <div className="flex flex-col items-center text-center space-y-2 relative z-10">
                           <div className="w-9 h-9 rounded-full bg-ivory-canvas border-2 border-royal-gold text-royal-gold flex items-center justify-center relative shadow-sm">
                             <span className="w-2.5 h-2.5 rounded-full bg-royal-gold animate-ping absolute" />{' '}
                             <span className="w-2.5 h-2.5 rounded-full bg-royal-gold" />
                           </div>
-                          <div className="font-label-md text-label-md text-primary font-semibold">تأكيد الطلب والتجهيز</div>
-                          <span className="font-label-sm text-label-sm text-muted-rosewood">خلال ساعتين</span>
+                          <div className="font-label-md text-label-md text-primary font-semibold">التجهيز والتغليف</div>
+                          <span className="font-label-sm text-label-sm text-muted-rosewood">تتابعينه في صفحة التتبع</span>
                         </div>
                         <div className="flex flex-col items-center text-center space-y-2 relative z-10">
                           <div className="w-9 h-9 rounded-full bg-surface-container-high border border-outline-variant text-muted-rosewood flex items-center justify-center">
                             <span className="material-symbols-outlined text-base">local_shipping</span>
                           </div>
-                          <div className="font-label-md text-label-md text-muted-rosewood">الشحن المؤمن والتسليم</div>
+                          <div className="font-label-md text-label-md text-muted-rosewood">التوصيل والتسليم</div>
                           <span className="font-label-sm text-label-sm text-muted-rosewood">بغداد والمحافظات</span>
                         </div>
                         <div className="absolute top-[18px] right-[16%] left-[16%] h-0.5 flex -z-0">
@@ -179,7 +179,7 @@ export default function OrderSuccessDesktop() {
                   <div className="grid grid-cols-3 gap-space-sm pt-space-xs text-center">
                     <div className="p-space-sm rounded-lg bg-surface-container-low border border-hairline-burgundy/40">
                       <span className="material-symbols-outlined text-royal-gold text-xl block mx-auto mb-1">call</span>{' '}
-                      <span className="font-label-sm text-label-sm text-warm-ink font-medium block">نتصل لتأكيد الطلب</span>
+                      <span className="font-label-sm text-label-sm text-warm-ink font-medium block">نتصل لتحديد موعد التوصيل</span>
                     </div>
                     <div className="p-space-sm rounded-lg bg-surface-container-low border border-hairline-burgundy/40">
                       <span className="material-symbols-outlined text-royal-gold text-xl block mx-auto mb-1">payments</span>{' '}

@@ -4,6 +4,7 @@ import { BrandMark } from '@/components/common/BrandLogo';
 import { BrandingRuntime } from '@/components/common/BrandingRuntime';
 import { LegacyHandlers } from '@/components/common/LegacyHandlers';
 import { PlaceholderLinkGuard, ScrollToTop } from '@/components/common/PageEffects';
+import { AmbientBackdrop } from '@/components/store/AmbientBackdrop';
 import { AdminAuthProvider } from '@/state/adminAuth';
 import { AuthProvider } from '@/state/auth';
 import { CartProvider } from '@/state/cart';
@@ -37,6 +38,7 @@ export function Root() {
                     <PlaceholderLinkGuard />
                     <LegacyHandlers />
                     <BrandingRuntime />
+                    <AmbientBackdrop />
                     <CatalogProvider fallback={<PageLoader />}>
                       <Suspense fallback={<PageLoader />}>
                         <Outlet />

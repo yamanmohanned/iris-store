@@ -19,24 +19,38 @@ const remote = Boolean(BASE);
 let handle;
 let kv;
 let uploads;
-if (!remote) {
-  const { createHandler } = await import('../../server/core/handler.ts');
+let createHandler;
+/** تخزين في الذاكرة لخادم server/core داخل العملية. */
+function memoryKv() {
   const data = new Map();
-  uploads = new Map();
-  kv = {
-    getJSON: async (k) => (data.has(k) ? structuredClone(data.get(k)) : null),
-    setJSON: async (k, v) => void data.set(k, structuredClone(v)),
-    delete: async (k) => void data.delete(k),
-    getFile: async (k) => uploads.get(k) ?? null,
-    setFile: async (k, d, type) => void uploads.set(k, { data: d, type }),
-    deleteFile: async (k) => void uploads.delete(k),
-    listFiles: async () => [...uploads.keys()],
+  const files = new Map();
+  return {
+    files,
+    kv: {
+      getJSON: async (k) => (data.has(k) ? structuredClone(data.get(k)) : null),
+      setJSON: async (k, v) => void data.set(k, structuredClone(v)),
+      delete: async (k) => void data.delete(k),
+      getFile: async (k) => files.get(k) ?? null,
+      setFile: async (k, d, type) => void files.set(k, { data: d, type }),
+      deleteFile: async (k) => void files.delete(k),
+      listFiles: async () => [...files.keys()],
+    },
   };
+}
+if (!remote) {
+  ({ createHandler } = await import('../../server/core/handler.ts'));
+  const mem = memoryKv();
+  kv = mem.kv;
+  uploads = mem.files;
   handle = createHandler(kv, { user: OWNER_USER, password: OWNER_PASS, server: 'test', maxVideoUpload: 1024 * 1024 }, { fetch: fakeGraph });
 }
 
 class Client {
   cookie = '';
+  /** عنوان الجهاز (داخل العملية فقط) — لاختبار حدود المحاولات لكل حساب من أجهزة كثيرة */
+  ip = '10.0.0.1';
+  /** خادم آخر داخل العملية (مثل نسخة بلا كلمة مرور مضبوطة) */
+  handler = null;
   async call(method, route, { body, form, query, header = true, raw } = {}) {
     const url = new URL(raw ?? `/api/index.php?${new URLSearchParams({ r: route, ...query })}`, BASE ?? 'http://test.local');
     const headers = { Accept: 'application/json' };
@@ -49,7 +63,7 @@ class Client {
       payload = JSON.stringify(body);
     }
     const req = new Request(url, { method, headers, body: payload });
-    const res = remote ? await fetch(req) : await handle(req, '10.0.0.1');
+    const res = remote ? await fetch(req) : await (this.handler ?? handle)(req, this.ip);
     const set = res.headers.get('set-cookie');
     if (set) {
       const m = /IRISADMIN=([^;]*)/.exec(set);
@@ -166,7 +180,7 @@ const staffInput = {
   orders1: { username: 'orders1', name: 'مسؤولة الطلبات', title: 'الطلبات', password: 'orders-pass-1', permissions: { orders: 'edit', products: 'view', categories: 'view', settings: 'none' } },
   prod1: { username: 'prod1', name: 'مدخل المنتجات', title: 'منتجات', password: 'prod-pass-1', permissions: { orders: 'none', products: 'edit', categories: 'none', settings: 'none' } },
   cats1: { username: 'cats1', name: 'منظم الأقسام', title: 'أقسام', password: 'cats-pass-1', permissions: { orders: 'none', products: 'none', categories: 'edit', settings: 'none' } },
-  viewer: { username: 'viewer', name: 'مشاهد', title: '', password: 'viewer-pass-1', permissions: { orders: 'view', products: 'view', categories: 'view', settings: 'view' } },
+  viewer: { username: 'viewer', name: 'مشاهد', title: '', password: 'look-only-pass-1', permissions: { orders: 'view', products: 'view', categories: 'view', settings: 'view' } },
 };
 
 // فريق العمل: التحقق من المدخلات
@@ -273,6 +287,11 @@ let orderId;
   next.products[0].source = 'ig:17900000000000001';
   next.products[0].sourceUrl = 'https://www.instagram.com/p/AAA/';
   next.products[0].unknownField = 'x';
+  next.products[0].customColors = [
+    { name: 'أزرق ملكي', hex: '#1F3A93' },
+    { name: 'أزرق ملكي', hex: '#1f3a94' },
+    { name: 'زيتي', hex: '#556b2f' },
+  ];
   next.settings.unknownSetting = 'x';
   next.settings.branding = {
     logo: '/uploads/2026/10/bbbbbbbbbbbbbbbbbbbb.png',
@@ -285,6 +304,15 @@ let orderId;
   const p = r.data?.catalog?.products?.[0];
   check('حفظ الفيديو ومصدر إنستغرام', r.status === 200 && p?.videos?.length === 1 && p.source === 'ig:17900000000000001' && p.sourceUrl, r.data);
   check('حذف الحقول المجهولة', p && !('unknownField' in p) && !('unknownSetting' in r.data.catalog.settings), p);
+  check(
+    'حفظ الألوان المخصصة (بلا تكرار، بأحرف صغيرة)',
+    JSON.stringify(p?.customColors) === JSON.stringify([{ name: 'أزرق ملكي', hex: '#1f3a94' }, { name: 'زيتي', hex: '#556b2f' }]),
+    p?.customColors,
+  );
+  const badColor = structuredClone(next);
+  badColor.products[0].customColors = [{ name: 'أحمر', hex: 'red;background:url(x)' }];
+  const bc = await owner.call('POST', 'catalog/save', { body: { catalog: badColor } });
+  check('رفض درجة لون غير صالحة', bc.status === 400, bc.data);
   const b = r.data?.catalog?.settings?.branding;
   check('حفظ الهوية', b?.logoTint === true && b.showWordmark === false && b.bodyFont?.preset === 'cairo' && b.headingFont?.regular?.startsWith('/uploads/fonts/'), b);
 
@@ -331,11 +359,11 @@ let uploadedImage;
 
 // تغيير كلمة المرور الذاتي وإيقاف الحساب وإعادة تعيين كلمة المرور
 {
-  const self = await staff.viewer.call('POST', 'auth/password', { body: { current: 'viewer-pass-1', next: 'viewer-pass-2' } });
+  const self = await staff.viewer.call('POST', 'auth/password', { body: { current: 'look-only-pass-1', next: 'look-only-pass-2' } });
   check('الموظف يغيّر كلمة مروره', self.status === 200, self.data);
   const still = await staff.viewer.call('GET', 'orders');
   check('الجلسة الحالية تبقى بعد تغيير كلمة المرور', still.status === 200, still.data);
-  const oldPw = await new Client().login('viewer', 'viewer-pass-1');
+  const oldPw = await new Client().login('viewer', 'look-only-pass-1');
   check('كلمة المرور القديمة لا تعمل', oldPw.status === 401, oldPw.data);
 
   const off = await owner.call('POST', 'users/save', { body: { user: { ...staffInput.orders1, id: ids.orders1, password: '', active: false } } });
@@ -426,6 +454,124 @@ if (!remote) {
   for (let i = 0; i < 5; i++) await owner.call('POST', 'system/reset', { body: { password: 'wrong-' + i, confirm: 'إعادة ضبط المتجر' } });
   const limited = await owner.call('POST', 'system/reset', { body: { password: OWNER_PASS, confirm: 'إعادة ضبط المتجر' } });
   check('حد المحاولات لإعادة الضبط', limited.status === 429, limited.data);
+}
+
+// الأمان: الترويسات، تتبع الطلب، حدود الطلبات، سياسة كلمات المرور، جلسات المالك، كلمة المرور الافتراضية
+{
+  const h = await anon.call('GET', 'catalog');
+  const hd = (n) => h.res.headers.get(n) ?? '';
+  check(
+    'ترويسات أمان الواجهة (DENY + CSP + nosniff)',
+    hd('x-frame-options') === 'DENY' && hd('content-security-policy').includes("frame-ancestors 'none'") && hd('x-content-type-options') === 'nosniff',
+    Object.fromEntries(h.res.headers),
+  );
+
+  // مخزون كافٍ لقطعة واحدة حتى تُختبر حدود الطلب لا حدود المخزون
+  const cat = (await anon.call('GET', 'catalog')).data.catalog;
+  cat.products.find((p) => p.id === product.id).stock = 100;
+  const saved = await owner.call('POST', 'catalog/save', { body: { catalog: cat } });
+  check('تجهيز مخزون للاختبار', saved.status === 200, saved.data);
+  const evil = structuredClone(cat);
+  evil.settings.heroImage = '/\\evil.example.com/x.png';
+  const ev = await owner.call('POST', 'catalog/save', { body: { catalog: evil } });
+  check('رفض رابط «/\\» الذي يفتحه المتصفح كموقع خارجي', ev.status === 400, ev.data);
+
+  const place = (phone, extra = {}) =>
+    anon.call('POST', 'orders', {
+      body: {
+        customer: { name: 'زبونة', phone },
+        delivery: { governorate: 'بغداد', district: 'الكرادة', landmark: 'قرب الجسر' },
+        payment: 'cod',
+        lines: [{ productId: product.id, qty: 1 }],
+        ...extra,
+      },
+    });
+  const o = await place('07801112233');
+  check('طلب للتتبع', o.status === 200, o.data);
+  const tr = await anon.call('POST', 'orders/track', { body: { id: o.data?.order?.id, phone: '07801112233' } });
+  check('تتبع الطلب عبر POST', tr.status === 200 && tr.data.order.id === o.data.order.id, tr.data);
+  const trGet = await anon.call('GET', 'orders/track', { query: { id: String(o.data?.order?.id), phone: '07801112233' } });
+  check('التتبع عبر GET (الهاتف في الرابط) لم يعد متاحاً', trGet.status === 404, trGet.data);
+  const trWrong = await anon.call('POST', 'orders/track', { body: { id: o.data?.order?.id, phone: '07801112234' } });
+  check('تتبع برقم هاتف آخر ← 404', trWrong.status === 404, trWrong.data);
+
+  const badPay = await place('07801112240', { payment: 'bitcoin' });
+  check('رفض طريقة دفع مجهولة', badPay.status === 400, badPay.data);
+  const longNote = await place('07801112241', { delivery: { governorate: 'بغداد', district: 'x', landmark: 'y', notes: 'x'.repeat(600) } });
+  check('رفض ملاحظة أطول من 500 حرف', longNote.status === 400, longNote.data);
+  const junk = await place('07801112242', { delivery: { governorate: 'بغداد', district: 'x', landmark: 'y', evil: { deep: 'x'.repeat(1000) } } });
+  check('الحقول المجهولة في العنوان لا تُخزَّن', junk.status === 200 && !('evil' in (junk.data?.order?.delivery ?? { evil: 1 })), junk.data?.order?.delivery);
+  const pieces = await place('07801112243', { lines: Array.from({ length: 6 }, () => ({ productId: product.id, qty: 10 })) });
+  check('رفض أكثر من 50 قطعة في الطلب الواحد', pieces.status === 400, pieces.data);
+
+  const capPhone = '07809990000';
+  const firstThree = [await place(capPhone), await place(capPhone), await place(capPhone)];
+  check('ثلاثة طلبات جديدة لنفس الهاتف مقبولة', firstThree.every((r) => r.status === 200), firstThree.map((r) => r.status));
+  const fourth = await place(capPhone);
+  check('الطلب الرابع لنفس الهاتف قبل تجهيز السابقة ← 429', fourth.status === 429, fourth.data);
+  let limited = null;
+  for (let i = 0; i < 3 && !limited; i++) {
+    const r = await place(`0780888000${i}`);
+    if (r.status === 429) limited = r;
+  }
+  check('حد الطلبات من الجهاز نفسه (12 في الساعة)', Boolean(limited), limited?.data);
+
+  // سياسة كلمات المرور (نفس القواعد في TS وPHP)
+  const weak = [
+    ['شائعة', 'password123'],
+    ['أرقام متتالية', '12345678'],
+    ['حرف مكرر', 'aaaaaaaaaa'],
+    ['تحتوي اسم الدخول', 'lockme-2026!'],
+  ];
+  for (const [name, password] of weak) {
+    const r = await owner.call('POST', 'users/save', { body: { user: { username: 'lockme', name: 'حساب اختبار', password, permissions: {} } } });
+    check(`رفض كلمة مرور ضعيفة: ${name}`, r.status === 400, r.data);
+  }
+  const lockPass = 'Garnet-Sky-71';
+  const created = await owner.call('POST', 'users/save', { body: { user: { username: 'lockme', name: 'حساب اختبار', password: lockPass, permissions: {} } } });
+  check('كلمة مرور قوية مقبولة', created.status === 200, created.data);
+  const ownWeak = await owner.call('POST', 'auth/password', { body: { current: OWNER_PASS, next: 'qwerty123' } });
+  check('رفض كلمة مرور شائعة عند تغيير كلمة المرور', ownWeak.status === 400, ownWeak.data);
+
+  // تغيير كلمة مرور المالك ينهي جلساته الأخرى ويُبقي الجلسة الحالية
+  const owner2 = new Client();
+  check('دخول ثانٍ للمالك', (await owner2.login(OWNER_USER, OWNER_PASS)).status === 200);
+  const NEW_PASS = 'Garnet-Sky-2026!';
+  const changed = await owner.call('POST', 'auth/password', { body: { current: OWNER_PASS, next: NEW_PASS } });
+  check('تغيير كلمة مرور المالك', changed.status === 200, changed.data);
+  check('الجلسة الأخرى للمالك انتهت', (await owner2.call('GET', 'auth/me')).data?.admin === null);
+  check('الجلسة الحالية للمالك باقية', (await owner.call('GET', 'auth/me')).data?.admin?.id === 'owner');
+  check('كلمة المرور القديمة لم تعد تعمل', (await new Client().login(OWNER_USER, OWNER_PASS)).status === 401);
+  check('كلمة المرور الجديدة تعمل', (await new Client().login(OWNER_USER, NEW_PASS)).status === 200);
+
+  if (!remote) {
+    // تخمين موزّع: 20 محاولة خاطئة من 20 جهازاً مختلفاً توقف الحساب، حتى بكلمة المرور الصحيحة من جهاز جديد
+    for (let i = 0; i < 20; i++) {
+      const c = new Client();
+      c.ip = `198.51.100.${i + 1}`;
+      await c.login('lockme', 'wrong-guess-' + i);
+    }
+    const fresh = new Client();
+    fresh.ip = '203.0.113.9';
+    const locked = await fresh.login('lockme', lockPass);
+    check('حد المحاولات لكل حساب من أجهزة كثيرة ← 429', locked.status === 429, locked.data);
+
+    const up = await owner.call('POST', 'upload', { form: fileForm(PNG, 'a.png') });
+    const served = await anon.call('GET', '', { raw: up.data?.url });
+    check('الملفات المرفوعة تُقدَّم بـ CSP sandbox', (served.res.headers.get('content-security-policy') ?? '').includes('sandbox'), Object.fromEntries(served.res.headers));
+
+    // نسخة بلا كلمة مرور مضبوطة (Netlify): الدخول الافتراضي لا يفتح شيئاً قبل تغييرها
+    const demo = new Client();
+    demo.handler = createHandler(memoryKv().kv, { server: 'test' }, { fetch: fakeGraph });
+    const dl = await demo.login('owner', 'demo1234');
+    check('الدخول الافتراضي يطلب تغيير كلمة المرور', dl.status === 200 && dl.data.admin.mustChangePassword === true, dl.data);
+    check('لا طلبات قبل تغيير كلمة المرور الافتراضية', (await demo.call('GET', 'orders')).status === 403);
+    check('لا حفظ للكتالوج قبل تغييرها', (await demo.call('POST', 'catalog/save', { body: { catalog: seed } })).status === 403);
+    const set = await demo.call('POST', 'auth/password', { body: { current: 'demo1234', next: NEW_PASS } });
+    check('تغيير كلمة المرور الافتراضية', set.status === 200, set.data);
+    const after = await demo.call('GET', 'auth/me');
+    check('بعد التغيير تُفتح اللوحة', !after.data?.admin?.mustChangePassword && (await demo.call('GET', 'orders')).status === 200, after.data);
+  }
 }
 
 console.log(`\n${passed} passed, ${failures.length} failed${remote ? ` (${BASE})` : ' (in-process)'}`);

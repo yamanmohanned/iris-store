@@ -2,7 +2,7 @@ import { useState, type FormEvent } from 'react';
 import { Button, Card, Field, inputClass } from '@/components/admin/ui';
 import { Icon } from '@/components/common/Icon';
 import { cn } from '@/lib/cn';
-import { ACCESS_LABELS, MIN_PASSWORD, SECTION_LABELS, SECTIONS } from '@/lib/permissions';
+import { ACCESS_LABELS, passwordProblem, SECTION_LABELS, SECTIONS } from '@/lib/permissions';
 import { useAdminAuth } from '@/state/adminAuth';
 import { useToast } from '@/state/toast';
 import { SettingsHeader } from './SettingsLayout';
@@ -57,8 +57,9 @@ export default function AccountSettings() {
   );
 }
 
-function PasswordCard() {
-  const { changePassword } = useAdminAuth();
+/** تغيير كلمة مرور الحساب الحالي — هنا، وفي شاشة «غيّر كلمة المرور الافتراضية» (AdminLayout) مع onDone. */
+export function PasswordCard({ onDone }: { onDone?: () => void }) {
+  const { admin, changePassword } = useAdminAuth();
   const toast = useToast();
   const [current, setCurrent] = useState('');
   const [next, setNext] = useState('');
@@ -68,7 +69,8 @@ function PasswordCard() {
 
   const submit = async (e: FormEvent) => {
     e.preventDefault();
-    if (next.length < MIN_PASSWORD) return setError('كلمة المرور الجديدة يجب أن تكون 8 أحرف على الأقل.');
+    const problem = passwordProblem(next, admin?.username);
+    if (problem) return setError(problem);
     if (next !== confirm) return setError('تأكيد كلمة المرور غير مطابق.');
     setError(undefined);
     setBusy(true);
@@ -78,6 +80,7 @@ function PasswordCard() {
       setCurrent('');
       setNext('');
       setConfirm('');
+      onDone?.();
     } catch (err) {
       setError(err instanceof Error ? err.message : 'تعذر تغيير كلمة المرور');
     } finally {
@@ -99,7 +102,7 @@ function PasswordCard() {
             onChange={(e) => setCurrent(e.target.value)}
           />
         </Field>
-        <Field label="كلمة المرور الجديدة" hint="8 أحرف على الأقل.">
+        <Field label="كلمة المرور الجديدة" hint="8 أحرف على الأقل، ليست شائعة ولا أرقاماً متتالية ولا تحتوي اسم الدخول.">
           <input
             type="password"
             autoComplete="new-password"

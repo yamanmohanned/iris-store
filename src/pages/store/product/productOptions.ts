@@ -17,11 +17,23 @@ export interface MetalOption {
   key: string;
   label: string;
   gradient: string;
+  /** درجة لون أضافه المالك (بدل التدرّج الجاهز) */
+  color?: string;
+}
+
+/** خلفية دائرة اللون: التدرّج الجاهز عبر الأصناف، واللون المخصص عبر style. */
+export function swatchStyle(m: MetalOption) {
+  return m.color
+    ? { backgroundColor: m.color, backgroundImage: 'linear-gradient(135deg, rgba(255,255,255,0.45), rgba(255,255,255,0) 60%)' }
+    : undefined;
 }
 
 export function metalOptionsFor(p: Product): MetalOption[] {
   const keys = p.swatches?.length ? p.swatches : [];
-  const list = keys.map((k) => ({ key: k, ...METAL_STYLES[k] }));
+  const list: MetalOption[] = [
+    ...keys.map((k) => ({ key: k, ...METAL_STYLES[k] })),
+    ...(p.customColors ?? []).map((c) => ({ key: `custom:${c.name}`, label: c.name, gradient: '', color: c.hex })),
+  ];
   // بلا ألوان محددة: تُعرض خامة القطعة نفسها
   if (!list.length) return [{ key: 'gold', label: p.metal, gradient: METAL_STYLES.gold.gradient }];
   return list.map((m, i) => (i === 0 ? { ...m, label: p.metal.includes('أبيض') && m.key === 'white' ? p.metal : m.label } : m));

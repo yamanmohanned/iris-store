@@ -11,10 +11,10 @@ import { useRevealOnScroll } from '@/hooks/useReveal';
 export function MobileFrame({ children }: { children?: ReactNode }) {
   useRevealOnScroll();
   return (
-    <div className="min-h-screen bg-surface md:bg-wine-night">
+    <div className="min-h-screen md:bg-wine-night">
       <div
         data-scroll-root
-        className="relative min-h-screen bg-surface font-body-md text-body-md text-on-surface antialiased md:mx-auto md:h-[100dvh] md:max-w-[480px] md:transform-gpu md:overflow-y-auto md:border-x md:border-royal-gold/30 md:shadow-[0_0_80px_rgba(0,0,0,0.45)]"
+        className="relative min-h-screen font-body-md md:bg-surface text-body-md text-on-surface antialiased md:mx-auto md:h-[100dvh] md:max-w-[480px] md:transform-gpu md:overflow-y-auto md:border-x md:border-royal-gold/30 md:shadow-[0_0_80px_rgba(0,0,0,0.45)]"
       >
         {children ?? <Outlet />}
       </div>

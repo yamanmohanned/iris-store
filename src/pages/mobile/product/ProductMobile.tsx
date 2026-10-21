@@ -1,7 +1,6 @@
 import { useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import { useParams } from 'react-router';
 import { Icon } from '@/components/common/Icon';
-import { WhatsAppIcon } from '@/components/common/WhatsAppIcon';
 import { MOBILE_CARD, MobileSectionTitle } from '@/components/mobile/MobilePage';
 import { MOBILE_TOP_OFFSET, MobileTopBar, topBarButtonClass } from '@/components/mobile/MobileTopBar';
 import { ProductRail } from '@/components/mobile/ProductRail';
@@ -11,7 +10,7 @@ import { cn } from '@/lib/cn';
 import { formatNumber } from '@/lib/format';
 import { productMedia, type MediaItem } from '@/lib/media';
 import NotFoundPage from '@/pages/store/system/NotFoundPage';
-import { defaultSizeFor, genericContent, metalOptionsFor, remainingText } from '@/pages/store/product/productOptions';
+import { defaultSizeFor, genericContent, metalOptionsFor, remainingText, swatchStyle } from '@/pages/store/product/productOptions';
 import { MAX_QTY, useCart } from '@/state/cart';
 import { useToast } from '@/state/toast';
 import { useWishlist } from '@/state/wishlist';
@@ -174,8 +173,6 @@ function ProductMobileView({ product: p }: { product: Product }) {
     [p, visibleProducts],
   );
   const badgeText = soldOut ? 'نفد مؤقتاً' : savingPct ? `خصم ${savingPct}%` : p.badge && p.badge !== 'soldout' ? badgeLabels[p.badge] : null;
-  const whatsapp = settings.whatsapp?.replace(/\D/g, '');
-  const waText = encodeURIComponent(`مرحباً آيريس، أود الاستفسار عن ${p.shortName} (${p.sku})`);
 
   const share = async () => {
     const url = window.location.href;
@@ -215,7 +212,7 @@ function ProductMobileView({ product: p }: { product: Product }) {
         : `خلال 1–4 أيام عمل · ${formatNumber(settings.shippingFee)} د.ع`;
 
   return (
-    <div className="flex min-h-screen flex-col bg-ivory-canvas text-warm-ink">
+    <div className="flex min-h-screen flex-col text-warm-ink">
       <MobileTopBar
         back={`/collections/${p.category}`}
         title={category?.name}
@@ -285,7 +282,7 @@ function ProductMobileView({ product: p }: { product: Product }) {
                           : 'bg-surface-container-lowest text-on-surface-variant shadow-[0_0_0_1px_rgba(78,24,37,0.14)]',
                       )}
                     >
-                      <span className="h-4 w-4 rounded-full ring-1 ring-black/10" style={{ background: METAL_SWATCH_BG[m.key] ?? METAL_SWATCH_BG.gold }} />
+                      <span className="h-4 w-4 rounded-full ring-1 ring-black/10" style={swatchStyle(m) ?? { background: METAL_SWATCH_BG[m.key] ?? METAL_SWATCH_BG.gold }} />
                       {m.label.replace(/ عيار \d+$/, '')}
                     </button>
                   );
@@ -434,17 +431,6 @@ function ProductMobileView({ product: p }: { product: Product }) {
             <Icon name="shopping_bag" className="text-[20px] text-champagne-gold" />
             {soldOut ? 'نفدت حالياً' : <span className="tabular-nums">أضيفي للسلة · {formatNumber(p.price * qty)} د.ع</span>}
           </button>
-          {whatsapp && (
-            <a
-              href={`https://wa.me/${whatsapp}?text=${waText}`}
-              target="_blank"
-              rel="noreferrer"
-              aria-label="استفسار عبر واتساب"
-              className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[#1F8F4E] text-white shadow-[0_6px_16px_rgba(31,143,78,0.3)]"
-            >
-              <WhatsAppIcon className="h-6 w-6" />
-            </a>
-          )}
         </div>
       </div>
     </div>

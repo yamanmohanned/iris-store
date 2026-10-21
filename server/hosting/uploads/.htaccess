@@ -19,5 +19,7 @@ Options -Indexes
 </FilesMatch>
 <IfModule mod_headers.c>
   Header set X-Content-Type-Options "nosniff"
+  # لو فُتح ملف مرفوع مباشرة في المتصفح فلا يُنفَّذ فيه أي شيء (لا يؤثر على عرض الصور والخطوط في المتجر)
+  Header set Content-Security-Policy "default-src 'none'; sandbox"
   Header set Cache-Control "public, max-age=31536000, immutable"
 </IfModule>

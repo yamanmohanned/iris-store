@@ -78,7 +78,7 @@ export default function BrandingSettings() {
             <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
               <LogoTile
                 title="الشعار الرئيسي"
-                hint="PNG بخلفية شفافة يعطي أجمل نتيجة."
+                hint="PNG أو SVG بخلفية شفافة يعطي أجمل نتيجة."
                 value={draft.logo ?? ''}
                 onChange={(logo) => set({ logo: logo || undefined, ...(logo ? {} : { logoDark: undefined }) })}
                 draft={draft}
@@ -130,6 +130,24 @@ export default function BrandingSettings() {
 
         <LivePreview draft={draft} />
       </div>
+
+      {/* الرفع وحده لا يغيّر المتجر: شريط ثابت يذكّر بالحفظ أينما كان التمرير (زر الأعلى يختفي على الهاتف) */}
+      {dirty && !readOnly && (
+        <div className="sticky bottom-4 z-20 mt-5 flex flex-wrap items-center justify-between gap-3 rounded-2xl bg-surface-container-lowest px-4 py-3 shadow-[0_12px_32px_rgba(42,3,13,0.18),inset_0_0_0_1px_rgba(201,162,75,0.5)]">
+          <p className="flex items-center gap-2 font-label-lg text-label-lg text-warm-ink">
+            <Icon name="info" className="text-[20px] text-royal-gold" />
+            تغييرات لم تُحفظ بعد — لن تظهر في المتجر قبل الحفظ.
+          </p>
+          <div className="flex gap-2">
+            <Button variant="ghost" onClick={() => setDraft(saved)} disabled={saving}>
+              تراجع
+            </Button>
+            <Button icon="check" busy={saving} onClick={() => void save(clean(draft), 'تم حفظ الهوية')}>
+              حفظ الهوية
+            </Button>
+          </div>
+        </div>
+      )}
     </>
   );
 }
@@ -199,7 +217,7 @@ function LogoTile({
           )}
         </div>
       </div>
-      <input ref={input} type="file" accept="image/png,image/jpeg,image/webp" className="hidden" onChange={(e) => void pick(e.target.files?.[0])} />
+      <input ref={input} type="file" accept="image/*,.svg" className="hidden" onChange={(e) => void pick(e.target.files?.[0])} />
     </div>
   );
 }

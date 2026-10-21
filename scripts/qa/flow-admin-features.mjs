@@ -56,7 +56,7 @@ await shot(op, '01-overview');
 
 /* ───────── الهوية: شعار + خط مرفوع + خط مرفق ───────── */
 await op.goto(base + '/admin/settings/branding', { waitUntil: 'networkidle' });
-await op.locator('input[type=file][accept="image/png,image/jpeg,image/webp"]').first().setInputFiles(LOGO);
+await op.locator('input[type=file][accept="image/*,.svg"]').first().setInputFiles(LOGO);
 await op.waitForFunction(() => [...document.querySelectorAll('img')].some((i) => i.getAttribute('src')?.startsWith('/uploads/')), null, { timeout: 15000 });
 check(true, 'logo uploaded (transparent PNG kept as-is)');
 await op.locator('input[type=file][accept=".woff2,.woff,.ttf,.otf"]').first().setInputFiles(FONT);
@@ -65,7 +65,7 @@ check(true, 'body font file uploaded');
 await op.getByRole('radiogroup', { name: 'خط العناوين' }).getByRole('radio', { name: /القاهرة/ }).click();
 await op.getByRole('switch', { name: /إظهار كلمة IRIS/ }).click();
 await shot(op, '02-branding-preview');
-await op.getByRole('button', { name: 'حفظ الهوية' }).click();
+await op.getByRole('button', { name: 'حفظ الهوية' }).first().click();
 await op.waitForSelector('text=تم حفظ الهوية');
 const branding = (await catalog()).settings.branding ?? {};
 check(

@@ -25,7 +25,7 @@ function NotFoundDesktop() {
   const picks = featuredPicks(visibleProducts, 4);
 
   return (
-    <main className="w-full min-h-screen bg-ivory-canvas">
+    <main className="w-full min-h-screen">
       <div className="relative w-full overflow-hidden">
         <div className="pointer-events-none absolute -top-40 right-1/4 w-[560px] h-[560px] rounded-full bg-primary/5 blur-[120px]" />
         <div className="pointer-events-none absolute top-1/2 -left-32 w-[480px] h-[480px] rounded-full bg-royal-gold/10 blur-[140px]" />

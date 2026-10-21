@@ -114,7 +114,7 @@ export function CollectionView({ title, description, items, breadcrumb, promo = 
   const toPct = (((maxPrice ?? hi) - lo) / span) * 100;
 
   return (
-    <main className="min-h-screen w-full bg-ivory-canvas">
+    <main className="min-h-screen w-full">
       <div className="flex w-full flex-col text-warm-ink">
         <section className="relative w-full overflow-hidden bg-parchment px-6 py-10 shadow-sm sm:px-10 lg:px-14">
           <svg className="pointer-events-none absolute inset-0 h-full w-full opacity-[0.04]" height="100%" width="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden>

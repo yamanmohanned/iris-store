@@ -451,7 +451,11 @@ function ReviewStep() {
           <input type="checkbox" checked={draft.acceptTerms} onChange={(e) => setAcceptTerms(e.target.checked)} className="mt-1 h-5 w-5 flex-shrink-0 cursor-pointer rounded accent-imperial-burgundy" />
           <span className="font-body-sm text-body-sm leading-relaxed text-warm-ink">
             أوافق على{' '}
-            <Link to="/policies/shipping" className="font-medium text-imperial-burgundy underline decoration-royal-gold underline-offset-4">
+            <Link
+              to="/policies/shipping"
+              state={{ from: window.location.pathname }}
+              className="font-medium text-imperial-burgundy underline decoration-royal-gold underline-offset-4"
+            >
               سياسة الشحن والاستبدال
             </Link>
             .
@@ -568,7 +572,7 @@ export default function CheckoutPage({ step }: { step: CheckoutStep }) {
         <div className="fixed inset-x-0 top-[calc(4rem+env(safe-area-inset-top,0px))] z-40 bg-ivory-canvas/95 px-6 pb-3 pt-2 shadow-[0_6px_16px_-8px_rgba(42,3,13,0.12)] backdrop-blur-xl">
           <Stepper current={step} />
         </div>
-        <main className="pb-safe relative flex min-h-screen w-full flex-col bg-ivory-canvas px-margin-mobile pt-[calc(8rem+env(safe-area-inset-top,0px))]">
+        <main className="pb-safe relative flex min-h-screen w-full flex-col px-margin-mobile pt-[calc(8rem+env(safe-area-inset-top,0px))]">
           <div className="flex w-full flex-col pb-32">{body}</div>
         </main>
         <div className="pb-safe fixed bottom-0 left-0 right-0 z-40 bg-ivory-canvas/95 shadow-[0_-4px_24px_rgba(42,3,13,0.06)] backdrop-blur-xl">
@@ -598,7 +602,7 @@ export default function CheckoutPage({ step }: { step: CheckoutStep }) {
 
   // الديسكتوب: عمودان (الخطوة + ملخص الطلب)
   return (
-    <main className="min-h-[calc(100vh-20rem)] w-full bg-ivory-canvas">
+    <main className="min-h-[calc(100vh-20rem)] w-full">
       <div className="mx-auto w-full max-w-[1120px] px-6 py-10 lg:py-14">
         <nav aria-label="مسار التصفح" className="mb-6 flex items-center gap-space-xs text-muted-rosewood">
           <Link to="/" className="font-body-sm text-body-sm hover:text-imperial-burgundy">

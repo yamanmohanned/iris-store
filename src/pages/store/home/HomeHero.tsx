@@ -43,19 +43,7 @@ export default function HomeHero() {
         className="absolute top-[480px] right-0 w-[420px] h-[420px] bg-royal-gold/10 rounded-full blur-[120px] pointer-events-none -z-10"
         id="parallax-glow-2"
       />
-      <div className="absolute inset-0 opacity-[0.032] pointer-events-none -z-10 overflow-hidden" id="parallax-lattice">
-        <svg height="100%" width="100%" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <pattern height="60" id="iris-arch-lattice" patternUnits="userSpaceOnUse" width="60">
-              <path d="M30 0 L60 30 L30 60 L0 30 Z" fill="none" stroke="#4e1825" strokeWidth="1" />
-              <circle cx="30" cy="30" fill="#C9A24B" r="1.5" />
-              <path d="M0 0 L15 15 M45 45 L60 60 M60 0 L45 15 M15 45 L0 60" stroke="#4e1825" strokeWidth="0.75" />
-            </pattern>
-          </defs>
-          <rect fill="url(#iris-arch-lattice)" height="100%" width="100%" />
-        </svg>
-      </div>
-      <section className="w-full max-w-[1360px] mx-auto px-6 lg:px-12 pt-6 pb-16 lg:pb-24 relative" id="hero-section">
+            <section className="w-full max-w-[1360px] mx-auto px-6 lg:px-12 pt-6 pb-16 lg:pb-24 relative" id="hero-section">
         <div className="absolute top-0 left-1/2 pointer-events-none opacity-40 floating-iris-ornament z-0 hidden lg:block">
           <svg fill="none" height="42" stroke="#8A6620" strokeWidth="1.2" viewBox="0 0 48 48" width="42">
             <circle cx="24" cy="24" opacity="0.4" r="22" />

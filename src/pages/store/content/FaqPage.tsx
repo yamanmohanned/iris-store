@@ -31,7 +31,7 @@ function FaqDesktop() {
   const shown = active ? searched.filter((g) => g.id === active) : searched;
 
   return (
-    <main className="w-full bg-ivory-canvas min-h-screen">
+    <main className="w-full min-h-screen">
       <section className="relative bg-burgundy-800 text-surface-container-lowest overflow-hidden">
         <div className="absolute inset-0 opacity-[0.035] pointer-events-none mix-blend-overlay">
           <svg className="w-full h-full" fill="none" xmlns="http://www.w3.org/2000/svg">

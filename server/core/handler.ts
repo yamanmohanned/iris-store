@@ -28,7 +28,8 @@ const ROUTES: Record<string, Need> = {
   'POST orders': 'public',
   'GET orders': { section: 'orders', level: 'view' },
   'POST orders/status': { section: 'orders', level: 'edit' },
-  'GET orders/track': 'public',
+  // POST لا GET: رقم الهاتف لا يظهر في الرابط ولا في سجلات الخادم
+  'POST orders/track': 'public',
   'GET users': 'owner',
   'POST users/save': 'owner',
   'POST users/delete': 'owner',
@@ -69,6 +70,8 @@ export function createHandler(kv: Kv, env: Env, deps: Deps = { fetch }) {
       actor = await auth.actorOf(req);
       if (!actor) fail('انتهت الجلسة. يرجى تسجيل الدخول من جديد.', 401);
       if (!permitted(actor!, need)) fail('لا تملك صلاحية لهذا الإجراء. اطلبها من مالك المتجر.', 403);
+      // كلمة المرور الافتراضية معروفة للجميع: لا بيانات ولا تعديل قبل تغييرها
+      if (actor!.mustChangePassword && key !== 'POST auth/password') fail('غيّر كلمة المرور الافتراضية أولاً من صفحة «حسابي».', 403);
     }
     const me = actor!;
 
@@ -131,6 +134,7 @@ export function createHandler(kv: Kv, env: Env, deps: Deps = { fetch }) {
         return ok();
 
       case 'POST orders':
+        if (await rateLimited(kv, 'order', ip, 12, 3600, true)) fail('تم إرسال طلبات كثيرة من هذا الجهاز. حاول لاحقاً أو تواصل معنا هاتفياً.', 429);
         return ok({ order: await orders.create(await readBody(req)) });
 
       case 'GET orders':
@@ -139,9 +143,11 @@ export function createHandler(kv: Kv, env: Env, deps: Deps = { fetch }) {
       case 'POST orders/status':
         return ok({ order: await orders.setStatus(await readBody(req)) });
 
-      case 'GET orders/track':
+      case 'POST orders/track': {
         if (await rateLimited(kv, 'track', ip, 40, 600, true)) fail('محاولات كثيرة. حاول بعد قليل.', 429);
-        return ok({ order: await orders.track(url.searchParams.get('id'), url.searchParams.get('phone')) });
+        const b = await readBody(req);
+        return ok({ order: await orders.track(b.id, b.phone) });
+      }
 
       case 'GET users':
         return ok({ users: await auth.listStaff(), owner: { username: auth.owner.username } });

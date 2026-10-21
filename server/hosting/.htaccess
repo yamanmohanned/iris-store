@@ -41,11 +41,10 @@ AddDefaultCharset utf-8
 </IfModule>
 
 # ── ترويسات الأمان ──
+# السطر التالي يستبدله «npm run package» بالترويسات من scripts/deploy/csp.mjs: سياسة أمان المحتوى (CSP)
+# ببصمة سكربت الإقلاع، ومنع العرض داخل مواقع أخرى، وHSTS حين يعمل الموقع على HTTPS.
 <IfModule mod_headers.c>
-  Header always set X-Content-Type-Options "nosniff"
-  Header always set X-Frame-Options "SAMEORIGIN"
-  Header always set Referrer-Policy "strict-origin-when-cross-origin"
-  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+  # @iris-security-headers
 
   # الصفحة نفسها تُفحص دائماً حتى يصل كل تحديث فوراً
   <FilesMatch "^(index\.html|site\.webmanifest)$">

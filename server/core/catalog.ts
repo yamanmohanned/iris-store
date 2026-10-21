@@ -12,7 +12,7 @@ const SWATCHES = ['gold', 'white', 'rose', 'silver', 'black'];
 
 /* ───────────── أدوات التحقق (مطابقة لـ lib.php) ───────────── */
 
-function str(value: unknown, max: number, required = false, label = 'الحقل'): string {
+export function str(value: unknown, max: number, required = false, label = 'الحقل'): string {
   const raw = typeof value === 'string' || typeof value === 'number' ? String(value) : '';
   // eslint-disable-next-line no-control-regex
   const v = raw.replace(/[\x00-\x08\x0B\x0C\x0E-\x1F\x7F]/g, '').trim();
@@ -21,7 +21,7 @@ function str(value: unknown, max: number, required = false, label = 'الحقل'
   return v;
 }
 
-function int(value: unknown, min: number, max: number, label = 'الرقم'): number {
+export function int(value: unknown, min: number, max: number, label = 'الرقم'): number {
   const n = typeof value === 'number' ? value : typeof value === 'string' && value.trim() !== '' ? Number(value) : NaN;
   if (!Number.isFinite(n)) fail(`${label} يجب أن يكون رقماً.`);
   const r = Math.round(n);
@@ -33,7 +33,8 @@ function int(value: unknown, min: number, max: number, label = 'الرقم'): nu
 export function mediaUrl(value: unknown, label = 'رابط الصورة'): string {
   const url = str(value, 500, false, label);
   if (url === '') return '';
-  if (url.includes('..')) fail(`${label}: الرابط غير صالح.`);
+  // «/\evil.com» يعامله المتصفح كـ //evil.com، فلا شرطة مائلة عكسية إطلاقاً
+  if (url.includes('..') || url.includes('\\')) fail(`${label}: الرابط غير صالح.`);
   if (url[0] === '/' && url[1] !== '/') return url;
   if (/^https:\/\/[^\s"'<>]+$/i.test(url)) return url;
   return fail(`${label}: الرابط غير صالح.`);
@@ -139,6 +140,17 @@ function cleanProducts(input: unknown, categorySlugs: Set<string>): Json[] {
     if (Array.isArray(p.swatches)) {
       const sw = [...new Set(p.swatches.filter((x: unknown) => SWATCHES.includes(String(x))))];
       if (sw.length) out.swatches = sw;
+    }
+    if (Array.isArray(p.customColors)) {
+      const colors = new Map<string, string>();
+      for (const c of p.customColors.slice(0, 12)) {
+        if (!c || typeof c !== 'object') continue;
+        const name = str(c.name, 30, true, `اسم لون ${label}`);
+        const hex = typeof c.hex === 'string' ? c.hex.toLowerCase() : '';
+        if (!/^#[0-9a-f]{6}$/.test(hex)) fail(`درجة اللون «${name}» في ${label} غير صالحة.`);
+        colors.set(name, hex);
+      }
+      if (colors.size) out.customColors = [...colors].map(([name, hex]) => ({ name, hex }));
     }
     if (Array.isArray(p.sizes)) {
       const sizes = p.sizes

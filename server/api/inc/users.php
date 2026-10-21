@@ -87,6 +87,83 @@ function iris_staff_public_list()
     return array_map('iris_staff_public', iris_staff_list());
 }
 
+/** أقصى عمر للجلسة مهما استُخدمت (يوافق عمر ملف تعريف الارتباط). */
+define('IRIS_SESSION_MAX_AGE', 14 * 24 * 3600);
+
+/** إصدار كلمة مرور المالك: يرتفع مع كل تغيير من اللوحة فتنتهي جلساته الأخرى. */
+function iris_owner_ver()
+{
+    $auth = iris_read('auth');
+    return is_array($auth) && isset($auth['ver']) ? (int) $auth['ver'] : 0;
+}
+
+/**
+ * سبب رفض كلمة مرور جديدة أو null — نفس passwordProblem في src/lib/permissions.ts.
+ */
+function iris_password_problem($password, $username = '')
+{
+    $len = iris_mb_len($password);
+    if ($len < 8) {
+        return 'كلمة المرور يجب أن تكون 8 أحرف على الأقل.';
+    }
+    if ($len > 128) {
+        return 'كلمة المرور أطول من 128 حرفاً.';
+    }
+    $lower = function_exists('mb_strtolower') ? mb_strtolower($password, 'UTF-8') : strtolower($password);
+    $common = array(
+        'password', 'password1', 'password12', 'password123', 'passw0rd', 'p@ssw0rd', 'p@ssword',
+        '12345678', '123456789', '1234567890', '0123456789', '11111111', '00000000', '12341234', '12121212',
+        '11223344', '12344321', '87654321', 'qwertyui', 'qwerty12', 'qwerty123', 'qwertyuiop', '1q2w3e4r',
+        '1q2w3e4r5t', '1qaz2wsx', 'qazwsxedc', 'asdfghjk', 'asdf1234', 'zxcvbnm1', 'iloveyou', 'iloveyou1',
+        'admin123', 'admin1234', 'admin12345', 'administrator', 'welcome1', 'welcome123', 'letmein1',
+        'changeme', 'change-me', 'demo1234', 'abc12345', 'abcd1234', 'aa123456', 'a1234567', '12345abc',
+        'iris1234', 'iris12345', 'irisstore', 'iris-store', 'irisstore1', 'store123', 'store1234', 'shop1234',
+        'baghdad1', 'baghdad123', 'iraq1234', 'iraq12345', 'football', 'superman', 'sunshine', 'princess',
+        'trustno1', 'dragon123', 'monkey123', 'master123',
+    );
+    if (in_array($lower, $common, true)) {
+        return 'كلمة المرور هذه شائعة ويسهل تخمينها. اختر كلمة أقوى.';
+    }
+    if (preg_match('/^(.)\1+$/us', $password)) {
+        return 'كلمة المرور لا يصح أن تكون حرفاً واحداً مكرراً.';
+    }
+    if (iris_is_sequence($lower)) {
+        return 'كلمة المرور لا يصح أن تكون أرقاماً أو حروفاً متتالية.';
+    }
+    $user = strtolower(trim((string) $username));
+    if (strlen($user) >= 3 && strpos($lower, $user) !== false) {
+        return 'كلمة المرور لا يصح أن تحتوي اسم الدخول.';
+    }
+    return null;
+}
+
+/** أرقام أو حروف لاتينية متتالية صعوداً أو نزولاً (12345678، abcdefgh، 98765432). */
+function iris_is_sequence($s)
+{
+    if (!preg_match('/^[a-z0-9]+$/', $s)) {
+        return false;
+    }
+    $step = function ($a, $b) {
+        if ($a === '9' && $b === '0') {
+            return 1;
+        }
+        if ($a === '0' && $b === '9') {
+            return -1;
+        }
+        return ord($b) - ord($a);
+    };
+    $first = $step($s[0], $s[1]);
+    if ($first !== 1 && $first !== -1) {
+        return false;
+    }
+    for ($i = 1; $i < strlen($s) - 1; $i++) {
+        if ($step($s[$i], $s[$i + 1]) !== $first) {
+            return false;
+        }
+    }
+    return true;
+}
+
 /** الحساب صاحب الجلسة (المالك أو موظف نشط) أو null. لا يُنشئ جلسة للزوار العاديين. */
 function iris_current_user()
 {
@@ -97,12 +174,17 @@ function iris_current_user()
     if (empty($_SESSION['uid']) || !is_string($_SESSION['uid'])) {
         return null;
     }
+    // عمر مطلق للجلسة حتى لو بقي ملفها على الخادم أو سُرق ملف تعريف الارتباط
+    if (empty($_SESSION['since']) || time() - (int) $_SESSION['since'] > IRIS_SESSION_MAX_AGE) {
+        return null;
+    }
+    $sessionVer = (int) (isset($_SESSION['ver']) ? $_SESSION['ver'] : -1);
     if ($_SESSION['uid'] === 'owner') {
-        return iris_owner_profile();
+        return $sessionVer === iris_owner_ver() ? iris_owner_profile() : null;
     }
     foreach (iris_staff_list() as $u) {
         if ($u['id'] === $_SESSION['uid']) {
-            if (empty($u['active']) || (int) $u['ver'] !== (int) (isset($_SESSION['ver']) ? $_SESSION['ver'] : -1)) {
+            if (empty($u['active']) || (int) $u['ver'] !== $sessionVer) {
                 return null;
             }
             return iris_staff_profile($u);
@@ -205,8 +287,11 @@ function route_users_save()
         }
         $title = iris_str(isset($in['title']) ? $in['title'] : '', 40, false, 'المسمى الوظيفي');
         $password = isset($in['password']) && is_string($in['password']) ? $in['password'] : '';
-        if (($index < 0 || $password !== '') && iris_mb_len($password) < 8) {
-            iris_fail('كلمة المرور يجب أن تكون 8 أحرف على الأقل.');
+        if ($index < 0 || $password !== '') {
+            $problem = iris_password_problem($password, $username);
+            if ($problem !== null) {
+                iris_fail($problem);
+            }
         }
         $active = !(isset($in['active']) && $in['active'] === false);
         $permissions = iris_clean_permissions(isset($in['permissions']) ? $in['permissions'] : array());

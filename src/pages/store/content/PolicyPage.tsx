@@ -4,6 +4,7 @@ import { Icon } from '@/components/common/Icon';
 import { MOBILE_CARD, MobilePage, MobileSectionTitle } from '@/components/mobile/MobilePage';
 import { useIsMobile } from '@/hooks/useMediaQuery';
 import { cn } from '@/lib/cn';
+import { ReturnToCart } from '@/components/store/ReturnToCart';
 import NotFoundPage from '@/pages/store/system/NotFoundPage';
 
 /**
@@ -115,8 +116,9 @@ export default function PolicyPage() {
   if (mobile) return <PolicyMobile topic={topic} policy={policy} />;
 
   return (
-    <main className="w-full bg-ivory-canvas">
+    <main className="w-full">
       <div className="mx-auto w-full max-w-[960px] px-gutter-mobile py-10 md:px-6 md:py-16">
+        <ReturnToCart className="mb-6" />
         <nav aria-label="مسار التصفح" className="mb-6 flex items-center gap-space-xs font-body-sm text-body-sm text-muted-rosewood">
           <Link to="/" className="hover:text-imperial-burgundy">
             الرئيسية
@@ -189,6 +191,7 @@ function PolicyMobile({ topic, policy }: { topic: string; policy: Policy }) {
 
   return (
     <MobilePage title={policy.short} back>
+      <ReturnToCart className="mb-4 w-full justify-center" />
       <div className="mb-5 flex items-center gap-3">
         <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-imperial-burgundy text-champagne-gold shadow-royal">
           <Icon name={policy.icon} className="text-[22px]" />

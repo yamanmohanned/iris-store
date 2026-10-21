@@ -38,7 +38,7 @@ export default function CartPage() {
   };
 
   return (
-    <main className="min-h-[calc(100vh-20rem)] w-full bg-surface">
+    <main className="min-h-[calc(100vh-20rem)] w-full">
       <div className="flex w-full flex-col">
         <div className="relative w-full overflow-hidden bg-ivory-canvas pb-space-3xl">
           <div className="pointer-events-none absolute -top-40 right-1/4 h-[520px] w-[520px] rounded-full bg-rose-mist/35 blur-3xl" />
@@ -264,7 +264,7 @@ export default function CartPage() {
                           <Icon name="stars" className="text-[18px] text-royal-gold" />
                           <span>الخامة مذكورة في صفحة كل قطعة</span>
                         </div>
-                        <Link to="/policies/size-guide" className="font-label-sm text-label-sm font-semibold text-imperial-burgundy hover:underline">
+                        <Link to="/policies/size-guide" state={{ from: '/cart' }} className="font-label-sm text-label-sm font-semibold text-imperial-burgundy hover:underline">
                           استعراض دليل القياسات والأطوال ←
                         </Link>
                       </div>

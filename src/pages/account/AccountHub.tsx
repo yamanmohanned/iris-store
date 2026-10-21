@@ -7,7 +7,7 @@ import { useIsMobile } from '@/hooks/useMediaQuery';
 import { cn } from '@/lib/cn';
 import { formatDate, formatNumber, piecesCount } from '@/lib/format';
 import { useCart } from '@/state/cart';
-import { orderStatusLabels, useOrders } from '@/state/orders';
+import { customerStatusLabels, useOrders } from '@/state/orders';
 import { useWishlist } from '@/state/wishlist';
 
 const HELP = [
@@ -77,7 +77,7 @@ function AccountContent() {
                   icon="receipt_long"
                   title={`طلب رقم ${o.id}`}
                   subtitle={`${formatDate(o.createdAt)} · ${piecesCount(pieces)} · ${formatNumber(o.total)} د.ع`}
-                  badge={orderStatusLabels[o.status]}
+                  badge={customerStatusLabels[o.status]}
                 />
               );
             })}

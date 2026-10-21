@@ -10,7 +10,7 @@ import { MAX_QTY, useCart } from '@/state/cart';
 import { readJSON, writeJSON } from '@/state/storage';
 import { useToast } from '@/state/toast';
 import { useWishlist } from '@/state/wishlist';
-import { defaultSizeFor, genericContent, metalOptionsFor, remainingText } from './productOptions';
+import { defaultSizeFor, genericContent, metalOptionsFor, remainingText, swatchStyle } from './productOptions';
 import { WhatsAppLink } from '@/components/common/WhatsAppLink';
 
 const RECENT_KEY = 'iris.recent.v1';
@@ -109,7 +109,7 @@ export function ProductView({ product: p }: { product: Product }) {
   const shown = gallery[Math.min(index, gallery.length - 1)];
 
   return (
-    <main className="min-h-[calc(100vh-64px)] w-full bg-surface">
+    <main className="min-h-[calc(100vh-64px)] w-full">
       {stuck && (
         <section
           aria-label="شريط الشراء السريع الملتصق"
@@ -188,7 +188,7 @@ export function ProductView({ product: p }: { product: Product }) {
         </section>
       )}
 
-      <div className="flex w-full flex-col bg-ivory-canvas text-on-surface">
+      <div className="flex w-full flex-col text-on-surface">
         <div className="flex w-full items-center justify-center bg-blush-surface/60 py-space-sm">
           <div className="flex w-full max-w-[1280px] items-center gap-space-md px-gutter">
             <div className="h-px flex-1 bg-royal-gold/30" />
@@ -421,6 +421,7 @@ export function ProductView({ product: p }: { product: Product }) {
                               'flex h-6 w-6 items-center justify-center rounded-full bg-gradient-to-tr shadow-inner',
                               m.gradient,
                             )}
+                            style={swatchStyle(m)}
                           >
                             {on && <span className="h-2 w-2 rounded-full bg-imperial-burgundy opacity-80" />}
                           </span>

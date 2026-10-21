@@ -7,7 +7,7 @@ import { Link } from 'react-router';
  */
 export default function ReturnRequestDesktop() {
   return (
-    <div className="bg-ivory-canvas text-warm-ink min-h-screen selection:bg-rose-mist selection:text-deep-oxblood tw-forms">
+    <div className="text-warm-ink min-h-screen selection:bg-rose-mist selection:text-deep-oxblood tw-forms">
       <header className="w-full border-b border-hairline-burgundy bg-surface-container-lowest/80 backdrop-blur-md sticky top-0 z-40">
         <div className="max-w-[1200px] mx-auto px-6 h-18 flex items-center justify-between py-4">
           <div className="flex items-center gap-4">

@@ -137,6 +137,9 @@ export function ProductCard({ product: p, className }: ProductCardProps) {
             {p.swatches?.map((s) => (
               <span key={s} className="h-3.5 w-3.5 rounded-full shadow-xs" style={{ background: SWATCH_STYLE[s].color }} title={SWATCH_STYLE[s].title} />
             ))}
+            {p.customColors?.map((c) => (
+              <span key={c.name} className="h-3.5 w-3.5 rounded-full shadow-xs ring-1 ring-black/10" style={{ background: c.hex }} title={c.name} />
+            ))}
           </div>
         </div>
         {soldOut && (

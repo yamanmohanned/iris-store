@@ -17,14 +17,14 @@ export default function HomePage() {
 
   if (!visibleProducts.length) {
     return (
-      <main className="flex min-h-[70vh] w-full items-center justify-center bg-ivory-canvas px-6 py-16">
+      <main className="flex min-h-[70vh] w-full items-center justify-center px-6 py-16">
         <StoreComingSoon className="w-full max-w-xl" />
       </main>
     );
   }
 
   return (
-    <main ref={ref} className="w-full min-h-screen overflow-hidden bg-ivory-canvas">
+    <main ref={ref} className="w-full min-h-screen overflow-hidden">
       <div className="relative flex w-full flex-col">
         <HomeHero />
         <HomeMiddle />

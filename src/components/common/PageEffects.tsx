@@ -64,7 +64,8 @@ export function PlaceholderLinkGuard() {
         return;
       }
       if (to.startsWith('http')) window.open(to, '_blank', 'noopener');
-      else ref.current.navigate(to);
+      // المصدر يُحفظ حتى تعرض صفحة الوجهة «رجوع إلى السلة» مثلاً
+      else ref.current.navigate(to, { state: { from: window.location.pathname } });
     };
     document.addEventListener('click', onClick);
     return () => document.removeEventListener('click', onClick);

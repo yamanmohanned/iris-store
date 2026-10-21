@@ -74,6 +74,8 @@ export async function serveUpload(kv: Kv, req: Request, pathname: string): Promi
     'Content-Type': file.type,
     'Cache-Control': 'public, max-age=31536000, immutable',
     'X-Content-Type-Options': 'nosniff',
+    // لو فُتح ملف مرفوع مباشرة فلا يُنفَّذ فيه شيء (مثل uploads/.htaccess)
+    'Content-Security-Policy': "default-src 'none'; sandbox",
     'Accept-Ranges': 'bytes',
   };
   const size = file.data.byteLength;

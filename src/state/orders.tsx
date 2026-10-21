@@ -16,6 +16,20 @@ export const orderStatusLabels: Record<OrderStatus, string> = {
   returned: 'مُرتجع',
 };
 
+/**
+ * ما يراه الزبون (طلباتي، التتبع، صفحة نجاح الطلب): لا «قيد المراجعة» — الطلب المرسل «تم تأكيد الطلب»،
+ * وبعد موافقة مسؤول الطلبات تتقدم الحالة حتى التسليم. لوحة الإدارة تبقى على orderStatusLabels.
+ */
+export const customerStatusLabels: Record<OrderStatus, string> = {
+  pending: 'تم تأكيد الطلب',
+  confirmed: 'قيد التجهيز',
+  preparing: 'قيد التجهيز',
+  shipped: 'مع مندوب التوصيل',
+  delivered: 'تم التسليم',
+  cancelled: 'ملغى',
+  returned: 'مُرتجع',
+};
+
 export type PaymentMethod = 'cod' | 'zaincash' | 'card';
 
 export const paymentLabels: Record<PaymentMethod, string> = {
@@ -88,7 +102,8 @@ export function OrdersProvider({ children }: { children: ReactNode }) {
   );
 
   const trackOrder = useCallback(async (id: number | string, phone: string) => {
-    const res = await api<{ order: Order }>('orders/track', { query: { id: String(id).replace(/\D/g, ''), phone } });
+    // POST: رقم الهاتف لا يظهر في الرابط ولا في سجلات الخادم
+    const res = await api<{ order: Order }>('orders/track', { method: 'POST', body: { id: String(id).replace(/\D/g, ''), phone } });
     setOrders((prev) => (prev.some((o) => o.id === res.order.id) ? prev.map((o) => (o.id === res.order.id ? res.order : o)) : prev));
     return res.order;
   }, []);

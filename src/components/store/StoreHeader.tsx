@@ -59,7 +59,7 @@ export function StoreHeader() {
       {overlay && (
         <div
           className={cn(
-            'fixed inset-x-0 top-0 z-50 overflow-hidden border-b border-[#C9A24B]/45 bg-[#370A15] text-champagne-gold transition-all duration-300',
+            'fixed inset-x-0 top-0 z-50 overflow-hidden border-b border-[#C9A24B]/45 bg-crown-burgundy text-champagne-gold transition-all duration-300',
             scrolled && 'pointer-events-none -translate-y-full opacity-0',
           )}
         >
@@ -80,7 +80,7 @@ export function StoreHeader() {
           'fixed inset-x-0 z-40 transition-all duration-[350ms] ease-[cubic-bezier(0.22,1,0.36,1)]',
           transparent
             ? 'top-9 border-b border-transparent bg-transparent'
-            : 'top-0 bg-deep-oxblood/90 shadow-[0_12px_32px_rgba(42,3,13,0.35)] backdrop-blur-md',
+            : 'top-0 bg-crown-burgundy shadow-[0_12px_32px_rgba(42,3,13,0.35)]',
           hidden && '-translate-y-[120%]',
         )}
       >
@@ -164,7 +164,7 @@ export function StoreHeader() {
         {transparent && <div className="h-px w-full bg-gradient-to-r from-transparent via-royal-gold/45 to-transparent opacity-0" />}
 
         {menuOpen && (
-          <div className="border-t border-royal-gold/30 bg-deep-oxblood lg:hidden">
+          <div className="border-t border-royal-gold/30 bg-crown-burgundy lg:hidden">
             <nav className="mx-auto flex max-w-[1440px] flex-col px-6 py-3" aria-label="قائمة الموبايل">
               {nav.map((item) => (
                 <NavLink

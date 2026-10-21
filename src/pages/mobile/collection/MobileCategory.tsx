@@ -41,7 +41,7 @@ export default function MobileCategory() {
   const cover = category?.image || items[0]?.image;
 
   return (
-    <div className="flex min-h-screen flex-col bg-ivory-canvas text-warm-ink">
+    <div className="flex min-h-screen flex-col text-warm-ink">
       <MobileTopBar overlay back="/" title={name} threshold={220} />
 
       <section className="relative h-[270px] w-full overflow-hidden bg-wine-night">

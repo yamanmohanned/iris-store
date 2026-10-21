@@ -29,7 +29,7 @@ Every push redeploys automatically, so the client always sees the latest version
    | `IRIS_ADMIN_PASSWORD` | 8+ characters (recommended) |
    | `IRIS_ADMIN_USER` | optional, default `owner` |
 
-   If you don't set it, the login is `owner` / `demo1234`, and the login page shows that hint to anyone who opens `/admin`.
+   If you don't set it, the login is `owner` / `demo1234`, and the login page shows that hint to anyone who opens `/admin`. That default login opens only a "choose your own password" screen: orders, products and settings stay locked until the password is changed.
 5. Click **Deploy**. The store opens at `https://<project-name>.netlify.app` and the admin at `/admin`.
 
 ## Option B — Netlify CLI (no GitHub needed)
@@ -65,7 +65,7 @@ Drag `release/iris-store-netlify.zip` onto <https://app.netlify.com/drop>.
 ## Before sending the link to the client
 
 1. Log in to `/admin`, then fill in **الإعدادات ← المتجر والتوصيل** (store settings): WhatsApp number, Instagram, delivery fee and free-delivery threshold. The contact buttons only appear once a WhatsApp number is set.
-2. If you didn't set `IRIS_ADMIN_PASSWORD`, change the password from **الإعدادات ← حسابي**. The login hint then disappears.
+2. If you didn't set `IRIS_ADMIN_PASSWORD`, the first login asks you to choose a new password before anything else opens. The login hint then disappears.
 3. Place one test order from a phone and confirm it in **الطلبات** (orders) to check the full flow.
 
 ## Good to know

@@ -7,7 +7,7 @@ import { useRouteOrder } from '@/hooks/useRouteOrder';
 import { cn } from '@/lib/cn';
 import { formatNumber, piecesCount } from '@/lib/format';
 import NotFoundPage from '@/pages/store/system/NotFoundPage';
-import { orderStatusLabels, paymentLabels } from '@/state/orders';
+import { customerStatusLabels, paymentLabels } from '@/state/orders';
 import { useToast } from '@/state/toast';
 
 /** تأكيد الطلب على الهاتف (`/order-success/:orderId`): رقم الطلب، ما يحدث بعده، والملخص. */
@@ -30,7 +30,7 @@ export default function OrderSuccessMobile() {
         </span>
         <h1 className="font-headline-md text-headline-md font-semibold text-deep-oxblood">شكراً لثقتكِ بنا</h1>
         <p className="mt-1.5 max-w-[300px] font-body-sm text-body-sm leading-relaxed text-muted-rosewood">
-          سنتصل بكِ قريباً لتأكيد الطلب وموعد التوصيل.
+          تم تأكيد طلبكِ، وسنتصل بكِ قريباً لتحديد موعد التوصيل.
         </p>
         <button
           type="button"
@@ -41,8 +41,8 @@ export default function OrderSuccessMobile() {
           <span className="font-label-lg text-label-lg font-bold text-deep-oxblood tabular-nums">#{order.id}</span>
           <Icon name="content_copy" className="text-[16px] text-antique-gold" />
         </button>
-        <span className="mt-2.5 rounded-full bg-semantic-warning-bg px-3 py-0.5 font-label-sm text-label-sm font-semibold text-semantic-warning">
-          {orderStatusLabels[order.status]}
+        <span className="mt-2.5 rounded-full bg-semantic-success-bg px-3 py-0.5 font-label-sm text-label-sm font-semibold text-semantic-success">
+          {customerStatusLabels[order.status]}
         </span>
       </section>
 

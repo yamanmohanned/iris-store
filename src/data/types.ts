@@ -47,6 +47,8 @@ export interface Product {
   sourceUrl?: string;
   /** ألوان المعدن المتاحة (للنقاط الملونة في البطاقة) */
   swatches?: Array<'gold' | 'white' | 'rose' | 'silver' | 'black'>;
+  /** ألوان يضيفها المالك بنفسه غير الجاهزة أعلاه (اسم + درجة #rrggbb) — حتى 12 */
+  customColors?: Array<{ name: string; hex: string }>;
   /** أطوال/مقاسات متاحة */
   sizes?: Array<{ label: string; note?: string; soldOut?: boolean }>;
   tags?: string[];
