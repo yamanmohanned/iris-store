@@ -56,7 +56,7 @@ function NotFoundDesktop() {
                 <div className="w-16 h-px bg-royal-gold/40" />
               </div>
               <p className="text-body-lg font-body-lg text-warm-ink/80 max-w-xl leading-relaxed mt-space-sm mb-space-lg">
-                ربما تغيّر الرابط أو لم تعد القطعة معروضة. ابحث عنها باسمها أو رقمها، أو تصفّح أقسام الدار.
+                ربما تغيّر الرابط أو لم تعد القطعة معروضة. ابحث عنها باسمها أو رقمها، أو تصفّح أقسام المتجر.
               </p>
 
               <form
@@ -79,7 +79,7 @@ function NotFoundDesktop() {
                     value={query}
                     onChange={(e) => setQuery(e.target.value)}
                     className="w-full bg-transparent text-body-md font-body-md text-warm-ink placeholder:text-muted-rosewood/60 focus:outline-none px-space-xs"
-                    placeholder="اسم القطعة أو رقمها، مثل: قلادة ذهبية"
+                    placeholder="اسم القطعة أو رقمها، مثل: قلادة البجعة"
                   />
                   <button
                     className="px-space-lg py-space-sm bg-imperial-burgundy hover:bg-burgundy-600 text-on-primary rounded-lg text-label-md font-label-md font-semibold transition-colors active:translate-y-[1px]"
@@ -140,7 +140,7 @@ function NotFoundDesktop() {
             <section className="mt-space-3xl pt-space-2xl">
               <div className="flex flex-col items-center text-center mb-space-2xl">
                 <span className="text-label-md font-label-md text-antique-gold tracking-widest font-semibold mb-space-xs">
-                  مختارات الدار
+                  مختارات آيريس
                 </span>
                 <h2 className="text-headline-lg font-headline-lg text-deep-oxblood font-bold">قطع قد تعجبك</h2>
                 <div className="w-56 my-space-md flex items-center">

@@ -20,7 +20,7 @@ const LINKS = [
 export default function ContactHub() {
   const contact = useContactLinks();
   const faq = topFaq(faqGroups(useCatalog().settings));
-  const whatsapp = contact.whatsapp('مرحباً دار آيريس، لدي استفسار');
+  const whatsapp = contact.whatsapp('مرحباً آيريس، لدي استفسار');
   const hasChannels = Boolean(whatsapp || contact.instagram);
 
   return (

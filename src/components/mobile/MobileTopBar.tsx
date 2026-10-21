@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router';
-import { BrandMark } from '@/components/common/BrandLogo';
+import { BrandMark, BrandWordmark } from '@/components/common/BrandLogo';
 import { Icon } from '@/components/common/Icon';
 import { useMobileScrollY } from '@/hooks/useScroll';
 import { cn } from '@/lib/cn';
@@ -93,9 +93,7 @@ export function MobileTopBar({
           ) : (
             <>
               <BrandMark className="h-7 text-imperial-burgundy" />
-              <span dir="ltr" className="font-serif-brand text-xl uppercase tracking-[0.22em] text-imperial-burgundy">
-                IRIS
-              </span>
+              <BrandWordmark className="text-xl tracking-[0.22em] text-imperial-burgundy" />
             </>
           )}
         </Link>

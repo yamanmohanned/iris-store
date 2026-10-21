@@ -35,7 +35,13 @@ async function load(): Promise<void> {
 
 const REFRESH_MS = 60_000;
 
-export function useAdminOrders() {
+/** يُفرغ الطلبات المحفوظة في الذاكرة (عند الخروج أو تبديل الحساب أو إعادة الضبط). */
+export function resetAdminOrders(): void {
+  set({ orders: [], error: null, loadedAt: 0 });
+}
+
+/** enabled=false لمن لا يملك صلاحية عرض الطلبات: لا تحميل ولا تحديث دوري. */
+export function useAdminOrders(enabled = true) {
   const snap = useSyncExternalStore(
     (l) => {
       listeners.add(l);
@@ -45,10 +51,11 @@ export function useAdminOrders() {
   );
 
   useEffect(() => {
+    if (!enabled) return;
     if (Date.now() - state.loadedAt > 5_000) void load();
     const timer = window.setInterval(() => void load(), REFRESH_MS);
     return () => window.clearInterval(timer);
-  }, []);
+  }, [enabled]);
 
   const setStatus = useCallback(async (id: number, status: OrderStatus) => {
     const res = await api<{ order: Order }>('orders/status', { method: 'POST', body: { id, status } });

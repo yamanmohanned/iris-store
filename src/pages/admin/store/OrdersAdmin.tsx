@@ -1,9 +1,10 @@
 import { useMemo, useState } from 'react';
 import { useNavigate, useParams } from 'react-router';
-import { AdminPage, Button, Drawer, EmptyState, inputClass, OfflineNotice } from '@/components/admin/ui';
+import { AdminPage, Button, Drawer, EmptyState, inputClass, OfflineNotice, ReadOnlyNotice } from '@/components/admin/ui';
 import { Icon } from '@/components/common/Icon';
 import { cn } from '@/lib/cn';
 import { formatNumber } from '@/lib/format';
+import { useAdminAuth } from '@/state/adminAuth';
 import { useAdminOrders } from '@/state/adminOrders';
 import { orderStatusLabels, paymentLabels, type Order, type OrderStatus } from '@/state/orders';
 import { useToast } from '@/state/toast';
@@ -44,6 +45,7 @@ export function StatusPill({ status }: { status: OrderStatus }) {
 /** طلبات المتجر الواردة من الزبائن: تصفية حسب الحالة، بحث، تفاصيل، وتغيير الحالة. */
 export default function OrdersAdmin() {
   const { orders, loading, error, refresh } = useAdminOrders();
+  const canEdit = useAdminAuth().can('orders', 'edit');
   const { orderId } = useParams();
   const navigate = useNavigate();
   const [filter, setFilter] = useState<'all' | OrderStatus>('all');
@@ -70,6 +72,7 @@ export default function OrdersAdmin() {
       }
     >
       {error && <OfflineNotice message={error} />}
+      {!canEdit && <ReadOnlyNotice />}
 
       <div className="mb-4 flex flex-col gap-3">
         <input
@@ -134,12 +137,12 @@ export default function OrdersAdmin() {
         </ul>
       )}
 
-      <OrderDrawer order={open} onClose={() => navigate('/admin/orders')} />
+      <OrderDrawer order={open} canEdit={canEdit} onClose={() => navigate('/admin/orders')} />
     </AdminPage>
   );
 }
 
-function OrderDrawer({ order, onClose }: { order: Order | null; onClose: () => void }) {
+function OrderDrawer({ order, canEdit, onClose }: { order: Order | null; canEdit: boolean; onClose: () => void }) {
   const { setStatus } = useAdminOrders();
   const toast = useToast();
   const [busy, setBusy] = useState(false);
@@ -246,7 +249,7 @@ function OrderDrawer({ order, onClose }: { order: Order | null; onClose: () => v
             </dl>
           </section>
 
-          <section>
+          <section hidden={!canEdit}>
             <h3 className="mb-2 font-label-lg text-label-lg text-antique-gold">تغيير الحالة</h3>
             <div className="grid grid-cols-2 gap-2">
               {(Object.keys(orderStatusLabels) as OrderStatus[]).map((s) => (

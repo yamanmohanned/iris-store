@@ -30,6 +30,7 @@
   "include": [
     "src",
     "netlify",
+    "server",
     "vite.config.ts",
     "tailwind.config.ts"
   ]

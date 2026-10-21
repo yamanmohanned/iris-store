@@ -247,28 +247,7 @@ function iris_session_start()
     session_start();
 }
 
-/** المالك الحالي أو null (لا يُنشئ جلسة للزوار العاديين). */
-function iris_current_admin()
-{
-    if (empty($_COOKIE['IRISADMIN'])) {
-        return null;
-    }
-    iris_session_start();
-    if (empty($_SESSION['admin']) || !is_array($_SESSION['admin'])) {
-        return null;
-    }
-    return $_SESSION['admin'];
-}
-
-function iris_require_admin()
-{
-    iris_require_same_origin();
-    $admin = iris_current_admin();
-    if (!$admin) {
-        iris_fail('انتهت الجلسة. يرجى تسجيل الدخول من جديد.', 401);
-    }
-    return $admin;
-}
+/* الحساب الحالي وفحص الصلاحيات: iris_current_user و iris_require_access في inc/users.php */
 
 function iris_client_ip()
 {

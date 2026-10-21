@@ -24,7 +24,7 @@ const INPUT =
  */
 export default function ContactPage() {
   const contact = useContactLinks();
-  const wa = contact.whatsapp('مرحباً دار آيريس، لدي استفسار');
+  const wa = contact.whatsapp('مرحباً آيريس، لدي استفسار');
   const hasChannels = Boolean(wa || contact.instagram);
 
   return (
@@ -44,7 +44,7 @@ export default function ContactPage() {
           <div className="mb-space-2xl max-w-3xl">
             <span className="mb-space-md inline-flex items-center gap-space-xs rounded-full bg-blush-surface px-space-md py-space-xs font-label-md text-label-md font-medium text-antique-gold">
               <Icon name="support_agent" className="text-[18px]" />
-              تواصل مباشر مع الدار
+              تواصل مباشر مع آيريس
             </span>
             <h1 className="font-headline-xl text-headline-xl font-bold text-warm-ink">نحن هنا لمساعدتك</h1>
             <p className="mt-space-sm font-body-lg text-body-lg leading-relaxed text-on-surface-variant">
@@ -204,7 +204,7 @@ function WhatsAppComposer() {
       return;
     }
     const text = [
-      'مرحباً دار آيريس،',
+      'مرحباً آيريس،',
       `الاسم: ${name.trim()}`,
       `الموضوع: ${topic}`,
       orderNo.trim() ? `رقم الطلب: ${orderNo.trim()}` : '',
@@ -224,7 +224,7 @@ function WhatsAppComposer() {
       className="rounded-2xl bg-surface-container-lowest p-space-lg shadow-[0_12px_40px_rgba(42,3,13,0.08)] lg:p-space-xl"
     >
       <h2 className="font-headline-lg text-headline-lg font-bold text-warm-ink">اكتب رسالتك</h2>
-      <p className="mt-1 font-body-md text-body-md text-on-surface-variant">نجهّز رسالتك وتُفتح في واتساب الدار جاهزة للإرسال.</p>
+      <p className="mt-1 font-body-md text-body-md text-on-surface-variant">نجهّز رسالتك وتُفتح في واتساب المتجر جاهزة للإرسال.</p>
 
       <div className="mt-space-lg grid grid-cols-1 gap-space-md sm:grid-cols-2">
         <label className="flex flex-col gap-1.5">

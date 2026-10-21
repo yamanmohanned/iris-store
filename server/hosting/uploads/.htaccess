@@ -1,5 +1,13 @@
-# صور يرفعها المالك: تُعرض كصور فقط، ولا يُسمح بأي سكربت هنا
+# ملفات يرفعها المالك (صور، فيديو، خطوط): تُعرض كملفات فقط، ولا يُسمح بأي سكربت هنا
 Options -Indexes
+<IfModule mod_mime.c>
+  AddType font/woff2 .woff2
+  AddType font/woff .woff
+  AddType font/ttf .ttf
+  AddType font/otf .otf
+  AddType video/mp4 .mp4
+  AddType video/webm .webm
+</IfModule>
 <FilesMatch "\.(?i:php\d?|phtml|phar|pl|py|cgi|sh|html?|svg|js)$">
   <IfModule mod_authz_core.c>
     Require all denied

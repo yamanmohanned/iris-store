@@ -51,10 +51,10 @@ html:not(.icons-ready) .material-symbols-outlined {
   font-family: 'Instrument Serif', Georgia, serif;
 }
 .font-messiri {
-  font-family: 'El Messiri', 'IBM Plex Sans Arabic', serif;
+  font-family: var(--font-heading);
 }
 .font-num {
-  font-family: 'IBM Plex Sans Arabic', 'Segoe UI', Tahoma, sans-serif;
+  font-family: var(--font-text);
   font-variant-numeric: tabular-nums;
 }
 .font-tabular,

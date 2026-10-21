@@ -11,28 +11,28 @@ const SERVICE_LINKS = [
   { to: '/faq', label: 'الأسئلة الشائعة' },
   { to: '/policies/shipping', label: 'الشحن والاستبدال' },
   { to: '/policies/size-guide', label: 'دليل المقاسات' },
-  { to: '/policies/care', label: 'العناية بالمجوهرات' },
-  { to: '/policies/authenticity', label: 'الضمان والأصالة' },
+  { to: '/policies/care', label: 'العناية بالإكسسوارات' },
+  { to: '/policies/authenticity', label: 'الخامات والجودة' },
 ];
 
 export function StoreFooter() {
   const { visibleCategories } = useCatalog();
   const shopLinks = visibleCategories.slice(0, 7).map((c) => ({ to: `/collections/${c.slug}`, label: c.name }));
   const contact = useContactLinks();
-  const whatsapp = contact.whatsapp('مرحباً دار آيريس، لدي استفسار');
+  const whatsapp = contact.whatsapp('مرحباً آيريس، لدي استفسار');
 
   return (
     <footer className="mt-auto w-full border-t border-royal-gold/30 bg-wine-night text-champagne-gold/90">
       <div className="mx-auto max-w-[1440px] px-6 pb-10 pt-16 lg:px-10">
         <div className="grid grid-cols-1 gap-10 border-b border-royal-gold/20 pb-12 md:grid-cols-2 lg:grid-cols-12 lg:gap-8">
           <div className="space-y-4 lg:col-span-4">
-            <BrandLogo tone="dark" size="lg" subtitle="دار المجوهرات الراقية" />
+            <BrandLogo tone="dark" size="lg" subtitle="إكسسوارات · التفاصيل تصنع الفرق" />
             <p className="max-w-sm pt-2 font-body-sm text-body-sm leading-relaxed text-champagne-gold/70">
-              قلائد وخواتم وأساور وأقراط مختارة بعناية، مغلّفة بأناقة وتصل إلى باب بيتك في جميع المحافظات.
+              قلائد وتطقيمات كبلز وإكسسوارات بطلاء ثابت، مختارة بعناية وتصل إلى باب بيتكِ في جميع محافظات العراق.
             </p>
             <div className="flex items-center gap-2 pt-2 text-royal-gold">
-              <Icon name="verified" className="text-[18px]" />
-              <span className="font-label-md text-label-md text-champagne-gold/80">ذهب مدموغ بالعيار الرسمي</span>
+              <Icon name="payments" className="text-[18px]" />
+              <span className="font-label-md text-label-md text-champagne-gold/80">الدفع عند الاستلام في كل المحافظات</span>
             </div>
           </div>
 
@@ -45,7 +45,7 @@ export function StoreFooter() {
                 </li>
               ))}
               <li className="transition-colors hover:text-white">
-                <Link to="/about">قصة الدار</Link>
+                <Link to="/about">من نحن</Link>
               </li>
             </ul>
           </nav>
@@ -120,7 +120,7 @@ export function StoreFooter() {
               استبدال خلال 7 أيام
             </span>
           </div>
-          <p className="font-body-sm text-body-sm">© {new Date().getFullYear()} دار آيريس للمجوهرات الراقية. جميع الحقوق محفوظة.</p>
+          <p className="font-body-sm text-body-sm">© {new Date().getFullYear()} آيريس ستور. جميع الحقوق محفوظة.</p>
         </div>
       </div>
     </footer>

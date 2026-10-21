@@ -7,7 +7,7 @@ import { faqGroups, type FaqItem } from '@/data/faq';
 import { useContactLinks } from '@/lib/contact';
 import { useUi } from '@/state/ui';
 
-const HOME_FAQ = ['كم يستغرق التوصيل؟', 'ما طرق الدفع المتاحة؟', 'ما سياسة الاستبدال؟', 'هل الذهب مدموغ؟', 'كيف أتابع طلبي؟'];
+const HOME_FAQ = ['كم يستغرق التوصيل؟', 'ما طرق الدفع المتاحة؟', 'ما سياسة الاستبدال؟', 'ما خامة القطع؟', 'كيف أتابع طلبي؟'];
 /**
  * Stitch screen c8769d51f665466bab2e6492fdc38a79
  * «IRIS | آيريس — الصفحة الرئيسية (الجزء السفلي)»
@@ -66,7 +66,7 @@ function HomeFaq() {
             </div>
             <div className="pt-space-lg flex items-center gap-space-sm text-muted-rosewood font-body-sm text-body-sm">
               <span className="material-symbols-outlined text-royal-gold text-xl">support_agent</span>
-              <span>نرد على استفساراتكِ يومياً من 10 ص حتى 10 م</span>
+              <span>نرد على رسائلكِ في إنستغرام وواتساب</span>
             </div>
           </div>
           <div className="lg:col-span-8 space-y-space-sm">
@@ -87,14 +87,14 @@ export default function HomeBottom() {
         <div className="max-w-5xl mx-auto px-gutter text-center relative z-10">
           <div className="flex items-center justify-center gap-space-sm mb-space-lg">
             <span className="w-12 h-px bg-hairline-burgundy" />{' '}
-            <span className="font-label-sm text-label-sm text-antique-gold tracking-widest uppercase">فلسفة الدار وحكايتها</span>{' '}
+            <span className="font-label-sm text-label-sm text-antique-gold tracking-widest uppercase">شعارنا</span>{' '}
             <span className="w-12 h-px bg-hairline-burgundy" />
           </div>
           <blockquote className="font-headline-xl text-headline-xl md:font-display-lg md:text-display-lg tracking-normal leading-relaxed text-balance">
-            <span className="text-muted-rosewood/60 transition-colors duration-500 hover:text-warm-ink">«كل قطعة نختارها</span>{' '}
-            <span className="text-muted-rosewood/80 transition-colors duration-500 hover:text-warm-ink">لها حكاية،</span>{' '}
-            <br className="hidden sm:inline" /> <span className="text-warm-ink">وكل هدية نغلّفها</span>{' '}
-            <span className="text-warm-ink font-semibold">تصل بعناية.»</span>
+            <span className="text-muted-rosewood/60 transition-colors duration-500 hover:text-warm-ink">«التفاصيل</span>{' '}
+            <span className="text-muted-rosewood/80 transition-colors duration-500 hover:text-warm-ink">الصغيرة</span>{' '}
+            <br className="hidden sm:inline" /> <span className="text-warm-ink">هي التي</span>{' '}
+            <span className="text-warm-ink font-semibold">تصنع الفرق.»</span>
           </blockquote>
           <div className="mt-space-xl flex items-center justify-center gap-space-md">
             <div className="w-20 h-px bg-hairline-burgundy" />
@@ -125,16 +125,16 @@ export default function HomeBottom() {
               <span>الدفع عند الاستلام</span> <span className="text-royal-gold text-xs">◆</span>
             </span>{' '}
             <span className="inline-flex items-center gap-space-md">
-              <span>تغليف هدايا أنيق</span> <span className="text-royal-gold text-xs">◆</span>
+              <span>صور وفيديو حقيقية</span> <span className="text-royal-gold text-xs">◆</span>
             </span>{' '}
             <span className="inline-flex items-center gap-space-md">
               <span>استبدال خلال 7 أيام</span> <span className="text-royal-gold text-xs">◆</span>
             </span>{' '}
             <span className="inline-flex items-center gap-space-md">
-              <span>خدمة عملاء عبر واتساب</span> <span className="text-royal-gold text-xs">◆</span>
+              <span>تواصل عبر إنستغرام وواتساب</span> <span className="text-royal-gold text-xs">◆</span>
             </span>{' '}
             <span className="inline-flex items-center gap-space-md">
-              <span>ذهب ومعادن ثمينة مصدّقة رسمياً</span> <span className="text-royal-gold text-xs">◆</span>
+              <span>طلاء ثابت وستانلس ستيل</span> <span className="text-royal-gold text-xs">◆</span>
             </span>
             <span className="inline-flex items-center gap-space-md">
               <span>توصيل لجميع المحافظات</span> <span className="text-royal-gold text-xs">◆</span>
@@ -143,16 +143,16 @@ export default function HomeBottom() {
               <span>الدفع عند الاستلام</span> <span className="text-royal-gold text-xs">◆</span>
             </span>{' '}
             <span className="inline-flex items-center gap-space-md">
-              <span>تغليف هدايا أنيق</span> <span className="text-royal-gold text-xs">◆</span>
+              <span>صور وفيديو حقيقية</span> <span className="text-royal-gold text-xs">◆</span>
             </span>{' '}
             <span className="inline-flex items-center gap-space-md">
               <span>استبدال خلال 7 أيام</span> <span className="text-royal-gold text-xs">◆</span>
             </span>{' '}
             <span className="inline-flex items-center gap-space-md">
-              <span>خدمة عملاء عبر واتساب</span> <span className="text-royal-gold text-xs">◆</span>
+              <span>تواصل عبر إنستغرام وواتساب</span> <span className="text-royal-gold text-xs">◆</span>
             </span>{' '}
             <span className="inline-flex items-center gap-space-md">
-              <span>ذهب ومعادن ثمينة مصدّقة رسمياً</span> <span className="text-royal-gold text-xs">◆</span>
+              <span>طلاء ثابت وستانلس ستيل</span> <span className="text-royal-gold text-xs">◆</span>
             </span>
           </div>
         </div>
@@ -160,18 +160,14 @@ export default function HomeBottom() {
       <section className="w-full bg-parchment py-space-3xl relative">
         <div className="max-w-7xl mx-auto px-gutter">
           <div className="text-center max-w-2xl mx-auto mb-space-2xl">
-            <span className="font-label-sm text-label-sm text-antique-gold tracking-widest block mb-space-xs uppercase">
-              تجربة اقتناء مريحة
-            </span>
+            <span className="font-label-sm text-label-sm text-antique-gold tracking-widest block mb-space-xs uppercase">طلب سهل وواضح</span>
             <h2 className="font-headline-xl text-headline-xl text-primary font-bold mb-space-sm">كيف تطلبين قطعتكِ المفضلة</h2>
             <div className="flex items-center justify-center gap-space-xs my-space-sm">
               <div className="w-16 h-px bg-royal-gold/60" />
               <span className="text-royal-gold text-xs">◆</span>
               <div className="w-16 h-px bg-royal-gold/60" />
             </div>
-            <p className="font-body-md text-body-md text-on-surface-variant">
-              خطوات واضحة وبسيطة من لحظة الاستكشاف حتى وصول الصندوق المخملي الفاخر إلى يديكِ.
-            </p>
+            <p className="font-body-md text-body-md text-on-surface-variant">خطوات بسيطة من اختيار القطعة حتى وصولها إلى باب بيتكِ.</p>
           </div>
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-space-xl items-center">
             <div className="lg:col-span-5 flex flex-col items-center">
@@ -184,10 +180,9 @@ export default function HomeBottom() {
                 </div>
                 <div className="relative w-full aspect-[4/5] rounded-t-[130px] rounded-b-xl overflow-hidden bg-wine-night shadow-inner">
                   <img
-                    alt="تغليف مجوهرات آيريس الفاخر"
+                    alt="قلادة الأمنيات 11:11"
                     className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
-                    data-alt="Editorial close up photograph of elegant manicured female hands gently unboxing a luxurious deep crimson burgundy velvet jewelry box tied with a ribbed grosgrain silk ribbon, revealing an opulent sparkling diamond and gold choker necklace nestled securely inside on soft cream velvet lining, warm gentle boutique lighting with soft golden glow."
-                    src="/images/stitch/032.jpg"
+                    src="/images/instagram/wish-11-11-box.jpg"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-wine-night/80 via-transparent to-transparent pointer-events-none" />
                   <div className="absolute top-6 left-6 bg-wine-night/85 backdrop-blur-md px-space-sm py-1 rounded-full flex items-center gap-space-xs text-champagne-gold">
@@ -195,17 +190,15 @@ export default function HomeBottom() {
                     <span className="font-label-sm text-label-sm tracking-widest font-mono">01 / 04</span>
                   </div>
                   <div className="absolute bottom-4 right-4 left-4 text-center">
-                    <p className="font-headline-sm text-headline-sm text-champagne-gold font-medium drop-shadow-sm">
-                      صندوق مخملي ملكي فاخر مع كل طلبية
-                    </p>
-                    <p className="font-label-sm text-label-sm text-rose-mist/90 mt-0.5">معدّ بعناية ليكون ذكرى لا تُنسى</p>
+                    <p className="font-headline-sm text-headline-sm text-champagne-gold font-medium drop-shadow-sm">صور حقيقية من قطعنا</p>
+                    <p className="font-label-sm text-label-sm text-rose-mist/90 mt-0.5">صور وفيديو من القطع نفسها</p>
                   </div>
                 </div>
                 <div className="py-space-sm px-space-md text-center flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm">
                   <span className="flex items-center gap-1 text-antique-gold">
-                    <span className="material-symbols-outlined text-sm">auto_awesome</span> <span>تغليف إهدائي مجاني</span>
+                    <span className="material-symbols-outlined text-sm">auto_awesome</span> <span>آيريس ستور</span>
                   </span>{' '}
-                  <span className="text-muted-rosewood">دار آيريس للمجوهرات الراقية</span>
+                  <span className="text-muted-rosewood">إكسسوارات</span>
                 </div>
               </div>
             </div>
@@ -224,7 +217,7 @@ export default function HomeBottom() {
                       </span>
                     </div>
                     <p className="font-body-md text-body-md text-on-surface-variant">
-                      تصفحي التشكيلات النفيسة وتعرّفي على تفاصيل الصياغة والعيار بكل شفافية ودقة.
+                      تصفحي القطع وشاهدي صورها وفيديوهاتها؛ الخامة والسعر مكتوبان في صفحة كل قطعة.
                     </p>
                   </div>
                 </div>
@@ -255,9 +248,7 @@ export default function HomeBottom() {
                         خطوة ٠٣
                       </span>
                     </div>
-                    <p className="font-body-md text-body-md text-on-surface-variant">
-                      تواصل فوري لتأكيد المقاس المناسب، خيارات النقش المخصصة، وعنوان التوصيل بدقة فائقة.
-                    </p>
+                    <p className="font-body-md text-body-md text-on-surface-variant">نتصل بكِ لتأكيد الطلب والمقاس وعنوان التوصيل.</p>
                   </div>
                 </div>
                 <div className="relative flex items-start gap-space-lg group">
@@ -271,9 +262,7 @@ export default function HomeBottom() {
                         خطوة ٠٤
                       </span>
                     </div>
-                    <p className="font-body-md text-body-md text-on-surface-variant">
-                      توصيل لجميع المحافظات، مع معاينة القطعة والدفع عند الاستلام.
-                    </p>
+                    <p className="font-body-md text-body-md text-on-surface-variant">توصيل لجميع المحافظات، والدفع عند الاستلام.</p>
                   </div>
                 </div>
               </div>
@@ -289,7 +278,7 @@ export default function HomeBottom() {
           </div>
           <h2 className="font-headline-xl text-headline-xl font-bold text-surface mb-space-xs">هل تحتاجين مساعدة في الاختيار؟</h2>
           <p className="font-body-lg text-body-lg text-champagne-gold/90 max-w-2xl mx-auto mb-space-xl leading-relaxed">
-            فريق آيريس يساعدكِ يومياً من 10 صباحاً حتى 10 مساءً في اختيار الهدية المناسبة ومعرفة المقاس الأنسب.
+            راسلينا ونساعدكِ في اختيار الهدية المناسبة ومعرفة المقاس الأنسب.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-space-md">
             <WhatsAppLink className="inline-flex items-center gap-space-sm px-space-xl py-space-sm rounded-full bg-gradient-to-r from-royal-gold via-champagne-gold to-royal-gold text-wine-night shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300">

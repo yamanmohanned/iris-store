@@ -7,11 +7,11 @@ import { CollectionView } from './CollectionView';
 const SPECIAL: Record<string, { title: string; description: string }> = {
   offers: {
     title: 'العروض',
-    description: 'قطع مختارة بتخفيضات موسمية محدودة، مع الحفاظ على عيار الذهب وشهادة الأصالة الملكية لكل قطعة.',
+    description: 'قطع مختارة بأسعار مخفّضة لفترة محدودة.',
   },
   all: {
-    title: 'كل المجوهرات',
-    description: 'مجموعة دار آيريس الكاملة من القلائد والخواتم والأساور والأقراط ومجموعات الإهداء الملكية.',
+    title: 'كل المنتجات',
+    description: 'كل قطع آيريس ستور: قلائد وتطقيمات كبلز وإكسسوارات بطلاء ثابت.',
   },
 };
 

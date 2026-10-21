@@ -13,7 +13,7 @@ import { useWishlist } from '@/state/wishlist';
 
 const SPECIAL: Record<string, { name: string; description: string }> = {
   offers: { name: 'العروض', description: 'قطع مختارة بأسعار خاصة لفترة محدودة.' },
-  all: { name: 'كل المجوهرات', description: 'مجموعة دار آيريس كاملة.' },
+  all: { name: 'كل المنتجات', description: 'كل قطع آيريس ستور.' },
 };
 
 /**

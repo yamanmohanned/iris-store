@@ -20,7 +20,7 @@ export function WhatsAppLink({
   children: ReactNode;
   'aria-label'?: string;
 }) {
-  const href = useContactLinks().whatsapp(text ?? 'مرحباً دار آيريس، لدي استفسار');
+  const href = useContactLinks().whatsapp(text ?? 'مرحباً آيريس، لدي استفسار');
   if (!href) {
     return (
       <Link to="/contact" className={className} style={style} aria-label={ariaLabel}>

@@ -64,14 +64,16 @@ Drag `release/iris-store-netlify.zip` onto <https://app.netlify.com/drop>.
 
 ## Before sending the link to the client
 
-1. Log in to `/admin`, then fill in **إعدادات المتجر** (store settings): WhatsApp number, Instagram, delivery fee and free-delivery threshold. The contact buttons only appear once a WhatsApp number is set.
-2. If you didn't set `IRIS_ADMIN_PASSWORD`, change the password from the same page. The login hint then disappears.
+1. Log in to `/admin`, then fill in **الإعدادات ← المتجر والتوصيل** (store settings): WhatsApp number, Instagram, delivery fee and free-delivery threshold. The contact buttons only appear once a WhatsApp number is set.
+2. If you didn't set `IRIS_ADMIN_PASSWORD`, change the password from **الإعدادات ← حسابي**. The login hint then disappears.
 3. Place one test order from a phone and confirm it in **الطلبات** (orders) to check the full flow.
 
 ## Good to know
 
 - **Orders are real records in the trial.** Nobody is notified and nothing ships. You can mark test orders as cancelled from the admin, which returns their quantities to stock.
-- **Starting over.** In the Netlify dashboard, open the project's **Blobs** page and delete the `iris-data` store (catalog, orders, password and sessions) and, if you want, `iris-uploads` (uploaded images). The store then returns to the original catalog in `src/data/seed.json`.
-- **Uploaded images** are compressed in the browser (1600px JPEG). The server rejects files over 5 MB, because Netlify Functions accept requests up to about 6 MB.
+- **Starting over.** Use **الإعدادات ← إعادة الضبط** in the admin (owner password + typed confirmation): it clears orders, staff, uploads and the Instagram link, and returns either an empty store or the starter catalog in `src/data/seed.json`. Deleting the `iris-data` and `iris-uploads` Blobs stores in the Netlify dashboard does the same, and also resets the owner password.
+- **Uploads.** Images are compressed in the browser (1600px JPEG); logos keep their transparency. Manual uploads (images, logo, video, font files) are limited to 5 MB, because Netlify Functions accept requests up to about 6 MB. Videos imported from Instagram are downloaded server-side, so that limit doesn't apply to them.
+- **Staff accounts and Instagram import** work the same as on the PHP host: the logic lives in `server/core/` (shared by the Netlify function and `npm run dev`). In the drag-and-drop, browser-only mode, staff accounts work per browser and the Instagram import is unavailable.
+- **Testing the Instagram import without a real account.** Run `IRIS_IG_FAKE=1 npm run dev`; the dev server then serves the posts in `scripts/qa/fixtures/instagram.json`. `node scripts/qa/flow-admin-features.mjs http://127.0.0.1:5173` exercises branding, staff permissions, the import and the reset end to end.
 - **Free plan.** Netlify's free plan works on monthly credits, and each production deploy uses some of them. Group your changes into fewer deploys rather than pushing every small fix.
 - **Moving to the permanent host** needs no code changes: `npm run package` builds the cPanel/PHP version as described in `DEPLOY.md`. Data entered in the Netlify trial does not carry over.

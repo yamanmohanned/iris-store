@@ -1,4 +1,4 @@
-import { useMemo, useRef, useState, type ReactNode } from 'react';
+import { useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import { useParams } from 'react-router';
 import { Icon } from '@/components/common/Icon';
 import { WhatsAppIcon } from '@/components/common/WhatsAppIcon';
@@ -9,6 +9,7 @@ import { badgeLabels, getCategory, getProduct, isProductVisible, useCatalog } fr
 import type { Product } from '@/data/types';
 import { cn } from '@/lib/cn';
 import { formatNumber } from '@/lib/format';
+import { productMedia, type MediaItem } from '@/lib/media';
 import NotFoundPage from '@/pages/store/system/NotFoundPage';
 import { defaultSizeFor, genericContent, metalOptionsFor, remainingText } from '@/pages/store/product/productOptions';
 import { MAX_QTY, useCart } from '@/state/cart';
@@ -67,10 +68,18 @@ function AccordionItem({ id, icon, title, defaultOpen, children }: { id: string;
   );
 }
 
-/** معرض صور قابل للسحب أفقياً مع مؤشر الصورة الحالية. */
-function Gallery({ images, alt, badge }: { images: string[]; alt: string; badge?: string | null }) {
+/** معرض صور وفيديو قابل للسحب أفقياً مع مؤشر الشريحة الحالية (الفيديو يعمل صامتاً حين يظهر فقط). */
+function Gallery({ images, alt, badge }: { images: MediaItem[]; alt: string; badge?: string | null }) {
   const [index, setIndex] = useState(0);
   const scroller = useRef<HTMLDivElement>(null);
+  const videos = useRef(new Map<number, HTMLVideoElement>());
+
+  useEffect(() => {
+    videos.current.forEach((v, i) => {
+      if (i === index) void v.play().catch(() => undefined);
+      else v.pause();
+    });
+  }, [index]);
 
   const onScroll = () => {
     const el = scroller.current;
@@ -88,16 +97,34 @@ function Gallery({ images, alt, badge }: { images: string[]; alt: string; badge?
   return (
     <div className="relative overflow-hidden rounded-[22px] bg-wine-night shadow-[0_14px_36px_rgba(42,3,13,0.18)]">
       <div ref={scroller} onScroll={onScroll} className="flex snap-x snap-mandatory overflow-x-auto [scrollbar-width:none]">
-        {images.map((src, i) => (
-          <img
-            key={src + i}
-            src={src}
-            alt={i === 0 ? alt : `${alt} — صورة ${i + 1}`}
-            loading={i === 0 ? 'eager' : 'lazy'}
-            decoding="async"
-            className="aspect-[4/5] w-full shrink-0 snap-center object-cover"
-          />
-        ))}
+        {images.map((m, i) =>
+          m.kind === 'video' ? (
+            <video
+              key={m.src + i}
+              ref={(el) => {
+                if (el) videos.current.set(i, el);
+                else videos.current.delete(i);
+              }}
+              src={m.src}
+              poster={m.poster}
+              muted
+              loop
+              playsInline
+              preload="metadata"
+              aria-label={`${alt} — فيديو`}
+              className="aspect-[4/5] w-full shrink-0 snap-center bg-wine-night object-cover"
+            />
+          ) : (
+            <img
+              key={m.src + i}
+              src={m.src}
+              alt={i === 0 ? alt : `${alt} — صورة ${i + 1}`}
+              loading={i === 0 ? 'eager' : 'lazy'}
+              decoding="async"
+              className="aspect-[4/5] w-full shrink-0 snap-center object-cover"
+            />
+          ),
+        )}
       </div>
       {badge && (
         <span className="absolute right-3 top-3 rounded-full bg-ivory-canvas/90 px-3 py-1 font-label-sm text-label-sm font-bold text-imperial-burgundy backdrop-blur">
@@ -106,9 +133,9 @@ function Gallery({ images, alt, badge }: { images: string[]; alt: string; badge?
       )}
       {images.length > 1 && (
         <div className="absolute inset-x-0 bottom-3 flex items-center justify-center gap-1.5">
-          {images.map((src, i) => (
+          {images.map((m, i) => (
             <button
-              key={src + i}
+              key={m.src + i}
               type="button"
               aria-label={`الصورة ${i + 1} من ${images.length}`}
               aria-current={i === index}
@@ -131,7 +158,7 @@ function ProductMobileView({ product: p }: { product: Product }) {
   const { visibleProducts, settings } = useCatalog();
   const category = getCategory(p.category);
 
-  const gallery = p.gallery.length ? p.gallery : [p.image];
+  const gallery = productMedia(p);
   const metalOptions = useMemo(() => metalOptionsFor(p), [p]);
   const [metal, setMetal] = useState(metalOptions[0]?.label ?? p.metal);
   const [size, setSize] = useState(defaultSizeFor(p));
@@ -148,7 +175,7 @@ function ProductMobileView({ product: p }: { product: Product }) {
   );
   const badgeText = soldOut ? 'نفد مؤقتاً' : savingPct ? `خصم ${savingPct}%` : p.badge && p.badge !== 'soldout' ? badgeLabels[p.badge] : null;
   const whatsapp = settings.whatsapp?.replace(/\D/g, '');
-  const waText = encodeURIComponent(`مرحباً دار آيريس، أود الاستفسار عن ${p.shortName} (${p.sku})`);
+  const waText = encodeURIComponent(`مرحباً آيريس، أود الاستفسار عن ${p.shortName} (${p.sku})`);
 
   const share = async () => {
     const url = window.location.href;
@@ -240,7 +267,7 @@ function ProductMobileView({ product: p }: { product: Product }) {
           {metalOptions.length > 0 && (
             <div>
               <p className="mb-2.5 font-label-lg text-label-lg font-semibold text-deep-oxblood">
-                المعدن: <span className="font-medium text-antique-gold">{metal}</span>
+                اللون: <span className="font-medium text-antique-gold">{metal}</span>
               </p>
               <div className="flex flex-wrap gap-2">
                 {metalOptions.map((m) => {
@@ -353,11 +380,11 @@ function ProductMobileView({ product: p }: { product: Product }) {
           </AccordionItem>
           <AccordionItem id="care" icon="auto_awesome" title="العناية بالقطعة">
             <p>• ضعي العطور ومستحضرات التجميل قبل ارتداء القطعة لتجنب الرواسب على المعدن والأحجار.</p>
-            <p>• احفظيها في علبتها المخملية الأصلية لمنع الخدوش والتشابك.</p>
+            <p>• احفظيها جافة ومنفصلة عن غيرها لمنع الخدوش والتشابك.</p>
             <p>• امسحيها بقطعة قماش ناعمة وجافة بعد كل استخدام.</p>
           </AccordionItem>
           <AccordionItem id="ship" icon="local_shipping" title="التوصيل والاستبدال">
-            <p>نوصل الطلبات إلى جميع المحافظات خلال 1–4 أيام عمل، مغلّفة في علبة الدار، والدفع نقداً عند الاستلام.</p>
+            <p>نوصل الطلبات إلى جميع المحافظات خلال 1–4 أيام عمل، والدفع نقداً عند الاستلام.</p>
             <p>الاستبدال متاح خلال 7 أيام من الاستلام إذا كانت القطعة بحالتها الأصلية مع العلبة والشهادة.</p>
           </AccordionItem>
         </section>

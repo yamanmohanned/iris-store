@@ -26,12 +26,35 @@ export async function compressImage(file: File, maxSide = 1600, quality = 0.85):
   return blob ?? file;
 }
 
+/** نوع الملف المرفوع: الخادم يتحقق منه من محتواه ويحدد مكانه وحدّ حجمه. */
+export type UploadKind = 'image' | 'logo' | 'font' | 'video';
+
+async function upload(blob: Blob, name: string, kind: UploadKind): Promise<string> {
+  const form = new FormData();
+  form.append('file', blob, name);
+  const res = await api<{ url: string }>('upload', { method: 'POST', form, ...(kind !== 'image' ? { query: { kind } } : {}) });
+  return res.url;
+}
+
 /** يرفع صورة إلى الخادم ويعيد رابطها (/uploads/…). */
 export async function uploadImage(file: File): Promise<string> {
   const blob = await compressImage(file);
-  const form = new FormData();
   const name = blob.type === 'image/jpeg' ? file.name.replace(/\.\w+$/, '') + '.jpg' : file.name;
-  form.append('file', blob, name);
-  const res = await api<{ url: string }>('upload', { method: 'POST', form });
-  return res.url;
+  return upload(blob, name, 'image');
+}
+
+/** الشعار يُرفع كما هو حتى تبقى خلفيته الشفافة (بلا ضغط إلى JPEG). */
+export function uploadLogo(file: File): Promise<string> {
+  if (!/^image\/(png|jpeg|webp)$/.test(file.type)) return Promise.reject(new Error('الشعار يجب أن يكون صورة PNG أو JPG أو WEBP.'));
+  return upload(file, file.name, 'logo');
+}
+
+export function uploadFont(file: File): Promise<string> {
+  if (!/\.(woff2?|ttf|otf)$/i.test(file.name)) return Promise.reject(new Error('اختر ملف خط بصيغة WOFF2 أو WOFF أو TTF أو OTF.'));
+  return upload(file, file.name, 'font');
+}
+
+export function uploadVideo(file: File): Promise<string> {
+  if (!file.type.startsWith('video/')) return Promise.reject(new Error('اختر ملف فيديو (MP4).'));
+  return upload(file, file.name, 'video');
 }

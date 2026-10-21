@@ -1,10 +1,12 @@
-import { lazy } from 'react';
+import { lazy, type JSX } from 'react';
 import { createBrowserRouter, Navigate, type RouteObject } from 'react-router';
 import { Root } from '@/app/Root';
+import { RequireAccess } from '@/components/admin/RequireAccess';
 import { Responsive } from '@/components/common/Responsive';
 import { AdaptiveLayout } from '@/layouts/AdaptiveLayout';
 import { AdminLayout } from '@/layouts/AdminLayout';
 import { MobileFrame } from '@/layouts/MobileFrame';
+import type { Section } from '@/lib/permissions';
 import { useCart } from '@/state/cart';
 
 /* ───────── Storefront · desktop ───────── */
@@ -55,7 +57,15 @@ const OrdersAdmin = lazy(() => import('@/pages/admin/store/OrdersAdmin'));
 const CategoriesAdmin = lazy(() => import('@/pages/admin/store/CategoriesAdmin'));
 const ProductsAdmin = lazy(() => import('@/pages/admin/store/ProductsAdmin'));
 const ProductEditor = lazy(() => import('@/pages/admin/store/ProductEditor'));
-const StoreSettingsAdmin = lazy(() => import('@/pages/admin/store/StoreSettingsAdmin'));
+const InstagramImport = lazy(() => import('@/pages/admin/store/instagram/InstagramImport'));
+const StaffAdmin = lazy(() => import('@/pages/admin/store/StaffAdmin'));
+const SettingsLayout = lazy(() => import('@/pages/admin/store/settings/SettingsLayout'));
+const SettingsIndex = lazy(() => import('@/pages/admin/store/settings/SettingsLayout').then((m) => ({ default: m.SettingsIndex })));
+const StoreSettingsTab = lazy(() => import('@/pages/admin/store/settings/StoreSettingsTab'));
+const BrandingSettings = lazy(() => import('@/pages/admin/store/settings/BrandingSettings'));
+const AccountSettings = lazy(() => import('@/pages/admin/store/settings/AccountSettings'));
+const InstagramSettings = lazy(() => import('@/pages/admin/store/settings/InstagramSettings'));
+const ResetSettings = lazy(() => import('@/pages/admin/store/settings/ResetSettings'));
 const ReturnProcessing = lazy(() => import('@/pages/admin/orders/ReturnProcessing'));
 const InventoryOverview = lazy(() => import('@/pages/admin/inventory/InventoryOverview'));
 const StockMovements = lazy(() => import('@/pages/admin/inventory/StockMovements'));
@@ -76,14 +86,10 @@ const Coupons = lazy(() => import('@/pages/admin/marketing/Coupons'));
 const StorefrontContent = lazy(() => import('@/pages/admin/storefront/StorefrontContent'));
 const ReportsHub = lazy(() => import('@/pages/admin/reports/ReportsHub'));
 const SalesByChannel = lazy(() => import('@/pages/admin/reports/SalesByChannel'));
-const StaffManagement = lazy(() => import('@/pages/admin/staff/StaffManagement'));
-const PermissionsMatrix = lazy(() => import('@/pages/admin/staff/PermissionsMatrix'));
 const AuditLog = lazy(() => import('@/pages/admin/system/AuditLog'));
 const SystemHealth = lazy(() => import('@/pages/admin/system/SystemHealth'));
 const MasterArchive = lazy(() => import('@/pages/admin/system/MasterArchive'));
 const NotificationCenter = lazy(() => import('@/pages/admin/system/NotificationCenter'));
-const SocialChannels = lazy(() => import('@/pages/admin/settings/SocialChannels'));
-const CurrencyOrders = lazy(() => import('@/pages/admin/settings/CurrencyOrders'));
 
 /** السلة: تصميم «ممتلئة» أو «فارغة» بحسب المحتوى. */
 function CartRoute() {
@@ -128,46 +134,67 @@ const mobileOnly: RouteObject[] = [
   { path: 'system-updates', element: <SystemUpdates /> },
 ];
 
+/** صفحة تحتاج صلاحية: الخادم يرفض الطلبات أصلاً، وهذا يعرض رسالة واضحة بدل صفحة معطلة. */
+const guard = (element: JSX.Element, section: Section, level: 'view' | 'edit' = 'view') => (
+  <RequireAccess section={section} level={level}>
+    {element}
+  </RequireAccess>
+);
+const ownerOnly = (element: JSX.Element) => <RequireAccess owner>{element}</RequireAccess>;
+
 const admin: RouteObject[] = [
-  // إدارة المتجر الفعلية (مربوطة بالخادم)
+  // إدارة المتجر الفعلية (مربوطة بالخادم، وكل صفحة بحسب صلاحية الحساب)
   { index: true, element: <AdminOverview /> },
-  { path: 'orders', element: <OrdersAdmin /> },
-  { path: 'orders/:orderId', element: <OrdersAdmin /> },
-  { path: 'categories', element: <CategoriesAdmin /> },
-  { path: 'products', element: <ProductsAdmin /> },
-  { path: 'products/new', element: <ProductEditor /> },
-  { path: 'products/:productId', element: <ProductEditor /> },
-  { path: 'settings', element: <StoreSettingsAdmin /> },
-  // شاشات التصميم الأصلية ببيانات تجريبية
-  { path: 'dashboard', element: <OwnerDashboard /> },
-  { path: 'employee', element: <EmployeeDashboard /> },
-  { path: 'returns/:returnId', element: <ReturnProcessing /> },
-  { path: 'inventory', element: <InventoryOverview /> },
-  { path: 'inventory/movements', element: <StockMovements /> },
-  { path: 'inventory/adjust', element: <StockAdjustment /> },
-  { path: 'purchases', element: <PurchasingBatches /> },
-  { path: 'purchases/new', element: <NewPurchase /> },
-  { path: 'suppliers', element: <SuppliersList /> },
-  { path: 'suppliers/:supplierId', element: <SupplierProfile /> },
-  { path: 'customers', element: <CustomersList /> },
-  { path: 'customers/:customerId', element: <CustomerProfile /> },
-  { path: 'inbox', element: <UnifiedInbox /> },
-  { path: 'payments', element: <PaymentsBalances /> },
-  { path: 'expenses', element: <Expenses /> },
-  { path: 'accounting', element: <AccountingPnl /> },
-  { path: 'accounting/settings', element: <AccountingSettings /> },
-  { path: 'coupons', element: <Coupons /> },
-  { path: 'storefront', element: <StorefrontContent /> },
-  { path: 'reports', element: <ReportsHub /> },
-  { path: 'reports/sales-by-channel', element: <SalesByChannel /> },
-  { path: 'staff', element: <StaffManagement /> },
-  { path: 'staff/permissions', element: <PermissionsMatrix /> },
-  { path: 'audit-log', element: <AuditLog /> },
-  { path: 'system-health', element: <SystemHealth /> },
-  { path: 'archive', element: <MasterArchive /> },
-  { path: 'notifications', element: <NotificationCenter /> },
-  { path: 'settings/social', element: <SocialChannels /> },
-  { path: 'settings/currency', element: <CurrencyOrders /> },
+  { path: 'orders', element: guard(<OrdersAdmin />, 'orders') },
+  { path: 'orders/:orderId', element: guard(<OrdersAdmin />, 'orders') },
+  { path: 'categories', element: guard(<CategoriesAdmin />, 'categories') },
+  { path: 'products', element: guard(<ProductsAdmin />, 'products') },
+  { path: 'products/new', element: guard(<ProductEditor />, 'products', 'edit') },
+  { path: 'products/:productId', element: guard(<ProductEditor />, 'products') },
+  { path: 'instagram', element: guard(<InstagramImport />, 'products', 'edit') },
+  { path: 'staff', element: ownerOnly(<StaffAdmin />) },
+  {
+    path: 'settings',
+    element: <SettingsLayout />,
+    children: [
+      { index: true, element: <SettingsIndex /> },
+      { path: 'store', element: guard(<StoreSettingsTab />, 'settings') },
+      { path: 'branding', element: guard(<BrandingSettings />, 'settings') },
+      { path: 'account', element: <AccountSettings /> },
+      { path: 'instagram', element: ownerOnly(<InstagramSettings />) },
+      { path: 'reset', element: ownerOnly(<ResetSettings />) },
+    ],
+  },
+  // شاشات التصميم الأصلية ببيانات تجريبية: غير موجودة في القائمة، وللمالك فقط
+  ...(
+    [
+      ['dashboard', <OwnerDashboard />],
+      ['employee', <EmployeeDashboard />],
+      ['returns/:returnId', <ReturnProcessing />],
+      ['inventory', <InventoryOverview />],
+      ['inventory/movements', <StockMovements />],
+      ['inventory/adjust', <StockAdjustment />],
+      ['purchases', <PurchasingBatches />],
+      ['purchases/new', <NewPurchase />],
+      ['suppliers', <SuppliersList />],
+      ['suppliers/:supplierId', <SupplierProfile />],
+      ['customers', <CustomersList />],
+      ['customers/:customerId', <CustomerProfile />],
+      ['inbox', <UnifiedInbox />],
+      ['payments', <PaymentsBalances />],
+      ['expenses', <Expenses />],
+      ['accounting', <AccountingPnl />],
+      ['accounting/settings', <AccountingSettings />],
+      ['coupons', <Coupons />],
+      ['storefront', <StorefrontContent />],
+      ['reports', <ReportsHub />],
+      ['reports/sales-by-channel', <SalesByChannel />],
+      ['audit-log', <AuditLog />],
+      ['system-health', <SystemHealth />],
+      ['archive', <MasterArchive />],
+      ['notifications', <NotificationCenter />],
+    ] as Array<[string, JSX.Element]>
+  ).map(([path, element]) => ({ path, element: ownerOnly(element) })),
 ];
 
 export const router = createBrowserRouter([

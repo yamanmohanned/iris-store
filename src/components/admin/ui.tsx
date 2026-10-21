@@ -177,6 +177,105 @@ export function Drawer({
   );
 }
 
+/** نافذة حوار في وسط الشاشة (تأكيدات، خطوات قصيرة). */
+export function Modal({
+  open,
+  title,
+  icon,
+  tone = 'default',
+  onClose,
+  children,
+  footer,
+}: {
+  open: boolean;
+  title: string;
+  icon?: string;
+  tone?: 'default' | 'danger';
+  onClose: () => void;
+  children: ReactNode;
+  footer?: ReactNode;
+}) {
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => e.key === 'Escape' && onClose();
+    window.addEventListener('keydown', onKey);
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => {
+      window.removeEventListener('keydown', onKey);
+      document.body.style.overflow = prev;
+    };
+  }, [open, onClose]);
+
+  if (!open) return null;
+  return createPortal(
+    <div className="fixed inset-0 z-[70] flex items-end justify-center p-0 sm:items-center sm:p-6" role="dialog" aria-modal="true" aria-label={title}>
+      <button type="button" aria-label="إغلاق" onClick={onClose} className="absolute inset-0 bg-wine-night/55 backdrop-blur-[2px]" />
+      <div className="pb-safe relative flex max-h-[92vh] w-full max-w-[520px] flex-col overflow-hidden rounded-t-3xl bg-ivory-canvas shadow-[0_24px_80px_rgba(42,3,13,0.4)] sm:rounded-3xl">
+        <div className="flex items-start gap-3 px-6 pb-2 pt-6">
+          {icon && (
+            <span
+              className={cn(
+                'flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl',
+                tone === 'danger' ? 'bg-semantic-error-bg text-semantic-error' : 'bg-blush-surface text-imperial-burgundy',
+              )}
+            >
+              <Icon name={icon} className="text-[24px]" />
+            </span>
+          )}
+          <h2 className="flex-1 pt-2 font-headline-sm text-headline-sm font-semibold text-deep-oxblood">{title}</h2>
+          <button
+            type="button"
+            aria-label="إغلاق"
+            onClick={onClose}
+            className="-mt-1 flex h-9 w-9 items-center justify-center rounded-full text-warm-ink hover:bg-blush-surface"
+          >
+            <Icon name="close" className="text-[20px]" />
+          </button>
+        </div>
+        <div className="flex-1 overflow-y-auto px-6 pb-5 pt-2 font-body-md text-body-md text-warm-ink">{children}</div>
+        {footer && <div className="flex flex-wrap-reverse items-center justify-end gap-2 border-t border-hairline-burgundy px-6 py-4">{footer}</div>}
+      </div>
+    </div>,
+    document.body,
+  );
+}
+
+/** شريط تنبيه داخل الصفحة. */
+export function Notice({
+  tone = 'info',
+  icon,
+  children,
+  className,
+}: {
+  tone?: 'info' | 'warning' | 'danger' | 'success';
+  icon?: string;
+  children: ReactNode;
+  className?: string;
+}) {
+  const tones = {
+    info: ['bg-semantic-info-bg text-semantic-info', 'info'],
+    warning: ['bg-semantic-warning-bg text-semantic-warning', 'warning'],
+    danger: ['bg-semantic-error-bg text-semantic-error', 'error'],
+    success: ['bg-semantic-success-bg text-semantic-success', 'check_circle'],
+  } as const;
+  return (
+    <div className={cn('flex items-start gap-3 rounded-xl p-4', tones[tone][0], className)}>
+      <Icon name={icon ?? tones[tone][1]} className="mt-0.5 shrink-0 text-[20px]" />
+      <div className="min-w-0 flex-1 font-body-sm text-body-sm">{children}</div>
+    </div>
+  );
+}
+
+/** تنبيه لمن يملك صلاحية العرض فقط. */
+export function ReadOnlyNotice() {
+  return (
+    <Notice tone="info" icon="visibility" className="mb-5">
+      لديك صلاحية العرض فقط في هذا القسم. لتعديل البيانات اطلب الصلاحية من مالك المتجر.
+    </Notice>
+  );
+}
+
 export function EmptyState({ icon, title, body, action }: { icon: string; title: string; body?: string; action?: ReactNode }) {
   return (
     <div className="flex flex-col items-center gap-2 rounded-2xl bg-surface-container-lowest px-6 py-12 text-center shadow-luxury">

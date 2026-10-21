@@ -123,12 +123,12 @@ function FaqDesktop() {
             </div>
             <div className="bg-wine-night rounded-xl p-space-md text-champagne-gold shadow-md overflow-hidden">
               <div className="relative w-full h-44 rounded-lg overflow-hidden mb-space-sm">
-                <img className="w-full h-full object-cover" alt="" src="/images/stitch/078.jpg" />
+                <img className="w-full h-full object-cover" alt="" src="/images/instagram/moon-box.jpg" />
                 <div className="absolute inset-0 bg-gradient-to-t from-wine-night via-transparent to-transparent" />
               </div>
               <h2 className="font-headline-sm text-headline-sm text-champagne-gold mb-1">جاهزة للإهداء</h2>
               <p className="font-body-sm text-body-sm text-rose-mist leading-relaxed">
-                تصل كل قطعة في صندوق الدار المخملي. إن كان طلبك هدية اكتب ذلك في ملاحظات الطلب.
+                إن كان طلبكِ هدية اكتبي ذلك في ملاحظات الطلب، ونجهّزه بشكل يليق بالإهداء.
               </p>
             </div>
           </aside>

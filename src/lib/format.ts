@@ -49,6 +49,6 @@ export function arabicCount(n: number, forms: ArabicCountForms): string {
 }
 
 export const productCount = (n: number) =>
-  arabicCount(n, { one: 'منتج نفيس واحد', two: 'منتجان نفيسان', few: 'منتجات نفيسة', many: 'منتجاً نفيساً' });
+  arabicCount(n, { one: 'منتج واحد', two: 'منتجان', few: 'منتجات', many: 'منتجاً' });
 
 export const piecesCount = (n: number) => arabicCount(n, { one: 'قطعة واحدة', two: 'قطعتان', few: 'قطع', many: 'قطعة' });

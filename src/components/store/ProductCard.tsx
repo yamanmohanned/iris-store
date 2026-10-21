@@ -10,7 +10,7 @@ import { useWishlist } from '@/state/wishlist';
 
 const SWATCH_STYLE: Record<NonNullable<Product['swatches']>[number], { color: string; title: string }> = {
   gold: { color: '#C9A24B', title: 'ذهبي' },
-  white: { color: '#D8D8D8', title: 'ذهب أبيض' },
+  white: { color: '#D8D8D8', title: 'أبيض' },
   silver: { color: '#D8D8D8', title: 'فضي' },
   rose: { color: '#E5A89E', title: 'وردي' },
   black: { color: '#2A030D', title: 'أسود' },
@@ -84,6 +84,12 @@ export function ProductCard({ product: p, className }: ProductCardProps) {
             loading="lazy"
             className={cn('h-full w-full object-cover transition-transform duration-500', !soldOut && 'group-hover:scale-105', soldOut && 'grayscale-[40%]')}
           />
+          {p.videos?.length ? (
+            <span className="absolute bottom-2 left-2 flex items-center gap-1 rounded-full bg-wine-night/70 px-2 py-0.5 font-label-sm text-[0.6875rem] text-ivory-canvas backdrop-blur-sm">
+              <Icon name="play_circle" fill className="text-[14px]" />
+              فيديو
+            </span>
+          ) : null}
         </Link>
         <Badge product={p} />
         <button

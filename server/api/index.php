@@ -2,22 +2,29 @@
 /**
  * واجهة متجر آيريس — ملف واحد يخدم كل المسارات عبر ?r=
  *
- *   GET  ?r=health          فحص جاهزية الخادم (إصدار PHP، صلاحيات الكتابة)
- *   GET  ?r=catalog         الكتالوج (الأقسام + المنتجات + الإعدادات) — عام
- *   POST ?r=catalog/save    حفظ الكتالوج — المالك فقط
- *   POST ?r=upload          رفع صورة — المالك فقط
- *   POST ?r=auth/login      تسجيل دخول المالك
- *   POST ?r=auth/logout     تسجيل الخروج
- *   GET  ?r=auth/me         المالك الحالي أو null
- *   POST ?r=auth/password   تغيير كلمة المرور — المالك فقط
- *   POST ?r=orders          إرسال طلب من المتجر — عام (الأسعار تُحسب هنا من الكتالوج)
- *   GET  ?r=orders          كل الطلبات — المالك فقط
- *   POST ?r=orders/status   تغيير حالة طلب — المالك فقط
- *   GET  ?r=orders/track    تتبع طلب برقمه ورقم الهاتف — عام
+ *   GET  ?r=health               فحص جاهزية الخادم (إصدار PHP، صلاحيات الكتابة، الاتصال الخارجي)
+ *   GET  ?r=catalog              الكتالوج (الأقسام + المنتجات + الإعدادات) — عام
+ *   POST ?r=catalog/save         حفظ الكتالوج — كل موظف يحفظ الأجزاء التي يملك تعديلها فقط
+ *   POST ?r=upload&kind=…        رفع صورة/شعار/خط/فيديو
+ *   POST ?r=auth/login           دخول المالك أو موظف
+ *   POST ?r=auth/logout          تسجيل الخروج
+ *   GET  ?r=auth/me              الحساب الحالي أو null
+ *   POST ?r=auth/password        تغيير كلمة مرور الحساب الحالي
+ *   POST ?r=orders               إرسال طلب من المتجر — عام (الأسعار تُحسب هنا من الكتالوج)
+ *   GET  ?r=orders               كل الطلبات — صلاحية عرض الطلبات
+ *   POST ?r=orders/status        تغيير حالة طلب — صلاحية تعديل الطلبات
+ *   GET  ?r=orders/track         تتبع طلب برقمه ورقم الهاتف — عام
+ *   GET|POST ?r=users…           فريق العمل — المالك فقط (inc/users.php)
+ *   ?r=instagram/…               الاستيراد من إنستغرام (inc/instagram.php)
+ *   POST ?r=system/reset         إعادة ضبط المتجر — المالك فقط بكلمة المرور (inc/reset.php)
  */
 
 define('IRIS_API', true);
 require __DIR__ . '/lib.php';
+require __DIR__ . '/inc/users.php';
+require __DIR__ . '/inc/media.php';
+require __DIR__ . '/inc/instagram.php';
+require __DIR__ . '/inc/reset.php';
 
 iris_bootstrap();
 
@@ -37,6 +44,15 @@ $routes = array(
     'GET orders' => 'route_orders_list',
     'POST orders/status' => 'route_order_status',
     'GET orders/track' => 'route_order_track',
+    'GET users' => 'route_users_list',
+    'POST users/save' => 'route_users_save',
+    'POST users/delete' => 'route_users_delete',
+    'GET instagram/status' => 'route_instagram_status',
+    'POST instagram/connect' => 'route_instagram_connect',
+    'POST instagram/disconnect' => 'route_instagram_disconnect',
+    'GET instagram/media' => 'route_instagram_media',
+    'POST instagram/fetch' => 'route_instagram_fetch',
+    'POST system/reset' => 'route_system_reset',
 );
 
 $key = $method . ' ' . $route;
@@ -55,6 +71,8 @@ function route_health()
         'uploads' => is_dir(iris_uploads_dir()) ? is_writable(iris_uploads_dir()) : is_writable(dirname(iris_uploads_dir())),
         'catalog' => is_file(iris_data_path('catalog')) ? 'owner' : 'seed',
         'passwordSet' => iris_password_configured(),
+        'instagram' => iris_http_available(),
+        'limits' => iris_upload_limits(),
     ));
 }
 
@@ -67,18 +85,52 @@ function route_catalog_get()
 
 function route_catalog_save()
 {
-    iris_require_admin();
+    $user = iris_require_catalog_edit();
     $body = iris_body();
     if (!isset($body['catalog']) || !is_array($body['catalog'])) {
         iris_fail('لم تصل بيانات الكتالوج.');
     }
-    $catalog = iris_clean_catalog($body['catalog']);
-    iris_locked(function () use (&$catalog) {
+    $incoming = $body['catalog'];
+    $catalog = iris_locked(function () use ($incoming, $user) {
+        $catalog = iris_clean_catalog(iris_merge_for_permissions($incoming, iris_catalog(), $user['permissions']));
         iris_backup('catalog');
         $catalog['updatedAt'] = gmdate('c');
         iris_write('catalog', $catalog);
+        return $catalog;
     });
     iris_ok(array('catalog' => $catalog));
+}
+
+/**
+ * الموظف يرسل الكتالوج كاملاً، لكن الأجزاء التي لا يملك تعديلها تؤخذ من النسخة المحفوظة
+ * قبل التحقق — فلا يستطيع تغييرها حتى لو أرسلها (أو كانت نسخته قديمة).
+ */
+function iris_merge_for_permissions(array $incoming, $stored, array $perms)
+{
+    $stored = is_array($stored) ? $stored : array('categories' => array(), 'products' => array(), 'settings' => array());
+    $pick = function ($section, $key) use ($incoming, $stored, $perms) {
+        $src = iris_allows($perms, $section, 'edit') ? $incoming : $stored;
+        return isset($src[$key]) ? $src[$key] : array();
+    };
+    $merged = array(
+        'categories' => $pick('categories', 'categories'),
+        'products' => $pick('products', 'products'),
+        'settings' => $pick('settings', 'settings'),
+    );
+    if (!iris_allows($perms, 'products', 'edit')) {
+        $slugs = array();
+        foreach ((array) $merged['categories'] as $c) {
+            if (is_array($c) && isset($c['slug'])) {
+                $slugs[$c['slug']] = true;
+            }
+        }
+        foreach ((array) $merged['products'] as $p) {
+            if (is_array($p) && isset($p['category']) && !isset($slugs[$p['category']])) {
+                iris_fail('لا يمكن حذف قسم فيه منتجات دون صلاحية تعديل المنتجات. انقل منتجاته أولاً أو اطلب ذلك من المالك.', 403);
+            }
+        }
+    }
+    return $merged;
 }
 
 function iris_clean_catalog(array $in)
@@ -218,6 +270,29 @@ function iris_clean_catalog(array $in)
                 $out['tags'] = $tags;
             }
         }
+        if (isset($p['videos']) && is_array($p['videos'])) {
+            $videos = array();
+            foreach (array_slice($p['videos'], 0, 3) as $v) {
+                $v = iris_image($v, 'فيديو ' . $label);
+                if ($v !== '') {
+                    $videos[] = $v;
+                }
+            }
+            if ($videos) {
+                $out['videos'] = $videos;
+            }
+        }
+        $source = iris_str(isset($p['source']) ? $p['source'] : '', 80);
+        if ($source !== '') {
+            if (!preg_match('/^ig:[A-Za-z0-9_]+$/', $source)) {
+                iris_fail('مصدر ' . $label . ' غير صالح.');
+            }
+            $out['source'] = $source;
+            $sourceUrl = iris_image(isset($p['sourceUrl']) ? $p['sourceUrl'] : '', 'رابط مصدر ' . $label);
+            if ($sourceUrl !== '') {
+                $out['sourceUrl'] = $sourceUrl;
+            }
+        }
         if (!empty($p['hidden'])) {
             $out['hidden'] = true;
         }
@@ -299,7 +374,7 @@ function iris_clean_settings(array $s)
     if ($instagram !== '' && !preg_match('/^[A-Za-z0-9._]{1,30}$/', $instagram)) {
         iris_fail('اسم حساب إنستغرام غير صالح.');
     }
-    return array(
+    $out = array(
         'shippingFee' => iris_int(isset($s['shippingFee']) ? $s['shippingFee'] : $config['shipping_fee'], 0, 10000000, 'أجور التوصيل'),
         'freeShippingThreshold' => iris_int(isset($s['freeShippingThreshold']) ? $s['freeShippingThreshold'] : $config['free_shipping_threshold'], 0, 1000000000, 'حد التوصيل المجاني'),
         'coupons' => (object) $coupons,
@@ -307,50 +382,70 @@ function iris_clean_settings(array $s)
         'instagram' => $instagram,
         'heroImage' => iris_image(isset($s['heroImage']) ? $s['heroImage'] : '', 'صورة الغلاف'),
     );
+    $branding = iris_clean_branding(isset($s['branding']) ? $s['branding'] : null);
+    if ($branding) {
+        $out['branding'] = $branding;
+    }
+    return $out;
 }
 
-/* ═════════════ رفع الصور ═════════════ */
-
-function iris_uploads_dir()
+/** هوية المتجر: الشعار والخطوط (نفس قواعد server/core/catalog.ts). */
+function iris_clean_branding($b)
 {
-    return dirname(__DIR__) . '/uploads';
+    if (!is_array($b)) {
+        return null;
+    }
+    $out = array();
+    $logo = iris_image(isset($b['logo']) ? $b['logo'] : '', 'الشعار');
+    if ($logo !== '') {
+        $out['logo'] = $logo;
+    }
+    $logoDark = iris_image(isset($b['logoDark']) ? $b['logoDark'] : '', 'شعار الخلفيات الداكنة');
+    if ($logoDark !== '') {
+        $out['logoDark'] = $logoDark;
+    }
+    if (!empty($b['logoTint'])) {
+        $out['logoTint'] = true;
+    }
+    if (isset($b['showWordmark']) && $b['showWordmark'] === false) {
+        $out['showWordmark'] = false;
+    }
+    foreach (array('bodyFont' => 'خط النصوص', 'headingFont' => 'خط العناوين') as $key => $label) {
+        $font = iris_clean_font(isset($b[$key]) ? $b[$key] : null, $label);
+        if ($font) {
+            $out[$key] = $font;
+        }
+    }
+    return $out ? $out : null;
 }
 
-function route_upload()
+function iris_clean_font($f, $label)
 {
-    iris_require_admin();
-    if (empty($_FILES['file']) || !is_array($_FILES['file'])) {
-        iris_fail('لم يصل أي ملف.');
+    if (!is_array($f)) {
+        return null;
     }
-    $file = $_FILES['file'];
-    if ($file['error'] === UPLOAD_ERR_INI_SIZE || $file['error'] === UPLOAD_ERR_FORM_SIZE) {
-        iris_fail('حجم الصورة أكبر مما تسمح به الاستضافة.');
+    if (array_key_exists('preset', $f)) {
+        if (!in_array($f['preset'], array('plex', 'messiri', 'cairo', 'tajawal', 'almarai'), true)) {
+            iris_fail($label . ': الخط غير معروف.');
+        }
+        return array('preset' => $f['preset']);
     }
-    if ($file['error'] !== UPLOAD_ERR_OK || !is_uploaded_file($file['tmp_name'])) {
-        iris_fail('تعذر رفع الملف.');
+    $pattern = '#^/uploads/fonts/[a-f0-9]{20}\.(woff2|woff|ttf|otf)$#';
+    $out = array(
+        'name' => iris_str(isset($f['name']) ? $f['name'] : '', 60, true, 'اسم ' . $label),
+        'regular' => iris_str(isset($f['regular']) ? $f['regular'] : '', 200, true, 'ملف ' . $label),
+    );
+    if (!preg_match($pattern, $out['regular'])) {
+        iris_fail($label . ': ملف الخط غير صالح. ارفعه من صفحة الهوية.');
     }
-    if ($file['size'] > 8 * 1024 * 1024) {
-        iris_fail('حجم الصورة يجب ألا يتجاوز 8 ميغابايت.');
+    $bold = iris_str(isset($f['bold']) ? $f['bold'] : '', 200);
+    if ($bold !== '') {
+        if (!preg_match($pattern, $bold)) {
+            iris_fail($label . ': ملف الخط العريض غير صالح.');
+        }
+        $out['bold'] = $bold;
     }
-    $info = @getimagesize($file['tmp_name']);
-    $types = array(IMAGETYPE_JPEG => 'jpg', IMAGETYPE_PNG => 'png', IMAGETYPE_GIF => 'gif');
-    if (defined('IMAGETYPE_WEBP')) {
-        $types[IMAGETYPE_WEBP] = 'webp';
-    }
-    if (!$info || !isset($types[$info[2]])) {
-        iris_fail('الملف ليس صورة مدعومة (JPG أو PNG أو WEBP).');
-    }
-    $sub = gmdate('Y/m');
-    $dir = iris_uploads_dir() . '/' . $sub;
-    if (!is_dir($dir) && !@mkdir($dir, 0755, true)) {
-        iris_fail('تعذر إنشاء مجلد uploads. تأكد من صلاحيات الكتابة.', 500);
-    }
-    $name = bin2hex(random_bytes(10)) . '.' . $types[$info[2]];
-    if (!move_uploaded_file($file['tmp_name'], $dir . '/' . $name)) {
-        iris_fail('تعذر حفظ الصورة على الخادم.', 500);
-    }
-    @chmod($dir . '/' . $name, 0644);
-    iris_ok(array('url' => '/uploads/' . $sub . '/' . $name, 'width' => $info[0], 'height' => $info[1]));
+    return $out;
 }
 
 /* ═════════════ الدخول ═════════════ */
@@ -385,16 +480,6 @@ function iris_password_matches($password)
     return hash_equals($rec['plain'], $password);
 }
 
-function iris_admin_profile()
-{
-    $config = iris_config();
-    return array(
-        'username' => (string) $config['admin_username'],
-        'name' => (string) (isset($config['admin_name']) ? $config['admin_name'] : 'مالك المتجر'),
-        'role' => 'المالك',
-    );
-}
-
 function route_login()
 {
     iris_require_same_origin();
@@ -405,12 +490,39 @@ function route_login()
         iris_fail('محاولات كثيرة خاطئة. حاول بعد 15 دقيقة.', 429);
     }
     $body = iris_body();
-    $username = iris_str(isset($body['username']) ? $body['username'] : '', 120, true, 'اسم المستخدم');
+    $username = strtolower(iris_str(isset($body['username']) ? $body['username'] : '', 120, true, 'اسم المستخدم'));
     $password = isset($body['password']) && is_string($body['password']) ? $body['password'] : '';
-    $profile = iris_admin_profile();
-    $userOk = hash_equals(strtolower($profile['username']), strtolower($username));
-    $passOk = iris_password_matches($password);
-    if (!$userOk || !$passOk) {
+    $owner = iris_owner_profile();
+    $profile = null;
+    $ver = 0;
+    if (hash_equals($owner['username'], $username)) {
+        if (iris_password_matches($password)) {
+            $profile = $owner;
+        }
+    } else {
+        $profile = iris_locked(function () use ($username, $password, &$ver) {
+            $users = iris_staff_list();
+            foreach ($users as $i => $u) {
+                if ($u['username'] !== $username) {
+                    continue;
+                }
+                if (!password_verify($password, $u['hash'])) {
+                    return null;
+                }
+                if (empty($u['active'])) {
+                    iris_fail('هذا الحساب موقوف. تواصل مع مالك المتجر.', 403);
+                }
+                $users[$i]['lastLoginAt'] = gmdate('c');
+                iris_staff_store($users);
+                $ver = (int) $u['ver'];
+                return iris_staff_profile($u);
+            }
+            // نفس زمن التحقق تقريباً حتى لا يُعرف وجود الاسم من سرعة الرد
+            password_hash($password, PASSWORD_DEFAULT);
+            return null;
+        });
+    }
+    if (!$profile) {
         iris_rate_limit('login', 8, 15 * 60, true);
         usleep(400000);
         iris_fail('اسم المستخدم أو كلمة المرور غير صحيحة.', 401);
@@ -418,8 +530,7 @@ function route_login()
     iris_rate_reset('login');
     iris_session_start();
     session_regenerate_id(true);
-    $_SESSION['admin'] = $profile;
-    $_SESSION['since'] = time();
+    $_SESSION = array('uid' => $profile['id'], 'ver' => $ver, 'since' => time());
     iris_ok(array('admin' => $profile));
 }
 
@@ -438,24 +549,47 @@ function route_logout()
 
 function route_me()
 {
-    iris_ok(array('admin' => iris_current_admin()));
+    iris_ok(array('admin' => iris_current_user()));
 }
 
 function route_password()
 {
-    iris_require_admin();
+    $user = iris_require_user();
     $body = iris_body();
     $current = isset($body['current']) && is_string($body['current']) ? $body['current'] : '';
     $next = isset($body['next']) && is_string($body['next']) ? $body['next'] : '';
-    if (!iris_password_matches($current)) {
-        iris_fail('كلمة المرور الحالية غير صحيحة.', 400);
-    }
     if (iris_mb_len($next) < 8) {
         iris_fail('كلمة المرور الجديدة يجب أن تكون 8 أحرف على الأقل.');
     }
-    iris_locked(function () use ($next) {
-        iris_write('auth', array('hash' => password_hash($next, PASSWORD_DEFAULT), 'changedAt' => gmdate('c')));
+    if ($user['role'] === 'owner') {
+        if (!iris_password_matches($current)) {
+            iris_fail('كلمة المرور الحالية غير صحيحة.', 400);
+        }
+        iris_locked(function () use ($next) {
+            iris_write('auth', array('hash' => password_hash($next, PASSWORD_DEFAULT), 'changedAt' => gmdate('c')));
+        });
+        iris_ok();
+    }
+    $ver = iris_locked(function () use ($user, $current, $next) {
+        $users = iris_staff_list();
+        foreach ($users as $i => $u) {
+            if ($u['id'] !== $user['id']) {
+                continue;
+            }
+            if (!password_verify($current, $u['hash'])) {
+                iris_fail('كلمة المرور الحالية غير صحيحة.', 400);
+            }
+            $users[$i]['hash'] = password_hash($next, PASSWORD_DEFAULT);
+            $users[$i]['ver'] = (int) $u['ver'] + 1;
+            $users[$i]['updatedAt'] = gmdate('c');
+            iris_staff_store($users);
+            return $users[$i]['ver'];
+        }
+        iris_fail('الحساب غير موجود.', 404);
+        return 0;
     });
+    // الجلسات الأخرى تنتهي، والجلسة الحالية تبقى
+    $_SESSION['ver'] = $ver;
     iris_ok();
 }
 
@@ -652,14 +786,14 @@ function iris_notify_owner(array $order)
 
 function route_orders_list()
 {
-    iris_require_admin();
+    iris_require_access('orders', 'view');
     $store = iris_read('orders', array('next' => 1055, 'orders' => array()));
     iris_ok(array('orders' => $store['orders']));
 }
 
 function route_order_status()
 {
-    iris_require_admin();
+    iris_require_access('orders', 'edit');
     $body = iris_body();
     $id = iris_int(isset($body['id']) ? $body['id'] : 0, 1, PHP_INT_MAX, 'رقم الطلب');
     $status = isset($body['status']) ? (string) $body['status'] : '';

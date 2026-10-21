@@ -461,7 +461,7 @@ function ReviewStep() {
 
       <div className="mb-2 grid grid-cols-3 gap-2 text-center">
         {[
-          ['verified', 'ذهب مدموغ'],
+          ['local_shipping', 'توصيل لكل المحافظات'],
           ['published_with_changes', 'استبدال 7 أيام'],
           ['visibility', 'معاينة قبل الدفع'],
         ].map(([icon, label]) => (

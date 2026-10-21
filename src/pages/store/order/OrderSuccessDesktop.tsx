@@ -67,7 +67,7 @@ export default function OrderSuccessDesktop() {
                         <span className="font-label-md text-label-md text-antique-gold tracking-widest block">تم الاستلام بنجاح</span>
                         <h1 className="font-headline-xl text-headline-xl text-primary leading-tight">استلمنا طلبكِ الفاخر</h1>
                         <p className="font-body-md text-body-md text-on-surface-variant">
-                          شكراً لثقتكِ الكريمة بدار آيريس للمجوهرات الرفيعة؛ صُنعت قطعكِ لتخلّد أروع الذكريات.
+                          شكراً لثقتكِ بآيريس ستور؛ نتواصل معكِ قريباً لتأكيد الطلب وموعد التوصيل.
                         </p>
                       </div>
                     </div>
@@ -135,7 +135,7 @@ export default function OrderSuccessDesktop() {
                             <span className="w-2.5 h-2.5 rounded-full bg-royal-gold animate-ping absolute" />{' '}
                             <span className="w-2.5 h-2.5 rounded-full bg-royal-gold" />
                           </div>
-                          <div className="font-label-md text-label-md text-primary font-semibold">تأكيد الطلب والصياغة</div>
+                          <div className="font-label-md text-label-md text-primary font-semibold">تأكيد الطلب والتجهيز</div>
                           <span className="font-label-sm text-label-sm text-muted-rosewood">خلال ساعتين</span>
                         </div>
                         <div className="flex flex-col items-center text-center space-y-2 relative z-10">
@@ -171,23 +171,23 @@ export default function OrderSuccessDesktop() {
                         to="/collections/necklaces"
                         className="inline-flex items-center gap-space-xs text-primary hover:text-burgundy-600 font-label-md text-label-md group transition-colors"
                       >
-                        <span>متابعة التسوق واستعراض المقتنيات النادرة</span>{' '}
+                        <span>متابعة التسوق</span>{' '}
                         <span className="material-symbols-outlined text-base transition-transform group-hover:-translate-x-1">west</span>
                       </Link>
                     </div>
                   </div>
                   <div className="grid grid-cols-3 gap-space-sm pt-space-xs text-center">
                     <div className="p-space-sm rounded-lg bg-surface-container-low border border-hairline-burgundy/40">
-                      <span className="material-symbols-outlined text-royal-gold text-xl block mx-auto mb-1">security</span>{' '}
-                      <span className="font-label-sm text-label-sm text-warm-ink font-medium block">تأمين مالي شامل</span>
+                      <span className="material-symbols-outlined text-royal-gold text-xl block mx-auto mb-1">call</span>{' '}
+                      <span className="font-label-sm text-label-sm text-warm-ink font-medium block">نتصل لتأكيد الطلب</span>
                     </div>
                     <div className="p-space-sm rounded-lg bg-surface-container-low border border-hairline-burgundy/40">
-                      <span className="material-symbols-outlined text-royal-gold text-xl block mx-auto mb-1">verified</span>{' '}
-                      <span className="font-label-sm text-label-sm text-warm-ink font-medium block">مرفق بشهادة أصالة</span>
+                      <span className="material-symbols-outlined text-royal-gold text-xl block mx-auto mb-1">payments</span>{' '}
+                      <span className="font-label-sm text-label-sm text-warm-ink font-medium block">الدفع عند الاستلام</span>
                     </div>
                     <div className="p-space-sm rounded-lg bg-surface-container-low border border-hairline-burgundy/40">
-                      <span className="material-symbols-outlined text-royal-gold text-xl block mx-auto mb-1">sentiment_very_satisfied</span>{' '}
-                      <span className="font-label-sm text-label-sm text-warm-ink font-medium block">معاينة قبل الاستلام</span>
+                      <span className="material-symbols-outlined text-royal-gold text-xl block mx-auto mb-1">autorenew</span>{' '}
+                      <span className="font-label-sm text-label-sm text-warm-ink font-medium block">استبدال خلال 7 أيام</span>
                     </div>
                   </div>
                 </section>
@@ -221,7 +221,7 @@ export default function OrderSuccessDesktop() {
                           </div>
                           <p className="font-body-sm text-body-sm text-muted-rosewood">
                             {l.options?.size ? `المقاس: ${l.options.size} · ` : ``}
-                            {l.options?.metal ?? `صياغة يدوية خاصة`}
+                            {l.options?.metal ?? 'قطعة من آيريس'}
                           </p>
                           <div className="flex items-center justify-between pt-1">
                             <span className="font-mono text-label-sm text-label-sm text-outline px-1.5 py-0.5 rounded bg-surface-container-low">
@@ -279,17 +279,10 @@ export default function OrderSuccessDesktop() {
                         </div>
                       )}
                       <div className="flex items-center justify-between text-on-surface-variant">
-                        <span>رسوم التوصيل المؤمن</span>{' '}
+                        <span>أجور التوصيل</span>{' '}
                         <span className="font-mono text-warm-ink">
                           {order.shipping === 0 ? `مجاني` : `${formatNumber(order.shipping)} د.ع`}
                         </span>
-                      </div>
-                      <div className="flex items-center justify-between text-semantic-success font-medium">
-                        <span className="flex items-center gap-1">
-                          <span>التغليف في علبة الدار</span>{' '}
-                          <span className="text-[11px] bg-semantic-success-bg px-1.5 py-0.5 rounded text-semantic-success">مجاني</span>
-                        </span>{' '}
-                        <span>شريط حريري وبطاقة إهداء</span>
                       </div>
                       <div className="py-space-xs">
                         <div className="w-full flex flex-col gap-[3px]">
@@ -318,23 +311,23 @@ export default function OrderSuccessDesktop() {
                     <div className="relative z-10 flex items-center gap-space-md">
                       <div className="w-24 h-28 rounded-t-full rounded-b-lg overflow-hidden border border-royal-gold/60 flex-shrink-0 bg-wine-night shadow-md">
                         <img
-                          alt="صندوق مجوهرات ملكي مخملي"
+                          alt="قطعة من آيريس ستور"
                           className="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
-                          src="/images/gift-box-opening.jpg"
+                          src="/images/instagram/swan-box.jpg"
                         />
                       </div>
                       <div className="space-y-space-xs">
                         <div className="flex items-center gap-1 text-royal-gold">
                           <span className="text-xs">◆</span>{' '}
                           <span className="font-label-sm text-label-sm uppercase tracking-wider text-champagne-gold">
-                            طراز آيريس الإمبراطوري
+                            آيريس ستور
                           </span>
                         </div>
                         <h4 className="font-headline-sm text-headline-sm text-champagne-gold font-semibold">
-                          تغليف أنيق ومخملي في انتظارك
+                          شكراً لأنكِ اخترتِنا
                         </h4>
                         <p className="font-body-sm text-body-sm text-surface-variant">
-                          تُسلَّم كل قطعة في علبة الدار مع بطاقة الضمان.
+                          تابعي جديدنا على إنستغرام قبل الجميع.
                         </p>
                       </div>
                     </div>

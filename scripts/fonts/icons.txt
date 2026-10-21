@@ -24,7 +24,6 @@ arrow_forward
 arrow_left
 arrow_left_alt
 arrow_outward
-arrow_right_alt
 arrow_upward
 assignment_ind
 assignment_return
@@ -59,7 +58,9 @@ chat
 chat_bubble
 chat_bubble_outline
 check
+check_box_outline_blank
 check_circle
+checklist
 chevron_left
 chevron_right
 circle
@@ -68,6 +69,7 @@ cloud_download
 cloud_off
 cloud_upload
 code
+collections
 concierge
 contact_support
 content_copy
@@ -77,6 +79,7 @@ dashboard
 dashboard_customize
 dataset
 delete
+delete_forever
 delete_outline
 description
 desktop_windows
@@ -85,7 +88,6 @@ devices
 diagnosis
 diamond
 difference
-directions
 dns
 dock
 done_all
@@ -94,7 +96,6 @@ download
 download_for_offline
 drafts
 drag_indicator
-draw
 edit
 edit_note
 email
@@ -104,7 +105,6 @@ event
 event_repeat
 expand_less
 expand_more
-eyebrow
 fact_check
 favorite
 featured_seasonal_and_gifts
@@ -124,7 +124,6 @@ group
 groups
 handshake
 headset_mic
-health_and_safety
 heart_broken
 heart_minus
 help
@@ -146,6 +145,7 @@ inventory
 inventory_2
 ios_share
 key
+keyboard
 keyboard_arrow_down
 keyboard_arrow_up
 keyboard_return
@@ -153,6 +153,7 @@ label
 language
 light
 link
+link_off
 local_mall
 local_police
 local_shipping
@@ -168,7 +169,6 @@ mail
 manage_accounts
 manage_search
 mark_email_read
-meeting_room
 menu
 merge_type
 mic
@@ -177,10 +177,8 @@ monetization_on
 monitoring
 more_vert
 near_me
-nest_clock_farsight_analog
 network_check
 north_east
-note
 notification_important
 notifications
 notifications_active
@@ -198,19 +196,23 @@ payment
 payments
 pending
 pending_actions
+people
 percent
 person
 person_add
 person_alert
+person_off
 person_pin
 phone
 phone_in_talk
 photo_camera
+photo_library
 picture_as_pdf
 pie_chart
 pin
 pin_drop
 play_arrow
+play_circle
 point_of_sale
 policy
 post_add
@@ -223,6 +225,7 @@ push_pin
 query_stats
 radio
 radio_button_checked
+radio_button_unchecked
 receipt
 receipt_long
 redeem
@@ -233,14 +236,12 @@ reorder
 replay
 reply
 report_problem
-request_quote
 resize
 restart_alt
 room_service
 rule
 save
 savings
-scale
 schedule
 science
 search
@@ -265,9 +266,11 @@ shopping_basket
 shopping_cart
 shopping_cart_checkout
 signpost
+smart_display
 smart_toy
 smartphone
 sms
+source
 spa
 space_dashboard
 speed
@@ -278,6 +281,7 @@ store
 storefront
 straighten
 stream
+style
 support_agent
 swap_horiz
 switch
@@ -304,8 +308,10 @@ trending_up
 tune
 unarchive
 upload
+upload_file
 verified
 verified_user
+videocam
 view_agenda
 view_carousel
 view_sidebar

@@ -1,13 +1,14 @@
 import { Link } from 'react-router';
-import { BrandMark } from '@/components/common/BrandLogo';
+import { BrandMark, BrandWordmark } from '@/components/common/BrandLogo';
 import { Icon } from '@/components/common/Icon';
 import { CategoryGrid } from '@/components/mobile/CategoryGrid';
+import { StoreComingSoon } from '@/components/store/StoreComingSoon';
 import { MobileTabBar } from '@/components/mobile/MobileTabBar';
 import { MobileTopBar } from '@/components/mobile/MobileTopBar';
 import { useCatalog } from '@/data/catalog';
 
-/** غلاف افتراضي (صندوق الدار في المعرض) — مختلف عن صور الأقسام حتى لا تتكرر الصورة نفسها مرتين في أول شاشة. */
-export const DEFAULT_HERO_IMAGE = '/images/stitch/005.jpg';
+/** غلاف افتراضي إن لم يختر المالك صورة — مختلف عن صور الأقسام حتى لا تتكرر الصورة نفسها مرتين في أول شاشة. */
+export const DEFAULT_HERO_IMAGE = '/images/instagram/swan-box.jpg';
 
 const FEATURES = [
   { icon: 'local_shipping', label: 'توصيل لكل المحافظات' },
@@ -17,7 +18,7 @@ const FEATURES = [
 
 /**
  * الرئيسية على الهاتف — على نمط قائمة المنيو المرجعية (menu.iqrarabic.com):
- * صورة غلاف بعرض الشاشة، ثم شعار الدار، ثم أقسام المالك كبطاقات صور كبيرة
+ * صورة غلاف بعرض الشاشة، ثم شعار المتجر، ثم أقسام المالك كبطاقات صور كبيرة
  * (قلائد، أساور، محابس…) وكل بطاقة تفتح منتجات ذلك القسم.
  */
 export default function MobileHome() {
@@ -43,11 +44,9 @@ export default function MobileHome() {
         />
         <div className="absolute inset-0 bg-gradient-to-b from-wine-night/40 via-wine-night/10 to-wine-night/95" />
         <div className="absolute inset-x-0 bottom-0 flex flex-col items-center px-6 pb-10 text-center">
-          <BrandMark label="شعار آيريس" className="h-16 text-champagne-gold drop-shadow-[0_4px_18px_rgba(42,3,13,0.6)]" />
-          <span dir="ltr" className="mt-3 font-serif-brand text-[32px] uppercase leading-none tracking-[0.3em] text-ivory-canvas">
-            IRIS
-          </span>
-          <span className="mt-2 font-headline-sm text-[1.125rem] font-medium text-champagne-gold">دار آيريس للمجوهرات الراقية</span>
+          <BrandMark label="شعار آيريس" onDark className="h-16 text-champagne-gold drop-shadow-[0_4px_18px_rgba(42,3,13,0.6)]" />
+          <BrandWordmark className="mt-3 text-[32px] leading-none tracking-[0.3em] text-ivory-canvas" />
+          <span className="mt-2 font-headline-sm text-[1.125rem] font-medium text-champagne-gold">إكسسوارات · التفاصيل تصنع الفرق</span>
         </div>
       </section>
 
@@ -64,18 +63,17 @@ export default function MobileHome() {
           ))}
         </ul>
 
-        <div className="mb-4 flex items-center gap-3">
-          <div className="h-px flex-1 bg-gradient-to-l from-transparent to-royal-gold/60" />
-          <h1 className="font-headline-sm text-headline-sm font-bold text-deep-oxblood">تسوّقي حسب القسم</h1>
-          <div className="h-px flex-1 bg-gradient-to-l from-royal-gold/60 to-transparent" />
-        </div>
-
-        {tiles.length > 0 ? (
-          <CategoryGrid tiles={tiles} />
+        {tiles.length > 0 && visibleProducts.length > 0 ? (
+          <>
+            <div className="mb-4 flex items-center gap-3">
+              <div className="h-px flex-1 bg-gradient-to-l from-transparent to-royal-gold/60" />
+              <h1 className="font-headline-sm text-headline-sm font-bold text-deep-oxblood">تسوّقي حسب القسم</h1>
+              <div className="h-px flex-1 bg-gradient-to-l from-royal-gold/60 to-transparent" />
+            </div>
+            <CategoryGrid tiles={tiles} />
+          </>
         ) : (
-          <p className="rounded-2xl bg-surface-container-lowest p-6 text-center font-body-md text-body-md text-muted-rosewood shadow-luxury">
-            يجري تجهيز الأقسام، عودي قريباً.
-          </p>
+          <StoreComingSoon />
         )}
 
         {offers > 0 && (
@@ -96,13 +94,19 @@ export default function MobileHome() {
 
         <footer className="mt-10 flex flex-col items-center gap-2 text-center">
           <BrandMark className="h-10 text-imperial-burgundy/80" />
-          <p className="font-label-sm text-label-sm text-muted-rosewood">دار آيريس للمجوهرات © {new Date().getFullYear()}</p>
+          <p className="font-label-sm text-label-sm text-muted-rosewood">آيريس ستور © {new Date().getFullYear()}</p>
           <div className="flex items-center gap-4 font-label-md text-label-md text-imperial-burgundy">
-            <Link to="/contact" className="-my-2 inline-flex min-h-[40px] items-center">تواصل معنا</Link>
+            <Link to="/contact" className="-my-2 inline-flex min-h-[40px] items-center">
+              تواصل معنا
+            </Link>
             <span className="text-[7px] text-royal-gold">◆</span>
-            <Link to="/policies/shipping" className="-my-2 inline-flex min-h-[40px] items-center">الشحن والاستبدال</Link>
+            <Link to="/policies/shipping" className="-my-2 inline-flex min-h-[40px] items-center">
+              الشحن والاستبدال
+            </Link>
             <span className="text-[7px] text-royal-gold">◆</span>
-            <Link to="/track-order" className="-my-2 inline-flex min-h-[40px] items-center">تتبع طلبك</Link>
+            <Link to="/track-order" className="-my-2 inline-flex min-h-[40px] items-center">
+              تتبع طلبك
+            </Link>
           </div>
         </footer>
       </main>

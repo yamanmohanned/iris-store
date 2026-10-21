@@ -47,13 +47,13 @@ async function run(label, viewport) {
   // 1. product page → add to cart
   // NB: assertions on *what is in the cart/order* read the persisted state, not page text — desktop pages
   // legitimately render other products (recommendations) inside <main>, and show `name` vs `shortName`.
-  const RING_ID = 'rg-31';
-  const NECKLACE_ID = 'nk-102'; // the seed/static design item — must never leak in
+  const RING_ID = 'ig-swan'; // قلادة البجعة 8,000 د.ع (المحتوى الافتتاحي)
+  const NECKLACE_ID = 'ig-moon'; // another starter product — must never leak in
   const readCart = () => page.evaluate(() => JSON.parse(localStorage.getItem('iris.cart.v1') || '[]'));
-  await page.goto(base + '/products/royal-solitaire-ring-31', { waitUntil: 'networkidle' });
+  await page.goto(base + '/products/swan-necklace', { waitUntil: 'networkidle' });
   await settle();
   const title = (await page.locator('h1').first().textContent()) ?? '';
-  ok(title.includes('خاتم'), `product page renders the requested product (h1: "${title.trim()}")`);
+  ok(title.includes('البجعة'), `product page renders the requested product (h1: "${title.trim()}")`);
   const add = page.getByRole('button', { name: /أضف إلى السلة الملكية|أضف إلى الحقيبة|أضف إلى السلة|أضيفي للسلة/ }).first();
   await add.click();
   await settle();
@@ -68,18 +68,18 @@ async function run(label, viewport) {
     stored.length === 1 && stored[0].productId === RING_ID && stored[0].qty === 1,
     `add-to-cart stored exactly one ${RING_ID} line (got ${JSON.stringify(stored.map((l) => `${l.productId}×${l.qty}`))})`,
   );
-  ok(!stored.some((l) => l.productId === NECKLACE_ID), 'cart does not contain the seed necklace');
-  ok(/رقم 31/.test(cartText), 'cart page renders the ring line');
-  ok(/24,000/.test(cartText), 'cart shows the ring price (24,000)');
+  ok(!stored.some((l) => l.productId === NECKLACE_ID), 'cart does not contain another product');
+  ok(/البجعة/.test(cartText), 'cart page renders the necklace line');
+  ok(/8,000/.test(cartText), 'cart shows the necklace price (8,000)');
   await shot('2-cart');
 
   // quantity stepper is wired: +1 → subtotal doubles, -1 → back
   await page.getByRole('button', { name: 'زيادة الكمية' }).first().click();
   await settle();
-  ok(/48,000/.test(await page.locator('main').first().innerText()), 'qty +1 updates the subtotal to 48,000');
+  ok(/16,000/.test(await page.locator('main').first().innerText()), 'qty +1 updates the subtotal to 16,000');
   await page.getByRole('button', { name: 'إنقاص الكمية' }).first().click();
   await settle();
-  ok(/29,000/.test(await page.locator('main').first().innerText()), 'qty -1 restores the total to 29,000');
+  ok(/13,000/.test(await page.locator('main').first().innerText()), 'qty -1 restores the total to 13,000');
 
   // 3. checkout — via the cart's own CTA (a dead button must fail this run)
   await page
@@ -122,12 +122,12 @@ async function run(label, viewport) {
   ok(orderId >= 1055, `order created → ${page.url().replace(base, '')}`);
   const body = await page.locator('body').innerText();
   ok(body.includes(`#${orderId}`), 'success page shows the new order number');
-  ok(/رقم 31/.test(body), 'success page lists the purchased ring');
-  ok(/29,000/.test(body), 'success page total = 24,000 + 5,000 shipping');
+  ok(/البجعة/.test(body), 'success page lists the purchased necklace');
+  ok(/13,000/.test(body), 'success page total = 8,000 + 5,000 shipping');
   const order = await page.evaluate((id) => (JSON.parse(localStorage.getItem('iris.orders.v1') || '[]')).find((o) => o.id === id), orderId);
   ok(
-    !!order && order.lines.length === 1 && order.lines[0].productId === RING_ID && order.total === 29000,
-    `persisted order #${orderId} = one ${RING_ID} line, total 29000 (got ${order ? JSON.stringify({ lines: order.lines.map((l) => l.productId), total: order.total }) : 'none'})`,
+    !!order && order.lines.length === 1 && order.lines[0].productId === RING_ID && order.total === 13000,
+    `persisted order #${orderId} = one ${RING_ID} line, total 13000 (got ${order ? JSON.stringify({ lines: order.lines.map((l) => l.productId), total: order.total }) : 'none'})`,
   );
   await shot('7-success');
 

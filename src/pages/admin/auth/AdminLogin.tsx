@@ -79,14 +79,14 @@ export default function AdminLogin() {
           </svg>
           <div className="relative z-10 flex items-center gap-3">
             <div className="h-2.5 w-2.5 rotate-45 bg-champagne-gold" />
-            <span className="font-label-md text-label-md uppercase tracking-widest text-champagne-gold">IRIS HAUTE JOAILLERIE</span>
+            <span className="font-label-md text-label-md uppercase tracking-widest text-champagne-gold">IRIS STORE · ACCESSORIES</span>
           </div>
           <div className="relative z-10 my-auto flex max-w-lg flex-col items-start py-12">
             <div className="relative mb-10 flex h-28 w-28 items-center justify-center rounded-full bg-deep-oxblood/60 p-3 shadow-2xl backdrop-blur-sm">
               <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-royal-gold/30 via-transparent to-champagne-gold/20" />
-              <BrandMark label="شعار آيريس" className="relative h-20 text-champagne-gold drop-shadow-[0_2px_12px_rgba(201,162,75,0.4)]" />
+              <BrandMark label="شعار آيريس" onDark className="relative h-20 text-champagne-gold drop-shadow-[0_2px_12px_rgba(201,162,75,0.4)]" />
             </div>
-            <span className="mb-2 block font-headline-sm text-headline-sm tracking-wider text-royal-gold">دار آيريس للمجوهرات</span>
+            <span className="mb-2 block font-headline-sm text-headline-sm tracking-wider text-royal-gold">آيريس ستور</span>
             <h1 className="mb-4 font-display-lg text-display-lg leading-tight tracking-tight text-surface-bright">لوحة إدارة المتجر</h1>
             <div className="my-6 flex w-full items-center gap-3">
               <div className="flex flex-1 flex-col gap-[3px]">
@@ -202,7 +202,8 @@ export default function AdminLogin() {
             <details className="mt-6 rounded-xl bg-blush-surface/70 p-3.5">
               <summary className="cursor-pointer font-label-md text-label-md text-imperial-burgundy">نسيت كلمة المرور؟</summary>
               <p className="mt-2 font-label-sm text-label-sm leading-relaxed text-warm-ink/80">
-                افتح مدير الملفات في لوحة الاستضافة، احذف الملف{' '}
+                إن كنت موظفاً فاطلب من المالك تعيين كلمة مرور جديدة لك من «فريق العمل». وإن كنت المالك: افتح مدير الملفات في لوحة
+                الاستضافة، احذف الملف{' '}
                 <span dir="ltr" className="font-mono">
                   api/data/auth.php
                 </span>{' '}
@@ -216,7 +217,7 @@ export default function AdminLogin() {
             </details>
           </div>
           <p className="pointer-events-none absolute inset-x-0 bottom-6 px-4 text-center font-label-sm text-label-sm tracking-wide text-muted-rosewood/70">
-            دار آيريس للمجوهرات © {new Date().getFullYear()}
+            آيريس ستور © {new Date().getFullYear()}
           </p>
         </div>
       </main>

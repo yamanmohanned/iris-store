@@ -17,7 +17,7 @@ interface Message {
   text: string;
   time: string;
   product?: Product;
-  /** اقتراح متابعة السؤال مع فريق الدار على واتساب */
+  /** اقتراح متابعة السؤال مع فريق آيريس على واتساب */
   handoff?: boolean;
   /** رابط داخلي (مثل نتائج البحث) */
   link?: { to: string; label: string };
@@ -37,11 +37,12 @@ const INTENTS: Array<[RegExp, string]> = [
   [/قسيمه|كوبون|خصم|كود/, 'كيف أستخدم قسيمة الخصم؟'],
   [/مقاس|قياس/, 'كيف أعرف مقاسي؟'],
   [/هديه|تغليف|اهداء/, 'هل القطع مغلّفة للإهداء؟'],
-  [/دمغ|اصلي|عيار|شهاد/, 'هل الذهب مدموغ؟'],
-  [/عنايه|تنظيف|يتغير لون/, 'كيف أعتني بمجوهراتي؟'],
+  [/يتغير|يصدي|صدا|يسود|يبهت/, 'هل يتغير لون القطع؟'],
+  [/خامه|ستانلس|ستيل|ذهب|فضه|اصلي|عيار|طلاء/, 'ما خامة القطع؟'],
+  [/عنايه|تنظيف|احافظ/, 'كيف أعتني بالإكسسوارات؟'],
 ];
 
-/** ردود آلية صادقة: من الأسئلة الشائعة ومن مخزون الكتالوج الفعلي، وإلا تحويل لواتساب الدار. */
+/** ردود آلية صادقة: من الأسئلة الشائعة ومن مخزون الكتالوج الفعلي، وإلا تحويل لواتساب المتجر. */
 function autoReply(text: string): Pick<Message, 'text' | 'product' | 'handoff' | 'link'> {
   const q = normalizeArabic(text.replace(/[؟?]/g, ''));
   const faq = faqGroups(getCatalog().settings).flatMap((g) => g.items);
@@ -71,7 +72,7 @@ function autoReply(text: string): Pick<Message, 'text' | 'product' | 'handoff' |
         : `متوفرة حالياً${match.stock <= 5 ? ` (${remainingText(match.stock)})` : ''}، ويمكنكِ طلبها من صفحتها.`;
     return { text: `«${match.shortName}» ${stock}`, product: match, handoff: match.stock <= 0 };
   }
-  return { text: 'لم أجد إجابة دقيقة لسؤالكِ. فريق الدار يسعده الرد عليكِ مباشرة على واتساب.', handoff: true };
+  return { text: 'لم أجد إجابة دقيقة لسؤالكِ. فريق آيريس يسعده الرد عليكِ مباشرة على واتساب.', handoff: true };
 }
 
 /** زر المحادثة العائم + نافذة «دعم آيريس» (Live Chat Widget في التصميم). */
@@ -81,7 +82,7 @@ export function ChatWidget() {
     {
       id: 1,
       from: 'staff',
-      text: 'أهلاً بكِ في دار آيريس. اسأليني عن قطعة أو عن التوصيل والدفع والاستبدال وسأجيبكِ فوراً. وللحديث مع فريق الدار استخدمي واتساب.',
+      text: 'أهلاً بكِ في آيريس ستور. اسأليني عن قطعة أو عن التوصيل والدفع والاستبدال وسأجيبكِ فوراً. وللحديث مع فريق آيريس استخدمي واتساب.',
       time: nowLabel(),
     },
   ]);
@@ -161,12 +162,12 @@ export function ChatWidget() {
 
         <div ref={bodyRef} className="flex flex-1 flex-col gap-3.5 overflow-y-auto scroll-smooth bg-ivory-canvas p-space-md text-warm-ink">
           <WhatsAppLink
-            text="مرحباً دار آيريس، لدي استفسار"
+            text="مرحباً آيريس، لدي استفسار"
             className="flex items-center justify-between gap-2 rounded-xl bg-surface-container-lowest px-3 py-2 font-label-md text-label-md text-deep-oxblood shadow-sm ring-1 ring-hairline-burgundy transition-colors hover:bg-blush-surface"
           >
             <span className="flex items-center gap-2">
               <WhatsAppIcon className="h-[18px] w-[18px] text-[#1F8F4E]" />
-              تحتاجين شخصاً من الدار؟ راسلينا على واتساب
+              تحتاجين شخصاً من فريقنا؟ راسلينا على واتساب
             </span>
             <Icon name="chevron_left" className="text-[18px] text-muted-rosewood" />
           </WhatsAppLink>
@@ -213,11 +214,11 @@ export function ChatWidget() {
                   )}
                   {m.handoff && (
                     <WhatsAppLink
-                      text={`مرحباً دار آيريس، ${messages.find((x) => x.id === m.id - 1)?.text ?? 'لدي استفسار'}`}
+                      text={`مرحباً آيريس، ${messages.find((x) => x.id === m.id - 1)?.text ?? 'لدي استفسار'}`}
                       className="inline-flex items-center gap-1.5 self-start rounded-full bg-imperial-burgundy px-3 py-1.5 font-label-md text-label-md text-ivory-canvas transition-colors hover:bg-burgundy-600"
                     >
                       <WhatsAppIcon className="h-4 w-4" />
-                      راسلي فريق الدار
+                      راسلي فريق آيريس
                     </WhatsAppLink>
                   )}
                   <span className="pr-1 font-label-sm text-[11px] text-muted-rosewood/70">{m.time}</span>

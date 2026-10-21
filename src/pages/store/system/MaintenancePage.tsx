@@ -53,11 +53,11 @@ export default function MaintenancePage() {
                 </div>
                 <h2
                   className="tracking-[0.25em] text-champagne-gold font-serif text-3xl md:text-4xl uppercase select-none font-medium mb-1.5"
-                  style={{ fontFamily: "'El Messiri', serif" }}
+                  style={{ fontFamily: 'var(--font-heading)' }}
                 >
                   I R I S
                 </h2>
-                <p className="font-label-md text-label-md text-champagne-gold/75 tracking-wider">دار آيريس للمجوهرات الراقية</p>
+                <p className="font-label-md text-label-md text-champagne-gold/75 tracking-wider">آيريس ستور · إكسسوارات</p>
               </div>
               <div className="w-full max-w-[340px] flex items-center justify-center my-2 mb-8">
                 <div className="flex-1 flex flex-col gap-[3px]">
@@ -83,7 +83,7 @@ export default function MaintenancePage() {
                 نجهّز لكم شيئاً أجمل
               </h1>
               <p className="font-body-lg text-body-lg text-rose-mist/85 max-w-[580px] leading-relaxed mb-9">
-                المتجر في صيانة قصيرة ومجدولة لتحديث خزائن المجموعات الخاصة، نعود قريباً لاستقبالكم بتجربة صياغة أبهى تليق بذائقتكم الرفيعة.
+                المتجر في صيانة قصيرة لتحديث المنتجات، ونعود خلال وقت قصير.
               </p>
               <div className="w-full max-w-lg bg-wine-night/80 rounded-xl p-5 mb-10 flex flex-col items-center justify-center relative shadow-lg">
                 <div className="absolute inset-0 rounded-xl pointer-events-none shadow-[inset_0_0_0_1px_rgba(201,162,75,0.35)]" />
@@ -99,7 +99,7 @@ export default function MaintenancePage() {
               </div>
               <div className="w-full max-w-md flex flex-col items-center mb-8">
                 <p className="font-label-md text-label-md text-rose-mist/90 mb-5">
-                  للاستفسارات العاجلة أو حجز قطع خاصة، تواصلوا مباشرة مع مستشار الدار:
+                  للاستفسارات العاجلة تواصلوا معنا مباشرة:
                 </p>
                 <div className="w-full grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                   <WhatsAppLink className="group relative flex items-center justify-center gap-2.5 py-3 px-4 rounded-xl text-champagne-gold font-label-lg text-label-lg transition-all duration-300 bg-transparent hover:bg-royal-gold/10 hover:translate-y-[1px] active:translate-y-[2px]">
@@ -130,7 +130,7 @@ export default function MaintenancePage() {
                   <span>جميع الطلبات السابقة قيد التجهيز والشحن المصفح في مواعيدها المعتمدة دون أي تأخير.</span>
                 </div>
                 <p className="font-label-sm text-label-sm text-muted-rosewood tracking-wide">
-                  دار آيريس للمجوهرات الراقية © 2025 — بغداد، شارع العرصات الهادي
+                  آيريس ستور © {new Date().getFullYear()} — بغداد
                 </p>
               </div>
             </div>

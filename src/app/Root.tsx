@@ -1,6 +1,7 @@
 import { Suspense } from 'react';
 import { Outlet } from 'react-router';
 import { BrandMark } from '@/components/common/BrandLogo';
+import { BrandingRuntime } from '@/components/common/BrandingRuntime';
 import { LegacyHandlers } from '@/components/common/LegacyHandlers';
 import { PlaceholderLinkGuard, ScrollToTop } from '@/components/common/PageEffects';
 import { AdminAuthProvider } from '@/state/adminAuth';
@@ -35,6 +36,7 @@ export function Root() {
                     <ScrollToTop />
                     <PlaceholderLinkGuard />
                     <LegacyHandlers />
+                    <BrandingRuntime />
                     <CatalogProvider fallback={<PageLoader />}>
                       <Suspense fallback={<PageLoader />}>
                         <Outlet />

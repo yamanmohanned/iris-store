@@ -164,13 +164,15 @@ const noHeader = await anon.request.post(base + '/api/index.php?r=orders', { dat
 check(noHeader.status() === 403, 'cross-site style request without header is rejected (403)');
 
 /* ───────── تنظيف: حذف القسم والمنتج التجريبيين ───────── */
+// الحذف يمر بنافذة التأكيد داخل اللوحة (لا نوافذ المتصفح الافتراضية)
+const confirmIn = (label) => op.getByRole('dialog').getByRole('button', { name: label }).click();
 await op.goto(base + '/admin/products', { waitUntil: 'networkidle' });
-op.once('dialog', (d) => d.accept());
 await op.locator('li', { hasText: PRODUCT }).getByRole('button', { name: 'حذف المنتج' }).click();
+await confirmIn('حذف المنتج');
 await op.waitForSelector(`text=${PRODUCT}`, { state: 'detached' });
 await op.goto(base + '/admin/categories', { waitUntil: 'networkidle' });
-op.once('dialog', (d) => d.accept());
 await op.locator('li', { hasText: CAT }).getByRole('button', { name: 'حذف القسم' }).click();
+await confirmIn('حذف القسم');
 await op.waitForSelector(`text=${CAT}`, { state: 'detached' });
 check(true, 'cleanup: test product and category deleted');
 

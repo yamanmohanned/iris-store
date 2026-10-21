@@ -118,9 +118,11 @@ export const spacing: Record<string, string> = {
  *  - النصوص والأرقام والأسعار: IBM Plex Sans Arabic (mono/public كانتا خطين لاتينيين مختلفين، وُحّدتا هنا
  *    مع أرقام جدولية من index.css حتى لا يختلف شكل الأرقام بين صفحة وأخرى)
  *  - كلمة IRIS في الشعار: Instrument Serif
+ * خطا النصوص والعناوين متغيّران (--font-text و --font-heading في index.css) حتى يغيّرهما المالك
+ * من «الإعدادات ← الهوية» فيسريان على الموقع كله (BrandingRuntime).
  */
-const TEXT = ["IBM Plex Sans Arabic", "Segoe UI", "Tahoma", "sans-serif"];
-const HEADING = ["El Messiri", "IBM Plex Sans Arabic", "Segoe UI", "Tahoma", "serif"];
+const TEXT = ["var(--font-text)"];
+const HEADING = ["var(--font-heading)"];
 const BRAND = ["Instrument Serif", "Georgia", "serif"];
 
 export const fontFamily: Record<string, string[]> = {

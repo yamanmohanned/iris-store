@@ -14,7 +14,7 @@ export const entries = [
   // storefront · desktop
   { id: '5f1b5f', route: '/', composite: true },
   { id: 'c44246', route: '/collections/necklaces' },
-  { id: '7259a8', route: '/products/gold-necklace-102' },
+  { id: '7259a8', route: '/products/swan-necklace' },
   { id: '5e85a1', route: '/cart', cart: 'filled' },
   { id: 'b6360e', route: '/cart', cart: 'empty' },
   { id: '6adf31', route: '/order-success/1054' },
@@ -33,7 +33,7 @@ export const entries = [
   { id: '508175', route: '/', mobile: true, redesigned: true },
   { id: '47b5a7', route: '/categories', mobile: true, redesigned: true },
   { id: 'f4d07a', route: '/collections/necklaces', mobile: true, redesigned: true },
-  { id: 'cf7867', route: '/products/gold-necklace-102', mobile: true },
+  { id: 'cf7867', route: '/products/swan-necklace', mobile: true },
   { id: '55072e', route: '/search?q=102', mobile: true, redesigned: true },
   { id: '913ca2', route: '/cart', mobile: true, cart: 'filled' },
   { id: '0713e3', route: '/cart', mobile: true, cart: 'empty' },

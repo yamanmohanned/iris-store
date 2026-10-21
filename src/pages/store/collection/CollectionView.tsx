@@ -5,6 +5,7 @@ import { ProductCard } from '@/components/store/ProductCard';
 import { familyLabels, familyOf, type Family } from '@/data/catalog';
 import type { Product } from '@/data/types';
 import { cn } from '@/lib/cn';
+import { useContactLinks } from '@/lib/contact';
 import { formatNumber, productCount } from '@/lib/format';
 
 type SortKey = 'newest' | 'price-asc' | 'price-desc' | 'popular';
@@ -17,14 +18,13 @@ const SORT_LABELS: Record<SortKey, string> = {
 };
 
 const METALS = [
-  { key: 'yellow18', label: 'ذهب أصفر عيار 18', test: /أصفر/ },
-  { key: 'white18', label: 'ذهب أبيض عيار 18', test: /أبيض/ },
-  { key: 'rose', label: 'ذهب وردي', test: /وردي/ },
-  { key: 'pure21', label: 'ذهب خالص عيار 21', test: /عيار 21|خالص/ },
+  { key: 'steel', label: 'ستانلس ستيل', test: /ستانلس|ستيل/ },
+  { key: 'plated', label: 'بطلاء ثابت', test: /طلاء/ },
 ] as const;
 
 const COLORS = [
   { key: 'gold', label: 'ذهبي', hex: '#C9A24B' },
+  { key: 'silver', label: 'فضي', hex: '#BFC3C7' },
   { key: 'white', label: 'أبيض', hex: '#D8D8D8' },
   { key: 'rose', label: 'وردي', hex: '#E5A89E' },
   { key: 'black', label: 'أسود', hex: '#2A030D' },
@@ -45,6 +45,7 @@ interface CollectionViewProps {
 
 /** صفحة القسم (PLP): ترويسة + فلاتر جانبية + شبكة منتجات بفرز وتحميل المزيد. */
 export function CollectionView({ title, description, items, breadcrumb, promo = true, emptyHint }: CollectionViewProps) {
+  const contact = useContactLinks();
   const prices = useMemo(() => items.map((i) => i.price), [items]);
   const lo = prices.length ? Math.min(...prices) : 0;
   const hi = prices.length ? Math.max(...prices) : 0;
@@ -260,7 +261,7 @@ export function CollectionView({ title, description, items, breadcrumb, promo = 
                 </div>
 
                 <div className="py-5">
-                  <h3 className="mb-3 font-headline-sm text-headline-sm font-medium text-deep-oxblood">عيار المعدن والمادة</h3>
+                  <h3 className="mb-3 font-headline-sm text-headline-sm font-medium text-deep-oxblood">الخامة</h3>
                   <div className="space-y-2.5 font-body-sm text-body-sm">
                     {METALS.map((m) => {
                       const on = metals.includes(m.key);
@@ -409,19 +410,21 @@ export function CollectionView({ title, description, items, breadcrumb, promo = 
                           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(#C9A24B_1px,transparent_1px)] opacity-[0.08] [background-size:14px_14px]" />
                           <div className="relative z-10">
                             <span className="flex items-center gap-1.5 font-label-sm text-label-sm text-royal-gold">
-                              <span className="text-[10px]">◆</span> مجموعة الإهداء الملكي
+                              <span className="text-[10px]">◆</span> جديدنا أولاً بأول
                             </span>
-                            <h3 className="mt-3 font-display-lg text-headline-xl leading-tight text-ivory-canvas">تغليف مجاني فاخر مع كل قلادة</h3>
+                            <h3 className="mt-3 font-display-lg text-headline-xl leading-tight text-ivory-canvas">شاهدي القطع بالفيديو</h3>
                             <p className="mt-3 max-w-xs font-body-sm text-body-sm text-champagne-gold/80">
-                              يصلكِ كل طلب داخل صندوق دار آيريس المخملي باللون العنابي الملكي مع شريط حريري ناعم وبطاقة إهداء مخصصة ومختومة بالشمع الذهبي.
+                              ننشر كل قطعة جديدة بالصور والفيديو على إنستغرام، ويمكنكِ الطلب من هناك برسالة أيضاً.
                             </p>
                           </div>
-                          <Link
-                            to="/collections/gifts"
+                          <a
+                            href={contact.instagram ?? '/contact'}
+                            target={contact.instagram ? '_blank' : undefined}
+                            rel="noreferrer"
                             className="relative z-10 mt-6 inline-flex w-fit items-center gap-2 rounded-lg bg-gradient-to-r from-royal-gold via-champagne-gold to-royal-gold px-5 py-2.5 font-label-md text-label-md font-semibold text-wine-night shadow-md"
                           >
-                            استكشف خدمة الإهداء <Icon name="arrow_back" className="text-[16px]" />
-                          </Link>
+                            {contact.instagramHandle ? `@${contact.instagramHandle}` : 'تواصلي معنا'} <Icon name="arrow_back" className="text-[16px]" />
+                          </a>
                         </article>,
                       ];
                     }

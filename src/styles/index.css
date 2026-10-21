@@ -3,6 +3,12 @@
 @tailwind utilities;
 
 @layer base {
+  /* الخطوط الافتراضية؛ «الإعدادات ← الهوية» تستبدلها من BrandingRuntime */
+  :root {
+    --font-text: 'IBM Plex Sans Arabic', 'Segoe UI', Tahoma, sans-serif;
+    --font-heading: 'El Messiri', 'IBM Plex Sans Arabic', 'Segoe UI', Tahoma, serif;
+  }
+
   html,
   body {
     margin: 0;

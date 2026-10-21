@@ -9,8 +9,8 @@ import { useToast } from '@/state/toast';
 import { useWishlist } from '@/state/wishlist';
 
 const TRUST = [
-  { icon: 'local_shipping', title: 'الدفع عند الاستلام مع المعاينة', note: 'حق فحص الذهب والأحجار قبل سداد المبلغ' },
-  { icon: 'inventory_2', title: 'التغليف في علبة الدار', note: 'مع كل قطعة بلا كلفة إضافية' },
+  { icon: 'payments', title: 'الدفع عند الاستلام', note: 'تأكدي من القطعة قبل الدفع للمندوب' },
+  { icon: 'local_shipping', title: 'توصيل لكل المحافظات', note: 'خلال 1–4 أيام عمل' },
   { icon: 'workspace_premium', title: 'استبدال خلال 7 أيام', note: 'إذا كانت القطعة بحالتها الأصلية' },
 ];
 
@@ -61,7 +61,7 @@ export default function CartPage() {
               </div>
               <div className="flex items-center gap-space-xs font-body-sm text-body-sm text-muted-rosewood">
                 <Icon name="verified_user" className="text-[18px] text-royal-gold" />
-                <span>جلسة حجز المجوهرات مؤمّنة بالكامل</span>
+                <span>سلتكِ محفوظة على هذا الجهاز</span>
               </div>
             </div>
 
@@ -84,7 +84,7 @@ export default function CartPage() {
                 </div>
                 <h2 className="mt-space-md font-headline-lg text-headline-lg font-bold text-deep-oxblood">سلتكِ فارغة حالياً</h2>
                 <p className="mx-auto mt-2 max-w-md font-body-md text-body-md text-muted-rosewood">
-                  لم تقومي بإضافة أي قطعة إلى سلتك بعد. استكشفي أحدث إبداعات دار آيريس المصاغة بحرفية استثنائية لتنتقي ما يليق بذوقكِ الرفيع.
+                  لم تضيفي أي قطعة إلى سلتكِ بعد. تصفّحي أحدث القطع واختاري ما يعجبكِ.
                 </p>
                 <div className="mt-space-lg flex flex-wrap justify-center gap-space-sm">
                   <Link
@@ -226,7 +226,7 @@ export default function CartPage() {
                                     <div className="mb-1 flex flex-wrap items-center gap-2">
                                       <h2 className="font-headline-sm text-headline-sm font-medium text-muted-rosewood">{p.shortName}</h2>
                                       <span className="rounded-full bg-surface-container-highest px-2.5 py-0.5 font-label-sm text-label-sm font-medium text-muted-rosewood">
-                                        غير متاح حالياً — نفد من الخزانة
+                                        غير متاح حالياً — نفدت الكمية
                                       </span>
                                     </div>
                                     <p className="font-body-sm text-body-sm text-muted-rosewood/70">{p.metal}</p>
@@ -239,7 +239,7 @@ export default function CartPage() {
                                 </div>
                                 <div className="mt-space-sm flex items-center gap-space-sm rounded-xl bg-surface-container-high/60 p-3 text-muted-rosewood">
                                   <Icon name="lock_clock" className="shrink-0 text-[18px]" />
-                                  <p className="font-body-sm text-body-sm">تم استبعاد هذه القطعة تلقائياً من حساب إجمالي الطلب حتى إعادة توفرها في الصياغة.</p>
+                                  <p className="font-body-sm text-body-sm">تم استبعاد هذه القطعة تلقائياً من حساب إجمالي الطلب حتى تتوفر من جديد.</p>
                                 </div>
                                 <div className="mt-space-md flex items-center justify-between pt-space-sm">
                                   <button
@@ -262,7 +262,7 @@ export default function CartPage() {
                       <div className="flex flex-col items-center justify-between gap-space-sm bg-surface-container-low/70 p-space-md font-body-sm text-body-sm text-muted-rosewood sm:flex-row">
                         <div className="flex items-center gap-2">
                           <Icon name="stars" className="text-[18px] text-royal-gold" />
-                          <span>كل قطعة ذهبية مختومة بدمغة العيار الرسمية</span>
+                          <span>الخامة مذكورة في صفحة كل قطعة</span>
                         </div>
                         <Link to="/policies/size-guide" className="font-label-sm text-label-sm font-semibold text-imperial-burgundy hover:underline">
                           استعراض دليل القياسات والأطوال ←
@@ -275,17 +275,17 @@ export default function CartPage() {
                       <div className="relative z-10 flex flex-col items-center justify-between gap-space-lg md:flex-row">
                         <div className="flex items-center gap-space-md">
                           <div className="h-16 w-16 shrink-0 overflow-hidden rounded-2xl shadow-[0_0_0_1px_rgba(201,162,75,0.4)]">
-                            <img className="h-full w-full object-cover" src="/images/gift-box-opening.jpg" alt="صندوق الهدايا الملكي" />
+                            <img className="h-full w-full object-cover" src="/images/instagram/moon-box.jpg" alt="قلادة القمر" />
                           </div>
                           <div>
-                            <h3 className="font-headline-sm text-headline-sm font-bold text-champagne-gold">تغليف آيريس</h3>
+                            <h3 className="font-headline-sm text-headline-sm font-bold text-champagne-gold">هدية لمن تحبين؟</h3>
                             <p className="mt-1 max-w-md font-body-sm text-body-sm text-rose-mist/80">
-                              كل طلب يغلف يدوياً بصندوق مخملي كستنائي مع بطاقة تهنئة مختومة بالشمع الأحمر ومرفقة بشهادة الفحص.
+                              اكتبي «هدية» في ملاحظات الطلب عند إتمامه، ونجهّزه بشكل يليق بالإهداء.
                             </p>
                           </div>
                         </div>
                         <span className="shrink-0 rounded-full bg-champagne-gold/15 px-3 py-1 font-label-sm text-label-sm font-semibold text-champagne-gold">
-                          مشمول مع الطلبات المؤهلة
+                          ملاحظة في الطلب
                         </span>
                       </div>
                     </div>
@@ -408,7 +408,7 @@ export default function CartPage() {
                           to="/collections/necklaces"
                           className="inline-flex items-center gap-2 font-label-md text-label-md font-medium text-deep-oxblood transition-colors duration-200 hover:text-imperial-burgundy"
                         >
-                          <span>متابعة التسوق واستعراض المجوهرات</span> <span className="text-royal-gold">←</span>
+                          <span>متابعة التسوق</span> <span className="text-royal-gold">←</span>
                         </Link>
                       </div>
                     </div>
@@ -434,12 +434,12 @@ export default function CartPage() {
                       <div className="flex items-center gap-space-sm">
                         <Icon name="support_agent" className="text-[24px] text-royal-gold" />
                         <div>
-                          <span className="block font-label-md text-label-md font-semibold">بحاجة إلى استشارة خاصة؟</span>
-                          <span className="font-label-sm text-label-sm text-muted-rosewood">خبير المجوهرات متواجد لخدمتك</span>
+                          <span className="block font-label-md text-label-md font-semibold">محتارة في الاختيار؟</span>
+                          <span className="font-label-sm text-label-sm text-muted-rosewood">راسلينا ونساعدكِ في الاختيار</span>
                         </div>
                       </div>
                       <Link to="/contact" className="rounded-lg bg-surface-container-lowest px-3 py-1.5 font-label-sm text-label-sm font-semibold text-imperial-burgundy shadow-sm transition-all hover:bg-blush-surface">
-                        محادثة فورية
+                        تواصلي معنا
                       </Link>
                     </div>
                   </aside>

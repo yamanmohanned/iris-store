@@ -23,7 +23,7 @@ export default function NoConnection() {
           <header className="w-full pt-space-md pb-space-lg flex flex-col items-center justify-center relative z-10">
             <div className="flex items-center gap-space-xs text-royal-gold">
               <span className="w-6 h-[1px] bg-royal-gold/40" />{' '}
-              <span className="text-[0.625rem] tracking-[0.25em] font-label-md uppercase text-antique-gold">MAISON JOAILLERIE</span>{' '}
+              <span className="text-[0.625rem] tracking-[0.25em] font-label-md uppercase text-antique-gold">IRIS STORE</span>{' '}
               <span className="w-6 h-[1px] bg-royal-gold/40" />
             </div>
             <div className="mt-1 flex items-center gap-2">
@@ -96,7 +96,7 @@ export default function NoConnection() {
               لا يوجد اتصال بالإنترنت
             </h1>
             <p className="font-body-md text-body-md text-muted-rosewood max-w-[320px] leading-relaxed">
-              تعذر الاتصال بخوادم دار آيريس. يُرجى التحقق من اتصالك بالشبكة وإعادة المحاولة لاستكمال تجربتك الملكية.
+              تعذر الاتصال بالمتجر. تحققي من اتصالكِ بالشبكة ثم أعيدي المحاولة.
             </p>
           </div>
           <div className="relative z-10 mt-space-lg mb-space-lg w-full">
@@ -169,7 +169,7 @@ export default function NoConnection() {
             >
               <span>0770 123 4567</span> <span className="material-symbols-outlined text-[14px]">call</span>
             </a>{' '}
-            <span className="mt-1 text-[11px] font-label-sm text-muted-rosewood">متاح على مدار الساعة لنخبة عملاء دار آيريس</span>
+            <span className="mt-1 text-[11px] font-label-sm text-muted-rosewood">نرد على رسائلكِ في إنستغرام وواتساب</span>
           </footer>
         </div>
       </main>

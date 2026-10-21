@@ -178,8 +178,8 @@ export default function AccountGuest() {
                     <span className="material-symbols-outlined text-[20px]">diamond</span>
                   </div>
                   <div className="flex flex-col">
-                    <span className="font-label-lg text-label-lg text-warm-ink">عن دار آيريس للمجوهرات</span>{' '}
-                    <span className="font-body-sm text-body-sm text-muted-rosewood">تاريخ الدار، الحرفية، وفروعنا</span>
+                    <span className="font-label-lg text-label-lg text-warm-ink">عن آيريس ستور</span>{' '}
+                    <span className="font-body-sm text-body-sm text-muted-rosewood">من نحن وكيف نعمل</span>
                   </div>
                 </div>
                 <span className="material-symbols-outlined text-[18px] text-muted-rosewood">chevron_left</span>

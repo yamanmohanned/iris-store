@@ -105,7 +105,7 @@ export default function OrderSuccessMobile() {
           <Icon name="local_shipping" className="text-[20px] text-champagne-gold" />
           تتبع الطلب
         </Link>
-        <WhatsAppLink text={`مرحباً دار آيريس، استفسار عن الطلب رقم ${order.id}`} className={MOBILE_BTN_SECONDARY}>
+        <WhatsAppLink text={`مرحباً آيريس، استفسار عن الطلب رقم ${order.id}`} className={MOBILE_BTN_SECONDARY}>
           <Icon name="chat" className="text-[20px]" />
           تواصلي معنا
         </WhatsAppLink>

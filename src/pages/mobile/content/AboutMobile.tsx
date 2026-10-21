@@ -6,57 +6,57 @@ import { cn } from '@/lib/cn';
 
 const PILLARS = [
   {
-    title: 'جودة مختارة',
-    text: 'ذهب عيار 18 و21 مختوم بدمغة العيار الرسمية، وأحجار كريمة تُرفق بشهادتها عند توفرها.',
+    title: 'قطع مختارة',
+    text: 'قلائد وتطقيمات كبلز وإكسسوارات بطلاء ثابت، نعرضها بصور وفيديو من القطع نفسها.',
   },
   {
-    title: 'تغليف أنيق',
-    text: 'تصل كل قطعة في صندوق الدار المخملي، جاهزة للإهداء من لحظة وصولها.',
+    title: 'أسعار واضحة',
+    text: 'السعر في صفحة كل قطعة، وأجور التوصيل تظهر في السلة قبل تأكيد الطلب.',
   },
   {
     title: 'خدمة قريبة',
-    text: 'نتصل بكِ لتأكيد كل طلب، وتدفعين عند الاستلام بعد معاينة القطعة.',
+    text: 'نتصل بكِ لتأكيد كل طلب، وتدفعين عند الاستلام بعد التأكد من القطعة.',
   },
 ];
 
 const FACTS = [
-  { icon: 'verified', label: 'ذهب مدموغ عيار 18 و21' },
+  { icon: 'photo_library', label: 'صور وفيديو حقيقية' },
   { icon: 'local_shipping', label: 'توصيل لكل المحافظات' },
   { icon: 'payments', label: 'الدفع عند الاستلام' },
   { icon: 'autorenew', label: 'استبدال خلال 7 أيام' },
 ];
 
-/** «قصة الدار» على الهاتف — نسخة مختصرة وواضحة بدل تصميم الديسكتوب الطويل. */
+/** «من نحن» على الهاتف — نسخة مختصرة وواضحة. */
 export default function AboutMobile() {
   return (
-    <MobilePage title="قصة الدار" back>
+    <MobilePage title="من نحن" back>
       <section className="relative overflow-hidden rounded-[22px] bg-wine-night shadow-[0_14px_36px_rgba(42,3,13,0.22)]">
-        <img src="/images/stitch/169.jpg" alt="" className="aspect-[4/5] w-full object-cover" />
+        <img src="/images/instagram/couple-rings-set.jpg" alt="" className="aspect-[4/5] w-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-t from-wine-night via-wine-night/30 to-transparent" />
         <div className="absolute inset-x-0 bottom-0 p-5">
-          <p className="font-label-md text-label-md text-champagne-gold">حكاية دار آيريس</p>
+          <p className="font-label-md text-label-md text-champagne-gold">آيريس ستور · بغداد</p>
           <h1 className="mt-1 font-headline-lg text-headline-lg font-semibold leading-snug text-ivory-canvas">
-            نختار بعناية…
+            التفاصيل الصغيرة…
             <br />
-            ونغلّف بحب
+            تصنع الفرق
           </h1>
         </div>
       </section>
 
       <p className="mt-5 font-body-md text-body-md leading-[1.9] text-on-surface-variant">
-        آيريس دار مجوهرات تنتقي القلائد والخواتم والأساور والأقراط من الذهب والأحجار الكريمة بتصاميم راقية، وتوصلها مغلّفة بأناقة إلى باب
-        بيتكِ في جميع المحافظات.
+        آيريس ستور متجر إكسسوارات من بغداد، نختار القلائد والخواتم وتطقيمات الكبلز والهدايا بعناية، ونوصلها إلى باب بيتكِ في جميع
+        محافظات العراق مع الدفع عند الاستلام.
       </p>
 
       <blockquote className="mt-6 rounded-2xl bg-parchment px-5 py-6 text-center">
         <BrandMark className="h-7 text-royal-gold" />
         <p className="mt-3 font-headline-sm text-headline-sm font-semibold leading-relaxed text-deep-oxblood">
-          المجوهرات ليست زينة عابرة، بل ذاكرة تُصاغ من نقاء الذهب ويحفظها الزمن في قلوب من نحب.
+          قطعة صغيرة تحمل معنى قد تقول ما لا تقوله الكلمات.
         </p>
       </blockquote>
 
       <section className="mt-7">
-        <MobileSectionTitle>ما يميز دار آيريس</MobileSectionTitle>
+        <MobileSectionTitle>ما يميز آيريس</MobileSectionTitle>
         <ol className={cn(MOBILE_CARD, 'flex flex-col p-0')}>
           {PILLARS.map((p, i) => (
             <li key={p.title} className="flex gap-4 border-b border-hairline-burgundy px-4 py-4 last:border-b-0">

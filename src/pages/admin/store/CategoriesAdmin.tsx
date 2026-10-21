@@ -1,12 +1,26 @@
 import { useMemo, useState } from 'react';
 import { Link } from 'react-router';
-import { AdminPage, Button, Card, Drawer, EmptyState, Field, inputClass, OfflineNotice, Toggle } from '@/components/admin/ui';
+import { useConfirm } from '@/components/admin/ConfirmDialog';
+import {
+  AdminPage,
+  Button,
+  Card,
+  Drawer,
+  EmptyState,
+  Field,
+  inputClass,
+  OfflineNotice,
+  ReadOnlyNotice,
+  Toggle,
+} from '@/components/admin/ui';
 import { ImageField } from '@/components/admin/ImageField';
 import { Icon } from '@/components/common/Icon';
 import { useCatalog } from '@/data/catalog';
 import type { Category, Product } from '@/data/types';
 import { cn } from '@/lib/cn';
 import { piecesCount } from '@/lib/format';
+import { useAdminAuth } from '@/state/adminAuth';
+import { useToast } from '@/state/toast';
 import { slugify, uniqueSlug, useCatalogEditor } from './useCatalogEditor';
 
 interface Draft {
@@ -37,6 +51,11 @@ function move<T>(list: T[], index: number, dir: -1 | 1): T[] {
 export default function CategoriesAdmin() {
   const catalog = useCatalog();
   const { commit, saving, online } = useCatalogEditor();
+  const { can } = useAdminAuth();
+  const canEdit = can('categories', 'edit');
+  const canEditProducts = can('products', 'edit');
+  const { confirm, choose } = useConfirm();
+  const toast = useToast();
   const [draft, setDraft] = useState<Draft | null>(null);
   const [error, setError] = useState<string>();
 
@@ -105,30 +124,42 @@ export default function CategoriesAdmin() {
   const remove = async (c: Category) => {
     const count = counts.get(c.slug) ?? 0;
     if (count > 0) {
-      const others = catalog.categories.filter((x) => x.slug !== c.slug);
-      if (!others.length) {
-        window.alert('لا يمكن حذف القسم الوحيد وفيه منتجات. أضف قسماً آخر أولاً أو احذف المنتجات.');
+      if (!canEditProducts) {
+        toast.show('في هذا القسم منتجات؛ نقلها يحتاج صلاحية تعديل المنتجات.', 'error');
         return;
       }
-      const choice = window.prompt(
-        `في قسم «${c.name}» ${piecesCount(count)}. إلى أي قسم تنقلها قبل الحذف؟ اكتب رقم القسم:\n` +
-          others.map((o, i) => `${i + 1}. ${o.name}`).join('\n'),
-        '1',
-      );
-      const target = others[Number(choice) - 1];
-      if (!target) return;
+      const others = catalog.categories.filter((x) => x.slug !== c.slug);
+      if (!others.length) {
+        toast.show('لا يمكن حذف القسم الوحيد وفيه منتجات. أضف قسماً آخر أولاً أو احذف المنتجات.', 'error');
+        return;
+      }
+      const target = await choose({
+        title: `حذف قسم «${c.name}»؟`,
+        body: `في هذا القسم ${piecesCount(count)}. اختر القسم الذي تُنقل إليه قبل الحذف.`,
+        choiceLabel: 'انقل المنتجات إلى',
+        choices: others.map((o) => ({ value: o.slug, label: o.name })),
+        confirmLabel: 'نقل المنتجات وحذف القسم',
+        tone: 'danger',
+      });
+      const dest = others.find((o) => o.slug === target);
+      if (!dest) return;
       await commit(
         (d) => ({
           ...d,
           categories: d.categories.filter((x) => x.slug !== c.slug),
-          products: d.products.map((p) => (p.category === c.slug ? { ...p, category: target.slug } : p)),
+          products: d.products.map((p) => (p.category === c.slug ? { ...p, category: dest.slug } : p)),
         }),
-        `تم حذف «${c.name}» ونقل منتجاته إلى «${target.name}»`,
+        `تم حذف «${c.name}» ونقل منتجاته إلى «${dest.name}»`,
       );
       return;
     }
-    if (!window.confirm(`حذف قسم «${c.name}»؟`)) return;
-    await commit((d) => ({ ...d, categories: d.categories.filter((x) => x.slug !== c.slug) }), 'تم حذف القسم');
+    const ok = await confirm({
+      title: `حذف قسم «${c.name}»؟`,
+      body: 'القسم فارغ، ولن يتأثر أي منتج.',
+      confirmLabel: 'حذف القسم',
+      tone: 'danger',
+    });
+    if (ok) await commit((d) => ({ ...d, categories: d.categories.filter((x) => x.slug !== c.slug) }), 'تم حذف القسم');
   };
 
   return (
@@ -136,11 +167,14 @@ export default function CategoriesAdmin() {
       title="الأقسام"
       subtitle="الأقسام تظهر في الصفحة الرئيسية بنفس الترتيب هنا، وكل قسم يعرض المنتجات التي تخصصها له."
       actions={
-        <Button icon="add" onClick={openNew}>
-          إضافة قسم
-        </Button>
+        canEdit && (
+          <Button icon="add" onClick={openNew}>
+            إضافة قسم
+          </Button>
+        )
       }
     >
+      {!canEdit && <ReadOnlyNotice />}
       {!online && (
         <OfflineNotice message="الخادم غير متاح حالياً، لذلك لن تُحفظ التعديلات. تأكد من رفع مجلد api مع الموقع على استضافة تدعم PHP." />
       )}
@@ -149,11 +183,13 @@ export default function CategoriesAdmin() {
         <EmptyState
           icon="category"
           title="لا توجد أقسام بعد"
-          body="ابدأ بإضافة أول قسم مثل: قلائد، أساور، محابس."
+          body="ابدأ بإضافة أول قسم مثل: قلائد، أساور، تطقيمات."
           action={
-            <Button icon="add" onClick={openNew}>
-              إضافة قسم
-            </Button>
+            canEdit && (
+              <Button icon="add" onClick={openNew}>
+                إضافة قسم
+              </Button>
+            )
           }
         />
       ) : (
@@ -161,7 +197,7 @@ export default function CategoriesAdmin() {
           {catalog.categories.map((c, i) => (
             <li key={c.slug}>
               <Card className="flex items-center gap-3 !p-3 md:gap-4">
-                <div className="flex flex-col">
+                <div className={cn('flex flex-col', !canEdit && 'hidden')}>
                   <button
                     type="button"
                     aria-label="تحريك للأعلى"
@@ -206,6 +242,7 @@ export default function CategoriesAdmin() {
                 <div className="flex shrink-0 items-center gap-1">
                   <button
                     type="button"
+                    hidden={!canEdit}
                     title={c.hidden ? 'إظهار' : 'إخفاء'}
                     aria-label={c.hidden ? 'إظهار القسم' : 'إخفاء القسم'}
                     disabled={saving}
@@ -225,15 +262,16 @@ export default function CategoriesAdmin() {
                   </Link>
                   <button
                     type="button"
-                    title="تعديل"
-                    aria-label="تعديل القسم"
+                    title={canEdit ? 'تعديل' : 'عرض'}
+                    aria-label={canEdit ? 'تعديل القسم' : 'عرض القسم'}
                     onClick={() => openEdit(c)}
                     className="flex h-9 w-9 items-center justify-center rounded-lg text-imperial-burgundy hover:bg-blush-surface"
                   >
-                    <Icon name="edit" className="text-[20px]" />
+                    <Icon name={canEdit ? 'edit' : 'visibility'} className="text-[20px]" />
                   </button>
                   <button
                     type="button"
+                    hidden={!canEdit}
                     title="حذف"
                     aria-label="حذف القسم"
                     disabled={saving}
@@ -251,64 +289,68 @@ export default function CategoriesAdmin() {
 
       <Drawer
         open={!!draft}
-        title={draft?.slug ? 'تعديل القسم' : 'قسم جديد'}
+        title={draft?.slug ? (canEdit ? 'تعديل القسم' : 'تفاصيل القسم') : 'قسم جديد'}
         onClose={() => setDraft(null)}
         footer={
-          <div className="flex items-center justify-between gap-3">
-            <Button variant="ghost" onClick={() => setDraft(null)}>
-              إلغاء
-            </Button>
-            <Button icon="check" busy={saving} onClick={() => void saveDraft()}>
-              حفظ القسم
-            </Button>
-          </div>
+          canEdit && (
+            <div className="flex items-center justify-between gap-3">
+              <Button variant="ghost" onClick={() => setDraft(null)}>
+                إلغاء
+              </Button>
+              <Button icon="check" busy={saving} onClick={() => void saveDraft()}>
+                حفظ القسم
+              </Button>
+            </div>
+          )
         }
       >
         {draft && (
           <div className="flex flex-col gap-5">
-            <Field label="اسم القسم" required error={error} hint="يظهر على بطاقة القسم، مثل: قلائد، أساور، محابس.">
-              <input
-                className={inputClass}
-                value={draft.name}
-                onChange={(e) => setDraft({ ...draft, name: e.target.value })}
-                maxLength={80}
-                autoFocus
-              />
-            </Field>
-            <Field label="صورة القسم" hint="صورة أفقية واضحة؛ تُعرض كبطاقة كبيرة في الرئيسية وغلافاً لصفحة القسم.">
-              <ImageField value={draft.image} onChange={(image) => setDraft({ ...draft, image })} aspect="aspect-[16/10]" />
-            </Field>
-            <Field label="وصف قصير" hint="يظهر أعلى صفحة القسم (اختياري).">
-              <textarea
-                className={cn(inputClass, 'min-h-[96px]')}
-                value={draft.description}
-                onChange={(e) => setDraft({ ...draft, description: e.target.value })}
-                maxLength={1500}
-              />
-            </Field>
-            <details className="rounded-xl bg-surface-container-low px-4 py-3">
-              <summary className="cursor-pointer font-label-lg text-label-lg text-warm-ink">خيارات إضافية</summary>
-              <div className="mt-4 flex flex-col gap-4">
-                <Field label="عنوان صفحة القسم" hint="للديسكتوب؛ يُستخدم اسم القسم إن تُرك فارغاً.">
-                  <input
-                    className={inputClass}
-                    value={draft.title}
-                    onChange={(e) => setDraft({ ...draft, title: e.target.value })}
-                    maxLength={120}
-                  />
-                </Field>
-                <Field label="وحدة العد" hint="مثل: قطعة فريدة، قطعة مصوغة.">
-                  <input
-                    className={inputClass}
-                    value={draft.unit}
-                    onChange={(e) => setDraft({ ...draft, unit: e.target.value })}
-                    maxLength={40}
-                  />
-                </Field>
-              </div>
-            </details>
-            <Toggle checked={draft.hidden} onChange={(hidden) => setDraft({ ...draft, hidden })} label="إخفاء القسم عن الزوار مؤقتاً" />
-            {draft.slug && <CategoryProducts slug={draft.slug} />}
+            <fieldset disabled={!canEdit} className="flex min-w-0 flex-col gap-5">
+              <Field label="اسم القسم" required error={error} hint="يظهر على بطاقة القسم، مثل: قلائد، أساور، محابس.">
+                <input
+                  className={inputClass}
+                  value={draft.name}
+                  onChange={(e) => setDraft({ ...draft, name: e.target.value })}
+                  maxLength={80}
+                  autoFocus
+                />
+              </Field>
+              <Field label="صورة القسم" hint="صورة أفقية واضحة؛ تُعرض كبطاقة كبيرة في الرئيسية وغلافاً لصفحة القسم.">
+                <ImageField value={draft.image} onChange={(image) => setDraft({ ...draft, image })} aspect="aspect-[16/10]" />
+              </Field>
+              <Field label="وصف قصير" hint="يظهر أعلى صفحة القسم (اختياري).">
+                <textarea
+                  className={cn(inputClass, 'min-h-[96px]')}
+                  value={draft.description}
+                  onChange={(e) => setDraft({ ...draft, description: e.target.value })}
+                  maxLength={1500}
+                />
+              </Field>
+              <details className="rounded-xl bg-surface-container-low px-4 py-3">
+                <summary className="cursor-pointer font-label-lg text-label-lg text-warm-ink">خيارات إضافية</summary>
+                <div className="mt-4 flex flex-col gap-4">
+                  <Field label="عنوان صفحة القسم" hint="للديسكتوب؛ يُستخدم اسم القسم إن تُرك فارغاً.">
+                    <input
+                      className={inputClass}
+                      value={draft.title}
+                      onChange={(e) => setDraft({ ...draft, title: e.target.value })}
+                      maxLength={120}
+                    />
+                  </Field>
+                  <Field label="وحدة العد" hint="مثل: قطعة، سيت.">
+                    <input
+                      className={inputClass}
+                      value={draft.unit}
+                      onChange={(e) => setDraft({ ...draft, unit: e.target.value })}
+                      maxLength={40}
+                    />
+                  </Field>
+                </div>
+              </details>
+              <Toggle checked={draft.hidden} onChange={(hidden) => setDraft({ ...draft, hidden })} label="إخفاء القسم عن الزوار مؤقتاً" />
+            </fieldset>
+            {draft.slug && <CategoryProducts slug={draft.slug} editable={canEditProducts} />}
           </div>
         )}
       </Drawer>
@@ -317,7 +359,7 @@ export default function CategoriesAdmin() {
 }
 
 /** منتجات القسم: ترتيبها، نقلها لقسم آخر، وإضافة منتجات من أقسام أخرى. */
-function CategoryProducts({ slug }: { slug: string }) {
+function CategoryProducts({ slug, editable }: { slug: string; editable: boolean }) {
   const catalog = useCatalog();
   const { commit, saving } = useCatalogEditor();
   const [adding, setAdding] = useState('');
@@ -349,6 +391,7 @@ function CategoryProducts({ slug }: { slug: string }) {
         <h3 className="font-headline-sm text-headline-sm font-semibold text-deep-oxblood">منتجات هذا القسم</h3>
         <Link
           to={`/admin/products/new?category=${encodeURIComponent(slug)}`}
+          hidden={!editable}
           className="inline-flex items-center gap-1 font-label-md text-label-md text-imperial-burgundy"
         >
           <Icon name="add" className="text-[18px]" /> منتج جديد
@@ -358,7 +401,7 @@ function CategoryProducts({ slug }: { slug: string }) {
       <ul className="flex flex-col gap-2">
         {items.map((p, i) => (
           <li key={p.id} className="flex items-center gap-2 rounded-xl bg-surface-container-lowest p-2 shadow-sm">
-            <div className="flex flex-col">
+            <div className={cn('flex flex-col', !editable && 'hidden')}>
               <button
                 type="button"
                 aria-label="للأعلى"
@@ -389,6 +432,7 @@ function CategoryProducts({ slug }: { slug: string }) {
             <select
               aria-label="نقل إلى قسم"
               value=""
+              hidden={!editable}
               disabled={saving}
               onChange={(e) => e.target.value && void moveTo(p, e.target.value)}
               className="max-w-[120px] rounded-lg bg-blush-surface px-2 py-1.5 font-label-sm text-label-sm text-warm-ink"
@@ -405,7 +449,7 @@ function CategoryProducts({ slug }: { slug: string }) {
           </li>
         ))}
       </ul>
-      {others.length > 0 && (
+      {editable && others.length > 0 && (
         <div className="flex items-center gap-2">
           <select
             aria-label="إضافة منتج موجود"

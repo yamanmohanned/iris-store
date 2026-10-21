@@ -1,3 +1,5 @@
+import type { Branding } from '@/lib/branding';
+
 /** معرّف القسم في الرابط (`/collections/:slug`). الأقسام يضيفها المالك من لوحة الإدارة. */
 export type CategorySlug = string;
 
@@ -10,7 +12,7 @@ export interface Category {
   /** عنوان صفحة القسم */
   title: string;
   description: string;
-  /** وحدة العدّ في ترويسة القسم: قطعة فريدة / قطعة مصوغة… */
+  /** وحدة العدّ في ترويسة القسم: قطعة / سيت… */
   unit?: string;
   image: string;
   /** مخفي عن الزوار (يبقى ظاهراً في لوحة الإدارة) */
@@ -28,7 +30,7 @@ export interface Product {
   category: CategorySlug;
   /** وصف مختصر في البطاقة */
   summary: string;
-  /** المعدن والخام */
+  /** الخامة (ستانلس ستيل، معدن بطلاء ثابت…) */
   metal: string;
   price: number;
   oldPrice?: number;
@@ -37,6 +39,12 @@ export interface Product {
   stock: number;
   image: string;
   gallery: string[];
+  /** فيديوهات المنتج (MP4) تُعرض في معرض الصور — حتى 3 */
+  videos?: string[];
+  /** مصدر المنتج إن استُورد (ig:<رقم المنشور>) — يمنع استيراد المنشور نفسه مرتين */
+  source?: string;
+  /** رابط المنشور الأصلي على إنستغرام */
+  sourceUrl?: string;
   /** ألوان المعدن المتاحة (للنقاط الملونة في البطاقة) */
   swatches?: Array<'gold' | 'white' | 'rose' | 'silver' | 'black'>;
   /** أطوال/مقاسات متاحة */
@@ -71,6 +79,8 @@ export interface StoreSettings {
   instagram?: string;
   /** صورة غلاف الرئيسية على الهاتف */
   heroImage?: string;
+  /** الشعار والخطوط (صفحة الإعدادات ← الهوية) */
+  branding?: Branding;
 }
 
 export interface CatalogData {

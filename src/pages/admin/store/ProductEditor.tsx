@@ -1,12 +1,14 @@
 import { useState } from 'react';
 import { Link, useNavigate, useParams, useSearchParams } from 'react-router';
 import { ImageField } from '@/components/admin/ImageField';
-import { AdminPage, Button, Card, EmptyState, Field, inputClass, OfflineNotice, Toggle } from '@/components/admin/ui';
+import { AdminPage, Button, Card, EmptyState, Field, inputClass, OfflineNotice, ReadOnlyNotice, Toggle } from '@/components/admin/ui';
+import { VideoField } from '@/components/admin/VideoField';
 import { Icon } from '@/components/common/Icon';
 import { badgeLabels, useCatalog } from '@/data/catalog';
 import type { Product, ProductBadge } from '@/data/types';
 import { cn } from '@/lib/cn';
 import { METAL_STYLES } from '@/pages/store/product/productOptions';
+import { useAdminAuth } from '@/state/adminAuth';
 import { newId, slugify, uniqueSlug, useCatalogEditor } from './useCatalogEditor';
 
 type Swatch = NonNullable<Product['swatches']>[number];
@@ -24,6 +26,7 @@ interface Form {
   summary: string;
   image: string;
   gallery: string[];
+  videos: string[];
   badge: ProductBadge | '';
   swatches: Swatch[];
   sizes: Array<{ label: string; soldOut: boolean; note?: string }>;
@@ -45,6 +48,7 @@ function toForm(p: Product | undefined, category: string): Form {
     summary: p?.summary ?? '',
     image: p?.image ?? '',
     gallery: (p?.gallery ?? []).filter((g) => g !== p?.image),
+    videos: p?.videos ?? [],
     badge: p?.badge ?? '',
     swatches: p?.swatches ?? [],
     sizes: (p?.sizes ?? []).map((s) => ({ label: s.label, soldOut: !!s.soldOut, note: s.note })),
@@ -85,6 +89,7 @@ function EditorForm({ existing, initialCategory }: { existing?: Product; initial
   const catalog = useCatalog();
   const { commit, saving, online } = useCatalogEditor();
   const navigate = useNavigate();
+  const readOnly = !useAdminAuth().can('products', 'edit');
   const [f, setF] = useState<Form>(() => toForm(existing, initialCategory));
   const [errors, setErrors] = useState<Partial<Record<keyof Form, string>>>({});
   const set = <K extends keyof Form>(key: K, value: Form[K]) => setF((prev) => ({ ...prev, [key]: value }));
@@ -144,6 +149,8 @@ function EditorForm({ existing, initialCategory }: { existing?: Product; initial
           stock: Math.max(0, num(f.stock || '0')),
           image: f.image,
           gallery: [f.image, ...f.gallery.filter(Boolean)],
+          ...(f.videos.length ? { videos: f.videos } : {}),
+          ...(existing?.source ? { source: existing.source, ...(existing.sourceUrl ? { sourceUrl: existing.sourceUrl } : {}) } : {}),
           ...(f.swatches.length ? { swatches: f.swatches } : {}),
           ...(sizes.length ? { sizes } : {}),
           ...(existing?.tags ? { tags: existing.tags } : {}),
@@ -160,7 +167,7 @@ function EditorForm({ existing, initialCategory }: { existing?: Product; initial
 
   return (
     <AdminPage
-      title={existing ? `تعديل: ${existing.shortName}` : 'منتج جديد'}
+      title={existing ? (readOnly ? existing.shortName : `تعديل: ${existing.shortName}`) : 'منتج جديد'}
       subtitle="القسم الذي تختاره هنا هو الذي يظهر فيه المنتج في المتجر."
       actions={
         <>
@@ -174,19 +181,32 @@ function EditorForm({ existing, initialCategory }: { existing?: Product; initial
               <Icon name="open_in_new" className="text-[18px]" /> عرض في المتجر
             </a>
           )}
+          {existing?.sourceUrl && (
+            <a
+              href={existing.sourceUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1 rounded-xl px-3 py-2 font-label-md text-label-md text-imperial-burgundy hover:bg-blush-surface"
+            >
+              <Icon name="photo_library" className="text-[18px]" /> المنشور الأصلي
+            </a>
+          )}
           <Button variant="secondary" onClick={() => navigate('/admin/products')}>
-            إلغاء
+            {readOnly ? 'رجوع' : 'إلغاء'}
           </Button>
-          <Button icon="check" busy={saving} onClick={() => void save()}>
-            حفظ المنتج
-          </Button>
+          {!readOnly && (
+            <Button icon="check" busy={saving} onClick={() => void save()}>
+              حفظ المنتج
+            </Button>
+          )}
         </>
       }
     >
+      {readOnly && <ReadOnlyNotice />}
       {!online && <OfflineNotice message="الخادم غير متاح حالياً، لذلك لن يُحفظ المنتج." />}
       {catalog.categories.length === 0 && <OfflineNotice message="أضف قسماً واحداً على الأقل من صفحة الأقسام قبل إضافة المنتجات." />}
 
-      <div className="grid grid-cols-1 gap-5 lg:grid-cols-12">
+      <fieldset disabled={readOnly} className="grid min-w-0 grid-cols-1 gap-5 lg:grid-cols-12">
         <div className="flex flex-col gap-5 lg:col-span-7">
           <Card className="flex flex-col gap-4">
             <Field label="اسم المنتج" required error={errors.name}>
@@ -195,7 +215,7 @@ function EditorForm({ existing, initialCategory }: { existing?: Product; initial
                 value={f.name}
                 onChange={(e) => set('name', e.target.value)}
                 maxLength={200}
-                placeholder="مثال: قلادة ذهبية بحجر الياقوت"
+                placeholder="مثال: قلادة الأمنيات 11:11"
               />
             </Field>
             <Field label="الاسم المختصر" hint="يظهر على البطاقات والسلة؛ يُستخدم الاسم الكامل إن تُرك فارغاً.">
@@ -245,7 +265,7 @@ function EditorForm({ existing, initialCategory }: { existing?: Product; initial
                 <input className={inputClass} dir="ltr" value={f.sku} onChange={(e) => set('sku', e.target.value)} maxLength={40} />
               </Field>
             </div>
-            <Field label="الخامة والعيار" hint="مثال: ذهب أصفر عيار 18">
+            <Field label="الخامة" hint="مثال: ستانلس ستيل بطلاء ذهبي ثابت">
               <input className={inputClass} value={f.metal} onChange={(e) => set('metal', e.target.value)} maxLength={120} />
             </Field>
             <Field label="وصف قصير" hint="سطر واحد يظهر تحت اسم المنتج في بطاقة القسم.">
@@ -386,11 +406,20 @@ function EditorForm({ existing, initialCategory }: { existing?: Product; initial
             </div>
             {f.gallery.length < 8 && <GalleryAdd onAdd={(url) => set('gallery', [...f.gallery, url])} />}
           </Card>
+          <Card className="flex flex-col gap-3">
+            <div>
+              <p className="font-label-lg text-label-lg text-warm-ink">فيديو المنتج</p>
+              <p className="font-label-sm text-label-sm text-muted-rosewood">
+                يظهر بعد الصورة الرئيسية في صفحة المنتج، صامتاً ومتكرراً. حتى 3 مقاطع قصيرة.
+              </p>
+            </div>
+            <VideoField value={f.videos} onChange={(v) => set('videos', v)} />
+          </Card>
           <Card>
             <Toggle checked={f.hidden} onChange={(v) => set('hidden', v)} label="إخفاء المنتج عن الزوار (مسودة)" />
           </Card>
         </div>
-      </div>
+      </fieldset>
     </AdminPage>
   );
 }

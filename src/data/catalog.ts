@@ -79,22 +79,22 @@ export function productsByCategory(slug: CategorySlug): Product[] {
   return snapshot.visibleProducts.filter((p) => p.category === slug);
 }
 
-export type Family = 'gold' | 'solitaire' | 'pearl' | 'chain';
+export type Family = 'couple' | 'gift' | 'steel' | 'other';
 
 export const familyLabels: Record<Family, string> = {
-  gold: 'قطع ذهبية',
-  solitaire: 'سوليتير وألماس',
-  pearl: 'لؤلؤ طبيعي',
-  chain: 'سلاسل وأطواق',
+  couple: 'لشخصين (كبلز)',
+  gift: 'هدايا تحمل رسالة',
+  steel: 'ستانلس ستيل',
+  other: 'قطع أخرى',
 };
 
 /** تصنيف فرعي مشتق من الاسم/الوصف/المعدن (يُستبدل بحقل حقيقي عند الربط بقاعدة بيانات). */
 export function familyOf(p: Product): Family {
   const t = `${p.name} ${p.summary} ${p.metal}`;
-  if (/لؤلؤ/.test(t)) return 'pearl';
-  if (/ألماس|سوليتير|ياقوت|زفير|سفير|زمرد|زمرّد/.test(t)) return 'solitaire';
-  if (/سلسلة|سلاسل|طوق/.test(t)) return 'chain';
-  return 'gold';
+  if (/كبلز|ثنائي|لشخصين/.test(t)) return 'couple';
+  if (/أحبك|رسالة|صورة|أمني/.test(t)) return 'gift';
+  if (/ستانلس|ستيل/.test(t)) return 'steel';
+  return 'other';
 }
 
 const stripMarks = (s: string) =>
@@ -138,7 +138,7 @@ export function searchProducts(query: string): Product[] {
   );
 }
 
-/** قطع مقترحة لشرائط «مختارات الدار»: المتوفرة فقط، وتتقدّمها الأكثر طلباً والجديدة. */
+/** قطع مقترحة لشرائط «مختارات آيريس»: المتوفرة فقط، وتتقدّمها الأكثر طلباً والجديدة. */
 export function featuredPicks(products: Product[], limit = 8): Product[] {
   const inStock = products.filter((p) => p.stock > 0);
   const featured = inStock.filter((p) => p.badge === 'bestseller' || p.badge === 'new');

@@ -13,8 +13,8 @@ import { useWishlist } from '@/state/wishlist';
 const HELP = [
   { to: '/policies/shipping', icon: 'local_shipping', label: 'الشحن والاستبدال' },
   { to: '/policies/size-guide', icon: 'straighten', label: 'دليل المقاسات' },
-  { to: '/policies/care', icon: 'auto_awesome', label: 'العناية بالمجوهرات' },
-  { to: '/policies/authenticity', icon: 'verified', label: 'الضمان والأصالة' },
+  { to: '/policies/care', icon: 'auto_awesome', label: 'العناية بالإكسسوارات' },
+  { to: '/policies/authenticity', icon: 'verified', label: 'الخامات والجودة' },
   { to: '/faq', icon: 'help', label: 'الأسئلة الشائعة' },
   { to: '/contact', icon: 'chat', label: 'تواصل معنا' },
 ];
@@ -51,8 +51,8 @@ function AccountContent() {
   return (
     <div className="flex flex-col gap-6">
       <section className="relative overflow-hidden rounded-[22px] bg-gradient-to-br from-imperial-burgundy via-burgundy-800 to-deep-oxblood p-5 text-ivory-canvas shadow-[0_14px_36px_rgba(42,3,13,0.22)]">
-        <BrandMark className="pointer-events-none absolute -left-4 -top-2 h-36 text-white/[0.06]" />
-        <h2 className="relative font-headline-md text-headline-md font-semibold text-champagne-gold">أهلاً بكِ في دار آيريس</h2>
+        <BrandMark onDark className="pointer-events-none absolute -left-4 -top-2 h-36 text-white opacity-[0.06]" />
+        <h2 className="relative font-headline-md text-headline-md font-semibold text-champagne-gold">أهلاً بكِ في آيريس ستور</h2>
         <p className="relative mt-1.5 max-w-[420px] font-body-sm text-body-sm leading-relaxed text-rose-mist">
           تابعي طلباتكِ، واحفظي القطع التي أعجبتكِ للرجوع إليها لاحقاً.
         </p>

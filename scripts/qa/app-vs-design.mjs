@@ -35,7 +35,7 @@ const browser = await chromium.launch({ executablePath: chrome, headless: true }
 const FREEZE = '*,*::before,*::after{animation:none!important;transition:none!important;caret-color:transparent!important}';
 const targets = entries.filter((e) => !only || only.some((p) => e.id.startsWith(p)));
 
-const SEED_CART = [{ productId: 'nk-102', qty: 1, options: { metal: 'ذهب أصفر عيار 18', size: '45 سم' } }];
+const SEED_CART = [{ productId: 'ig-swan', qty: 1, options: { metal: 'ذهبي' } }];
 
 async function shoot(t) {
   const ctx = await browser.newContext({

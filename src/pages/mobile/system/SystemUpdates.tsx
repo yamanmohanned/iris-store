@@ -23,11 +23,11 @@ export default function SystemUpdates() {
               <div className="flex flex-col items-center">
                 <span
                   className="font-display-lg text-primary tracking-widest leading-none font-bold"
-                  style={{ fontFamily: "'El Messiri', serif", letterSpacing: '0.2em' }}
+                  style={{ fontFamily: 'var(--font-heading)', letterSpacing: '0.2em' }}
                 >
                   IRIS
                 </span>{' '}
-                <span className="font-label-sm text-antique-gold tracking-wider mt-0.5">دار آيريس للمجوهرات الرّفيعة</span>
+                <span className="font-label-sm text-antique-gold tracking-wider mt-0.5">آيريس ستور · إكسسوارات</span>
               </div>
               <div className="w-10 h-10 rounded-full bg-surface-container-low flex items-center justify-center text-primary">
                 <span className="material-symbols-outlined text-headline-sm">verified_user</span>
@@ -134,8 +134,7 @@ export default function SystemUpdates() {
                   نجهّز لكم شيئاً أجمل — نعود قريباً
                 </h2>
                 <p className="font-body-sm text-ivory-canvas/90 leading-relaxed">
-                  نقوم بتحديث أنظمة المستودعات وخزائن الصياغة لتوفير مجموعات الخريف الحصرية. نعود للخدمة بكامل طاقتنا في تمام الساعة 6:00
-                  مساءً بتوقيت بغداد.
+                  نحدّث المتجر حالياً، ونعود خلال وقت قصير.
                 </p>
               </div>
               <div
@@ -181,7 +180,7 @@ export default function SystemUpdates() {
           <footer className="mt-8 mb-4 flex flex-col items-center justify-center text-center">
             <div className="flex items-center gap-2 text-muted-rosewood font-label-sm">
               <span className="material-symbols-outlined text-label-md text-antique-gold">shield_lock</span>{' '}
-              <span>جميع الحقوق والبيانات مشفرة ومحفوظة لدى دار آيريس © 2024</span>
+              <span>آيريس ستور © {new Date().getFullYear()}</span>
             </div>
           </footer>
         </div>

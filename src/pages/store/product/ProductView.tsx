@@ -5,6 +5,7 @@ import { badgeLabels, getCategory, useCatalog } from '@/data/catalog';
 import type { Product } from '@/data/types';
 import { cn } from '@/lib/cn';
 import { formatNumber } from '@/lib/format';
+import { productMedia } from '@/lib/media';
 import { MAX_QTY, useCart } from '@/state/cart';
 import { readJSON, writeJSON } from '@/state/storage';
 import { useToast } from '@/state/toast';
@@ -15,10 +16,7 @@ import { WhatsAppLink } from '@/components/common/WhatsAppLink';
 const RECENT_KEY = 'iris.recent.v1';
 
 // مدد التوصيل كما في سياسة الشحن؛ الأجور واحدة لكل المحافظات وتأتي من إعدادات المالك
-const CITIES = [
-  { label: 'بغداد — خلال 1–2 يوم عمل' },
-  { label: 'باقي المحافظات — خلال 2–4 أيام عمل' },
-];
+const CITIES = [{ label: 'بغداد — خلال 1–2 يوم عمل' }, { label: 'باقي المحافظات — خلال 2–4 أيام عمل' }];
 
 function Accordion({ icon, title, defaultOpen, children }: { icon: string; title: string; defaultOpen?: boolean; children: ReactNode }) {
   const [open, setOpen] = useState(!!defaultOpen);
@@ -50,7 +48,7 @@ export function ProductView({ product: p }: { product: Product }) {
   const wishlist = useWishlist();
   const category = getCategory(p.category);
 
-  const gallery = p.gallery.length ? p.gallery : [p.image];
+  const gallery = productMedia(p);
   const [index, setIndex] = useState(0);
   const metalOptions = useMemo(() => metalOptionsFor(p), [p]);
   const [metal, setMetal] = useState(metalOptions[0]?.label ?? p.metal);
@@ -107,8 +105,8 @@ export function ProductView({ product: p }: { product: Product }) {
   };
 
   const pieceNo = p.sku.replace(/\D/g, '').replace(/^0+/, '') || p.sku;
-  const waRaw = `مرحباً دار آيريس، أود طلب ${p.shortName} (${p.sku})`;
-  const shownImage = gallery[Math.min(index, gallery.length - 1)];
+  const waRaw = `مرحباً آيريس، أود طلب ${p.shortName} (${p.sku})`;
+  const shown = gallery[Math.min(index, gallery.length - 1)];
 
   return (
     <main className="min-h-[calc(100vh-64px)] w-full bg-surface">
@@ -195,7 +193,7 @@ export function ProductView({ product: p }: { product: Product }) {
           <div className="flex w-full max-w-[1280px] items-center gap-space-md px-gutter">
             <div className="h-px flex-1 bg-royal-gold/30" />
             <div className="flex items-center gap-space-xs font-label-sm text-label-sm tracking-widest text-royal-gold">
-              <span>◆</span> <span>صياغة حصرية ومختومة رسمياً بالمعايير الملكية</span> <span>◆</span>
+              <span>◆</span> <span>التفاصيل تصنع الفرق</span> <span>◆</span>
             </div>
             <div className="h-px flex-1 bg-royal-gold/30" />
           </div>
@@ -209,14 +207,14 @@ export function ProductView({ product: p }: { product: Product }) {
               </Link>
               <span className="text-[10px] text-royal-gold/60">‹</span>
               <Link to={`/collections/${p.category}`} className="transition-colors hover:text-primary">
-                {category?.name ?? 'المجوهرات'}
+                {category?.name ?? 'المنتجات'}
               </Link>
               <span className="text-[10px] text-royal-gold/60">‹</span>
               <span className="font-medium text-warm-ink">{p.shortName}</span>
             </nav>
             <div className="flex items-center gap-space-md font-label-sm text-label-sm text-muted-rosewood">
               <span className="flex items-center gap-1">
-                <Icon name="verified" className="text-[16px] text-royal-gold" /> <span>شهادة أصالة موثقة</span>
+                <Icon name="local_shipping" className="text-[16px] text-royal-gold" /> <span>توصيل لكل المحافظات</span>
               </span>
               <span className="text-royal-gold/30">|</span>
               <span className="flex items-center gap-1">
@@ -229,18 +227,29 @@ export function ProductView({ product: p }: { product: Product }) {
             {/* ── المعرض ── */}
             <div className="sticky top-24 flex flex-col-reverse gap-space-md md:flex-row lg:col-span-7">
               <div className="flex shrink-0 gap-space-sm overflow-x-auto pb-2 md:flex-col md:overflow-visible md:pb-0">
-                {gallery.map((src, i) => (
+                {gallery.map((m, i) => (
                   <button
-                    key={src + i}
+                    key={m.src + i}
                     type="button"
-                    aria-label={`عرض الصورة ${i + 1}`}
+                    aria-label={m.kind === 'video' ? `تشغيل الفيديو ${i + 1}` : `عرض الصورة ${i + 1}`}
                     onClick={() => setIndex(i)}
                     className={cn(
                       'group relative h-28 w-20 shrink-0 overflow-hidden rounded-lg bg-deep-oxblood shadow-sm transition-all duration-200',
                       i === index ? 'shadow-md ring-2 ring-royal-gold' : 'hover:shadow-md hover:ring-1 hover:ring-royal-gold/50',
                     )}
                   >
-                    <img className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" src={src} alt="" />
+                    <img
+                      className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                      src={m.poster}
+                      alt=""
+                    />
+                    {m.kind === 'video' && (
+                      <Icon
+                        name="play_circle"
+                        fill
+                        className="absolute inset-0 m-auto h-fit w-fit text-[30px] text-ivory-canvas/90 drop-shadow"
+                      />
+                    )}
                     <span className="absolute bottom-1 right-1.5 font-label-sm text-[0.625rem] font-medium text-champagne-gold">
                       {String(i + 1).padStart(2, '0')}
                     </span>
@@ -279,16 +288,31 @@ export function ProductView({ product: p }: { product: Product }) {
                 <div className="pointer-events-none absolute inset-2 z-20 rounded-b-xl rounded-t-[132px] shadow-[inset_0_0_0_1px_rgba(201,162,75,0.35)]" />
                 <div className="pointer-events-none absolute inset-3 z-20 rounded-b-lg rounded-t-[128px] shadow-[inset_0_0_0_1px_rgba(201,162,75,0.15)]" />
                 <div className="relative h-full min-h-[580px] w-full overflow-hidden lg:min-h-[640px]">
-                  <img
-                    className="h-full w-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
-                    src={shownImage}
-                    alt={p.name}
-                  />
+                  {shown?.kind === 'video' ? (
+                    <video
+                      key={shown.src}
+                      className="absolute inset-0 h-full w-full object-cover object-center"
+                      src={shown.src}
+                      poster={shown.poster}
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                      controls
+                      aria-label={`فيديو ${p.name}`}
+                    />
+                  ) : (
+                    <img
+                      className="h-full w-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
+                      src={shown?.src}
+                      alt={p.name}
+                    />
+                  )}
                 </div>
                 <div className="absolute inset-x-6 bottom-6 z-30 flex items-center justify-between rounded-xl bg-wine-night/90 px-space-md py-space-sm text-champagne-gold shadow-lg shadow-wine-night/40 backdrop-blur-md">
                   <div className="flex items-center gap-space-xs">
                     <span className="h-2 w-2 animate-pulse rounded-full bg-royal-gold" />{' '}
-                    <span className="font-label-sm text-label-sm text-champagne-gold">دار آيريس · صياغة يدوية خاصة</span>
+                    <span className="font-label-sm text-label-sm text-champagne-gold">آيريس ستور · صور حقيقية للقطعة</span>
                   </div>
                   <span className="font-mono font-label-sm text-[0.75rem] tracking-wider text-champagne-gold/70">{p.sku}</span>
                 </div>
@@ -300,7 +324,7 @@ export function ProductView({ product: p }: { product: Product }) {
               <div className="flex flex-wrap items-center gap-space-xs">
                 {p.badge === 'new' && (
                   <span className="inline-flex items-center gap-1 rounded-full bg-parchment px-3 py-1 font-label-sm text-label-sm font-semibold text-antique-gold shadow-sm">
-                    <span className="text-xs text-royal-gold">✦</span> <span>جديد الدار</span>
+                    <span className="text-xs text-royal-gold">✦</span> <span>جديد</span>
                   </span>
                 )}
                 {(p.badge === 'limited' || p.badge === 'exclusive' || p.badge === 'bestseller') && !soldOut && (
@@ -363,9 +387,7 @@ export function ProductView({ product: p }: { product: Product }) {
                   </div>
                 )}
               </div>
-              <p className="-mt-space-xs font-label-sm text-label-sm text-muted-rosewood">
-                السعر يشمل علبة الدار، وتُضاف أجور التوصيل عند إتمام الطلب.
-              </p>
+              <p className="-mt-space-xs font-label-sm text-label-sm text-muted-rosewood">تُضاف أجور التوصيل عند إتمام الطلب.</p>
 
               <div className="rounded-xl bg-blush-surface/70 p-space-md text-on-surface shadow-sm">
                 <p className="font-body-md text-body-md leading-relaxed text-warm-ink">{content.description[0]}</p>
@@ -375,9 +397,9 @@ export function ProductView({ product: p }: { product: Product }) {
                 <div className="flex flex-col gap-space-xs pt-space-xs">
                   <div className="flex items-center justify-between">
                     <span className="font-label-md text-label-md font-semibold text-warm-ink">
-                      المعدن والخام: <span className="font-normal text-antique-gold">{metal}</span>
+                      اللون: <span className="font-normal text-antique-gold">{metal}</span>
                     </span>
-                                      </div>
+                  </div>
                   <div className="flex flex-wrap items-center gap-space-md pt-1">
                     {metalOptions.map((m) => {
                       const on = metal === m.label;
@@ -421,7 +443,7 @@ export function ProductView({ product: p }: { product: Product }) {
                 <div className="flex flex-col gap-space-xs pt-space-xs">
                   <div className="flex items-center justify-between">
                     <span className="font-label-md text-label-md font-semibold text-warm-ink">
-                      {p.category === 'rings' ? 'المقاس: ' : p.category === 'bracelets' ? 'محيط السوار: ' : 'طول السلسلة (معيار الصائغ): '}
+                      {p.category === 'rings' ? 'المقاس: ' : p.category === 'bracelets' ? 'محيط السوار: ' : 'طول السلسلة: '}
                       <span className="font-normal text-primary">{size ?? 'اختاري المقاس'}</span>
                     </span>
                     <button
@@ -466,7 +488,7 @@ export function ProductView({ product: p }: { product: Product }) {
                                 s.soldOut ? 'font-semibold text-error' : on ? 'text-primary' : 'text-muted-rosewood',
                               )}
                             >
-                              {s.soldOut ? 'نفد من الخزانة' : s.note}
+                              {s.soldOut ? 'نفد حالياً' : s.note}
                             </span>
                           )}
                         </button>
@@ -586,7 +608,7 @@ export function ProductView({ product: p }: { product: Product }) {
 
               <div className="grid grid-cols-1 gap-space-sm pt-space-xs sm:grid-cols-3">
                 {[
-                  ['featured_seasonal_and_gifts', 'التغليف في علبة الدار', 'مع كل قطعة'],
+                  ['local_shipping', 'توصيل لكل المحافظات', 'خلال 1–4 أيام عمل'],
                   ['verified_user', 'الدفع عند الاستلام', 'معاينة القطعة قبل السداد'],
                   ['published_with_changes', 'استبدال خلال 7 أيام', 'بحالتها الأصلية'],
                 ].map(([icon, title, note]) => (
@@ -607,7 +629,8 @@ export function ProductView({ product: p }: { product: Product }) {
           <div className="flex w-full max-w-[1280px] items-center gap-space-md px-gutter">
             <div className="h-px flex-1 bg-royal-gold/30" />
             <div className="flex items-center gap-2 text-royal-gold">
-              <span className="text-xs">◆</span> <span className="font-headline-sm text-headline-sm font-semibold text-antique-gold">تفاصيل القطعة</span>{' '}
+              <span className="text-xs">◆</span>{' '}
+              <span className="font-headline-sm text-headline-sm font-semibold text-antique-gold">تفاصيل القطعة</span>{' '}
               <span className="text-xs">◆</span>
             </div>
             <div className="h-px flex-1 bg-royal-gold/30" />
@@ -616,52 +639,52 @@ export function ProductView({ product: p }: { product: Product }) {
 
         <section className="mx-auto w-full max-w-[1280px] px-gutter pb-space-3xl">
           <div className="grid grid-cols-1 items-start gap-gutter lg:grid-cols-12">
-            <div className="flex flex-col gap-space-md lg:col-span-5">
-              <div className="relative overflow-hidden rounded-2xl bg-deep-oxblood p-space-xl text-champagne-gold shadow-xl">
-                <div className="pointer-events-none absolute -right-24 -top-24 h-64 w-64 rounded-full bg-royal-gold/10 blur-3xl" />
-                <span className="font-label-sm text-label-sm uppercase tracking-widest text-champagne-gold/75">
-                  {content.story?.eyebrow ?? 'فلسفة الصياغة'}
-                </span>
-                <h2 className="mb-space-sm mt-space-xs font-headline-lg text-headline-lg font-bold leading-snug text-champagne-gold">
-                  {content.story?.title ?? `حكاية ${p.shortName}`}
-                </h2>
-                <p className="mb-space-md font-body-md text-body-md leading-relaxed text-champagne-gold/80">
-                  {content.story?.body ??
-                    `تُصاغ ${p.shortName} يدوياً داخل ورشة الدار بإشراف صائغ مختص، وتخضع لفحص جودة مزدوج قبل أن تُختم بكود الصائغ الرسمي.`}
-                </p>
-                <div className="flex items-center gap-space-sm rounded-xl bg-wine-night/60 p-space-sm shadow-inner">
-                  <Icon name="award_star" className="text-[28px] text-royal-gold" />
-                  <div>
-                    <h3 className="font-label-md text-label-md font-semibold text-champagne-gold">
-                      {content.story?.hallmarkTitle ?? 'مختومة بكود الصائغ الرسمي'}
-                    </h3>
-                    <p className="font-label-sm text-label-sm text-champagne-gold/70">
-                      رقم التسجيل الحرفي: {content.story?.hallmarkNumber ?? `#IQ-IRIS-${pieceNo}`}
-                    </p>
+            {(content.story || content.certificate) && (
+              <div className="flex flex-col gap-space-md lg:col-span-5">
+                {content.story && (
+                  <div className="relative overflow-hidden rounded-2xl bg-deep-oxblood p-space-xl text-champagne-gold shadow-xl">
+                    <div className="pointer-events-none absolute -right-24 -top-24 h-64 w-64 rounded-full bg-royal-gold/10 blur-3xl" />
+                    <span className="font-label-sm text-label-sm uppercase tracking-widest text-champagne-gold/75">
+                      {content.story.eyebrow}
+                    </span>
+                    <h2 className="mb-space-sm mt-space-xs font-headline-lg text-headline-lg font-bold leading-snug text-champagne-gold">
+                      {content.story.title}
+                    </h2>
+                    <p className="mb-space-md font-body-md text-body-md leading-relaxed text-champagne-gold/80">{content.story.body}</p>
+                    <div className="flex items-center gap-space-sm rounded-xl bg-wine-night/60 p-space-sm shadow-inner">
+                      <Icon name="award_star" className="text-[28px] text-royal-gold" />
+                      <div>
+                        <h3 className="font-label-md text-label-md font-semibold text-champagne-gold">{content.story.hallmarkTitle}</h3>
+                        <p className="font-label-sm text-label-sm text-champagne-gold/70">{content.story.hallmarkNumber}</p>
+                      </div>
+                    </div>
                   </div>
-                </div>
+                )}
+                {content.certificate && (
+                  <div className="flex items-center justify-between rounded-2xl bg-parchment p-space-md shadow-sm">
+                    <div className="flex items-center gap-space-sm">
+                      <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-ivory-canvas text-royal-gold shadow-sm">
+                        <Icon name="diamond" className="text-[26px]" />
+                      </div>
+                      <div>
+                        <h4 className="font-label-md text-label-md font-semibold text-warm-ink">{content.certificate.title}</h4>
+                        <p className="font-body-sm text-body-sm text-muted-rosewood">{content.certificate.note}</p>
+                      </div>
+                    </div>
+                    <span className="rounded-full bg-blush-surface px-3 py-1 font-label-sm text-label-sm font-semibold text-imperial-burgundy">
+                      {content.certificate.badge}
+                    </span>
+                  </div>
+                )}
               </div>
-              <div className="flex items-center justify-between rounded-2xl bg-parchment p-space-md shadow-sm">
-                <div className="flex items-center gap-space-sm">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-ivory-canvas text-royal-gold shadow-sm">
-                    <Icon name="diamond" className="text-[26px]" />
-                  </div>
-                  <div>
-                    <h4 className="font-label-md text-label-md font-semibold text-warm-ink">
-                      {content.certificate?.title ?? 'شهادة الأصالة المرفقة'}
-                    </h4>
-                    <p className="font-body-sm text-body-sm text-muted-rosewood">
-                      {content.certificate?.note ?? 'ختم دار آيريس وبطاقة العناية'}
-                    </p>
-                  </div>
-                </div>
-                <span className="rounded-full bg-blush-surface px-3 py-1 font-label-sm text-label-sm font-semibold text-imperial-burgundy">
-                  {content.certificate?.badge ?? 'معتمدة'}
-                </span>
-              </div>
-            </div>
+            )}
 
-            <div className="flex flex-col gap-space-sm lg:col-span-7">
+            <div
+              className={cn(
+                'flex flex-col gap-space-sm',
+                content.story || content.certificate ? 'lg:col-span-7' : 'lg:col-span-8 lg:col-start-3',
+              )}
+            >
               <Accordion icon="auto_stories" title="وصف القطعة" defaultOpen>
                 {content.description.map((para, i) => (
                   <p key={i} className={i < content.description.length - 1 ? 'mb-space-xs' : undefined}>
@@ -681,7 +704,7 @@ export function ProductView({ product: p }: { product: Product }) {
               </Accordion>
               <Accordion icon="spa" title="العناية بالقطعة">
                 <ul className="flex list-inside list-disc flex-col gap-space-xs font-body-sm text-body-sm">
-                  <li>يُفضل حفظ القطعة دائماً داخل حقيبتها المخملية الخاصة المرفقة لحماية الأحجار من الاحتكاك.</li>
+                  <li>احفظي القطعة جافة ومنفصلة عن غيرها حتى لا تحتك بالقطع الأخرى.</li>
                   <li>تجنبي تعريض القطعة مباشرة للعطور المركزة، مثبتات الشعر، أو المنظفات الكيميائية المنزلية.</li>
                   <li>للتنظيف امسحيها بقطعة قماش ناعمة جافة، أو بماء فاتر مع صابون لطيف ثم جففيها جيداً.</li>
                 </ul>
@@ -691,7 +714,7 @@ export function ProductView({ product: p }: { product: Product }) {
                   نوصل إلى جميع المحافظات خلال 1–4 أيام عمل، ويمكنكِ معاينة القطعة مع المندوب قبل دفع المبلغ نقداً.
                 </p>
                 <p className="font-body-sm text-body-sm">
-                  الاستبدال متاح خلال 7 أيام من الاستلام إذا كانت القطعة بحالتها الأصلية مع العلبة وبطاقة الضمان.
+                  الاستبدال متاح خلال 7 أيام من الاستلام إذا كانت القطعة بحالتها الأصلية ومع تغليفها.
                 </p>
               </Accordion>
             </div>

@@ -1,19 +1,20 @@
-import { useState, type FormEvent } from 'react';
+import { useState } from 'react';
 import { ImageField } from '@/components/admin/ImageField';
-import { AdminPage, Button, Card, Field, inputClass, OfflineNotice } from '@/components/admin/ui';
+import { Button, Card, Field, inputClass, OfflineNotice, ReadOnlyNotice } from '@/components/admin/ui';
 import { Icon } from '@/components/common/Icon';
 import { useCatalog } from '@/data/catalog';
 import { cn } from '@/lib/cn';
 import { DEFAULT_HERO_IMAGE } from '@/pages/mobile/home/MobileHome';
 import { useAdminAuth } from '@/state/adminAuth';
-import { useToast } from '@/state/toast';
-import { useCatalogEditor } from './useCatalogEditor';
+import { useCatalogEditor } from '../useCatalogEditor';
+import { SettingsHeader } from './SettingsLayout';
 
 const digits = (v: string) => v.replace(/[^\d]/g, '');
 
-/** إعدادات البيع (التوصيل، القسائم، واتساب وإنستغرام، غلاف الرئيسية) + تغيير كلمة مرور المالك. */
-export default function StoreSettingsAdmin() {
+/** إعدادات البيع: التوصيل، واتساب وإنستغرام، غلاف الرئيسية، القسائم. */
+export default function StoreSettingsTab() {
   const { settings } = useCatalog();
+  const readOnly = !useAdminAuth().can('settings', 'edit');
   const { commit, saving, online } = useCatalogEditor();
   const [fee, setFee] = useState(String(settings.shippingFee));
   const [threshold, setThreshold] = useState(String(settings.freeShippingThreshold));
@@ -49,16 +50,21 @@ export default function StoreSettingsAdmin() {
     );
 
   return (
-    <AdminPage
-      title="إعدادات المتجر"
-      actions={
-        <Button icon="check" busy={saving} onClick={() => void save()}>
-          حفظ الإعدادات
-        </Button>
-      }
-    >
+    <>
+      <SettingsHeader
+        title="المتجر والتوصيل"
+        description="أجور التوصيل، أرقام التواصل التي تظهر للزبائن، غلاف الصفحة الرئيسية على الهاتف، وقسائم الخصم."
+        actions={
+          !readOnly && (
+            <Button icon="check" busy={saving} onClick={() => void save()}>
+              حفظ الإعدادات
+            </Button>
+          )
+        }
+      />
       {!online && <OfflineNotice message="الخادم غير متاح حالياً، لذلك لن تُحفظ الإعدادات." />}
-      <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">
+      {readOnly && <ReadOnlyNotice />}
+      <fieldset disabled={readOnly} className="grid min-w-0 grid-cols-1 gap-5 xl:grid-cols-2">
         <Card className="flex flex-col gap-4">
           <h2 className="font-headline-sm text-headline-sm font-semibold text-deep-oxblood">التوصيل</h2>
           <Field label="أجور التوصيل (د.ع)">
@@ -70,8 +76,8 @@ export default function StoreSettingsAdmin() {
           <Field label="رقم واتساب المتجر" hint="بالصيغة الدولية بلا أصفار، مثل 9647701234567.">
             <input className={inputClass} dir="ltr" inputMode="tel" value={whatsapp} onChange={(e) => setWhatsapp(e.target.value)} />
           </Field>
-          <Field label="حساب إنستغرام" hint="اسم الحساب فقط، مثل iris.jewelry — يظهر في صفحة «تواصل معنا».">
-            <input className={inputClass} dir="ltr" value={instagram} onChange={(e) => setInstagram(e.target.value)} placeholder="iris.jewelry" />
+          <Field label="حساب إنستغرام" hint="اسم الحساب فقط، مثل iris_st0re1 — يظهر في صفحة «تواصل معنا» وأسفل الموقع.">
+            <input className={inputClass} dir="ltr" value={instagram} onChange={(e) => setInstagram(e.target.value)} placeholder="iris_st0re1" />
           </Field>
         </Card>
 
@@ -128,78 +134,7 @@ export default function StoreSettingsAdmin() {
           </Button>
         </Card>
 
-        <PasswordCard />
-      </div>
-    </AdminPage>
-  );
-}
-
-function PasswordCard() {
-  const { changePassword } = useAdminAuth();
-  const toast = useToast();
-  const [current, setCurrent] = useState('');
-  const [next, setNext] = useState('');
-  const [confirm, setConfirm] = useState('');
-  const [busy, setBusy] = useState(false);
-  const [error, setError] = useState<string>();
-
-  const submit = async (e: FormEvent) => {
-    e.preventDefault();
-    if (next.length < 8) return setError('كلمة المرور الجديدة يجب أن تكون 8 أحرف على الأقل.');
-    if (next !== confirm) return setError('تأكيد كلمة المرور غير مطابق.');
-    setError(undefined);
-    setBusy(true);
-    try {
-      await changePassword(current, next);
-      toast.show('تم تغيير كلمة المرور', 'lock');
-      setCurrent('');
-      setNext('');
-      setConfirm('');
-    } catch (err) {
-      setError(err instanceof Error ? err.message : 'تعذر تغيير كلمة المرور');
-    } finally {
-      setBusy(false);
-    }
-  };
-
-  return (
-    <Card>
-      <form onSubmit={(e) => void submit(e)} className="flex flex-col gap-4">
-        <h2 className="font-headline-sm text-headline-sm font-semibold text-deep-oxblood">كلمة مرور لوحة الإدارة</h2>
-        <Field label="كلمة المرور الحالية">
-          <input
-            type="password"
-            autoComplete="current-password"
-            dir="ltr"
-            className={inputClass}
-            value={current}
-            onChange={(e) => setCurrent(e.target.value)}
-          />
-        </Field>
-        <Field label="كلمة المرور الجديدة" hint="8 أحرف على الأقل.">
-          <input
-            type="password"
-            autoComplete="new-password"
-            dir="ltr"
-            className={inputClass}
-            value={next}
-            onChange={(e) => setNext(e.target.value)}
-          />
-        </Field>
-        <Field label="تأكيد كلمة المرور الجديدة" error={error}>
-          <input
-            type="password"
-            autoComplete="new-password"
-            dir="ltr"
-            className={inputClass}
-            value={confirm}
-            onChange={(e) => setConfirm(e.target.value)}
-          />
-        </Field>
-        <Button type="submit" variant="secondary" icon="lock_reset" busy={busy} disabled={!current || !next} className="self-start">
-          تغيير كلمة المرور
-        </Button>
-      </form>
-    </Card>
+      </fieldset>
+    </>
   );
 }

@@ -1,6 +1,7 @@
 import { Link } from 'react-router';
 import { Icon } from '@/components/common/Icon';
 import { useCatalog } from '@/data/catalog';
+import { useContactLinks } from '@/lib/contact';
 import { formatNumber } from '@/lib/format';
 import { useWishlist } from '@/state/wishlist';
 
@@ -11,127 +12,126 @@ import { useWishlist } from '@/state/wishlist';
  */
 export default function HomeMiddle() {
   const { visibleProducts: products } = useCatalog();
-  // باقات الهدايا منتجات حقيقية في قسم «مجموعات الهدايا»: الرابط والسعر من الكتالوج (كانا «#» وسعراً ثابتاً)
-  const gift = (id: string) => {
-    const p = products.find((x) => x.id === id);
-    return { to: p ? `/products/${p.slug}` : '/collections/gifts', price: p ? `${formatNumber(p.price)} د.ع` : null };
-  };
-  const engagement = gift('gf-engagement');
-  const mothers = gift('gf-mothers');
+  const contact = useContactLinks();
   const wishlist = useWishlist();
+  const withVideo = products.filter((p) => p.videos?.length);
   const inStock = products.filter((p) => p.stock > 0);
   // الأكثر طلباً: ما وسمه المالك «الأكثر طلباً» أولاً، ثم بقية القطع المتوفرة
   const bestsellers = [...inStock.filter((p) => p.badge === 'bestseller'), ...inStock.filter((p) => p.badge !== 'bestseller')].slice(0, 5);
   const featured = bestsellers[0];
   const offers = inStock.filter((p) => p.oldPrice && p.oldPrice > p.price).slice(0, 4);
+  // مع كتالوج صغير تكرر «المختارات» ما في «وصل حديثاً» نفسه، فتظهر فقط حين يكبر المتجر
+  const showPicks = products.length > 8;
   return (
     <>
-      <section className="relative w-full bg-parchment py-space-3xl overflow-hidden" id="section-bestsellers">
-        <div className="absolute inset-0 pointer-events-none opacity-[0.035] text-imperial-burgundy">
-          <svg className="w-full h-full" fill="none" height="80" viewBox="0 0 80 80" width="80" xmlns="http://www.w3.org/2000/svg">
-            <path
-              d="M40 0L80 40L40 80L0 40Z M40 10L70 40L40 70L10 40Z M40 22L58 40L40 58L22 40Z"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1"
-            />
-          </svg>
-        </div>
-        <div className="relative max-w-7xl mx-auto px-6 lg:px-12">
-          <div className="text-center max-w-2xl mx-auto mb-16 fade-up-item">
-            <span className="font-label-sm text-label-sm text-antique-gold font-semibold tracking-widest uppercase block mb-2">
-              مختارات النخبة
-            </span>
-            <div className="overflow-hidden">
-              <h2 className="font-headline-xl text-headline-xl text-warm-ink font-bold line-reveal">الأكثر طلباً</h2>
-            </div>
-            <p className="font-body-md text-body-md text-muted-rosewood mt-3">مختارات حازت على إعجاب سيدات الأناقة وخبراء الذوق الرفيع</p>
-            <div className="twin-divider flex items-center justify-center gap-3 mt-6">
-              <div className="twin-line-left flex flex-col gap-[3px] w-24 sm:w-36">
-                <span className="h-[1px] w-full bg-royal-gold/60" /> <span className="h-[1px] w-full bg-royal-gold/30" />
-              </div>
-              <span className="diamond-center text-[10px] text-royal-gold inline-block">◆</span>
-              <div className="twin-line-right flex flex-col gap-[3px] w-24 sm:w-36">
-                <span className="h-[1px] w-full bg-royal-gold/60" /> <span className="h-[1px] w-full bg-royal-gold/30" />
-              </div>
-            </div>
+      {showPicks && (
+        <section className="relative w-full bg-parchment py-space-3xl overflow-hidden" id="section-bestsellers">
+          <div className="absolute inset-0 pointer-events-none opacity-[0.035] text-imperial-burgundy">
+            <svg className="w-full h-full" fill="none" height="80" viewBox="0 0 80 80" width="80" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M40 0L80 40L40 80L0 40Z M40 10L70 40L40 70L10 40Z M40 22L58 40L40 58L22 40Z"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1"
+              />
+            </svg>
           </div>
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
-            {featured && (
-              <div className="lg:col-span-5 lg:sticky lg:top-28">
-                <Link
-                  to={`/products/${featured.slug}`}
-                  className="block relative p-3 rounded-t-[140px] rounded-b-2xl bg-surface-container/60 shadow-[0_12px_36px_rgba(42,3,13,0.08)]"
-                >
-                  <div className="relative w-full aspect-[4/5] rounded-t-[132px] rounded-b-xl overflow-hidden curtain-reveal bg-deep-oxblood">
-                    <img
-                      alt={featured.shortName}
-                      loading="lazy"
-                      decoding="async"
-                      className="w-full h-full object-cover transition-transform duration-700 ease-out hover:scale-105"
-                      src={featured.image}
-                    />
-                    <div className="absolute inset-2.5 rounded-t-[124px] rounded-b-lg border border-royal-gold/40 pointer-events-none" />
-                    <div className="absolute top-6 inset-x-0 flex justify-center">
-                      <span className="px-3.5 py-1 rounded-full bg-deep-oxblood/85 backdrop-blur-sm text-champagne-gold font-label-sm text-label-sm border border-royal-gold/50 shadow-md">
-                        الأكثر طلباً
-                      </span>
-                    </div>
-                  </div>
-                  <div className="mt-4 p-4 rounded-xl bg-ivory-canvas/90 border border-hairline-burgundy flex items-center justify-between gap-3">
-                    <div className="min-w-0">
-                      <h3 className="font-headline-sm text-headline-sm text-warm-ink font-bold truncate">{featured.shortName}</h3>
-                      <p className="font-label-sm text-label-sm text-antique-gold mt-0.5 truncate">{featured.metal}</p>
-                    </div>
-                    <span className="shrink-0 font-headline-sm text-headline-sm text-imperial-burgundy font-bold tabular-nums">
-                      {formatNumber(featured.price)} د.ع
-                    </span>
-                  </div>
-                </Link>
+          <div className="relative max-w-7xl mx-auto px-6 lg:px-12">
+            <div className="text-center max-w-2xl mx-auto mb-16 fade-up-item">
+              <span className="font-label-sm text-label-sm text-antique-gold font-semibold tracking-widest uppercase block mb-2">
+                مختارات آيريس
+              </span>
+              <div className="overflow-hidden">
+                <h2 className="font-headline-xl text-headline-xl text-warm-ink font-bold line-reveal">قطع اخترناها لكِ</h2>
               </div>
-            )}
-            <div className="lg:col-span-7 flex flex-col divide-y divide-hairline-burgundy">
-              {bestsellers.map((p, i) => (
-                <Link
-                  key={p.id}
-                  to={`/products/${p.slug}`}
-                  className="py-5 first:pt-0 last:pb-0 flex items-center justify-between gap-4 group transition-colors duration-300 hover:bg-blush-surface/30 px-3 rounded-xl fade-up-item"
-                >
-                  <div className="flex items-center gap-4 sm:gap-6 min-w-0">
-                    <span className="font-display-lg text-3xl sm:text-4xl text-royal-gold/70 font-semibold tracking-tight shrink-0 select-none group-hover:text-imperial-burgundy transition-colors tabular-nums">
-                      {String(i + 1).padStart(2, '0')}
-                    </span>
-                    <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-xl overflow-hidden border border-royal-gold/30 shrink-0 bg-surface-container">
+              <p className="font-body-md text-body-md text-muted-rosewood mt-3">من أحدث ما وصل وأكثر ما يُسأل عنه</p>
+              <div className="twin-divider flex items-center justify-center gap-3 mt-6">
+                <div className="twin-line-left flex flex-col gap-[3px] w-24 sm:w-36">
+                  <span className="h-[1px] w-full bg-royal-gold/60" /> <span className="h-[1px] w-full bg-royal-gold/30" />
+                </div>
+                <span className="diamond-center text-[10px] text-royal-gold inline-block">◆</span>
+                <div className="twin-line-right flex flex-col gap-[3px] w-24 sm:w-36">
+                  <span className="h-[1px] w-full bg-royal-gold/60" /> <span className="h-[1px] w-full bg-royal-gold/30" />
+                </div>
+              </div>
+            </div>
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+              {featured && (
+                <div className="lg:col-span-5 lg:sticky lg:top-28">
+                  <Link
+                    to={`/products/${featured.slug}`}
+                    className="block relative p-3 rounded-t-[140px] rounded-b-2xl bg-surface-container/60 shadow-[0_12px_36px_rgba(42,3,13,0.08)]"
+                  >
+                    <div className="relative w-full aspect-[4/5] rounded-t-[132px] rounded-b-xl overflow-hidden curtain-reveal bg-deep-oxblood">
                       <img
-                        alt=""
+                        alt={featured.shortName}
                         loading="lazy"
                         decoding="async"
-                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                        src={p.image}
+                        className="w-full h-full object-cover transition-transform duration-700 ease-out hover:scale-105"
+                        src={featured.image}
                       />
+                      <div className="absolute inset-2.5 rounded-t-[124px] rounded-b-lg border border-royal-gold/40 pointer-events-none" />
+                      <div className="absolute top-6 inset-x-0 flex justify-center">
+                        <span className="px-3.5 py-1 rounded-full bg-deep-oxblood/85 backdrop-blur-sm text-champagne-gold font-label-sm text-label-sm border border-royal-gold/50 shadow-md">
+                          مختارة
+                        </span>
+                      </div>
                     </div>
-                    <div className="min-w-0">
-                      <h3 className="font-headline-sm text-headline-sm text-warm-ink font-bold truncate group-hover:text-imperial-burgundy transition-colors">
-                        {p.shortName}
-                      </h3>
-                      <p className="font-body-sm text-body-sm text-muted-rosewood mt-0.5 truncate">{p.summary || p.metal}</p>
+                    <div className="mt-4 p-4 rounded-xl bg-ivory-canvas/90 border border-hairline-burgundy flex items-center justify-between gap-3">
+                      <div className="min-w-0">
+                        <h3 className="font-headline-sm text-headline-sm text-warm-ink font-bold truncate">{featured.shortName}</h3>
+                        <p className="font-label-sm text-label-sm text-antique-gold mt-0.5 truncate">{featured.metal}</p>
+                      </div>
+                      <span className="shrink-0 font-headline-sm text-headline-sm text-imperial-burgundy font-bold tabular-nums">
+                        {formatNumber(featured.price)} د.ع
+                      </span>
                     </div>
-                  </div>
-                  <div className="flex items-center gap-4 sm:gap-6 shrink-0 text-left">
-                    <span className="font-label-lg text-label-lg text-imperial-burgundy font-bold tabular-nums">
-                      {formatNumber(p.price)} د.ع
-                    </span>
-                    <span className="hidden sm:inline-flex items-center gap-1 font-label-sm text-label-sm text-antique-gold group-hover:text-imperial-burgundy transition-colors py-2 px-3 rounded-lg group-hover:bg-blush-surface">
-                      التفاصيل
-                      <Icon name="arrow_back" className="text-[16px] transition-transform group-hover:-translate-x-1" />
-                    </span>
-                  </div>
-                </Link>
-              ))}
+                  </Link>
+                </div>
+              )}
+              <div className="lg:col-span-7 flex flex-col divide-y divide-hairline-burgundy">
+                {bestsellers.map((p, i) => (
+                  <Link
+                    key={p.id}
+                    to={`/products/${p.slug}`}
+                    className="py-5 first:pt-0 last:pb-0 flex items-center justify-between gap-4 group transition-colors duration-300 hover:bg-blush-surface/30 px-3 rounded-xl fade-up-item"
+                  >
+                    <div className="flex items-center gap-4 sm:gap-6 min-w-0">
+                      <span className="font-display-lg text-3xl sm:text-4xl text-royal-gold/70 font-semibold tracking-tight shrink-0 select-none group-hover:text-imperial-burgundy transition-colors tabular-nums">
+                        {String(i + 1).padStart(2, '0')}
+                      </span>
+                      <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-xl overflow-hidden border border-royal-gold/30 shrink-0 bg-surface-container">
+                        <img
+                          alt=""
+                          loading="lazy"
+                          decoding="async"
+                          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                          src={p.image}
+                        />
+                      </div>
+                      <div className="min-w-0">
+                        <h3 className="font-headline-sm text-headline-sm text-warm-ink font-bold truncate group-hover:text-imperial-burgundy transition-colors">
+                          {p.shortName}
+                        </h3>
+                        <p className="font-body-sm text-body-sm text-muted-rosewood mt-0.5 truncate">{p.summary || p.metal}</p>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-4 sm:gap-6 shrink-0 text-left">
+                      <span className="font-label-lg text-label-lg text-imperial-burgundy font-bold tabular-nums">
+                        {formatNumber(p.price)} د.ع
+                      </span>
+                      <span className="hidden sm:inline-flex items-center gap-1 font-label-sm text-label-sm text-antique-gold group-hover:text-imperial-burgundy transition-colors py-2 px-3 rounded-lg group-hover:bg-blush-surface">
+                        التفاصيل
+                        <Icon name="arrow_back" className="text-[16px] transition-transform group-hover:-translate-x-1" />
+                      </span>
+                    </div>
+                  </Link>
+                ))}
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
       {offers.length > 0 && (
         <>
           <div className="relative w-full overflow-hidden leading-none bg-parchment text-burgundy-800 pointer-events-none -my-1">
@@ -149,11 +149,9 @@ export default function HomeMiddle() {
                     عروض لفترة محدودة
                   </span>
                   <div className="overflow-hidden">
-                    <h2 className="font-headline-xl text-headline-xl text-ivory-canvas font-bold line-reveal">فرص واقتناء استثنائي</h2>
+                    <h2 className="font-headline-xl text-headline-xl text-ivory-canvas font-bold line-reveal">عروض آيريس</h2>
                   </div>
-                  <p className="font-body-md text-body-md text-rose-mist/80 mt-2">
-                    قطع مختارة بعناية بتخفيضات موسمية خاصة تحتفظ بقيمتها الرفيعة
-                  </p>
+                  <p className="font-body-md text-body-md text-rose-mist/80 mt-2">قطع مختارة بأسعار مخفّضة لفترة محدودة</p>
                 </div>
                 <Link
                   to="/collections/offers"
@@ -230,259 +228,71 @@ export default function HomeMiddle() {
           </section>
         </>
       )}
-      <div className="w-full bg-ivory-canvas py-12 flex items-center justify-center">
-        <div className="twin-divider flex items-center justify-center gap-4 max-w-lg w-full px-6">
-          <div className="twin-line-left flex flex-col gap-[3px] flex-1">
-            <span className="h-[1px] w-full bg-royal-gold/50" /> <span className="h-[1px] w-full bg-royal-gold/25" />
-          </div>
-          <div className="diamond-center flex items-center gap-1 text-royal-gold text-[11px]">
-            <span>◆</span>
-          </div>
-          <div className="twin-line-right flex flex-col gap-[3px] flex-1">
-            <span className="h-[1px] w-full bg-royal-gold/50" /> <span className="h-[1px] w-full bg-royal-gold/25" />
-          </div>
-        </div>
-      </div>
-      <section className="relative w-full bg-ivory-canvas pb-space-3xl overflow-hidden" id="section-gift-sets">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <div className="text-center max-w-2xl mx-auto mb-20 fade-up-item">
-            <span className="font-label-sm text-label-sm text-antique-gold font-semibold tracking-widest uppercase block mb-2">
-              طقوس الإهداء الفاخر
-            </span>
-            <div className="overflow-hidden">
-              <h2 className="font-headline-xl text-headline-xl text-warm-ink font-bold line-reveal">مجموعات الهدايا الفاخرة</h2>
-            </div>
-            <p className="font-body-md text-body-md text-muted-rosewood mt-3">
-              أطقم وهدايا مختارة تصل في صندوق الدار المخملي، جاهزة للإهداء
-            </p>
-          </div>
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center mb-24 fade-up-item">
-            <div className="lg:col-span-6 relative">
-              <div className="relative p-3 rounded-t-[120px] rounded-b-2xl bg-parchment border border-hairline-burgundy shadow-[0_12px_36px_rgba(42,3,13,0.06)]">
-                <div className="w-full aspect-[4/3] sm:aspect-[16/11] rounded-t-[112px] rounded-b-xl overflow-hidden curtain-reveal bg-surface-container">
-                  <img
-                    className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
-                    data-alt="A lavish dark burgundy velvet jewelry presentation box tied with a champagne silk ribbon, open slightly showing a glittering diamond and sapphire pendant set, resting on burgundy tissue paper with gold leaf accents"
-                    src="/images/stitch/073.jpg"
-                  />
-                </div>
-                <div className="absolute bottom-6 right-6 text-antique-gold/60 text-xs pointer-events-none">◆</div>
-                <div className="absolute bottom-6 left-6 text-antique-gold/60 text-xs pointer-events-none">◆</div>
-              </div>
-            </div>
-            <div className="lg:col-span-6 flex flex-col items-start space-y-5">
-              <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-champagne-gold/25 border border-royal-gold/40 text-antique-gold font-label-sm text-xs font-semibold">
-                <span className="text-[8px] text-royal-gold">◆</span>
-                {' هدية مغلّفة ومختومة بالشمع الملكي'}
+      {withVideo.length > 0 && (
+        <section className="relative w-full overflow-hidden bg-wine-night py-space-3xl text-ivory-canvas" id="section-videos">
+          <div className="relative mx-auto max-w-7xl px-6 lg:px-12">
+            <div className="mx-auto mb-12 max-w-2xl text-center fade-up-item">
+              <span className="mb-2 block font-label-sm text-label-sm font-semibold tracking-widest text-champagne-gold">
+                شاهديها قبل أن تطلبيها
               </span>
-              <h3 className="font-headline-lg text-headline-lg text-warm-ink font-bold">طقم الخطوبة والسعادة</h3>
-              <p className="font-body-lg text-body-lg text-muted-rosewood leading-relaxed">
-                تناغم بين قلادة السفير وخاتم الألماس في صندوق مخملي فاخر، هدية تليق بأجمل البدايات.
-              </p>
-              <div className="flex items-baseline gap-2 pt-2">
-                <span className="font-body-sm text-body-sm text-muted-rosewood">السعر:</span>{' '}
-                <span className="font-headline-md text-headline-md text-imperial-burgundy font-bold">{engagement.price}</span>
-              </div>
-              <div className="pt-2">
-                <Link
-                  to={engagement.to}
-                  className="btn-sweep inline-flex items-center gap-3 px-8 py-4 rounded-xl bg-imperial-burgundy hover:bg-burgundy-600 text-ivory-canvas font-label-lg text-label-lg font-medium shadow-[0_8px_24px_rgba(78,24,37,0.22)] border border-royal-gold/40 transition-all"
-                >
-                  <span>اكتشفي تفاصيل الباقة</span> <span className="material-symbols-outlined text-[18px]">arrow_back</span>
+              <h2 className="font-headline-xl text-headline-xl font-bold text-ivory-canvas">قطعنا بالفيديو</h2>
+              <p className="mt-3 font-body-md text-body-md text-rose-mist/80">فيديوهات قصيرة من القطع نفسها.</p>
+            </div>
+            <div className="grid grid-cols-2 gap-6 lg:grid-cols-4">
+              {withVideo.slice(0, 4).map((p) => (
+                <Link key={p.id} to={`/products/${p.slug}`} className="group block fade-up-item">
+                  <div className="relative aspect-[3/4] overflow-hidden rounded-t-[90px] rounded-b-2xl border border-royal-gold/35 bg-deep-oxblood">
+                    <video
+                      src={p.videos![0]}
+                      poster={p.image}
+                      muted
+                      loop
+                      autoPlay
+                      playsInline
+                      preload="metadata"
+                      aria-label={`فيديو ${p.shortName}`}
+                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                    <span className="absolute bottom-3 right-3 flex items-center gap-1 rounded-full bg-wine-night/70 px-2 py-0.5 font-label-sm text-label-sm text-ivory-canvas backdrop-blur-sm">
+                      <Icon name="play_circle" fill className="text-[14px]" />
+                      فيديو
+                    </span>
+                  </div>
+                  <div className="mt-3 flex items-baseline justify-between gap-2">
+                    <h3 className="truncate font-headline-sm text-headline-sm font-semibold text-ivory-canvas group-hover:text-champagne-gold">
+                      {p.shortName}
+                    </h3>
+                    <span className="shrink-0 font-label-lg text-label-lg font-bold text-champagne-gold tabular-nums">
+                      {formatNumber(p.price)} د.ع
+                    </span>
+                  </div>
                 </Link>
-              </div>
+              ))}
             </div>
           </div>
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center fade-up-item">
-            <div className="lg:col-span-6 flex flex-col items-start space-y-5 order-2 lg:order-1">
-              <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-champagne-gold/25 border border-royal-gold/40 text-antique-gold font-label-sm text-xs font-semibold">
-                <span className="text-[8px] text-royal-gold">◆</span>
-                {' لمسة امتنان لا تُنسى'}
-              </span>
-              <h3 className="font-headline-lg text-headline-lg text-warm-ink font-bold">هدية الأمهات الملكية</h3>
-              <p className="font-body-lg text-body-lg text-muted-rosewood leading-relaxed">
-                مجموعة منتقاة من اللؤلؤ الطبيعي وسوار الذهب عيار 18، تعبّر عن الوفاء والحب، مغلّفة بالمخمل العنابي.
+        </section>
+      )}
+      {contact.instagram && (
+        <section className="w-full bg-blush-surface py-space-2xl" id="section-instagram">
+          <div className="mx-auto flex max-w-5xl flex-col items-center justify-between gap-5 px-6 text-center md:flex-row md:text-right">
+            <div>
+              <h2 className="font-headline-lg text-headline-lg font-bold text-warm-ink">جديدنا أولاً على إنستغرام</h2>
+              <p className="mt-1 font-body-md text-body-md text-muted-rosewood">
+                ننشر كل قطعة جديدة بالصور والفيديو، ويمكنكِ الطلب برسالة مباشرة أيضاً.
               </p>
-              <div className="flex items-baseline gap-2 pt-2">
-                <span className="font-body-sm text-body-sm text-muted-rosewood">السعر:</span>{' '}
-                <span className="font-headline-md text-headline-md text-imperial-burgundy font-bold">{mothers.price}</span>
-              </div>
-              <div className="pt-2">
-                <Link
-                  to={mothers.to}
-                  className="btn-sweep inline-flex items-center gap-3 px-8 py-4 rounded-xl bg-imperial-burgundy hover:bg-burgundy-600 text-ivory-canvas font-label-lg text-label-lg font-medium shadow-[0_8px_24px_rgba(78,24,37,0.22)] border border-royal-gold/40 transition-all"
-                >
-                  <span>اكتشفي تفاصيل الباقة</span> <span className="material-symbols-outlined text-[18px]">arrow_back</span>
-                </Link>
-              </div>
             </div>
-            <div className="lg:col-span-6 relative order-1 lg:order-2">
-              <div className="relative p-3 rounded-t-[120px] rounded-b-2xl bg-parchment border border-hairline-burgundy shadow-[0_12px_36px_rgba(42,3,13,0.06)]">
-                <div className="w-full aspect-[4/3] sm:aspect-[16/11] rounded-t-[112px] rounded-b-xl overflow-hidden curtain-reveal bg-surface-container">
-                  <img
-                    className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
-                    data-alt="Luxury mother's jewelry gift box adorned with dried ivory florals and fine gold wax seal stamp, containing luminous natural pearl drop earrings and a slender golden bracelet"
-                    src="/images/stitch/074.jpg"
-                  />
-                </div>
-                <div className="absolute bottom-6 right-6 text-antique-gold/60 text-xs pointer-events-none">◆</div>
-                <div className="absolute bottom-6 left-6 text-antique-gold/60 text-xs pointer-events-none">◆</div>
-              </div>
-            </div>
+            <a
+              href={contact.instagram}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex shrink-0 items-center gap-2 rounded-xl bg-imperial-burgundy px-6 py-3 font-label-lg text-label-lg text-ivory-canvas shadow-[0_8px_24px_rgba(78,24,37,0.22)] hover:bg-burgundy-600"
+            >
+              <Icon name="photo_camera" className="text-[18px] text-champagne-gold" />
+              <span dir="ltr">@{contact.instagramHandle}</span>
+            </a>
           </div>
-        </div>
-      </section>
-      <section
-        className="relative w-full bg-wine-night text-ivory-canvas py-space-3xl border-t border-b border-royal-gold/30 overflow-hidden"
-        id="section-limited-pieces"
-      >
-        <div className="absolute inset-0 pointer-events-none opacity-[0.025] text-royal-gold">
-          <svg className="w-full h-full" fill="none" height="90" viewBox="0 0 90 90" width="90" xmlns="http://www.w3.org/2000/svg">
-            <rect fill="none" height="70" stroke="currentColor" strokeWidth="1" width="70" x="10" y="10" />
-            <circle cx="45" cy="45" fill="none" r="30" stroke="currentColor" strokeWidth="1" />
-            <path d="M45 0L90 45L45 90L0 45Z" fill="none" stroke="currentColor" strokeWidth="1" />
-          </svg>
-        </div>
-        <div className="relative max-w-7xl mx-auto px-6 lg:px-12">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
-            <div className="lg:col-span-4 flex flex-col items-start space-y-6 fade-up-item">
-              <div className="inline-flex items-center gap-2 text-royal-gold font-label-sm text-label-sm">
-                <span className="text-xs">◆</span> <span>إصدارات نادرة وحصرية</span>
-              </div>
-              <div className="overflow-hidden">
-                <h2 className="font-headline-xl text-headline-xl text-ivory-canvas font-bold line-reveal leading-snug">
-                  قطعٌ نادرة ومحدودة الإصدار
-                </h2>
-              </div>
-              <p className="font-body-md text-body-md text-rose-mist/80 leading-relaxed">
-                كميات محدودة من كل تصميم، لمن يبحثن عن قطعة لا تتكرر كثيراً.
-              </p>
-              <div className="p-4 rounded-xl bg-deep-oxblood/80 border border-royal-gold/35 flex items-center gap-3.5 w-full">
-                <div className="w-10 h-10 rounded-full bg-champagne-gold/20 flex items-center justify-center text-royal-gold shrink-0">
-                  <span className="material-symbols-outlined text-[22px]">workspace_premium</span>
-                </div>
-                <div>
-                  <h4 className="font-headline-sm text-sm font-semibold text-champagne-gold">ذهب مدموغ بالعيار</h4>
-                  <p className="font-label-sm text-xs text-rose-mist/70 mt-0.5">العيار والأحجار مذكورة في صفحة كل قطعة</p>
-                </div>
-              </div>
-              <Link
-                to="/collections/all"
-                className="inline-flex items-center gap-2 font-label-md text-label-md text-champagne-gold hover:text-royal-gold transition-colors pt-2"
-              >
-                <span>استعراض كل القطع</span> <span className="material-symbols-outlined text-[17px]">arrow_back</span>
-              </Link>
-            </div>
-            <div className="lg:col-span-8 grid grid-cols-1 sm:grid-cols-3 gap-6">
-              <div className="group relative rounded-2xl bg-deep-oxblood/90 border border-royal-gold/35 p-4 flex flex-col justify-between transition-all duration-300 hover:border-royal-gold/80 hover:-translate-y-1 fade-up-item">
-                <div>
-                  <div className="relative w-full aspect-[3/4] rounded-t-xl rounded-b-lg overflow-hidden bg-wine-night">
-                    <img
-                      className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                      data-alt="Rare pear-shaped sapphire and round brilliant diamond pendant necklace softly illuminated on dark wine velvet surface"
-                      src="/images/stitch/075.jpg"
-                    />
-                    <div className="absolute top-3 right-3">
-                      <span className="shimmer-active inline-block px-2.5 py-1 rounded-full bg-parchment text-antique-gold font-label-sm text-xs font-bold border border-royal-gold/50 shadow-sm">
-                        آخر قطعة
-                      </span>
-                    </div>
-                  </div>
-                  <div className="mt-4">
-                    <h3 className="font-headline-sm text-headline-sm text-ivory-canvas font-semibold group-hover:text-champagne-gold transition-colors">
-                      قلادة قطرة الندى النادرة
-                    </h3>
-                    <p className="font-label-sm text-xs text-rose-mist/70 mt-1">حجر سفير حر مع ترصيع يدوي</p>
-                  </div>
-                </div>
-                <div className="mt-5 pt-3 border-t border-royal-gold/20 flex items-center justify-between">
-                  <span className="font-label-lg text-label-lg text-champagne-gold font-bold">64,000 د.ع</span>{' '}
-                  <button
-                    aria-label="اقتناء القطعة"
-                    className="add-to-cart-trigger text-antique-gold hover:text-champagne-gold p-1.5 transition-colors"
-                    data-img="placeholder"
-                    data-name="قلادة قطرة الندى النادرة"
-                    data-price="64,000"
-                    type="button"
-                  >
-                    <span className="material-symbols-outlined text-[20px]">shopping_bag</span>
-                  </button>
-                </div>
-              </div>
-              <div className="group relative rounded-2xl bg-deep-oxblood/90 border border-royal-gold/35 p-4 flex flex-col justify-between transition-all duration-300 hover:border-royal-gold/80 hover:-translate-y-1 fade-up-item">
-                <div>
-                  <div className="relative w-full aspect-[3/4] rounded-t-xl rounded-b-lg overflow-hidden bg-wine-night">
-                    <img
-                      className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                      data-alt="Imperial oval-cut diamond solitaire ring displayed prominently in a wine red velvet box with subtle warm candlelight reflections"
-                      src="/images/stitch/076.jpg"
-                    />
-                    <div className="absolute top-3 right-3">
-                      <span className="shimmer-active inline-block px-2.5 py-1 rounded-full bg-parchment text-antique-gold font-label-sm text-xs font-bold border border-royal-gold/50 shadow-sm">
-                        متبقي قطعتان
-                      </span>
-                    </div>
-                  </div>
-                  <div className="mt-4">
-                    <h3 className="font-headline-sm text-headline-sm text-ivory-canvas font-semibold group-hover:text-champagne-gold transition-colors">
-                      خاتم السوليتير الإمبراطوري
-                    </h3>
-                    <p className="font-label-sm text-xs text-rose-mist/70 mt-1">ألماس طبيعي نقي عيار 18</p>
-                  </div>
-                </div>
-                <div className="mt-5 pt-3 border-t border-royal-gold/20 flex items-center justify-between">
-                  <span className="font-label-lg text-label-lg text-champagne-gold font-bold">58,000 د.ع</span>{' '}
-                  <button
-                    aria-label="اقتناء القطعة"
-                    className="add-to-cart-trigger text-antique-gold hover:text-champagne-gold p-1.5 transition-colors"
-                    data-img="placeholder"
-                    data-name="خاتم السوليتير الإمبراطوري"
-                    data-price="58,000"
-                    type="button"
-                  >
-                    <span className="material-symbols-outlined text-[20px]">shopping_bag</span>
-                  </button>
-                </div>
-              </div>
-              <div className="group relative rounded-2xl bg-deep-oxblood/90 border border-royal-gold/35 p-4 flex flex-col justify-between transition-all duration-300 hover:border-royal-gold/80 hover:-translate-y-1 fade-up-item">
-                <div>
-                  <div className="relative w-full aspect-[3/4] rounded-t-xl rounded-b-lg overflow-hidden bg-wine-night">
-                    <img
-                      className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                      data-alt="Graceful dangling natural pearls on gold wire links lying on a luminous marble vanity table with warm specular rim lights"
-                      src="/images/stitch/077.jpg"
-                    />
-                    <div className="absolute top-3 right-3">
-                      <span className="shimmer-active inline-block px-2.5 py-1 rounded-full bg-parchment text-antique-gold font-label-sm text-xs font-bold border border-royal-gold/50 shadow-sm">
-                        متبقي 3 قطع
-                      </span>
-                    </div>
-                  </div>
-                  <div className="mt-4">
-                    <h3 className="font-headline-sm text-headline-sm text-ivory-canvas font-semibold group-hover:text-champagne-gold transition-colors">
-                      أقراط اللؤلؤ الإغريقي
-                    </h3>
-                    <p className="font-label-sm text-xs text-rose-mist/70 mt-1">لؤلؤ مستخرج طبيعياً مع ذهب 21</p>
-                  </div>
-                </div>
-                <div className="mt-5 pt-3 border-t border-royal-gold/20 flex items-center justify-between">
-                  <span className="font-label-lg text-label-lg text-champagne-gold font-bold">36,000 د.ع</span>{' '}
-                  <button
-                    aria-label="اقتناء القطعة"
-                    className="add-to-cart-trigger text-antique-gold hover:text-champagne-gold p-1.5 transition-colors"
-                    data-img="placeholder"
-                    data-name="أقراط اللؤلؤ الإغريقي"
-                    data-price="36,000"
-                    type="button"
-                  >
-                    <span className="material-symbols-outlined text-[20px]">shopping_bag</span>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+        </section>
+      )}
     </>
   );
 }

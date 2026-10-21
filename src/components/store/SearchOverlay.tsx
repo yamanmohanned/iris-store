@@ -8,7 +8,7 @@ import { readJSON, writeJSON } from '@/state/storage';
 import { useUi } from '@/state/ui';
 
 const RECENT_KEY = 'iris.search.recent.v1';
-const SUGGESTIONS = ['قلادة السفير', 'خاتم سوليتير', 'لؤلؤ الباروك', '102'];
+const SUGGESTIONS = ['قلادة', 'كبلز', 'خواتم', 'هدية'];
 
 /** يبرز الجزء المطابق من النص. */
 function Highlight({ text, query }: { text: string; query: string }) {
