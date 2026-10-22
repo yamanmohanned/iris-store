@@ -81,7 +81,7 @@ Look at the current page (text only if possible), tell me in short numbered step
 ```text
 The shop is live at <https://DOMAIN>. Verify it WITHOUT changing anything (no orders, no logins, no uploads, no `--owner`, no api-contract, no flow-* scripts).
 Run: `node scripts/qa/security-scan.mjs <https://DOMAIN>`, `node scripts/qa/seo-check.mjs <https://DOMAIN> <https://DOMAIN>`, `node scripts/qa/sweep-routes.mjs <https://DOMAIN>`, `node scripts/qa/vendor-scan-check.mjs <https://DOMAIN>`.
-Also check with curl: `https://DOMAIN/api/index.php?r=health` (ok, writable, uploads, passwordSet, siteUrl equals the domain), http→https redirect, www→domain redirect, robots.txt (Sitemap line, no `Disallow: /`), sitemap.xml (products only visible ones), response headers on `/` (CSP, HSTS, nosniff, XFO, no X-Powered-By), certificate validity days, `/cart` has X-Robots-Tag noindex.
+Also check with curl: `https://DOMAIN/api/index.php?r=health` (ok, writable, uploads, passwordSet, siteUrl equals the domain; it must NOT show the PHP version) and that POSTs with Content-Type application/x-www-form-urlencoded or multipart to `/` and to `/api/index.php?r=orders` are refused with 403, http→https redirect, www→domain redirect, robots.txt (Sitemap line, no `Disallow: /`), sitemap.xml (products only visible ones), response headers on `/` (CSP, HSTS, nosniff, XFO, no X-Powered-By), certificate validity days, `/cart` has X-Robots-Tag noindex.
 Report PASS/FAIL per item with the evidence, rank any failure High/Medium/Low, and give the exact fix (file and line on the host, or setting in the host panel). Do not fix by editing the live site.
 ```
 
@@ -141,7 +141,20 @@ Steps to produce for the owner: download public_html completely (including hidde
 
 ---
 
-## P10 — Explain a step to the owner in Arabic
+## P10 — Is the host's PHP fixed against PHP2Shell? (Claude Code + owner at the panel)
+
+```text
+Check whether the hosting account for <https://DOMAIN> is protected against PHP2Shell (CVE-2026-109618 and CVE-2026-109619, critical flaws in PHP itself; fixed in 8.2.35, 8.3.36, 8.4.27, 8.5.12 and newer). Read docs/SECURITY-REPORT.md §4 first and re-check the facts at php.net before answering, since this advisory is recent.
+1. Tell the owner where to read the PHP version and handler in the host panel (MultiPHP Manager / PHP Selector / hPanel), and whether the red PHP2Shell notice shows on the admin home page after the owner signs in (the owner types the password).
+2. If the version is older than the fixed release for its branch, or is 8.1 or older: draft the support ticket (English plus Arabic) asking for the fix or a written backport confirmation, and say what to do if the answer is no (move host, runbook §10).
+3. List the host-level settings from the advisory the owner can ask support to apply meanwhile (session.upload_progress.enabled=0, fatal_error_backtraces=0 on 8.5, smaller post_max_size), and state clearly that they do not make the installation safe.
+4. After the host answers, verify: owner signs in, no red notice; run node scripts/qa/security-scan.mjs <https://DOMAIN> (passive). Never run --owner scans on the live shop.
+Never ask for passwords or codes.
+```
+
+---
+
+## P11 — Explain a step to the owner in Arabic
 
 ```text
 اشرح للمالكة/للمالك بالعربية البسيطة (بلا مصطلحات تقنية) الخطوة التالية: <الخطوة>. استخدم جملاً قصيرة وأرقاماً للخطوات، وأخبرني ماذا يجب أن تراه على الشاشة بعد كل خطوة. لا تطلب مني ولا من المالك كلمات مرور أو رموز تحقق في هذه المحادثة؛ المالك يكتبها بنفسه في موقع الخدمة. إن كانت الخطوة تتضمن دفعاً أو قبول شروط فاذكر ذلك وحدّد أن المالك هو من يضغط الزر.

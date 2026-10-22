@@ -73,7 +73,7 @@ call_user_func($routes[$key]);
 function route_health()
 {
     iris_ok(array(
-        'php' => PHP_VERSION,
+        // لا نكشف نسخة PHP للعموم: يراها المالك وحده بعد الدخول (auth/me → runtime)
         'writable' => is_writable(IRIS_DATA_DIR),
         'uploads' => is_dir(iris_uploads_dir()) ? is_writable(iris_uploads_dir()) : is_writable(dirname(iris_uploads_dir())),
         'catalog' => is_file(iris_data_path('catalog')) ? 'owner' : 'seed',
@@ -520,7 +520,7 @@ function route_login()
     if (!iris_rate_limit('login', 8, 15 * 60, false)) {
         iris_fail('محاولات كثيرة خاطئة. حاول بعد 15 دقيقة.', 429);
     }
-    $body = iris_body();
+    $body = iris_body(IRIS_PUBLIC_BODY_MAX);
     $username = strtolower(iris_str(isset($body['username']) ? $body['username'] : '', 120, true, 'اسم المستخدم'));
     $password = isset($body['password']) && is_string($body['password']) ? substr($body['password'], 0, 1024) : '';
     // تخمين موزّع من أجهزة كثيرة على حساب واحد يتوقف عند هذا الحد مهما تغيّر العنوان
@@ -653,7 +653,7 @@ function route_order_create()
     if (!iris_rate_limit('order', 12, 3600)) {
         iris_fail('تم إرسال طلبات كثيرة من هذا الجهاز. حاول لاحقاً أو تواصل معنا هاتفياً.', 429);
     }
-    $body = iris_body();
+    $body = iris_body(IRIS_PUBLIC_BODY_MAX);
     $c = isset($body['customer']) && is_array($body['customer']) ? $body['customer'] : array();
     $d = isset($body['delivery']) && is_array($body['delivery']) ? $body['delivery'] : array();
 
@@ -914,7 +914,7 @@ function route_order_track()
     if (!iris_rate_limit('track', 40, 600)) {
         iris_fail('محاولات كثيرة. حاول بعد قليل.', 429);
     }
-    $body = iris_body();
+    $body = iris_body(IRIS_PUBLIC_BODY_MAX);
     $id = isset($body['id']) && (is_string($body['id']) || is_int($body['id'])) ? (int) substr(preg_replace('/\D+/', '', (string) $body['id']), 0, 12) : 0;
     $phone = iris_phone(isset($body['phone']) && is_string($body['phone']) ? $body['phone'] : '');
     if (!$id || !$phone) {

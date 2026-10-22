@@ -78,6 +78,8 @@ export interface AdminProfile {
   permissions: Permissions;
   /** دخول بكلمة المرور الافتراضية (نسخة Netlify بلا كلمة مرور مضبوطة): لا شيء مسموح قبل تغييرها */
   mustChangePassword?: boolean;
+  /** للمالك على خادم PHP فقط: نسخة PHP وهل فيها إصلاح ثغرتي PHP2Shell (انظر docs/SECURITY-REPORT.md) */
+  runtime?: { php: string; phpFix: 'ok' | 'outdated' | 'unsupported' };
 }
 
 /** موظف كما تعرضه صفحة فريق العمل (بلا كلمة المرور). */

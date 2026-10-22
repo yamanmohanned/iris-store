@@ -104,6 +104,25 @@ export default function AdminOverview() {
   return (
     <AdminPage title={`أهلاً ${admin?.name ?? ''}`} subtitle="ملخص المتجر الآن.">
       {(!online || (canOrders && error)) && <OfflineNotice message={(canOrders && error) || 'الخادم غير متاح؛ تأكد من رفع مجلد api مع الموقع.'} />}
+      {isOwner && admin?.runtime && admin.runtime.phpFix !== 'ok' && (
+        <Notice tone="danger" className="mb-5">
+          <p className="font-semibold">استضافتك تعمل بنسخة PHP ({admin.runtime.php}) لم يثبت فيها إصلاح الثغرتين الحرجتين PHP2Shell.</p>
+          <p className="mt-1">
+            {admin.runtime.phpFix === 'unsupported'
+              ? 'هذه النسخة لم تعد تتلقى تحديثات رسمية. '
+              : 'الإصلاح صدر في 8.2.35 و8.3.36 و8.4.27 و8.5.12. '}
+            راسل دعم الاستضافة اليوم واطلب ترقية PHP إلى 8.3.36 أو أحدث، أو تأكيداً كتابياً بأن إصلاح CVE-2026-109618 وCVE-2026-109619 مطبَّق عندهم (بعض الاستضافات تُصلح دون تغيير رقم النسخة).
+          </p>
+          <details className="mt-2">
+            <summary className="cursor-pointer font-semibold">رسالة جاهزة تُلصق في تذكرة الدعم</summary>
+            <p dir="ltr" className="mt-2 select-all rounded-lg bg-white/60 p-3 text-left">
+              Hello, please confirm that the PHP version serving my hosting account is 8.2.35, 8.3.36, 8.4.27, 8.5.12 or newer, or a vendor build that includes the fix for
+              CVE-2026-109618 and CVE-2026-109619 (&quot;PHP2Shell&quot;), and restart the PHP workers. My account currently reports PHP {admin.runtime.php}. Please reply in
+              writing. Thank you.
+            </p>
+          </details>
+        </Notice>
+      )}
       {online && source === 'seed' && can('products', 'edit') && (
         <Notice className="mb-5">
           المتجر يعرض المحتوى الافتتاحي (أول منتجات إنستغرام). عدّلها أو احذفها من{' '}

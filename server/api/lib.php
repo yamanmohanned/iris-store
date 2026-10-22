@@ -12,6 +12,27 @@ if (!defined('IRIS_API')) {
 define('IRIS_DATA_DIR', __DIR__ . '/data');
 /** كل ملف بيانات يبدأ بهذا السطر حتى لا يُقرأ من المتصفح حتى لو تجاهل الخادم ملف .htaccess */
 define('IRIS_GUARD', "<?php http_response_code(404); exit; ?>\n");
+/** جسم طلب JSON: 4 ميغابايت لمسارات اللوحة (حفظ الكتالوج)، و64 كيلوبايت للمسارات العامة (دخول، طلب، تتبع) */
+define('IRIS_BODY_MAX', 4 * 1024 * 1024);
+define('IRIS_PUBLIC_BODY_MAX', 64 * 1024);
+
+/**
+ * هل في نسخة PHP على هذه الاستضافة إصلاح ثغرتي PHP2Shell (CVE-2026-109618 وCVE-2026-109619، الخلل في محرك PHP نفسه)؟
+ *   ok          نسخة مُصلَحة (8.2.35 / 8.3.36 / 8.4.27 / 8.5.12 أو أحدث)
+ *   outdated    فرع مدعوم لكن أقدم من نسخة الإصلاح
+ *   unsupported 8.1 أو أقدم: لا تحديثات رسمية، ولا يصلح إلا ما تُرقّعه الاستضافة بنفسها
+ * توزيعات لينكس وبعض الاستضافات تُصلح دون تغيير رقم النسخة، لذلك النتيجة تقدير يُؤكَّد مع دعم الاستضافة.
+ */
+function iris_php_fix_status($version = PHP_VERSION)
+{
+    $fixed = array('8.2' => '8.2.35', '8.3' => '8.3.36', '8.4' => '8.4.27', '8.5' => '8.5.12', '8.6' => '8.6.0RC4');
+    $parts = explode('.', (string) $version);
+    $branch = $parts[0] . '.' . (isset($parts[1]) ? $parts[1] : '0');
+    if (isset($fixed[$branch])) {
+        return version_compare($version, $fixed[$branch], '>=') ? 'ok' : 'outdated';
+    }
+    return version_compare($branch, '8.6', '>') ? 'ok' : 'unsupported';
+}
 
 /* ───────────── الاستجابات ───────────── */
 
@@ -74,14 +95,18 @@ function iris_bootstrap()
     }
 }
 
-/** جسم الطلب كـ JSON (حد أقصى 4 ميغابايت). */
-function iris_body()
+/**
+ * جسم الطلب كـ JSON. المسارات التي يصلها الزائر بلا دخول تمرّر IRIS_PUBLIC_BODY_MAX: لا طلب عام يحتاج أكثر من بضعة
+ * كيلوبايت، وحدّ صغير يقلل ما يستطيع مجهول أن يستهلكه من ذاكرة العامل (انظر ثغرتي PHP2Shell في docs/SECURITY-REPORT.md).
+ * العمق 32 يكفي الكتالوج ويمنع الأجسام المتداخلة بعمق.
+ */
+function iris_body($max = IRIS_BODY_MAX)
 {
-    $raw = file_get_contents('php://input', false, null, 0, 4 * 1024 * 1024 + 1);
-    if ($raw === false || strlen($raw) > 4 * 1024 * 1024) {
+    $raw = file_get_contents('php://input', false, null, 0, $max + 1);
+    if ($raw === false || strlen($raw) > $max) {
         iris_fail('حجم البيانات المرسلة كبير جداً.', 413);
     }
-    $data = json_decode($raw, true);
+    $data = json_decode($raw, true, 32);
     if (!is_array($data)) {
         iris_fail('صيغة البيانات غير صحيحة.');
     }

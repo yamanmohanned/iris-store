@@ -27,7 +27,7 @@ What the developer (and Claude) can and cannot do:
 
 Ask the provider (or read the plan page) and tick all of these **before paying**:
 
-- [ ] PHP **7.4 or newer** (8.1+ preferred) selectable in the panel.
+- [ ] **A PHP release that contains the PHP2Shell fix (CVE-2026-109618 / CVE-2026-109619, two critical remote-code-execution flaws in PHP itself, October 2026): 8.2.35, 8.3.36, 8.4.27, 8.5.12 or newer**, selectable in the panel, **or a written statement from the provider that their PHP 8.1-or-older build carries the backport**. Do not launch on an unfixed PHP; the fix cannot be made from inside the shop's code. Ask which PHP handler the account uses (mod_php is the most exposed). Details and a ready support message: [`SECURITY-REPORT.md`](SECURITY-REPORT.md) §4.
 - [ ] Apache or LiteSpeed with `.htaccess` enabled (`AllowOverride All`) and the modules `mod_rewrite`, `mod_headers`, `mod_mime`; `mod_setenvif` recommended.
 - [ ] Free SSL certificate (AutoSSL / Let's Encrypt) that renews itself.
 - [ ] A file manager or FTP, and the ability to set folder permissions (755).
@@ -44,7 +44,7 @@ Payment is the practical constraint in Iraq:
 | Only local methods (ZainCash, Qi, bank, cash) | A local provider that accepts them. One lead from research: IQ-Hosting (Baghdad, cPanel); verify its payment options, PHP version and backups before buying. | Check the checklist above; some local plans are limited. |
 | Not sure | Ask the owner to try paying the first small invoice themselves before anything is built around that provider. | Never pay with the developer's card. |
 
-Optional later: Cloudflare (free) in front of the site. If used, set SSL mode to **Full (strict)**, and set `trusted_ip_header` in `api/config.php` (see §8) so the rate limits see real visitor addresses.
+Optional later: Cloudflare (free) in front of the site. If used, set SSL mode to **Full (strict)**, and set `trusted_ip_header` in `api/config.php` (see §8) so the rate limits see real visitor addresses. Cloudflare's WAF rules for PHP2Shell are a stopgap: they only protect an origin that accepts traffic from Cloudflare alone, so the host's PHP must be fixed regardless.
 
 ---
 
@@ -77,7 +77,7 @@ The full pre-launch suite runs against a packaged copy served by PHP (local) or 
 | `node scripts/qa/security-scan.mjs <base>` | Exposed files, headers, CORS/CSRF, TLS, secrets in JavaScript | Yes (passive) |
 | `node scripts/qa/security-scan.mjs <base> --owner owner:<password>` | + login cookies, stored-XSS, malicious uploads | **Staging only** (creates and removes a test product and order) |
 
-Everything above passed on the build in this branch on both PHP's built-in server and real Apache 2.4 with PHP 8.3; see [`SECURITY-REPORT.md`](SECURITY-REPORT.md) for numbers.
+Everything above passed on the build in this branch on real Apache 2.4 with PHP 8.3.36 (and the TypeScript core for the in-process contract); see [`SECURITY-REPORT.md`](SECURITY-REPORT.md) for numbers. Run the HTTP suites against a patched PHP only (8.2.35, 8.3.36, 8.4.27, 8.5.12 or newer).
 
 Local Apache test (optional, needs Docker): mount `release/hosting` into `php:8.3-apache`, run `a2enmod rewrite headers setenvif`, set `AllowOverride All`, then run the scripts above against it. This is how the `.htaccess` rules were verified.
 
@@ -112,9 +112,9 @@ Write nothing secret in chat, email or this repository.
 2. In the host's **File Manager** (hidden files visible): open `public_html`, upload the zip, **Extract**, delete the zip. Check that `index.html`, `.htaccess`, `api/`, `assets/`, `uploads/`, `vendor/` sit directly in `public_html`.
 3. Open `api/config.php` with the editor. **The owner** sets `admin_password` to a strong password (8+ characters, not common) and, optionally, `notify_email`. Leave `site_url` empty for now.
 4. Folder permissions: `api/data` and `uploads` must be writable (755 on most hosts).
-5. Open `https://<temporary-url>/api/index.php?r=health`. Expect `"ok":true`, `"writable":true`, `"uploads":true`, `"passwordSet":true`, and `"siteUrl":""`.
+5. Open `https://<temporary-url>/api/index.php?r=health`. Expect `"ok":true`, `"writable":true`, `"uploads":true`, `"passwordSet":true`, and `"siteUrl":""`. (The PHP version is no longer shown here; the owner sees it after login, see the next steps.)
 6. Open `https://<temporary-url>/robots.txt`. Expect `Disallow: /`: indexing is deliberately off until `site_url` is set.
-7. Log in at `/admin`, then in **Settings** set WhatsApp, Instagram, delivery fee, branding. Decide the starting catalog: keep the starter products (5 visible, 2 drafts) or run **Settings → Reset → blank**.
+7. Log in at `/admin`. **If a red notice about PHP2Shell appears on the home page, stop: ask the host to update PHP (the notice contains a ready message) before going further.** Then in **Settings** set WhatsApp, Instagram, delivery fee, branding. Decide the starting catalog: keep the starter products (5 visible, 2 drafts) or run **Settings → Reset → blank**.
 8. Run the live-safe checks from the developer machine:
 
    ```bash
@@ -217,6 +217,8 @@ The shop runs without any account of the developer's and without Claude: Claude 
 
 | Symptom | Cause and fix |
 | --- | --- |
+| Red PHP2Shell notice on the admin home page | The host's PHP lacks the fix for CVE-2026-109618/109619 (or is a backport the version number hides). Send the message in the notice or in [`SECURITY-REPORT.md`](SECURITY-REPORT.md) §4 and get a written answer; if the host cannot update, move. |
+| 403 when uploading a photo or video | Something in front of the shop (proxy, WAF) strips the session cookie or changes the request type. The shop accepts multipart only on `/api/index.php?r=upload` with the session cookie; check Cloudflare/WAF rules. |
 | 500 error on every page after editing `.htaccess` | Restore the uploaded `.htaccess`; a character was changed. Re-extract it from the zip. |
 | Inner pages show the host's 404 | `.htaccess` missing (hidden files off in File Manager when uploading) or `mod_rewrite` disabled. |
 | `?r=health` says `"writable":false` | Set `api/data` and `uploads` to 755 (or 775/777 if the host runs PHP as another user). |

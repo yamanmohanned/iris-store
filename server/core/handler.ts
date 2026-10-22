@@ -4,7 +4,7 @@
  */
 import { allows, type Section } from '../../src/lib/permissions.ts';
 import { createAuth, type Actor } from './auth.ts';
-import { fail, Fail, json, ok, rateLimited, readBody, type Deps, type Env, type Json, type Kv } from './base.ts';
+import { fail, Fail, json, ok, PUBLIC_BODY_MAX, rateLimited, readBody, type Deps, type Env, type Json, type Kv } from './base.ts';
 import { cleanCatalog, loadCatalog, mergeForPermissions } from './catalog.ts';
 import { createInstagram } from './instagram.ts';
 import { createOrders } from './orders.ts';
@@ -114,7 +114,7 @@ export function createHandler(kv: Kv, env: Env, deps: Deps = { fetch }) {
       }
 
       case 'POST auth/login': {
-        const { admin, cookie } = await auth.login(await readBody(req), ip, url.protocol === 'https:');
+        const { admin, cookie } = await auth.login(await readBody(req, PUBLIC_BODY_MAX), ip, url.protocol === 'https:');
         return ok({ admin }, { 'Set-Cookie': cookie });
       }
 
@@ -135,7 +135,7 @@ export function createHandler(kv: Kv, env: Env, deps: Deps = { fetch }) {
 
       case 'POST orders':
         if (await rateLimited(kv, 'order', ip, 12, 3600, true)) fail('تم إرسال طلبات كثيرة من هذا الجهاز. حاول لاحقاً أو تواصل معنا هاتفياً.', 429);
-        return ok({ order: await orders.create(await readBody(req)) });
+        return ok({ order: await orders.create(await readBody(req, PUBLIC_BODY_MAX)) });
 
       case 'GET orders':
         return ok({ orders: await orders.list() });
@@ -145,7 +145,7 @@ export function createHandler(kv: Kv, env: Env, deps: Deps = { fetch }) {
 
       case 'POST orders/track': {
         if (await rateLimited(kv, 'track', ip, 40, 600, true)) fail('محاولات كثيرة. حاول بعد قليل.', 429);
-        const b = await readBody(req);
+        const b = await readBody(req, PUBLIC_BODY_MAX);
         return ok({ order: await orders.track(b.id, b.phone) });
       }
 

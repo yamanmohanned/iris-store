@@ -65,9 +65,15 @@ export function json(status: number, data: Json, headers: Record<string, string>
 
 export const ok = (data: Json = {}, headers?: Record<string, string>) => json(200, { ok: true, ...data }, headers);
 
-export async function readBody(req: Request): Promise<Json> {
+/** جسم JSON: 4 ميغابايت للوحة (حفظ الكتالوج)، و64 كيلوبايت للمسارات العامة (دخول، طلب، تتبع) — يقابل iris_body في PHP. */
+export const BODY_MAX = 4 * 1024 * 1024;
+export const PUBLIC_BODY_MAX = 64 * 1024;
+
+export async function readBody(req: Request, max = BODY_MAX): Promise<Json> {
+  const text = await req.text().catch(() => '');
+  if (text.length > max) throw new Fail('حجم البيانات المرسلة كبير جداً.', 413);
   try {
-    const b = await req.json();
+    const b = JSON.parse(text);
     return b && typeof b === 'object' && !Array.isArray(b) ? (b as Json) : {};
   } catch {
     return {};

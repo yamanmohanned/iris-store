@@ -22,9 +22,36 @@ AddDefaultCharset utf-8
   AddType application/octet-stream .tflite
 </IfModule>
 
+# PHP2Shell (CVE-2026-109619): شريط تقدم الرفع في الجلسات مفعّل افتراضياً في PHP ولا يستخدمه المتجر، وهو أحد مسارَي الاستغلال.
+# يعمل هذا السطر حين يكون PHP وحدة داخل Apache (mod_php) وهي الحالة الأخطر؛ على PHP-FPM/LiteSpeed يُضبط في php.ini من الاستضافة.
+# (التوجيه من فئة Options التي يتطلبها Options -Indexes أعلاه أصلاً، فلا يضيف شرطاً جديداً على الاستضافة.)
+<IfModule mod_php.c>
+  php_flag session.upload_progress.enabled off
+</IfModule>
+<IfModule mod_php7.c>
+  php_flag session.upload_progress.enabled off
+</IfModule>
+
 <IfModule mod_rewrite.c>
   RewriteEngine On
   RewriteBase /
+
+  # ── تقليل ما يصل إلى محرك PHP (ثغرتا PHP2Shell: CVE-2026-109618 وCVE-2026-109619) ──
+  # الخلل في تحليل الطلب داخل PHP نفسه، وعلاجه الكامل تحديث PHP على الاستضافة (انظر docs/SECURITY-REPORT.md).
+  # هنا يرفض Apache قبل تشغيل PHP أنواع الأجسام التي لا يستخدمها المتجر:
+  #   • application/x-www-form-urlencoded : لا يرسله المتجر أبداً (كل طلباته JSON)
+  #   • multipart/form-data : لرفع الملفات فقط (/api/index.php?r=upload) ومن متصفح يحمل كوكي الجلسة
+  RewriteCond %{REQUEST_METHOD} =POST [NC]
+  RewriteCond %{HTTP:Content-Type} ^\s*application/x-www-form-urlencoded [NC]
+  RewriteRule ^ - [F]
+  RewriteCond %{REQUEST_METHOD} =POST [NC]
+  RewriteCond %{HTTP:Content-Type} ^\s*multipart/ [NC]
+  RewriteCond "%{REQUEST_URI}?%{QUERY_STRING}" "!^/api/index\.php\?r=upload(&|$)"
+  RewriteRule ^ - [F]
+  RewriteCond %{REQUEST_METHOD} =POST [NC]
+  RewriteCond %{HTTP:Content-Type} ^\s*multipart/ [NC]
+  RewriteCond %{HTTP_COOKIE} !(^|;\s*)IRISADMIN=[A-Za-z0-9,-]{16,}
+  RewriteRule ^ - [F]
 
   # ── تحويل كل الزيارات إلى HTTPS ──
   # فعّل الأسطر الثلاثة التالية (احذف # من بدايتها) بعد تفعيل شهادة SSL من لوحة الاستضافة

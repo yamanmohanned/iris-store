@@ -506,6 +506,13 @@ if (!remote) {
   check('الحقول المجهولة في العنوان لا تُخزَّن', junk.status === 200 && !('evil' in (junk.data?.order?.delivery ?? { evil: 1 })), junk.data?.order?.delivery);
   const pieces = await place('07801112243', { lines: Array.from({ length: 6 }, () => ({ productId: product.id, qty: 10 })) });
   check('رفض أكثر من 50 قطعة في الطلب الواحد', pieces.status === 400, pieces.data);
+  // المسارات العامة تقبل جسماً صغيراً فقط (64KB): مجهول لا يستهلك ذاكرة العامل بأجسام ضخمة (PHP2Shell: docs/SECURITY-REPORT.md)
+  const hugeOrder = await place('07801112298', { customer: { name: 'x'.repeat(70000), phone: '07801112298' } });
+  check('جسم طلب عام أكبر من 64KB ← 413', hugeOrder.status === 413, hugeOrder.data);
+  const hugeLogin = await anon.call('POST', 'auth/login', { body: { username: 'x'.repeat(70000), password: 'y' } });
+  check('جسم دخول أكبر من 64KB ← 413', hugeLogin.status === 413, hugeLogin.data);
+  const hugeTrack = await anon.call('POST', 'orders/track', { body: { id: 1, phone: '0'.repeat(70000) } });
+  check('جسم تتبع أكبر من 64KB ← 413', hugeTrack.status === 413, hugeTrack.data);
 
   const capPhone = '07809990000';
   const firstThree = [await place(capPhone), await place(capPhone), await place(capPhone)];

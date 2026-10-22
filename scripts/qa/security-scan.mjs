@@ -146,6 +146,30 @@ section('الواجهة البرمجية: CORS وCSRF وتسرّب الأخطا�
   }
 }
 
+/* ───────────────────────── 3b) ما يصل إلى محرك PHP ───────────────────────── */
+section('PHP2Shell: ما يصل إلى محرك PHP (ثغرتا CVE-2026-109618 وCVE-2026-109619 في PHP نفسه)');
+{
+  const post = (path, headers, body) => raw('POST', path, { headers: { 'X-Requested-With': 'iris', ...headers }, body });
+  const form = await post('/api/index.php?r=auth/login', { 'Content-Type': 'application/x-www-form-urlencoded' }, 'username=a&password=b');
+  check(form.status === 403, `POST بنوع x-www-form-urlencoded يُرفض قبل PHP (${form.status})`, 'متوسط');
+  const boundary = '----iris-gate';
+  const multi = `--${boundary}\r\nContent-Disposition: form-data; name="a"\r\n\r\nb\r\n--${boundary}--\r\n`;
+  const mp = { 'Content-Type': `multipart/form-data; boundary=${boundary}` };
+  for (const path of ['/', '/api/index.php?r=orders', '/api/index.php?r=auth/login', '/products/x']) {
+    const r = await post(path, mp, multi);
+    check(r.status === 403, `POST multipart إلى ${path} يُرفض (${r.status})`, 'متوسط');
+  }
+  const noCookie = await post('/api/index.php?r=upload&kind=image', mp, multi);
+  check(noCookie.status === 403, `رفع multipart بلا كوكي جلسة يُرفض قبل PHP (${noCookie.status})`, 'متوسط');
+  const big = JSON.stringify({ customer: { name: 'x'.repeat(100 * 1024) } });
+  for (const r of ['orders', 'auth/login', 'orders/track']) {
+    const x = await post(`/api/index.php?r=${r}`, { 'Content-Type': 'application/json' }, big);
+    check(x.status === 413, `جسم عام بحجم 100KB إلى ${r} يُرفض بـ 413 (${x.status})`, 'متوسط');
+  }
+  const health = await get('/api/index.php?r=health');
+  check(!/"(php|version|phpFix|runtime)"\s*:/.test(health.text), 'health لا يكشف نسخة PHP للعموم (تظهر للمالك وحده بعد الدخول)', 'منخفض', health.text);
+}
+
 /* ───────────────────────── 4) صفحات عدائية ───────────────────────── */
 section('مسارات الصفحات العدائية (حقن، انعكاس، ترويسات)');
 {
@@ -236,6 +260,11 @@ async function active() {
   if (isHttps) check(/;\s*Secure/i.test(cookieHeader ?? ''), 'الكوكي Secure على HTTPS', 'عالٍ', cookieHeader);
   const me = JSON.parse((await getA('/api/index.php?r=auth/me', cookie)).text);
   check(me.admin?.role === 'owner', 'الجلسة تعمل', 'عالٍ');
+  // PHP2Shell: الخلل في PHP نفسه ولا يعالجه أي تعديل في الكود؛ الفحص يتأكد أن الاستضافة طبّقت الإصلاح
+  if (me.admin?.runtime) {
+    const rt = me.admin.runtime;
+    check(rt.phpFix === 'ok', `PHP ${rt.php} فيه إصلاح PHP2Shell (${rt.phpFix}) — المطلوب 8.2.35 / 8.3.36 / 8.4.27 / 8.5.12 أو أحدث، أو تأكيد كتابي من الاستضافة`, 'عالٍ');
+  } else console.log('• لا معلومات runtime (الخادم ليس PHP): فحص نسخة PHP يُتخطى');
   const out = await post('/api/index.php?r=auth/logout', {}, cookie);
   const after = JSON.parse((await getA('/api/index.php?r=auth/me', cookie)).text);
   check(out.status === 200 && !after.admin, 'تسجيل الخروج يبطل الجلسة على الخادم (إعادة استخدام الكوكي القديم)', 'عالٍ');

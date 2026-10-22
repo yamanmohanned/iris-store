@@ -47,6 +47,8 @@ function iris_owner_profile()
         'title' => 'المالك',
         'role' => 'owner',
         'permissions' => $full,
+        // للمالك وحده: نسخة PHP على الاستضافة وهل فيها إصلاح PHP2Shell (تنبيه في لوحة الإدارة)
+        'runtime' => array('php' => PHP_VERSION, 'phpFix' => iris_php_fix_status()),
     );
 }
 
