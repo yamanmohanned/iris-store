@@ -1,0 +1,1042 @@
+<!DOCTYPE html>
+
+<html dir="rtl" lang="ar"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+          "on-error": "#ffffff",
+          "on-surface-variant": "#564243",
+          "semantic-info-bg": "#E4EDF8",
+          "semantic-error-bg": "#FDE7E4",
+          "surface-bright": "#fef9f2",
+          "on-primary-fixed": "#40000f",
+          "warm-ink": "#2A1215",
+          "tertiary": "#45131e",
+          "on-primary": "#ffffff",
+          "secondary-fixed-dim": "#ebc166",
+          "surface-container": "#f2ede6",
+          "surface-container-high": "#ece7e1",
+          "primary-fixed": "#ffdadc",
+          "semantic-success-bg": "#E2F2EA",
+          "on-primary-fixed-variant": "#842134",
+          "on-secondary-container": "#775800",
+          "surface": "#fef9f2",
+          "primary": "#510015",
+          "tertiary-container": "#602833",
+          "on-tertiary-container": "#dc8f9a",
+          "error": "#ba1a1a",
+          "blush-surface": "#F7ECEC",
+          "tertiary-fixed-dim": "#ffb2bd",
+          "antique-gold": "#8A6620",
+          "on-primary-container": "#fb7c8c",
+          "surface-dim": "#ded9d3",
+          "hairline-gold": "rgba(201, 162, 75, 0.45)",
+          "inverse-on-surface": "#f5f0e9",
+          "secondary": "#795902",
+          "secondary-container": "#fdd275",
+          "surface-variant": "#e6e2db",
+          "inverse-surface": "#32302c",
+          "burgundy-600": "#8A1B34",
+          "outline": "#897173",
+          "primary-fixed-dim": "#ffb2b9",
+          "on-background": "#1d1c18",
+          "parchment": "#F3EADB",
+          "outline-variant": "#dcc0c1",
+          "semantic-info": "#2F5A8A",
+          "semantic-warning-bg": "#FCEBD0",
+          "imperial-burgundy": "#721328",
+          "muted-rosewood": "#6D585B",
+          "surface-container-lowest": "#ffffff",
+          "surface-container-low": "#f8f3ec",
+          "inverse-primary": "#ffb2b9",
+          "rose-mist": "#EED9DB",
+          "on-error-container": "#93000a",
+          "surface-tint": "#a3394a",
+          "on-tertiary": "#ffffff",
+          "wine-night": "#1E070D",
+          "secondary-fixed": "#ffdf9e",
+          "on-tertiary-fixed-variant": "#6f343f",
+          "ivory-canvas": "#FBF6EF",
+          "semantic-warning": "#8A4B08",
+          "burgundy-800": "#5A0F22",
+          "background": "#fef9f2",
+          "error-container": "#ffdad6",
+          "champagne-gold": "#E9D49C",
+          "on-tertiary-fixed": "#390915",
+          "on-surface": "#1d1c18",
+          "on-secondary-fixed": "#261a00",
+          "hairline-burgundy": "rgba(114, 19, 40, 0.14)",
+          "semantic-error": "#B42318",
+          "tertiary-fixed": "#ffd9dd",
+          "semantic-success": "#1F6B4A",
+          "deep-oxblood": "#3A0A16",
+          "on-secondary-fixed-variant": "#5b4300",
+          "royal-gold": "#C9A24B",
+          "primary-container": "#721328",
+          "surface-container-highest": "#e6e2db",
+          "on-secondary": "#ffffff"
+        },
+        "borderRadius": {
+          "DEFAULT": "0.25rem",
+          "lg": "0.5rem",
+          "xl": "0.75rem",
+          "full": "9999px"
+        },
+        "spacing": {
+          "margin-mobile": "1rem",
+          "gutter": "1.5rem",
+          "space-2xl": "4rem",
+          "space-3xl": "6rem",
+          "gutter-mobile": "1rem",
+          "space-sm": "0.5rem",
+          "space-lg": "1.5rem",
+          "space-xs": "0.25rem",
+          "margin": "2.5rem",
+          "space-md": "1rem",
+          "space-xl": "2.5rem"
+        },
+        "fontFamily": {
+          "label-lg": [
+            "IBM Plex Sans Arabic"
+          ],
+          "body-sm": [
+            "IBM Plex Sans Arabic"
+          ],
+          "label-sm": [
+            "IBM Plex Sans Arabic"
+          ],
+          "headline-xl-mobile": [
+            "El Messiri"
+          ],
+          "headline-xl": [
+            "El Messiri"
+          ],
+          "headline-sm": [
+            "El Messiri"
+          ],
+          "body-md": [
+            "IBM Plex Sans Arabic"
+          ],
+          "headline-md": [
+            "El Messiri"
+          ],
+          "display-lg-mobile": [
+            "El Messiri"
+          ],
+          "body-xl": [
+            "IBM Plex Sans Arabic"
+          ],
+          "body-lg": [
+            "IBM Plex Sans Arabic"
+          ],
+          "display-lg": [
+            "El Messiri"
+          ],
+          "headline-lg": [
+            "El Messiri"
+          ],
+          "label-md": [
+            "IBM Plex Sans Arabic"
+          ]
+        },
+        "fontSize": {
+          "label-lg": [
+            "0.9375rem",
+            {
+              "lineHeight": "1.4",
+              "fontWeight": "600"
+            }
+          ],
+          "body-sm": [
+            "0.875rem",
+            {
+              "lineHeight": "1.6",
+              "fontWeight": "400"
+            }
+          ],
+          "label-sm": [
+            "0.6875rem",
+            {
+              "lineHeight": "1.4",
+              "fontWeight": "500"
+            }
+          ],
+          "headline-xl-mobile": [
+            "1.75rem",
+            {
+              "lineHeight": "1.35",
+              "fontWeight": "600"
+            }
+          ],
+          "headline-xl": [
+            "2.5rem",
+            {
+              "lineHeight": "1.3",
+              "fontWeight": "600"
+            }
+          ],
+          "headline-sm": [
+            "1.25rem",
+            {
+              "lineHeight": "1.45",
+              "fontWeight": "500"
+            }
+          ],
+          "body-md": [
+            "1rem",
+            {
+              "lineHeight": "1.7",
+              "fontWeight": "400"
+            }
+          ],
+          "headline-md": [
+            "1.5rem",
+            {
+              "lineHeight": "1.4",
+              "fontWeight": "600"
+            }
+          ],
+          "display-lg-mobile": [
+            "2.25rem",
+            {
+              "lineHeight": "1.3",
+              "fontWeight": "700"
+            }
+          ],
+          "body-xl": [
+            "1.25rem",
+            {
+              "lineHeight": "1.7",
+              "fontWeight": "400"
+            }
+          ],
+          "body-lg": [
+            "1.125rem",
+            {
+              "lineHeight": "1.7",
+              "fontWeight": "400"
+            }
+          ],
+          "display-lg": [
+            "3.5rem",
+            {
+              "lineHeight": "1.25",
+              "fontWeight": "700"
+            }
+          ],
+          "headline-lg": [
+            "2rem",
+            {
+              "lineHeight": "1.35",
+              "fontWeight": "600"
+            }
+          ],
+          "label-md": [
+            "0.8125rem",
+            {
+              "lineHeight": "1.4",
+              "fontWeight": "500"
+            }
+          ]
+        }
+      },
+    },
+  }</script></head><body class="bg-ivory-canvas font-body-md text-on-surface antialiased"><aside class="fixed right-0 top-0 h-full w-[280px] bg-wine-night z-50 flex flex-col justify-between shadow-[0_24px_64px_rgba(30,7,13,0.35)]"><div class="flex flex-col flex-1 overflow-y-auto"><div class="pt-8 pb-6 px-6"><div class="flex items-center gap-2 mb-2"><span class="font-headline-md text-headline-md tracking-wider text-champagne-gold">IRIS</span><span class="text-royal-gold text-[11px]">◆</span><span class="font-headline-sm text-headline-sm text-champagne-gold">آيريس</span></div><div class="font-label-sm text-label-sm tracking-wide text-champagne-gold/70 pb-4">دار المجوهرات الفاخرة</div><div class="h-[1px] w-full bg-hairline-gold"></div><div class="h-[1px] w-full bg-hairline-gold mt-[3px]"></div></div><nav class="flex-1 px-3 space-y-1" data-active-classes="bg-burgundy-800 text-champagne-gold font-label-lg shadow-sm relative before:content-[''] before:absolute before:right-0 before:top-1.5 before:bottom-1.5 before:w-1 before:bg-royal-gold before:rounded-l"><a class="flex items-center justify-between px-3 py-2.5 rounded-lg text-champagne-gold/75 hover:bg-burgundy-800 hover:text-champagne-gold transition-colors font-label-md text-label-md" data-path="dashboard" href="#">لوحة التحكم</a><a class="flex items-center justify-between px-3 py-2.5 rounded-lg text-champagne-gold/75 hover:bg-burgundy-800 hover:text-champagne-gold transition-colors font-label-md text-label-md" data-path="orders" href="#">الطلبات</a><a class="flex items-center justify-between px-3 py-2.5 rounded-lg text-champagne-gold/75 hover:bg-burgundy-800 hover:text-champagne-gold transition-colors font-label-md text-label-md" data-path="products" href="#">المنتجات</a><a class="flex items-center justify-between px-3 py-2.5 rounded-lg text-champagne-gold/75 hover:bg-burgundy-800 hover:text-champagne-gold transition-colors font-label-md text-label-md" data-path="categories" href="#">التصنيفات</a><a class="flex items-center justify-between px-3 py-2.5 rounded-lg text-champagne-gold/75 hover:bg-burgundy-800 hover:text-champagne-gold transition-colors font-label-md text-label-md" data-path="inventory" href="#">المخزون</a><a class="flex items-center justify-between px-3 py-2.5 rounded-lg text-champagne-gold/75 hover:bg-burgundy-800 hover:text-champagne-gold transition-colors font-label-md text-label-md" data-path="purchases" href="#">المشتريات</a><a class="flex items-center justify-between px-3 py-2.5 rounded-lg text-champagne-gold/75 hover:bg-burgundy-800 hover:text-champagne-gold transition-colors font-label-md text-label-md" data-path="suppliers" href="#">الموردون</a><a class="flex items-center justify-between px-3 py-2.5 rounded-lg text-champagne-gold/75 hover:bg-burgundy-800 hover:text-champagne-gold transition-colors font-label-md text-label-md" data-path="customers" href="#">العملاء</a><a class="flex items-center justify-between px-3 py-2.5 rounded-lg text-champagne-gold/75 hover:bg-burgundy-800 hover:text-champagne-gold transition-colors font-label-md text-label-md" data-path="payments" href="#">المدفوعات والمستحقات</a><a aria-current="page" class="flex items-center justify-between px-3 py-2.5 rounded-lg transition-colors bg-burgundy-800 text-champagne-gold font-label-lg shadow-sm relative before:content-[''] before:absolute before:right-0 before:top-1.5 before:bottom-1.5 before:w-1 before:bg-royal-gold before:rounded-l" data-path="reports" href="#">التقارير</a><a class="flex items-center justify-between px-3 py-2.5 rounded-lg text-champagne-gold/75 hover:bg-burgundy-800 hover:text-champagne-gold transition-colors font-label-md text-label-md" data-path="settings" href="#">الإعدادات</a></nav></div><div class="p-4 bg-deep-oxblood/80 m-3 rounded-xl"><div class="flex items-center gap-3"><div class="w-9 h-9 rounded-full bg-burgundy-600 flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-champagne-gold text-[19px]">person</span></div><div class="min-w-0 flex-1"><div class="font-label-md text-label-md text-champagne-gold truncate">سارة آل رحيم</div><div class="font-label-sm text-label-sm text-champagne-gold/70 truncate">المدير العام</div></div><span class="material-symbols-outlined text-royal-gold/80 text-[18px]">verified</span></div></div></aside><div class="pr-[280px]"><header class="fixed top-0 right-[280px] left-0 h-16 bg-surface/90 backdrop-blur-xl z-40 shadow-[0_8px_30px_rgba(58,10,22,0.04)]"><div class="h-16 w-full px-8 flex items-center justify-between"><div class="flex items-center gap-4 flex-1 max-w-md"><div class="relative w-full"><span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-muted-rosewood text-[19px]">search</span><input class="w-full bg-surface-container-low pl-14 pr-10 py-1.5 rounded-lg font-body-sm text-body-sm text-on-surface placeholder:text-muted-rosewood/70 focus:outline-none focus:ring-1 focus:ring-royal-gold" placeholder="بحث شامل في الخزينة والعملاء..." type="text"/><div class="absolute left-2.5 top-1/2 -translate-y-1/2 px-1.5 py-0.5 rounded bg-surface-container-high text-muted-rosewood font-label-sm text-label-sm font-mono">Ctrl+K</div></div></div><div class="flex items-center gap-5"><div class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-surface-container-low"><span class="material-symbols-outlined text-royal-gold text-[18px]">lock_open</span><span class="font-label-sm text-label-sm text-warm-ink font-medium">خزينة الصياغة الرئيسية</span><span class="material-symbols-outlined text-muted-rosewood text-[15px]">expand_more</span></div><div class="h-5 w-[1px] bg-outline-variant/60"></div><div class="relative flex items-center justify-center w-8 h-8 rounded-full bg-surface-container-low cursor-pointer"><span class="material-symbols-outlined text-warm-ink text-[19px]">notifications</span><span class="absolute -top-1 -right-1 w-4 h-4 bg-royal-gold text-wine-night rounded-full flex items-center justify-center font-label-sm text-[10px] font-bold">3</span></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="relative pt-16 bg-ivory-canvas min-h-screen"><div class="flex flex-col w-full">
+<div class="max-w-[1440px] mx-auto w-full px-8 py-7 space-y-7">
+<!-- Top Bar Navigation & Context -->
+<div class="flex flex-col gap-4">
+<div class="flex items-center justify-between">
+<!-- Breadcrumbs -->
+<nav aria-label="مسار التصفح" class="flex items-center gap-2 font-label-md text-label-md text-muted-rosewood">
+<a class="hover:text-imperial-burgundy transition-colors" href="#">الرئيسية</a>
+<span class="text-royal-gold/60 text-[10px]">‹</span>
+<a class="hover:text-imperial-burgundy transition-colors" href="#">التقارير</a>
+<span class="text-royal-gold/60 text-[10px]">‹</span>
+<a class="hover:text-imperial-burgundy transition-colors" href="#">المبيعات</a>
+<span class="text-royal-gold/60 text-[10px]">‹</span>
+<span class="text-warm-ink font-semibold">تقرير المبيعات حسب قناة البيع</span>
+</nav>
+<!-- Back to Hub Link -->
+<a class="inline-flex items-center gap-2 font-label-md text-label-md text-imperial-burgundy hover:text-burgundy-600 transition-colors font-medium" href="#">
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+<span>العودة إلى مركز التقارير</span>
+</a>
+</div>
+<!-- Report Header Presentation -->
+<div class="flex items-end justify-between gap-6 pb-4">
+<div class="space-y-1.5">
+<div class="flex items-center gap-2.5">
+<h1 class="font-headline-lg text-headline-lg text-warm-ink tracking-tight">المبيعات حسب قناة البيع</h1>
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-champagne-gold/20 text-antique-gold font-label-sm text-label-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-royal-gold"></span>
+              تقرير مدقق ومعتمد
+            </span>
+</div>
+<p class="font-body-md text-body-md text-muted-rosewood max-w-2xl leading-relaxed">
+            تحليل تدفق الإيرادات، حجم الطلبات ومعدلات الإلغاء عبر قنوات الطلب المختلفة لدار آيريس للمجوهرات الراقية
+          </p>
+</div>
+<!-- Utility Buttons -->
+<div class="flex items-center gap-2.5 shrink-0">
+<button class="w-10 h-10 rounded-xl bg-surface-container-lowest text-warm-ink hover:text-imperial-burgundy hover:bg-blush-surface flex items-center justify-center shadow-sm transition-all active:translate-y-0.5" title="تحديث البيانات اللحظية" type="button">
+<span class="material-symbols-outlined text-[20px]">refresh</span>
+</button>
+<button class="w-10 h-10 rounded-xl bg-surface-container-lowest text-warm-ink hover:text-imperial-burgundy hover:bg-blush-surface flex items-center justify-center shadow-sm transition-all active:translate-y-0.5" title="طباعة مسودة التقرير" type="button">
+<span class="material-symbols-outlined text-[20px]">print</span>
+</button>
+<!-- Export Dropdown Trigger & Popover -->
+<div class="relative" id="exportMenuContainer">
+<button class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-imperial-burgundy text-ivory-canvas font-label-md text-label-md hover:bg-burgundy-600 shadow-[0_8px_20px_rgba(58,10,22,0.12)] transition-all active:translate-y-0.5" id="exportButton" type="button">
+<span class="material-symbols-outlined text-[19px]">download</span>
+<span>تصدير البيانات</span>
+<span class="material-symbols-outlined text-[16px]">arrow_drop_down</span>
+</button>
+<!-- Dropdown Options -->
+<div class="hidden absolute left-0 mt-2 w-64 rounded-xl bg-wine-night p-1.5 shadow-[0_20px_45px_rgba(30,7,13,0.35)] z-30" id="exportDropdown">
+<div class="px-3 py-2 text-[11px] font-label-sm text-champagne-gold/70 border-b border-white/5">
+                تنسيقات الملفات الأرشيفية
+              </div>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-champagne-gold hover:bg-burgundy-800 transition-colors font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined text-royal-gold text-[19px]">table_view</span>
+<span>جدول إكسل كامل (.XLSX)</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-champagne-gold hover:bg-burgundy-800 transition-colors font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined text-royal-gold text-[19px]">description</span>
+<span>بيانات مفصولة بفواصل (CSV)</span>
+</a>
+<div class="my-1 h-[1px] bg-white/5"></div>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-champagne-gold hover:bg-burgundy-800 transition-colors font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined text-royal-gold text-[19px]">verified</span>
+<span>تقرير رسمي PDF معتمد بختم الدار</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+<!-- Two-line Ornament Divider -->
+<div class="relative py-1">
+<div class="h-[1px] w-full bg-royal-gold/30"></div>
+<div class="h-[1px] w-full bg-royal-gold/30 mt-[3px]"></div>
+<div class="absolute right-1/2 translate-x-1/2 -top-1.5 px-3 bg-ivory-canvas text-royal-gold text-[11px] leading-none">◆</div>
+</div>
+<!-- Controls & Filter Rails -->
+<div class="flex flex-wrap items-center justify-between gap-4 pt-1">
+<!-- Date Presets -->
+<div class="flex items-center gap-1.5 bg-surface-container-low p-1 rounded-xl">
+<button class="px-3.5 py-1.5 rounded-lg font-label-md text-label-md text-muted-rosewood hover:text-warm-ink hover:bg-surface-container transition-all" type="button">اليوم</button>
+<button class="px-3.5 py-1.5 rounded-lg font-label-md text-label-md text-muted-rosewood hover:text-warm-ink hover:bg-surface-container transition-all" type="button">أمس</button>
+<button class="px-3.5 py-1.5 rounded-lg font-label-md text-label-md text-muted-rosewood hover:text-warm-ink hover:bg-surface-container transition-all" type="button">هذا الأسبوع</button>
+<button class="px-3.5 py-1.5 rounded-lg font-label-md text-label-md bg-imperial-burgundy text-ivory-canvas shadow-sm" type="button">هذا الشهر</button>
+<button class="px-3.5 py-1.5 rounded-lg font-label-md text-label-md text-muted-rosewood hover:text-warm-ink hover:bg-surface-container transition-all" type="button">الشهر الماضي</button>
+<button class="px-3.5 py-1.5 rounded-lg font-label-md text-label-md text-muted-rosewood hover:text-warm-ink hover:bg-surface-container transition-all" type="button">هذه السنة</button>
+<button class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg font-label-md text-label-md text-antique-gold bg-champagne-gold/25 hover:bg-champagne-gold/40 transition-all font-mono" type="button">
+<span class="material-symbols-outlined text-[16px]">calendar_today</span>
+<span>01/10/2026 - 31/10/2026</span>
+</button>
+</div>
+<!-- Comparison Toggle -->
+<label class="flex items-center gap-3 cursor-pointer select-none px-3.5 py-2 rounded-xl bg-surface-container-lowest shadow-sm hover:bg-blush-surface transition-colors">
+<input checked="" class="sr-only peer" id="compareToggle" type="checkbox"/>
+<div class="w-10 h-5 bg-surface-variant rounded-full peer peer-checked:bg-imperial-burgundy relative transition-colors after:content-[''] after:absolute after:top-0.5 after:right-0.5 peer-checked:after:-translate-x-5 after:bg-ivory-canvas after:rounded-full after:h-4 after:w-4 after:transition-all"></div>
+<span class="font-label-md text-label-md text-warm-ink font-medium">مقارنة بالفترة السابقة (الشهر الماضي)</span>
+<span class="px-2 py-0.5 rounded-full bg-semantic-success-bg text-semantic-success font-label-sm text-label-sm">مفعّل</span>
+</label>
+</div>
+</div>
+<!-- KPI Summary Row -->
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-5">
+<!-- Card 1 -->
+<div class="relative overflow-hidden rounded-2xl bg-surface-container-lowest p-5 shadow-[0_8px_30px_rgba(58,10,22,0.06)] group hover:shadow-[0_12px_36px_rgba(58,10,22,0.1)] transition-all">
+<div class="flex items-start justify-between">
+<div class="space-y-1">
+<span class="font-label-md text-label-md text-muted-rosewood">إجمالي مبيعات القنوات</span>
+<div class="flex items-baseline gap-2 pt-1">
+<span class="font-headline-md text-headline-md font-mono text-warm-ink tracking-tight font-semibold">5,420,000</span>
+<span class="font-label-md text-label-md text-antique-gold font-medium">د.ع</span>
+</div>
+</div>
+<div class="w-10 h-10 rounded-xl bg-blush-surface text-imperial-burgundy flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[22px]">payments</span>
+</div>
+</div>
+<div class="mt-4 pt-3 flex items-center justify-between text-muted-rosewood bg-surface-container-low/60 -mx-5 -mb-5 px-5 py-2.5">
+<div class="flex items-center gap-1.5 text-semantic-success font-label-sm text-label-sm font-mono">
+<span class="material-symbols-outlined text-[16px]">trending_up</span>
+<span class="font-bold">+14.2%</span>
+<span class="text-muted-rosewood font-label-sm">مقارنة بالشهر الماضي</span>
+</div>
+<span class="text-[11px] text-muted-rosewood/80 font-mono">4,746,000 د.ع</span>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="relative overflow-hidden rounded-2xl bg-surface-container-lowest p-5 shadow-[0_8px_30px_rgba(58,10,22,0.06)] group hover:shadow-[0_12px_36px_rgba(58,10,22,0.1)] transition-all">
+<div class="flex items-start justify-between">
+<div class="space-y-1">
+<span class="font-label-md text-label-md text-muted-rosewood">عدد الطلبات المؤكدة</span>
+<div class="flex items-baseline gap-2 pt-1">
+<span class="font-headline-md text-headline-md font-mono text-warm-ink tracking-tight font-semibold">124</span>
+<span class="font-label-md text-label-md text-muted-rosewood">طلباً نافذاً</span>
+</div>
+</div>
+<div class="w-10 h-10 rounded-xl bg-champagne-gold/20 text-antique-gold flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[22px]">shopping_bag</span>
+</div>
+</div>
+<div class="mt-4 pt-3 flex items-center justify-between text-muted-rosewood bg-surface-container-low/60 -mx-5 -mb-5 px-5 py-2.5">
+<div class="flex items-center gap-1 font-label-sm text-label-sm text-warm-ink">
+<span class="text-muted-rosewood">متوسط قيمة الطلب (AOV):</span>
+<span class="font-mono font-semibold text-antique-gold">43,700 د.ع</span>
+</div>
+<span class="text-[11px] text-semantic-success font-mono">+3.8%</span>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="relative overflow-hidden rounded-2xl bg-surface-container-lowest p-5 shadow-[0_8px_30px_rgba(58,10,22,0.06)] group hover:shadow-[0_12px_36px_rgba(58,10,22,0.1)] transition-all">
+<div class="flex items-start justify-between">
+<div class="space-y-1">
+<span class="font-label-md text-label-md text-muted-rosewood">القناة الأعلى مساهمة</span>
+<div class="flex items-baseline gap-2 pt-1">
+<span class="font-headline-md text-headline-md text-imperial-burgundy tracking-tight font-bold">إنستغرام Direct</span>
+</div>
+</div>
+<div class="w-10 h-10 rounded-xl bg-blush-surface text-imperial-burgundy flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[22px]">stars</span>
+</div>
+</div>
+<div class="mt-4 pt-3 flex items-center justify-between text-muted-rosewood bg-surface-container-low/60 -mx-5 -mb-5 px-5 py-2.5">
+<div class="flex items-center gap-1.5 font-label-sm text-label-sm">
+<span class="text-muted-rosewood">الحصة السوقية:</span>
+<span class="font-mono font-bold text-imperial-burgundy">41.5%</span>
+</div>
+<span class="text-[11px] text-muted-rosewood font-mono">2,250,000 د.ع</span>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="relative overflow-hidden rounded-2xl bg-surface-container-lowest p-5 shadow-[0_8px_30px_rgba(58,10,22,0.06)] group hover:shadow-[0_12px_36px_rgba(58,10,22,0.1)] transition-all">
+<div class="flex items-start justify-between">
+<div class="space-y-1">
+<span class="font-label-md text-label-md text-muted-rosewood">معدل الإلغاء العام</span>
+<div class="flex items-baseline gap-2 pt-1">
+<span class="font-headline-md text-headline-md font-mono text-warm-ink tracking-tight font-semibold">3.2%</span>
+<span class="font-label-sm text-label-sm text-semantic-success font-medium">أداء مثالي</span>
+</div>
+</div>
+<div class="w-10 h-10 rounded-xl bg-semantic-success-bg text-semantic-success flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[22px]">check_circle</span>
+</div>
+</div>
+<div class="mt-4 pt-3 flex items-center justify-between text-muted-rosewood bg-surface-container-low/60 -mx-5 -mb-5 px-5 py-2.5">
+<div class="flex items-center gap-1.5 font-label-sm text-label-sm text-muted-rosewood">
+<span>إجمالي الإلغاء:</span>
+<span class="font-mono font-semibold text-warm-ink">4 طلبات</span>
+<span>عبر كافة القنوات</span>
+</div>
+<span class="text-[11px] text-semantic-success font-mono">-0.8%</span>
+</div>
+</div>
+</div>
+<!-- Visual Distribution Bar & Comparative Charts -->
+<div class="rounded-2xl bg-surface-container-lowest p-6 shadow-[0_8px_30px_rgba(58,10,22,0.06)] space-y-6">
+<!-- Section Title & Dynamic Legend -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-2">
+<div class="space-y-1">
+<div class="flex items-center gap-2">
+<span class="w-1.5 h-4 bg-imperial-burgundy rounded-sm"></span>
+<h2 class="font-headline-sm text-headline-sm text-warm-ink">توزيع الإيرادات والطلبات حسب القناة</h2>
+</div>
+<p class="font-body-sm text-body-sm text-muted-rosewood">
+            النسبة المئوية التراكمية للمبيعات والمقارنة بالأداء المقابل للفترة السابقة
+          </p>
+</div>
+<div class="flex items-center gap-2 text-label-sm font-label-sm text-muted-rosewood bg-surface-container-low px-3 py-1.5 rounded-lg">
+<span class="inline-block w-2.5 h-2.5 rounded-full bg-imperial-burgundy"></span>
+<span>الفترة الحالية (أكتوبر 2026)</span>
+<span class="mx-1 text-outline-variant">|</span>
+<span class="inline-block w-2.5 h-2.5 rounded-full bg-outline-variant"></span>
+<span>الفترة السابقة (سبتمبر 2026)</span>
+</div>
+</div>
+<!-- 100% Proportional Segment Bar (Stacked) -->
+<div class="space-y-2">
+<div class="flex justify-between items-center text-[12px] font-label-sm text-muted-rosewood">
+<span>شريط المساهمة النسبية في إجمالي المبيعات (100% = 5,420,000 د.ع)</span>
+<span class="font-mono">محدث لحظياً</span>
+</div>
+<div class="w-full h-8 rounded-xl overflow-hidden flex bg-surface-container-high p-0.5 shadow-inner">
+<div class="h-full bg-imperial-burgundy hover:brightness-110 transition-all rounded-r-lg relative group cursor-pointer" style="width: 41.5%;">
+<div class="absolute inset-0 flex items-center justify-center font-mono text-[11px] text-ivory-canvas font-bold tracking-tight">41.5%</div>
+<div class="hidden group-hover:block absolute bottom-full mb-2 right-1/2 translate-x-1/2 px-2.5 py-1 rounded bg-wine-night text-champagne-gold text-[11px] font-mono whitespace-nowrap shadow-lg z-20">إنستغرام: 2,250,000 د.ع</div>
+</div>
+<div class="h-full bg-burgundy-600 hover:brightness-110 transition-all relative group cursor-pointer" style="width: 27.3%;">
+<div class="absolute inset-0 flex items-center justify-center font-mono text-[11px] text-ivory-canvas font-bold tracking-tight">27.3%</div>
+<div class="hidden group-hover:block absolute bottom-full mb-2 right-1/2 translate-x-1/2 px-2.5 py-1 rounded bg-wine-night text-champagne-gold text-[11px] font-mono whitespace-nowrap shadow-lg z-20">متجر الويب: 1,480,000 د.ع</div>
+</div>
+<div class="h-full bg-semantic-success hover:brightness-110 transition-all relative group cursor-pointer" style="width: 17.0%;">
+<div class="absolute inset-0 flex items-center justify-center font-mono text-[11px] text-ivory-canvas font-bold tracking-tight">17.0%</div>
+<div class="hidden group-hover:block absolute bottom-full mb-2 right-1/2 translate-x-1/2 px-2.5 py-1 rounded bg-wine-night text-champagne-gold text-[11px] font-mono whitespace-nowrap shadow-lg z-20">واتساب: 920,000 د.ع</div>
+</div>
+<div class="h-full bg-royal-gold hover:brightness-110 transition-all relative group cursor-pointer" style="width: 8.3%;">
+<div class="absolute inset-0 flex items-center justify-center font-mono text-[10px] text-wine-night font-bold tracking-tight">8.3%</div>
+<div class="hidden group-hover:block absolute bottom-full mb-2 right-1/2 translate-x-1/2 px-2.5 py-1 rounded bg-wine-night text-champagne-gold text-[11px] font-mono whitespace-nowrap shadow-lg z-20">استشارات VIP: 450,000 د.ع</div>
+</div>
+<div class="h-full bg-burgundy-800 hover:brightness-110 transition-all relative group cursor-pointer" style="width: 3.9%;">
+<div class="hidden group-hover:block absolute bottom-full mb-2 right-1/2 translate-x-1/2 px-2.5 py-1 rounded bg-wine-night text-champagne-gold text-[11px] font-mono whitespace-nowrap shadow-lg z-20">صالة العرض: 210,000 د.ع (3.9%)</div>
+</div>
+<div class="h-full bg-semantic-info hover:brightness-110 transition-all rounded-l-lg relative group cursor-pointer" style="width: 2.0%;">
+<div class="hidden group-hover:block absolute bottom-full mb-2 right-1/2 translate-x-1/2 px-2.5 py-1 rounded bg-wine-night text-champagne-gold text-[11px] font-mono whitespace-nowrap shadow-lg z-20">فيسبوك ماسنجر: 110,000 د.ع (2.0%)</div>
+</div>
+</div>
+<!-- Color Palette Legend Row -->
+<div class="flex flex-wrap items-center justify-between gap-y-2 pt-2 text-[12px] font-label-sm text-warm-ink">
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-imperial-burgundy"></span>
+<span>إنستغرام Direct (41.5%)</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-burgundy-600"></span>
+<span>متجر الويب الرسمي (27.3%)</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-semantic-success"></span>
+<span>واتساب المباشر (17.0%)</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-royal-gold"></span>
+<span>استشارات VIP (8.3%)</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-burgundy-800"></span>
+<span>صالة العرض (3.9%)</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-semantic-info"></span>
+<span>فيسبوك ماسنجر (2.0%)</span>
+</div>
+</div>
+</div>
+<!-- Comparative Side-by-Side Channels Grid -->
+<div class="pt-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+<!-- Metric Item: Instagram -->
+<div class="p-4 rounded-xl bg-surface-container-low/70 hover:bg-blush-surface/50 transition-colors space-y-2.5">
+<div class="flex items-center justify-between font-label-md text-label-md">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-imperial-burgundy"></span>
+<span class="font-semibold text-warm-ink">إنستغرام Direct</span>
+</div>
+<span class="text-semantic-success font-mono font-medium text-[12px]">+18.4%</span>
+</div>
+<div class="space-y-1.5 font-mono text-[13px]">
+<div class="flex justify-between items-center text-warm-ink">
+<span class="text-muted-rosewood font-label-sm">الحالي:</span>
+<span class="font-bold">2,250,000 د.ع</span>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container-high overflow-hidden">
+<div class="h-full bg-imperial-burgundy rounded-full" style="width: 100%;"></div>
+</div>
+<div class="flex justify-between items-center text-muted-rosewood text-[11px]">
+<span class="font-label-sm">السابق:</span>
+<span>1,900,000 د.ع</span>
+</div>
+<div class="w-full h-1.5 rounded-full bg-surface-container-high overflow-hidden">
+<div class="h-full bg-outline-variant rounded-full" style="width: 84.4%;"></div>
+</div>
+</div>
+</div>
+<!-- Metric Item: Web Store -->
+<div class="p-4 rounded-xl bg-surface-container-low/70 hover:bg-blush-surface/50 transition-colors space-y-2.5">
+<div class="flex items-center justify-between font-label-md text-label-md">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-burgundy-600"></span>
+<span class="font-semibold text-warm-ink">متجر الويب الرسمي</span>
+</div>
+<span class="text-semantic-success font-mono font-medium text-[12px]">+11.2%</span>
+</div>
+<div class="space-y-1.5 font-mono text-[13px]">
+<div class="flex justify-between items-center text-warm-ink">
+<span class="text-muted-rosewood font-label-sm">الحالي:</span>
+<span class="font-bold">1,480,000 د.ع</span>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container-high overflow-hidden">
+<div class="h-full bg-burgundy-600 rounded-full" style="width: 65.7%;"></div>
+</div>
+<div class="flex justify-between items-center text-muted-rosewood text-[11px]">
+<span class="font-label-sm">السابق:</span>
+<span>1,330,000 د.ع</span>
+</div>
+<div class="w-full h-1.5 rounded-full bg-surface-container-high overflow-hidden">
+<div class="h-full bg-outline-variant rounded-full" style="width: 59.1%;"></div>
+</div>
+</div>
+</div>
+<!-- Metric Item: WhatsApp -->
+<div class="p-4 rounded-xl bg-surface-container-low/70 hover:bg-blush-surface/50 transition-colors space-y-2.5">
+<div class="flex items-center justify-between font-label-md text-label-md">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-semantic-success"></span>
+<span class="font-semibold text-warm-ink">واتساب المباشر</span>
+</div>
+<span class="text-semantic-success font-mono font-medium text-[12px]">+22.6%</span>
+</div>
+<div class="space-y-1.5 font-mono text-[13px]">
+<div class="flex justify-between items-center text-warm-ink">
+<span class="text-muted-rosewood font-label-sm">الحالي:</span>
+<span class="font-bold">920,000 د.ع</span>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container-high overflow-hidden">
+<div class="h-full bg-semantic-success rounded-full" style="width: 40.8%;"></div>
+</div>
+<div class="flex justify-between items-center text-muted-rosewood text-[11px]">
+<span class="font-label-sm">السابق:</span>
+<span>750,000 د.ع</span>
+</div>
+<div class="w-full h-1.5 rounded-full bg-surface-container-high overflow-hidden">
+<div class="h-full bg-outline-variant rounded-full" style="width: 33.3%;"></div>
+</div>
+</div>
+</div>
+<!-- Metric Item: VIP Consult -->
+<div class="p-4 rounded-xl bg-surface-container-low/70 hover:bg-blush-surface/50 transition-colors space-y-2.5">
+<div class="flex items-center justify-between font-label-md text-label-md">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-royal-gold"></span>
+<span class="font-semibold text-warm-ink">استشارات هاتفية VIP</span>
+</div>
+<span class="text-semantic-success font-mono font-medium text-[12px]">+28.5%</span>
+</div>
+<div class="space-y-1.5 font-mono text-[13px]">
+<div class="flex justify-between items-center text-warm-ink">
+<span class="text-muted-rosewood font-label-sm">الحالي:</span>
+<span class="font-bold">450,000 د.ع</span>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container-high overflow-hidden">
+<div class="h-full bg-royal-gold rounded-full" style="width: 20%;"></div>
+</div>
+<div class="flex justify-between items-center text-muted-rosewood text-[11px]">
+<span class="font-label-sm">السابق:</span>
+<span>350,000 د.ع</span>
+</div>
+<div class="w-full h-1.5 rounded-full bg-surface-container-high overflow-hidden">
+<div class="h-full bg-outline-variant rounded-full" style="width: 15.5%;"></div>
+</div>
+</div>
+</div>
+<!-- Metric Item: Showroom -->
+<div class="p-4 rounded-xl bg-surface-container-low/70 hover:bg-blush-surface/50 transition-colors space-y-2.5">
+<div class="flex items-center justify-between font-label-md text-label-md">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-burgundy-800"></span>
+<span class="font-semibold text-warm-ink">صالة العرض (المحل)</span>
+</div>
+<span class="text-semantic-error font-mono font-medium text-[12px]">-12.5%</span>
+</div>
+<div class="space-y-1.5 font-mono text-[13px]">
+<div class="flex justify-between items-center text-warm-ink">
+<span class="text-muted-rosewood font-label-sm">الحالي:</span>
+<span class="font-bold">210,000 د.ع</span>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container-high overflow-hidden">
+<div class="h-full bg-burgundy-800 rounded-full" style="width: 9.3%;"></div>
+</div>
+<div class="flex justify-between items-center text-muted-rosewood text-[11px]">
+<span class="font-label-sm">السابق:</span>
+<span>240,000 د.ع</span>
+</div>
+<div class="w-full h-1.5 rounded-full bg-surface-container-high overflow-hidden">
+<div class="h-full bg-outline-variant rounded-full" style="width: 10.6%;"></div>
+</div>
+</div>
+</div>
+<!-- Metric Item: Messenger -->
+<div class="p-4 rounded-xl bg-surface-container-low/70 hover:bg-blush-surface/50 transition-colors space-y-2.5">
+<div class="flex items-center justify-between font-label-md text-label-md">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-semantic-info"></span>
+<span class="font-semibold text-warm-ink">فيسبوك ماسنجر</span>
+</div>
+<span class="text-muted-rosewood font-mono font-medium text-[12px]">0.0%</span>
+</div>
+<div class="space-y-1.5 font-mono text-[13px]">
+<div class="flex justify-between items-center text-warm-ink">
+<span class="text-muted-rosewood font-label-sm">الحالي:</span>
+<span class="font-bold">110,000 د.ع</span>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container-high overflow-hidden">
+<div class="h-full bg-semantic-info rounded-full" style="width: 4.8%;"></div>
+</div>
+<div class="flex justify-between items-center text-muted-rosewood text-[11px]">
+<span class="font-label-sm">السابق:</span>
+<span>110,000 د.ع</span>
+</div>
+<div class="w-full h-1.5 rounded-full bg-surface-container-high overflow-hidden">
+<div class="h-full bg-outline-variant rounded-full" style="width: 4.8%;"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Data Table Section -->
+<div class="rounded-2xl bg-surface-container-lowest overflow-hidden shadow-[0_8px_30px_rgba(58,10,22,0.06)]">
+<!-- Table Header Bar -->
+<div class="p-6 bg-surface-container-lowest flex flex-col md:flex-row md:items-center justify-between gap-4">
+<div>
+<h3 class="font-headline-sm text-headline-sm text-warm-ink">تفاصيل أداء القنوات البيعية</h3>
+<p class="font-body-sm text-body-sm text-muted-rosewood">جدول تدقيق المعاملات وقيم المبيعات المحصلة خلال شهر أكتوبر 2026</p>
+</div>
+<div class="flex items-center gap-2">
+<span class="font-label-sm text-label-sm text-muted-rosewood">إجمالي القنوات المسجلة: 6</span>
+<div class="h-3 w-[1px] bg-outline-variant/60"></div>
+<span class="font-label-sm text-label-sm text-antique-gold font-medium">العملة: الدينار العراقي (د.ع)</span>
+</div>
+</div>
+<!-- Tabular Matrix -->
+<div class="overflow-x-auto">
+<table class="w-full text-right border-collapse">
+<thead>
+<tr class="bg-surface-container-low text-muted-rosewood font-label-md text-label-md">
+<th class="py-3.5 px-6 font-semibold">القناة البيعية</th>
+<th class="py-3.5 px-4 font-semibold text-center">عدد الطلبات</th>
+<th class="py-3.5 px-4 font-semibold">قيمة المبيعات</th>
+<th class="py-3.5 px-4 font-semibold">الطلبات الملغاة</th>
+<th class="py-3.5 px-4 font-semibold">صافي الإيراد</th>
+<th class="py-3.5 px-4 font-semibold">متوسط الطلب (AOV)</th>
+<th class="py-3.5 px-4 font-semibold w-48">نسبة المساهمة</th>
+<th class="py-3.5 px-6 font-semibold text-center">الإجراء والتدقيق</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-hairline-burgundy/40 font-body-sm text-body-sm text-warm-ink">
+<!-- Row 1: Instagram -->
+<tr class="hover:bg-blush-surface/40 transition-colors group">
+<td class="py-4 px-6">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-blush-surface text-imperial-burgundy flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[18px]">photo_camera</span>
+</div>
+<div>
+<div class="font-label-md text-label-md font-semibold text-warm-ink">إنستغرام Direct</div>
+<div class="text-[11px] text-muted-rosewood">حملات الترويج ومحادثات الرسائل</div>
+</div>
+</div>
+</td>
+<td class="py-4 px-4 text-center font-mono font-medium">52</td>
+<td class="py-4 px-4 font-mono font-semibold text-warm-ink hover:underline cursor-pointer">
+                2,250,000 <span class="text-[11px] text-muted-rosewood font-sans">د.ع</span>
+</td>
+<td class="py-4 px-4">
+<span class="inline-flex items-center gap-1 text-[12px] font-mono text-semantic-warning bg-semantic-warning-bg px-2 py-0.5 rounded-full">
+                  1 طلب (43,700 د.ع)
+                </span>
+</td>
+<td class="py-4 px-4 font-mono font-semibold text-imperial-burgundy hover:underline cursor-pointer">
+                2,206,300 <span class="text-[11px] text-muted-rosewood font-sans">د.ع</span>
+</td>
+<td class="py-4 px-4 font-mono text-muted-rosewood">
+                43,269 <span class="text-[11px] font-sans">د.ع</span>
+</td>
+<td class="py-4 px-4">
+<div class="space-y-1">
+<div class="flex justify-between items-center text-[12px] font-mono font-bold text-warm-ink">
+<span>41.5%</span>
+</div>
+<div class="w-full h-1.5 rounded-full bg-surface-container-high overflow-hidden">
+<div class="h-full bg-royal-gold rounded-full transition-all duration-500" style="width: 41.5%;"></div>
+</div>
+</div>
+</td>
+<td class="py-4 px-6 text-center">
+<button class="inline-flex items-center gap-1 px-3 py-1 rounded-lg text-imperial-burgundy bg-blush-surface hover:bg-imperial-burgundy hover:text-ivory-canvas font-label-sm text-label-sm transition-all" type="button">
+<span>تفاصيل الطلبات</span>
+<span class="material-symbols-outlined text-[14px]">arrow_back</span>
+</button>
+</td>
+</tr>
+<!-- Row 2: Web Store -->
+<tr class="hover:bg-blush-surface/40 transition-colors group">
+<td class="py-4 px-6">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-surface-container text-burgundy-600 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[18px]">language</span>
+</div>
+<div>
+<div class="font-label-md text-label-md font-semibold text-warm-ink">متجر الويب الرسمي</div>
+<div class="text-[11px] text-muted-rosewood">بوابة الشراء الإلكترونية الآلية</div>
+</div>
+</div>
+</td>
+<td class="py-4 px-4 text-center font-mono font-medium">34</td>
+<td class="py-4 px-4 font-mono font-semibold text-warm-ink hover:underline cursor-pointer">
+                1,480,000 <span class="text-[11px] text-muted-rosewood font-sans">د.ع</span>
+</td>
+<td class="py-4 px-4">
+<span class="inline-flex items-center gap-1 text-[12px] font-mono text-semantic-error bg-semantic-error-bg px-2 py-0.5 rounded-full">
+                  2 طلب (58,000 د.ع)
+                </span>
+</td>
+<td class="py-4 px-4 font-mono font-semibold text-imperial-burgundy hover:underline cursor-pointer">
+                1,422,000 <span class="text-[11px] text-muted-rosewood font-sans">د.ع</span>
+</td>
+<td class="py-4 px-4 font-mono text-muted-rosewood">
+                43,529 <span class="text-[11px] font-sans">د.ع</span>
+</td>
+<td class="py-4 px-4">
+<div class="space-y-1">
+<div class="flex justify-between items-center text-[12px] font-mono font-bold text-warm-ink">
+<span>27.3%</span>
+</div>
+<div class="w-full h-1.5 rounded-full bg-surface-container-high overflow-hidden">
+<div class="h-full bg-royal-gold rounded-full transition-all duration-500" style="width: 27.3%;"></div>
+</div>
+</div>
+</td>
+<td class="py-4 px-6 text-center">
+<button class="inline-flex items-center gap-1 px-3 py-1 rounded-lg text-imperial-burgundy bg-blush-surface hover:bg-imperial-burgundy hover:text-ivory-canvas font-label-sm text-label-sm transition-all" type="button">
+<span>تفاصيل الطلبات</span>
+<span class="material-symbols-outlined text-[14px]">arrow_back</span>
+</button>
+</td>
+</tr>
+<!-- Row 3: WhatsApp -->
+<tr class="hover:bg-blush-surface/40 transition-colors group">
+<td class="py-4 px-6">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-semantic-success-bg text-semantic-success flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[18px]">chat</span>
+</div>
+<div>
+<div class="font-label-md text-label-md font-semibold text-warm-ink">واتساب المباشر</div>
+<div class="text-[11px] text-muted-rosewood">مساعد التسوق الشخصي السريع</div>
+</div>
+</div>
+</td>
+<td class="py-4 px-4 text-center font-mono font-medium">21</td>
+<td class="py-4 px-4 font-mono font-semibold text-warm-ink hover:underline cursor-pointer">
+                920,000 <span class="text-[11px] text-muted-rosewood font-sans">د.ع</span>
+</td>
+<td class="py-4 px-4">
+<span class="inline-flex items-center text-[12px] font-mono text-semantic-success bg-semantic-success-bg px-2 py-0.5 rounded-full">
+                  0 ملغي
+                </span>
+</td>
+<td class="py-4 px-4 font-mono font-semibold text-imperial-burgundy hover:underline cursor-pointer">
+                920,000 <span class="text-[11px] text-muted-rosewood font-sans">د.ع</span>
+</td>
+<td class="py-4 px-4 font-mono text-muted-rosewood">
+                43,809 <span class="text-[11px] font-sans">د.ع</span>
+</td>
+<td class="py-4 px-4">
+<div class="space-y-1">
+<div class="flex justify-between items-center text-[12px] font-mono font-bold text-warm-ink">
+<span>17.0%</span>
+</div>
+<div class="w-full h-1.5 rounded-full bg-surface-container-high overflow-hidden">
+<div class="h-full bg-royal-gold rounded-full transition-all duration-500" style="width: 17%;"></div>
+</div>
+</div>
+</td>
+<td class="py-4 px-6 text-center">
+<button class="inline-flex items-center gap-1 px-3 py-1 rounded-lg text-imperial-burgundy bg-blush-surface hover:bg-imperial-burgundy hover:text-ivory-canvas font-label-sm text-label-sm transition-all" type="button">
+<span>تفاصيل الطلبات</span>
+<span class="material-symbols-outlined text-[14px]">arrow_back</span>
+</button>
+</td>
+</tr>
+<!-- Row 4: VIP Telephone -->
+<tr class="hover:bg-blush-surface/40 transition-colors group">
+<td class="py-4 px-6">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-champagne-gold/25 text-antique-gold flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[18px]">phone_in_talk</span>
+</div>
+<div>
+<div class="font-label-md text-label-md font-semibold text-warm-ink">استشارات هاتفية VIP</div>
+<div class="text-[11px] text-muted-rosewood">طلبات المقتنين الحصرية والقطع النادرة</div>
+</div>
+</div>
+</td>
+<td class="py-4 px-4 text-center font-mono font-medium">9</td>
+<td class="py-4 px-4 font-mono font-semibold text-warm-ink hover:underline cursor-pointer">
+                450,000 <span class="text-[11px] text-muted-rosewood font-sans">د.ع</span>
+</td>
+<td class="py-4 px-4">
+<span class="inline-flex items-center text-[12px] font-mono text-semantic-success bg-semantic-success-bg px-2 py-0.5 rounded-full">
+                  0 ملغي
+                </span>
+</td>
+<td class="py-4 px-4 font-mono font-semibold text-imperial-burgundy hover:underline cursor-pointer">
+                450,000 <span class="text-[11px] text-muted-rosewood font-sans">د.ع</span>
+</td>
+<td class="py-4 px-4 font-mono text-antique-gold font-bold">
+                50,000 <span class="text-[11px] font-sans">د.ع</span>
+</td>
+<td class="py-4 px-4">
+<div class="space-y-1">
+<div class="flex justify-between items-center text-[12px] font-mono font-bold text-warm-ink">
+<span>8.3%</span>
+</div>
+<div class="w-full h-1.5 rounded-full bg-surface-container-high overflow-hidden">
+<div class="h-full bg-royal-gold rounded-full transition-all duration-500" style="width: 8.3%;"></div>
+</div>
+</div>
+</td>
+<td class="py-4 px-6 text-center">
+<button class="inline-flex items-center gap-1 px-3 py-1 rounded-lg text-imperial-burgundy bg-blush-surface hover:bg-imperial-burgundy hover:text-ivory-canvas font-label-sm text-label-sm transition-all" type="button">
+<span>تفاصيل الطلبات</span>
+<span class="material-symbols-outlined text-[14px]">arrow_back</span>
+</button>
+</td>
+</tr>
+<!-- Row 5: Boutique Showroom -->
+<tr class="hover:bg-blush-surface/40 transition-colors group">
+<td class="py-4 px-6">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-surface-container text-burgundy-800 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[18px]">storefront</span>
+</div>
+<div>
+<div class="font-label-md text-label-md font-semibold text-warm-ink">صالة العرض (المحل)</div>
+<div class="text-[11px] text-muted-rosewood">استلام المبيعات المباشرة بالفرع</div>
+</div>
+</div>
+</td>
+<td class="py-4 px-4 text-center font-mono font-medium">5</td>
+<td class="py-4 px-4 font-mono font-semibold text-warm-ink hover:underline cursor-pointer">
+                210,000 <span class="text-[11px] text-muted-rosewood font-sans">د.ع</span>
+</td>
+<td class="py-4 px-4">
+<span class="inline-flex items-center gap-1 text-[12px] font-mono text-semantic-warning bg-semantic-warning-bg px-2 py-0.5 rounded-full">
+                  1 طلب (25,000 د.ع)
+                </span>
+</td>
+<td class="py-4 px-4 font-mono font-semibold text-imperial-burgundy hover:underline cursor-pointer">
+                185,000 <span class="text-[11px] text-muted-rosewood font-sans">د.ع</span>
+</td>
+<td class="py-4 px-4 font-mono text-muted-rosewood">
+                42,000 <span class="text-[11px] font-sans">د.ع</span>
+</td>
+<td class="py-4 px-4">
+<div class="space-y-1">
+<div class="flex justify-between items-center text-[12px] font-mono font-bold text-warm-ink">
+<span>3.9%</span>
+</div>
+<div class="w-full h-1.5 rounded-full bg-surface-container-high overflow-hidden">
+<div class="h-full bg-royal-gold rounded-full transition-all duration-500" style="width: 3.9%;"></div>
+</div>
+</div>
+</td>
+<td class="py-4 px-6 text-center">
+<button class="inline-flex items-center gap-1 px-3 py-1 rounded-lg text-imperial-burgundy bg-blush-surface hover:bg-imperial-burgundy hover:text-ivory-canvas font-label-sm text-label-sm transition-all" type="button">
+<span>تفاصيل الطلبات</span>
+<span class="material-symbols-outlined text-[14px]">arrow_back</span>
+</button>
+</td>
+</tr>
+<!-- Row 6: Messenger -->
+<tr class="hover:bg-blush-surface/40 transition-colors group">
+<td class="py-4 px-6">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-surface-container text-semantic-info flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[18px]">forum</span>
+</div>
+<div>
+<div class="font-label-md text-label-md font-semibold text-warm-ink">فيسبوك ماسنجر</div>
+<div class="text-[11px] text-muted-rosewood">استفسارات المتابعين والحملات</div>
+</div>
+</div>
+</td>
+<td class="py-4 px-4 text-center font-mono font-medium">3</td>
+<td class="py-4 px-4 font-mono font-semibold text-warm-ink hover:underline cursor-pointer">
+                110,000 <span class="text-[11px] text-muted-rosewood font-sans">د.ع</span>
+</td>
+<td class="py-4 px-4">
+<span class="inline-flex items-center text-[12px] font-mono text-semantic-success bg-semantic-success-bg px-2 py-0.5 rounded-full">
+                  0 ملغي
+                </span>
+</td>
+<td class="py-4 px-4 font-mono font-semibold text-imperial-burgundy hover:underline cursor-pointer">
+                110,000 <span class="text-[11px] text-muted-rosewood font-sans">د.ع</span>
+</td>
+<td class="py-4 px-4 font-mono text-muted-rosewood">
+                36,667 <span class="text-[11px] font-sans">د.ع</span>
+</td>
+<td class="py-4 px-4">
+<div class="space-y-1">
+<div class="flex justify-between items-center text-[12px] font-mono font-bold text-warm-ink">
+<span>2.0%</span>
+</div>
+<div class="w-full h-1.5 rounded-full bg-surface-container-high overflow-hidden">
+<div class="h-full bg-royal-gold rounded-full transition-all duration-500" style="width: 2%;"></div>
+</div>
+</div>
+</td>
+<td class="py-4 px-6 text-center">
+<button class="inline-flex items-center gap-1 px-3 py-1 rounded-lg text-imperial-burgundy bg-blush-surface hover:bg-imperial-burgundy hover:text-ivory-canvas font-label-sm text-label-sm transition-all" type="button">
+<span>تفاصيل الطلبات</span>
+<span class="material-symbols-outlined text-[14px]">arrow_back</span>
+</button>
+</td>
+</tr>
+</tbody>
+<!-- Table Footer Summary Row -->
+<tfoot>
+<tr class="bg-surface-container font-label-md text-label-md text-warm-ink font-bold">
+<td class="py-4 px-6">
+<div class="flex items-center gap-2">
+<span class="text-royal-gold">◆</span>
+<span>المجموع الإجمالي للقنوات</span>
+</div>
+</td>
+<td class="py-4 px-4 text-center font-mono">124 طلباً</td>
+<td class="py-4 px-4 font-mono text-warm-ink text-body-md font-bold">
+                5,420,000 <span class="text-label-sm text-muted-rosewood font-sans">د.ع</span>
+</td>
+<td class="py-4 px-4 font-mono text-semantic-error">
+                4 طلبات ملغاة
+              </td>
+<td class="py-4 px-4 font-mono text-imperial-burgundy text-body-md font-bold">
+                5,293,300 <span class="text-label-sm text-muted-rosewood font-sans">د.ع</span>
+</td>
+<td class="py-4 px-4 font-mono text-antique-gold">
+                43,710 <span class="text-label-sm text-muted-rosewood font-sans">د.ع</span>
+</td>
+<td class="py-4 px-4 font-mono">100.0%</td>
+<td class="py-4 px-6 text-center text-muted-rosewood font-normal text-label-sm">
+                مراجعة الخزينة متطابقة
+              </td>
+</tr>
+</tfoot>
+</table>
+</div>
+<!-- Legal & Operational Footnote -->
+<div class="p-4 bg-surface-container-low/70 flex items-center justify-between gap-4 font-body-sm text-body-sm text-muted-rosewood">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-royal-gold text-[18px]">verified_user</span>
+<span>جميع الإيرادات محسوبة بعد تسوية المرتجعات وقيد سندات الصرف في الخزينة المركزية لدار آيريس.</span>
+</div>
+<div class="font-mono text-[11px] text-muted-rosewood">
+          تاريخ الاعتماد: 2026-10-31 23:59 AST
+        </div>
+</div>
+</div>
+</div>
+</div>
+<script>
+  (function() {
+    const exportBtn = document.getElementById('exportButton');
+    const exportMenu = document.getElementById('exportDropdown');
+    const container = document.getElementById('exportMenuContainer');
+
+    if (exportBtn && exportMenu) {
+      exportBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        exportMenu.classList.toggle('hidden');
+      });
+
+      document.addEventListener('click', function(e) {
+        if (!container.contains(e.target)) {
+          exportMenu.classList.add('hidden');
+        }
+      });
+    }
+  })();
+</script></main></div></body></html>

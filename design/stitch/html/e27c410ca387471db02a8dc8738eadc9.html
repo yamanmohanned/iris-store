@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+
+<html dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>طلب إرجاع أو استبدال | دار آيريس للمجوهرات IRIS</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS with Forms and Container Queries -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "inverse-primary": "#ffb2b9",
+            "tertiary-fixed": "#ffd9dd",
+            "rose-mist": "#EED9DB",
+            "semantic-error-bg": "#FDE7E4",
+            "surface-dim": "#ded9d3",
+            "on-tertiary": "#ffffff",
+            "surface": "#fef9f2",
+            "on-surface": "#1d1c18",
+            "primary-container": "#721328",
+            "on-tertiary-container": "#dc8f9a",
+            "outline": "#897173",
+            "royal-gold": "#C9A24B",
+            "background": "#fef9f2",
+            "hairline-gold": "rgba(201, 162, 75, 0.45)",
+            "champagne-gold": "#E9D49C",
+            "surface-container-low": "#f8f3ec",
+            "tertiary-container": "#602833",
+            "on-secondary": "#ffffff",
+            "muted-rosewood": "#6D585B",
+            "surface-tint": "#a3394a",
+            "surface-bright": "#fef9f2",
+            "on-primary-container": "#fb7c8c",
+            "on-background": "#1d1c18",
+            "outline-variant": "#dcc0c1",
+            "inverse-surface": "#32302c",
+            "primary-fixed-dim": "#ffb2b9",
+            "tertiary": "#45131e",
+            "on-primary-fixed": "#40000f",
+            "semantic-success-bg": "#E2F2EA",
+            "surface-container-high": "#ece7e1",
+            "error-container": "#ffdad6",
+            "on-secondary-fixed": "#261a00",
+            "on-secondary-fixed-variant": "#5b4300",
+            "semantic-warning-bg": "#FCEBD0",
+            "surface-container-highest": "#e6e2db",
+            "blush-surface": "#F7ECEC",
+            "ivory-canvas": "#FBF6EF",
+            "on-tertiary-fixed": "#390915",
+            "antique-gold": "#8A6620",
+            "wine-night": "#1E070D",
+            "surface-container": "#f2ede6",
+            "tertiary-fixed-dim": "#ffb2bd",
+            "secondary-fixed-dim": "#ebc166",
+            "surface-variant": "#e6e2db",
+            "error": "#ba1a1a",
+            "on-primary": "#ffffff",
+            "burgundy-800": "#5A0F22",
+            "on-error-container": "#93000a",
+            "semantic-info-bg": "#E4EDF8",
+            "hairline-burgundy": "rgba(114, 19, 40, 0.14)",
+            "secondary-fixed": "#ffdf9e",
+            "primary-fixed": "#ffdadc",
+            "semantic-warning": "#8A4B08",
+            "secondary-container": "#fdd275",
+            "imperial-burgundy": "#721328",
+            "primary": "#510015",
+            "semantic-success": "#1F6B4A",
+            "warm-ink": "#2A1215",
+            "on-secondary-container": "#775800",
+            "on-surface-variant": "#564243",
+            "parchment": "#F3EADB",
+            "burgundy-600": "#8A1B34",
+            "inverse-on-surface": "#f5f0e9",
+            "on-tertiary-fixed-variant": "#6f343f",
+            "semantic-info": "#2F5A8A",
+            "secondary": "#795902",
+            "deep-oxblood": "#3A0A16",
+            "on-error": "#ffffff",
+            "semantic-error": "#B42318",
+            "on-primary-fixed-variant": "#842134",
+            "surface-container-lowest": "#ffffff"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "fontFamily": {
+            "sans": ["IBM Plex Sans Arabic", "sans-serif"],
+            "mono": ["IBM Plex Mono", "monospace"],
+            "headline": ["El Messiri", "serif"],
+            "label-md": ["IBM Plex Sans Arabic"],
+            "body-xl": ["IBM Plex Sans Arabic"],
+            "label-sm": ["IBM Plex Sans Arabic"],
+            "body-lg": ["IBM Plex Sans Arabic"],
+            "label-lg": ["IBM Plex Sans Arabic"],
+            "body-md": ["IBM Plex Sans Arabic"],
+            "headline-md": ["El Messiri"],
+            "body-sm": ["IBM Plex Sans Arabic"],
+            "headline-lg": ["El Messiri"],
+            "headline-sm": ["El Messiri"],
+            "display-lg-mobile": ["El Messiri"],
+            "headline-xl-mobile": ["El Messiri"],
+            "display-lg": ["El Messiri"],
+            "headline-xl": ["El Messiri"]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    body {
+      font-family: 'IBM Plex Sans Arabic', sans-serif;
+      background-color: #FBF6EF;
+      color: #2A1215;
+    }
+    .font-messiri {
+      font-family: 'El Messiri', serif;
+    }
+    .font-num {
+      font-family: 'IBM Plex Mono', 'IBM Plex Sans Arabic', monospace;
+      font-variant-numeric: tabular-nums;
+    }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+    }
+    .material-symbols-outlined.fill-icon {
+      font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    .shadow-luxury {
+      box-shadow: 0 12px 32px -6px rgba(58, 10, 22, 0.06), 0 4px 12px -2px rgba(58, 10, 22, 0.03);
+    }
+  </style>
+</head>
+<body class="bg-ivory-canvas text-warm-ink antialiased min-h-screen selection:bg-rose-mist selection:text-deep-oxblood">
+<!-- Minimal Focused Header with Back to Context Navigation -->
+<header class="w-full border-b border-hairline-burgundy bg-surface-container-lowest/80 backdrop-blur-md sticky top-0 z-40">
+<div class="max-w-[1200px] mx-auto px-6 h-18 flex items-center justify-between py-4">
+<div class="flex items-center gap-4">
+<a class="flex items-center gap-2 text-primary hover:text-imperial-burgundy transition-colors text-sm font-medium py-1.5 px-3 rounded-lg hover:bg-surface-container" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="arrow_forward">arrow_forward</span>
+<span>العودة إلى تفاصيل الطلب</span>
+<span class="font-num font-semibold text-primary">#1054</span>
+</a>
+</div>
+<div class="flex items-center gap-2">
+<div class="size-3.5 rotate-45 border border-royal-gold bg-champagne-gold/40"></div>
+<span class="font-messiri text-xl font-bold tracking-tight text-deep-oxblood">آيريس <span class="font-sans font-light text-sm tracking-widest text-royal-gold mr-1">IRIS</span></span>
+</div>
+<div class="flex items-center gap-3">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-parchment text-antique-gold border border-hairline-gold">
+<span class="size-1.5 rounded-full bg-royal-gold animate-pulse"></span>
+          الضمان الملكي المعتمد
+        </span>
+</div>
+</div>
+</header>
+<!-- Main Content Container: Centered 720px Column -->
+<main class="w-full px-4 sm:px-6 py-12 lg:py-16 flex flex-col items-center">
+<div class="w-full max-w-[720px] flex flex-col gap-10">
+<!-- Breadcrumbs -->
+<nav class="flex items-center flex-wrap gap-2 text-xs md:text-sm text-muted-rosewood">
+<a class="hover:text-primary transition-colors" href="#">الرئيسية</a>
+<span class="text-hairline-gold text-xs">›</span>
+<a class="hover:text-primary transition-colors" href="#">حسابي</a>
+<span class="text-hairline-gold text-xs">›</span>
+<a class="hover:text-primary transition-colors" href="#">طلبات الشراء</a>
+<span class="text-hairline-gold text-xs">›</span>
+<a class="hover:text-primary font-num text-xs font-medium transition-colors" href="#">طلب #1054</a>
+<span class="text-hairline-gold text-xs">›</span>
+<span class="text-warm-ink font-semibold">طلب إرجاع أو استبدال</span>
+</nav>
+<!-- Page Header -->
+<div class="text-center flex flex-col items-center pt-2">
+<div class="inline-flex items-center gap-2 mb-3">
+<span class="size-1.5 rotate-45 bg-royal-gold"></span>
+<span class="text-xs uppercase tracking-widest font-medium text-antique-gold font-messiri">خدمات الضمان والرعاية الملكية</span>
+<span class="size-1.5 rotate-45 bg-royal-gold"></span>
+</div>
+<h1 class="font-messiri text-3xl md:text-4xl lg:text-[40px] font-bold text-wine-night mb-4 leading-tight">
+          طلب إرجاع أو استبدال
+        </h1>
+<p class="text-on-surface-variant text-base leading-relaxed max-w-[580px]">
+          نحرص على رضاكِ التام؛ يمكنكِ طلب استبدال أو استرداد القطع بكل سلاسة وخصوصية تليق بضيوف الدار.
+        </p>
+<!-- Ornamental Luxury Divider: two parallel 1px gold lines (3px apart) with a 45deg gold diamond in center -->
+<div class="relative w-full max-w-[360px] h-6 flex items-center justify-center my-6">
+<div class="absolute inset-x-0 top-[9px] h-[1px] bg-gradient-to-r from-transparent via-royal-gold/60 to-transparent"></div>
+<div class="absolute inset-x-0 top-[13px] h-[1px] bg-gradient-to-r from-transparent via-royal-gold/60 to-transparent"></div>
+<div class="relative z-10 size-2.5 rotate-45 border border-royal-gold bg-ivory-canvas shadow-sm"></div>
+</div>
+</div>
+<!-- 4-Step Gold Progress Stepper (RTL: right to left) -->
+<div class="w-full bg-surface-container-lowest/80 border border-hairline-gold rounded-xl p-5 shadow-luxury">
+<div class="relative flex items-center justify-between">
+<!-- Continuous hairline track -->
+<div class="absolute top-4 left-6 right-6 h-[1.5px] bg-champagne-gold/60 -z-0"></div>
+<!-- Step 1: Done -->
+<div class="flex flex-col items-center gap-2 relative z-10">
+<div class="size-8 rounded-full bg-imperial-burgundy text-champagne-gold flex items-center justify-center border-2 border-royal-gold shadow-sm ring-4 ring-ivory-canvas">
+<span class="material-symbols-outlined text-[16px] font-bold" data-icon="check">check</span>
+</div>
+<span class="text-xs font-semibold text-imperial-burgundy">المنتجات</span>
+</div>
+<!-- Step 2: Active / Current -->
+<div class="flex flex-col items-center gap-2 relative z-10">
+<div class="size-8 rounded-full bg-ivory-canvas border-2 border-royal-gold flex items-center justify-center shadow-sm ring-4 ring-champagne-gold/30">
+<div class="size-2.5 rounded-full bg-royal-gold animate-pulse"></div>
+</div>
+<span class="text-xs font-bold text-antique-gold underline underline-offset-4 decoration-royal-gold">السبب</span>
+</div>
+<!-- Step 3: Next -->
+<div class="flex flex-col items-center gap-2 relative z-10">
+<div class="size-8 rounded-full bg-surface-container border border-outline-variant/70 text-muted-rosewood flex items-center justify-center ring-4 ring-ivory-canvas font-num text-xs">
+              3
+            </div>
+<span class="text-xs font-medium text-muted-rosewood">المطلوب</span>
+</div>
+<!-- Step 4: Final -->
+<div class="flex flex-col items-center gap-2 relative z-10">
+<div class="size-8 rounded-full bg-surface-container border border-outline-variant/70 text-muted-rosewood flex items-center justify-center ring-4 ring-ivory-canvas font-num text-xs">
+              4
+            </div>
+<span class="text-xs font-medium text-muted-rosewood">المراجعة</span>
+</div>
+</div>
+</div>
+<!-- Step 1 Section (Completed Summary Card) -->
+<section class="bg-surface-container-lowest rounded-xl border border-hairline-gold p-6 shadow-luxury transition-all">
+<div class="flex items-center justify-between pb-4 border-b border-hairline-burgundy">
+<div class="flex items-center gap-3">
+<div class="size-6 rounded-full bg-semantic-success-bg text-semantic-success flex items-center justify-center border border-semantic-success/20">
+<span class="material-symbols-outlined text-[15px]" data-icon="check">check</span>
+</div>
+<h2 class="font-messiri text-lg font-bold text-wine-night">الخطوة 1: القطع المختارة</h2>
+<span class="font-num text-xs px-2.5 py-0.5 rounded-md bg-parchment text-antique-gold border border-hairline-gold">طلب #1054</span>
+</div>
+<button class="text-xs font-medium text-primary hover:text-imperial-burgundy flex items-center gap-1 transition-colors group" type="button">
+<span>تعديل الاختيار</span>
+<span class="material-symbols-outlined text-[15px] group-hover:-translate-x-0.5 transition-transform" data-icon="edit">edit</span>
+</button>
+</div>
+<div class="mt-5 flex flex-col sm:flex-row gap-5 items-start sm:items-center justify-between p-4 rounded-xl bg-ivory-canvas/60 border border-hairline-gold/50">
+<div class="flex items-center gap-4">
+<div class="relative size-20 shrink-0 rounded-2xl overflow-hidden border border-hairline-gold shadow-sm bg-surface-container-lowest">
+<img class="w-full h-full object-cover" data-alt="Close up photography of an exquisite sterling silver artisan ring crafted with precision featuring radiant round cut sparkling zirconia stones elegantly displayed on cream textured silk in warm moody luxury boutique lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCz2H_O4u45lP2ETKfFTQmALg5NQMpYEVuMyFhdm9IxmiDfOVlPUeaur2tnRi8oMm_xqymPm1PaYDDzUM8Y1F5_eZGynlDvQxYqXznnI7Wu1WvYSBXRI76burJijx65qVFLKuJMKao0w2519GrKtrWFh_VV54skm3MleR1Egx1VlTsskbWrGz5OFNaNo1eD8wZpewDQ1G4v5kBsHWIINh0EWlkcNEj-MPu_Fho-AK6ST9tC2qUUQEXq"/>
+<span class="absolute bottom-1 right-1 bg-wine-night/80 text-champagne-gold text-[10px] px-1.5 py-0.5 rounded font-num backdrop-blur-xs">925</span>
+</div>
+<div class="flex flex-col gap-1">
+<h3 class="font-messiri text-base font-bold text-wine-night">خاتم فضي رقم 31</h3>
+<p class="text-xs text-muted-rosewood">فضة استرليني 925 مرصعة بالزركون النقي · مقاس 8</p>
+<div class="flex items-center gap-3 text-xs mt-1">
+<span class="text-outline font-num">رمز القطعة: RG-SIL-031</span>
+<span class="size-1 rounded-full bg-outline-variant"></span>
+<span class="font-bold font-num text-deep-oxblood">20,000 د.ع</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col items-end gap-1.5 self-end sm:self-center">
+<div class="inline-flex items-center gap-2 border border-hairline-burgundy bg-surface-container-lowest px-3 py-1.5 rounded-lg">
+<span class="text-xs text-muted-rosewood">الكمية:</span>
+<span class="font-num font-bold text-sm text-wine-night">1</span>
+<span class="material-symbols-outlined text-outline text-[16px]" data-icon="lock">lock</span>
+</div>
+<span class="text-[11px] text-muted-rosewood/80 font-num">(الحد الأقصى 1 من أصل 1 قطعة مستلمة)</span>
+</div>
+</div>
+</section>
+<!-- Step 2 Section (Active / Open Form Card) -->
+<section class="bg-surface-container-lowest rounded-xl border-2 border-royal-gold/70 p-6 md:p-8 shadow-luxury relative overflow-hidden">
+<!-- Subtle luxury decorative corner accent -->
+<div class="absolute -top-10 -left-10 size-24 bg-champagne-gold/20 rounded-full blur-xl pointer-events-none"></div>
+<div class="flex items-center justify-between pb-6 border-b border-hairline-burgundy">
+<div class="flex items-center gap-3">
+<div class="size-7 rounded-full bg-primary-container text-champagne-gold flex items-center justify-center font-num text-xs font-bold border border-royal-gold">
+              2
+            </div>
+<div>
+<h2 class="font-messiri text-xl font-bold text-wine-night">الخطوة 2: سبب طلب الإرجاع أو الاستبدال</h2>
+<p class="text-xs text-muted-rosewood mt-0.5">يرجى توضيح الدافع لنتمكن من توفير البديل المناسب فوراً</p>
+</div>
+</div>
+<span class="inline-flex items-center gap-1.5 text-xs font-semibold px-3 py-1 rounded-full bg-semantic-warning-bg text-semantic-warning border border-champagne-gold/50">
+<span class="size-1.5 rounded-full bg-antique-gold animate-ping"></span>
+            الحالة: قيد الإدخال
+          </span>
+</div>
+<form class="mt-6 flex flex-col gap-6" onsubmit="event.preventDefault();">
+<!-- Field 1: Reason Select -->
+<div class="flex flex-col gap-2">
+<label class="text-sm font-semibold text-wine-night flex items-center justify-between" for="return-reason">
+<span>ما هو السبب الرئيسي للطلب؟ <span class="text-semantic-error">*</span></span>
+<span class="text-xs font-normal text-muted-rosewood">إلزامي للمطابقة الفورية</span>
+</label>
+<div class="relative">
+<select class="w-full appearance-none bg-ivory-canvas/60 border border-hairline-gold hover:border-royal-gold text-wine-night text-sm rounded-xl py-3.5 px-4 pr-11 focus:outline-none focus:ring-2 focus:ring-royal-gold/40 focus:border-royal-gold transition-all" id="return-reason">
+<option selected="" value="size">مقاس خاطئ (أرغب بمقاس آخر)</option>
+<option value="defect">منتج تالف أو به عيب مصنعي</option>
+<option value="not_matching">غير مطابق للوصف أو الصورة</option>
+<option value="changed_mind">غيّرت رأيي</option>
+<option value="other">أخرى</option>
+</select>
+<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3.5 text-antique-gold">
+<span class="material-symbols-outlined text-[20px]" data-icon="straighten">straighten</span>
+</div>
+<div class="pointer-events-none absolute inset-y-0 left-0 flex items-center px-3.5 text-antique-gold">
+<span class="material-symbols-outlined text-[18px]" data-icon="expand_more">expand_more</span>
+</div>
+</div>
+</div>
+<!-- Field 2: Text Area -->
+<div class="flex flex-col gap-2">
+<label class="text-sm font-semibold text-wine-night flex items-center justify-between" for="reason-details">
+<span>اشرح لنا تفاصيل أكثر <span class="text-xs font-normal text-muted-rosewood">(اختياري)</span></span>
+<span class="text-xs text-outline font-num">0 / 300 حرف</span>
+</label>
+<textarea class="w-full bg-ivory-canvas/60 border border-hairline-gold hover:border-royal-gold text-wine-night text-sm rounded-xl p-3.5 placeholder:text-outline focus:outline-none focus:ring-2 focus:ring-royal-gold/40 focus:border-royal-gold transition-all leading-relaxed resize-none" id="reason-details" placeholder="شاركينا ملاحظاتك حول حالة الخاتم أو المقاس المناسب لكِ لنتمكن من خدمتك على أكمل وجه..." rows="3"></textarea>
+</div>
+<!-- Field 3: Photo Uploader -->
+<div class="flex flex-col gap-2.5">
+<div>
+<label class="text-sm font-semibold text-wine-night block">
+                إرفاق صور القطعة <span class="text-xs font-normal text-muted-rosewood">(لضمان سرعة الفحص والموافقة)</span>
+</label>
+<p class="text-xs text-muted-rosewood mt-0.5">يُفضل تصوير الخاتم في إضاءة واضحة مع إبراز الختم الداخلي إن أمكن</p>
+</div>
+<!-- Upload Dropzone -->
+<div class="border-2 border-dashed border-royal-gold/70 hover:border-royal-gold bg-ivory-canvas/70 hover:bg-parchment/40 rounded-xl p-6 text-center cursor-pointer transition-all flex flex-col items-center justify-center gap-2 group">
+<div class="size-11 rounded-full bg-surface-container-lowest border border-hairline-gold flex items-center justify-center text-primary group-hover:scale-105 transition-transform shadow-sm">
+<span class="material-symbols-outlined text-[24px]" data-icon="cloud_upload">cloud_upload</span>
+</div>
+<p class="text-sm font-medium text-wine-night mt-1">
+                اسحبي الصور هنا أو <span class="text-primary underline decoration-royal-gold font-semibold">اضغطي للاختيار من جهازك</span>
+</p>
+<p class="text-xs text-outline font-num">JPG, PNG بحد أقصى 10MB للقطعة</p>
+</div>
+<!-- Thumbnails Preview Grid -->
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
+<!-- Thumbnail 1: Front view -->
+<div class="relative rounded-xl border border-hairline-gold p-1 bg-surface-container-lowest shadow-sm flex flex-col gap-1.5 group">
+<div class="relative aspect-square rounded-lg overflow-hidden bg-ivory-canvas">
+<img class="w-full h-full object-cover" data-alt="Detailed macro studio shot of the front profile of an exquisite silver solitaire ring set with brilliant micro pave simulated diamonds against a warm velvet ivory cloth background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCWOj0t4D1L3hPWIzAZRF5dVwsP0AEw28k2vi6N1JZvDFt4u-7p3WFNrxgaIOqAzVr4gb_YDf-bK-3QBCHcyshr5OhHZByT6wAR8qbghxeV_A3BTomtVQbgJjw-r9CdXmpqmPPYDxvfhgI2IEm0Hhy6XdMQEc7Gt3BN_-AYUobGHXR6PvM98ZglPqIxsPeDi8iaZaXSFrEve2_T_ydULnmVgefhAi_-M5v118JTtRhP7Dg71C_A7lzO"/>
+<button class="absolute top-1 left-1 size-6 rounded-full bg-wine-night/85 hover:bg-semantic-error text-white flex items-center justify-center transition-colors shadow" type="button">
+<span class="material-symbols-outlined text-[14px]" data-icon="close">close</span>
+</button>
+</div>
+<div class="px-1 pb-1">
+<p class="text-[11px] font-medium text-wine-night truncate">صورة_الواجهة.jpg</p>
+<span class="text-[10px] text-outline font-num">1.4 MB · مكتمل</span>
+</div>
+</div>
+<!-- Thumbnail 2: Hallmark close up -->
+<div class="relative rounded-xl border border-hairline-gold p-1 bg-surface-container-lowest shadow-sm flex flex-col gap-1.5 group">
+<div class="relative aspect-square rounded-lg overflow-hidden bg-ivory-canvas">
+<img class="w-full h-full object-cover" data-alt="Extreme close up macro shot of the inner band of an authentic sterling silver ring showing the certified 925 purity hallmark stamp and boutique hallmark in warm luxury lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC1YAhIxNNu-1Z6oRyF5qlntEPHSj3S9FxnCLJXBH7OifLohwqLk3q_mbQJs5X8yLe_2iFT2TcVeNiO63C0iTkGTY38jmmviCb5CwRI2ceDbqvaz1B1hsHL6ngoP09ujYIAkC_Z6fMbfUxt91-KFSptYyeJ1EF4G82Arymcq8aUEEZeg7TSJOK-RjNCVBhnWpl_H8besAkpHdjpuBYf8YnEJYBD8_7gXgccTdU7O30IYtmR2uQS9B4A"/>
+<button class="absolute top-1 left-1 size-6 rounded-full bg-wine-night/85 hover:bg-semantic-error text-white flex items-center justify-center transition-colors shadow" type="button">
+<span class="material-symbols-outlined text-[14px]" data-icon="close">close</span>
+</button>
+</div>
+<div class="px-1 pb-1">
+<p class="text-[11px] font-medium text-wine-night truncate">ختم_العيار_925.jpg</p>
+<span class="text-[10px] text-outline font-num">2.1 MB · مكتمل</span>
+</div>
+</div>
+</div>
+</div>
+</form>
+</section>
+<!-- Step 3 Section (Preview / Selectable Options) -->
+<section class="bg-surface-container-lowest rounded-xl border border-hairline-gold p-6 md:p-8 shadow-luxury flex flex-col gap-6">
+<div class="flex items-center gap-3 pb-4 border-b border-hairline-burgundy">
+<div class="size-7 rounded-full bg-surface-container border border-hairline-gold text-antique-gold flex items-center justify-center font-num text-xs font-bold">
+            3
+          </div>
+<div>
+<h2 class="font-messiri text-xl font-bold text-wine-night">الخطوة 3: الإجراء المطلوب (خيارات التسوية الملكية)</h2>
+<p class="text-xs text-muted-rosewood mt-0.5">حددي نوع الخدمة المفضلة لديكِ لمعالجة هذا الطلب</p>
+</div>
+</div>
+<!-- 3 Selectable Radio Cards -->
+<div class="grid grid-cols-1 gap-3.5">
+<!-- Card 1: استبدال (Active Selected) -->
+<label class="relative flex items-start gap-4 p-4 md:p-5 rounded-xl border-2 border-imperial-burgundy bg-blush-surface/30 cursor-pointer shadow-sm transition-all hover:bg-blush-surface/60">
+<input checked="" class="mt-1 text-imperial-burgundy focus:ring-royal-gold size-4 border-hairline-gold" name="settlement_option" type="radio" value="exchange"/>
+<div class="flex-1">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-imperial-burgundy text-[20px]" data-icon="autorenew">autorenew</span>
+<span class="font-messiri text-base font-bold text-deep-oxblood">استبدال</span>
+<span class="inline-flex text-[11px] font-semibold px-2 py-0.5 rounded bg-imperial-burgundy text-champagne-gold">موصى به</span>
+</div>
+<span class="text-xs font-semibold text-semantic-success flex items-center gap-1">
+<span class="material-symbols-outlined text-[15px]" data-icon="local_shipping">local_shipping</span>
+                  توصيل فوري مجاني
+                </span>
+</div>
+<p class="text-xs md:text-sm text-on-surface-variant mt-2 leading-relaxed">
+                استبدال بمقاس آخر أو قطعة بديلة من نفس القيمة (توصيل فوري مجاني للمقاس الجديد حتى باب منزلك مع استلام القطعة الحالية).
+              </p>
+</div>
+<!-- Gold corner flag accent -->
+<div class="absolute top-0 right-0 w-3 h-3 border-t-2 border-r-2 border-royal-gold rounded-tr-lg"></div>
+</label>
+<!-- Card 2: رصيد في المتجر -->
+<label class="relative flex items-start gap-4 p-4 md:p-5 rounded-xl border border-hairline-gold hover:border-royal-gold bg-surface-container-lowest hover:bg-surface-container-low cursor-pointer transition-all">
+<input class="mt-1 text-imperial-burgundy focus:ring-royal-gold size-4 border-hairline-gold" name="settlement_option" type="radio" value="store_credit"/>
+<div class="flex-1">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-antique-gold text-[20px]" data-icon="account_balance_wallet">account_balance_wallet</span>
+<span class="font-messiri text-base font-bold text-wine-night">رصيد في المتجر</span>
+<span class="inline-flex text-[11px] font-semibold px-2 py-0.5 rounded bg-parchment text-antique-gold border border-champagne-gold/60 font-num">+5% بونص</span>
+</div>
+<span class="text-xs text-muted-rosewood font-num">صلاحية 12 شهراً</span>
+</div>
+<p class="text-xs md:text-sm text-on-surface-variant mt-2 leading-relaxed">
+                إضافة رصيد فوري إلى محفظتك في دار آيريس صالح لمدة 12 شهراً مع بونص 5% إضافي ترحيبي يمكن استخدامه في أي طلب قادم.
+              </p>
+</div>
+</label>
+<!-- Card 3: استرداد المبلغ -->
+<label class="relative flex items-start gap-4 p-4 md:p-5 rounded-xl border border-hairline-gold hover:border-royal-gold bg-surface-container-lowest hover:bg-surface-container-low cursor-pointer transition-all">
+<input class="mt-1 text-imperial-burgundy focus:ring-royal-gold size-4 border-hairline-gold" name="settlement_option" type="radio" value="refund"/>
+<div class="flex-1">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-muted-rosewood text-[20px]" data-icon="payments">payments</span>
+<span class="font-messiri text-base font-bold text-wine-night">استرداد المبلغ</span>
+</div>
+<span class="text-xs text-muted-rosewood font-num">خلال 48 ساعة</span>
+</div>
+<p class="text-xs md:text-sm text-on-surface-variant mt-2 leading-relaxed">
+                إرجاع المبلغ نقداً عند استلام المندوب للقطعة أو تحويل بنكي لنفس الحساب خلال 48 ساعة بعد الفحص المخبري والتأكد من سلامة الخاتم.
+              </p>
+</div>
+</label>
+</div>
+</section>
+<!-- Final Note Card (Royal Assurance & Policy) -->
+<section class="rounded-xl border border-champagne-gold bg-gradient-to-br from-parchment/90 via-ivory-canvas to-surface-container p-6 shadow-sm relative overflow-hidden">
+<div class="flex items-start gap-4">
+<div class="size-10 rounded-full bg-champagne-gold/40 border border-royal-gold flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined text-[22px] fill-icon text-antique-gold" data-icon="verified_user">verified_user</span>
+</div>
+<div class="flex flex-col gap-1.5">
+<h4 class="font-messiri text-base font-bold text-wine-night flex items-center gap-2">
+<span>تعهد الرعاية الملكية وشروط السلامة</span>
+<span class="size-1 rotate-45 bg-royal-gold"></span>
+</h4>
+<p class="text-xs md:text-sm text-on-surface-variant leading-relaxed">
+              نراجع طلبكِ بعناية تامة ونتواصل معكِ هاتفياً أو عبر واتساب خلال أقل من ساعتين. يُرجى التكرم بالعلم بأنه لا يُرد المبلغ أو يُعاد الصنف إلا بعد استلام القطعة في صندوقها المخملي الأصلي وإجراء الفحص المخبري المعتمد للتأكد من سلامة الأحجار ونقاوة الصياغة.
+            </p>
+</div>
+</div>
+</section>
+<!-- Action Bar -->
+<div class="flex flex-col gap-4 items-center pt-2">
+<button class="w-full relative group overflow-hidden rounded-xl bg-imperial-burgundy hover:bg-burgundy-800 text-champagne-gold font-messiri text-lg font-bold py-4 px-8 shadow-luxury transition-all transform active:scale-[0.99] border border-royal-gold flex items-center justify-center gap-3" type="button">
+<!-- Subtle gold inner shine line -->
+<span class="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-champagne-gold to-transparent opacity-60"></span>
+<span class="material-symbols-outlined text-[20px] text-royal-gold" data-icon="lock">lock</span>
+<span>إرسال طلب الإرجاع والاستبدال</span>
+<span class="material-symbols-outlined text-[20px] text-royal-gold group-hover:-translate-x-1 transition-transform" data-icon="arrow_back">arrow_back</span>
+</button>
+<a class="text-sm font-medium text-muted-rosewood hover:text-imperial-burgundy py-2 transition-colors flex items-center gap-1.5" href="#">
+<span>العودة إلى تفاصيل الطلب</span>
+<span class="font-num font-semibold">#1054</span>
+</a>
+<!-- Trust Badges -->
+<div class="w-full pt-4 border-t border-hairline-gold/60 flex flex-col sm:flex-row items-center justify-center gap-6 text-xs text-muted-rosewood">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-royal-gold" data-icon="security">security</span>
+<span>شحن واستلام مصفّح مجاناً عند الاستبدال</span>
+</div>
+<span class="hidden sm:inline-block size-1 rotate-45 bg-champagne-gold"></span>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-royal-gold" data-icon="workspace_premium">workspace_premium</span>
+<span>ضمان حق المعاينة والفحص المخبري المعتمد</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Elegant Compact Footer -->
+<footer class="w-full border-t border-hairline-burgundy bg-surface-container-low py-8 text-center text-xs text-muted-rosewood mt-12">
+<div class="max-w-[720px] mx-auto px-6 flex flex-col items-center gap-3">
+<div class="flex items-center gap-2 text-wine-night font-messiri text-base font-bold">
+<span>دار آيريس للمجوهرات الراقية</span>
+<span class="font-sans font-light text-xs text-royal-gold">· IRIS JEWELRY</span>
+</div>
+<p class="font-num text-[11px] text-outline">جميع الحقوق محفوظة لدار آيريس © 2025 · معتمدة بترخيص صياغة المعادن الثمينة</p>
+</div>
+</footer>
+</body></html>

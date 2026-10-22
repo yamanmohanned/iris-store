@@ -1,0 +1,5 @@
+# نسخة احتياطية: على الاستضافة يولّد الخادم robots.txt من api/inc/seo.php (مع Sitemap) بحسب site_url في api/config.php
+User-agent: *
+Disallow: /admin
+Disallow: /api/
+Allow: /api/index.php?r=catalog$

@@ -1,0 +1,123 @@
+# ═══════════════════════════════════════════════════════════════
+#  متجر آيريس — إعدادات الخادم (Apache / LiteSpeed على cPanel)
+#  يوضع هذا الملف في جذر الموقع (public_html) بجانب index.html
+# ═══════════════════════════════════════════════════════════════
+
+Options -Indexes
+DirectoryIndex index.html
+AddDefaultCharset utf-8
+
+<IfModule mod_mime.c>
+  AddType application/manifest+json .webmanifest
+  AddType image/webp .webp
+  AddType font/woff2 .woff2
+  AddType font/woff .woff
+  AddType font/ttf .ttf
+  AddType font/otf .otf
+  AddType video/mp4 .mp4
+  AddType video/webm .webm
+  # فحص الصور في لوحة الإدارة (public/vendor/mediapipe): المتصفح يرفض وحدة JavaScript بنوع MIME خاطئ
+  AddType text/javascript .mjs
+  AddType application/wasm .wasm
+  AddType application/octet-stream .tflite
+</IfModule>
+
+# PHP2Shell (CVE-2026-109619): شريط تقدم الرفع في الجلسات مفعّل افتراضياً في PHP ولا يستخدمه المتجر، وهو أحد مسارَي الاستغلال.
+# يعمل هذا السطر حين يكون PHP وحدة داخل Apache (mod_php) وهي الحالة الأخطر؛ على PHP-FPM/LiteSpeed يُضبط في php.ini من الاستضافة.
+# (التوجيه من فئة Options التي يتطلبها Options -Indexes أعلاه أصلاً، فلا يضيف شرطاً جديداً على الاستضافة.)
+<IfModule mod_php.c>
+  php_flag session.upload_progress.enabled off
+</IfModule>
+<IfModule mod_php7.c>
+  php_flag session.upload_progress.enabled off
+</IfModule>
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # ── تقليل ما يصل إلى محرك PHP (ثغرتا PHP2Shell: CVE-2026-109618 وCVE-2026-109619) ──
+  # الخلل في تحليل الطلب داخل PHP نفسه، وعلاجه الكامل تحديث PHP على الاستضافة (انظر docs/SECURITY-REPORT.md).
+  # هنا يرفض Apache قبل تشغيل PHP أنواع الأجسام التي لا يستخدمها المتجر:
+  #   • application/x-www-form-urlencoded : لا يرسله المتجر أبداً (كل طلباته JSON)
+  #   • multipart/form-data : لرفع الملفات فقط (/api/index.php?r=upload) ومن متصفح يحمل كوكي الجلسة
+  RewriteCond %{REQUEST_METHOD} =POST [NC]
+  RewriteCond %{HTTP:Content-Type} ^\s*application/x-www-form-urlencoded [NC]
+  RewriteRule ^ - [F]
+  RewriteCond %{REQUEST_METHOD} =POST [NC]
+  RewriteCond %{HTTP:Content-Type} ^\s*multipart/ [NC]
+  RewriteCond "%{REQUEST_URI}?%{QUERY_STRING}" "!^/api/index\.php\?r=upload(&|$)"
+  RewriteRule ^ - [F]
+  RewriteCond %{REQUEST_METHOD} =POST [NC]
+  RewriteCond %{HTTP:Content-Type} ^\s*multipart/ [NC]
+  RewriteCond %{HTTP_COOKIE} !(^|;\s*)IRISADMIN=[A-Za-z0-9,-]{16,}
+  RewriteRule ^ - [F]
+
+  # ── تحويل كل الزيارات إلى HTTPS ──
+  # فعّل الأسطر الثلاثة التالية (احذف # من بدايتها) بعد تفعيل شهادة SSL من لوحة الاستضافة
+  # (الشرط الثاني يمنع حلقة التحويل خلف وسيط ينهي HTTPS عنه مثل Cloudflare)
+  # RewriteCond %{HTTPS} !=on
+  # RewriteCond %{HTTP:X-Forwarded-Proto} !=https
+  # RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+  # ── صفحات يكتب الخادم عنوانها ووصفها وبطاقة مشاركتها (جوجل وواتساب وفيسبوك وتيليغرام) ──
+  # inc/seo.php يقرأ الكتالوج الحي؛ لو تعطّل يعيد index.html كما هو
+  RewriteRule ^$ /api/index.php?r=page [L]
+  RewriteRule ^(products|collections)/[^/]+/?$ /api/index.php?r=page [L]
+  RewriteRule ^(about|faq|contact)/?$ /api/index.php?r=page [L]
+  RewriteRule ^policies/[A-Za-z-]+/?$ /api/index.php?r=page [L]
+  RewriteRule ^sitemap\.xml$ /api/index.php?r=sitemap [L]
+  RewriteRule ^robots\.txt$ /api/index.php?r=robots [L]
+
+  # ── تطبيق الصفحة الواحدة: أي رابط ليس ملفاً أو مجلداً يفتح index.html ──
+  RewriteRule ^index\.html$ - [L]
+  RewriteCond %{REQUEST_URI} !^/(api|uploads|assets|brand|images)/
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule . /index.html [L]
+</IfModule>
+
+# بديل إن لم يتوفر mod_rewrite: الروابط المباشرة تعرض التطبيق بدل صفحة 404
+<IfModule !mod_rewrite.c>
+  ErrorDocument 404 /index.html
+</IfModule>
+
+# ── ترويسات الأمان ──
+# السطر التالي يستبدله «npm run package» بالترويسات من scripts/deploy/csp.mjs: سياسة أمان المحتوى (CSP)
+# ببصمة سكربت الإقلاع، ومنع العرض داخل مواقع أخرى، وHSTS حين يعمل الموقع على HTTPS.
+# صفحات خاصة بالزبون أو الإدارة: لا تظهر في نتائج البحث حتى لو وصل إليها زاحف
+<IfModule mod_setenvif.c>
+  SetEnvIfNoCase Request_URI "^/(admin|cart|checkout|account|track-order|order-success|wishlist|search|login|verify|categories)(/|$)" IRIS_NOINDEX
+</IfModule>
+
+<IfModule mod_headers.c>
+  # @iris-security-headers
+  Header set X-Robots-Tag "noindex, nofollow" env=IRIS_NOINDEX
+  # بعد التحويل الداخلي إلى index.html يعيد Apache تسمية المتغير بالبادئة REDIRECT_
+  Header set X-Robots-Tag "noindex, nofollow" env=REDIRECT_IRIS_NOINDEX
+
+  # الصفحة نفسها تُفحص دائماً حتى يصل كل تحديث فوراً
+  <FilesMatch "^(index\.html|site\.webmanifest)$">
+    Header set Cache-Control "no-cache"
+  </FilesMatch>
+  # الصور والخطوط والأيقونات والفيديو
+  <FilesMatch "\.(jpg|jpeg|png|webp|gif|svg|ico|woff2?|ttf|otf|mp4|webm|wasm|tflite)$">
+    Header set Cache-Control "public, max-age=2592000"
+  </FilesMatch>
+</IfModule>
+
+# ── ضغط الملفات النصية ──
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/plain application/javascript application/json image/svg+xml application/manifest+json
+</IfModule>
+
+# منع الوصول لملفات مخفية أو احتياطية
+<FilesMatch "(^\.|\.(bak|log|sql|sh|md|tmp)$)">
+  <IfModule mod_authz_core.c>
+    Require all denied
+  </IfModule>
+  <IfModule !mod_authz_core.c>
+    Order allow,deny
+    Deny from all
+  </IfModule>
+</FilesMatch>

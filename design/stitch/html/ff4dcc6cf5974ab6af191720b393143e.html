@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+
+<html dir="rtl" lang="ar"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@400;500;600;700&amp;family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"colors":{"on-tertiary-fixed":"#390915","on-tertiary-container":"#dc8f9a","surface-bright":"#fef9f2","tertiary":"#45131e","on-tertiary-fixed-variant":"#6f343f","on-secondary":"#ffffff","blush-surface":"#F7ECEC","surface-tint":"#a3394a","parchment":"#F3EADB","surface-variant":"#e6e2db","primary":"#510015","on-primary-container":"#fb7c8c","inverse-primary":"#ffb2b9","surface-container-low":"#f8f3ec","inverse-surface":"#32302c","on-error":"#ffffff","primary-container":"#721328","secondary-fixed-dim":"#ebc166","secondary-container":"#fdd275","burgundy-600":"#8A1B34","semantic-info":"#2F5A8A","primary-fixed-dim":"#ffb2b9","on-surface":"#1d1c18","antique-gold":"#8A6620","background":"#fef9f2","surface-container-high":"#ece7e1","ivory-canvas":"#FBF6EF","surface-container-lowest":"#ffffff","error":"#ba1a1a","on-background":"#1d1c18","secondary":"#795902","champagne-gold":"#E9D49C","wine-night":"#1E070D","inverse-on-surface":"#f5f0e9","semantic-error-bg":"#FDE7E4","on-secondary-fixed-variant":"#5b4300","tertiary-fixed-dim":"#ffb2bd","semantic-warning":"#8A4B08","tertiary-container":"#602833","surface-container":"#f2ede6","on-tertiary":"#ffffff","hairline-burgundy":"rgba(114, 19, 40, 0.14)","semantic-success":"#1F6B4A","deep-oxblood":"#3A0A16","outline":"#897173","royal-gold":"#C9A24B","on-primary-fixed-variant":"#842134","secondary-fixed":"#ffdf9e","warm-ink":"#2A1215","on-secondary-fixed":"#261a00","imperial-burgundy":"#721328","surface":"#fef9f2","muted-rosewood":"#6D585B","primary-fixed":"#ffdadc","tertiary-fixed":"#ffd9dd","rose-mist":"#EED9DB","on-surface-variant":"#564243","on-error-container":"#93000a","on-primary":"#ffffff","hairline-gold":"rgba(201, 162, 75, 0.45)","surface-container-highest":"#e6e2db","semantic-success-bg":"#E2F2EA","on-secondary-container":"#775800","semantic-warning-bg":"#FCEBD0","burgundy-800":"#5A0F22","semantic-info-bg":"#E4EDF8","semantic-error":"#B42318","error-container":"#ffdad6","outline-variant":"#dcc0c1","on-primary-fixed":"#40000f","surface-dim":"#ded9d3"},"borderRadius":{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},"spacing":{"space-3xl":"6rem","space-xs":"0.25rem","margin":"2.5rem","gutter":"1.5rem","gutter-mobile":"1rem","space-md":"1rem","space-2xl":"4rem","space-sm":"0.5rem","space-lg":"1.5rem","margin-mobile":"1rem","space-xl":"2.5rem"},"fontFamily":{"body-xl":["IBM Plex Sans Arabic"],"headline-md":["El Messiri"],"headline-sm":["El Messiri"],"body-md":["IBM Plex Sans Arabic"],"display-lg":["El Messiri"],"headline-lg":["El Messiri"],"body-sm":["IBM Plex Sans Arabic"],"headline-xl-mobile":["El Messiri"],"headline-xl":["El Messiri"],"label-lg":["IBM Plex Sans Arabic"],"label-sm":["IBM Plex Sans Arabic"],"display-lg-mobile":["El Messiri"],"label-md":["IBM Plex Sans Arabic"],"body-lg":["IBM Plex Sans Arabic"]},"fontSize":{"body-xl":["1.25rem",{"lineHeight":"1.7","fontWeight":"400"}],"headline-md":["1.5rem",{"lineHeight":"1.4","fontWeight":"600"}],"headline-sm":["1.25rem",{"lineHeight":"1.45","fontWeight":"500"}],"body-md":["1rem",{"lineHeight":"1.7","fontWeight":"400"}],"display-lg":["3.5rem",{"lineHeight":"1.25","fontWeight":"700"}],"headline-lg":["2rem",{"lineHeight":"1.35","fontWeight":"600"}],"body-sm":["0.875rem",{"lineHeight":"1.6","fontWeight":"400"}],"headline-xl-mobile":["1.75rem",{"lineHeight":"1.35","fontWeight":"600"}],"headline-xl":["2.5rem",{"lineHeight":"1.3","fontWeight":"600"}],"label-lg":["0.9375rem",{"lineHeight":"1.4","fontWeight":"600"}],"label-sm":["0.6875rem",{"lineHeight":"1.4","fontWeight":"500"}],"display-lg-mobile":["2.25rem",{"lineHeight":"1.3","fontWeight":"700"}],"label-md":["0.8125rem",{"lineHeight":"1.4","fontWeight":"500"}],"body-lg":["1.125rem",{"lineHeight":"1.7","fontWeight":"400"}]}}}};</script></head><body class="bg-ivory-canvas font-body-md text-on-surface antialiased"><aside class="fixed right-0 top-0 h-full w-72 bg-wine-night z-50 flex flex-col justify-between select-none shadow-[0_24px_64px_rgba(30,7,13,0.35)]"><div class="flex flex-col flex-1 overflow-y-auto"><div class="h-20 px-space-lg flex items-center justify-between bg-deep-oxblood/40"><div class="flex items-center gap-space-sm"><div class="w-9 h-9 rounded-lg bg-imperial-burgundy flex items-center justify-center text-champagne-gold font-headline-sm text-headline-sm">آ</div><div class="flex flex-col"><span class="font-headline-sm text-headline-sm text-champagne-gold tracking-wide">آيريس | IRIS</span><span class="font-label-sm text-label-sm text-rose-mist/60">دار المجوهرات الراقية</span></div></div><span class="text-royal-gold font-serif text-sm select-none">◆</span></div><div class="px-space-md py-space-sm"><nav class="flex flex-col gap-1" data-active-classes="bg-imperial-burgundy text-champagne-gold font-label-lg font-semibold rounded-lg relative before:absolute before:right-0 before:top-2 before:bottom-2 before:w-[3px] before:bg-royal-gold before:rounded-l"><a class="flex items-center gap-space-sm px-space-md py-2.5 rounded-lg text-rose-mist/80 hover:bg-deep-oxblood hover:text-champagne-gold transition-colors font-label-lg text-label-lg" data-path="dashboard" href="#"><span class="material-symbols-outlined text-[20px]">dashboard</span><span>لوحة التحكم</span></a><a class="flex items-center gap-space-sm px-space-md py-2.5 rounded-lg text-rose-mist/80 hover:bg-deep-oxblood hover:text-champagne-gold transition-colors font-label-lg text-label-lg" data-path="orders" href="#"><span class="material-symbols-outlined text-[20px]">receipt_long</span><span>الطلبات</span></a><a class="flex items-center gap-space-sm px-space-md py-2.5 rounded-lg text-rose-mist/80 hover:bg-deep-oxblood hover:text-champagne-gold transition-colors font-label-lg text-label-lg" data-path="products" href="#"><span class="material-symbols-outlined text-[20px]">diamond</span><span>المنتجات</span></a><a class="flex items-center gap-space-sm px-space-md py-2.5 rounded-lg text-rose-mist/80 hover:bg-deep-oxblood hover:text-champagne-gold transition-colors font-label-lg text-label-lg" data-path="categories" href="#"><span class="material-symbols-outlined text-[20px]">category</span><span>التصنيفات</span></a><a class="flex items-center gap-space-sm px-space-md py-2.5 rounded-lg text-rose-mist/80 hover:bg-deep-oxblood hover:text-champagne-gold transition-colors font-label-lg text-label-lg" data-path="inventory" href="#"><span class="material-symbols-outlined text-[20px]">inventory_2</span><span>المخزون</span></a><a class="flex items-center gap-space-sm px-space-md py-2.5 rounded-lg text-rose-mist/80 hover:bg-deep-oxblood hover:text-champagne-gold transition-colors font-label-lg text-label-lg" data-path="purchasing" href="#"><span class="material-symbols-outlined text-[20px]">shopping_bag</span><span>المشتريات</span></a><a class="flex items-center gap-space-sm px-space-md py-2.5 rounded-lg text-rose-mist/80 hover:bg-deep-oxblood hover:text-champagne-gold transition-colors font-label-lg text-label-lg" data-path="suppliers" href="#"><span class="material-symbols-outlined text-[20px]">handshake</span><span>الموردون</span></a><a aria-current="page" class="flex items-center gap-space-sm px-space-md py-2.5 transition-colors bg-imperial-burgundy text-champagne-gold font-label-lg font-semibold rounded-lg relative before:absolute before:right-0 before:top-2 before:bottom-2 before:w-[3px] before:bg-royal-gold before:rounded-l" data-path="customers" href="#"><span class="material-symbols-outlined text-[20px]">group</span><span>العملاء</span></a><a class="flex items-center gap-space-sm px-space-md py-2.5 rounded-lg text-rose-mist/80 hover:bg-deep-oxblood hover:text-champagne-gold transition-colors font-label-lg text-label-lg" data-path="reports" href="#"><span class="material-symbols-outlined text-[20px]">query_stats</span><span>التقارير</span></a><a class="flex items-center gap-space-sm px-space-md py-2.5 rounded-lg text-rose-mist/80 hover:bg-deep-oxblood hover:text-champagne-gold transition-colors font-label-lg text-label-lg" data-path="settings" href="#"><span class="material-symbols-outlined text-[20px]">settings</span><span>الإعدادات</span></a></nav></div></div><div class="p-space-md bg-deep-oxblood/60 m-space-md rounded-xl flex items-center justify-between"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-champagne-gold text-[20px]">verified</span><div class="flex flex-col"><span class="font-label-sm text-label-sm text-champagne-gold">متصل بالنظام الآمن</span><span class="font-label-sm text-label-sm text-rose-mist/50 text-[10px]">نسخة 4.2 فاخرة</span></div></div><span class="w-2 h-2 rounded-full bg-semantic-success"></span></div></aside><div class="pr-72"><header class="fixed top-0 right-72 left-0 h-20 bg-ivory-canvas/90 backdrop-blur-xl z-40 shadow-[0_1px_8px_rgba(58,10,22,0.04)]"><div class="h-20 w-full px-space-xl flex items-center justify-between gap-space-lg"><div class="flex-1 max-w-md"><div class="relative flex items-center"><span class="material-symbols-outlined absolute right-3 text-muted-rosewood text-[20px]">search</span><input class="w-full pr-10 pl-16 py-2 bg-surface-container-lowest rounded-lg font-body-sm text-body-sm text-on-surface placeholder:text-muted-rosewood/60 focus:outline-none focus:ring-1 focus:ring-imperial-burgundy shadow-[0_2px_8px_rgba(58,10,22,0.03)]" placeholder="البحث في المجوهرات، الطلبات، والعملاء..." type="text"/><kbd class="absolute left-3 px-1.5 py-0.5 rounded bg-surface-container font-label-sm text-label-sm text-muted-rosewood text-[11px]">⌘K</kbd></div></div><div class="flex items-center gap-space-md"><div class="hidden md:flex items-center gap-space-xs px-3 py-1.5 rounded-lg bg-surface-container-lowest text-on-surface"><span class="material-symbols-outlined text-antique-gold text-[18px]">store</span><span class="font-label-md text-label-md text-warm-ink">فرع العليا - الرياض (SAR)</span><span class="material-symbols-outlined text-muted-rosewood text-[16px]">expand_more</span></div><div class="relative flex items-center justify-center p-2 rounded-lg bg-surface-container-lowest text-on-surface hover:bg-blush-surface cursor-pointer"><span class="material-symbols-outlined text-on-surface-variant text-[22px]">notifications</span><span class="absolute top-1.5 right-1.5 w-2 h-2 bg-primary rounded-full"></span></div><div class="flex items-center gap-space-sm pr-space-sm"><div class="hidden lg:flex flex-col text-left"><span class="font-label-md text-label-md text-warm-ink font-semibold text-right">سارة المنصور</span><span class="font-label-sm text-label-sm text-muted-rosewood text-right">مديرة المبيعات الفاخرة</span></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></div></header><main class="relative pt-20 bg-ivory-canvas min-h-screen"><div class="flex flex-col w-full">
+<div class="w-full px-space-xl py-space-lg flex flex-col gap-space-lg">
+<!-- Header Chapter: Title & Global Actions -->
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-space-md">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2">
+<span class="text-royal-gold font-serif text-sm select-none">◆</span>
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-antique-gold">علاقات العملاء الخاصة • CRM</span>
+</div>
+<h1 class="font-headline-xl text-headline-xl text-warm-ink tracking-tight">إدارة العملاء والمقتنين</h1>
+<p class="font-body-sm text-body-sm text-muted-rosewood">سجل مقتني مجوهرات دار آيريس، تتبع سجل المشتريات والمستحقات والولاء الحصري</p>
+</div>
+<div class="flex items-center gap-space-sm self-start lg:self-auto">
+<button class="group relative flex items-center gap-2 px-space-md py-2.5 rounded-lg bg-surface-container-lowest text-imperial-burgundy shadow-sm hover:bg-blush-surface active:translate-y-px transition-all duration-150 font-label-md text-label-md" type="button">
+<span class="material-symbols-outlined text-[19px] text-imperial-burgundy group-hover:scale-105 transition-transform">download</span>
+<span>تصدير البيانات</span>
+</button>
+<button class="group relative flex items-center gap-2 px-space-lg py-2.5 rounded-lg bg-imperial-burgundy text-ivory-canvas shadow-md hover:bg-burgundy-600 active:translate-y-px transition-all duration-150 font-label-md text-label-md" type="button">
+<span class="material-symbols-outlined text-[20px] text-champagne-gold">person_add</span>
+<span>+ عميل جديد</span>
+<span class="absolute inset-0 rounded-lg shadow-[inset_0_0_0_1px_rgba(201,162,75,0.35)] pointer-events-none"></span>
+</button>
+</div>
+</div>
+<!-- Segmented Navigation Tabs -->
+<div class="flex items-center justify-between">
+<div class="inline-flex p-1 rounded-xl bg-surface-container gap-1 shadow-inner">
+<button class="relative px-space-md py-2 rounded-lg bg-surface-container-lowest text-imperial-burgundy font-label-md text-label-md shadow-sm flex items-center gap-2 transition-all" type="button">
+<span class="w-1.5 h-1.5 rounded-full bg-royal-gold"></span>
+<span>العملاء النشطون</span>
+<span class="px-2 py-0.5 rounded-full bg-blush-surface text-imperial-burgundy font-label-sm text-label-sm">1,280</span>
+</button>
+<button class="px-space-md py-2 rounded-lg text-muted-rosewood hover:text-warm-ink font-label-md text-label-md flex items-center gap-2 transition-all" type="button">
+<span>المؤرشفون</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-variant/50 text-muted-rosewood font-label-sm text-label-sm">14</span>
+</button>
+</div>
+<!-- Live Count Accent Indicator -->
+<div class="hidden md:flex items-center gap-2 text-muted-rosewood font-label-sm text-label-sm">
+<span class="inline-block w-2 h-2 rounded-full bg-semantic-success"></span>
+<span>محدّث تلقائياً عبر مزامنة خزانة المبيعات</span>
+</div>
+</div>
+<!-- Filter & Intelligence Toolbar -->
+<div class="p-space-md rounded-2xl bg-surface-container-lowest shadow-sm flex flex-col gap-space-md">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-space-sm items-center">
+<!-- Search Field -->
+<div class="lg:col-span-4 relative flex items-center">
+<span class="material-symbols-outlined absolute right-3 text-muted-rosewood text-[20px] pointer-events-none">search</span>
+<input class="w-full pr-10 pl-4 py-2.5 rounded-xl bg-ivory-canvas font-body-sm text-body-sm text-warm-ink placeholder:text-muted-rosewood/70 focus:outline-none focus:bg-surface-container-lowest shadow-inner transition-colors" placeholder="بحث بالاسم، رقم الهاتف، أو معرف الحساب..." type="text"/>
+</div>
+<!-- Dropdown: Province -->
+<div class="lg:col-span-2 relative">
+<select class="w-full appearance-none pr-3.5 pl-8 py-2.5 rounded-xl bg-ivory-canvas text-warm-ink font-label-md text-label-md focus:outline-none cursor-pointer shadow-inner transition-colors">
+<option value="">المحافظة: الكل</option>
+<option value="baghdad">بغداد (842)</option>
+<option value="erbil">أربيل (210)</option>
+<option value="basra">البصرة (134)</option>
+<option value="najaf">النجف (68)</option>
+<option value="sulaymaniyah">السليمانية (26)</option>
+</select>
+<span class="material-symbols-outlined absolute left-2.5 top-1/2 -translate-y-1/2 text-muted-rosewood text-[18px] pointer-events-none">expand_more</span>
+</div>
+<!-- Dropdown: Due Balance Status -->
+<div class="lg:col-span-2 relative">
+<select class="w-full appearance-none pr-3.5 pl-8 py-2.5 rounded-xl bg-ivory-canvas text-warm-ink font-label-md text-label-md focus:outline-none cursor-pointer shadow-inner transition-colors">
+<option value="">حالة المستحقات: الكل</option>
+<option value="pending">لديه مستحقات معلقة</option>
+<option value="settled">مسدد بالكامل (خالص)</option>
+</select>
+<span class="material-symbols-outlined absolute left-2.5 top-1/2 -translate-y-1/2 text-muted-rosewood text-[18px] pointer-events-none">account_balance_wallet</span>
+</div>
+<!-- Dropdown: Last Activity -->
+<div class="lg:col-span-2 relative">
+<select class="w-full appearance-none pr-3.5 pl-8 py-2.5 rounded-xl bg-ivory-canvas text-warm-ink font-label-md text-label-md focus:outline-none cursor-pointer shadow-inner transition-colors">
+<option value="">آخر نشاط شراء</option>
+<option value="30">آخر 30 يوماً</option>
+<option value="90">آخر 90 يوماً</option>
+<option value="180">أكثر من 6 أشهر</option>
+</select>
+<span class="material-symbols-outlined absolute left-2.5 top-1/2 -translate-y-1/2 text-muted-rosewood text-[18px] pointer-events-none">calendar_month</span>
+</div>
+<!-- Counter & Reset Actions -->
+<div class="lg:col-span-2 flex items-center justify-between lg:justify-end gap-3 px-1">
+<span class="font-label-sm text-label-sm text-muted-rosewood whitespace-nowrap">
+            عرض <strong class="text-warm-ink font-semibold">8</strong> من أصل <strong class="text-warm-ink font-semibold">1,280</strong>
+</span>
+<button class="p-2 rounded-lg text-muted-rosewood hover:text-imperial-burgundy hover:bg-blush-surface transition-colors" title="إعادة تعيين المرشحات" type="button">
+<span class="material-symbols-outlined text-[18px]">filter_alt_off</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Customers Master Data Table -->
+<div class="rounded-2xl bg-surface-container-lowest shadow-md overflow-hidden flex flex-col">
+<div class="w-full overflow-x-auto">
+<table class="w-full text-right border-collapse">
+<thead>
+<tr class="bg-blush-surface text-warm-ink font-label-sm text-label-sm select-none">
+<th class="py-3.5 px-space-md font-semibold text-right" scope="col">العميل والمستوى</th>
+<th class="py-3.5 px-space-md font-semibold text-right" scope="col">الهاتف</th>
+<th class="py-3.5 px-space-md font-semibold text-center" scope="col">المحادثة</th>
+<th class="py-3.5 px-space-md font-semibold text-right" scope="col">المدينة / المنطقة</th>
+<th class="py-3.5 px-space-md font-semibold text-center" scope="col">الطلبات</th>
+<th class="py-3.5 px-space-md font-semibold text-right" scope="col">إجمالي المقتنيات</th>
+<th class="py-3.5 px-space-md font-semibold text-right" scope="col">آخر عملية</th>
+<th class="py-3.5 px-space-md font-semibold text-right" scope="col">المستحق المالي</th>
+<th class="py-3.5 px-space-md font-semibold text-center" scope="col">الحالة</th>
+<th class="py-3.5 px-space-md font-semibold text-left" scope="col">إجراءات</th>
+</tr>
+</thead>
+<tbody class="divide-y-0 text-warm-ink font-body-sm text-body-sm">
+<!-- Row 1 -->
+<tr class="hover:bg-ivory-canvas/60 transition-colors">
+<td class="py-4 px-space-md">
+<div class="flex items-center gap-3">
+<div class="relative w-10 h-10 rounded-full bg-deep-oxblood flex items-center justify-center text-champagne-gold font-headline-sm text-headline-sm shadow-sm flex-shrink-0">
+                    أح
+                    <span class="absolute inset-0 rounded-full shadow-[inset_0_0_0_1px_rgba(201,162,75,0.45)]"></span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-lg text-label-lg font-semibold text-warm-ink">أحمد علي الموسوي</span>
+<span class="font-label-sm text-label-sm text-muted-rosewood">رمز العميل: <span class="font-mono">#IR-8021</span></span>
+</div>
+</div>
+</td>
+<td class="py-4 px-space-md">
+<div class="inline-flex items-center gap-1.5 text-warm-ink font-mono text-body-sm direction-ltr">
+<span>0770 123 4567</span>
+<button class="text-muted-rosewood hover:text-imperial-burgundy transition-colors" title="نسخ الرقم" type="button">
+<span class="material-symbols-outlined text-[16px]">content_copy</span>
+</button>
+</div>
+</td>
+<td class="py-4 px-space-md text-center">
+<a class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-semantic-success-bg text-semantic-success font-label-sm text-label-sm hover:opacity-90 transition-opacity" href="#">
+<span class="material-symbols-outlined text-[15px]">chat</span>
+<span>فوري</span>
+</a>
+</td>
+<td class="py-4 px-space-md text-warm-ink">
+<span>بغداد - الكرادة</span>
+</td>
+<td class="py-4 px-space-md text-center">
+<span class="font-mono font-semibold text-warm-ink">9</span>
+<span class="text-muted-rosewood text-[11px] pr-1">طلبات</span>
+</td>
+<td class="py-4 px-space-md">
+<span class="font-mono font-semibold text-warm-ink">540,000</span>
+<span class="font-label-sm text-label-sm text-muted-rosewood pr-1">د.ع</span>
+</td>
+<td class="py-4 px-space-md">
+<div class="flex flex-col">
+<span>24 أكتوبر 2025</span>
+<span class="font-mono text-muted-rosewood font-label-sm text-label-sm">#1054</span>
+</div>
+</td>
+<td class="py-4 px-space-md">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-semantic-warning-bg text-semantic-warning font-label-sm text-label-sm font-semibold">
+<span class="font-mono">10,000</span> د.ع
+                </span>
+</td>
+<td class="py-4 px-space-md text-center">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-semantic-success-bg text-semantic-success font-label-sm text-label-sm font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-semantic-success"></span>
+<span>نشط</span>
+</span>
+</td>
+<td class="py-4 px-space-md text-left">
+<div class="flex items-center justify-end gap-1.5">
+<button class="px-2.5 py-1.5 rounded-lg bg-surface-container text-imperial-burgundy font-label-sm text-label-sm hover:bg-blush-surface transition-colors flex items-center gap-1" type="button">
+<span>الملف</span>
+<span class="material-symbols-outlined text-[15px]">arrow_back</span>
+</button>
+<button class="p-1.5 rounded-lg text-muted-rosewood hover:text-warm-ink hover:bg-surface-container transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 2 (VIP Tier) -->
+<tr class="hover:bg-ivory-canvas/60 bg-blush-surface/30 transition-colors">
+<td class="py-4 px-space-md">
+<div class="flex items-center gap-3">
+<div class="relative w-10 h-10 rounded-full bg-wine-night flex items-center justify-center text-champagne-gold font-headline-sm text-headline-sm shadow-sm flex-shrink-0">
+                    س ع
+                    <span class="absolute inset-0 rounded-full shadow-[inset_0_0_0_1.5px_rgba(201,162,75,0.7)]"></span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-1.5">
+<span class="font-label-lg text-label-lg font-semibold text-warm-ink">د. سارة عبد الرحمن</span>
+<span class="px-2 py-0.5 rounded-full bg-champagne-gold/30 text-antique-gold font-label-sm text-[10px] font-semibold flex items-center gap-1">
+<span class="text-royal-gold text-[9px]">◆</span>
+<span>مقتنٍ ملكي VIP</span>
+</span>
+</div>
+<span class="font-label-sm text-label-sm text-muted-rosewood">رمز العميل: <span class="font-mono">#IR-4409</span></span>
+</div>
+</div>
+</td>
+<td class="py-4 px-space-md">
+<div class="inline-flex items-center gap-1.5 text-warm-ink font-mono text-body-sm direction-ltr">
+<span>0781 992 4110</span>
+<button class="text-muted-rosewood hover:text-imperial-burgundy transition-colors" title="نسخ الرقم" type="button">
+<span class="material-symbols-outlined text-[16px]">content_copy</span>
+</button>
+</div>
+</td>
+<td class="py-4 px-space-md text-center">
+<a class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-semantic-success-bg text-semantic-success font-label-sm text-label-sm hover:opacity-90 transition-opacity" href="#">
+<span class="material-symbols-outlined text-[15px]">chat</span>
+<span>فوري</span>
+</a>
+</td>
+<td class="py-4 px-space-md text-warm-ink">
+<span>بغداد - المنصور</span>
+</td>
+<td class="py-4 px-space-md text-center">
+<span class="font-mono font-semibold text-warm-ink">14</span>
+<span class="text-muted-rosewood text-[11px] pr-1">طلباً</span>
+</td>
+<td class="py-4 px-space-md">
+<span class="font-mono font-semibold text-warm-ink">1,840,000</span>
+<span class="font-label-sm text-label-sm text-muted-rosewood pr-1">د.ع</span>
+</td>
+<td class="py-4 px-space-md">
+<div class="flex flex-col">
+<span>22 أكتوبر 2025</span>
+<span class="font-mono text-muted-rosewood font-label-sm text-label-sm">#1048</span>
+</div>
+</td>
+<td class="py-4 px-space-md">
+<span class="font-mono text-muted-rosewood font-label-sm text-label-sm">لا يوجد (0 د.ع)</span>
+</td>
+<td class="py-4 px-space-md text-center">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-semantic-success-bg text-semantic-success font-label-sm text-label-sm font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-semantic-success"></span>
+<span>نشط</span>
+</span>
+</td>
+<td class="py-4 px-space-md text-left">
+<div class="flex items-center justify-end gap-1.5">
+<button class="px-2.5 py-1.5 rounded-lg bg-surface-container text-imperial-burgundy font-label-sm text-label-sm hover:bg-blush-surface transition-colors flex items-center gap-1" type="button">
+<span>الملف</span>
+<span class="material-symbols-outlined text-[15px]">arrow_back</span>
+</button>
+<button class="p-1.5 rounded-lg text-muted-rosewood hover:text-warm-ink hover:bg-surface-container transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-ivory-canvas/60 transition-colors">
+<td class="py-4 px-space-md">
+<div class="flex items-center gap-3">
+<div class="relative w-10 h-10 rounded-full bg-deep-oxblood flex items-center justify-center text-champagne-gold font-headline-sm text-headline-sm shadow-sm flex-shrink-0">
+                    م ف
+                    <span class="absolute inset-0 rounded-full shadow-[inset_0_0_0_1px_rgba(201,162,75,0.45)]"></span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-lg text-label-lg font-semibold text-warm-ink">مروان فائق الخزرجي</span>
+<span class="font-label-sm text-label-sm text-muted-rosewood">رمز العميل: <span class="font-mono">#IR-7193</span></span>
+</div>
+</div>
+</td>
+<td class="py-4 px-space-md">
+<div class="inline-flex items-center gap-1.5 text-warm-ink font-mono text-body-sm direction-ltr">
+<span>0772 554 1902</span>
+<button class="text-muted-rosewood hover:text-imperial-burgundy transition-colors" title="نسخ الرقم" type="button">
+<span class="material-symbols-outlined text-[16px]">content_copy</span>
+</button>
+</div>
+</td>
+<td class="py-4 px-space-md text-center">
+<a class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-semantic-success-bg text-semantic-success font-label-sm text-label-sm hover:opacity-90 transition-opacity" href="#">
+<span class="material-symbols-outlined text-[15px]">chat</span>
+<span>فوري</span>
+</a>
+</td>
+<td class="py-4 px-space-md text-warm-ink">
+<span>أربيل - دريم سيتي</span>
+</td>
+<td class="py-4 px-space-md text-center">
+<span class="font-mono font-semibold text-warm-ink">6</span>
+<span class="text-muted-rosewood text-[11px] pr-1">طلبات</span>
+</td>
+<td class="py-4 px-space-md">
+<span class="font-mono font-semibold text-warm-ink">720,000</span>
+<span class="font-label-sm text-label-sm text-muted-rosewood pr-1">د.ع</span>
+</td>
+<td class="py-4 px-space-md">
+<div class="flex flex-col">
+<span>18 أكتوبر 2025</span>
+<span class="font-mono text-muted-rosewood font-label-sm text-label-sm">#1032</span>
+</div>
+</td>
+<td class="py-4 px-space-md">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-semantic-warning-bg text-semantic-warning font-label-sm text-label-sm font-semibold">
+<span class="font-mono">25,000</span> د.ع
+                </span>
+</td>
+<td class="py-4 px-space-md text-center">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-semantic-success-bg text-semantic-success font-label-sm text-label-sm font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-semantic-success"></span>
+<span>نشط</span>
+</span>
+</td>
+<td class="py-4 px-space-md text-left">
+<div class="flex items-center justify-end gap-1.5">
+<button class="px-2.5 py-1.5 rounded-lg bg-surface-container text-imperial-burgundy font-label-sm text-label-sm hover:bg-blush-surface transition-colors flex items-center gap-1" type="button">
+<span>الملف</span>
+<span class="material-symbols-outlined text-[15px]">arrow_back</span>
+</button>
+<button class="p-1.5 rounded-lg text-muted-rosewood hover:text-warm-ink hover:bg-surface-container transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-ivory-canvas/60 transition-colors">
+<td class="py-4 px-space-md">
+<div class="flex items-center gap-3">
+<div class="relative w-10 h-10 rounded-full bg-deep-oxblood flex items-center justify-center text-champagne-gold font-headline-sm text-headline-sm shadow-sm flex-shrink-0">
+                    ر ق
+                    <span class="absolute inset-0 rounded-full shadow-[inset_0_0_0_1px_rgba(201,162,75,0.45)]"></span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-lg text-label-lg font-semibold text-warm-ink">ريم قاسم الجبوري</span>
+<span class="font-label-sm text-label-sm text-muted-rosewood">رمز العميل: <span class="font-mono">#IR-6218</span></span>
+</div>
+</div>
+</td>
+<td class="py-4 px-space-md">
+<div class="inline-flex items-center gap-1.5 text-warm-ink font-mono text-body-sm direction-ltr">
+<span>0750 331 8764</span>
+<button class="text-muted-rosewood hover:text-imperial-burgundy transition-colors" title="نسخ الرقم" type="button">
+<span class="material-symbols-outlined text-[16px]">content_copy</span>
+</button>
+</div>
+</td>
+<td class="py-4 px-space-md text-center">
+<a class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-semantic-success-bg text-semantic-success font-label-sm text-label-sm hover:opacity-90 transition-opacity" href="#">
+<span class="material-symbols-outlined text-[15px]">chat</span>
+<span>فوري</span>
+</a>
+</td>
+<td class="py-4 px-space-md text-warm-ink">
+<span>البصرة - الموفقية</span>
+</td>
+<td class="py-4 px-space-md text-center">
+<span class="font-mono font-semibold text-warm-ink">4</span>
+<span class="text-muted-rosewood text-[11px] pr-1">طلبات</span>
+</td>
+<td class="py-4 px-space-md">
+<span class="font-mono font-semibold text-warm-ink">390,000</span>
+<span class="font-label-sm text-label-sm text-muted-rosewood pr-1">د.ع</span>
+</td>
+<td class="py-4 px-space-md">
+<div class="flex flex-col">
+<span>15 أكتوبر 2025</span>
+<span class="font-mono text-muted-rosewood font-label-sm text-label-sm">#1019</span>
+</div>
+</td>
+<td class="py-4 px-space-md">
+<span class="font-mono text-muted-rosewood font-label-sm text-label-sm">لا يوجد (0 د.ع)</span>
+</td>
+<td class="py-4 px-space-md text-center">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-semantic-success-bg text-semantic-success font-label-sm text-label-sm font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-semantic-success"></span>
+<span>نشط</span>
+</span>
+</td>
+<td class="py-4 px-space-md text-left">
+<div class="flex items-center justify-end gap-1.5">
+<button class="px-2.5 py-1.5 rounded-lg bg-surface-container text-imperial-burgundy font-label-sm text-label-sm hover:bg-blush-surface transition-colors flex items-center gap-1" type="button">
+<span>الملف</span>
+<span class="material-symbols-outlined text-[15px]">arrow_back</span>
+</button>
+<button class="p-1.5 rounded-lg text-muted-rosewood hover:text-warm-ink hover:bg-surface-container transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 5 -->
+<tr class="hover:bg-ivory-canvas/60 transition-colors">
+<td class="py-4 px-space-md">
+<div class="flex items-center gap-3">
+<div class="relative w-10 h-10 rounded-full bg-deep-oxblood flex items-center justify-center text-champagne-gold font-headline-sm text-headline-sm shadow-sm flex-shrink-0">
+                    ز ح
+                    <span class="absolute inset-0 rounded-full shadow-[inset_0_0_0_1px_rgba(201,162,75,0.45)]"></span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-1.5">
+<span class="font-label-lg text-label-lg font-semibold text-warm-ink">زيدون حسام الدين</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container text-muted-rosewood font-label-sm text-[10px]">عميل دائم</span>
+</div>
+<span class="font-label-sm text-label-sm text-muted-rosewood">رمز العميل: <span class="font-mono">#IR-5104</span></span>
+</div>
+</div>
+</td>
+<td class="py-4 px-space-md">
+<div class="inline-flex items-center gap-1.5 text-warm-ink font-mono text-body-sm direction-ltr">
+<span>0770 812 6653</span>
+<button class="text-muted-rosewood hover:text-imperial-burgundy transition-colors" title="نسخ الرقم" type="button">
+<span class="material-symbols-outlined text-[16px]">content_copy</span>
+</button>
+</div>
+</td>
+<td class="py-4 px-space-md text-center">
+<a class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-semantic-success-bg text-semantic-success font-label-sm text-label-sm hover:opacity-90 transition-opacity" href="#">
+<span class="material-symbols-outlined text-[15px]">chat</span>
+<span>فوري</span>
+</a>
+</td>
+<td class="py-4 px-space-md text-warm-ink">
+<span>النجف - الحنانة</span>
+</td>
+<td class="py-4 px-space-md text-center">
+<span class="font-mono font-semibold text-warm-ink">8</span>
+<span class="text-muted-rosewood text-[11px] pr-1">طلبات</span>
+</td>
+<td class="py-4 px-space-md">
+<span class="font-mono font-semibold text-warm-ink">980,000</span>
+<span class="font-label-sm text-label-sm text-muted-rosewood pr-1">د.ع</span>
+</td>
+<td class="py-4 px-space-md">
+<div class="flex flex-col">
+<span>10 أكتوبر 2025</span>
+<span class="font-mono text-muted-rosewood font-label-sm text-label-sm">#1004</span>
+</div>
+</td>
+<td class="py-4 px-space-md">
+<span class="font-mono text-muted-rosewood font-label-sm text-label-sm">لا يوجد (0 د.ع)</span>
+</td>
+<td class="py-4 px-space-md text-center">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-semantic-success-bg text-semantic-success font-label-sm text-label-sm font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-semantic-success"></span>
+<span>نشط</span>
+</span>
+</td>
+<td class="py-4 px-space-md text-left">
+<div class="flex items-center justify-end gap-1.5">
+<button class="px-2.5 py-1.5 rounded-lg bg-surface-container text-imperial-burgundy font-label-sm text-label-sm hover:bg-blush-surface transition-colors flex items-center gap-1" type="button">
+<span>الملف</span>
+<span class="material-symbols-outlined text-[15px]">arrow_back</span>
+</button>
+<button class="p-1.5 rounded-lg text-muted-rosewood hover:text-warm-ink hover:bg-surface-container transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 6 (VIP Tier) -->
+<tr class="hover:bg-ivory-canvas/60 bg-blush-surface/30 transition-colors">
+<td class="py-4 px-space-md">
+<div class="flex items-center gap-3">
+<div class="relative w-10 h-10 rounded-full bg-wine-night flex items-center justify-center text-champagne-gold font-headline-sm text-headline-sm shadow-sm flex-shrink-0">
+                    ل ط
+                    <span class="absolute inset-0 rounded-full shadow-[inset_0_0_0_1.5px_rgba(201,162,75,0.7)]"></span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-1.5">
+<span class="font-label-lg text-label-lg font-semibold text-warm-ink">لمياء طارق العاني</span>
+<span class="px-2 py-0.5 rounded-full bg-champagne-gold/30 text-antique-gold font-label-sm text-[10px] font-semibold flex items-center gap-1">
+<span class="text-royal-gold text-[9px]">◆</span>
+<span>مقتنٍ ملكي VIP</span>
+</span>
+</div>
+<span class="font-label-sm text-label-sm text-muted-rosewood">رمز العميل: <span class="font-mono">#IR-3912</span></span>
+</div>
+</div>
+</td>
+<td class="py-4 px-space-md">
+<div class="inline-flex items-center gap-1.5 text-warm-ink font-mono text-body-sm direction-ltr">
+<span>0780 443 1290</span>
+<button class="text-muted-rosewood hover:text-imperial-burgundy transition-colors" title="نسخ الرقم" type="button">
+<span class="material-symbols-outlined text-[16px]">content_copy</span>
+</button>
+</div>
+</td>
+<td class="py-4 px-space-md text-center">
+<a class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-semantic-success-bg text-semantic-success font-label-sm text-label-sm hover:opacity-90 transition-opacity" href="#">
+<span class="material-symbols-outlined text-[15px]">chat</span>
+<span>فوري</span>
+</a>
+</td>
+<td class="py-4 px-space-md text-warm-ink">
+<span>بغداد - اليرموك</span>
+</td>
+<td class="py-4 px-space-md text-center">
+<span class="font-mono font-semibold text-warm-ink">11</span>
+<span class="text-muted-rosewood text-[11px] pr-1">طلباً</span>
+</td>
+<td class="py-4 px-space-md">
+<span class="font-mono font-semibold text-warm-ink">1,420,000</span>
+<span class="font-label-sm text-label-sm text-muted-rosewood pr-1">د.ع</span>
+</td>
+<td class="py-4 px-space-md">
+<div class="flex flex-col">
+<span>02 أكتوبر 2025</span>
+<span class="font-mono text-muted-rosewood font-label-sm text-label-sm">#0988</span>
+</div>
+</td>
+<td class="py-4 px-space-md">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-semantic-warning-bg text-semantic-warning font-label-sm text-label-sm font-semibold">
+<span class="font-mono">15,000</span> د.ع
+                </span>
+</td>
+<td class="py-4 px-space-md text-center">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-semantic-success-bg text-semantic-success font-label-sm text-label-sm font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-semantic-success"></span>
+<span>نشط</span>
+</span>
+</td>
+<td class="py-4 px-space-md text-left">
+<div class="flex items-center justify-end gap-1.5">
+<button class="px-2.5 py-1.5 rounded-lg bg-surface-container text-imperial-burgundy font-label-sm text-label-sm hover:bg-blush-surface transition-colors flex items-center gap-1" type="button">
+<span>الملف</span>
+<span class="material-symbols-outlined text-[15px]">arrow_back</span>
+</button>
+<button class="p-1.5 rounded-lg text-muted-rosewood hover:text-warm-ink hover:bg-surface-container transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- High-End Editorial Pagination Footer -->
+<div class="p-space-md bg-surface-container-low flex flex-col sm:flex-row items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-md">
+<div class="flex items-center gap-2">
+<span class="font-label-sm text-label-sm text-muted-rosewood">عرض السجلات:</span>
+<select class="appearance-none bg-surface-container-lowest px-3 py-1.5 rounded-lg font-mono text-label-sm text-warm-ink focus:outline-none cursor-pointer shadow-sm">
+<option value="10">10 صفوف لكل صفحة</option>
+<option value="25">25 صفاً لكل صفحة</option>
+<option value="50">50 صفاً لكل صفحة</option>
+</select>
+</div>
+<span class="text-muted-rosewood/40 font-mono">|</span>
+<span class="font-label-sm text-label-sm text-muted-rosewood">الصفحة <strong class="font-mono text-warm-ink">1</strong> من <strong class="font-mono text-warm-ink">128</strong></span>
+</div>
+<div class="flex items-center gap-1">
+<button class="p-2 rounded-lg text-muted-rosewood/40 cursor-not-allowed" disabled="" type="button">
+<span class="material-symbols-outlined text-[20px]">chevron_right</span>
+</button>
+<button class="w-8 h-8 rounded-lg bg-imperial-burgundy text-champagne-gold font-mono font-semibold text-label-sm shadow-sm flex items-center justify-center" type="button">1</button>
+<button class="w-8 h-8 rounded-lg bg-surface-container-lowest text-warm-ink hover:bg-blush-surface font-mono text-label-sm transition-colors flex items-center justify-center shadow-sm" type="button">2</button>
+<button class="w-8 h-8 rounded-lg bg-surface-container-lowest text-warm-ink hover:bg-blush-surface font-mono text-label-sm transition-colors flex items-center justify-center shadow-sm" type="button">3</button>
+<span class="px-1 text-muted-rosewood font-mono select-none">...</span>
+<button class="w-8 h-8 rounded-lg bg-surface-container-lowest text-warm-ink hover:bg-blush-surface font-mono text-label-sm transition-colors flex items-center justify-center shadow-sm" type="button">128</button>
+<button class="p-2 rounded-lg text-warm-ink hover:bg-surface-container-lowest transition-colors" type="button">
+<span class="material-symbols-outlined text-[20px]">chevron_left</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Editorial Accent Highlight Card (VIP Registry Insight) -->
+<div class="p-space-lg rounded-2xl bg-deep-oxblood text-champagne-gold shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-space-lg relative overflow-hidden">
+<div class="absolute -left-12 -top-12 w-64 h-64 bg-royal-gold/5 rounded-full blur-3xl pointer-events-none"></div>
+<div class="flex items-center gap-space-md z-10">
+<div class="w-12 h-12 rounded-xl bg-wine-night flex items-center justify-center text-champagne-gold shadow-inner flex-shrink-0">
+<span class="material-symbols-outlined text-[26px]">workspace_premium</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<h3 class="font-headline-sm text-headline-sm text-champagne-gold">نادي كبار المقتنين (Haute Joaillerie Salon)</h3>
+<span class="px-2 py-0.5 rounded-full bg-champagne-gold/20 text-champagne-gold font-label-sm text-[11px]">مفعل</span>
+</div>
+<p class="font-body-sm text-body-sm text-rose-mist/80">يمثل المقتنون الملكيون VIP نسبة 18% من إجمالي العملاء ويسهمون في 62% من حجم مبيعات الذهب والقطع الفريدة.</p>
+</div>
+</div>
+<div class="flex items-center gap-space-md z-10 self-stretch md:self-auto justify-between md:justify-end">
+<div class="flex flex-col text-right">
+<span class="font-label-sm text-label-sm text-rose-mist/60">إجمالي مدفوعات الصالون الفاخر</span>
+<span class="font-mono text-headline-sm text-headline-sm font-semibold text-champagne-gold">48,250,000 د.ع</span>
+</div>
+<a class="px-4 py-2 rounded-lg bg-wine-night text-champagne-gold hover:bg-burgundy-800 transition-colors font-label-md text-label-md shadow-sm whitespace-nowrap" href="#">
+          عرض التقرير السري ←
+        </a>
+</div>
+</div>
+</div>
+</div></main></div></body></html>

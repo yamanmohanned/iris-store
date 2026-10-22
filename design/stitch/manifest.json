@@ -1,0 +1,818 @@
+[
+ {
+  "id": "7133518781196893793",
+  "title": "DESIGN.md",
+  "width": 780,
+  "height": 1768,
+  "html": "html/7133518781196893793.md",
+  "img": null
+ },
+ {
+  "id": "b050d8d408ca4cd88ae79590bcf9a0de",
+  "title": "IRIS | إتمام الطلب — الخطوة 2: التوصيل (Checkout Step 2)",
+  "width": 780,
+  "height": 2448,
+  "html": "html/b050d8d408ca4cd88ae79590bcf9a0de.html",
+  "img": "img/b050d8d408ca4cd88ae79590bcf9a0de.png"
+ },
+ {
+  "id": "844813f752d64a449529e4416ac4e702",
+  "title": "IRIS | مصفوفة الصلاحيات — سارة آل رحيم (Permissions Matrix)",
+  "width": 2560,
+  "height": 4068,
+  "html": "html/844813f752d64a449529e4416ac4e702.html",
+  "img": "img/844813f752d64a449529e4416ac4e702.png"
+ },
+ {
+  "id": "5be606369de44705bd71f2496f611a78",
+  "title": "IRIS | حسابي — حالة الزائر وتسجيل الدخول (Guest State)",
+  "width": 780,
+  "height": 2578,
+  "html": "html/5be606369de44705bd71f2496f611a78.html",
+  "img": "img/5be606369de44705bd71f2496f611a78.png"
+ },
+ {
+  "id": "2ae5d964473842779b15f2e86957fcb7",
+  "title": "IRIS | تقرير المبيعات حسب قناة البيع (Sales by Channel Report)",
+  "width": 2560,
+  "height": 4792,
+  "html": "html/2ae5d964473842779b15f2e86957fcb7.html",
+  "img": "img/2ae5d964473842779b15f2e86957fcb7.png"
+ },
+ {
+  "id": "f4b8e304d0284e578165d774713cb25d",
+  "title": "IRIS | محتوى المتجر والواجهة — لوحة الإدارة (Storefront Content Manager)",
+  "width": 2560,
+  "height": 4382,
+  "html": "html/f4b8e304d0284e578165d774713cb25d.html",
+  "img": "img/f4b8e304d0284e578165d774713cb25d.png"
+ },
+ {
+  "id": "2389fc23fb574b488aad45bcfabd9a5f",
+  "title": "Macro luxury jewelry: delicate gold ring with sparkling gemstone on dark burgundy velvet with warm ambient lighting, high-end editorial catalog photo",
+  "width": 896,
+  "height": 1200,
+  "html": null,
+  "img": "img/2389fc23fb574b488aad45bcfabd9a5f.jpg"
+ },
+ {
+  "id": "02d9de0df10944d49eebe36bab2f23ca",
+  "title": "IRIS | شاشة الترحيب الملكية (Mobile Splash)",
+  "width": 780,
+  "height": 1768,
+  "html": "html/02d9de0df10944d49eebe36bab2f23ca.html",
+  "img": "img/02d9de0df10944d49eebe36bab2f23ca.png"
+ },
+ {
+  "id": "8c9b50cbec5f40d68d6bb2cf7abebf26",
+  "title": "IRIS | إدارة الموظفين وفريق العمل (Staff Management)",
+  "width": 2560,
+  "height": 4788,
+  "html": "html/8c9b50cbec5f40d68d6bb2cf7abebf26.html",
+  "img": "img/8c9b50cbec5f40d68d6bb2cf7abebf26.png"
+ },
+ {
+  "id": "28f996e89a86430c9aa32ecf212a1526",
+  "title": "IRIS | صيانة — نجهّز لكم شيئاً أجمل",
+  "width": 2560,
+  "height": 2552,
+  "html": "html/28f996e89a86430c9aa32ecf212a1526.html",
+  "img": "img/28f996e89a86430c9aa32ecf212a1526.png"
+ },
+ {
+  "id": "8c1b02a0652142f99ade906ae2bab890",
+  "title": "IRIS | مركز التقارير والتحليلات الإدارية (Reports Hub)",
+  "width": 2560,
+  "height": 5348,
+  "html": "html/8c1b02a0652142f99ade906ae2bab890.html",
+  "img": "img/8c1b02a0652142f99ade906ae2bab890.png"
+ },
+ {
+  "id": "31e1859025494e54b2258f5887fde193",
+  "title": "IRIS | إعدادات القنوات الاجتماعية والتكاملات (Social Channels Settings)",
+  "width": 2560,
+  "height": 4724,
+  "html": "html/31e1859025494e54b2258f5887fde193.html",
+  "img": "img/31e1859025494e54b2258f5887fde193.png"
+ },
+ {
+  "id": "47b5a7d875f64fa78507f8051243d8ee",
+  "title": "IRIS | تبويب التصنيفات الملكية (Categories Tab)",
+  "width": 780,
+  "height": 2676,
+  "html": "html/47b5a7d875f64fa78507f8051243d8ee.html",
+  "img": "img/47b5a7d875f64fa78507f8051243d8ee.png"
+ },
+ {
+  "id": "12c68c9f725b4589b871f829161836ca",
+  "title": "IRIS | إدارة المصاريف والنفقات (Expenses Management)",
+  "width": 2560,
+  "height": 4614,
+  "html": "html/12c68c9f725b4589b871f829161836ca.html",
+  "img": "img/12c68c9f725b4589b871f829161836ca.png"
+ },
+ {
+  "id": "b6360e2657f24387afb5255948aa62e5",
+  "title": "IRIS | سلة التسوق الفارغة — إطار الحالة (Empty Cart State)",
+  "width": 2560,
+  "height": 5632,
+  "html": "html/b6360e2657f24387afb5255948aa62e5.html",
+  "img": "img/b6360e2657f24387afb5255948aa62e5.png"
+ },
+ {
+  "id": "5b5323f84e304e2281a5fbcd97ad27d6",
+  "title": "IRIS | قائمة الموردين والمستحقات (Suppliers List)",
+  "width": 2560,
+  "height": 2964,
+  "html": "html/5b5323f84e304e2281a5fbcd97ad27d6.html",
+  "img": "img/5b5323f84e304e2281a5fbcd97ad27d6.png"
+ },
+ {
+  "id": "ca767de6e92249c683f0644e38b36a81",
+  "title": "IRIS | نافذة تسوية المخزون (Stock Adjustment Modal)",
+  "width": 2560,
+  "height": 2048,
+  "html": "html/ca767de6e92249c683f0644e38b36a81.html",
+  "img": "img/ca767de6e92249c683f0644e38b36a81.png"
+ },
+ {
+  "id": "dc2c4411a4654ac194201b2bc085a313",
+  "title": "IRIS | إطار البحث المنسدل — نافذة البحث التفاعلية الشاملة (Search Overlay)",
+  "width": 2560,
+  "height": 2866,
+  "html": "html/dc2c4411a4654ac194201b2bc085a313.html",
+  "img": "img/dc2c4411a4654ac194201b2bc085a313.png"
+ },
+ {
+  "id": "03d1330767094c6a8a0b7b4d8e645542",
+  "title": "IRIS | إطار B — تفاعل تحويم بطاقة المنتج (Product Card Hover)",
+  "width": 2560,
+  "height": 5296,
+  "html": "html/03d1330767094c6a8a0b7b4d8e645542.html",
+  "img": "img/03d1330767094c6a8a0b7b4d8e645542.png"
+ },
+ {
+  "id": "3a4fefe132264f27a5b53051266cb574",
+  "title": "Luxury jewelry macro photography: elegant gold pendant necklace resting on deep rich imperial burgundy velvet fabric with soft dramatic side lighting, shallow depth of field, warm golden highlights, high-end editorial jewelry aesthetic, no text",
+  "width": 896,
+  "height": 1200,
+  "html": null,
+  "img": "img/3a4fefe132264f27a5b53051266cb574.jpg"
+ },
+ {
+  "id": "508175b98c2e4ffe8489859835d90121",
+  "title": "IRIS | الواجهة الرئيسية للهاتف — الصفحة الأولى (Home Tab)",
+  "width": 780,
+  "height": 2382,
+  "html": "html/508175b98c2e4ffe8489859835d90121.html",
+  "img": "img/508175b98c2e4ffe8489859835d90121.png"
+ },
+ {
+  "id": "04f7843d62fc45bb8cd19db5a15b506e",
+  "title": "IRIS | الشاشة التعريفية الثانية — هدايا تُغلّف بحب (Onboarding 2)",
+  "width": 780,
+  "height": 1768,
+  "html": "html/04f7843d62fc45bb8cd19db5a15b506e.html",
+  "img": "img/04f7843d62fc45bb8cd19db5a15b506e.png"
+ },
+ {
+  "id": "e58238a273a544fdb37aba65d6a6ab3e",
+  "title": "IRIS | انقطاع الاتصال — سلتك محفوظة (No Connection)",
+  "width": 780,
+  "height": 1768,
+  "html": "html/e58238a273a544fdb37aba65d6a6ab3e.html",
+  "img": "img/e58238a273a544fdb37aba65d6a6ab3e.png"
+ },
+ {
+  "id": "c8769d51f665466bab2e6492fdc38a79",
+  "title": "IRIS | آيريس — الصفحة الرئيسية (الجزء السفلي)",
+  "width": 2560,
+  "height": 7324,
+  "html": "html/c8769d51f665466bab2e6492fdc38a79.html",
+  "img": "img/c8769d51f665466bab2e6492fdc38a79.png"
+ },
+ {
+  "id": "37e315f423a0407c84863b0c9f2746d0",
+  "title": "IRIS | الشاشة التعريفية الأولى — قطع منتقاة بعناية (Onboarding 1)",
+  "width": 780,
+  "height": 1768,
+  "html": "html/37e315f423a0407c84863b0c9f2746d0.html",
+  "img": "img/37e315f423a0407c84863b0c9f2746d0.png"
+ },
+ {
+  "id": "764a285fd02346d380bd7771e3c42b61",
+  "title": "IRIS | الكوبونات وقواعد الخصم — لوحة الإدارة (Coupons & Discounts)",
+  "width": 2560,
+  "height": 3046,
+  "html": "html/764a285fd02346d380bd7771e3c42b61.html",
+  "img": "img/764a285fd02346d380bd7771e3c42b61.png"
+ },
+ {
+  "id": "ac18e240e75e463baae7875b5a2afff2",
+  "title": "IRIS | قائمة المنتجات (Products List)",
+  "width": 2560,
+  "height": 4054,
+  "html": "html/ac18e240e75e463baae7875b5a2afff2.html",
+  "img": "img/ac18e240e75e463baae7875b5a2afff2.png"
+ },
+ {
+  "id": "83ac46d6998e4591b428e6de10a83d24",
+  "title": "IRIS | دفعات الشراء والتكلفة (Purchasing Batches)",
+  "width": 2560,
+  "height": 3700,
+  "html": "html/83ac46d6998e4591b428e6de10a83d24.html",
+  "img": "img/83ac46d6998e4591b428e6de10a83d24.png"
+ },
+ {
+  "id": "ee5142ee15f24a20af39200d0d081ae2",
+  "title": "IRIS | نافذة خيارات الشراء السفلية — قلادة ذهبية رقم 102 (Variant Sheet)",
+  "width": 780,
+  "height": 2124,
+  "html": "html/ee5142ee15f24a20af39200d0d081ae2.html",
+  "img": "img/ee5142ee15f24a20af39200d0d081ae2.png"
+ },
+ {
+  "id": "cf786770bf064b72b8a209c6f5574855",
+  "title": "IRIS | تفاصيل المنتج — قلادة ذهبية رقم 102 (Mobile PDP)",
+  "width": 780,
+  "height": 4106,
+  "html": "html/cf786770bf064b72b8a209c6f5574855.html",
+  "img": "img/cf786770bf064b72b8a209c6f5574855.png"
+ },
+ {
+  "id": "5371b377f8924dd6b8f2f0504bf43a66",
+  "title": "IRIS | نظرة عامة على المخزون وحركات القطع (Inventory Overview)",
+  "width": 2560,
+  "height": 2914,
+  "html": "html/5371b377f8924dd6b8f2f0504bf43a66.html",
+  "img": "img/5371b377f8924dd6b8f2f0504bf43a66.png"
+ },
+ {
+  "id": "6bc8f4326195402280add35f49f0905a",
+  "title": "IRIS | تتبع الطلب — نتائج مسار الشحنة للطلب #1054",
+  "width": 2560,
+  "height": 3848,
+  "html": "html/6bc8f4326195402280add35f49f0905a.html",
+  "img": "img/6bc8f4326195402280add35f49f0905a.png"
+ },
+ {
+  "id": "f4c00b3354644928a942668a41f2812d",
+  "title": "IRIS | صندوق الوارد الموحد وخدمة العملاء (Unified Inbox)",
+  "width": 2560,
+  "height": 2158,
+  "html": "html/f4c00b3354644928a942668a41f2812d.html",
+  "img": "img/f4c00b3354644928a942668a41f2812d.png"
+ },
+ {
+  "id": "b0d88ebc8a7d4a499ded534b5b095afb",
+  "title": "IRIS | معالجة طلب الإرجاع R-0031 للطلب #1054 (Return Processing)",
+  "width": 2560,
+  "height": 3312,
+  "html": "html/b0d88ebc8a7d4a499ded534b5b095afb.html",
+  "img": "img/b0d88ebc8a7d4a499ded534b5b095afb.png"
+ },
+ {
+  "id": "ff4dcc6cf5974ab6af191720b393143e",
+  "title": "IRIS | قائمة العملاء والمقتنين (CRM Customers List)",
+  "width": 2560,
+  "height": 2884,
+  "html": "html/ff4dcc6cf5974ab6af191720b393143e.html",
+  "img": "img/ff4dcc6cf5974ab6af191720b393143e.png"
+ },
+ {
+  "id": "1231af6650e24e9582e7eeb7aa6892e7",
+  "title": "IRIS | المحادثة المباشرة — خدمة العملاء الملكية (In-App Chat)",
+  "width": 780,
+  "height": 2042,
+  "html": "html/1231af6650e24e9582e7eeb7aa6892e7.html",
+  "img": "img/1231af6650e24e9582e7eeb7aa6892e7.png"
+ },
+ {
+  "id": "7b1762bb093e4f2ea425647ea8fd6039",
+  "title": "IRIS | استعادة كلمة المرور وتعيين كلمة جديدة (Admin Password Reset)",
+  "width": 2560,
+  "height": 2198,
+  "html": "html/7b1762bb093e4f2ea425647ea8fd6039.html",
+  "img": "img/7b1762bb093e4f2ea425647ea8fd6039.png"
+ },
+ {
+  "id": "4430191371b64dd0ba99c943cd597018",
+  "title": "IRIS | سجل التدقيق والامتثال الأمني (Audit Log)",
+  "width": 2560,
+  "height": 2074,
+  "html": "html/4430191371b64dd0ba99c943cd597018.html",
+  "img": "img/4430191371b64dd0ba99c943cd597018.png"
+ },
+ {
+  "id": "5b652e468a824b46ae8f0fc03f53f4ee",
+  "title": "IRIS | آيريس — الصفحة الرئيسية (الجزء الأوسط)",
+  "width": 2560,
+  "height": 10572,
+  "html": "html/5b652e468a824b46ae8f0fc03f53f4ee.html",
+  "img": "img/5b652e468a824b46ae8f0fc03f53f4ee.png"
+ },
+ {
+  "id": "21ced72b302345ba96b1722ee7bdf2ea",
+  "title": "IRIS | الأسئلة الشائعة — دار آيريس للمجوهرات",
+  "width": 2560,
+  "height": 5090,
+  "html": "html/21ced72b302345ba96b1722ee7bdf2ea.html",
+  "img": "img/21ced72b302345ba96b1722ee7bdf2ea.png"
+ },
+ {
+  "id": "5a05ad4e7e4f4d0d8283e4e355550a63",
+  "title": "IRIS | تتبع مسار الطلب #1054 (Mobile Order Tracking)",
+  "width": 780,
+  "height": 4276,
+  "html": "html/5a05ad4e7e4f4d0d8283e4e355550a63.html",
+  "img": "img/5a05ad4e7e4f4d0d8283e4e355550a63.png"
+ },
+ {
+  "id": "e9990142439644f58d0fc712e8bc3777",
+  "title": "IRIS | إعدادات العملة والطلبات (Currency & Orders Settings)",
+  "width": 2560,
+  "height": 3998,
+  "html": "html/e9990142439644f58d0fc712e8bc3777.html",
+  "img": "img/e9990142439644f58d0fc712e8bc3777.png"
+ },
+ {
+  "id": "c963c61f95874fefa5095f34aa340ad7",
+  "title": "IRIS | نافذة تصفية القلائد (Filter Bottom Sheet)",
+  "width": 780,
+  "height": 1768,
+  "html": "html/c963c61f95874fefa5095f34aa340ad7.html",
+  "img": "img/c963c61f95874fefa5095f34aa340ad7.png"
+ },
+ {
+  "id": "913ca2cbaf6047e0b4c116d0e5c1eb39",
+  "title": "IRIS | سلة التسوق — المقتنيات المختارة (Filled Cart)",
+  "width": 780,
+  "height": 3680,
+  "html": "html/913ca2cbaf6047e0b4c116d0e5c1eb39.html",
+  "img": "img/913ca2cbaf6047e0b4c116d0e5c1eb39.png"
+ },
+ {
+  "id": "70409cdfaf7548f18535846ed9239669",
+  "title": "IRIS | إطار C — درج سلة التسوق المنزلق (Mini Cart Drawer)",
+  "width": 2560,
+  "height": 3150,
+  "html": "html/70409cdfaf7548f18535846ed9239669.html",
+  "img": "img/70409cdfaf7548f18535846ed9239669.png"
+ },
+ {
+  "id": "67d13fc48d4d4b78bf3cb5e99dd34ebd",
+  "title": "IRIS | صحة النظام والمزامنة (System Health)",
+  "width": 2560,
+  "height": 5596,
+  "html": "html/67d13fc48d4d4b78bf3cb5e99dd34ebd.html",
+  "img": "img/67d13fc48d4d4b78bf3cb5e99dd34ebd.png"
+ },
+ {
+  "id": "4d8a85e9fe354cd3846fb923d89c5cec",
+  "title": "IRIS | نافذة ترتيب المعروضات (Sort Bottom Sheet)",
+  "width": 780,
+  "height": 1768,
+  "html": "html/4d8a85e9fe354cd3846fb923d89c5cec.html",
+  "img": "img/4d8a85e9fe354cd3846fb923d89c5cec.png"
+ },
+ {
+  "id": "f27539641b3348df9b1604a05a029ac2",
+  "title": "Editorial luxury jewelry photography: close up of delicate elegant manicured female hands gently opening a luxury imperial burgundy velvet jewelry gift box with silk ribbon, revealing sparkling gold jewelry inside, warm soft dramatic side lighting, rich velvet textures, ivory and gold ambiance, high-end boutique aesthetic, no text",
+  "width": 896,
+  "height": 1200,
+  "html": null,
+  "img": "img/f27539641b3348df9b1604a05a029ac2.jpg"
+ },
+ {
+  "id": "46f0760680994a4e92475ae573d382cb",
+  "title": "IRIS | تسجيل الدخول للوحة الإدارة (Admin Login)",
+  "width": 2560,
+  "height": 2048,
+  "html": "html/46f0760680994a4e92475ae573d382cb.html",
+  "img": "img/46f0760680994a4e92475ae573d382cb.png"
+ },
+ {
+  "id": "c44246b635024bcc939daba19cadd899",
+  "title": "IRIS | تصنيف القلائد — صفحة المنتجات الفاخرة (PLP)",
+  "width": 2560,
+  "height": 5940,
+  "html": "html/c44246b635024bcc939daba19cadd899.html",
+  "img": "img/c44246b635024bcc939daba19cadd899.png"
+ },
+ {
+  "id": "11405ca1df6e49b68c728c966f039d0d",
+  "title": "IRIS | تأكيد استلام الطلب #1054 — نجاح الطلب (Order Success)",
+  "width": 780,
+  "height": 2852,
+  "html": "html/11405ca1df6e49b68c728c966f039d0d.html",
+  "img": "img/11405ca1df6e49b68c728c966f039d0d.png"
+ },
+ {
+  "id": "52df119fda634583b5c24b3b33827b2d",
+  "title": "IRIS | المدفوعات والمستحقات المالية (Payments & Balances)",
+  "width": 2560,
+  "height": 4632,
+  "html": "html/52df119fda634583b5c24b3b33827b2d.html",
+  "img": "img/52df119fda634583b5c24b3b33827b2d.png"
+ },
+ {
+  "id": "d604b884306c4e8f861445a6596d9806",
+  "title": "IRIS | جلسة جرد المخزون — 01/10/2026 (Stock Count Session)",
+  "width": 2560,
+  "height": 3028,
+  "html": "html/d604b884306c4e8f861445a6596d9806.html",
+  "img": "img/d604b884306c4e8f861445a6596d9806.png"
+ },
+ {
+  "id": "af9fa8b8989b4e91abf1efa57d259352",
+  "title": "IRIS | نافذة المحادثة المباشرة الفاخرة — خدمة العملاء الملكية (Live Chat Widget)",
+  "width": 2560,
+  "height": 2784,
+  "html": "html/af9fa8b8989b4e91abf1efa57d259352.html",
+  "img": "img/af9fa8b8989b4e91abf1efa57d259352.png"
+ },
+ {
+  "id": "643bbce9a0b145efafbf36593cfe27d2",
+  "title": "IRIS | لوحة تحكم المالك الرئيسية (Owner Dashboard)",
+  "width": 2560,
+  "height": 3496,
+  "html": "html/643bbce9a0b145efafbf36593cfe27d2.html",
+  "img": "img/643bbce9a0b145efafbf36593cfe27d2.png"
+ },
+ {
+  "id": "f4d07a2d103640298080c36e7256d157",
+  "title": "IRIS | قائمة القلائد الفاخرة (Necklaces Listing)",
+  "width": 780,
+  "height": 3048,
+  "html": "html/f4d07a2d103640298080c36e7256d157.html",
+  "img": "img/f4d07a2d103640298080c36e7256d157.png"
+ },
+ {
+  "id": "adf9d2fcfabe4b01b29354fa3dc17eaf",
+  "title": "Editorial luxury jewelry photography: close up elegant female hand gracefully receiving a luxury imperial burgundy velvet jewelry parcel gift box from a white-gloved courier hand, warm studio lighting, dark moody background, ultra high-end aesthetic",
+  "width": 896,
+  "height": 1200,
+  "html": null,
+  "img": "img/adf9d2fcfabe4b01b29354fa3dc17eaf.jpg"
+ },
+ {
+  "id": "c9b417adf4c349aba6dc35b3c5976d95",
+  "title": "IRIS | 404 — الصفحة غير موجودة",
+  "width": 2560,
+  "height": 5160,
+  "html": "html/c9b417adf4c349aba6dc35b3c5976d95.html",
+  "img": "img/c9b417adf4c349aba6dc35b3c5976d95.png"
+ },
+ {
+  "id": "943e44cf643743658a776414e6db30c7",
+  "title": "IRIS | التحقق بخطوتين للوحة الإدارة (Admin Two-Factor Auth)",
+  "width": 2560,
+  "height": 2048,
+  "html": "html/943e44cf643743658a776414e6db30c7.html",
+  "img": "img/943e44cf643743658a776414e6db30c7.png"
+ },
+ {
+  "id": "1e3d5880b33f4c50899be549a7c152a8",
+  "title": "IRIS | إدارة التصنيفات — لوحة الإدارة (Categories Management)",
+  "width": 2560,
+  "height": 3230,
+  "html": "html/1e3d5880b33f4c50899be549a7c152a8.html",
+  "img": "img/1e3d5880b33f4c50899be549a7c152a8.png"
+ },
+ {
+  "id": "5515b44e991e4781b0255df0ffec040f",
+  "title": "IRIS | خيارات التسوية وتأكيد إرسال الطلب R-0031 (Mobile Frame 2)",
+  "width": 780,
+  "height": 2226,
+  "html": "html/5515b44e991e4781b0255df0ffec040f.html",
+  "img": "img/5515b44e991e4781b0255df0ffec040f.png"
+ },
+ {
+  "id": "2626db0635ed4934bfcdedd4d37df013",
+  "title": "IRIS | لوحة الموظف \"يومي\" — خدمة العملاء والمبيعات (Employee Dashboard)",
+  "width": 2560,
+  "height": 4064,
+  "html": "html/2626db0635ed4934bfcdedd4d37df013.html",
+  "img": "img/2626db0635ed4934bfcdedd4d37df013.png"
+ },
+ {
+  "id": "e151d04d4c544bb8868e596096be1688",
+  "title": "IRIS | إنشاء طلب جديد — لوحة الإدارة (New Order Form)",
+  "width": 2560,
+  "height": 5974,
+  "html": "html/e151d04d4c544bb8868e596096be1688.html",
+  "img": "img/e151d04d4c544bb8868e596096be1688.png"
+ },
+ {
+  "id": "02396c0f15504c0db2485701a5c59335",
+  "title": "Editorial luxury jewelry photography: an empty arch-shaped imperial burgundy velvet jewelry display bust stand with a single delicate glowing gold diamond solitaire ring resting gracefully on top, warm dramatic side lighting, dark moody ivory and deep burgundy shadows, ultra luxury boutique catalog aesthetic, highly detailed",
+  "width": 1200,
+  "height": 896,
+  "html": null,
+  "img": "img/02396c0f15504c0db2485701a5c59335.jpg"
+ },
+ {
+  "id": "7966c5fc285b453f98c3bb894d400fe4",
+  "title": "IRIS | إتمام الطلب — الخطوة 1: الاتصال (Checkout Step 1)",
+  "width": 780,
+  "height": 2390,
+  "html": "html/7966c5fc285b453f98c3bb894d400fe4.html",
+  "img": "img/7966c5fc285b453f98c3bb894d400fe4.png"
+ },
+ {
+  "id": "32fb6d9491d24dc0ba9efcb08155f254",
+  "title": "IRIS | إعدادات المحاسبة والتكاليف (Accounting & Costing Settings)",
+  "width": 2560,
+  "height": 3652,
+  "html": "html/32fb6d9491d24dc0ba9efcb08155f254.html",
+  "img": "img/32fb6d9491d24dc0ba9efcb08155f254.png"
+ },
+ {
+  "id": "8eb6ca2595dc461281242afe78cedccb",
+  "title": "IRIS | حسابي — الملف الشخصي للمستخدم المسجل (Logged-in Profile)",
+  "width": 780,
+  "height": 2596,
+  "html": "html/8eb6ca2595dc461281242afe78cedccb.html",
+  "img": "img/8eb6ca2595dc461281242afe78cedccb.png"
+ },
+ {
+  "id": "0813f4ea984e4708bef331c5596b972a",
+  "title": "IRIS | تواصل معنا — دار آيريس للمجوهرات",
+  "width": 2560,
+  "height": 4802,
+  "html": "html/0813f4ea984e4708bef331c5596b972a.html",
+  "img": "img/0813f4ea984e4708bef331c5596b972a.png"
+ },
+ {
+  "id": "7259a855bdef4cfa8a0ec964c954241c",
+  "title": "IRIS | قلادة ذهبية رقم 102 — صفحة تفاصيل المنتج الفاخرة (PDP)",
+  "width": 2560,
+  "height": 7002,
+  "html": "html/7259a855bdef4cfa8a0ec964c954241c.html",
+  "img": "img/7259a855bdef4cfa8a0ec964c954241c.png"
+ },
+ {
+  "id": "a1d4acc79d284b8aa4b6c9e32831501e",
+  "title": "IRIS | قائمة الطلبات (Orders List)",
+  "width": 2560,
+  "height": 3404,
+  "html": "html/a1d4acc79d284b8aa4b6c9e32831501e.html",
+  "img": "img/a1d4acc79d284b8aa4b6c9e32831501e.png"
+ },
+ {
+  "id": "6adf31ab8a964ca190694b05bf5b88c2",
+  "title": "IRIS | تأكيد استلام الطلب #1054 — تجربة الشراء الفاخرة",
+  "width": 2560,
+  "height": 3424,
+  "html": "html/6adf31ab8a964ca190694b05bf5b88c2.html",
+  "img": "img/6adf31ab8a964ca190694b05bf5b88c2.png"
+ },
+ {
+  "id": "af38bf87d05f4995859afc46e535724c",
+  "title": "Macro luxury jewelry: elegant gold and pearl earrings resting on luxurious ivory marble with subtle burgundy shadow, warm side lighting",
+  "width": 896,
+  "height": 1200,
+  "html": null,
+  "img": "img/af38bf87d05f4995859afc46e535724c.jpg"
+ },
+ {
+  "id": "5f1b5f478c0343389da4dfffe9fb9c89",
+  "title": "IRIS | آيريس — الصفحة الرئيسية الفاخرة",
+  "width": 2560,
+  "height": 6106,
+  "html": "html/5f1b5f478c0343389da4dfffe9fb9c89.html",
+  "img": "img/5f1b5f478c0343389da4dfffe9fb9c89.png"
+ },
+ {
+  "id": "5e85a12164d6455692e77695b4bd1ff2",
+  "title": "IRIS | سلة التسوق الملكية (Shopping Cart)",
+  "width": 2560,
+  "height": 4404,
+  "html": "html/5e85a12164d6455692e77695b4bd1ff2.html",
+  "img": "img/5e85a12164d6455692e77695b4bd1ff2.png"
+ },
+ {
+  "id": "5dcaa1f515374e9781c52c40672a2d11",
+  "title": "IRIS | الأرشيف العام للنظام (System Master Archive)",
+  "width": 2560,
+  "height": 2822,
+  "html": "html/5dcaa1f515374e9781c52c40672a2d11.html",
+  "img": "img/5dcaa1f515374e9781c52c40672a2d11.png"
+ },
+ {
+  "id": "f764ecaa52f04f2b85969914e4210831",
+  "title": "IRIS | طلب الإرجاع والاستبدال — تحديد القطع والسبب (Mobile Frame 1)",
+  "width": 780,
+  "height": 2544,
+  "html": "html/f764ecaa52f04f2b85969914e4210831.html",
+  "img": "img/f764ecaa52f04f2b85969914e4210831.png"
+ },
+ {
+  "id": "f9ce0e49c09e45859b3b9d85ae171839",
+  "title": "IRIS | المحاسبة وقائمة الدخل التشغيلية (Accounting & P&L)",
+  "width": 2560,
+  "height": 2338,
+  "html": "html/f9ce0e49c09e45859b3b9d85ae171839.html",
+  "img": "img/f9ce0e49c09e45859b3b9d85ae171839.png"
+ },
+ {
+  "id": "a31466c938414a14b524297cdf74cdea",
+  "title": "IRIS | مركز الإشعارات والتحذيرات (Notification Center)",
+  "width": 2560,
+  "height": 2514,
+  "html": "html/a31466c938414a14b524297cdf74cdea.html",
+  "img": "img/a31466c938414a14b524297cdf74cdea.png"
+ },
+ {
+  "id": "2e208f68040746d685f0f44e8952a7c6",
+  "title": "IRIS | عن المتجر — حكاية دار آيريس للمجوهرات",
+  "width": 2560,
+  "height": 8110,
+  "html": "html/2e208f68040746d685f0f44e8952a7c6.html",
+  "img": "img/2e208f68040746d685f0f44e8952a7c6.png"
+ },
+ {
+  "id": "572420a23a304ff8b2ce177e0a1bc76a",
+  "title": "IRIS | ملف العميل — أحمد علي (Customer CRM Profile)",
+  "width": 2560,
+  "height": 4196,
+  "html": "html/572420a23a304ff8b2ce177e0a1bc76a.html",
+  "img": "img/572420a23a304ff8b2ce177e0a1bc76a.png"
+ },
+ {
+  "id": "c113eebb2a1844b2b05a2878263477f2",
+  "title": "IRIS | تفاصيل الطلب #1054 (Admin Order Details)",
+  "width": 2560,
+  "height": 3732,
+  "html": "html/c113eebb2a1844b2b05a2878263477f2.html",
+  "img": "img/c113eebb2a1844b2b05a2878263477f2.png"
+ },
+ {
+  "id": "0837eaff4f094460b3b5de18c9e7cdb7",
+  "title": "IRIS | تسجيل الدخول بالهاتف ورمز التحقق (Login & OTP)",
+  "width": 2560,
+  "height": 3204,
+  "html": "html/0837eaff4f094460b3b5de18c9e7cdb7.html",
+  "img": "img/0837eaff4f094460b3b5de18c9e7cdb7.png"
+ },
+ {
+  "id": "78b6a7f5890e4b5a83bb527dd9b1586c",
+  "title": "IRIS | سجل حركات المخزون الثابت (Stock Movements Ledger)",
+  "width": 2560,
+  "height": 2884,
+  "html": "html/78b6a7f5890e4b5a83bb527dd9b1586c.html",
+  "img": "img/78b6a7f5890e4b5a83bb527dd9b1586c.png"
+ },
+ {
+  "id": "d4e71cd6ee304610b6a255e1c2de481e",
+  "title": "IRIS | مركز قنوات التواصل الملكية (Contact Hub)",
+  "width": 780,
+  "height": 3692,
+  "html": "html/d4e71cd6ee304610b6a255e1c2de481e.html",
+  "img": "img/d4e71cd6ee304610b6a255e1c2de481e.png"
+ },
+ {
+  "id": "797aa4e5b39c4a3ba633436974e43958",
+  "title": "IRIS | صندوق الإشعارات الملكي (Notifications Inbox)",
+  "width": 780,
+  "height": 1768,
+  "html": "html/797aa4e5b39c4a3ba633436974e43958.html",
+  "img": "img/797aa4e5b39c4a3ba633436974e43958.png"
+ },
+ {
+  "id": "135f64208768426d860c71112a107574",
+  "title": "IRIS | إطار A — الترويسة بعد التمرير (Scrolled Header)",
+  "width": 2560,
+  "height": 3188,
+  "html": "html/135f64208768426d860c71112a107574.html",
+  "img": "img/135f64208768426d860c71112a107574.png"
+ },
+ {
+  "id": "b83f400646d94b04a53a74772f51b44b",
+  "title": "IRIS | الشاشة التعريفية الثالثة — اطلبي بسهولة (Onboarding 3)",
+  "width": 780,
+  "height": 1768,
+  "html": "html/b83f400646d94b04a53a74772f51b44b.html",
+  "img": "img/b83f400646d94b04a53a74772f51b44b.png"
+ },
+ {
+  "id": "0713e34d7a3746ca8043ac6a40597537",
+  "title": "IRIS | سلة التسوق — سلتك فارغة (Empty Cart)",
+  "width": 780,
+  "height": 2510,
+  "html": "html/0713e34d7a3746ca8043ac6a40597537.html",
+  "img": "img/0713e34d7a3746ca8043ac6a40597537.png"
+ },
+ {
+  "id": "a538315dff734997ab81b040affc944c",
+  "title": "IRIS | التحقق من رقم الهاتف — رمز OTP (OTP Verification)",
+  "width": 780,
+  "height": 1768,
+  "html": "html/a538315dff734997ab81b040affc944c.html",
+  "img": "img/a538315dff734997ab81b040affc944c.png"
+ },
+ {
+  "id": "343a4fc121b841208a3c64e951a5bded",
+  "title": "IRIS | حسابي — سجل الطلبات وإدارة الحساب (Customer Account)",
+  "width": 2560,
+  "height": 4808,
+  "html": "html/343a4fc121b841208a3c64e951a5bded.html",
+  "img": "img/343a4fc121b841208a3c64e951a5bded.png"
+ },
+ {
+  "id": "536c3e10fad04c6cbea110b88a0aee8c",
+  "title": "IRIS | تنبيهات النظام والصيانة المجدولة (System Updates & Maintenance)",
+  "width": 780,
+  "height": 2660,
+  "html": "html/536c3e10fad04c6cbea110b88a0aee8c.html",
+  "img": "img/536c3e10fad04c6cbea110b88a0aee8c.png"
+ },
+ {
+  "id": "2dc8b33e48ef4589a75c54775f04b2f4",
+  "title": "IRIS | طلب إرجاع أو استبدال — الطلب #1054",
+  "width": 2560,
+  "height": 5628,
+  "html": "html/2dc8b33e48ef4589a75c54775f04b2f4.html",
+  "img": "img/2dc8b33e48ef4589a75c54775f04b2f4.png"
+ },
+ {
+  "id": "e27c410ca387471db02a8dc8738eadc9",
+  "title": "IRIS | طلب إرجاع أو استبدال — الطلب #1054",
+  "width": 2560,
+  "height": 5754,
+  "html": "html/e27c410ca387471db02a8dc8738eadc9.html",
+  "img": "img/e27c410ca387471db02a8dc8738eadc9.png"
+ },
+ {
+  "id": "8e0fe82c9e87478d84afbce80061d483",
+  "title": "IRIS | إتمام الطلب — الخطوة 4: المراجعة وتأكيد الشراء (Checkout Step 4)",
+  "width": 780,
+  "height": 2924,
+  "html": "html/8e0fe82c9e87478d84afbce80061d483.html",
+  "img": "img/8e0fe82c9e87478d84afbce80061d483.png"
+ },
+ {
+  "id": "7036a871916a48d0b5088763abe61e47",
+  "title": "IRIS | طلباتي — سجل الطلبات والمقتنيات (My Orders)",
+  "width": 780,
+  "height": 3138,
+  "html": "html/7036a871916a48d0b5088763abe61e47.html",
+  "img": "img/7036a871916a48d0b5088763abe61e47.png"
+ },
+ {
+  "id": "55072e9f562c489cb4c2dac79efffe13",
+  "title": "IRIS | نتائج البحث — أثناء الكتابة \"102\" (Search Results)",
+  "width": 780,
+  "height": 2176,
+  "html": "html/55072e9f562c489cb4c2dac79efffe13.html",
+  "img": "img/55072e9f562c489cb4c2dac79efffe13.png"
+ },
+ {
+  "id": "388dd4ec3f034ebf9bf404fabb1fe10a",
+  "title": "IRIS | البحث — قبل الكتابة (Search Before Typing)",
+  "width": 780,
+  "height": 2262,
+  "html": "html/388dd4ec3f034ebf9bf404fabb1fe10a.html",
+  "img": "img/388dd4ec3f034ebf9bf404fabb1fe10a.png"
+ },
+ {
+  "id": "8bd4b94782d64a6aa78f72c5d5f9d837",
+  "title": "IRIS | ملف المورد — مورد الذهب المطلي (Supplier Profile)",
+  "width": 2560,
+  "height": 4236,
+  "html": "html/8bd4b94782d64a6aa78f72c5d5f9d837.html",
+  "img": "img/8bd4b94782d64a6aa78f72c5d5f9d837.png"
+ },
+ {
+  "id": "0ebf15a380d74b1492078c72da205cfa",
+  "title": "IRIS | إضافة منتج جديد — لوحة الإدارة (Add Product Form)",
+  "width": 2560,
+  "height": 6666,
+  "html": "html/0ebf15a380d74b1492078c72da205cfa.html",
+  "img": "img/0ebf15a380d74b1492078c72da205cfa.png"
+ },
+ {
+  "id": "049cfe50ecb04217b39521ac94ab1d69",
+  "title": "IRIS | قلادة ذهبية رقم 102 — شريط الشراء الملتصق (Sticky Buy Bar Frame)",
+  "width": 2560,
+  "height": 4910,
+  "html": "html/049cfe50ecb04217b39521ac94ab1d69.html",
+  "img": "img/049cfe50ecb04217b39521ac94ab1d69.png"
+ },
+ {
+  "id": "d0a5162edeb34a80aac6337c5de0cb6c",
+  "title": "IRIS | شراء جديد واستلام بضاعة (New Purchase Form)",
+  "width": 2560,
+  "height": 4610,
+  "html": "html/d0a5162edeb34a80aac6337c5de0cb6c.html",
+  "img": "img/d0a5162edeb34a80aac6337c5de0cb6c.png"
+ },
+ {
+  "id": "47908d75ec9d40589408289f46a1a3ec",
+  "title": "IRIS | الرئيسية — الجزء السفلي وقوائم العروض (Mobile Home Scrolled)",
+  "width": 780,
+  "height": 6608,
+  "html": "html/47908d75ec9d40589408289f46a1a3ec.html",
+  "img": "img/47908d75ec9d40589408289f46a1a3ec.png"
+ }
+]

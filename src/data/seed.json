@@ -1,0 +1,251 @@
+{
+  "categories": [
+    {
+      "slug": "necklaces",
+      "name": "القلائد",
+      "title": "القلائد",
+      "description": "قلائد ناعمة بطلاء ثابت باللونين الذهبي والفضي، بتصاميم تحمل معنى: أمنيات وذكريات وقمر وبجعة.",
+      "unit": "قطعة",
+      "image": "/images/instagram/wish-11-11-box.jpg"
+    },
+    {
+      "slug": "couple-sets",
+      "name": "التطقيمات الثنائية",
+      "title": "تطقيمات ثنائية (كبلز)",
+      "description": "خواتم وتطقيمات متطابقة لشخصين، هدية تجمع بينكما.",
+      "unit": "سيت",
+      "image": "/images/instagram/couple-rings-set.jpg"
+    },
+    {
+      "slug": "bracelets",
+      "name": "الأساور",
+      "title": "الأساور",
+      "description": "أساور ناعمة للإطلالة اليومية والمناسبات.",
+      "unit": "قطعة",
+      "image": "/images/stitch/154.jpg",
+      "hidden": true
+    },
+    {
+      "slug": "rings",
+      "name": "الخواتم",
+      "title": "الخواتم",
+      "description": "خواتم بتصاميم بسيطة وأنيقة.",
+      "unit": "قطعة",
+      "image": "/images/ring-solitaire-arch.jpg",
+      "hidden": true
+    },
+    {
+      "slug": "earrings",
+      "name": "الأقراط",
+      "title": "الأقراط",
+      "description": "أقراط وحلقان تكمل إطلالتكِ.",
+      "unit": "قطعة",
+      "image": "/images/earrings-pearl-marble.jpg",
+      "hidden": true
+    },
+    {
+      "slug": "gifts",
+      "name": "الهدايا",
+      "title": "الهدايا",
+      "description": "قطع مختارة لتكون هدية جميلة لمن تحبين.",
+      "unit": "قطعة",
+      "image": "/images/gift-box-opening.jpg",
+      "hidden": true
+    }
+  ],
+  "products": [
+    {
+      "id": "ig-wish-1111",
+      "slug": "wish-necklace-11-11",
+      "sku": "IR-1111",
+      "name": "قلادة الأمنيات 11:11",
+      "shortName": "قلادة الأمنيات 11:11",
+      "category": "necklaces",
+      "summary": "دلاية صغيرة برقم الأمنيات 11:11 على سلسلة ناعمة باللون الذهبي.",
+      "metal": "معدن بطلاء ذهبي ثابت",
+      "price": 8000,
+      "stock": 5,
+      "image": "/images/instagram/wish-11-11-box.jpg",
+      "gallery": ["/images/instagram/wish-11-11-box.jpg", "/images/instagram/wish-11-11-poster.jpg"],
+      "videos": ["/images/instagram/wish-11-11.mp4"],
+      "swatches": ["gold"],
+      "tags": ["قلادة", "11:11", "أمنيات"],
+      "source": "ig:DecPLGKCEsk",
+      "sourceUrl": "https://www.instagram.com/p/DecPLGKCEsk/",
+      "content": {
+        "description": [
+          "الساعة 11:11 لحظة يتمنى فيها كثيرون أمنية؛ هذه القلادة تحملها معكِ كل يوم في دلاية مستطيلة صغيرة على سلسلة ناعمة.",
+          "متوفرة باللون الذهبي بطلاء ثابت، وتناسب الإطلالة اليومية وتصلح هدية لطيفة."
+        ],
+        "specs": [
+          { "label": "الخامة", "value": "معدن بطلاء ذهبي ثابت" },
+          { "label": "اللون", "value": "ذهبي" }
+        ]
+      }
+    },
+    {
+      "id": "ig-swan",
+      "slug": "swan-necklace",
+      "sku": "IR-SWAN",
+      "name": "قلادة البجعة",
+      "shortName": "قلادة البجعة",
+      "category": "necklaces",
+      "summary": "دلاية بجعة مرصّعة بفصوص وردية على سلسلة ذهبية اللون.",
+      "metal": "ستانلس ستيل بطلاء ثابت",
+      "price": 8000,
+      "stock": 5,
+      "image": "/images/instagram/swan-box.jpg",
+      "gallery": ["/images/instagram/swan-box.jpg", "/images/instagram/swan-poster.jpg"],
+      "videos": ["/images/instagram/swan.mp4"],
+      "swatches": ["gold"],
+      "tags": ["قلادة", "بجعة"],
+      "source": "ig:DeSCkQLiGyB",
+      "sourceUrl": "https://www.instagram.com/p/DeSCkQLiGyB/",
+      "content": {
+        "description": [
+          "بجعة صغيرة تلمع بفصوص وردية ناعمة، تتدلى من سلسلة رفيعة باللون الذهبي.",
+          "مصنوعة من الستانلس ستيل بطلاء ثابت، لتبقى جميلة مع الاستخدام اليومي."
+        ],
+        "specs": [
+          { "label": "الخامة", "value": "ستانلس ستيل بطلاء ثابت" },
+          { "label": "اللون", "value": "ذهبي مع فصوص وردية" }
+        ]
+      }
+    },
+    {
+      "id": "ig-moon",
+      "slug": "moon-necklace-i-love-you",
+      "sku": "IR-MOON",
+      "name": "قلادة القمر — «أحبك» بمئة لغة",
+      "shortName": "قلادة القمر",
+      "category": "necklaces",
+      "summary": "هلال مرصّع وفي وسطه حجر صغير يُظهر عبارة «أحبك» بمئة لغة.",
+      "metal": "ستانلس ستيل مقاوم للصدأ",
+      "price": 8000,
+      "stock": 5,
+      "image": "/images/instagram/moon-box.jpg",
+      "gallery": ["/images/instagram/moon-box.jpg"],
+      "swatches": ["gold"],
+      "tags": ["قلادة", "قمر", "هدية"],
+      "source": "ig:DeM2JlNsZf0",
+      "sourceUrl": "https://www.instagram.com/reel/DeM2JlNsZf0/",
+      "content": {
+        "description": [
+          "هلال صغير مرصّع، وفي وسطه حجر دائري؛ قرّبيه من العين أو من ضوء الهاتف لتظهر عبارة «أحبك» مكتوبة بمئة لغة.",
+          "مصنوعة من الستانلس ستيل المقاوم للصدأ، وتصلح هدية تحمل رسالة."
+        ],
+        "specs": [
+          { "label": "الخامة", "value": "ستانلس ستيل مقاوم للصدأ" },
+          { "label": "اللون", "value": "ذهبي" }
+        ]
+      }
+    },
+    {
+      "id": "ig-memories",
+      "slug": "memories-locket-necklace",
+      "sku": "IR-LOCKET",
+      "name": "قلادة الذكريات (قلب يُفتح لصورة)",
+      "shortName": "قلادة الذكريات",
+      "category": "necklaces",
+      "summary": "قلب منقوش يُفتح لتضعي فيه صورة من تحبين.",
+      "metal": "ستانلس ستيل بطلاء ثابت",
+      "price": 6000,
+      "stock": 5,
+      "image": "/images/instagram/memories-locket-closed.jpg",
+      "gallery": ["/images/instagram/memories-locket-closed.jpg", "/images/instagram/memories-locket-open.jpg"],
+      "swatches": ["silver", "gold"],
+      "tags": ["قلادة", "قلب", "صورة"],
+      "source": "ig:DeXViPGRfX6",
+      "sourceUrl": "https://www.instagram.com/reel/DeXViPGRfX6/",
+      "content": {
+        "description": [
+          "قلب منقوش يُفتح من المنتصف لتحتفظي بداخله بصورة صغيرة لمن تحبين.",
+          "متوفرة باللونين الفضي والذهبي، والسعر حسب الموديل من 6,000 إلى 8,000 دينار؛ اكتبي الموديل الذي تريدينه في ملاحظات الطلب."
+        ],
+        "specs": [
+          { "label": "الخامة", "value": "ستانلس ستيل بطلاء ثابت" },
+          { "label": "الألوان", "value": "فضي، ذهبي" },
+          { "label": "السعر", "value": "من 6,000 إلى 8,000 د.ع حسب الموديل" }
+        ]
+      }
+    },
+    {
+      "id": "ig-couple-set",
+      "slug": "couple-rings-set",
+      "sku": "IR-COUPLE",
+      "name": "تطقيم خواتم كبلز",
+      "shortName": "تطقيم خواتم كبلز",
+      "category": "couple-sets",
+      "summary": "سيت خواتم متطابقة لشخصين بطلاء ثابت — السعر للسيت كاملاً.",
+      "metal": "معدن بطلاء ثابت",
+      "price": 12000,
+      "stock": 5,
+      "image": "/images/instagram/couple-rings-set.jpg",
+      "gallery": ["/images/instagram/couple-rings-set.jpg"],
+      "swatches": ["silver"],
+      "tags": ["كبلز", "خواتم", "هدية"],
+      "source": "ig:DaLcrgsDaS6",
+      "sourceUrl": "https://www.instagram.com/p/DaLcrgsDaS6/",
+      "content": {
+        "description": [
+          "خاتمان متناسقان لشخصين بطلاء ثابت، يأتيان معاً كسيت واحد.",
+          "اكتبي التصميم الذي اخترتِه من الصورة في ملاحظات الطلب، ونتواصل معكِ لتأكيد المقاسات."
+        ],
+        "specs": [
+          { "label": "الخامة", "value": "معدن بطلاء ثابت" },
+          { "label": "السعر", "value": "للسيت (خاتمان)" }
+        ]
+      }
+    },
+    {
+      "id": "ig-couple-night",
+      "slug": "couple-rings-could-be-us",
+      "sku": "IR-COUPLE-2",
+      "name": "خواتم كبلز — Could be us",
+      "shortName": "خواتم كبلز (2)",
+      "category": "couple-sets",
+      "summary": "خواتم متطابقة لشخصين.",
+      "metal": "",
+      "price": 0,
+      "stock": 5,
+      "image": "/images/instagram/couple-rings-night.jpg",
+      "gallery": ["/images/instagram/couple-rings-night.jpg"],
+      "hidden": true,
+      "source": "ig:Dee02iotFUZ",
+      "sourceUrl": "https://www.instagram.com/reel/Dee02iotFUZ/",
+      "content": {
+        "description": ["مسودة مستوردة من إنستغرام بلا سعر في المنشور — أكملي السعر والوصف ثم أظهريها للزوار."],
+        "specs": []
+      }
+    },
+    {
+      "id": "ig-couple-cafe",
+      "slug": "couple-rings-me-and-you",
+      "sku": "IR-COUPLE-3",
+      "name": "خواتم كبلز — Me & you",
+      "shortName": "خواتم كبلز (3)",
+      "category": "couple-sets",
+      "summary": "خواتم متطابقة لشخصين.",
+      "metal": "",
+      "price": 0,
+      "stock": 5,
+      "image": "/images/instagram/couple-rings-cafe.jpg",
+      "gallery": ["/images/instagram/couple-rings-cafe.jpg"],
+      "hidden": true,
+      "source": "ig:DeUsrfjo1HD",
+      "sourceUrl": "https://www.instagram.com/reel/DeUsrfjo1HD/",
+      "content": {
+        "description": ["مسودة مستوردة من إنستغرام بلا سعر في المنشور — أكملي السعر والوصف ثم أظهريها للزوار."],
+        "specs": []
+      }
+    }
+  ],
+  "settings": {
+    "shippingFee": 5000,
+    "freeShippingThreshold": 0,
+    "coupons": {},
+    "whatsapp": "",
+    "instagram": "iris_st0re1",
+    "heroImage": "/images/instagram/moon-box.jpg"
+  }
+}

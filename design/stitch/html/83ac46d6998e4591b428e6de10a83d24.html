@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+
+<html dir="rtl" lang="ar"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@400;500;600;700&amp;family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "on-error": "#ffffff", "semantic-warning-bg": "#FCEBD0", "primary": "#510015", "primary-container": "#721328", "secondary-fixed-dim": "#ebc166", "semantic-warning": "#8A4B08", "on-tertiary-container": "#dc8f9a", "antique-gold": "#8A6620", "on-primary-container": "#fb7c8c", "semantic-success": "#1F6B4A", "error-container": "#ffdad6", "primary-fixed-dim": "#ffb2b9", "on-surface": "#1d1c18", "on-error-container": "#93000a", "on-primary": "#ffffff", "on-primary-fixed": "#40000f", "on-secondary-fixed": "#261a00", "inverse-surface": "#32302c", "tertiary-container": "#602833", "semantic-info-bg": "#E4EDF8", "ivory-canvas": "#FBF6EF", "tertiary-fixed": "#ffd9dd", "semantic-success-bg": "#E2F2EA", "outline": "#897173", "surface-container": "#f2ede6", "semantic-info": "#2F5A8A", "hairline-gold": "rgba(201, 162, 75, 0.45)", "on-secondary": "#ffffff", "surface": "#fef9f2", "secondary": "#795902", "tertiary": "#45131e", "on-tertiary-fixed": "#390915", "surface-tint": "#a3394a", "on-tertiary-fixed-variant": "#6f343f", "muted-rosewood": "#6D585B", "warm-ink": "#2A1215", "rose-mist": "#EED9DB", "error": "#ba1a1a", "secondary-container": "#fdd275", "on-tertiary": "#ffffff", "blush-surface": "#F7ECEC", "background": "#fef9f2", "inverse-primary": "#ffb2b9", "secondary-fixed": "#ffdf9e", "surface-container-highest": "#e6e2db", "outline-variant": "dcc0c1", "on-background": "#1d1c18", "semantic-error-bg": "#FDE7E4", "surface-container-low": "#f8f3ec", "burgundy-600": "#8A1B34", "on-primary-fixed-variant": "#842134", "semantic-error": "#B42318", "surface-variant": "#e6e2db", "royal-gold": "#C9A24B", "primary-fixed": "#ffdadc", "tertiary-fixed-dim": "#ffb2bd", "parchment": "#F3EADB", "surface-container-high": "#ece7e1", "inverse-on-surface": "#f5f0e9", "on-secondary-container": "#775800", "surface-container-lowest": "#ffffff", "imperial-burgundy": "#721328", "deep-oxblood": "#3A0A16", "champagne-gold": "#E9D49C", "surface-dim": "#ded9d3", "hairline-burgundy": "rgba(114, 19, 40, 0.14)", "wine-night": "#1E070D", "on-surface-variant": "#564243", "on-secondary-fixed-variant": "#5b4300", "burgundy-800": "#5A0F22", "surface-bright": "#fef9f2" }, borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, spacing: { "space-lg": "1.5rem", "space-xs": "0.25rem", "margin": "2.5rem", "space-sm": "0.5rem", "gutter": "1.5rem", "space-xl": "2.5rem", "space-md": "1rem", "margin-mobile": "1rem", "space-3xl": "6rem", "space-2xl": "4rem", "gutter-mobile": "1rem" }, fontFamily: { "headline-sm": ["El Messiri"], "body-sm": ["IBM Plex Sans Arabic"], "display-lg": ["El Messiri"], "headline-md": ["El Messiri"], "headline-lg": ["El Messiri"], "label-sm": ["IBM Plex Sans Arabic"], "body-md": ["IBM Plex Sans Arabic"], "headline-xl": ["El Messiri"], "body-lg": ["IBM Plex Sans Arabic"], "headline-xl-mobile": ["El Messiri"], "body-xl": ["IBM Plex Sans Arabic"], "display-lg-mobile": ["El Messiri"], "label-lg": ["IBM Plex Sans Arabic"], "label-md": ["IBM Plex Sans Arabic"] }, fontSize: { "headline-sm": ["1.25rem", { lineHeight: "1.45", fontWeight: "500" }], "body-sm": ["0.875rem", { lineHeight: "1.6", fontWeight: "400" }], "display-lg": ["3.5rem", { lineHeight: "1.25", fontWeight: "700" }], "headline-md": ["1.5rem", { lineHeight: "1.4", fontWeight: "600" }], "headline-lg": ["2rem", { lineHeight: "1.35", fontWeight: "600" }], "label-sm": ["0.6875rem", { lineHeight: "1.4", fontWeight: "500" }], "body-md": ["1rem", { lineHeight: "1.7", fontWeight: "400" }], "headline-xl": ["2.5rem", { lineHeight: "1.3", fontWeight: "600" }], "body-lg": ["1.125rem", { lineHeight: "1.7", fontWeight: "400" }], "headline-xl-mobile": ["1.75rem", { lineHeight: "1.35", fontWeight: "600" }], "body-xl": ["1.25rem", { lineHeight: "1.7", fontWeight: "400" }], "display-lg-mobile": ["2.25rem", { lineHeight: "1.3", fontWeight: "700" }], "label-lg": ["0.9375rem", { lineHeight: "1.4", fontWeight: "600" }], "label-md": ["0.8125rem", { lineHeight: "1.4", fontWeight: "500" }] } } } };</script></head><body class="bg-ivory-canvas font-body-md text-on-surface antialiased"><aside class="fixed right-0 top-0 h-full w-72 bg-wine-night z-50 flex flex-col justify-between shadow-[0_24px_64px_rgba(30,7,13,0.24)] overflow-y-auto"><div class="flex flex-col"><div class="px-space-lg pt-space-xl pb-space-lg flex items-center gap-space-sm"><div class="w-10 h-10 rounded-lg bg-deep-oxblood flex items-center justify-center text-royal-gold"><span class="material-symbols-outlined text-[24px]">diamond</span></div><div class="flex flex-col"><span class="font-headline-sm text-headline-sm text-champagne-gold tracking-wide">IRIS | دار آيريس</span><span class="font-label-sm text-label-sm text-champagne-gold/70">المكتب الإداري الفاخر</span></div></div><div class="px-space-lg mb-space-md"><div class="w-full flex items-center justify-center gap-space-xs"><div class="h-[1px] flex-1 bg-royal-gold/20"></div><span class="text-royal-gold text-[10px]">◆</span><div class="h-[1px] flex-1 bg-royal-gold/20"></div></div></div><nav class="flex flex-col gap-1 px-space-sm" data-active-classes="bg-deep-oxblood text-champagne-gold font-bold relative before:absolute before:right-0 before:top-0 before:bottom-0 before:w-1 before:bg-royal-gold shadow-[inset_0_0_20px_rgba(114,19,40,0.35)]"><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-champagne-gold/75 hover:bg-deep-oxblood hover:text-champagne-gold transition-colors font-body-sm text-body-sm" data-path="overview" href="#"><span class="material-symbols-outlined text-[20px]">dashboard</span><span>نظرة عامة</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-champagne-gold/75 hover:bg-deep-oxblood hover:text-champagne-gold transition-colors font-body-sm text-body-sm" data-path="orders" href="#"><span class="material-symbols-outlined text-[20px]">receipt_long</span><span>الطلبات</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-champagne-gold/75 hover:bg-deep-oxblood hover:text-champagne-gold transition-colors font-body-sm text-body-sm" data-path="products" href="#"><span class="material-symbols-outlined text-[20px]">inventory_2</span><span>المنتجات</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-champagne-gold/75 hover:bg-deep-oxblood hover:text-champagne-gold transition-colors font-body-sm text-body-sm" data-path="categories" href="#"><span class="material-symbols-outlined text-[20px]">category</span><span>التصنيفات</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-champagne-gold/75 hover:bg-deep-oxblood hover:text-champagne-gold transition-colors font-body-sm text-body-sm" data-path="inventory" href="#"><span class="material-symbols-outlined text-[20px]">warehouse</span><span>المخزون</span></a><a aria-current="page" class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg transition-colors bg-deep-oxblood text-champagne-gold font-bold relative before:absolute before:right-0 before:top-0 before:bottom-0 before:w-1 before:bg-royal-gold shadow-[inset_0_0_20px_rgba(114,19,40,0.35)]" data-path="purchases" href="#"><span class="material-symbols-outlined text-[20px]">shopping_bag</span><span>المشتريات</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-champagne-gold/75 hover:bg-deep-oxblood hover:text-champagne-gold transition-colors font-body-sm text-body-sm" data-path="suppliers" href="#"><span class="material-symbols-outlined text-[20px]">handshake</span><span>الموردون</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-champagne-gold/75 hover:bg-deep-oxblood hover:text-champagne-gold transition-colors font-body-sm text-body-sm" data-path="customers" href="#"><span class="material-symbols-outlined text-[20px]">group</span><span>العملاء</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-champagne-gold/75 hover:bg-deep-oxblood hover:text-champagne-gold transition-colors font-body-sm text-body-sm" data-path="financial-reports" href="#"><span class="material-symbols-outlined text-[20px]">analytics</span><span>التقارير المالية</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-champagne-gold/75 hover:bg-deep-oxblood hover:text-champagne-gold transition-colors font-body-sm text-body-sm" data-path="settings" href="#"><span class="material-symbols-outlined text-[20px]">settings</span><span>الإعدادات</span></a></nav></div><div class="p-space-lg"><div class="bg-deep-oxblood/80 rounded-xl p-space-md flex flex-col gap-space-xs"><div class="flex items-center justify-between"><span class="font-label-sm text-label-sm text-champagne-gold">سنة التأسيس ٢٠٢٤</span><span class="material-symbols-outlined text-royal-gold text-[16px]">verified</span></div><span class="font-body-sm text-body-sm text-champagne-gold/70">صياغة ومجوهرات فاخرة</span></div></div></aside><div class="pr-72"><header class="fixed top-0 right-72 left-0 h-20 bg-ivory-canvas/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(58,10,22,0.04)] z-40 px-space-xl flex items-center justify-between"><div class="flex items-center gap-space-lg"><div class="flex items-center gap-space-xs text-on-surface-variant font-body-sm text-body-sm"><span class="text-on-surface-variant">لوحة الإدارة</span><span class="material-symbols-outlined text-[14px]">chevron_left</span><span class="text-warm-ink font-semibold">إدارة المشتريات والتوريد</span></div><div class="hidden xl:flex items-center gap-space-sm bg-semantic-success-bg px-space-sm py-1 rounded-full"><span class="w-2 h-2 rounded-full bg-semantic-success"></span><span class="font-label-sm text-label-sm text-semantic-success">المتجر: متصل ومستقر</span></div></div><div class="flex items-center gap-space-lg"><div class="relative w-72"><span class="material-symbols-outlined absolute right-space-sm top-1/2 -translate-y-1/2 text-on-surface-variant text-[20px]">search</span><input class="w-full bg-surface-container-lowest rounded-xl pr-10 pl-space-md py-space-xs font-body-sm text-body-sm text-warm-ink placeholder:text-on-surface-variant focus:outline-none shadow-[0_2px_8px_rgba(58,10,22,0.04)]" placeholder="البحث في المشتريات والطلبات..." type="text"/></div><div class="flex items-center gap-space-sm"><button class="relative w-10 h-10 rounded-xl bg-surface-container-lowest flex items-center justify-center text-on-surface hover:bg-blush-surface hover:text-primary transition-colors shadow-[0_2px_8px_rgba(58,10,22,0.04)]"><span class="material-symbols-outlined text-[20px]">notifications</span><span class="absolute top-2 left-2 w-2 h-2 rounded-full bg-primary"></span></button><button class="w-10 h-10 rounded-xl bg-surface-container-lowest flex items-center justify-center text-on-surface hover:bg-blush-surface hover:text-primary transition-colors shadow-[0_2px_8px_rgba(58,10,22,0.04)]"><span class="material-symbols-outlined text-[20px]">tune</span></button></div><div class="flex items-center gap-space-sm pr-space-sm"><div class="flex flex-col text-left"><span class="font-label-lg text-label-lg text-warm-ink font-semibold">سارة آل رحيم</span><span class="font-label-sm text-label-sm text-antique-gold">مدير المشتريات والخزينة</span></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="w-full pt-20 bg-ivory-canvas min-h-screen px-space-xl py-space-xl max-w-[1440px] mx-auto"><div class="flex flex-col w-full">
+<!-- Page Header & Top Narrative -->
+<div class="flex flex-col gap-space-md mb-space-xl">
+<!-- Breadcrumb & Context Navigation -->
+<div class="flex items-center gap-space-xs text-on-surface-variant font-label-md text-label-md">
+<span class="hover:text-primary transition-colors cursor-pointer">المشتريات</span>
+<span class="material-symbols-outlined text-[14px] text-muted-rosewood">chevron_left</span>
+<span class="text-warm-ink font-semibold">سجل دفعات الشراء والتكلفة</span>
+</div>
+<!-- Title Bar with Luxury Meta & Actions -->
+<div class="flex flex-col lg:flex-row lg:items-end justify-between gap-space-lg">
+<div class="flex flex-col gap-space-xs max-w-2xl">
+<div class="flex items-center gap-space-sm">
+<h1 class="font-headline-xl text-headline-xl text-warm-ink tracking-tight">سجل دفعات الشراء والتكلفة</h1>
+<span class="text-royal-gold text-[12px]">◆</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          تتبع دفعات التوريد، التكلفة بالمتوسط المرجح، وحالات الاستلام الجزئي والكامل من الموردين المعتمدين لدى دار آيريس.
+        </p>
+</div>
+<!-- Action Cluster -->
+<div class="flex items-center gap-space-md flex-wrap">
+<!-- Costing Method Chip -->
+<div class="flex items-center gap-space-xs px-space-md py-2.5 rounded-full bg-surface-container shadow-sm border border-transparent hover:shadow-md transition-shadow">
+<span class="text-royal-gold text-[10px]">◆</span>
+<span class="font-label-md text-label-md text-antique-gold font-medium">طريقة التكلفة: المتوسط المرجّح (Weighted Average)</span>
+</div>
+<!-- Create Purchase Order CTA -->
+<button class="flex items-center gap-space-xs px-space-lg py-2.5 rounded-lg bg-imperial-burgundy text-ivory-canvas font-label-lg text-label-lg shadow-[0_8px_20px_rgba(114,19,40,0.18)] hover:bg-burgundy-600 active:translate-y-px transition-all">
+<span class="material-symbols-outlined text-[18px]">add</span>
+<span>أمر شراء جديد</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Decorative Signature Dual Gold Hairline -->
+<div class="relative w-full flex items-center justify-center my-space-xs mb-space-lg">
+<div class="w-full flex flex-col gap-[3px]">
+<div class="h-[1px] w-full bg-hairline-gold"></div>
+<div class="h-[1px] w-full bg-hairline-gold"></div>
+</div>
+<div class="absolute bg-ivory-canvas px-space-md flex items-center gap-space-xs">
+<span class="text-royal-gold text-[9px]">◆</span>
+<span class="text-royal-gold text-[13px]">◆</span>
+<span class="text-royal-gold text-[9px]">◆</span>
+</div>
+</div>
+<!-- Tabs Navigation & Live Filter Surface -->
+<div class="flex flex-col gap-space-md bg-surface-container-lowest rounded-xl p-space-md shadow-[0_8px_30px_rgba(58,10,22,0.05)] mb-space-lg">
+<!-- Status Tabs -->
+<div class="flex items-center justify-between overflow-x-auto pb-space-xs border-b border-surface-container">
+<div class="flex items-center gap-space-sm min-w-max">
+<button class="relative px-space-md py-space-sm font-label-lg text-label-lg text-warm-ink font-semibold flex items-center gap-space-xs group">
+<span class="w-2 h-2 rounded-full bg-royal-gold"></span>
+<span>كافة الدفعات</span>
+<span class="px-2 py-0.5 rounded-full bg-blush-surface text-primary text-label-sm font-body-sm font-medium">124</span>
+<div class="absolute bottom-0 right-0 left-0 h-[2.5px] bg-royal-gold rounded-full"></div>
+</button>
+<button class="relative px-space-md py-space-sm font-label-lg text-label-lg text-on-surface-variant hover:text-warm-ink transition-colors flex items-center gap-space-xs group">
+<span>مكتملة الاستلام</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container text-on-surface-variant text-label-sm font-body-sm font-medium">98</span>
+</button>
+<button class="relative px-space-md py-space-sm font-label-lg text-label-lg text-on-surface-variant hover:text-warm-ink transition-colors flex items-center gap-space-xs group">
+<span>استلام جزئي</span>
+<span class="px-2 py-0.5 rounded-full bg-semantic-warning-bg text-semantic-warning text-label-sm font-body-sm font-medium">18</span>
+</button>
+<button class="relative px-space-md py-space-sm font-label-lg text-label-lg text-on-surface-variant hover:text-warm-ink transition-colors flex items-center gap-space-xs group">
+<span>معلقة بالتوريد</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container text-on-surface-variant text-label-sm font-body-sm font-medium">8</span>
+</button>
+</div>
+<!-- Quick Export / Print Tools -->
+<div class="hidden sm:flex items-center gap-space-xs">
+<button class="flex items-center gap-1.5 px-space-sm py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container font-label-sm text-label-sm transition-colors">
+<span class="material-symbols-outlined text-[18px]">download</span>
+<span>تصدير كشف</span>
+</button>
+<button class="w-8 h-8 rounded-lg flex items-center justify-center text-on-surface-variant hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-[18px]">print</span>
+</button>
+</div>
+</div>
+<!-- Contextual Search and Multi-Parameter Filter Row -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-space-md items-center">
+<!-- Search Bar -->
+<div class="md:col-span-6 relative">
+<span class="material-symbols-outlined absolute right-space-md top-1/2 -translate-y-1/2 text-muted-rosewood text-[20px]">search</span>
+<input class="w-full bg-surface-container-low rounded-lg pr-11 pl-space-md py-2.5 font-body-sm text-body-sm text-warm-ink placeholder:text-muted-rosewood focus:outline-none focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary/20 transition-all" placeholder="ابحث برقم الدفعة، المنتج، أو المورد..." type="text"/>
+</div>
+<!-- Supplier Dropdown Filter -->
+<div class="md:col-span-3 relative">
+<div class="w-full bg-surface-container-low rounded-lg px-space-md py-2.5 flex items-center justify-between cursor-pointer hover:bg-surface-container transition-colors">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-muted-rosewood text-[18px]">handshake</span>
+<span class="font-body-sm text-body-sm text-warm-ink">كافة الموردين</span>
+</div>
+<span class="material-symbols-outlined text-muted-rosewood text-[18px]">expand_more</span>
+</div>
+</div>
+<!-- Date Period Picker -->
+<div class="md:col-span-3 relative">
+<div class="w-full bg-surface-container-low rounded-lg px-space-md py-2.5 flex items-center justify-between cursor-pointer hover:bg-surface-container transition-colors">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-muted-rosewood text-[18px]">calendar_today</span>
+<span class="font-body-sm text-body-sm text-warm-ink">سبتمبر - أكتوبر 2026</span>
+</div>
+<span class="material-symbols-outlined text-muted-rosewood text-[18px]">tune</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Primary Purchasing Batches Ledger Table -->
+<div class="bg-surface-container-lowest rounded-2xl shadow-[0_12px_40px_rgba(58,10,22,0.06)] overflow-hidden mb-space-xl">
+<div class="overflow-x-auto">
+<table class="w-full text-right border-collapse">
+<!-- Table Sticky Header with Blush Surface Tint -->
+<thead>
+<tr class="bg-blush-surface text-warm-ink font-label-md text-label-md sticky top-0 z-10 shadow-[0_2px_6px_rgba(58,10,22,0.04)]">
+<th class="py-space-md px-space-md font-semibold text-right">رقم الدفعة</th>
+<th class="py-space-md px-space-md font-semibold text-right">المورد</th>
+<th class="py-space-md px-space-md font-semibold text-right">المنتج والمتغير</th>
+<th class="py-space-md px-space-md font-semibold text-center">الكمية</th>
+<th class="py-space-md px-space-md font-semibold text-left">تكلفة الوحدة</th>
+<th class="py-space-md px-space-md font-semibold text-left">الإجمالي</th>
+<th class="py-space-md px-space-lg font-semibold text-right min-w-[210px]">المستلم والمتبقي</th>
+<th class="py-space-md px-space-md font-semibold text-center">تاريخ الشراء</th>
+<th class="py-space-md px-space-md font-semibold text-center">فاتورة المورد</th>
+<th class="py-space-md px-space-md font-semibold text-center">الإجراءات</th>
+</tr>
+</thead>
+<!-- Table Body Rows -->
+<tbody class="divide-y divide-surface-container font-body-sm text-body-sm">
+<!-- Row 1: B-0412 (Partial Receipt) -->
+<tr class="hover:bg-ivory-canvas/60 transition-colors group">
+<!-- Batch ID -->
+<td class="py-space-md px-space-md">
+<span class="inline-flex items-center px-2.5 py-1 rounded-md bg-blush-surface text-imperial-burgundy font-semibold tracking-wider text-[12px] font-mono">
+                B-0412
+              </span>
+</td>
+<!-- Supplier -->
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-space-xs">
+<span class="w-7 h-7 rounded-full bg-surface-container flex items-center justify-center text-antique-gold text-[13px] font-bold">
+                  ب
+                </span>
+<span class="font-medium text-warm-ink">شركة بريق الذهب للتجارة</span>
+</div>
+</td>
+<!-- Product / Variant -->
+<td class="py-space-md px-space-md">
+<div class="flex flex-col">
+<span class="font-medium text-warm-ink leading-snug">قلادة ذهبية رقم 102 — عيار 18</span>
+<span class="font-label-sm text-label-sm text-muted-rosewood tracking-wide font-mono mt-0.5">SKU: NK-102-GLD</span>
+</div>
+</td>
+<!-- Purchased Qty -->
+<td class="py-space-md px-space-md text-center">
+<span class="font-medium text-warm-ink">100 قطعة</span>
+</td>
+<!-- Unit Cost -->
+<td class="py-space-md px-space-md text-left font-mono font-medium text-warm-ink">
+              9,000 د.ع
+            </td>
+<!-- Total Cost -->
+<td class="py-space-md px-space-md text-left font-mono font-bold text-imperial-burgundy">
+              900,000 د.ع
+            </td>
+<!-- Received & Remaining (Progress Bar) -->
+<td class="py-space-md px-space-lg">
+<div class="flex flex-col gap-1.5">
+<div class="flex items-center justify-between text-label-sm font-medium">
+<span class="text-warm-ink font-mono">80 من أصل 100</span>
+<span class="text-antique-gold font-mono font-semibold">80%</span>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container overflow-hidden">
+<div class="h-full bg-gradient-to-l from-royal-gold to-antique-gold rounded-full" style="width: 80%;"></div>
+</div>
+<span class="text-[11px] text-semantic-warning font-medium">متبقي 20 قطعة</span>
+</div>
+</td>
+<!-- Purchase Date -->
+<td class="py-space-md px-space-md text-center text-muted-rosewood font-mono text-[13px]">
+              02/10/2026
+            </td>
+<!-- Supplier Invoice -->
+<td class="py-space-md px-space-md text-center">
+<div class="inline-flex items-center gap-1 text-primary hover:text-burgundy-600 cursor-pointer font-mono text-label-sm font-medium">
+<span class="material-symbols-outlined text-[16px]">attach_file</span>
+<span>INV-2026-8841</span>
+</div>
+</td>
+<!-- Actions -->
+<td class="py-space-md px-space-md text-center">
+<div class="flex items-center justify-center gap-space-xs">
+<button class="px-space-sm py-1.5 rounded-lg bg-blush-surface hover:bg-rose-mist text-imperial-burgundy font-label-sm text-label-sm font-semibold transition-colors">
+                  استكمال الاستلام
+                </button>
+<button class="w-8 h-8 rounded-lg flex items-center justify-center text-muted-rosewood hover:bg-surface-container hover:text-warm-ink transition-colors">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 2: B-0411 (Fully Received) -->
+<tr class="hover:bg-ivory-canvas/60 transition-colors group">
+<td class="py-space-md px-space-md">
+<span class="inline-flex items-center px-2.5 py-1 rounded-md bg-blush-surface text-imperial-burgundy font-semibold tracking-wider text-[12px] font-mono">
+                B-0411
+              </span>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-space-xs">
+<span class="w-7 h-7 rounded-full bg-surface-container flex items-center justify-center text-antique-gold text-[13px] font-bold">
+                  ب
+                </span>
+<span class="font-medium text-warm-ink">شركة بريق الذهب للتجارة</span>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex flex-col">
+<span class="font-medium text-warm-ink leading-snug">خاتم السوليتير الماسي 102</span>
+<span class="font-label-sm text-label-sm text-muted-rosewood tracking-wide font-mono mt-0.5">SKU: RG-102-SLV</span>
+</div>
+</td>
+<td class="py-space-md px-space-md text-center">
+<span class="font-medium text-warm-ink">50 قطعة</span>
+</td>
+<td class="py-space-md px-space-md text-left font-mono font-medium text-warm-ink">
+              12,500 د.ع
+            </td>
+<td class="py-space-md px-space-md text-left font-mono font-bold text-imperial-burgundy">
+              625,000 د.ع
+            </td>
+<!-- Received Status: Complete -->
+<td class="py-space-md px-space-lg">
+<div class="flex flex-col gap-1.5">
+<div class="flex items-center justify-between text-label-sm font-medium">
+<span class="text-warm-ink font-mono">50 من أصل 50</span>
+<span class="text-semantic-success font-label-sm font-semibold flex items-center gap-0.5">
+                    مكتمل الاستلام ✓
+                  </span>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container overflow-hidden">
+<div class="h-full bg-semantic-success rounded-full" style="width: 100%;"></div>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-md text-center text-muted-rosewood font-mono text-[13px]">
+              02/10/2026
+            </td>
+<td class="py-space-md px-space-md text-center">
+<div class="inline-flex items-center gap-1 text-primary hover:text-burgundy-600 cursor-pointer font-mono text-label-sm font-medium">
+<span class="material-symbols-outlined text-[16px]">attach_file</span>
+<span>INV-2026-8841</span>
+</div>
+</td>
+<td class="py-space-md px-space-md text-center">
+<button class="px-space-sm py-1.5 rounded-lg bg-surface-container hover:bg-surface-container-high text-warm-ink font-label-sm text-label-sm font-medium transition-colors">
+                عرض الفاتورة
+              </button>
+</td>
+</tr>
+<!-- Row 3: B-0410 (Fully Received) -->
+<tr class="hover:bg-ivory-canvas/60 transition-colors group">
+<td class="py-space-md px-space-md">
+<span class="inline-flex items-center px-2.5 py-1 rounded-md bg-blush-surface text-imperial-burgundy font-semibold tracking-wider text-[12px] font-mono">
+                B-0410
+              </span>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-space-xs">
+<span class="w-7 h-7 rounded-full bg-surface-container flex items-center justify-center text-antique-gold text-[13px] font-bold">
+                  ر
+                </span>
+<span class="font-medium text-warm-ink">ورشة الرافدين للصياغة اليدوية</span>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex flex-col">
+<span class="font-medium text-warm-ink leading-snug">سوار ناعم رقم 08 — عيار 21</span>
+<span class="font-label-sm text-label-sm text-muted-rosewood tracking-wide font-mono mt-0.5">SKU: BR-008-GLD</span>
+</div>
+</td>
+<td class="py-space-md px-space-md text-center">
+<span class="font-medium text-warm-ink">200 قطعة</span>
+</td>
+<td class="py-space-md px-space-md text-left font-mono font-medium text-warm-ink">
+              14,000 د.ع
+            </td>
+<td class="py-space-md px-space-md text-left font-mono font-bold text-imperial-burgundy">
+              2,800,000 د.ع
+            </td>
+<td class="py-space-md px-space-lg">
+<div class="flex flex-col gap-1.5">
+<div class="flex items-center justify-between text-label-sm font-medium">
+<span class="text-warm-ink font-mono">200 من 200</span>
+<span class="text-semantic-success font-label-sm font-semibold flex items-center gap-0.5">
+                    مكتمل الاستلام ✓
+                  </span>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container overflow-hidden">
+<div class="h-full bg-semantic-success rounded-full" style="width: 100%;"></div>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-md text-center text-muted-rosewood font-mono text-[13px]">
+              28/09/2026
+            </td>
+<td class="py-space-md px-space-md text-center">
+<div class="inline-flex items-center gap-1 text-primary hover:text-burgundy-600 cursor-pointer font-mono text-label-sm font-medium">
+<span class="material-symbols-outlined text-[16px]">receipt</span>
+<span>RAF-9042</span>
+</div>
+</td>
+<td class="py-space-md px-space-md text-center">
+<button class="px-space-sm py-1.5 rounded-lg bg-surface-container hover:bg-surface-container-high text-warm-ink font-label-sm text-label-sm font-medium transition-colors">
+                عرض الفاتورة
+              </button>
+</td>
+</tr>
+<!-- Row 4: B-0409 (Partial Receipt) -->
+<tr class="hover:bg-ivory-canvas/60 transition-colors group">
+<td class="py-space-md px-space-md">
+<span class="inline-flex items-center px-2.5 py-1 rounded-md bg-blush-surface text-imperial-burgundy font-semibold tracking-wider text-[12px] font-mono">
+                B-0409
+              </span>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-space-xs">
+<span class="w-7 h-7 rounded-full bg-surface-container flex items-center justify-center text-antique-gold text-[13px] font-bold">
+                  إ
+                </span>
+<span class="font-medium text-warm-ink">دار إيطاليا للإكسسوارات الفاخرة</span>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex flex-col">
+<span class="font-medium text-warm-ink leading-snug">أقراط لؤلؤ رقم 17 — فضة 925</span>
+<span class="font-label-sm text-label-sm text-muted-rosewood tracking-wide font-mono mt-0.5">SKU: ER-017-PRL</span>
+</div>
+</td>
+<td class="py-space-md px-space-md text-center">
+<span class="font-medium text-warm-ink">150 قطعة</span>
+</td>
+<td class="py-space-md px-space-md text-left font-mono font-medium text-warm-ink">
+              6,200 د.ع
+            </td>
+<td class="py-space-md px-space-md text-left font-mono font-bold text-imperial-burgundy">
+              930,000 د.ع
+            </td>
+<td class="py-space-md px-space-lg">
+<div class="flex flex-col gap-1.5">
+<div class="flex items-center justify-between text-label-sm font-medium">
+<span class="text-warm-ink font-mono">60 من 150</span>
+<span class="px-2 py-0.5 rounded-full bg-semantic-warning-bg text-semantic-warning text-[11px] font-medium">
+                    استلام جزئي (40%)
+                  </span>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container overflow-hidden">
+<div class="h-full bg-gradient-to-l from-secondary-fixed-dim to-antique-gold rounded-full" style="width: 40%;"></div>
+</div>
+<span class="text-[11px] text-semantic-warning font-medium">متبقي 90 قطعة في الشحن</span>
+</div>
+</td>
+<td class="py-space-md px-space-md text-center text-muted-rosewood font-mono text-[13px]">
+              25/09/2026
+            </td>
+<td class="py-space-md px-space-md text-center">
+<div class="inline-flex items-center gap-1 text-primary hover:text-burgundy-600 cursor-pointer font-mono text-label-sm font-medium">
+<span class="material-symbols-outlined text-[16px]">attach_file</span>
+<span>IT-EXP-550</span>
+</div>
+</td>
+<td class="py-space-md px-space-md text-center">
+<div class="flex items-center justify-center gap-space-xs">
+<button class="px-space-sm py-1.5 rounded-lg bg-blush-surface hover:bg-rose-mist text-imperial-burgundy font-label-sm text-label-sm font-semibold transition-colors">
+                  استكمال الاستلام
+                </button>
+<button class="w-8 h-8 rounded-lg flex items-center justify-center text-muted-rosewood hover:bg-surface-container hover:text-warm-ink transition-colors">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 5: B-0408 (Fully Received) -->
+<tr class="hover:bg-ivory-canvas/60 transition-colors group">
+<td class="py-space-md px-space-md">
+<span class="inline-flex items-center px-2.5 py-1 rounded-md bg-blush-surface text-imperial-burgundy font-semibold tracking-wider text-[12px] font-mono">
+                B-0408
+              </span>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-space-xs">
+<span class="w-7 h-7 rounded-full bg-surface-container flex items-center justify-center text-antique-gold text-[13px] font-bold">
+                  ب
+                </span>
+<span class="font-medium text-warm-ink">شركة بريق الذهب للتجارة</span>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex flex-col">
+<span class="font-medium text-warm-ink leading-snug">قلادة قلب رقم 55 — ذهب وردي</span>
+<span class="font-label-sm text-label-sm text-muted-rosewood tracking-wide font-mono mt-0.5">SKU: NK-055-ROSE</span>
+</div>
+</td>
+<td class="py-space-md px-space-md text-center">
+<span class="font-medium text-warm-ink">80 قطعة</span>
+</td>
+<td class="py-space-md px-space-md text-left font-mono font-medium text-warm-ink">
+              11,000 د.ع
+            </td>
+<td class="py-space-md px-space-md text-left font-mono font-bold text-imperial-burgundy">
+              880,000 د.ع
+            </td>
+<td class="py-space-md px-space-lg">
+<div class="flex flex-col gap-1.5">
+<div class="flex items-center justify-between text-label-sm font-medium">
+<span class="text-warm-ink font-mono">80 من 80</span>
+<span class="text-semantic-success font-label-sm font-semibold flex items-center gap-0.5">
+                    مكتمل الاستلام ✓
+                  </span>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container overflow-hidden">
+<div class="h-full bg-semantic-success rounded-full" style="width: 100%;"></div>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-md text-center text-muted-rosewood font-mono text-[13px]">
+              20/09/2026
+            </td>
+<td class="py-space-md px-space-md text-center">
+<div class="inline-flex items-center gap-1 text-primary hover:text-burgundy-600 cursor-pointer font-mono text-label-sm font-medium">
+<span class="material-symbols-outlined text-[16px]">receipt</span>
+<span>INV-2026-8790</span>
+</div>
+</td>
+<td class="py-space-md px-space-md text-center">
+<button class="px-space-sm py-1.5 rounded-lg bg-surface-container hover:bg-surface-container-high text-warm-ink font-label-sm text-label-sm font-medium transition-colors">
+                عرض الفاتورة
+              </button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Pagination Footer -->
+<div class="bg-surface-container-low px-space-lg py-space-md flex flex-col sm:flex-row items-center justify-between gap-space-md border-t border-surface-container">
+<div class="flex items-center gap-space-sm text-muted-rosewood font-body-sm text-body-sm">
+<span>عرض السجلات 1 إلى 5 من أصل 124 دفعة</span>
+</div>
+<!-- RTL Pagination Controls -->
+<div class="flex items-center gap-1.5">
+<button class="w-9 h-9 rounded-lg flex items-center justify-center bg-surface-container-lowest text-muted-rosewood hover:text-warm-ink shadow-sm transition-colors">
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</button>
+<button class="w-9 h-9 rounded-lg flex items-center justify-center bg-imperial-burgundy text-ivory-canvas font-mono font-bold text-label-md shadow-sm">
+          1
+        </button>
+<button class="w-9 h-9 rounded-lg flex items-center justify-center bg-surface-container-lowest text-warm-ink hover:bg-blush-surface font-mono text-label-md shadow-sm transition-colors">
+          2
+        </button>
+<button class="w-9 h-9 rounded-lg flex items-center justify-center bg-surface-container-lowest text-warm-ink hover:bg-blush-surface font-mono text-label-md shadow-sm transition-colors">
+          3
+        </button>
+<span class="px-1 text-muted-rosewood font-mono text-label-sm">...</span>
+<button class="w-9 h-9 rounded-lg flex items-center justify-center bg-surface-container-lowest text-warm-ink hover:bg-blush-surface font-mono text-label-md shadow-sm transition-colors">
+          13
+        </button>
+<button class="w-9 h-9 rounded-lg flex items-center justify-center bg-surface-container-lowest text-muted-rosewood hover:text-warm-ink shadow-sm transition-colors">
+<span class="material-symbols-outlined text-[18px]">chevron_left</span>
+</button>
+</div>
+<div class="text-on-surface-variant font-label-sm text-label-sm font-medium">
+        صفحة 1 من 13
+      </div>
+</div>
+</div>
+<!-- Bottom Executive Summary Bento (3 Cards) -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-lg mb-space-2xl">
+<!-- Summary Card 1: Monthly Total -->
+<div class="relative bg-surface-container-lowest rounded-2xl p-space-lg shadow-[0_8px_30px_rgba(58,10,22,0.04)] overflow-hidden flex flex-col justify-between group hover:shadow-md transition-shadow">
+<div class="flex items-start justify-between">
+<div class="flex flex-col gap-1">
+<span class="font-label-md text-label-md text-muted-rosewood">إجمالي المشتريات الشهرية</span>
+<div class="flex items-baseline gap-2 mt-1">
+<span class="font-headline-lg text-headline-lg font-mono font-bold text-warm-ink">6,135,000</span>
+<span class="font-label-lg text-label-lg text-primary font-medium">د.ع</span>
+</div>
+</div>
+<div class="w-12 h-12 rounded-xl bg-blush-surface text-imperial-burgundy flex items-center justify-center shadow-inner">
+<span class="material-symbols-outlined text-[24px]">payments</span>
+</div>
+</div>
+<div class="mt-space-md pt-space-sm border-t border-surface-container flex items-center justify-between">
+<span class="font-body-sm text-body-sm text-on-surface-variant">الكمية الإجمالية المورّدة</span>
+<span class="font-mono font-semibold text-warm-ink">580 قطعة</span>
+</div>
+</div>
+<!-- Summary Card 2: Partial Delivery In Progress -->
+<div class="relative bg-surface-container-lowest rounded-2xl p-space-lg shadow-[0_8px_30px_rgba(58,10,22,0.04)] overflow-hidden flex flex-col justify-between group hover:shadow-md transition-shadow">
+<div class="flex items-start justify-between">
+<div class="flex flex-col gap-1">
+<span class="font-label-md text-label-md text-muted-rosewood">دفعات قيد الاستلام الجزئي</span>
+<div class="flex items-baseline gap-2 mt-1">
+<span class="font-headline-lg text-headline-lg font-mono font-bold text-semantic-warning">3</span>
+<span class="font-headline-sm text-headline-sm text-warm-ink font-medium">دفعات نشطة</span>
+</div>
+</div>
+<div class="w-12 h-12 rounded-xl bg-semantic-warning-bg text-semantic-warning flex items-center justify-center shadow-inner">
+<span class="material-symbols-outlined text-[24px]">local_shipping</span>
+</div>
+</div>
+<div class="mt-space-md pt-space-sm border-t border-surface-container flex items-center justify-between">
+<span class="font-body-sm text-body-sm text-on-surface-variant">متبقي قيد الشحن الفعلي</span>
+<span class="font-mono font-semibold text-semantic-warning">110 قطع</span>
+</div>
+</div>
+<!-- Summary Card 3: Costing & Treasury Status -->
+<div class="relative bg-wine-night text-champagne-gold rounded-2xl p-space-lg shadow-[0_16px_40px_rgba(30,7,13,0.22)] overflow-hidden flex flex-col justify-between group">
+<div class="flex items-start justify-between">
+<div class="flex flex-col gap-1">
+<span class="font-label-md text-label-md text-champagne-gold/75">متوسط تكلفة المخزون المرجح</span>
+<span class="font-headline-sm text-headline-sm text-champagne-gold mt-1 font-semibold">مطبق بنجاح للخزينة</span>
+</div>
+<div class="w-12 h-12 rounded-xl bg-deep-oxblood text-royal-gold flex items-center justify-center border border-royal-gold/20">
+<span class="material-symbols-outlined text-[24px]">balance</span>
+</div>
+</div>
+<div class="mt-space-md pt-space-sm border-t border-royal-gold/20 flex items-center justify-between text-body-sm">
+<span class="text-champagne-gold/70">التغطية المحاسبية الشاملة</span>
+<span class="font-mono font-bold text-royal-gold">120 صنف مجوهرات</span>
+</div>
+</div>
+</div>
+</div></main></div></body></html>

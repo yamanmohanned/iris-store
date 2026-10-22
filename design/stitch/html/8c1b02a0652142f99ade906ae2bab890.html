@@ -1,0 +1,1044 @@
+<!DOCTYPE html>
+
+<html dir="rtl" lang="ar"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+          "on-error": "#ffffff",
+          "on-surface-variant": "#564243",
+          "semantic-info-bg": "#E4EDF8",
+          "semantic-error-bg": "#FDE7E4",
+          "surface-bright": "#fef9f2",
+          "on-primary-fixed": "#40000f",
+          "warm-ink": "#2A1215",
+          "tertiary": "#45131e",
+          "on-primary": "#ffffff",
+          "secondary-fixed-dim": "#ebc166",
+          "surface-container": "#f2ede6",
+          "surface-container-high": "#ece7e1",
+          "primary-fixed": "#ffdadc",
+          "semantic-success-bg": "#E2F2EA",
+          "on-primary-fixed-variant": "#842134",
+          "on-secondary-container": "#775800",
+          "surface": "#fef9f2",
+          "primary": "#510015",
+          "tertiary-container": "#602833",
+          "on-tertiary-container": "#dc8f9a",
+          "error": "#ba1a1a",
+          "blush-surface": "#F7ECEC",
+          "tertiary-fixed-dim": "#ffb2bd",
+          "antique-gold": "#8A6620",
+          "on-primary-container": "#fb7c8c",
+          "surface-dim": "#ded9d3",
+          "hairline-gold": "rgba(201, 162, 75, 0.45)",
+          "inverse-on-surface": "#f5f0e9",
+          "secondary": "#795902",
+          "secondary-container": "#fdd275",
+          "surface-variant": "#e6e2db",
+          "inverse-surface": "#32302c",
+          "burgundy-600": "#8A1B34",
+          "outline": "#897173",
+          "primary-fixed-dim": "#ffb2b9",
+          "on-background": "#1d1c18",
+          "parchment": "#F3EADB",
+          "outline-variant": "#dcc0c1",
+          "semantic-info": "#2F5A8A",
+          "semantic-warning-bg": "#FCEBD0",
+          "imperial-burgundy": "#721328",
+          "muted-rosewood": "#6D585B",
+          "surface-container-lowest": "#ffffff",
+          "surface-container-low": "#f8f3ec",
+          "inverse-primary": "#ffb2b9",
+          "rose-mist": "#EED9DB",
+          "on-error-container": "#93000a",
+          "surface-tint": "#a3394a",
+          "on-tertiary": "#ffffff",
+          "wine-night": "#1E070D",
+          "secondary-fixed": "#ffdf9e",
+          "on-tertiary-fixed-variant": "#6f343f",
+          "ivory-canvas": "#FBF6EF",
+          "semantic-warning": "#8A4B08",
+          "burgundy-800": "#5A0F22",
+          "background": "#fef9f2",
+          "error-container": "#ffdad6",
+          "champagne-gold": "#E9D49C",
+          "on-tertiary-fixed": "#390915",
+          "on-surface": "#1d1c18",
+          "on-secondary-fixed": "#261a00",
+          "hairline-burgundy": "rgba(114, 19, 40, 0.14)",
+          "semantic-error": "#B42318",
+          "tertiary-fixed": "#ffd9dd",
+          "semantic-success": "#1F6B4A",
+          "deep-oxblood": "#3A0A16",
+          "on-secondary-fixed-variant": "#5b4300",
+          "royal-gold": "#C9A24B",
+          "primary-container": "#721328",
+          "surface-container-highest": "#e6e2db",
+          "on-secondary": "#ffffff"
+        },
+        "borderRadius": {
+          "DEFAULT": "0.25rem",
+          "lg": "0.5rem",
+          "xl": "0.75rem",
+          "full": "9999px"
+        },
+        "spacing": {
+          "margin-mobile": "1rem",
+          "gutter": "1.5rem",
+          "space-2xl": "4rem",
+          "space-3xl": "6rem",
+          "gutter-mobile": "1rem",
+          "space-sm": "0.5rem",
+          "space-lg": "1.5rem",
+          "space-xs": "0.25rem",
+          "margin": "2.5rem",
+          "space-md": "1rem",
+          "space-xl": "2.5rem"
+        },
+        "fontFamily": {
+          "label-lg": [
+            "IBM Plex Sans Arabic"
+          ],
+          "body-sm": [
+            "IBM Plex Sans Arabic"
+          ],
+          "label-sm": [
+            "IBM Plex Sans Arabic"
+          ],
+          "headline-xl-mobile": [
+            "El Messiri"
+          ],
+          "headline-xl": [
+            "El Messiri"
+          ],
+          "headline-sm": [
+            "El Messiri"
+          ],
+          "body-md": [
+            "IBM Plex Sans Arabic"
+          ],
+          "headline-md": [
+            "El Messiri"
+          ],
+          "display-lg-mobile": [
+            "El Messiri"
+          ],
+          "body-xl": [
+            "IBM Plex Sans Arabic"
+          ],
+          "body-lg": [
+            "IBM Plex Sans Arabic"
+          ],
+          "display-lg": [
+            "El Messiri"
+          ],
+          "headline-lg": [
+            "El Messiri"
+          ],
+          "label-md": [
+            "IBM Plex Sans Arabic"
+          ]
+        },
+        "fontSize": {
+          "label-lg": [
+            "0.9375rem",
+            {
+              "lineHeight": "1.4",
+              "fontWeight": "600"
+            }
+          ],
+          "body-sm": [
+            "0.875rem",
+            {
+              "lineHeight": "1.6",
+              "fontWeight": "400"
+            }
+          ],
+          "label-sm": [
+            "0.6875rem",
+            {
+              "lineHeight": "1.4",
+              "fontWeight": "500"
+            }
+          ],
+          "headline-xl-mobile": [
+            "1.75rem",
+            {
+              "lineHeight": "1.35",
+              "fontWeight": "600"
+            }
+          ],
+          "headline-xl": [
+            "2.5rem",
+            {
+              "lineHeight": "1.3",
+              "fontWeight": "600"
+            }
+          ],
+          "headline-sm": [
+            "1.25rem",
+            {
+              "lineHeight": "1.45",
+              "fontWeight": "500"
+            }
+          ],
+          "body-md": [
+            "1rem",
+            {
+              "lineHeight": "1.7",
+              "fontWeight": "400"
+            }
+          ],
+          "headline-md": [
+            "1.5rem",
+            {
+              "lineHeight": "1.4",
+              "fontWeight": "600"
+            }
+          ],
+          "display-lg-mobile": [
+            "2.25rem",
+            {
+              "lineHeight": "1.3",
+              "fontWeight": "700"
+            }
+          ],
+          "body-xl": [
+            "1.25rem",
+            {
+              "lineHeight": "1.7",
+              "fontWeight": "400"
+            }
+          ],
+          "body-lg": [
+            "1.125rem",
+            {
+              "lineHeight": "1.7",
+              "fontWeight": "400"
+            }
+          ],
+          "display-lg": [
+            "3.5rem",
+            {
+              "lineHeight": "1.25",
+              "fontWeight": "700"
+            }
+          ],
+          "headline-lg": [
+            "2rem",
+            {
+              "lineHeight": "1.35",
+              "fontWeight": "600"
+            }
+          ],
+          "label-md": [
+            "0.8125rem",
+            {
+              "lineHeight": "1.4",
+              "fontWeight": "500"
+            }
+          ]
+        }
+      },
+    },
+  }</script></head><body class="bg-ivory-canvas font-body-md text-on-surface antialiased"><aside class="fixed right-0 top-0 h-full w-[280px] bg-wine-night z-50 flex flex-col justify-between shadow-[0_24px_64px_rgba(30,7,13,0.35)]"><div class="flex flex-col flex-1 overflow-y-auto"><div class="pt-8 pb-6 px-6"><div class="flex items-center gap-2 mb-2"><span class="font-headline-md text-headline-md tracking-wider text-champagne-gold">IRIS</span><span class="text-royal-gold text-[11px]">◆</span><span class="font-headline-sm text-headline-sm text-champagne-gold">آيريس</span></div><div class="font-label-sm text-label-sm tracking-wide text-champagne-gold/70 pb-4">دار المجوهرات الفاخرة</div><div class="h-[1px] w-full bg-hairline-gold"></div><div class="h-[1px] w-full bg-hairline-gold mt-[3px]"></div></div><nav class="flex-1 px-3 space-y-1" data-active-classes="bg-burgundy-800 text-champagne-gold font-label-lg shadow-sm relative before:content-[''] before:absolute before:right-0 before:top-1.5 before:bottom-1.5 before:w-1 before:bg-royal-gold before:rounded-l"><a class="flex items-center justify-between px-3 py-2.5 rounded-lg text-champagne-gold/75 hover:bg-burgundy-800 hover:text-champagne-gold transition-colors font-label-md text-label-md" data-path="dashboard" href="#">لوحة التحكم</a><a class="flex items-center justify-between px-3 py-2.5 rounded-lg text-champagne-gold/75 hover:bg-burgundy-800 hover:text-champagne-gold transition-colors font-label-md text-label-md" data-path="orders" href="#">الطلبات</a><a class="flex items-center justify-between px-3 py-2.5 rounded-lg text-champagne-gold/75 hover:bg-burgundy-800 hover:text-champagne-gold transition-colors font-label-md text-label-md" data-path="products" href="#">المنتجات</a><a class="flex items-center justify-between px-3 py-2.5 rounded-lg text-champagne-gold/75 hover:bg-burgundy-800 hover:text-champagne-gold transition-colors font-label-md text-label-md" data-path="categories" href="#">التصنيفات</a><a class="flex items-center justify-between px-3 py-2.5 rounded-lg text-champagne-gold/75 hover:bg-burgundy-800 hover:text-champagne-gold transition-colors font-label-md text-label-md" data-path="inventory" href="#">المخزون</a><a class="flex items-center justify-between px-3 py-2.5 rounded-lg text-champagne-gold/75 hover:bg-burgundy-800 hover:text-champagne-gold transition-colors font-label-md text-label-md" data-path="purchases" href="#">المشتريات</a><a class="flex items-center justify-between px-3 py-2.5 rounded-lg text-champagne-gold/75 hover:bg-burgundy-800 hover:text-champagne-gold transition-colors font-label-md text-label-md" data-path="suppliers" href="#">الموردون</a><a class="flex items-center justify-between px-3 py-2.5 rounded-lg text-champagne-gold/75 hover:bg-burgundy-800 hover:text-champagne-gold transition-colors font-label-md text-label-md" data-path="customers" href="#">العملاء</a><a class="flex items-center justify-between px-3 py-2.5 rounded-lg text-champagne-gold/75 hover:bg-burgundy-800 hover:text-champagne-gold transition-colors font-label-md text-label-md" data-path="payments" href="#">المدفوعات والمستحقات</a><a aria-current="page" class="flex items-center justify-between px-3 py-2.5 rounded-lg transition-colors bg-burgundy-800 text-champagne-gold font-label-lg shadow-sm relative before:content-[''] before:absolute before:right-0 before:top-1.5 before:bottom-1.5 before:w-1 before:bg-royal-gold before:rounded-l" data-path="reports" href="#">التقارير</a><a class="flex items-center justify-between px-3 py-2.5 rounded-lg text-champagne-gold/75 hover:bg-burgundy-800 hover:text-champagne-gold transition-colors font-label-md text-label-md" data-path="settings" href="#">الإعدادات</a></nav></div><div class="p-4 bg-deep-oxblood/80 m-3 rounded-xl"><div class="flex items-center gap-3"><div class="w-9 h-9 rounded-full bg-burgundy-600 flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-champagne-gold text-[19px]">person</span></div><div class="min-w-0 flex-1"><div class="font-label-md text-label-md text-champagne-gold truncate">سارة آل رحيم</div><div class="font-label-sm text-label-sm text-champagne-gold/70 truncate">المدير العام</div></div><span class="material-symbols-outlined text-royal-gold/80 text-[18px]">verified</span></div></div></aside><div class="pr-[280px]"><header class="fixed top-0 right-[280px] left-0 h-16 bg-surface/90 backdrop-blur-xl z-40 shadow-[0_8px_30px_rgba(58,10,22,0.04)]"><div class="h-16 w-full px-8 flex items-center justify-between"><div class="flex items-center gap-4 flex-1 max-w-md"><div class="relative w-full"><span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-muted-rosewood text-[19px]">search</span><input class="w-full bg-surface-container-low pl-14 pr-10 py-1.5 rounded-lg font-body-sm text-body-sm text-on-surface placeholder:text-muted-rosewood/70 focus:outline-none focus:ring-1 focus:ring-royal-gold" placeholder="بحث شامل في الخزينة والعملاء..." type="text"/><div class="absolute left-2.5 top-1/2 -translate-y-1/2 px-1.5 py-0.5 rounded bg-surface-container-high text-muted-rosewood font-label-sm text-label-sm font-mono">Ctrl+K</div></div></div><div class="flex items-center gap-5"><div class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-surface-container-low"><span class="material-symbols-outlined text-royal-gold text-[18px]">lock_open</span><span class="font-label-sm text-label-sm text-warm-ink font-medium">خزينة الصياغة الرئيسية</span><span class="material-symbols-outlined text-muted-rosewood text-[15px]">expand_more</span></div><div class="h-5 w-[1px] bg-outline-variant/60"></div><div class="relative flex items-center justify-center w-8 h-8 rounded-full bg-surface-container-low cursor-pointer"><span class="material-symbols-outlined text-warm-ink text-[19px]">notifications</span><span class="absolute -top-1 -right-1 w-4 h-4 bg-royal-gold text-wine-night rounded-full flex items-center justify-center font-label-sm text-[10px] font-bold">3</span></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="relative pt-16 bg-ivory-canvas min-h-screen"><div class="flex flex-col w-full">
+<div class="px-8 py-8 space-y-8 max-w-[1440px] mx-auto w-full">
+<!-- Breadcrumb & Top Bar -->
+<div class="flex flex-col gap-3">
+<nav class="flex items-center gap-2 font-label-sm text-label-sm text-muted-rosewood">
+<a class="hover:text-primary transition-colors flex items-center gap-1" href="#">
+<span class="material-symbols-outlined text-[15px]">home</span>
+<span>الرئيسية</span>
+</a>
+<span class="text-royal-gold/60 text-[10px]">‹</span>
+<span class="text-warm-ink font-medium">التقارير والمؤشرات التحليلية</span>
+</nav>
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-2">
+<div class="space-y-1.5">
+<div class="flex items-center gap-3">
+<h1 class="font-headline-lg text-headline-lg text-warm-ink tracking-tight">مركز التقارير والتحليلات الإدارية</h1>
+<span class="px-2.5 py-0.5 rounded-full bg-champagne-gold/25 text-antique-gold font-label-sm text-label-sm font-semibold border-0">نسخة الخزينة V2.4</span>
+</div>
+<p class="font-body-sm text-body-sm text-muted-rosewood max-w-2xl">
+            مستودع التحليلات البيانية، تدقيق حركة المبيعات، ومراقبة أداء المخزون والربحية لدار آيريس للمجوهرات الفاخرة.
+          </p>
+</div>
+<!-- Actions & Universal Filter -->
+<div class="flex items-center gap-3 shrink-0">
+<div class="relative w-80">
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-muted-rosewood text-[18px]">filter_list</span>
+<input class="w-full bg-surface-container-low pl-14 pr-10 py-2.5 rounded-xl font-body-sm text-body-sm text-warm-ink placeholder:text-muted-rosewood/70 focus:outline-none focus:bg-surface-container-lowest shadow-sm transition-all" id="reports-filter-input" placeholder="تصفية قائمة التقارير بالاسم..." type="text"/>
+<div class="absolute left-3 top-1/2 -translate-y-1/2 px-1.5 py-0.5 rounded bg-surface-container-high text-muted-rosewood font-label-sm text-[10px] font-mono select-none">
+              Ctrl+K
+            </div>
+</div>
+<button class="group relative inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-imperial-burgundy text-surface font-label-md text-label-md shadow-md hover:bg-burgundy-600 active:translate-y-[1px] transition-all overflow-hidden" type="button">
+<span class="material-symbols-outlined text-champagne-gold text-[18px]">add_chart</span>
+<span>إنشاء تقرير مخصص</span>
+<span class="absolute inset-0 bg-gradient-to-r from-transparent via-champagne-gold/15 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out"></span>
+</button>
+</div>
+</div>
+</div>
+<!-- Pinned & Recent Strip -->
+<div class="bg-surface-container-low/70 rounded-2xl p-4 shadow-sm backdrop-blur-sm">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+<div class="flex items-center gap-2 shrink-0">
+<div class="w-7 h-7 rounded-lg bg-champagne-gold/20 flex items-center justify-center text-antique-gold">
+<span class="material-symbols-outlined text-[17px]">bookmark</span>
+</div>
+<span class="font-label-md text-label-md text-warm-ink font-semibold">تقارير حديثة ومفضلة</span>
+<span class="w-1.5 h-1.5 rounded-full bg-royal-gold"></span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-3 flex-1 max-w-4xl">
+<!-- Pin 1 -->
+<div class="group flex items-center justify-between p-2.5 rounded-xl bg-surface-container-lowest hover:bg-blush-surface/50 shadow-sm transition-all cursor-pointer">
+<div class="flex items-center gap-2.5 min-w-0">
+<span class="material-symbols-outlined text-muted-rosewood text-[17px] group-hover:text-primary transition-colors">query_stats</span>
+<div class="min-w-0">
+<div class="font-label-md text-label-md text-warm-ink font-medium truncate">المبيعات حسب قناة البيع (أكتوبر 2026)</div>
+<div class="font-label-sm text-[11px] text-muted-rosewood flex items-center gap-1 font-mono">
+<span class="material-symbols-outlined text-[12px]">schedule</span>
+<span>عُرض قبل 15 دقيقة</span>
+</div>
+</div>
+</div>
+<a class="shrink-0 font-label-sm text-label-sm text-primary font-semibold group-hover:text-burgundy-600 transition-colors mr-2" href="#">فتح سريع</a>
+</div>
+<!-- Pin 2 -->
+<div class="group flex items-center justify-between p-2.5 rounded-xl bg-surface-container-lowest hover:bg-blush-surface/50 shadow-sm transition-all cursor-pointer">
+<div class="flex items-center gap-2.5 min-w-0">
+<span class="material-symbols-outlined text-muted-rosewood text-[17px] group-hover:text-primary transition-colors">inventory_2</span>
+<div class="min-w-0">
+<div class="font-label-md text-label-md text-warm-ink font-medium truncate">حركة المخزون والقطع المنخفضة</div>
+<div class="font-label-sm text-[11px] text-muted-rosewood flex items-center gap-1 font-mono">
+<span class="material-symbols-outlined text-[12px]">schedule</span>
+<span>عُرض اليوم 11:30 ص</span>
+</div>
+</div>
+</div>
+<a class="shrink-0 font-label-sm text-label-sm text-primary font-semibold group-hover:text-burgundy-600 transition-colors mr-2" href="#">فتح سريع</a>
+</div>
+<!-- Pin 3 -->
+<div class="group flex items-center justify-between p-2.5 rounded-xl bg-surface-container-lowest hover:bg-blush-surface/50 shadow-sm transition-all cursor-pointer">
+<div class="flex items-center gap-2.5 min-w-0">
+<span class="material-symbols-outlined text-muted-rosewood text-[17px] group-hover:text-primary transition-colors">account_balance_wallet</span>
+<div class="min-w-0">
+<div class="font-label-md text-label-md text-warm-ink font-medium truncate">قائمة الدخل والأرباح التشغيلية</div>
+<div class="font-label-sm text-[11px] text-muted-rosewood flex items-center gap-1 font-mono">
+<span class="material-symbols-outlined text-[12px]">schedule</span>
+<span>عُرض أمس</span>
+</div>
+</div>
+</div>
+<a class="shrink-0 font-label-sm text-label-sm text-primary font-semibold group-hover:text-burgundy-600 transition-colors mr-2" href="#">فتح سريع</a>
+</div>
+</div>
+</div>
+</div>
+<!-- Editorial Metric Summary Ribbons -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+<div class="p-5 rounded-2xl bg-surface-container-lowest shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between mb-3">
+<span class="font-label-sm text-label-sm text-muted-rosewood">إجمالي مبيعات الشهر</span>
+<span class="material-symbols-outlined text-antique-gold text-[20px]">diamond</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="font-mono text-2xl font-semibold text-warm-ink">482,900</span>
+<span class="font-label-sm text-label-sm text-muted-rosewood">د.ع</span>
+</div>
+<div class="mt-3 flex items-center gap-1.5 font-label-sm text-[11px] text-semantic-success font-medium">
+<span class="material-symbols-outlined text-[14px]">arrow_upward</span>
+<span class="font-mono">14.2%</span>
+<span class="text-muted-rosewood">مقارنة بالشهر السابق</span>
+</div>
+</div>
+<div class="p-5 rounded-2xl bg-surface-container-lowest shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between mb-3">
+<span class="font-label-sm text-label-sm text-muted-rosewood">قيمة المخزون الحالي</span>
+<span class="material-symbols-outlined text-antique-gold text-[20px]">shelves</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="font-mono text-2xl font-semibold text-warm-ink">1,842,500</span>
+<span class="font-label-sm text-label-sm text-muted-rosewood">د.ع</span>
+</div>
+<div class="mt-3 flex items-center gap-1.5 font-label-sm text-[11px] text-muted-rosewood">
+<span>742 قطعة موزعة على الخزائن</span>
+</div>
+</div>
+<div class="p-5 rounded-2xl bg-surface-container-lowest shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between mb-3">
+<span class="font-label-sm text-label-sm text-muted-rosewood">هامش الربح الإجمالي</span>
+<span class="material-symbols-outlined text-antique-gold text-[20px]">pie_chart</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="font-mono text-2xl font-semibold text-warm-ink">38.6%</span>
+<span class="font-label-sm text-label-sm text-semantic-success">+2.1%</span>
+</div>
+<div class="mt-3 flex items-center gap-1.5 font-label-sm text-[11px] text-muted-rosewood">
+<span>معدل العائد على مبيعات الذهب 18K</span>
+</div>
+</div>
+<div class="p-5 rounded-2xl bg-deep-oxblood text-surface-container-lowest shadow-md flex flex-col justify-between relative overflow-hidden">
+<div class="flex items-center justify-between mb-3">
+<span class="font-label-sm text-label-sm text-champagne-gold">تنبيهات التدقيق المالي</span>
+<span class="material-symbols-outlined text-champagne-gold text-[20px]">verified_user</span>
+</div>
+<div>
+<div class="font-mono text-2xl font-semibold text-surface-container-lowest">0 أخطاء</div>
+<div class="font-label-sm text-[11px] text-champagne-gold/80 mt-1">تطابق تام مع إغلاق القيود اليومية</div>
+</div>
+<div class="mt-3 flex items-center gap-1.5 font-label-sm text-[11px] text-champagne-gold">
+<span class="w-2 h-2 rounded-full bg-semantic-success"></span>
+<span>الخزينة المركزية متوازنة بالكامل</span>
+</div>
+</div>
+</div>
+<!-- MAIN SECTION: 3 Distinct Report Groups -->
+<div class="space-y-10">
+<!-- SECTION 1: Sales & Orders Reports -->
+<section class="space-y-4">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-imperial-burgundy/10 flex items-center justify-center text-imperial-burgundy">
+<span class="material-symbols-outlined text-[22px]">payments</span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<h2 class="font-headline-md text-headline-md text-warm-ink">تقارير المبيعات وحركة الطلبات</h2>
+<span class="px-2 py-0.5 rounded-full bg-surface-container text-muted-rosewood font-mono text-[11px] font-semibold">7 تقارير</span>
+</div>
+<p class="font-body-sm text-body-sm text-muted-rosewood">تحليل وتتبع حركة المبيعات، التدفقات النقدية اللحظية، وسلوك الشراء عبر كافة المنافذ</p>
+</div>
+</div>
+<button class="font-label-sm text-label-sm text-imperial-burgundy hover:text-burgundy-600 flex items-center gap-1 transition-colors">
+<span>تصدير حزمة المبيعات (PDF/Excel)</span>
+<span class="material-symbols-outlined text-[16px]">file_download</span>
+</button>
+</div>
+<div class="bg-surface-container-lowest rounded-2xl shadow-sm overflow-hidden divide-y-0">
+<!-- Row 1: Daily -->
+<div class="report-row flex items-center justify-between p-4 hover:bg-surface-container-low transition-colors group">
+<div class="flex items-center gap-4 flex-1 min-w-0">
+<div class="w-11 h-11 rounded-xl bg-blush-surface flex items-center justify-center text-imperial-burgundy shrink-0 group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-[22px]">today</span>
+</div>
+<div class="min-w-0 flex-1">
+<div class="flex items-center gap-2">
+<span class="font-label-lg text-label-lg text-warm-ink font-semibold">تقرير المبيعات اليومي</span>
+<span class="px-2 py-0.5 rounded bg-semantic-info-bg text-semantic-info font-label-sm text-[10px] font-medium">مباشر</span>
+</div>
+<div class="font-body-sm text-body-sm text-muted-rosewood truncate mt-0.5">
+                  ملخص الإيراد اليومي المباشر، إجمالي فواتير الصياغة، ونسب التحصيل النقدي والشبكة.
+                </div>
+</div>
+</div>
+<div class="flex items-center gap-8 shrink-0 mr-4">
+<div class="text-left hidden sm:block">
+<div class="font-label-sm text-[11px] text-muted-rosewood">دورة التحديث</div>
+<div class="font-mono text-label-sm text-warm-ink font-medium">كل 10 دقائق</div>
+</div>
+<a class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-surface-container text-warm-ink group-hover:bg-imperial-burgundy group-hover:text-surface font-label-md text-label-md transition-all" href="#">
+<span>فتح التقرير</span>
+<span class="material-symbols-outlined text-[16px] transition-transform group-hover:-translate-x-1">arrow_back</span>
+</a>
+</div>
+</div>
+<!-- Row 2: Weekly -->
+<div class="report-row flex items-center justify-between p-4 hover:bg-surface-container-low transition-colors group bg-surface-container-lowest/60">
+<div class="flex items-center gap-4 flex-1 min-w-0">
+<div class="w-11 h-11 rounded-xl bg-blush-surface flex items-center justify-center text-imperial-burgundy shrink-0 group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-[22px]">calendar_view_week</span>
+</div>
+<div class="min-w-0 flex-1">
+<div class="flex items-center gap-2">
+<span class="font-label-lg text-label-lg text-warm-ink font-semibold">تقرير المبيعات الأسبوعي</span>
+</div>
+<div class="font-body-sm text-body-sm text-muted-rosewood truncate mt-0.5">
+                  مقارنة أداء الأسابيع المتتالية، معدل نمو الطلبيات الجديدة، ونسب إشغال صالات الاستقبال.
+                </div>
+</div>
+</div>
+<div class="flex items-center gap-8 shrink-0 mr-4">
+<div class="text-left hidden sm:block">
+<div class="font-label-sm text-[11px] text-muted-rosewood">دورة التحديث</div>
+<div class="font-mono text-label-sm text-warm-ink font-medium">نهاية كل أسبوع</div>
+</div>
+<a class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-surface-container text-warm-ink group-hover:bg-imperial-burgundy group-hover:text-surface font-label-md text-label-md transition-all" href="#">
+<span>فتح التقرير</span>
+<span class="material-symbols-outlined text-[16px] transition-transform group-hover:-translate-x-1">arrow_back</span>
+</a>
+</div>
+</div>
+<!-- Row 3: Monthly -->
+<div class="report-row flex items-center justify-between p-4 hover:bg-surface-container-low transition-colors group">
+<div class="flex items-center gap-4 flex-1 min-w-0">
+<div class="w-11 h-11 rounded-xl bg-blush-surface flex items-center justify-center text-imperial-burgundy shrink-0 group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-[22px]">calendar_month</span>
+</div>
+<div class="min-w-0 flex-1">
+<div class="flex items-center gap-2">
+<span class="font-label-lg text-label-lg text-warm-ink font-semibold">تقرير الإقفال الشهري</span>
+</div>
+<div class="font-body-sm text-body-sm text-muted-rosewood truncate mt-0.5">
+                  الإقفال الشهري التراكمي وتوزيع المبيعات المعتمدة وتدقيق تباين الحسابات البنكية.
+                </div>
+</div>
+</div>
+<div class="flex items-center gap-8 shrink-0 mr-4">
+<div class="text-left hidden sm:block">
+<div class="font-label-sm text-[11px] text-muted-rosewood">دورة التحديث</div>
+<div class="font-mono text-label-sm text-warm-ink font-medium">شهرياً (اليوم 1)</div>
+</div>
+<a class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-surface-container text-warm-ink group-hover:bg-imperial-burgundy group-hover:text-surface font-label-md text-label-md transition-all" href="#">
+<span>فتح التقرير</span>
+<span class="material-symbols-outlined text-[16px] transition-transform group-hover:-translate-x-1">arrow_back</span>
+</a>
+</div>
+</div>
+<!-- Row 4: By Product -->
+<div class="report-row flex items-center justify-between p-4 hover:bg-surface-container-low transition-colors group bg-surface-container-lowest/60">
+<div class="flex items-center gap-4 flex-1 min-w-0">
+<div class="w-11 h-11 rounded-xl bg-blush-surface flex items-center justify-center text-imperial-burgundy shrink-0 group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-[22px]">auto_awesome</span>
+</div>
+<div class="min-w-0 flex-1">
+<div class="flex items-center gap-2">
+<span class="font-label-lg text-label-lg text-warm-ink font-semibold">المبيعات حسب المنتج والقطعة</span>
+<span class="px-2 py-0.5 rounded bg-champagne-gold/30 text-antique-gold font-label-sm text-[10px] font-semibold">الأعلى طلباً</span>
+</div>
+<div class="font-body-sm text-body-sm text-muted-rosewood truncate mt-0.5">
+                  القطع الأكثر طلباً، ترتيب القلائد والأساور والخواتم الفاخرة بحسب العائد وهوامش المساهمة.
+                </div>
+</div>
+</div>
+<div class="flex items-center gap-8 shrink-0 mr-4">
+<div class="text-left hidden sm:block">
+<div class="font-label-sm text-[11px] text-muted-rosewood">دورة التحديث</div>
+<div class="font-mono text-label-sm text-warm-ink font-medium">تلقائي يومي</div>
+</div>
+<a class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-surface-container text-warm-ink group-hover:bg-imperial-burgundy group-hover:text-surface font-label-md text-label-md transition-all" href="#">
+<span>فتح التقرير</span>
+<span class="material-symbols-outlined text-[16px] transition-transform group-hover:-translate-x-1">arrow_back</span>
+</a>
+</div>
+</div>
+<!-- Row 5: By Category -->
+<div class="report-row flex items-center justify-between p-4 hover:bg-surface-container-low transition-colors group">
+<div class="flex items-center gap-4 flex-1 min-w-0">
+<div class="w-11 h-11 rounded-xl bg-blush-surface flex items-center justify-center text-imperial-burgundy shrink-0 group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-[22px]">category</span>
+</div>
+<div class="min-w-0 flex-1">
+<div class="flex items-center gap-2">
+<span class="font-label-lg text-label-lg text-warm-ink font-semibold">المبيعات حسب التصنيف والخامات</span>
+</div>
+<div class="font-body-sm text-body-sm text-muted-rosewood truncate mt-0.5">
+                  تحليل مبيعات الذهب عيار 18 قيراط، الفضة الاسترليني 925، الأطقم الملكية، والأحجار الكريمة.
+                </div>
+</div>
+</div>
+<div class="flex items-center gap-8 shrink-0 mr-4">
+<div class="text-left hidden sm:block">
+<div class="font-label-sm text-[11px] text-muted-rosewood">دورة التحديث</div>
+<div class="font-mono text-label-sm text-warm-ink font-medium">يومي</div>
+</div>
+<a class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-surface-container text-warm-ink group-hover:bg-imperial-burgundy group-hover:text-surface font-label-md text-label-md transition-all" href="#">
+<span>فتح التقرير</span>
+<span class="material-symbols-outlined text-[16px] transition-transform group-hover:-translate-x-1">arrow_back</span>
+</a>
+</div>
+</div>
+<!-- Row 6: By Staff -->
+<div class="report-row flex items-center justify-between p-4 hover:bg-surface-container-low transition-colors group bg-surface-container-lowest/60">
+<div class="flex items-center gap-4 flex-1 min-w-0">
+<div class="w-11 h-11 rounded-xl bg-blush-surface flex items-center justify-center text-imperial-burgundy shrink-0 group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-[22px]">badge</span>
+</div>
+<div class="min-w-0 flex-1">
+<div class="flex items-center gap-2">
+<span class="font-label-lg text-label-lg text-warm-ink font-semibold">أداء موظفي الاستشارات والمبيعات</span>
+</div>
+<div class="font-body-sm text-body-sm text-muted-rosewood truncate mt-0.5">
+                  أداء مسؤولي المبيعات والاستشارات الخاصة، معدلات إغلاق الصفقات، ومتوسط قيمة الفاتورة لكل موظف.
+                </div>
+</div>
+</div>
+<div class="flex items-center gap-8 shrink-0 mr-4">
+<div class="text-left hidden sm:block">
+<div class="font-label-sm text-[11px] text-muted-rosewood">دورة التحديث</div>
+<div class="font-mono text-label-sm text-warm-ink font-medium">أسبوعي</div>
+</div>
+<a class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-surface-container text-warm-ink group-hover:bg-imperial-burgundy group-hover:text-surface font-label-md text-label-md transition-all" href="#">
+<span>فتح التقرير</span>
+<span class="material-symbols-outlined text-[16px] transition-transform group-hover:-translate-x-1">arrow_back</span>
+</a>
+</div>
+</div>
+<!-- Row 7: By Sales Channel (Special) -->
+<div class="report-row flex items-center justify-between p-4 hover:bg-surface-container-low transition-colors group bg-blush-surface/30">
+<div class="flex items-center gap-4 flex-1 min-w-0">
+<div class="w-11 h-11 rounded-xl bg-imperial-burgundy flex items-center justify-center text-champagne-gold shrink-0 group-hover:scale-105 transition-transform shadow-sm">
+<span class="material-symbols-outlined text-[22px]">storefront</span>
+</div>
+<div class="min-w-0 flex-1">
+<div class="flex items-center gap-2 flex-wrap">
+<span class="font-label-lg text-label-lg text-warm-ink font-semibold">المبيعات حسب قناة البيع</span>
+<span class="px-2.5 py-0.5 rounded-full bg-semantic-success-bg text-semantic-success font-label-sm text-[10px] font-bold">نشط / افتراضي</span>
+<span class="font-label-sm text-[11px] text-muted-rosewood font-mono hidden md:inline-block">انستغرام 44% • المتجر 31% • المعرض 18% • واتساب 7%</span>
+</div>
+<div class="font-body-sm text-body-sm text-muted-rosewood truncate mt-0.5">
+                  تفصيل الحجوزات والمبيعات عبر بوتيك إنستغرام، المتجر الإلكتروني، صالة العرض الخاصة، وخدمة العملاء.
+                </div>
+</div>
+</div>
+<div class="flex items-center gap-8 shrink-0 mr-4">
+<div class="text-left hidden sm:block">
+<div class="font-label-sm text-[11px] text-muted-rosewood">دورة التحديث</div>
+<div class="font-mono text-label-sm text-warm-ink font-medium">مباشر (لحظي)</div>
+</div>
+<a class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-imperial-burgundy text-surface hover:bg-burgundy-600 font-label-md text-label-md shadow-sm transition-all" href="#">
+<span>فتح التقرير</span>
+<span class="material-symbols-outlined text-[16px] transition-transform group-hover:-translate-x-1">arrow_back</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 2: Inventory & Stock Audit -->
+<section class="space-y-4">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-antique-gold/15 flex items-center justify-center text-antique-gold">
+<span class="material-symbols-outlined text-[22px]">inventory</span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<h2 class="font-headline-md text-headline-md text-warm-ink">تقارير المخزون وتدقيق القطع</h2>
+<span class="px-2 py-0.5 rounded-full bg-surface-container text-muted-rosewood font-mono text-[11px] font-semibold">6 تقارير</span>
+</div>
+<p class="font-body-sm text-body-sm text-muted-rosewood">الرقابة الصارمة على قطع الصياغة، جرد الخزائن، تنبيهات النفاذ، وتتبع حركة المعادن</p>
+</div>
+</div>
+<button class="font-label-sm text-label-sm text-imperial-burgundy hover:text-burgundy-600 flex items-center gap-1 transition-colors">
+<span>بدء محضر جرد جديد</span>
+<span class="material-symbols-outlined text-[16px]">fact_check</span>
+</button>
+</div>
+<div class="bg-surface-container-lowest rounded-2xl shadow-sm overflow-hidden">
+<!-- Row 1: Current Stock -->
+<div class="report-row flex items-center justify-between p-4 hover:bg-surface-container-low transition-colors group">
+<div class="flex items-center gap-4 flex-1 min-w-0">
+<div class="w-11 h-11 rounded-xl bg-surface-container-low flex items-center justify-center text-warm-ink shrink-0 group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-[22px]">warehouse</span>
+</div>
+<div class="min-w-0 flex-1">
+<div class="flex items-center gap-2">
+<span class="font-label-lg text-label-lg text-warm-ink font-semibold">جرد المخزون الحالي الإجمالي</span>
+</div>
+<div class="font-body-sm text-body-sm text-muted-rosewood truncate mt-0.5">
+                  جرد الخزائن الرئيسية وصالات العرض المصفحة، متضمناً أوزان الذهب الصافي وعدد القيراط.
+                </div>
+</div>
+</div>
+<div class="flex items-center gap-8 shrink-0 mr-4">
+<div class="text-left hidden sm:block">
+<div class="font-label-sm text-[11px] text-muted-rosewood">دورة التحديث</div>
+<div class="font-mono text-label-sm text-warm-ink font-medium">يومي (06:00 ص)</div>
+</div>
+<a class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-surface-container text-warm-ink group-hover:bg-imperial-burgundy group-hover:text-surface font-label-md text-label-md transition-all" href="#">
+<span>فتح التقرير</span>
+<span class="material-symbols-outlined text-[16px] transition-transform group-hover:-translate-x-1">arrow_back</span>
+</a>
+</div>
+</div>
+<!-- Row 2: Low Stock -->
+<div class="report-row flex items-center justify-between p-4 hover:bg-surface-container-low transition-colors group bg-surface-container-lowest/60">
+<div class="flex items-center gap-4 flex-1 min-w-0">
+<div class="w-11 h-11 rounded-xl bg-semantic-warning-bg flex items-center justify-center text-semantic-warning shrink-0 group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-[22px]">warning</span>
+</div>
+<div class="min-w-0 flex-1">
+<div class="flex items-center gap-2">
+<span class="font-label-lg text-label-lg text-warm-ink font-semibold">القطع منخفضة المخزون الحرجة</span>
+<span class="px-2 py-0.5 rounded bg-semantic-warning-bg text-semantic-warning font-label-sm text-[10px] font-bold">12 قطعة متبقية</span>
+</div>
+<div class="font-body-sm text-body-sm text-muted-rosewood truncate mt-0.5">
+                  تنبيهات إعادة طلب القطع للموردين والمشاغل المعتمدة للقطع التي وصل رصيدها إلى أقل من 2.
+                </div>
+</div>
+</div>
+<div class="flex items-center gap-8 shrink-0 mr-4">
+<div class="text-left hidden sm:block">
+<div class="font-label-sm text-[11px] text-muted-rosewood">دورة التحديث</div>
+<div class="font-mono text-label-sm text-warm-ink font-medium">لحظي مع كل طلب</div>
+</div>
+<a class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-surface-container text-warm-ink group-hover:bg-imperial-burgundy group-hover:text-surface font-label-md text-label-md transition-all" href="#">
+<span>فتح التقرير</span>
+<span class="material-symbols-outlined text-[16px] transition-transform group-hover:-translate-x-1">arrow_back</span>
+</a>
+</div>
+</div>
+<!-- Row 3: Out of Stock -->
+<div class="report-row flex items-center justify-between p-4 hover:bg-surface-container-low transition-colors group">
+<div class="flex items-center gap-4 flex-1 min-w-0">
+<div class="w-11 h-11 rounded-xl bg-semantic-error-bg flex items-center justify-center text-semantic-error shrink-0 group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-[22px]">remove_shopping_cart</span>
+</div>
+<div class="min-w-0 flex-1">
+<div class="flex items-center gap-2">
+<span class="font-label-lg text-label-lg text-warm-ink font-semibold">القطع النافدة كلياً وحجم الطلب الضائع</span>
+</div>
+<div class="font-body-sm text-body-sm text-muted-rosewood truncate mt-0.5">
+                  سجل نفاذ الكميات ومفقودات المبيعات المحتملة وطلبات الحجز المسبق المعلقة.
+                </div>
+</div>
+</div>
+<div class="flex items-center gap-8 shrink-0 mr-4">
+<div class="text-left hidden sm:block">
+<div class="font-label-sm text-[11px] text-muted-rosewood">دورة التحديث</div>
+<div class="font-mono text-label-sm text-warm-ink font-medium">مباشر</div>
+</div>
+<a class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-surface-container text-warm-ink group-hover:bg-imperial-burgundy group-hover:text-surface font-label-md text-label-md transition-all" href="#">
+<span>فتح التقرير</span>
+<span class="material-symbols-outlined text-[16px] transition-transform group-hover:-translate-x-1">arrow_back</span>
+</a>
+</div>
+</div>
+<!-- Row 4: Item Movement -->
+<div class="report-row flex items-center justify-between p-4 hover:bg-surface-container-low transition-colors group bg-surface-container-lowest/60">
+<div class="flex items-center gap-4 flex-1 min-w-0">
+<div class="w-11 h-11 rounded-xl bg-surface-container-low flex items-center justify-center text-warm-ink shrink-0 group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-[22px]">history</span>
+</div>
+<div class="min-w-0 flex-1">
+<div class="flex items-center gap-2">
+<span class="font-label-lg text-label-lg text-warm-ink font-semibold">حركة منتج تفصيلية (سجل التتبع)</span>
+</div>
+<div class="font-body-sm text-body-sm text-muted-rosewood truncate mt-0.5">
+                  مسار القطعة الدقيق من تاريخ الشراء والاستلام في الخزينة إلى الشحن أو التعديل أو الإرجاع.
+                </div>
+</div>
+</div>
+<div class="flex items-center gap-8 shrink-0 mr-4">
+<div class="text-left hidden sm:block">
+<div class="font-label-sm text-[11px] text-muted-rosewood">دورة التحديث</div>
+<div class="font-mono text-label-sm text-warm-ink font-medium">فوري</div>
+</div>
+<a class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-surface-container text-warm-ink group-hover:bg-imperial-burgundy group-hover:text-surface font-label-md text-label-md transition-all" href="#">
+<span>فتح التقرير</span>
+<span class="material-symbols-outlined text-[16px] transition-transform group-hover:-translate-x-1">arrow_back</span>
+</a>
+</div>
+</div>
+<!-- Row 5: Period Inventory -->
+<div class="report-row flex items-center justify-between p-4 hover:bg-surface-container-low transition-colors group">
+<div class="flex items-center gap-4 flex-1 min-w-0">
+<div class="w-11 h-11 rounded-xl bg-surface-container-low flex items-center justify-center text-warm-ink shrink-0 group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-[22px]">sync_alt</span>
+</div>
+<div class="min-w-0 flex-1">
+<div class="flex items-center gap-2">
+<span class="font-label-lg text-label-lg text-warm-ink font-semibold">حركة المخزون لفترة زمنية محددة</span>
+</div>
+<div class="font-body-sm text-body-sm text-muted-rosewood truncate mt-0.5">
+                  مقارنة شاملة بين الوارد الجديد من الورش، المنصرف للمبيعات، الهدايا الترويجية، والتوالف.
+                </div>
+</div>
+</div>
+<div class="flex items-center gap-8 shrink-0 mr-4">
+<div class="text-left hidden sm:block">
+<div class="font-label-sm text-[11px] text-muted-rosewood">دورة التحديث</div>
+<div class="font-mono text-label-sm text-warm-ink font-medium">أسبوعي / شهري</div>
+</div>
+<a class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-surface-container text-warm-ink group-hover:bg-imperial-burgundy group-hover:text-surface font-label-md text-label-md transition-all" href="#">
+<span>فتح التقرير</span>
+<span class="material-symbols-outlined text-[16px] transition-transform group-hover:-translate-x-1">arrow_back</span>
+</a>
+</div>
+</div>
+<!-- Row 6: Stagnant -->
+<div class="report-row flex items-center justify-between p-4 hover:bg-surface-container-low transition-colors group bg-surface-container-lowest/60">
+<div class="flex items-center gap-4 flex-1 min-w-0">
+<div class="w-11 h-11 rounded-xl bg-surface-container-low flex items-center justify-center text-muted-rosewood shrink-0 group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-[22px]">hourglass_empty</span>
+</div>
+<div class="min-w-0 flex-1">
+<div class="flex items-center gap-2">
+<span class="font-label-lg text-label-lg text-warm-ink font-semibold">المنتجات الراكدة وبطيئة الحركة</span>
+<span class="px-2 py-0.5 rounded bg-surface-container-high text-muted-rosewood font-label-sm text-[10px]">فترة &gt; 90 يوم</span>
+</div>
+<div class="font-body-sm text-body-sm text-muted-rosewood truncate mt-0.5">
+                  تحليل دورة بقاء القطع في صالات العرض والخزائن وتوصيات إعادة الصهر أو التنسيق التسويقي.
+                </div>
+</div>
+</div>
+<div class="flex items-center gap-8 shrink-0 mr-4">
+<div class="text-left hidden sm:block">
+<div class="font-label-sm text-[11px] text-muted-rosewood">دورة التحديث</div>
+<div class="font-mono text-label-sm text-warm-ink font-medium">شهري</div>
+</div>
+<a class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-surface-container text-warm-ink group-hover:bg-imperial-burgundy group-hover:text-surface font-label-md text-label-md transition-all" href="#">
+<span>فتح التقرير</span>
+<span class="material-symbols-outlined text-[16px] transition-transform group-hover:-translate-x-1">arrow_back</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 3: Financials & Profitability -->
+<section class="space-y-4">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-burgundy-800/10 flex items-center justify-center text-burgundy-800">
+<span class="material-symbols-outlined text-[22px]">balance</span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<h2 class="font-headline-md text-headline-md text-warm-ink">التقارير المالية والربحية</h2>
+<span class="px-2 py-0.5 rounded-full bg-surface-container text-muted-rosewood font-mono text-[11px] font-semibold">7 تقارير</span>
+</div>
+<p class="font-body-sm text-body-sm text-muted-rosewood">الحسابات الختامية، هوامش الأرباح الحقيقية بعد الصياغة، وتدقيق مديونيات العملاء والتزامات المشاغل</p>
+</div>
+</div>
+<button class="font-label-sm text-label-sm text-imperial-burgundy hover:text-burgundy-600 flex items-center gap-1 transition-colors">
+<span>تقرير المدقق المالي المعتمد</span>
+<span class="material-symbols-outlined text-[16px]">verified</span>
+</button>
+</div>
+<div class="bg-surface-container-lowest rounded-2xl shadow-sm overflow-hidden">
+<!-- Row 1: Total Revenue -->
+<div class="report-row flex items-center justify-between p-4 hover:bg-surface-container-low transition-colors group">
+<div class="flex items-center gap-4 flex-1 min-w-0">
+<div class="w-11 h-11 rounded-xl bg-blush-surface flex items-center justify-center text-imperial-burgundy shrink-0 group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-[22px]">trending_up</span>
+</div>
+<div class="min-w-0 flex-1">
+<div class="flex items-center gap-2">
+<span class="font-label-lg text-label-lg text-warm-ink font-semibold">الإيرادات الإجمالية والتدفقات النقدية</span>
+</div>
+<div class="font-body-sm text-body-sm text-muted-rosewood truncate mt-0.5">
+                  سجل المقبوضات النقدية والتحويلات وسندات الصرف ومقارنة السيولة المتوفرة بالخزينة المركزية.
+                </div>
+</div>
+</div>
+<div class="flex items-center gap-8 shrink-0 mr-4">
+<div class="text-left hidden sm:block">
+<div class="font-label-sm text-[11px] text-muted-rosewood">دورة التحديث</div>
+<div class="font-mono text-label-sm text-warm-ink font-medium">يومي (مسائي)</div>
+</div>
+<a class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-surface-container text-warm-ink group-hover:bg-imperial-burgundy group-hover:text-surface font-label-md text-label-md transition-all" href="#">
+<span>فتح التقرير</span>
+<span class="material-symbols-outlined text-[16px] transition-transform group-hover:-translate-x-1">arrow_back</span>
+</a>
+</div>
+</div>
+<!-- Row 2: COGS -->
+<div class="report-row flex items-center justify-between p-4 hover:bg-surface-container-low transition-colors group bg-surface-container-lowest/60">
+<div class="flex items-center gap-4 flex-1 min-w-0">
+<div class="w-11 h-11 rounded-xl bg-blush-surface flex items-center justify-center text-imperial-burgundy shrink-0 group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-[22px]">calculate</span>
+</div>
+<div class="min-w-0 flex-1">
+<div class="flex items-center gap-2">
+<span class="font-label-lg text-label-lg text-warm-ink font-semibold">تكلفة البضاعة المباعة (COGS)</span>
+</div>
+<div class="font-body-sm text-body-sm text-muted-rosewood truncate mt-0.5">
+                  حساب تكلفة شراء السبائك والأحجار وأجور الصياغة وفق نموذج المتوسط المرجح المعتمد عالمياً.
+                </div>
+</div>
+</div>
+<div class="flex items-center gap-8 shrink-0 mr-4">
+<div class="text-left hidden sm:block">
+<div class="font-label-sm text-[11px] text-muted-rosewood">دورة التحديث</div>
+<div class="font-mono text-label-sm text-warm-ink font-medium">أسبوعي</div>
+</div>
+<a class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-surface-container text-warm-ink group-hover:bg-imperial-burgundy group-hover:text-surface font-label-md text-label-md transition-all" href="#">
+<span>فتح التقرير</span>
+<span class="material-symbols-outlined text-[16px] transition-transform group-hover:-translate-x-1">arrow_back</span>
+</a>
+</div>
+</div>
+<!-- Row 3: Gross Margin -->
+<div class="report-row flex items-center justify-between p-4 hover:bg-surface-container-low transition-colors group">
+<div class="flex items-center gap-4 flex-1 min-w-0">
+<div class="w-11 h-11 rounded-xl bg-blush-surface flex items-center justify-center text-imperial-burgundy shrink-0 group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-[22px]">query_stats</span>
+</div>
+<div class="min-w-0 flex-1">
+<div class="flex items-center gap-2">
+<span class="font-label-lg text-label-lg text-warm-ink font-semibold">الربح الإجمالي والهوامش الربحية</span>
+<span class="px-2 py-0.5 rounded bg-semantic-success-bg text-semantic-success font-label-sm text-[10px] font-semibold">38.6% إجمالي</span>
+</div>
+<div class="font-body-sm text-body-sm text-muted-rosewood truncate mt-0.5">
+                  تحليل الهامش الربحي الصافي لكل فئة منتجات، مع عزل أجور المصنعية وتذبذبات أسعار الذهب الفورية.
+                </div>
+</div>
+</div>
+<div class="flex items-center gap-8 shrink-0 mr-4">
+<div class="text-left hidden sm:block">
+<div class="font-label-sm text-[11px] text-muted-rosewood">دورة التحديث</div>
+<div class="font-mono text-label-sm text-warm-ink font-medium">شهري</div>
+</div>
+<a class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-surface-container text-warm-ink group-hover:bg-imperial-burgundy group-hover:text-surface font-label-md text-label-md transition-all" href="#">
+<span>فتح التقرير</span>
+<span class="material-symbols-outlined text-[16px] transition-transform group-hover:-translate-x-1">arrow_back</span>
+</a>
+</div>
+</div>
+<!-- Row 4: OPEX -->
+<div class="report-row flex items-center justify-between p-4 hover:bg-surface-container-low transition-colors group bg-surface-container-lowest/60">
+<div class="flex items-center gap-4 flex-1 min-w-0">
+<div class="w-11 h-11 rounded-xl bg-blush-surface flex items-center justify-center text-imperial-burgundy shrink-0 group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-[22px]">receipt_long</span>
+</div>
+<div class="min-w-0 flex-1">
+<div class="flex items-center gap-2">
+<span class="font-label-lg text-label-lg text-warm-ink font-semibold">المصاريف التشغيلية والإدارية (OPEX)</span>
+</div>
+<div class="font-body-sm text-body-sm text-muted-rosewood truncate mt-0.5">
+                  توزيع تكاليف الحملات الإعلانية، الشحن المصفح المؤمن، علب التغليف الفاخرة، ومصاريف الضيافة.
+                </div>
+</div>
+</div>
+<div class="flex items-center gap-8 shrink-0 mr-4">
+<div class="text-left hidden sm:block">
+<div class="font-label-sm text-[11px] text-muted-rosewood">دورة التحديث</div>
+<div class="font-mono text-label-sm text-warm-ink font-medium">شهري</div>
+</div>
+<a class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-surface-container text-warm-ink group-hover:bg-imperial-burgundy group-hover:text-surface font-label-md text-label-md transition-all" href="#">
+<span>فتح التقرير</span>
+<span class="material-symbols-outlined text-[16px] transition-transform group-hover:-translate-x-1">arrow_back</span>
+</a>
+</div>
+</div>
+<!-- Row 5: Net Profit -->
+<div class="report-row flex items-center justify-between p-4 hover:bg-surface-container-low transition-colors group">
+<div class="flex items-center gap-4 flex-1 min-w-0">
+<div class="w-11 h-11 rounded-xl bg-blush-surface flex items-center justify-center text-imperial-burgundy shrink-0 group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-[22px]">account_balance</span>
+</div>
+<div class="min-w-0 flex-1">
+<div class="flex items-center gap-2">
+<span class="font-label-lg text-label-lg text-warm-ink font-semibold">صافي الربح التشغيلي والنهائي</span>
+<span class="px-2 py-0.5 rounded bg-champagne-gold/30 text-antique-gold font-label-sm text-[10px] font-semibold">القوائم الختامية</span>
+</div>
+<div class="font-body-sm text-body-sm text-muted-rosewood truncate mt-0.5">
+                  بيان الأداء النهائي قبل وبعد الأعباء التشغيلية والإهلاك للأصول والأدوات الخاصة بالدار.
+                </div>
+</div>
+</div>
+<div class="flex items-center gap-8 shrink-0 mr-4">
+<div class="text-left hidden sm:block">
+<div class="font-label-sm text-[11px] text-muted-rosewood">دورة التحديث</div>
+<div class="font-mono text-label-sm text-warm-ink font-medium">شهري / ربع سنوي</div>
+</div>
+<a class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-surface-container text-warm-ink group-hover:bg-imperial-burgundy group-hover:text-surface font-label-md text-label-md transition-all" href="#">
+<span>فتح التقرير</span>
+<span class="material-symbols-outlined text-[16px] transition-transform group-hover:-translate-x-1">arrow_back</span>
+</a>
+</div>
+</div>
+<!-- Row 6: Receivables -->
+<div class="report-row flex items-center justify-between p-4 hover:bg-surface-container-low transition-colors group bg-surface-container-lowest/60">
+<div class="flex items-center gap-4 flex-1 min-w-0">
+<div class="w-11 h-11 rounded-xl bg-blush-surface flex items-center justify-center text-imperial-burgundy shrink-0 group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-[22px]">assignment_ind</span>
+</div>
+<div class="min-w-0 flex-1">
+<div class="flex items-center gap-2">
+<span class="font-label-lg text-label-lg text-warm-ink font-semibold">ديون ومستحقات العملاء (Receivables)</span>
+</div>
+<div class="font-body-sm text-body-sm text-muted-rosewood truncate mt-0.5">
+                  الأرصدة الآجلة، أعمار الديون لكبار العملاء (VIP)، ومتابعة دفعات الأقساط للأطقم الخاصة.
+                </div>
+</div>
+</div>
+<div class="flex items-center gap-8 shrink-0 mr-4">
+<div class="text-left hidden sm:block">
+<div class="font-label-sm text-[11px] text-muted-rosewood">دورة التحديث</div>
+<div class="font-mono text-label-sm text-warm-ink font-medium">أسبوعي</div>
+</div>
+<a class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-surface-container text-warm-ink group-hover:bg-imperial-burgundy group-hover:text-surface font-label-md text-label-md transition-all" href="#">
+<span>فتح التقرير</span>
+<span class="material-symbols-outlined text-[16px] transition-transform group-hover:-translate-x-1">arrow_back</span>
+</a>
+</div>
+</div>
+<!-- Row 7: Payables -->
+<div class="report-row flex items-center justify-between p-4 hover:bg-surface-container-low transition-colors group">
+<div class="flex items-center gap-4 flex-1 min-w-0">
+<div class="w-11 h-11 rounded-xl bg-blush-surface flex items-center justify-center text-imperial-burgundy shrink-0 group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-[22px]">handshake</span>
+</div>
+<div class="min-w-0 flex-1">
+<div class="flex items-center gap-2">
+<span class="font-label-lg text-label-lg text-warm-ink font-semibold">التزامات ومستحقات الموردين (Payables)</span>
+</div>
+<div class="font-body-sm text-body-sm text-muted-rosewood truncate mt-0.5">
+                  دفعات شراء السبائك الخام ومستحقات مشاغل الصياغة المستقلة وموازين الذهب المعلقة للتسوية.
+                </div>
+</div>
+</div>
+<div class="flex items-center gap-8 shrink-0 mr-4">
+<div class="text-left hidden sm:block">
+<div class="font-label-sm text-[11px] text-muted-rosewood">دورة التحديث</div>
+<div class="font-mono text-label-sm text-warm-ink font-medium">أسبوعي</div>
+</div>
+<a class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-surface-container text-warm-ink group-hover:bg-imperial-burgundy group-hover:text-surface font-label-md text-label-md transition-all" href="#">
+<span>فتح التقرير</span>
+<span class="material-symbols-outlined text-[16px] transition-transform group-hover:-translate-x-1">arrow_back</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Editorial Signature Divider & Audit Notice -->
+<div class="pt-6 pb-12 flex flex-col items-center justify-center text-center space-y-4">
+<div class="flex items-center gap-4 w-full max-w-lg justify-center">
+<div class="h-[1px] bg-royal-gold/30 flex-1"></div>
+<span class="text-royal-gold text-[13px] select-none">◆</span>
+<div class="h-[1px] bg-royal-gold/30 flex-1"></div>
+</div>
+<div class="flex items-center gap-2 text-muted-rosewood font-body-sm text-body-sm max-w-xl">
+<span class="material-symbols-outlined text-royal-gold text-[18px]">verified</span>
+<span>تُحدَّث جميع التقارير تلقائياً وتعتمد على القيود المثبتة في الخزينة المركزية لدار آيريس.</span>
+</div>
+<div class="font-mono font-label-sm text-[11px] text-muted-rosewood/70">
+        IRIS HAUTE JOAILLERIE • AUDIT ENGINE 2026 • ALL RIGHTS RESERVED
+      </div>
+</div>
+</div>
+</div>
+<script>
+  (function() {
+    const input = document.getElementById('reports-filter-input');
+    const rows = document.querySelectorAll('.report-row');
+
+    if (input) {
+      input.addEventListener('input', function(e) {
+        const query = e.target.value.trim().toLowerCase();
+        rows.forEach(row => {
+          const text = row.innerText.toLowerCase();
+          if (text.includes(query)) {
+            row.style.display = 'flex';
+          } else {
+            row.style.display = 'none';
+          }
+        });
+      });
+
+      // Hotkey Ctrl+K / Cmd+K support
+      window.addEventListener('keydown', function(e) {
+        if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
+          e.preventDefault();
+          input.focus();
+          input.select();
+        }
+      });
+    }
+  })();
+</script></main></div></body></html>

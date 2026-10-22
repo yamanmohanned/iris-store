@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+
+<html dir="rtl" lang="ar"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@400;500;600;700&amp;family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "on-tertiary-container": "#dc8f9a", "on-primary-fixed": "#40000f", "on-primary": "#ffffff", "inverse-primary": "#ffb2b9", "on-tertiary-fixed-variant": "#6f343f", "on-surface": "#1d1c18", "on-secondary": "#ffffff", "error-container": "#ffdad6", "surface-tint": "#a3394a", "surface-bright": "#fef9f2", "on-primary-container": "#fb7c8c", "on-error": "#ffffff", "on-tertiary": "#ffffff", "semantic-success-bg": "#E2F2EA", "on-secondary-fixed": "#261a00", "on-secondary-fixed-variant": "#5b4300", "inverse-on-surface": "#f5f0e9", "on-secondary-container": "#775800", "champagne-gold": "#E9D49C", "semantic-info": "#2F5A8A", "parchment": "#F3EADB", "antique-gold": "#8A6620", "secondary-fixed": "#ffdf9e", "inverse-surface": "#32302c", "semantic-success": "#1F6B4A", "on-tertiary-fixed": "#390915", "warm-ink": "#2A1215", "secondary-container": "#fdd275", "burgundy-800": "#5A0F22", "secondary": "#795902", "deep-oxblood": "#3A0A16", "blush-surface": "#F7ECEC", "tertiary-fixed-dim": "#ffb2bd", "hairline-gold": "rgba(201, 162, 75, 0.45)", "ivory-canvas": "#FBF6EF", "background": "#fef9f2", "on-primary-fixed-variant": "#842134", "on-error-container": "#93000a", "surface-container-high": "#ece7e1", "secondary-fixed-dim": "#ebc166", "surface-dim": "#ded9d3", "semantic-warning": "#8A4B08", "primary-container": "#721328", "outline-variant": "#dcc0c1", "semantic-info-bg": "#E4EDF8", "imperial-burgundy": "#721328", "tertiary": "#45131e", "rose-mist": "#EED9DB", "surface-container": "#f2ede6", "primary": "#510015", "surface-variant": "#e6e2db", "wine-night": "#1E070D", "burgundy-600": "#8A1B34", "muted-rosewood": "#6D585B", "surface-container-low": "#f8f3ec", "surface-container-lowest": "#ffffff", "hairline-burgundy": "rgba(114, 19, 40, 0.14)", "semantic-error-bg": "#FDE7E4", "surface": "#fef9f2", "tertiary-fixed": "#ffd9dd", "primary-fixed": "#ffdadc", "surface-container-highest": "#e6e2db", "error": "#ba1a1a", "on-background": "#1d1c18", "primary-fixed-dim": "#ffb2b9", "royal-gold": "#C9A24B", "semantic-error": "#B42318", "on-surface-variant": "#564243", "outline": "#897173", "tertiary-container": "#602833", "semantic-warning-bg": "#FCEBD0" }, borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, spacing: { "space-xs": "0.25rem", "margin-mobile": "1rem", "space-xl": "2.5rem", "space-2xl": "4rem", "margin": "2.5rem", "space-lg": "1.5rem", "gutter-mobile": "1rem", "space-md": "1rem", "space-sm": "0.5rem", "space-3xl": "6rem", "gutter": "1.5rem" }, fontFamily: { "body-xl": ["IBM Plex Sans Arabic"], "label-md": ["IBM Plex Sans Arabic"], "headline-md": ["El Messiri"], "headline-lg": ["El Messiri"], "body-md": ["IBM Plex Sans Arabic"], "headline-xl-mobile": ["El Messiri"], "label-lg": ["IBM Plex Sans Arabic"], "label-sm": ["IBM Plex Sans Arabic"], "headline-xl": ["El Messiri"], "display-lg": ["El Messiri"], "body-sm": ["IBM Plex Sans Arabic"], "headline-sm": ["El Messiri"], "body-lg": ["IBM Plex Sans Arabic"], "display-lg-mobile": ["El Messiri"] }, fontSize: { "body-xl": ["1.25rem", { lineHeight: "1.7", fontWeight: "400" }], "label-md": ["0.8125rem", { lineHeight: "1.4", fontWeight: "500" }], "headline-md": ["1.5rem", { lineHeight: "1.4", fontWeight: "600" }], "headline-lg": ["2rem", { lineHeight: "1.35", fontWeight: "600" }], "body-md": ["1rem", { lineHeight: "1.7", fontWeight: "400" }], "headline-xl-mobile": ["1.75rem", { lineHeight: "1.35", fontWeight: "600" }], "label-lg": ["0.9375rem", { lineHeight: "1.4", fontWeight: "600" }], "label-sm": ["0.6875rem", { lineHeight: "1.4", fontWeight: "500" }], "headline-xl": ["2.5rem", { lineHeight: "1.3", fontWeight: "600" }], "display-lg": ["3.5rem", { lineHeight: "1.25", fontWeight: "700" }], "body-sm": ["0.875rem", { lineHeight: "1.6", fontWeight: "400" }], "headline-sm": ["1.25rem", { lineHeight: "1.45", fontWeight: "500" }], "body-lg": ["1.125rem", { lineHeight: "1.7", fontWeight: "400" }], "display-lg-mobile": ["2.25rem", { lineHeight: "1.3", fontWeight: "700" }] } } } };</script></head><body class="bg-ivory-canvas font-body-md text-on-surface antialiased selection:bg-champagne-gold selection:text-wine-night"><aside class="fixed right-0 top-0 bottom-0 h-screen w-72 bg-wine-night text-surface-bright z-50 flex flex-col justify-between shadow-[0_24px_64px_rgba(30,7,13,0.28)]"><div class="flex flex-col flex-1 overflow-y-auto"><div class="h-20 px-space-lg flex items-center justify-between bg-wine-night"><div class="flex items-center gap-space-sm"><div class="w-9 h-9 rounded-lg bg-deep-oxblood flex items-center justify-center"><span class="material-symbols-outlined text-royal-gold text-[22px]">diamond</span></div><div class="flex flex-col"><span class="font-headline-md text-headline-md tracking-wider text-surface-bright leading-none">IRIS</span><span class="font-label-sm text-label-sm text-champagne-gold tracking-widest">دار آيريس للمجوهرات</span></div></div><span class="material-symbols-outlined text-champagne-gold text-[16px]">arrow_back_ios_new</span></div><div class="px-space-md py-space-sm"><nav class="flex flex-col gap-space-xs" data-active-classes="bg-deep-oxblood text-ivory-canvas font-semibold shadow-[inset_4px_0_0_0_#C9A24B]"><a class="flex items-center gap-space-md px-space-md py-space-sm rounded-lg text-rose-mist hover:bg-deep-oxblood hover:text-surface-bright transition-all" data-path="dashboard" href="#"><span class="material-symbols-outlined text-[20px]">grid_view</span><span class="font-label-lg text-label-lg">لوحة التحكم</span></a><a class="flex items-center gap-space-md px-space-md py-space-sm rounded-lg text-rose-mist hover:bg-deep-oxblood hover:text-surface-bright transition-all" data-path="orders" href="#"><span class="material-symbols-outlined text-[20px]">shopping_bag</span><span class="font-label-lg text-label-lg">الطلبات</span></a><a class="flex items-center gap-space-md px-space-md py-space-sm rounded-lg text-rose-mist hover:bg-deep-oxblood hover:text-surface-bright transition-all" data-path="products" href="#"><span class="material-symbols-outlined text-[20px]">category</span><span class="font-label-lg text-label-lg">المنتجات</span></a><a class="flex items-center gap-space-md px-space-md py-space-sm rounded-lg text-rose-mist hover:bg-deep-oxblood hover:text-surface-bright transition-all" data-path="categories" href="#"><span class="material-symbols-outlined text-[20px]">bookmarks</span><span class="font-label-lg text-label-lg">التصنيفات</span></a><a aria-current="page" class="flex items-center gap-space-md px-space-md py-space-sm rounded-lg transition-all bg-deep-oxblood text-ivory-canvas font-semibold shadow-[inset_4px_0_0_0_#C9A24B]" data-path="inventory" href="#"><span class="material-symbols-outlined text-[20px]">inventory_2</span><span class="font-label-lg text-label-lg">المخزون</span></a><a class="flex items-center gap-space-md px-space-md py-space-sm rounded-lg text-rose-mist hover:bg-deep-oxblood hover:text-surface-bright transition-all" data-path="purchases" href="#"><span class="material-symbols-outlined text-[20px]">receipt_long</span><span class="font-label-lg text-label-lg">المشتريات</span></a><a class="flex items-center gap-space-md px-space-md py-space-sm rounded-lg text-rose-mist hover:bg-deep-oxblood hover:text-surface-bright transition-all" data-path="customers" href="#"><span class="material-symbols-outlined text-[20px]">group</span><span class="font-label-lg text-label-lg">العملاء</span></a><a class="flex items-center gap-space-md px-space-md py-space-sm rounded-lg text-rose-mist hover:bg-deep-oxblood hover:text-surface-bright transition-all" data-path="reports" href="#"><span class="material-symbols-outlined text-[20px]">monitoring</span><span class="font-label-lg text-label-lg">التقارير</span></a><a class="flex items-center gap-space-md px-space-md py-space-sm rounded-lg text-rose-mist hover:bg-deep-oxblood hover:text-surface-bright transition-all" data-path="settings" href="#"><span class="material-symbols-outlined text-[20px]">tune</span><span class="font-label-lg text-label-lg">الإعدادات</span></a></nav></div></div><div class="p-space-md bg-deep-oxblood m-space-md rounded-xl"><div class="flex items-center justify-between"><div class="flex items-center gap-space-sm"><div class="w-10 h-10 rounded-full bg-imperial-burgundy flex items-center justify-center"><span class="material-symbols-outlined text-champagne-gold text-[20px]">person</span></div><div class="flex flex-col"><span class="font-label-lg text-label-lg text-surface-bright">سارة آل رحيم</span><span class="font-label-sm text-label-sm text-champagne-gold">مديرة العمليات</span></div></div><button class="w-8 h-8 rounded-lg flex items-center justify-center text-rose-mist hover:text-surface-bright hover:bg-wine-night transition-colors"><span class="material-symbols-outlined text-[18px]">logout</span></button></div></div></aside><div class="pr-72"><header class="fixed top-0 right-72 left-0 h-20 bg-ivory-canvas/90 backdrop-blur-xl z-40 shadow-[0_1px_8px_rgba(58,10,22,0.04)]"><div class="h-20 w-full px-space-xl flex items-center justify-between gap-space-lg"><div class="flex items-center gap-space-lg"><div class="flex items-center gap-space-xs text-muted-rosewood font-label-md text-label-md"><span class="text-on-surface font-semibold">دار آيريس</span><span class="material-symbols-outlined text-[16px]">chevron_left</span><span>المستودع الرئيسي</span><span class="material-symbols-outlined text-[16px]">chevron_left</span><span class="text-imperial-burgundy font-semibold">المخزون والقطع النفيسة</span></div><div class="hidden xl:flex items-center gap-space-xs bg-semantic-success-bg px-space-sm py-1 rounded-full"><span class="w-2 h-2 rounded-full bg-semantic-success animate-pulse"></span><span class="font-label-sm text-label-sm text-semantic-success font-medium">نظام المستودعات متصل</span></div></div><div class="flex items-center gap-space-md"><div class="relative flex items-center"><span class="material-symbols-outlined absolute right-3 text-muted-rosewood text-[18px]">search</span><input class="w-72 bg-surface-container-low text-on-surface font-body-sm text-body-sm rounded-lg pr-9 pl-12 py-2 focus:outline-none focus:ring-1 focus:ring-imperial-burgundy placeholder:text-muted-rosewood" placeholder="بحث في الخزينة، الأرقام التسلسلية..." type="text"/><span class="absolute left-2.5 px-1.5 py-0.5 rounded bg-surface-container font-label-sm text-label-sm text-muted-rosewood font-mono">⌘K</span></div><div class="hidden lg:flex items-center gap-space-xs px-space-md py-2 rounded-lg bg-surface-container-low text-warm-ink"><span class="material-symbols-outlined text-antique-gold text-[18px]">calendar_today</span><span class="font-label-md text-label-md">الأربعاء، 24 أكتوبر 2025</span></div><button class="relative w-10 h-10 rounded-lg bg-surface-container-low flex items-center justify-center text-warm-ink hover:bg-blush-surface hover:text-imperial-burgundy transition-colors"><span class="material-symbols-outlined text-[20px]">notifications</span><span class="absolute top-2 left-2 w-2 h-2 rounded-full bg-imperial-burgundy"></span></button><button class="flex items-center gap-space-xs px-space-md py-2 rounded-lg bg-imperial-burgundy text-ivory-canvas hover:bg-burgundy-600 transition-colors"><span class="material-symbols-outlined text-[18px]">add</span><span class="font-label-md text-label-md font-medium">إضافة قطعة</span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="relative pt-20 bg-ivory-canvas min-h-screen"><div class="max-w-[1440px] mx-auto px-space-xl py-space-xl"><div class="flex flex-col w-full">
+<!-- Header / Breadcrumb & Title Area -->
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-space-md mb-space-lg">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center gap-space-sm flex-wrap">
+<h1 class="font-headline-lg text-headline-lg text-warm-ink tracking-tight font-bold">
+          حركات المخزون (Ledger)
+        </h1>
+<div class="inline-flex items-center gap-1.5 px-space-sm py-1 rounded-full bg-semantic-warning-bg text-semantic-warning shadow-sm">
+<span class="material-symbols-outlined text-[16px]">lock</span>
+<span class="font-label-sm text-label-sm font-semibold">السجل غير قابل للتعديل أو الحذف (سجل ثابت ومحمي تدقيقياً)</span>
+</div>
+</div>
+<p class="font-body-md text-body-md text-muted-rosewood">
+        سجل العمليات التاريخية والتدقيق المالي للمخزون لكافة الحركات الواردة والصادرة والتسويات المعتمدة في الخزائن المركزية
+      </p>
+</div>
+<!-- Actions -->
+<div class="flex items-center gap-space-sm shrink-0">
+<button class="flex items-center gap-2 px-space-md py-2.5 rounded-lg bg-surface-container text-warm-ink hover:bg-blush-surface hover:text-imperial-burgundy transition-all shadow-sm">
+<span class="material-symbols-outlined text-[18px]">ios_share</span>
+<span class="font-label-md text-label-md">تصدير السجل الكامل (CSV / PDF)</span>
+</button>
+<button class="relative flex items-center gap-2 px-space-md py-2.5 rounded-lg bg-imperial-burgundy text-surface-bright hover:bg-burgundy-600 transition-all shadow-md group">
+<span class="material-symbols-outlined text-[18px] text-champagne-gold">balance</span>
+<span class="font-label-md text-label-md font-medium">+ تسوية مخزون جديدة</span>
+</button>
+</div>
+</div>
+<!-- Metric Strip: 4 Refined Cards -->
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-space-md mb-space-lg">
+<!-- Card 1 -->
+<div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm flex flex-col justify-between relative overflow-hidden group hover:shadow-md transition-shadow">
+<div class="flex items-start justify-between">
+<div class="flex flex-col gap-1">
+<span class="font-label-md text-label-md text-muted-rosewood">إجمالي الحركات المسجلة</span>
+<div class="flex items-baseline gap-2 mt-1">
+<span class="font-headline-lg text-headline-lg font-bold text-warm-ink tabular-nums">3,428</span>
+<span class="font-label-sm text-label-sm text-antique-gold font-medium">حركة تاريخية</span>
+</div>
+</div>
+<div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center text-imperial-burgundy">
+<span class="material-symbols-outlined text-[20px]">history_edu</span>
+</div>
+</div>
+<div class="mt-4 pt-3 flex items-center gap-1.5 text-muted-rosewood">
+<span class="w-2 h-2 rounded-full bg-semantic-success animate-pulse"></span>
+<span class="font-label-sm text-label-sm">سجل نشط ومحدّث لحظياً</span>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm flex flex-col justify-between relative overflow-hidden group hover:shadow-md transition-shadow">
+<div class="flex items-start justify-between">
+<div class="flex flex-col gap-1">
+<span class="font-label-md text-label-md text-muted-rosewood">الوارد (مشتريات ومرتجع عملاء)</span>
+<div class="flex items-baseline gap-2 mt-1">
+<span class="font-headline-lg text-headline-lg font-bold text-semantic-success tabular-nums">+1,240</span>
+<span class="font-label-sm text-label-sm text-semantic-success font-medium">قطعة</span>
+</div>
+</div>
+<div class="w-10 h-10 rounded-lg bg-semantic-success-bg flex items-center justify-center text-semantic-success">
+<span class="material-symbols-outlined text-[20px]">arrow_downward</span>
+</div>
+</div>
+<div class="mt-4 pt-3 flex items-center justify-between text-muted-rosewood font-label-sm text-label-sm">
+<span>خلال الشهر الحالي</span>
+<span class="text-semantic-success font-medium tabular-nums">+14.2% مقارنة بالسابق</span>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm flex flex-col justify-between relative overflow-hidden group hover:shadow-md transition-shadow">
+<div class="flex items-start justify-between">
+<div class="flex flex-col gap-1">
+<span class="font-label-md text-label-md text-muted-rosewood">المنصرف (مبيعات وهدايا)</span>
+<div class="flex items-baseline gap-2 mt-1">
+<span class="font-headline-lg text-headline-lg font-bold text-imperial-burgundy tabular-nums">-985</span>
+<span class="font-label-sm text-label-sm text-imperial-burgundy font-medium">قطعة</span>
+</div>
+</div>
+<div class="w-10 h-10 rounded-lg bg-blush-surface flex items-center justify-center text-imperial-burgundy">
+<span class="material-symbols-outlined text-[20px]">arrow_upward</span>
+</div>
+</div>
+<div class="mt-4 pt-3 flex items-center justify-between text-muted-rosewood font-label-sm text-label-sm">
+<span>معدل خروج الخزينة</span>
+<span class="text-warm-ink font-semibold tabular-nums">98.2% طلبات مؤكدة</span>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm flex flex-col justify-between relative overflow-hidden group hover:shadow-md transition-shadow">
+<div class="flex items-start justify-between">
+<div class="flex flex-col gap-1">
+<span class="font-label-md text-label-md text-muted-rosewood">التسويات والتالف والمفقود</span>
+<div class="flex items-baseline gap-2 mt-1">
+<span class="font-headline-lg text-headline-lg font-bold text-semantic-warning tabular-nums">-18</span>
+<span class="font-label-sm text-label-sm text-muted-rosewood font-medium">قطعة</span>
+</div>
+</div>
+<div class="w-10 h-10 rounded-lg bg-semantic-warning-bg flex items-center justify-center text-semantic-warning">
+<span class="material-symbols-outlined text-[20px]">sync_problem</span>
+</div>
+</div>
+<div class="mt-4 pt-3 flex items-center justify-between text-muted-rosewood font-label-sm text-label-sm">
+<span>نسبة التباين الرقابي</span>
+<span class="inline-flex items-center px-2 py-0.5 rounded-full bg-semantic-success-bg text-semantic-success font-semibold tabular-nums">0.12% (ضمن المعايير)</span>
+</div>
+</div>
+</div>
+<!-- Filter & Search Toolbar Container -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm mb-space-md flex flex-col gap-space-sm">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-space-sm items-center">
+<!-- Search SKU / Reference -->
+<div class="lg:col-span-4 relative flex items-center">
+<span class="material-symbols-outlined absolute right-3 text-muted-rosewood text-[20px]">search</span>
+<input class="w-full bg-surface-container-low text-on-surface font-body-sm text-body-sm rounded-lg pr-10 pl-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-imperial-burgundy placeholder:text-muted-rosewood transition-all" placeholder="بحث بالمنتج، رمز SKU، رقم المرجع، أو الموظف..." type="text" value=""/>
+</div>
+<!-- Movement Type Selector -->
+<div class="lg:col-span-2">
+<div class="relative">
+<select class="w-full bg-surface-container-low text-warm-ink font-body-sm text-body-sm rounded-lg pr-3 pl-8 py-2.5 appearance-none focus:outline-none focus:ring-2 focus:ring-imperial-burgundy cursor-pointer">
+<option value="all">نوع الحركة: الكل</option>
+<option value="opening">رصيد افتتاحي</option>
+<option value="purchase">استلام شراء</option>
+<option value="sale">بيع لعميل</option>
+<option value="return_customer">مرتجع عميل</option>
+<option value="return_supplier">مرتجع مورد</option>
+<option value="damaged">تالف</option>
+<option value="lost">مفقود</option>
+<option value="adjustment">تسوية يدوية</option>
+<option value="inventory">جرد دوري</option>
+</select>
+<span class="material-symbols-outlined absolute left-2.5 top-1/2 -translate-y-1/2 text-muted-rosewood text-[18px] pointer-events-none">expand_more</span>
+</div>
+</div>
+<!-- Category Filter -->
+<div class="lg:col-span-2">
+<div class="relative">
+<select class="w-full bg-surface-container-low text-warm-ink font-body-sm text-body-sm rounded-lg pr-3 pl-8 py-2.5 appearance-none focus:outline-none focus:ring-2 focus:ring-imperial-burgundy cursor-pointer">
+<option value="all">التصنيف: كافة المجموعات</option>
+<option value="necklaces">القلائد والسلاسل</option>
+<option value="rings">خواتم ألماس وسوليتير</option>
+<option value="bracelets">الأساور والخلاخيل</option>
+<option value="earrings">الأقراط الفاخرة</option>
+</select>
+<span class="material-symbols-outlined absolute left-2.5 top-1/2 -translate-y-1/2 text-muted-rosewood text-[18px] pointer-events-none">expand_more</span>
+</div>
+</div>
+<!-- Responsible User Filter -->
+<div class="lg:col-span-2">
+<div class="relative">
+<select class="w-full bg-surface-container-low text-warm-ink font-body-sm text-body-sm rounded-lg pr-3 pl-8 py-2.5 appearance-none focus:outline-none focus:ring-2 focus:ring-imperial-burgundy cursor-pointer">
+<option value="all">المستخدم: الكل</option>
+<option value="sarah">سارة آل رحيم (مديرة)</option>
+<option value="ahmed">أحمد الموسوي (أمين الخزينة)</option>
+<option value="zainab">زينب الخفاجي (مدققة)</option>
+<option value="system">النظام الآلي (ERP Sync)</option>
+</select>
+<span class="material-symbols-outlined absolute left-2.5 top-1/2 -translate-y-1/2 text-muted-rosewood text-[18px] pointer-events-none">expand_more</span>
+</div>
+</div>
+<!-- Date Period Range -->
+<div class="lg:col-span-2">
+<div class="flex items-center justify-between bg-surface-container-low text-warm-ink font-body-sm text-body-sm rounded-lg px-3 py-2.5 cursor-pointer hover:bg-surface-container transition-colors">
+<div class="flex items-center gap-1.5 truncate">
+<span class="material-symbols-outlined text-antique-gold text-[18px]">calendar_today</span>
+<span class="truncate font-label-md text-label-md">آخر 30 يوماً</span>
+</div>
+<span class="material-symbols-outlined text-muted-rosewood text-[18px]">arrow_drop_down</span>
+</div>
+</div>
+</div>
+<!-- Active Filter Chips Row -->
+<div class="flex items-center justify-between flex-wrap gap-2 pt-2 text-label-sm">
+<div class="flex items-center gap-2 flex-wrap">
+<span class="text-muted-rosewood font-medium">الفلاتر المطبقة:</span>
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-parchment text-antique-gold font-medium">
+          الفترة: 24 سبتمبر – 24 أكتوبر 2025
+          <button class="hover:text-warm-ink transition-colors flex items-center"><span class="material-symbols-outlined text-[14px]">close</span></button>
+</span>
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container text-warm-ink font-medium">
+          الحركات: جميع الأنواع
+          <button class="hover:text-error transition-colors flex items-center"><span class="material-symbols-outlined text-[14px]">close</span></button>
+</span>
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-semantic-info-bg text-semantic-info font-medium">
+          المستودع: الخزينة الرئيسية (الرياض)
+          <button class="hover:text-warm-ink transition-colors flex items-center"><span class="material-symbols-outlined text-[14px]">close</span></button>
+</span>
+</div>
+<button class="text-imperial-burgundy hover:text-burgundy-600 font-label-md text-label-md font-semibold flex items-center gap-1 transition-colors">
+<span class="material-symbols-outlined text-[16px]">restart_alt</span>
+        إعادة الضبط
+      </button>
+</div>
+</div>
+<!-- The Immutable Ledger Table -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden flex flex-col">
+<!-- Notice Bar inside table header -->
+<div class="bg-wine-night text-surface-bright px-space-md py-2.5 flex items-center justify-between text-label-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-champagne-gold text-[16px]">verified_user</span>
+<span class="text-champagne-gold font-medium">وضع القراءة والتدقيق فقط — القيود مختومة بتشفير SHA-256 وغير قابلة للتعديل أو الحذف الرجعي</span>
+</div>
+<span class="font-mono text-rose-mist opacity-80 tabular-nums">LEDGER-BLOCK #9420-B</span>
+</div>
+<!-- Scrollable Table -->
+<div class="overflow-x-auto w-full">
+<table class="w-full text-right border-collapse">
+<thead>
+<tr class="bg-surface-container-low text-muted-rosewood font-label-md text-label-md uppercase tracking-wider">
+<th class="py-3.5 px-space-md font-semibold">التاريخ والوقت</th>
+<th class="py-3.5 px-space-md font-semibold min-w-[220px]">المنتج والمتغير</th>
+<th class="py-3.5 px-space-md font-semibold">نوع الحركة</th>
+<th class="py-3.5 px-space-md font-semibold text-center">الكمية</th>
+<th class="py-3.5 px-space-md font-semibold text-center">قبل</th>
+<th class="py-3.5 px-space-md font-semibold text-center">بعد</th>
+<th class="py-3.5 px-space-md font-semibold">المرجع</th>
+<th class="py-3.5 px-space-md font-semibold min-w-[150px]">المستخدم المسؤول</th>
+<th class="py-3.5 px-space-md font-semibold min-w-[230px]">السبب والبيان التوضيحي</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container text-body-sm text-body-sm text-warm-ink">
+<!-- Row 1: Sale -->
+<tr class="hover:bg-surface-container-low/70 transition-colors">
+<td class="py-3.5 px-space-md whitespace-nowrap">
+<div class="flex flex-col">
+<span class="font-mono font-medium text-warm-ink tabular-nums">24/10/2025</span>
+<span class="font-mono text-muted-rosewood text-label-sm tabular-nums">03:20 م</span>
+</div>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="flex items-center gap-space-sm">
+<img class="w-10 h-10 rounded-lg object-cover bg-surface-container shrink-0" data-alt="A macro studio shot of an 18k yellow gold pendant with delicate sapphire accents resting on cream velvet fabric with warm ambient lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCWQvHHcdVGfmB2F1e1ajvnQWc88Uu-gcknEJyQRcKn_Lb_woQEOzAAjsEHyipLP9pnC5mdwuRs2T6KxHHpigQHCeXCSqU7bzz8FZoF604iM0_SLEHwquAdBfZiqkTDvy7TLHskV8PKW9xKzEiRlIfIulIOCnZsrIC5flItAcocuV14-JRHmqxE-FDUZIqmQiqUI7NWoSQs06tWAGyfWM0Ai3P4-IkLbZGxlHr2FTJZ7NXuhFfjeerE"/>
+<div class="flex flex-col min-w-0">
+<span class="font-semibold text-warm-ink truncate">قلادة أورورا من الذهب الأصفر</span>
+<span class="font-mono text-label-sm text-muted-rosewood tabular-nums">NK-102-G45</span>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-space-md whitespace-nowrap">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-blush-surface text-imperial-burgundy font-label-sm font-semibold">
+<span class="material-symbols-outlined text-[15px]">shopping_bag</span>
+                بيع لعميل
+              </span>
+</td>
+<td class="py-3.5 px-space-md text-center whitespace-nowrap">
+<span class="font-mono font-bold text-semantic-error tabular-nums text-body-md">-1</span>
+</td>
+<td class="py-3.5 px-space-md text-center font-mono text-muted-rosewood tabular-nums">14</td>
+<td class="py-3.5 px-space-md text-center font-mono font-semibold text-warm-ink tabular-nums">13</td>
+<td class="py-3.5 px-space-md whitespace-nowrap">
+<a class="inline-flex items-center gap-1 font-mono text-imperial-burgundy hover:underline font-semibold tabular-nums" href="#">
+                طلب #1054
+                <span class="material-symbols-outlined text-[14px]">arrow_outward</span>
+</a>
+</td>
+<td class="py-3.5 px-space-md whitespace-nowrap">
+<div class="flex items-center gap-2">
+<div class="w-7 h-7 rounded-full bg-deep-oxblood flex items-center justify-center text-champagne-gold text-label-sm font-bold">
+                  س
+                </div>
+<div class="flex flex-col">
+<span class="font-medium text-warm-ink">سارة آل رحيم</span>
+<span class="text-label-sm text-muted-rosewood">مديرة العمليات</span>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-space-md">
+<p class="text-muted-rosewood line-clamp-1" title="طلب مبيعات معتمد عبر المتجر الإلكتروني للعميلة د. نورة الشمري">
+                طلب مبيعات معتمد عبر المتجر الإلكتروني — تسليم آمن
+              </p>
+</td>
+</tr>
+<!-- Row 2: Purchase Reception -->
+<tr class="hover:bg-surface-container-low/70 transition-colors">
+<td class="py-3.5 px-space-md whitespace-nowrap">
+<div class="flex flex-col">
+<span class="font-mono font-medium text-warm-ink tabular-nums">24/10/2025</span>
+<span class="font-mono text-muted-rosewood text-label-sm tabular-nums">01:45 م</span>
+</div>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="flex items-center gap-space-sm">
+<img class="w-10 h-10 rounded-lg object-cover bg-surface-container shrink-0" data-alt="High luxury solitaire brilliant cut diamond ring in platinum band positioned on dark burgundy leather case" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBUGhphQ1EOBh29kC7PWUtDOWNKOJCDPXeFwd6TuIymj2kFysSX-G04DBb9dBKrIT9TFu4-ndu3bRJXVbvjJwl8r4R3RNkrEq3strjoR4eGPHSmD-SwDdktIzdqNrZiNo1GOAOrmJOf7I_IGjClSRolD10JZ8TMTc_hb5RjfBsdMXt1bIRRXn1cGJKmFJH6mhvyeMvHaqSus1FqO0zLIGPhNQQuROSkqg0023vt51nbFcwVSPMje9UG"/>
+<div class="flex flex-col min-w-0">
+<span class="font-semibold text-warm-ink truncate">خاتم السوليتير الملكي بلاتين 950</span>
+<span class="font-mono text-label-sm text-muted-rosewood tabular-nums">RG-SOL-PL52</span>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-space-md whitespace-nowrap">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-semantic-success-bg text-semantic-success font-label-sm font-semibold">
+<span class="material-symbols-outlined text-[15px]">inventory</span>
+                استلام شراء
+              </span>
+</td>
+<td class="py-3.5 px-space-md text-center whitespace-nowrap">
+<span class="font-mono font-bold text-semantic-success tabular-nums text-body-md">+20</span>
+</td>
+<td class="py-3.5 px-space-md text-center font-mono text-muted-rosewood tabular-nums">5</td>
+<td class="py-3.5 px-space-md text-center font-mono font-semibold text-warm-ink tabular-nums">25</td>
+<td class="py-3.5 px-space-md whitespace-nowrap">
+<a class="inline-flex items-center gap-1 font-mono text-imperial-burgundy hover:underline font-semibold tabular-nums" href="#">
+                شراء P-0412
+                <span class="material-symbols-outlined text-[14px]">arrow_outward</span>
+</a>
+</td>
+<td class="py-3.5 px-space-md whitespace-nowrap">
+<div class="flex items-center gap-2">
+<div class="w-7 h-7 rounded-full bg-imperial-burgundy flex items-center justify-center text-surface-bright text-label-sm font-bold">
+                  أ
+                </div>
+<div class="flex flex-col">
+<span class="font-medium text-warm-ink">أحمد الموسوي</span>
+<span class="text-label-sm text-muted-rosewood">أمين الخزينة</span>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-space-md">
+<p class="text-muted-rosewood line-clamp-1" title="شحنة توريد عيار 18 سويسري موثقة بشهادات GIA معتمدة">
+                شحنة توريد عيار 18 سويسري موثقة بشهادات GIA
+              </p>
+</td>
+</tr>
+<!-- Row 3: Customer Return -->
+<tr class="hover:bg-surface-container-low/70 transition-colors">
+<td class="py-3.5 px-space-md whitespace-nowrap">
+<div class="flex flex-col">
+<span class="font-mono font-medium text-warm-ink tabular-nums">24/10/2025</span>
+<span class="font-mono text-muted-rosewood text-label-sm tabular-nums">11:15 ص</span>
+</div>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="flex items-center gap-space-sm">
+<img class="w-10 h-10 rounded-lg object-cover bg-surface-container shrink-0" data-alt="Classic tennis bracelet with alternating diamonds and deep red rubies laid gracefully on warm ivory marble surface" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQm-GZVfBMxk9u6GOSzIxJdpjGsi5vkFgRWQ5sqDHkgWxCFQJ4pmJP91uhkHgKNFJaWGO4oLT3NGmD2voa-JPxr-0fld7BRWrHghRJjg7ccqv2eSowYpch38szSn2Mp5r-JJaINIcbmbHQWHeyKhqUi5odVQBWsIFSMCcAElH6yWYNSc7wsVBIgtprSrkqLwbBQ_oudYV7RKCGRe9mH-T2ky-lAUUkACqgR0-EfaUF5bj57HM_8Ad4"/>
+<div class="flex flex-col min-w-0">
+<span class="font-semibold text-warm-ink truncate">سوار التنس المرصع بالياقوت الأحمر</span>
+<span class="font-mono text-label-sm text-muted-rosewood tabular-nums">BR-TN-RB18</span>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-space-md whitespace-nowrap">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-semantic-info-bg text-semantic-info font-label-sm font-semibold">
+<span class="material-symbols-outlined text-[15px]">keyboard_return</span>
+                مرتجع عميل
+              </span>
+</td>
+<td class="py-3.5 px-space-md text-center whitespace-nowrap">
+<span class="font-mono font-bold text-semantic-success tabular-nums text-body-md">+1</span>
+</td>
+<td class="py-3.5 px-space-md text-center font-mono text-muted-rosewood tabular-nums">7</td>
+<td class="py-3.5 px-space-md text-center font-mono font-semibold text-warm-ink tabular-nums">8</td>
+<td class="py-3.5 px-space-md whitespace-nowrap">
+<a class="inline-flex items-center gap-1 font-mono text-imperial-burgundy hover:underline font-semibold tabular-nums" href="#">
+                إرجاع R-0031
+                <span class="material-symbols-outlined text-[14px]">arrow_outward</span>
+</a>
+</td>
+<td class="py-3.5 px-space-md whitespace-nowrap">
+<div class="flex items-center gap-2">
+<div class="w-7 h-7 rounded-full bg-deep-oxblood flex items-center justify-center text-champagne-gold text-label-sm font-bold">
+                  س
+                </div>
+<div class="flex flex-col">
+<span class="font-medium text-warm-ink">سارة آل رحيم</span>
+<span class="text-label-sm text-muted-rosewood">مديرة العمليات</span>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-space-md">
+<p class="text-muted-rosewood line-clamp-1" title="فحص مقاس غير مطابق — القطعة سليمة تماماً ومختومة بالشمع">
+                فحص مقاس غير مطابق مع العميل — أعيدت للخزينة سليمة
+              </p>
+</td>
+</tr>
+<!-- Row 4: Damaged / Scrap -->
+<tr class="hover:bg-surface-container-low/70 transition-colors">
+<td class="py-3.5 px-space-md whitespace-nowrap">
+<div class="flex flex-col">
+<span class="font-mono font-medium text-warm-ink tabular-nums">23/10/2025</span>
+<span class="font-mono text-muted-rosewood text-label-sm tabular-nums">06:50 م</span>
+</div>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="flex items-center gap-space-sm">
+<img class="w-10 h-10 rounded-lg object-cover bg-surface-container shrink-0" data-alt="Chandelier gold drop earrings with intricate filigree details lying over warm textured silk backdrop with soft golden shadows" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCcmYF7LL4TYpAshzEDJmLFWWJFcSrzK3ZSlDWAUn8msH2p-SQSbMNr29yKbPiIi3pAqF6FkGQEDMW0fQlbJiwJEe-7bNBg4IetX0VNADFu2drcLj0ulsty4xjo8gVi0DPoisODEjoqpV0IG90cErF4VT3kdaq2nCIshc_NojRsxjWxB3HvgnTKmhVLHekgY_CEg2QqZ_BQBXLTtH57LIQPmB_oZlY5bo-vSVhB4GLiyTdkCufE846P"/>
+<div class="flex flex-col min-w-0">
+<span class="font-semibold text-warm-ink truncate">أقراط الشمعدان الأندلسية عيار 21</span>
+<span class="font-mono text-label-sm text-muted-rosewood tabular-nums">ER-AND-21K</span>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-space-md whitespace-nowrap">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-semantic-error-bg text-semantic-error font-label-sm font-semibold">
+<span class="material-symbols-outlined text-[15px]">heart_broken</span>
+                تالف
+              </span>
+</td>
+<td class="py-3.5 px-space-md text-center whitespace-nowrap">
+<span class="font-mono font-bold text-semantic-error tabular-nums text-body-md">-1</span>
+</td>
+<td class="py-3.5 px-space-md text-center font-mono text-muted-rosewood tabular-nums">11</td>
+<td class="py-3.5 px-space-md text-center font-mono font-semibold text-warm-ink tabular-nums">10</td>
+<td class="py-3.5 px-space-md whitespace-nowrap">
+<a class="inline-flex items-center gap-1 font-mono text-imperial-burgundy hover:underline font-semibold tabular-nums" href="#">
+                تسوية ADJ-0089
+                <span class="material-symbols-outlined text-[14px]">arrow_outward</span>
+</a>
+</td>
+<td class="py-3.5 px-space-md whitespace-nowrap">
+<div class="flex items-center gap-2">
+<div class="w-7 h-7 rounded-full bg-imperial-burgundy flex items-center justify-center text-surface-bright text-label-sm font-bold">
+                  أ
+                </div>
+<div class="flex flex-col">
+<span class="font-medium text-warm-ink">أحمد الموسوي</span>
+<span class="text-label-sm text-muted-rosewood">أمين الخزينة</span>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-space-md">
+<p class="text-muted-rosewood line-clamp-1" title="كسر القفل أثناء العرض بالبوتيك ونقل القطعة لقسم الصيانة وإعادة الصياغة">
+                كسر القفل الحلقي أثناء المعاينة — حولت لورشة الصياغة
+              </p>
+</td>
+</tr>
+<!-- Row 5: Manual Adjustment -->
+<tr class="hover:bg-surface-container-low/70 transition-colors">
+<td class="py-3.5 px-space-md whitespace-nowrap">
+<div class="flex flex-col">
+<span class="font-mono font-medium text-warm-ink tabular-nums">23/10/2025</span>
+<span class="font-mono text-muted-rosewood text-label-sm tabular-nums">04:10 م</span>
+</div>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="flex items-center gap-space-sm">
+<img class="w-10 h-10 rounded-lg object-cover bg-surface-container shrink-0" data-alt="Refined hand-crafted men cufflink in 18k white gold embedded with onyx stone on dark wood background with soft directional light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBfVXJebM9ONPvgny59BtLU-LnIzavV2PBnnNBdK0wB86n4owG9m3fWVQcNEka1GCF0BSWzNZ8YqVUHl_TplWm26WgFsavD_EQ4YWZdhkA1867UweRHeMj12JuGPnz-O7LY41F4YSd5wf5CIOjpdiRE9UQ4_-cnb5n-mr5YbudsieGpzxwkyFcljPoCeoxamLtDaJyFIdhzX1yAPmEhwBJRocKYeCZ7Xswm_9P8EqIEZ42_0ywmcSKI"/>
+<div class="flex flex-col min-w-0">
+<span class="font-semibold text-warm-ink truncate">أزرار أكمام فخمة من حجر العقيق</span>
+<span class="font-mono text-label-sm text-muted-rosewood tabular-nums">CL-ONX-M08</span>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-space-md whitespace-nowrap">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-semantic-warning-bg text-semantic-warning font-label-sm font-semibold">
+<span class="material-symbols-outlined text-[15px]">tune</span>
+                تسوية يدوية
+              </span>
+</td>
+<td class="py-3.5 px-space-md text-center whitespace-nowrap">
+<span class="font-mono font-bold text-semantic-warning tabular-nums text-body-md">-2</span>
+</td>
+<td class="py-3.5 px-space-md text-center font-mono text-muted-rosewood tabular-nums">34</td>
+<td class="py-3.5 px-space-md text-center font-mono font-semibold text-warm-ink tabular-nums">32</td>
+<td class="py-3.5 px-space-md whitespace-nowrap">
+<a class="inline-flex items-center gap-1 font-mono text-imperial-burgundy hover:underline font-semibold tabular-nums" href="#">
+                تسوية ADJ-0088
+                <span class="material-symbols-outlined text-[14px]">arrow_outward</span>
+</a>
+</td>
+<td class="py-3.5 px-space-md whitespace-nowrap">
+<div class="flex items-center gap-2">
+<div class="w-7 h-7 rounded-full bg-wine-night flex items-center justify-center text-champagne-gold text-label-sm font-bold">
+                  ز
+                </div>
+<div class="flex flex-col">
+<span class="font-medium text-warm-ink">زينب الخفاجي</span>
+<span class="text-label-sm text-muted-rosewood">مدققة جودة ومخزون</span>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-space-md">
+<p class="text-muted-rosewood line-clamp-1" title="تسوية فرق رقم باركود مسجل بالخطأ في قسم الإكسسوارات الرجالية">
+                تسوية رمز باركود مكرر تم حصره في خزانة الهدايا الرجالية
+              </p>
+</td>
+</tr>
+<!-- Row 6: Cycle Count / Inventory -->
+<tr class="hover:bg-surface-container-low/70 transition-colors">
+<td class="py-3.5 px-space-md whitespace-nowrap">
+<div class="flex flex-col">
+<span class="font-mono font-medium text-warm-ink tabular-nums">22/10/2025</span>
+<span class="font-mono text-muted-rosewood text-label-sm tabular-nums">09:00 ص</span>
+</div>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="flex items-center gap-space-sm">
+<img class="w-10 h-10 rounded-lg object-cover bg-surface-container shrink-0" data-alt="Close up shot of delicate gold anklet with tiny diamond drop pendants laid on soft silk champagne cloth" src="https://lh3.googleusercontent.com/aida-public/AB6AXuACb_6McpabEs-08Ee4b_o62duErmaSQTFWymNK4hoiHV54OSUEsDl9KTWkdzQN_LC1TU_MxaQMfu6O3H8Z0NJKUv7rtXcKuoW0-qdJo5qdiRaedVDMF4RC61t0Yl5XvqKy5lkF-Di7B4JSFpTrQFVNCxmkOfGdqvdeM7KQmNxjx5UbrLzYFL93TItkJsQtO5ksOMhGNEHaJDdjX8LNU36NKw5UgADJSaXIdsX7ZpBluTg3QEEK7-kD"/>
+<div class="flex flex-col min-w-0">
+<span class="font-semibold text-warm-ink truncate">خلخال اللؤلؤ الطبيعي والذهب الوردي</span>
+<span class="font-mono text-label-sm text-muted-rosewood tabular-nums">AK-PRL-RG19</span>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-space-md whitespace-nowrap">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-parchment text-antique-gold font-label-sm font-semibold">
+<span class="material-symbols-outlined text-[15px]">fact_check</span>
+                جرد دوري
+              </span>
+</td>
+<td class="py-3.5 px-space-md text-center whitespace-nowrap">
+<span class="font-mono font-bold text-antique-gold tabular-nums text-body-md">+3</span>
+</td>
+<td class="py-3.5 px-space-md text-center font-mono text-muted-rosewood tabular-nums">18</td>
+<td class="py-3.5 px-space-md text-center font-mono font-semibold text-warm-ink tabular-nums">21</td>
+<td class="py-3.5 px-space-md whitespace-nowrap">
+<a class="inline-flex items-center gap-1 font-mono text-imperial-burgundy hover:underline font-semibold tabular-nums" href="#">
+                جرد INV-2025-10
+                <span class="material-symbols-outlined text-[14px]">arrow_outward</span>
+</a>
+</td>
+<td class="py-3.5 px-space-md whitespace-nowrap">
+<div class="flex items-center gap-2">
+<div class="w-7 h-7 rounded-full bg-wine-night flex items-center justify-center text-champagne-gold text-label-sm font-bold">
+                  ز
+                </div>
+<div class="flex flex-col">
+<span class="font-medium text-warm-ink">زينب الخفاجي</span>
+<span class="text-label-sm text-muted-rosewood">مدققة جودة ومخزون</span>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-space-md">
+<p class="text-muted-rosewood line-clamp-1" title="مطابقة رصيد الخزينة بعد الجرد الدوري الشهري لفرع الرياض الرئيسي">
+                مطابقة رصيد الخزينة بعد الجرد الدوري — تسجيل قطع إضافية
+              </p>
+</td>
+</tr>
+<!-- Row 7: Sale -->
+<tr class="hover:bg-surface-container-low/70 transition-colors">
+<td class="py-3.5 px-space-md whitespace-nowrap">
+<div class="flex flex-col">
+<span class="font-mono font-medium text-warm-ink tabular-nums">21/10/2025</span>
+<span class="font-mono text-muted-rosewood text-label-sm tabular-nums">08:35 م</span>
+</div>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="flex items-center gap-space-sm">
+<img class="w-10 h-10 rounded-lg object-cover bg-surface-container shrink-0" data-alt="Stunning emerald cut emerald pendant suspended on a fine platinum chain inside open jewel box with velvet interior" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCkwjoelgiOhPvkRgmkR_RXAcH7kFiUCnaslpjdNo2No3VDkCPGPnQIpNY4nFmli4GAaTurXNEVK87QKKzcWs1q22kUX8q7dQM5b7WXLR-C7S0BJQRkMZ1OIbfn5afb_kAhl_-mkLqfw-9i7aivqyA3V_CryixW9ZnpJdDGNtjhhad8YTJezdwowxqeFGdV4PrzP4xEEf8FadcM-3r42OjHnH1Ub9MB6iUaWmtLL4VmV84OYpAeeELo"/>
+<div class="flex flex-col min-w-0">
+<span class="font-semibold text-warm-ink truncate">قلادة الزمرد الكولومبي الخالص</span>
+<span class="font-mono text-label-sm text-muted-rosewood tabular-nums">NK-EMR-C02</span>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-space-md whitespace-nowrap">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-blush-surface text-imperial-burgundy font-label-sm font-semibold">
+<span class="material-symbols-outlined text-[15px]">shopping_bag</span>
+                بيع لعميل
+              </span>
+</td>
+<td class="py-3.5 px-space-md text-center whitespace-nowrap">
+<span class="font-mono font-bold text-semantic-error tabular-nums text-body-md">-1</span>
+</td>
+<td class="py-3.5 px-space-md text-center font-mono text-muted-rosewood tabular-nums">3</td>
+<td class="py-3.5 px-space-md text-center font-mono font-semibold text-warm-ink tabular-nums">2</td>
+<td class="py-3.5 px-space-md whitespace-nowrap">
+<a class="inline-flex items-center gap-1 font-mono text-imperial-burgundy hover:underline font-semibold tabular-nums" href="#">
+                طلب #1049
+                <span class="material-symbols-outlined text-[14px]">arrow_outward</span>
+</a>
+</td>
+<td class="py-3.5 px-space-md whitespace-nowrap">
+<div class="flex items-center gap-2">
+<div class="w-7 h-7 rounded-full bg-deep-oxblood flex items-center justify-center text-champagne-gold text-label-sm font-bold">
+                  س
+                </div>
+<div class="flex flex-col">
+<span class="font-medium text-warm-ink">سارة آل رحيم</span>
+<span class="text-label-sm text-muted-rosewood">مديرة العمليات</span>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-space-md">
+<p class="text-muted-rosewood line-clamp-1" title="مبيعات البوتيك الخاص — جناح كبار الشخصيات">
+                مبيعات البوتيك الخاص — تسليم يدوي مع شهادة الأصالة
+              </p>
+</td>
+</tr>
+<!-- Row 8: Opening Balance -->
+<tr class="hover:bg-surface-container-low/70 transition-colors">
+<td class="py-3.5 px-space-md whitespace-nowrap">
+<div class="flex flex-col">
+<span class="font-mono font-medium text-warm-ink tabular-nums">20/10/2025</span>
+<span class="font-mono text-muted-rosewood text-label-sm tabular-nums">08:00 ص</span>
+</div>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="flex items-center gap-space-sm">
+<img class="w-10 h-10 rounded-lg object-cover bg-surface-container shrink-0" data-alt="Royal diamond encrusted tiara with floral filigree gold patterns resting elegantly on ivory satin pillow" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-UdYsFxHHXq7dg47aCvhESJ6Wpo-RTl4HkGOyShbGAvezyh17oLNRwiHIqilv0b-rAAPP1dngpKJYqkieYXwRcO0KaCgcYYxiiYGkEr5bQhNf66zwI8ORC9dTo1HDq7tFi0Ea_HJrH7tvOkMNxFICugFm1p1jBir0vQeTKJAiN5m0EFzIA2r7wAhAduR0IuJH750ghtCPoOlB6rn2quMKkEK9Y2sujF1dornqaMSBjl7JRieeFxo_"/>
+<div class="flex flex-col min-w-0">
+<span class="font-semibold text-warm-ink truncate">تاج الزفاف الملكي إمبريال 2025</span>
+<span class="font-mono text-label-sm text-muted-rosewood tabular-nums">TR-IMP-2025</span>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-space-md whitespace-nowrap">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-parchment text-antique-gold font-label-sm font-semibold">
+<span class="material-symbols-outlined text-[15px]">flag</span>
+                رصيد افتتاحي
+              </span>
+</td>
+<td class="py-3.5 px-space-md text-center whitespace-nowrap">
+<span class="font-mono font-bold text-antique-gold tabular-nums text-body-md">+5</span>
+</td>
+<td class="py-3.5 px-space-md text-center font-mono text-muted-rosewood tabular-nums">0</td>
+<td class="py-3.5 px-space-md text-center font-mono font-semibold text-warm-ink tabular-nums">5</td>
+<td class="py-3.5 px-space-md whitespace-nowrap">
+<a class="inline-flex items-center gap-1 font-mono text-imperial-burgundy hover:underline font-semibold tabular-nums" href="#">
+                افتتاح OP-001
+                <span class="material-symbols-outlined text-[14px]">arrow_outward</span>
+</a>
+</td>
+<td class="py-3.5 px-space-md whitespace-nowrap">
+<div class="flex items-center gap-2">
+<div class="w-7 h-7 rounded-full bg-surface-container flex items-center justify-center text-warm-ink text-label-sm">
+<span class="material-symbols-outlined text-[16px]">smart_toy</span>
+</div>
+<div class="flex flex-col">
+<span class="font-medium text-warm-ink">النظام الآلي</span>
+<span class="text-label-sm text-muted-rosewood">ERP Ledger Sync</span>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-space-md">
+<p class="text-muted-rosewood line-clamp-1" title="افتتاح خط إنتاج جديد لموسم الأعراس والمناسبات الكبرى">
+                قيد افتتاحي لمجموعة عرائس شتاء 2025 المعتمدة رسمياً
+              </p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination & Row Count Footer -->
+<div class="bg-surface-container-low/50 px-space-md py-3.5 flex flex-col md:flex-row items-center justify-between gap-space-md">
+<!-- Records info and page size -->
+<div class="flex items-center gap-space-md flex-wrap">
+<span class="text-muted-rosewood font-body-sm text-body-sm">
+          عرض <span class="font-mono font-semibold text-warm-ink tabular-nums">1 - 8</span> من أصل <span class="font-mono font-semibold text-warm-ink tabular-nums">3,428</span> حركة مسجلة
+        </span>
+<div class="flex items-center gap-2 text-label-sm text-muted-rosewood">
+<span>عدد الصفوف:</span>
+<select class="bg-surface-container-lowest text-warm-ink font-mono text-label-sm rounded-lg px-2.5 py-1 focus:outline-none focus:ring-1 focus:ring-imperial-burgundy cursor-pointer shadow-sm">
+<option value="10">10</option>
+<option value="25">25</option>
+<option value="50">50</option>
+<option value="100">100</option>
+</select>
+</div>
+</div>
+<!-- Pagination Buttons -->
+<div class="flex items-center gap-1.5" dir="rtl">
+<button class="w-8 h-8 rounded-lg bg-surface-container text-muted-rosewood hover:text-warm-ink flex items-center justify-center transition-colors disabled:opacity-40" disabled="">
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</button>
+<button class="w-8 h-8 rounded-lg bg-imperial-burgundy text-surface-bright font-mono font-semibold text-label-md flex items-center justify-center shadow-sm">
+          1
+        </button>
+<button class="w-8 h-8 rounded-lg bg-surface-container-lowest text-warm-ink hover:bg-blush-surface font-mono font-medium text-label-md flex items-center justify-center transition-colors shadow-sm">
+          2
+        </button>
+<button class="w-8 h-8 rounded-lg bg-surface-container-lowest text-warm-ink hover:bg-blush-surface font-mono font-medium text-label-md flex items-center justify-center transition-colors shadow-sm">
+          3
+        </button>
+<span class="px-1 text-muted-rosewood font-mono text-label-sm">...</span>
+<button class="w-8 h-8 rounded-lg bg-surface-container-lowest text-warm-ink hover:bg-blush-surface font-mono font-medium text-label-md flex items-center justify-center transition-colors shadow-sm">
+          429
+        </button>
+<button class="w-8 h-8 rounded-lg bg-surface-container-lowest text-warm-ink hover:bg-blush-surface flex items-center justify-center transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[18px]">chevron_left</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Security & Governance Compliance Footer -->
+<div class="mt-space-md p-space-md rounded-xl bg-deep-oxblood text-surface-bright shadow-md flex flex-col md:flex-row items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-sm text-right">
+<div class="w-10 h-10 rounded-lg bg-imperial-burgundy flex items-center justify-center text-champagne-gold shrink-0">
+<span class="material-symbols-outlined text-[22px]">verified</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-lg text-label-lg text-champagne-gold font-semibold">
+          سجل تدقيق آمن ومشفّر وفق معايير الحوكمة المالية لدار آيريس للمجوهرات
+        </span>
+<span class="font-body-sm text-body-sm text-rose-mist">
+          كل حركة ترتبط برقم قيد وحساب أستاذ مساعد غير قابل للتلاعب، ومرتبطة بختم زمني مشفر لمنع التعديل بأثر رجعي.
+        </span>
+</div>
+</div>
+<div class="flex items-center gap-space-sm shrink-0">
+<div class="px-3 py-1.5 rounded-lg bg-wine-night/60 text-champagne-gold font-mono text-label-sm tabular-nums">
+        HASH: 8f3d..e79c
+      </div>
+<button class="px-space-md py-1.5 rounded-lg bg-surface-bright/10 hover:bg-surface-bright/20 text-surface-bright font-label-md text-label-md transition-colors">
+        تحميل تقرير المطابقة
+      </button>
+</div>
+</div>
+</div></div></main></div></body></html>
