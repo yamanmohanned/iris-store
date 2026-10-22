@@ -7,7 +7,8 @@ import { fail, type Json, type Kv } from './base.ts';
 
 const STATUSES = ['pending', 'confirmed', 'preparing', 'shipped', 'delivered', 'cancelled', 'returned'];
 const RELEASED = ['cancelled', 'returned'];
-const PAYMENTS = ['cod', 'zaincash', 'card'];
+// الدفع عند الاستلام وحده مفعّل: طلب مصنَّف «بطاقة» أو «زين كاش» بلا دفع فعلي قد يُشحن على أنه مدفوع
+const PAYMENTS = ['cod'];
 /** طلبات جديدة لم يؤكدها المتجر بعد لنفس الهاتف خلال يوم — يمنع حجز المخزون بطلبات وهمية. */
 export const MAX_OPEN_PER_PHONE = 3;
 /** مجموع القطع في الطلب الواحد. */

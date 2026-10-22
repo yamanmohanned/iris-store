@@ -2,7 +2,7 @@
   "name": "iris-store",
   "private": true,
   "version": "0.1.0",
-  "description": "دار آيريس للمجوهرات — متجر إلكتروني فاخر ولوحة إدارة (RTL / عربي) مبني من تصاميم Stitch",
+  "description": "آيريس ستور — متجر إكسسوارات إلكتروني ولوحة إدارة للمالك (عربي RTL)",
   "type": "module",
   "scripts": {
     "dev": "vite",

@@ -53,6 +53,7 @@ function iris_bootstrap()
     header('X-Frame-Options: DENY');
     header("Content-Security-Policy: default-src 'none'; frame-ancestors 'none'");
     header('Cross-Origin-Resource-Policy: same-origin');
+    header('X-Robots-Tag: noindex, nofollow');
     header_remove('X-Powered-By');
     set_exception_handler(function ($e) {
         error_log('[iris-api] ' . $e->getMessage() . ' @ ' . $e->getFile() . ':' . $e->getLine());
@@ -254,8 +255,22 @@ function iris_session_start()
 
 /* الحساب الحالي وفحص الصلاحيات: iris_current_user و iris_require_access في inc/users.php */
 
+/**
+ * عنوان الزائر لحدود المحاولات. الأصل REMOTE_ADDR. خلف وسيط (Cloudflare أو شبكة توصيل المحتوى) يظهر عنوان الوسيط لكل الزوار
+ * فيتشاركون الحدود نفسها؛ عندها يضبط المالك trusted_ip_header في config.php (مثل HTTP_CF_CONNECTING_IP).
+ * لا يُقرأ إلا الاسم المضبوط هناك، فلا يستطيع الزائر انتحال عنوان بترويسة من اختياره.
+ */
 function iris_client_ip()
 {
+    $config = iris_config();
+    $header = isset($config['trusted_ip_header']) ? trim((string) $config['trusted_ip_header']) : '';
+    if ($header !== '' && preg_match('/^HTTP_[A-Z0-9_]+$/', $header) && !empty($_SERVER[$header])) {
+        $parts = explode(',', (string) $_SERVER[$header]);
+        $first = trim($parts[0]);
+        if (filter_var($first, FILTER_VALIDATE_IP)) {
+            return $first;
+        }
+    }
     return isset($_SERVER['REMOTE_ADDR']) ? $_SERVER['REMOTE_ADDR'] : '0.0.0.0';
 }
 

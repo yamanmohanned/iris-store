@@ -64,9 +64,10 @@ class Client {
     }
     const req = new Request(url, { method, headers, body: payload });
     const res = remote ? await fetch(req) : await (this.handler ?? handle)(req, this.ip);
-    const set = res.headers.get('set-cookie');
-    if (set) {
-      const m = /IRISADMIN=([^;]*)/.exec(set);
+    // كجرّة المتصفح: عند تكرار Set-Cookie لنفس الاسم (يرسل PHP تحت Apache كوكي الجلسة القديم ثم الجديد بعد تجديد المعرّف) يسري الأخير
+    const cookies = typeof res.headers.getSetCookie === 'function' ? res.headers.getSetCookie() : [res.headers.get('set-cookie') ?? ''];
+    for (const set of cookies) {
+      const m = /^IRISADMIN=([^;]*)/.exec(set);
       if (m) this.cookie = m[1] ? `IRISADMIN=${m[1]}` : '';
     }
     const type = res.headers.get('content-type') ?? '';
@@ -462,7 +463,7 @@ if (!remote) {
   const hd = (n) => h.res.headers.get(n) ?? '';
   check(
     'ترويسات أمان الواجهة (DENY + CSP + nosniff)',
-    hd('x-frame-options') === 'DENY' && hd('content-security-policy').includes("frame-ancestors 'none'") && hd('x-content-type-options') === 'nosniff',
+    /^DENY(, DENY)*$/.test(hd('x-frame-options')) && hd('content-security-policy').includes("frame-ancestors 'none'") && /^nosniff(, nosniff)*$/.test(hd('x-content-type-options')),
     Object.fromEntries(h.res.headers),
   );
 
@@ -497,6 +498,8 @@ if (!remote) {
 
   const badPay = await place('07801112240', { payment: 'bitcoin' });
   check('رفض طريقة دفع مجهولة', badPay.status === 400, badPay.data);
+  const cardPay = await place('07801112240', { payment: 'card' });
+  check('رفض الدفع بالبطاقة: غير مفعّل (لا طلب «مدفوع» مزوَّر)', cardPay.status === 400, cardPay.data);
   const longNote = await place('07801112241', { delivery: { governorate: 'بغداد', district: 'x', landmark: 'y', notes: 'x'.repeat(600) } });
   check('رفض ملاحظة أطول من 500 حرف', longNote.status === 400, longNote.data);
   const junk = await place('07801112242', { delivery: { governorate: 'بغداد', district: 'x', landmark: 'y', evil: { deep: 'x'.repeat(1000) } } });

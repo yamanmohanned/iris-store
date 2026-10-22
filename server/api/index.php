@@ -17,6 +17,7 @@
  *   GET|POST ?r=users…           فريق العمل — المالك فقط (inc/users.php)
  *   ?r=instagram/…               الاستيراد من إنستغرام (inc/instagram.php)
  *   POST ?r=system/reset         إعادة ضبط المتجر — المالك فقط بكلمة المرور (inc/reset.php)
+ *   GET  ?r=page|sitemap|robots  صفحات HTML للزوار والزواحف، وخريطة الموقع، وrobots.txt (inc/seo.php — يكتب لها .htaccess)
  */
 
 define('IRIS_API', true);
@@ -25,11 +26,17 @@ require __DIR__ . '/inc/users.php';
 require __DIR__ . '/inc/media.php';
 require __DIR__ . '/inc/instagram.php';
 require __DIR__ . '/inc/reset.php';
-
-iris_bootstrap();
+require __DIR__ . '/inc/seo.php';
 
 $route = isset($_GET['r']) ? trim((string) $_GET['r'], '/') : '';
 $method = isset($_SERVER['REQUEST_METHOD']) ? $_SERVER['REQUEST_METHOD'] : 'GET';
+
+// صفحات HTML لا ترويسات JSON ولا يتوقف عرضها على قابلية الكتابة في api/data
+if ($route === 'page' || $route === 'sitemap' || $route === 'robots') {
+    iris_seo_serve($route);
+}
+
+iris_bootstrap();
 
 $routes = array(
     'GET health' => 'route_health',
@@ -73,6 +80,10 @@ function route_health()
         'passwordSet' => iris_password_configured(),
         'instagram' => iris_http_available(),
         'limits' => iris_upload_limits(),
+        // النطاق المعتمد للفهرسة (api/config.php ← site_url): فارغ = الفهرسة متوقفة عمداً
+        'siteUrl' => iris_seo_site_url(),
+        // العنوان الذي يراه الخادم لهذا الجهاز: لو ظهر عنوان واحد للجميع فالموقع خلف وسيط (انظر trusted_ip_header في config.php)
+        'clientIp' => iris_client_ip(),
     ));
 }
 
@@ -677,7 +688,8 @@ function route_order_create()
     }
 
     $payment = isset($body['payment']) ? (string) $body['payment'] : 'cod';
-    if (!in_array($payment, array('cod', 'zaincash', 'card'), true)) {
+    // الدفع عند الاستلام وحده مفعّل: طلب مصنَّف «بطاقة» أو «زين كاش» بلا دفع فعلي قد يُشحن على أنه مدفوع
+    if ($payment !== 'cod') {
         iris_fail('طريقة الدفع غير مدعومة.');
     }
     $lines = isset($body['lines']) && is_array($body['lines']) ? $body['lines'] : array();
@@ -831,7 +843,9 @@ function iris_notify_owner(array $order)
         . "الزبون: {$order['customer']['name']}\nالهاتف: {$order['customer']['phone']}\n"
         . "العنوان: {$d['governorate']} - {$d['district']} - {$d['neighborhood']} ({$d['landmark']})\n\n"
         . implode("\n", $lines) . "\n\nالإجمالي: " . number_format($order['total']) . " د.ع\n";
-    $host = isset($_SERVER['HTTP_HOST']) ? preg_replace('/[^A-Za-z0-9.\-]/', '', $_SERVER['HTTP_HOST']) : 'localhost';
+    // نطاق المتجر المعتمد أولاً: رسائل من no-reply@نطاقك أقل عرضة للوصول إلى البريد المزعج من عنوان الزائر
+    $siteHost = iris_seo_site_url() !== '' ? (string) parse_url(iris_seo_site_url(), PHP_URL_HOST) : '';
+    $host = $siteHost !== '' ? $siteHost : (isset($_SERVER['HTTP_HOST']) ? preg_replace('/[^A-Za-z0-9.\-]/', '', $_SERVER['HTTP_HOST']) : 'localhost');
     $headers = "MIME-Version: 1.0\r\nContent-Type: text/plain; charset=UTF-8\r\nFrom: IRIS Store <no-reply@" . $host . ">";
     @mail($to, '=?UTF-8?B?' . base64_encode('طلب جديد #' . $order['id'] . ' — آيريس') . '?=', $text, $headers);
 }

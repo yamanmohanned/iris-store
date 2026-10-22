@@ -4,6 +4,7 @@ import { BrandMark } from '@/components/common/BrandLogo';
 import { BrandingRuntime } from '@/components/common/BrandingRuntime';
 import { LegacyHandlers } from '@/components/common/LegacyHandlers';
 import { PlaceholderLinkGuard, ScrollToTop } from '@/components/common/PageEffects';
+import { RouteSeo } from '@/components/common/RouteSeo';
 import { AmbientBackdrop } from '@/components/store/AmbientBackdrop';
 import { AdminAuthProvider } from '@/state/adminAuth';
 import { AuthProvider } from '@/state/auth';
@@ -40,6 +41,7 @@ export function Root() {
                     <BrandingRuntime />
                     <AmbientBackdrop />
                     <CatalogProvider fallback={<PageLoader />}>
+                      <RouteSeo />
                       <Suspense fallback={<PageLoader />}>
                         <Outlet />
                       </Suspense>

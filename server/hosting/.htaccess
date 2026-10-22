@@ -16,6 +16,10 @@ AddDefaultCharset utf-8
   AddType font/otf .otf
   AddType video/mp4 .mp4
   AddType video/webm .webm
+  # فحص الصور في لوحة الإدارة (public/vendor/mediapipe): المتصفح يرفض وحدة JavaScript بنوع MIME خاطئ
+  AddType text/javascript .mjs
+  AddType application/wasm .wasm
+  AddType application/octet-stream .tflite
 </IfModule>
 
 <IfModule mod_rewrite.c>
@@ -23,9 +27,20 @@ AddDefaultCharset utf-8
   RewriteBase /
 
   # ── تحويل كل الزيارات إلى HTTPS ──
-  # فعّل السطرين التاليين (احذف # من بدايتهما) بعد تفعيل شهادة SSL من لوحة الاستضافة
+  # فعّل الأسطر الثلاثة التالية (احذف # من بدايتها) بعد تفعيل شهادة SSL من لوحة الاستضافة
+  # (الشرط الثاني يمنع حلقة التحويل خلف وسيط ينهي HTTPS عنه مثل Cloudflare)
   # RewriteCond %{HTTPS} !=on
+  # RewriteCond %{HTTP:X-Forwarded-Proto} !=https
   # RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+  # ── صفحات يكتب الخادم عنوانها ووصفها وبطاقة مشاركتها (جوجل وواتساب وفيسبوك وتيليغرام) ──
+  # inc/seo.php يقرأ الكتالوج الحي؛ لو تعطّل يعيد index.html كما هو
+  RewriteRule ^$ /api/index.php?r=page [L]
+  RewriteRule ^(products|collections)/[^/]+/?$ /api/index.php?r=page [L]
+  RewriteRule ^(about|faq|contact)/?$ /api/index.php?r=page [L]
+  RewriteRule ^policies/[A-Za-z-]+/?$ /api/index.php?r=page [L]
+  RewriteRule ^sitemap\.xml$ /api/index.php?r=sitemap [L]
+  RewriteRule ^robots\.txt$ /api/index.php?r=robots [L]
 
   # ── تطبيق الصفحة الواحدة: أي رابط ليس ملفاً أو مجلداً يفتح index.html ──
   RewriteRule ^index\.html$ - [L]
@@ -43,15 +58,23 @@ AddDefaultCharset utf-8
 # ── ترويسات الأمان ──
 # السطر التالي يستبدله «npm run package» بالترويسات من scripts/deploy/csp.mjs: سياسة أمان المحتوى (CSP)
 # ببصمة سكربت الإقلاع، ومنع العرض داخل مواقع أخرى، وHSTS حين يعمل الموقع على HTTPS.
+# صفحات خاصة بالزبون أو الإدارة: لا تظهر في نتائج البحث حتى لو وصل إليها زاحف
+<IfModule mod_setenvif.c>
+  SetEnvIfNoCase Request_URI "^/(admin|cart|checkout|account|track-order|order-success|wishlist|search|login|verify|categories)(/|$)" IRIS_NOINDEX
+</IfModule>
+
 <IfModule mod_headers.c>
   # @iris-security-headers
+  Header set X-Robots-Tag "noindex, nofollow" env=IRIS_NOINDEX
+  # بعد التحويل الداخلي إلى index.html يعيد Apache تسمية المتغير بالبادئة REDIRECT_
+  Header set X-Robots-Tag "noindex, nofollow" env=REDIRECT_IRIS_NOINDEX
 
   # الصفحة نفسها تُفحص دائماً حتى يصل كل تحديث فوراً
   <FilesMatch "^(index\.html|site\.webmanifest)$">
     Header set Cache-Control "no-cache"
   </FilesMatch>
   # الصور والخطوط والأيقونات والفيديو
-  <FilesMatch "\.(jpg|jpeg|png|webp|gif|svg|ico|woff2?|ttf|otf|mp4|webm)$">
+  <FilesMatch "\.(jpg|jpeg|png|webp|gif|svg|ico|woff2?|ttf|otf|mp4|webm|wasm|tflite)$">
     Header set Cache-Control "public, max-age=2592000"
   </FilesMatch>
 </IfModule>

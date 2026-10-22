@@ -5,15 +5,19 @@
  *   - المعاينة:  vite.config.ts (vite preview) لتجربة البناء محلياً بنفس القيود
  *
  * السكربتات المضمّنة في index.html (سكربت الإقلاع) تُسمح ببصمتها sha256 فقط، فأي سكربت يُحقن
- * في الصفحة لا يعمل. المصادر الخارجية الوحيدة: MediaPipe لفحص الأشخاص في الاستيراد من إنستغرام
- * (jsDelivr + نماذج Google) وصور/فيديو إنستغرام نفسها.
+ * في الصفحة لا يعمل. لا سكربت من خارج النطاق إطلاقاً (MediaPipe لفحص الأشخاص في الاستيراد مستضاف في
+ * /vendor/mediapipe)؛ المصدر الخارجي الوحيد صور/فيديو إنستغرام نفسها عند مراجعة الاستيراد.
  */
 import { createHash } from 'node:crypto';
 
-/** بصمات السكربتات المضمّنة (بلا src) في صفحة مبنية. */
+/**
+ * بصمات السكربتات المضمّنة (بلا src) في صفحة مبنية.
+ * المتصفح يحوّل CRLF إلى LF قبل أن يحسب بصمة السكربت (مواصفة HTML)، فنفعل الشيء نفسه؛
+ * وإلا ينتج البناء على ويندوز (CRLF) بصمة لا تطابق ويُحجب سكربت الإقلاع في كل صفحة.
+ */
 export function inlineScriptHashes(html) {
   return [...html.matchAll(/<script\b(?![^>]*\bsrc=)[^>]*>([\s\S]*?)<\/script>/gi)].map(
-    (m) => `'sha256-${createHash('sha256').update(m[1], 'utf8').digest('base64')}'`,
+    (m) => `'sha256-${createHash('sha256').update(m[1].replace(/\r\n?/g, '\n'), 'utf8').digest('base64')}'`,
   );
 }
 
@@ -21,13 +25,13 @@ export function contentSecurityPolicy(html) {
   return [
     "default-src 'self'",
     // wasm-unsafe-eval: تشغيل WebAssembly لـ MediaPipe فقط (لا eval لنصوص JavaScript)
-    `script-src 'self' ${inlineScriptHashes(html).join(' ')} https://cdn.jsdelivr.net 'wasm-unsafe-eval'`,
+    `script-src 'self' ${inlineScriptHashes(html).join(' ')} 'wasm-unsafe-eval'`,
     // React والهوية (الخطوط المرفوعة) تضع أنماطاً مضمّنة
     "style-src 'self' 'unsafe-inline'",
     "img-src 'self' data: blob: https:",
     "media-src 'self' blob: https:",
     "font-src 'self' data:",
-    "connect-src 'self' https://cdn.jsdelivr.net https://storage.googleapis.com https://*.cdninstagram.com https://*.fbcdn.net",
+    "connect-src 'self' https://*.cdninstagram.com https://*.fbcdn.net",
     "worker-src 'self' blob:",
     "manifest-src 'self'",
     "frame-src 'none'",

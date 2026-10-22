@@ -1,13 +1,13 @@
 /**
  * فحص تلقائي للصور قبل الاستيراد: هل يظهر فيها شخص؟ (وجه، أو جسم يملأ جزءاً كبيراً من الصورة)
  * صور اليد أو المعصم وحدها تمر لأنها تعرض القطعة نفسها. الفحص يجري في متصفح المالك فقط
- * (MediaPipe من jsDelivr، يُحمَّل عند فتح صفحة الاستيراد)، والنتيجة اقتراح يراجعه المالك.
+ * (MediaPipe 0.10.35 مستضاف مع المتجر في public/vendor/mediapipe — مصدر الملفات وبصماتها في NOTICE.md هناك —
+ * ويُحمَّل عند فتح صفحة الاستيراد)، والنتيجة اقتراح يراجعه المالك. لا يعتمد المتجر على jsDelivr ولا Google.
  */
 
-const VERSION = '0.10.35';
-const CDN = `https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@${VERSION}`;
-const FACE_MODEL = 'https://storage.googleapis.com/mediapipe-models/face_detector/blaze_face_short_range/float16/1/blaze_face_short_range.tflite';
-const OBJECT_MODEL = 'https://storage.googleapis.com/mediapipe-models/object_detector/efficientdet_lite0/int8/1/efficientdet_lite0.tflite';
+const VENDOR = '/vendor/mediapipe';
+const FACE_MODEL = `${VENDOR}/models/blaze_face_short_range.tflite`;
+const OBJECT_MODEL = `${VENDOR}/models/efficientdet_lite0.tflite`;
 
 /**
  * الحدود مضبوطة على صور المتجر نفسه: الكاشف يعطي اليدين أحياناً «وجهاً» بثقة 0.53–0.57 والوجه الحقيقي 0.75+،
@@ -36,8 +36,8 @@ let loading: Promise<{ face: Detector; object: Detector }> | null = null;
 
 function load() {
   loading ??= (async () => {
-    const vision = await import(/* @vite-ignore */ `${CDN}/vision_bundle.mjs`);
-    const files = await vision.FilesetResolver.forVisionTasks(`${CDN}/wasm`);
+    const vision = await import(/* @vite-ignore */ `${VENDOR}/vision_bundle.mjs`);
+    const files = await vision.FilesetResolver.forVisionTasks(`${VENDOR}/wasm`);
     const [face, object] = await Promise.all([
       vision.FaceDetector.createFromOptions(files, { baseOptions: { modelAssetPath: FACE_MODEL }, runningMode: 'IMAGE' }),
       vision.ObjectDetector.createFromOptions(files, {

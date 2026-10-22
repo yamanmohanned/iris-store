@@ -88,6 +88,9 @@ export default function StoreSettingsTab() {
 
         <Card className="flex flex-col gap-3">
           <h2 className="font-headline-sm text-headline-sm font-semibold text-deep-oxblood">قسائم الخصم</h2>
+          <p className="font-body-sm text-body-sm text-muted-rosewood">
+            رموز الخصم تُحمَّل مع بيانات المتجر ويستطيع من يفحص الموقع قراءتها، فاستخدميها كرموز ترويج عامة (مثل رمز لمتابعي إنستغرام) لا كرموز سرية.
+          </p>
           {coupons.map((c, i) => (
             <div key={i} className="grid grid-cols-[1fr_80px_40px] items-center gap-2 sm:grid-cols-[1fr_80px_1.4fr_40px]">
               <input
